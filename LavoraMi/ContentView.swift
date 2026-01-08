@@ -595,9 +595,11 @@ struct LineRow: View {
     let line: String
     let typeOfTransport: String
     let branches: String
+    let waitMinutes: String
+    let stations: [MetroStation]
     
     var body: some View {
-        NavigationLink(destination: LineDetailView(lineName: line, typeOfTransport: typeOfTransport, branches: branches)){
+        NavigationLink(destination: LineDetailView(lineName: line, typeOfTransport: typeOfTransport, branches: branches, waitMinutes: waitMinutes, workScheduled: 0, workNow: 0, stations: stations)){
             HStack(spacing: 12) {
                 Text(line)
                     .foregroundStyle(.white)
@@ -618,11 +620,11 @@ struct LineRow: View {
 
 struct LinesView: View {
     let metros: [LineInfo] = [
-            LineInfo(name: "M1", branches: "Sesto F.S. - Rho Fiera / Bisceglie", type: "Metro"),
-            LineInfo(name: "M2", branches: "Gessate / Cologno - Assago / Abbiategrasso", type: "Metro"),
-            LineInfo(name: "M3", branches: "Comasina - San Donato", type: "Metro"),
-            LineInfo(name: "M4", branches: "Linate - San Cristoforo", type: "Metro"),
-            LineInfo(name: "M5", branches: "Bignami - San Siro Stadio", type: "Metro")
+            LineInfo(name: "M1", branches: "Sesto F.S. - Rho Fiera / Bisceglie", type: "Metro", waitMinutes: "Sesto FS: 3 min | Rho/Bisceglie: 7-8 min.", stations: StationsDB.stationsM1),
+            LineInfo(name: "M2", branches: "Gessate / Cologno - Assago / Abbiategrasso", type: "Metro", waitMinutes: "Gessate / Cologno: 12-15 min | Assago / Abbiategrasso: 9-10 min", stations: []),
+            LineInfo(name: "M3", branches: "Comasina - San Donato", type: "Metro", waitMinutes: "4-5 min.", stations: StationsDB.stationsM3),
+            LineInfo(name: "M4", branches: "Linate - San Cristoforo", type: "Metro", waitMinutes: "2-3 min.", stations: []),
+            LineInfo(name: "M5", branches: "Bignami - San Siro Stadio", type: "Metro", waitMinutes: "4 min.", stations: StationsDB.stationsM5)
         ]
     let trams = ["1", "2", "3", "4", "5", "7", "9", "10", "12", "14", "15", "16", "19", "24", "27", "31", "33"]
     
@@ -631,7 +633,7 @@ struct LinesView: View {
             List{
                 Section("Linee Metropolitane"){
                     ForEach(metros, id: \.id) { line in
-                        LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches)
+                        LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations)
                     }
                 }
                 /*Section("Linee Tram"){
@@ -649,6 +651,21 @@ struct LineDetailView: View {
     let lineName: String
     let typeOfTransport: String
     let branches: String
+    let waitMinutes: String
+    
+    let workScheduled: Int
+    let workNow: Int
+    
+    let stations: [MetroStation]
+    
+    let lombardyBounds = MapCameraBounds(
+        centerCoordinateBounds: MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 45.46443, longitude: 9.18927),
+            span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+        ),
+        minimumDistance: 1000,
+        maximumDistance: 100000
+    )
     
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 45.4642, longitude: 9.1900),
@@ -694,7 +711,7 @@ struct LineDetailView: View {
                             .foregroundStyle(.secondary)
                             .bold()
                         
-                        Text("3-7 Minuti")
+                        Text(waitMinutes)
                             .font(.title3)
                             .multilineTextAlignment(.leading)
                     }
@@ -705,7 +722,7 @@ struct LineDetailView: View {
                             .foregroundStyle(.secondary)
                             .bold()
                         
-                        Text("0 attuali, 0 programmati.")
+                        Text("\(workNow) attuali, \(workScheduled) programmati.")
                             .font(.title3)
                             .multilineTextAlignment(.leading)
                     }
@@ -719,17 +736,87 @@ struct LineDetailView: View {
                 .background(Color(uiColor: .systemBackground))
                 
                 
-                Map(coordinateRegion: $region)
+                Map(initialPosition: .region(MKCoordinateRegion(
+                        center: CLLocationCoordinate2D(latitude: 45.4850, longitude: 9.1600),
+                        span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+                    )),
+                    bounds: lombardyBounds
+                    ){
+                        
+                        switch(lineName){
+                            case "M1":
+                                MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
+                                    .stroke(Color(red: 228/255, green: 35/255, blue: 19/255), lineWidth: 5)
+                                let pagano = stations.first(where: { $0.name == "Pagano" })!
+                                let rhoBranch = [pagano] + stations.filter { $0.branch == "Rho" }
+                                MapPolyline(coordinates: rhoBranch.map(\.coordinate))
+                                    .stroke(Color(red: 228/255, green: 35/255, blue: 19/255), lineWidth: 5)
+                                
+                                let bisceglieBranch = [pagano] + stations.filter { $0.branch == "Bisceglie" }
+                                MapPolyline(coordinates: bisceglieBranch.map(\.coordinate))
+                                    .stroke(Color(red: 228/255, green: 35/255, blue: 19/255), lineWidth: 5)
+                            
+                                ForEach(stations) { station in
+                                    Annotation(station.name, coordinate: station.coordinate) {
+                                        ZStack {
+                                            Circle()
+                                                .fill(.white)
+                                                .frame(width: 12, height: 12)
+                                            Circle()
+                                                .stroke(Color(red: 228/255, green: 35/255, blue: 19/255), lineWidth: 3)
+                                                .frame(width: 12, height: 12)
+                                        }
+                                    }
+                                }
+                            case "M3":
+                                MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
+                                    .stroke(Color(red: 252/255, green: 190/255, blue: 0), lineWidth: 5)
+                            
+                                ForEach(stations) { station in
+                                    Annotation(station.name, coordinate: station.coordinate) {
+                                        ZStack {
+                                            Circle()
+                                                .fill(.white)
+                                                .frame(width: 12, height: 12)
+                                            Circle()
+                                                .stroke(Color(red: 252/255, green: 190/255, blue: 0), lineWidth: 3)
+                                                .frame(width: 12, height: 12)
+                                        }
+                                    }
+                                }
+                            
+                            case "M5":
+                                MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
+                                    .stroke(Color(red: 165/255, green: 147/255, blue: 198/255), lineWidth: 5)
+                            
+                                ForEach(stations) { station in
+                                    Annotation(station.name, coordinate: station.coordinate) {
+                                        ZStack {
+                                            Circle()
+                                                .fill(.white)
+                                                .frame(width: 12, height: 12)
+                                            Circle()
+                                                .stroke(Color(red: 165/255, green: 147/255, blue: 198/255), lineWidth: 3)
+                                                .frame(width: 12, height: 12)
+                                        }
+                                    }
+                                }
+                            default:
+                                MapPolyline(coordinates: stations.map(\.coordinate))
+                                .stroke(.orange, lineWidth: 5)
+                        }
+                    }
                     .frame(maxWidth: .infinity)
                     .frame(maxHeight: .infinity)
                     .padding(.bottom, 100)
+                    .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
                     .ignoresSafeArea(edges: .bottom)
+                }
                 
             }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
         }
-    }
 }
 
 //FILTERS
@@ -755,6 +842,15 @@ struct LineInfo: Identifiable {
     let name: String
     let branches: String
     let type: String
+    let waitMinutes: String
+    let stations: [MetroStation]
+}
+
+struct MetroStation: Identifiable {
+    let id = UUID()
+    let name: String
+    let coordinate: CLLocationCoordinate2D
+    let branch: String
 }
 
 func getColor(for line: String) -> Color {
