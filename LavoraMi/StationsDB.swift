@@ -135,9 +135,9 @@ struct StationsDB {
         .init(name: "Coni Zugna", coordinate: .init(latitude: 45.45909, longitude: 9.1649), branch: "Main"),
         .init(name: "California", coordinate: .init(latitude: 45.45755, longitude: 9.16005), branch: "Main"),
         .init(name: "Bolivar", coordinate: .init(latitude: 45.45538, longitude: 9.15316), branch: "Main"),
-        .init(name: "Tolstoj", coordinate: .init(latitude: 45.45538, longitude: 9.14801), branch: "Main"),
-        .init(name: "Frattini", coordinate: .init(latitude: 45.45538, longitude: 9.14245), branch: "Main"),
-        .init(name: "Gelsomini", coordinate: .init(latitude: 45.45538, longitude: 9.13542), branch: "Main"),
+        .init(name: "Tolstoj", coordinate: .init(latitude: 45.45359, longitude: 9.14801), branch: "Main"),
+        .init(name: "Frattini", coordinate: .init(latitude: 45.45182, longitude: 9.14245), branch: "Main"),
+        .init(name: "Gelsomini", coordinate: .init(latitude: 45.4496, longitude: 9.13542), branch: "Main"),
         .init(name: "Segneri", coordinate: .init(latitude: 45.44695, longitude: 9.13086), branch: "Main"),
         .init(name: "San Cristoforo", coordinate: .init(latitude: 45.44256, longitude: 9.13008), branch: "Main")
     ]

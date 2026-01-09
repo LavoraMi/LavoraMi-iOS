@@ -512,6 +512,16 @@ struct SettingsView: View{
                     }
                     .pickerStyle(.navigationLink)
                 }
+                Section("Informazioni"){
+                    NavigationLink(destination: InfoView()){
+                        Label("Fonti & Sviluppo", systemImage: "person.crop.circle.badge.questionmark")
+                    }
+                    HStack{
+                        Label("Versione", systemImage: "info.circle.fill")
+                        Spacer()
+                        Text("\(Bundle.main.shortVersion)")
+                    }
+                }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
                     Button(role: .destructive) {
                         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -546,6 +556,86 @@ struct SettingsView: View{
                 }
             } message: {
                 Text("Sei sicuro di voler resettare?")
+            }
+        }
+    }
+}
+
+struct InfoView: View {
+    var body: some View {
+        Section{
+            HStack{
+                Image("icon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50, height: 50)
+                Text("LavoraMi")
+                    .font(.system(size: 35))
+                    .bold()
+            }
+            Text(Bundle.main.shortVersion)
+            Divider()
+            ScrollView{
+                Section(){
+                    Text("Fonti Dati")
+                        .font(.system(size: 30))
+                        .bold()
+                    Text("Questa applicazione aggrega dati pubblici, accessibili a tutti, per facilitarne la consultazione.")
+                        .padding(.horizontal, 18)
+                        .padding(.top, 10)
+                    Text("""
+                    LavoraMi è un'applicazione indipendente sviluppata da terze parti e NON è in alcun modo affiliata, supportata, autorizzata o sponsorizzata da ATM S.p.A., Trenord S.r.l., Gruppo FNM, RFI o altri enti di trasporto citati.
+
+                    Tutti i dati visualizzati in questa applicazione (orari, stati del servizio, avvisi) sono raccolti da fonti pubbliche ed elaborati automaticamente al solo scopo di migliorarne la comprensione e la leggibilità per l'utente finale.
+                    
+                    Non si fornisce alcuna garanzia, esplicita o implicita, riguardo l'accuratezza, la completezza, l'affidabilità o la tempestività delle informazioni fornite. Le informazioni potrebbero non riflettere variazioni dell'ultimo minuto.
+
+                    L'uso dell'applicazione è interamente a proprio rischio. Lo sviluppatore declina ogni responsabilità per eventuali inesattezze, ritardi, mancati servizi, danni diretti o indiretti derivanti dall'affidamento sulle informazioni fornite da questa app.
+                    
+                    Per le decisioni di viaggio critiche, si raccomanda di fare sempre riferimento ai canali ufficiali, agli annunci sonori e alla segnaletica presente in stazione.
+                    
+                    Tutti i marchi, i loghi e i nomi commerciali citati appartengono ai legittimi proprietari.
+                    """)
+                        .padding(.horizontal, 18)
+                        .padding(.top, 10)
+                        .padding(.bottom, 5)
+                }
+                Divider()
+                Section(){
+                    VStack(spacing: 12){
+                        Text("Team di Sviluppo")
+                            .font(.system(size: 30))
+                            .bold()
+                            .padding(.top, 20)
+                        
+                        Text("Sviluppatore iOS:")
+                            .font(.system(size: 20))
+                        Text("Andrea Filice")
+                            .bold()
+                            .font(.system(size: 25))
+                            .padding(.top, -5)
+                        
+                        Text("Sviluppatore Android:")
+                            .font(.system(size: 20))
+                            .padding(.top, 20)
+                        Text("Tommaso Ruggeri")
+                            .bold()
+                            .font(.system(size: 25))
+                    }
+                }
+                Divider().padding(.top, 10)
+                Section(){
+                    Text("Contatti")
+                        .font(.system(size: 30))
+                        .bold()
+                        .padding(.top, 20)
+                    
+                    Link(destination: URL(string: "mailto:help.playepik@gmail.com")!) {
+                        Label("Segnala un bug", systemImage: "ladybug.fill")
+                            .font(.system(size: 20))
+                    }
+                    .padding(.top, 5)
+                }
             }
         }
     }
@@ -984,6 +1074,19 @@ extension WorkItem {
         }
         
         return false
+    }
+}
+
+// MARK: - Bundle version helpers
+extension Bundle {
+    /// CFBundleShortVersionString (e.g., 1.2.3)
+    var shortVersion: String {
+        infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    }
+
+    /// CFBundleVersion (build number)
+    var buildVersion: String {
+        infoDictionary?["CFBundleVersion"] as? String ?? ""
     }
 }
 
