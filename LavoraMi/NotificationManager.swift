@@ -88,14 +88,14 @@ class NotificationManager {
     }
     
     func syncNotifications(for works: [WorkItem], favorites: [String]) {
-            let center = UNUserNotificationCenter.current()
-            for work in works {
-                if work.matchesFavorites(favorites) {
-                    scheduleWorkAlerts(for: work)
-                    print("Attivata notifica per: \(work.title) (Match preferiti)")
-                } else {
-                    removeWorkAlerts(for: work)
-                }
+        let center = UNUserNotificationCenter.current()
+        for work in works {
+            if work.matchesFavorites(favorites) {
+                scheduleWorkAlerts(for: work)
+                print("Attivata notifica per: \(work.title) (Match preferiti)")
+            } else {
+                removeWorkAlerts(for: work)
             }
         }
+    }
 }

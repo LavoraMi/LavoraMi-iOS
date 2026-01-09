@@ -352,6 +352,7 @@ struct SettingsView: View{
     @State private var expandedATM = false
     @State private var expandedATMLines = false
     @State private var presentedAlertReset = false
+    @StateObject private var viewModel = WorkViewModel()
     
     //APP DATAS
     @AppStorage("enableNotifications") private var enableNotifications: Bool = true
@@ -378,6 +379,7 @@ struct SettingsView: View{
                             Button(action: {
                                 let generator = UIImpactFeedbackGenerator(style: .light)
                                 generator.impactOccurred()
+                                
                                 
                                 if linesFavorites.contains("S") {
                                     linesFavorites.removeAll { $0 == "S" }
@@ -541,7 +543,7 @@ struct SettingsView: View{
                     linesFavorites = []
                 }
             } message: {
-                Text("Sei sicuro di voler resettare?")
+                Text("Sei sicuro di voler ripristinare le impostazioni?")
             }
         }
     }
@@ -630,6 +632,7 @@ struct InfoView: View {
 struct LineFavouritesRow: View {
     let line: String
     @Binding var favorites: [String]
+    @StateObject private var viewModel = WorkViewModel()
     
     var body: some View {
         HStack(spacing: 12) {
@@ -1048,19 +1051,30 @@ extension Array: RawRepresentable where Element == String {
 
 extension WorkItem {
     func matchesFavorites(_ favorites: [String]) -> Bool {
-        
-        if favorites.contains("Bus") && self.typeOfTransport.contains("bus") { return true }
-        if favorites.contains("Tram") && self.typeOfTransport.contains("tram") { return true }
-
-        for line in self.lines {
-            if favorites.contains(line) { return true }
-            if favorites.contains("S") && line.hasPrefix("S") && line.dropFirst().allSatisfy({ $0.isNumber }) { return true }
-            if favorites.contains("R") && line.hasPrefix("R") && !line.hasPrefix("RE") { return true }
-            if favorites.contains("RE") && line.hasPrefix("RE") { return true }
+            if favorites.contains("Tram") && self.typeOfTransport.lowercased().contains("tram") {
+                return true
+            }
+            if favorites.contains("Bus") && self.typeOfTransport.lowercased().contains("bus") {
+                return true
+            }
+            
+            for workLine in self.lines {
+                if favorites.contains(workLine) { return true }
+                if favorites.contains("S") && workLine.hasPrefix("S") {
+                    let suffix = workLine.dropFirst()
+                    if !suffix.isEmpty && suffix.allSatisfy({ $0.isNumber }) { return true }
+                }
+                
+                if favorites.contains("R") && workLine.hasPrefix("R") && !workLine.hasPrefix("RE") {
+                    return true
+                }
+                if favorites.contains("RE") && workLine.hasPrefix("RE") {
+                    return true
+                }
+            }
+            
+            return false
         }
-        
-        return false
-    }
 }
 
 // MARK: - Bundle version helpers
