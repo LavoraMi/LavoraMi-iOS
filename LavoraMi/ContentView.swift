@@ -684,7 +684,7 @@ struct LineRow: View {
     @ObservedObject var viewModel: WorkViewModel
     
     var body: some View {
-        NavigationLink(destination: LineDetailView(lineName: line, typeOfTransport: typeOfTransport, branches: branches, waitMinutes: waitMinutes, workScheduled: getWorkScheduled(line: line, viewModel: viewModel), workNow: getWorkNow(line: line, viewModel: viewModel), stations: stations)){
+        NavigationLink(destination: LineDetailView(lineName: line, typeOfTransport: typeOfTransport, branches: branches, waitMinutes: waitMinutes, workScheduled: getWorkScheduled(line: line, viewModel: viewModel), workNow: getWorkNow(line: line, viewModel: viewModel), viewModel: viewModel, stations: stations)){
             HStack(spacing: 12) {
                 Text(line)
                     .foregroundStyle(.white)
@@ -767,6 +767,15 @@ func getWorkScheduled(line: String, viewModel: WorkViewModel) -> Int{
     return viewModel.items.filter{($0.startDate > now) && $0.lines.contains(line)}.count
 }
 
+func getCurrentWorks(line: String, viewModel: WorkViewModel) -> [WorkItem]{
+    let now = Date()
+    var currentWorks: [WorkItem]
+    
+    currentWorks = viewModel.items.filter{$0.lines.contains(line)}
+    
+    return currentWorks
+}
+
 struct LineDetailView: View {
     let lineName: String
     let typeOfTransport: String
@@ -775,8 +784,12 @@ struct LineDetailView: View {
     
     let workScheduled: Int
     let workNow: Int
+    let viewModel: WorkViewModel
     
     let stations: [MetroStation]
+    
+    private enum LineDetailTab { case map, works }
+    @State private var selectedTab: LineDetailTab = .map
     
     private var centerIndex: Int { max(0, stations.count / 2) }
     private var centerCoordinate: CLLocationCoordinate2D {
@@ -868,104 +881,178 @@ struct LineDetailView: View {
                 .frame(maxHeight: .infinity)
                 .padding(.top, 20)
                 .background(Color(uiColor: .systemBackground))
-                
-                
-                Map(initialPosition: .region(MKCoordinateRegion(
-                        center: centerCoordinate,
-                        span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
-                    )),
-                    bounds: lombardyBounds
-                    ){
-                        let lineColor: Color = getColor(for: lineName)
-                        switch(lineName){
-                            case "M1":
-                                MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
-                                    .stroke(lineColor, lineWidth: 5)
-                                let pagano = stations.first(where: { $0.name == "Pagano" })!
-                                let rhoBranch = [pagano] + stations.filter { $0.branch == "Rho" }
-                                MapPolyline(coordinates: rhoBranch.map(\.coordinate))
-                                    .stroke(lineColor, lineWidth: 5)
-                                
-                                let bisceglieBranch = [pagano] + stations.filter { $0.branch == "Bisceglie" }
-                                MapPolyline(coordinates: bisceglieBranch.map(\.coordinate))
-                                    .stroke(lineColor, lineWidth: 5)
-                            
-                                ForEach(stations) { station in
-                                    Annotation(station.name, coordinate: station.coordinate) {
-                                        ZStack {
-                                            Circle()
-                                                .fill(.white)
-                                                .frame(width: 12, height: 12)
-                                            Circle()
-                                                .stroke(lineColor, lineWidth: 3)
-                                                .frame(width: 12, height: 12)
-                                        }
+                HStack(spacing: 8) {
+                    Button(action: {
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                        withAnimation(.snappy) { selectedTab = .map }
+                    }) {
+                        Text("Mappa")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .frame(maxWidth: .infinity)
+                            .background(
+                                ZStack {
+                                    if selectedTab == .map {
+                                        Capsule().fill(getColor(for: lineName))
+                                    } else {
+                                        Capsule().stroke(Color.secondary, lineWidth: 1)
                                     }
                                 }
-                            case "M2":
-                                MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
-                                    .stroke(lineColor, lineWidth: 5)
-                                let famagosta = stations.first(where: { $0.name == "Famagosta" })!
-                                let assagoBranch = [famagosta] + stations.filter { $0.branch == "Assago" }
-                                MapPolyline(coordinates: assagoBranch.map(\.coordinate))
-                                    .stroke(lineColor, lineWidth: 5)
-                                
-                                let abbiategrassoBranch = [famagosta] + stations.filter { $0.branch == "Abbiategrasso" }
-                                MapPolyline(coordinates: abbiategrassoBranch.map(\.coordinate))
-                                    .stroke(lineColor, lineWidth: 5)
+                            )
+                            .foregroundStyle(selectedTab == .map ? Color(.systemBackground) : .primary)
+                    }
 
-                                let cascinaGobba = stations.first(where: { $0.name == "Cascina Gobba" })!
-                                let colognoBranch = [cascinaGobba] + stations.filter { $0.branch == "Cologno" }
-                                MapPolyline(coordinates: colognoBranch.map(\.coordinate))
-                                    .stroke(lineColor, lineWidth: 5)
+                    Button(action: {
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                        withAnimation(.snappy) { selectedTab = .works }
+                    }) {
+                        Text("Lavori linea")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .frame(maxWidth: .infinity)
+                            .background(
+                                ZStack {
+                                    if selectedTab == .works {
+                                        Capsule().fill(getColor(for: lineName))
+                                    } else {
+                                        Capsule().stroke(Color.secondary, lineWidth: 1)
+                                    }
+                                }
+                            )
+                            .foregroundStyle(selectedTab == .works ? Color(.systemBackground) : .primary)
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 8)
+                
+                if selectedTab == .map {
+                    Map(initialPosition: .region(MKCoordinateRegion(
+                            center: centerCoordinate,
+                            span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+                        )),
+                        bounds: lombardyBounds
+                        ){
+                            let lineColor: Color = getColor(for: lineName)
+                            switch(lineName){
+                                case "M1":
+                                    MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
+                                        .stroke(lineColor, lineWidth: 5)
+                                    let pagano = stations.first(where: { $0.name == "Pagano" })!
+                                    let rhoBranch = [pagano] + stations.filter { $0.branch == "Rho" }
+                                    MapPolyline(coordinates: rhoBranch.map(\.coordinate))
+                                        .stroke(lineColor, lineWidth: 5)
+                                    
+                                    let bisceglieBranch = [pagano] + stations.filter { $0.branch == "Bisceglie" }
+                                    MapPolyline(coordinates: bisceglieBranch.map(\.coordinate))
+                                        .stroke(lineColor, lineWidth: 5)
                                 
-                                let gessateBranch = [cascinaGobba] + stations.filter { $0.branch == "Gessate" }
-                                MapPolyline(coordinates: gessateBranch.map(\.coordinate))
-                                    .stroke(lineColor, lineWidth: 5)
-                            
-                                ForEach(stations) { station in
-                                    Annotation(station.name, coordinate: station.coordinate) {
-                                        ZStack {
-                                            Circle()
-                                                .fill(.white)
-                                                .frame(width: 12, height: 12)
-                                            Circle()
-                                                .stroke(lineColor, lineWidth: 3)
-                                                .frame(width: 12, height: 12)
+                                    ForEach(stations) { station in
+                                        Annotation(station.name, coordinate: station.coordinate) {
+                                            ZStack {
+                                                Circle()
+                                                    .fill(.white)
+                                                    .frame(width: 12, height: 12)
+                                                Circle()
+                                                    .stroke(lineColor, lineWidth: 3)
+                                                    .frame(width: 12, height: 12)
+                                            }
                                         }
                                     }
-                                }
+                                case "M2":
+                                    MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
+                                        .stroke(lineColor, lineWidth: 5)
+                                    let famagosta = stations.first(where: { $0.name == "Famagosta" })!
+                                    let assagoBranch = [famagosta] + stations.filter { $0.branch == "Assago" }
+                                    MapPolyline(coordinates: assagoBranch.map(\.coordinate))
+                                        .stroke(lineColor, lineWidth: 5)
+                                    
+                                    let abbiategrassoBranch = [famagosta] + stations.filter { $0.branch == "Abbiategrasso" }
+                                    MapPolyline(coordinates: abbiategrassoBranch.map(\.coordinate))
+                                        .stroke(lineColor, lineWidth: 5)
 
-                            default:
-                                MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
-                                    .stroke(lineColor, lineWidth: 5)
-                            
-                                ForEach(stations) { station in
-                                    Annotation(station.name, coordinate: station.coordinate) {
-                                        ZStack {
-                                            Circle()
-                                                .fill(.white)
-                                                .frame(width: 12, height: 12)
-                                            Circle()
-                                                .stroke(lineColor, lineWidth: 3)
-                                                .frame(width: 12, height: 12)
+                                    let cascinaGobba = stations.first(where: { $0.name == "Cascina Gobba" })!
+                                    let colognoBranch = [cascinaGobba] + stations.filter { $0.branch == "Cologno" }
+                                    MapPolyline(coordinates: colognoBranch.map(\.coordinate))
+                                        .stroke(lineColor, lineWidth: 5)
+                                    
+                                    let gessateBranch = [cascinaGobba] + stations.filter { $0.branch == "Gessate" }
+                                    MapPolyline(coordinates: gessateBranch.map(\.coordinate))
+                                        .stroke(lineColor, lineWidth: 5)
+                                
+                                    ForEach(stations) { station in
+                                        Annotation(station.name, coordinate: station.coordinate) {
+                                            ZStack {
+                                                Circle()
+                                                    .fill(.white)
+                                                    .frame(width: 12, height: 12)
+                                                Circle()
+                                                    .stroke(lineColor, lineWidth: 3)
+                                                    .frame(width: 12, height: 12)
+                                            }
                                         }
                                     }
+
+                                default:
+                                    MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
+                                        .stroke(lineColor, lineWidth: 5)
+                                
+                                    ForEach(stations) { station in
+                                        Annotation(station.name, coordinate: station.coordinate) {
+                                            ZStack {
+                                                Circle()
+                                                    .fill(.white)
+                                                    .frame(width: 12, height: 12)
+                                                Circle()
+                                                    .stroke(lineColor, lineWidth: 3)
+                                                    .frame(width: 12, height: 12)
+                                            }
+                                        }
+                                    }
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(maxHeight: .infinity)
+                        .padding(.bottom, 100)
+                        .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
+                        .ignoresSafeArea(edges: .bottom)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                } else {
+                    VStack {
+                        ScrollView {
+                            let currentWorks = getCurrentWorks(line: lineName, viewModel: viewModel)
+                            if currentWorks.count > 0 {
+                                LazyVStack(spacing: 12) {
+                                    ForEach(currentWorks) { work in
+                                        let item = WorkItem(title: work.title, titleIcon: work.titleIcon, typeOfTransport: work.typeOfTransport, roads: work.roads, lines: work.lines, startDate: work.startDate, endDate: work.endDate, details: work.details, company: work.company)
+                                        WorkInProgressRow(item: item)
+                                            .padding(.horizontal)
+                                    }
                                 }
+                                .padding(.vertical, 8)
+                            } else {
+                                Text("Nessun lavoro attuale o programmato su questa linea.")
+                                    .padding()
+                                    .bold()
+                                    .font(.system(size: 15))
+                            }
                         }
                     }
                     .frame(maxWidth: .infinity)
                     .frame(maxHeight: .infinity)
-                    .padding(.bottom, 100)
-                    .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
-                    .ignoresSafeArea(edges: .bottom)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .padding(.bottom, 10)
                 }
                 
             }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
         }
+    }
 }
 
 //NOTE: FILTERS
