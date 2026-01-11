@@ -896,13 +896,13 @@ struct LineDetailView: View {
                             .background(
                                 ZStack {
                                     if selectedTab == .map {
-                                        Capsule().fill(getColor(for: lineName))
+                                        Capsule().fill((lineName == "S12") ? .white : getColor(for: lineName))
                                     } else {
                                         Capsule().stroke(Color.secondary, lineWidth: 1)
                                     }
                                 }
                             )
-                            .foregroundStyle(selectedTab == .map ? Color(.systemBackground) : .primary)
+                            .foregroundStyle(selectedTab == .map ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground)) : .primary)
                     }
 
                     Button(action: {
@@ -919,13 +919,13 @@ struct LineDetailView: View {
                             .background(
                                 ZStack {
                                     if selectedTab == .works {
-                                        Capsule().fill(getColor(for: lineName))
+                                        Capsule().fill((lineName == "S12") ? .white : getColor(for: lineName))
                                     } else {
                                         Capsule().stroke(Color.secondary, lineWidth: 1)
                                     }
                                 }
                             )
-                            .foregroundStyle(selectedTab == .works ? Color(.systemBackground) : .primary)
+                            .foregroundStyle(selectedTab == .works ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground)) : .primary)
                     }
                 }
                 .padding(.horizontal)
