@@ -731,7 +731,7 @@ struct LinesView: View {
             LineInfo(name: "S12", branches: "Melegnano - Cormano", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS12),
             LineInfo(name: "S13", branches: "Pavia - Milano Bovisa", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS13),
             LineInfo(name: "S19", branches: "Albairate Vermezzo - Milano Rogoredo", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS19),
-            LineInfo(name: "S31", branches: "Brecia - Iseo", type: "Suburbano", waitMinutes: "1 ora.", stations: StationsDB.stationsS31)
+            LineInfo(name: "S31", branches: "Brescia - Iseo", type: "Suburbano", waitMinutes: "1 ora.", stations: StationsDB.stationsS31)
         ]
     }
     
