@@ -457,4 +457,31 @@ struct StationsDB {
         .init(name: "Provaglio Timoline", coordinate: .init(latitude: 45.63504, longitude: 10.03538), branch: "Main"),
         .init(name: "Iseo", coordinate: .init(latitude: 45.65657, longitude: 10.05003), branch: "Main")
     ]
+    
+    static let interchanges: [InterchageInfo] = [
+        .init(name: "Rho Fiera-Milano", lines: ["S5", "S6", "S11", "AV", "M1"], typeOfInterchange: "lightrail"),
+        .init(name: "Lotto", lines: ["M1", "M5"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Cadorna FN", lines: ["MXP", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "M1", "M2"], typeOfInterchange: "lightrail"),
+        .init(name: "Duomo", lines: ["M1", "M3"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "San Babila", lines: ["M1", "M4"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Porta Venezia", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "M1"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Loreto", lines: ["M1", "M2"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Sesto 1° Maggio FS", lines: ["R13", "R14", "RE8", "S7", "S8", "S9", "S11"], typeOfInterchange: "lightrail"),
+        .init(name: "Romolo", lines: ["R31", "S9", "S19"], typeOfInterchange: "lightrail"),
+        .init(name: "S. Ambrogio", lines: ["M2", "M4"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Porta Garibaldi", lines: ["AV", "IC", "MXP", "R6", "R13", "R14", "R21", "R23", "R28", "RE2", "RE5", "RE6", "RE13", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "M1", "M5"], typeOfInterchange: "lightrail"),
+        .init(name: "Centrale FS", lines: ["AV", "MXP", "R4", "R28", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "M2", "M3"], typeOfInterchange: "lightrail"),
+        .init(name: "Lambrate FS", lines: ["R4", "R6", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "S9", "M2"], typeOfInterchange: "lightrail"),
+        .init(name: "Affori FN", lines: ["R16", "S2", "S4", "M3"], typeOfInterchange: "lightrail"),
+        .init(name: "Zara", lines: ["M3", "M5"],typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Repubblica", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "M3"], typeOfInterchange: "lightrail"),
+        .init(name: "Lodi TIBB", lines: ["S9", "S19", "M3"], typeOfInterchange: "lightrail"),
+        .init(name: "Rogoredo FS", lines: ["R34", "R38", "RE8", "RE11", "RE13", "S1", "S2", "S9", "S12", "S13", "S19", "M3"], typeOfInterchange: "lightrail"),
+        .init(name: "San Cristoforo", lines: ["R31", "S9", "S19", "M4"], typeOfInterchange: "lightrail"),
+        .init(name: "Sforza - Policlinico", lines: ["M3", "M4"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Dateo", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "M4"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Stazione Forlanini", lines: ["R34", "RE8", "S5", "S6", "S9"], typeOfInterchange: "lightrail"),
+        .init(name: "Linate Aereoporto", lines: ["Aereoporto", "M4"], typeOfInterchange: "airplane.departure"),
+        .init(name: "Domodossola FN", lines: ["R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "M5"], typeOfInterchange: "tram.fill.tunnel")
+    ]
 }

@@ -258,8 +258,10 @@ struct MainView: View{
                                     }
                                     else{
                                         ForEach(filteredItems) { item in
-                                            WorkInProgressRow(item: item)
-                                                .padding(.horizontal)
+                                            if(item.progress != 1){
+                                                WorkInProgressRow(item: item)
+                                                    .padding(.horizontal)
+                                            }
                                         }
                                     }
                                 }
@@ -711,7 +713,7 @@ struct LinesView: View {
             LineInfo(name: "M1", branches: "Sesto F.S. - Rho Fiera / Bisceglie", type: "Metro", waitMinutes: "Sesto FS: 3 min | Rho/Bisceglie: 7-8 min.", stations: StationsDB.stationsM1),
             LineInfo(name: "M2", branches: "Gessate / Cologno - Assago / Abbiategrasso", type: "Metro", waitMinutes: "Gessate / Cologno: 12-15 min | Assago / Abbiategrasso: 9-10 min", stations: StationsDB.stationsM2),
             LineInfo(name: "M3", branches: "Comasina - San Donato", type: "Metro", waitMinutes: "4-5 min.", stations: StationsDB.stationsM3),
-            LineInfo(name: "M4", branches: "Linate - San Cristoforo", type: "Metro", waitMinutes: "2-3 min.",stations: StationsDB.stationsM4),
+            LineInfo(name: "M4", branches: "Linate Aereoporto - San Cristoforo", type: "Metro", waitMinutes: "2-3 min.",stations: StationsDB.stationsM4),
             LineInfo(name: "M5", branches: "Bignami - San Siro Stadio", type: "Metro", waitMinutes: "4 min.", stations: StationsDB.stationsM5)
         ]
     }
@@ -768,12 +770,11 @@ func getWorkScheduled(line: String, viewModel: WorkViewModel) -> Int{
 }
 
 func getCurrentWorks(line: String, viewModel: WorkViewModel) -> [WorkItem]{
-    let now = Date()
-    var currentWorks: [WorkItem]
-    
-    currentWorks = viewModel.items.filter{$0.lines.contains(line)}
-    
-    return currentWorks
+    return viewModel.items.filter{$0.lines.contains(line)}
+}
+
+func getInterchanges(line: String) -> [InterchageInfo]{
+    return StationsDB.interchanges.filter{$0.lines.contains(line)}
 }
 
 struct LineDetailView: View {
@@ -1069,21 +1070,21 @@ struct LineDetailView: View {
                     .frame(maxHeight: .infinity)
                     .padding(.bottom, 10)
                 }
-                else{
+                else {
                     VStack {
                         ScrollView {
-                            let currentWorks = getCurrentWorks(line: lineName, viewModel: viewModel)
-                            if currentWorks.count > 0 {
+                            let interchanges = getInterchanges(line: lineName)
+                            if interchanges.count > 0 {
                                 LazyVStack(spacing: 12) {
-                                    ForEach(currentWorks) { work in
-                                        let item = WorkItem(title: work.title, titleIcon: work.titleIcon, typeOfTransport: work.typeOfTransport, roads: work.roads, lines: work.lines, startDate: work.startDate, endDate: work.endDate, details: work.details, company: work.company)
-                                        WorkInProgressRow(item: item)
-                                            .padding(.horizontal)
+                                    ForEach(interchanges) { interchange in
+                                        let item = InterchageInfo(name: interchange.name, lines: interchange.lines, typeOfInterchange: interchange.typeOfInterchange)
+                                        
+                                        InterchangeView(item: item, currentLine: lineName)
                                     }
                                 }
                                 .padding(.vertical, 8)
                             } else {
-                                Text("Nessun lavoro attuale o programmato su questa linea.")
+                                Text("Nessun interscambio con questa linea.")
                                     .padding()
                                     .bold()
                                     .font(.system(size: 15))
@@ -1099,6 +1100,51 @@ struct LineDetailView: View {
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
         }
+    }
+}
+
+struct InterchangeView: View {
+    let item: InterchageInfo
+    let currentLine: String
+    @State private var isExpanded = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Label(item.name, systemImage: "arrow.left.and.right")
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundStyle(Color("TextColor"))
+            
+            HStack {
+                Text(currentLine)
+                    .font(.headline)
+                Image(systemName: item.typeOfInterchange)
+                Text(item.name)
+            }
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(item.lines, id: \.self) { line in
+                        Text(line)
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundStyle(.white)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(getColor(for: line))
+                            )
+                    }
+                }
+            }
+        }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+        )
+        .shadow(color: .black.opacity(0.06), radius: 6, x: 0, y: 3)
+        .padding(.horizontal)
     }
 }
 
@@ -1127,6 +1173,13 @@ struct LineInfo: Identifiable {
     let type: String
     let waitMinutes: String
     let stations: [MetroStation]
+}
+
+struct InterchageInfo: Identifiable {
+    let id = UUID()
+    let name: String
+    let lines: [String]
+    let typeOfInterchange: String
 }
 
 struct MetroStation: Identifiable {
@@ -1175,6 +1228,8 @@ func getColor(for line: String) -> Color {
         
         //OTHER LINES
         case "MXP": return Color(red: 140/255, green: 0, blue: 118/255)
+        case "AV": return .red
+        case "Aereoporto": return .black
         case _ where line.contains("R"):
                 return Color.blue
             
@@ -1183,8 +1238,7 @@ func getColor(for line: String) -> Color {
 }
 
 //EXTENSION: Save files also with arrays
-
-extension Array: RawRepresentable where Element == String {
+extension Array: @retroactive RawRepresentable where Element == String {
     public init?(rawValue: String) {
         guard let data = rawValue.data(using: .utf8),
               let result = try? JSONDecoder().decode([String].self, from: data)
@@ -1248,4 +1302,3 @@ extension Bundle {
 #Preview {
     ContentView()
 }
-
