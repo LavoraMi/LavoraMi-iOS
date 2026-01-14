@@ -755,23 +755,29 @@ struct LinesView: View {
     private func matches(_ line: LineInfo, query: String) -> Bool {
         let q = query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         if q.isEmpty { return true }
+        
         let typeKeywords: [String: [String]] = [
             "Metro": ["metro", "metropolitana", "m"],
             "Suburbano": ["suburbano", "s"],
             "Tram": ["tram", "t"],
             "Movibus": ["bus", "movibus", "z"]
         ]
+        
         let name = line.name.lowercased()
         let type = line.type.lowercased()
         let tokens = q.split(whereSeparator: { $0.isWhitespace }).map { String($0) }
+        
         for token in tokens {
             if name.contains(token) { continue }
             if type.contains(token) { continue }
-            if let synonyms = typeKeywords[line.type]?.map({ $0.lowercased() }),
+            let hasNumbers = token.rangeOfCharacter(from: .decimalDigits) != nil
+            if !hasNumbers,
+               let synonyms = typeKeywords[line.type]?.map({ $0.lowercased() }),
                synonyms.contains(where: { token.hasPrefix($0) || $0.hasPrefix(token) }) {
                 continue
             }
             if token.allSatisfy({ $0.isNumber }) && name.contains(token) { continue }
+            
             return false
         }
         return true
