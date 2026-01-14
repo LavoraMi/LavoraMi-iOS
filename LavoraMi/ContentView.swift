@@ -914,19 +914,61 @@ struct LinesView: View {
             }
             .padding()
             List{
-                Section("Linee Metropolitane"){
+                Section(){
                     ForEach(filteredMetros, id: \.id) { line in
                         LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
                     }
                 }
-                Section("Linee Suburbane"){
+                header:{
+                    VStack(alignment: .leading, spacing: 2){
+                        Text("Linee Tramviarie")
+                            .font(.title3)
+                            .bold()
+                            .foregroundStyle(.primary)
+                            .textCase(nil)
+                        
+                        Text("ATM")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .textCase(nil)
+                    }
+                }
+                Section(){
                     ForEach(filteredSuburban, id: \.id) { line in
                         LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
                     }
                 }
-                Section("Linee Tramviarie"){
+                header:{
+                    VStack(alignment: .leading, spacing: 2){
+                        Text("Linee Suburbane")
+                            .font(.title3)
+                            .bold()
+                            .foregroundStyle(.primary)
+                            .textCase(nil)
+                        
+                        Text("Trenord")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .textCase(nil)
+                    }
+                }
+                Section(){
                     ForEach(filteredTrams, id: \.id) { line in
                         LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                    }
+                }
+                header: {
+                    VStack(alignment: .leading, spacing: 2){
+                        Text("Linee Tramviarie")
+                            .font(.title3)
+                            .bold()
+                            .foregroundStyle(.primary)
+                            .textCase(nil)
+                        
+                        Text("ATM")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .textCase(nil)
                     }
                 }
                 Section(){
