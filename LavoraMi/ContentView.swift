@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import SafariServices
 
 struct WorkItem: Identifiable, Hashable, Codable {
     var id = UUID()
@@ -749,6 +750,7 @@ struct LinesView: View {
     @ObservedObject var viewModel: WorkViewModel
 
     @State private var searchInput: String = ""
+    @State private var selectedURL: URL?
     @FocusState private var isSearchFocused: Bool
 
     // MARK: - Search helpers
@@ -947,18 +949,18 @@ struct LinesView: View {
             LineInfo(name: "k214", branches: "Cremona - Pieve d'Olmi - Viadana", type: "Autoguidovie", waitMinutes: "", stations: []),
 
             // MARK: - Area Pavia (Urbano ed Extraurbano)
-            LineInfo(name: "Pavia 1", branches: "Montemontanino - S.Genesio - C.na Pelizza (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 2", branches: "Vallisneri - Pavia FS - Cravino (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 3", branches: "Maugeri/Mondino - Stazione FS - Montebolone (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 4", branches: "Vallone - Stazione FS - Sora (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 6", branches: "Cascina Pelizza - Pavia FS - Travaco (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 7", branches: "Maugeri/Mondino - Pavia FS - Cura Carpignano (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 172", branches: "Pavia - Binasco - Milano Romolo M2", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 175", branches: "Pavia - Siziano - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 94", branches: "Pavia - Vidigulfo - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 96", branches: "Pavia - Gropello - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 165", branches: "Pavia - Inverno - S.Angelo Lodigiano", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "Pavia 182", branches: "Pavia - Garlasco - Mortara", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P1", branches: "Montemontanino - S.Genesio - C.na Pelizza (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P2", branches: "Vallisneri - Pavia FS - Cravino (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P3", branches: "Maugeri/Mondino - Stazione FS - Montebolone (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P4", branches: "Vallone - Stazione FS - Sora (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P6", branches: "Cascina Pelizza - Pavia FS - Travaco (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P7", branches: "Maugeri/Mondino - Pavia FS - Cura Carpignano (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P172", branches: "Pavia - Binasco - Milano Romolo M2", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P175", branches: "Pavia - Siziano - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P94", branches: "Pavia - Vidigulfo - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P96", branches: "Pavia - Gropello - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P165", branches: "Pavia - Inverno - S.Angelo Lodigiano", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "P182", branches: "Pavia - Garlasco - Mortara", type: "Autoguidovie", waitMinutes: "", stations: []),
         ]
     }
     
@@ -992,17 +994,27 @@ struct LinesView: View {
                     }
                 }
                 header:{
-                    VStack(alignment: .leading, spacing: 2){
-                        Text("Linee Tramviarie")
-                            .font(.title3)
-                            .bold()
-                            .foregroundStyle(.primary)
-                            .textCase(nil)
-                        
-                        Text("ATM")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .textCase(nil)
+                    HStack{
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Linee Metropolitane")
+                                .font(.title3)
+                                .bold()
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
+                            
+                            Text("ATM")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .textCase(nil)
+                        }
+                        .padding(.bottom, 4)
+                        Spacer()
+                        Button(action: {
+                            selectedURL = URL(string: "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg")
+                        }) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
                 Section(){
@@ -1011,17 +1023,27 @@ struct LinesView: View {
                     }
                 }
                 header:{
-                    VStack(alignment: .leading, spacing: 2){
-                        Text("Linee Suburbane")
-                            .font(.title3)
-                            .bold()
-                            .foregroundStyle(.primary)
-                            .textCase(nil)
-                        
-                        Text("Trenord")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .textCase(nil)
+                    HStack{
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Linee Suburbane")
+                                .font(.title3)
+                                .bold()
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
+                            
+                            Text("Trenord")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .textCase(nil)
+                        }
+                        .padding(.bottom, 4)
+                        Spacer()
+                        Button(action: {
+                            selectedURL = URL(string: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")
+                        }) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
                 Section(){
@@ -1030,17 +1052,27 @@ struct LinesView: View {
                     }
                 }
                 header: {
-                    VStack(alignment: .leading, spacing: 2){
-                        Text("Linee Tramviarie")
-                            .font(.title3)
-                            .bold()
-                            .foregroundStyle(.primary)
-                            .textCase(nil)
-                        
-                        Text("ATM")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .textCase(nil)
+                    HStack{
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Linee Tramviarie")
+                                .font(.title3)
+                                .bold()
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
+                            
+                            Text("ATM")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .textCase(nil)
+                        }
+                        .padding(.bottom, 4)
+                        Spacer()
+                        Button(action: {
+                            selectedURL = URL(string: "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf")
+                        }) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
                 Section(){
@@ -1049,19 +1081,28 @@ struct LinesView: View {
                     }
                 }
                 header: {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Linee di Bus")
-                            .font(.title3)
-                            .bold()
-                            .foregroundStyle(.primary)
-                            .textCase(nil)
-                        
-                        Text("Movibus")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .textCase(nil)
+                    HStack{
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Linee di Bus")
+                                .font(.title3)
+                                .bold()
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
+                            
+                            Text("Movibus")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .textCase(nil)
+                        }
+                        .padding(.bottom, 4)
+                        Spacer()
+                        Button(action: {
+                            selectedURL = URL(string: "https://movibus.it/news/")
+                        }) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.gray)
+                        }
                     }
-                    .padding(.bottom, 4)
                 }
                 Section(){
                     ForEach(filteredSTAV, id: \.id){bus in
@@ -1069,19 +1110,28 @@ struct LinesView: View {
                     }
                 }
                 header: {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Linee di Bus")
-                            .font(.title3)
-                            .bold()
-                            .foregroundStyle(.primary)
-                            .textCase(nil)
-                        
-                        Text("STAV")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .textCase(nil)
+                    HStack{
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Linee di Bus")
+                                .font(.title3)
+                                .bold()
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
+                            
+                            Text("STAV")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .textCase(nil)
+                        }
+                        .padding(.bottom, 4)
+                        Spacer()
+                        Button(action: {
+                            selectedURL = URL(string: "https://stavautolinee.it/reti-servite/")
+                        }) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.gray)
+                        }
                     }
-                    .padding(.bottom, 4)
                 }
                 Section(){
                     ForEach(filteredAutoguidovie, id: \.id){bus in
@@ -1089,20 +1139,33 @@ struct LinesView: View {
                     }
                 }
                 header: {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Linee di Bus")
-                            .font(.title3)
-                            .bold()
-                            .foregroundStyle(.primary)
-                            .textCase(nil)
-                        
-                        Text("Autoguidovie")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .textCase(nil)
+                    HStack{
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Linee di Bus")
+                                .font(.title3)
+                                .bold()
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
+                            
+                            Text("Autoguidovie")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .textCase(nil)
+                        }
+                        .padding(.bottom, 4)
+                        Spacer()
+                        Button(action: {
+                            selectedURL = URL(string: "https://autoguidovie.it/it/avvisi")!
+                        }) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.gray)
+                        }
                     }
-                    .padding(.bottom, 4)
                 }
+            }
+            .sheet(item: $selectedURL) { url in
+                SafariView(url: url)
+                    .edgesIgnoringSafeArea(.all)
             }
             .navigationTitle("Linee")
         }
@@ -1467,30 +1530,31 @@ struct LineSmallDetailedView: View {
     let viewModel: WorkViewModel
     
     let interchanges: [InterchangeStation] = [
-        .init(key: "Molino Dorino", displayName: "Molino Dorino MM", lines: ["M1"]),
-        .init(key: "Cadorna FN", displayName: "Milano Cadorna FN", lines: ["M1", "M2"]),
-        .init(key: "Parabiago", displayName: "Parabiago", lines: ["z644", "z643"]),
-        .init(key: "Rho", displayName: "Rho", lines: ["z616", "z618"]),
-        .init(key: "Busto Garolfo", displayName: "Busto Garolfo", lines: ["z625", "z627", "z644", "z647", "z648", "z649"]),
-        .init(key: "Legnano", displayName: "Legnano", lines: ["z602", "z612", "z601", "z611", "z642", "z627"]),
-        .init(key: "Bisceglie", displayName: "Bisceglie MM", lines: ["M1", "z560", "k506"]),
-        .init(key: "Romolo", displayName: "Romolo FS", lines: ["M2", "S9", "S19", "R31"]),
-        .init(key: "S. Stefano Ticino", displayName: "Santo Stefano Ticino - Corbetta", lines: ["S6"]),
-        .init(key: "Magenta", displayName: "Magente FS", lines: ["S6", "RV"]),
-        .init(key: "Abbiategrasso Vittorio Veneto", displayName: "Abbiategrasso V. Veneto", lines: ["z551", "z552", "z553", "z555", "z556", "z560"]),
-        .init(key: "Gorgonzola", displayName: "Gorgonzola MM", lines: ["M2", "z401", "z403"]),
-        .init(key: "Cernusco", displayName: "Cernusco sul Naviglio MM", lines: ["M2"]),
-        .init(key: "Gessate", displayName: "Gessate MM", lines: ["M2", "z404", "z405", "z406", "z407"]),
-        .init(key: "Donato", displayName: "San Donato MM", lines: ["M3", "z411", "z412", "z413", "z415", "z420", "z432", "k501", "k502", "k511", "k512", "k521", "k522", "k523", "k524", "k525"]),
-        .init(key: "Sesto", displayName: "Sesto San Giovanni FS", lines: ["M1", "R13", "R14", "RE8", "S7", "S8", "S9", "S11", "z221", "z222", "z225", "z227"]),
-        .init(key: "Monza FS", displayName: "Monza FS", lines: ["R13", "R14", "RE8", "RE80", "S7", "S8", "S9", "S11", "z228"]),
-        .init(key: "Seregno FS", displayName: "Seregno FS", lines: ["RE80", "S9", "S11", "z228", "z231", "z233"]),
-        .init(key: "Desio FS", displayName: "Desio FS", lines: ["RE80", "S9", "S11", "z250", "z251"]),
-        .init(key: "Crema", displayName: "Crema FS", lines: ["R6", "k503", "k505", "k506", "k507", "k512", "k520", "k521", "k522", "k523", "k524", "k525", "k601"]),
-        .init(key: "Linate", displayName: "Linate Aereoporto", lines: ["M4", "k510"]),
-        .init(key: "Pavia FS", displayName: "Pavia FS", lines: ["R34", "R35", "R36", "R37", "RE13", "S13", "Pavia 2", "Pavia 3", "Pavia 4", "Pavia 6", "Pavia 7"]),
-        .init(key: "Famagosta", displayName: "Famagosta MM", lines: ["M2"])
+        .init(key: "Molino Dorino", displayName: "Molino Dorino MM", lines: ["M1"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(key: "Cadorna FN", displayName: "Milano Cadorna FN", lines: ["M1", "M2", "MXP", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(key: "Parabiago", displayName: "Parabiago", lines: ["z644", "z643"], typeOfInterchange: "bus.fill"),
+        .init(key: "Rho", displayName: "Rho FS", lines: ["S5", "S6", "S11", "z616", "z618"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "Busto Garolfo", displayName: "Busto Garolfo", lines: ["z625", "z627", "z644", "z647", "z648", "z649"], typeOfInterchange: "bus.fill"),
+        .init(key: "Legnano", displayName: "Legnano", lines: ["z602", "z612", "z601", "z611", "z642", "z627"], typeOfInterchange: "bus.fill"),
+        .init(key: "Bisceglie", displayName: "Bisceglie MM", lines: ["M1", "z560", "k506"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(key: "Romolo", displayName: "Romolo FS", lines: ["M2", "S9", "S19", "R31"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "S. Stefano Ticino", displayName: "Santo Stefano Ticino - Corbetta", lines: ["S6"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "Magenta", displayName: "Magenta FS", lines: ["S6", "RV"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "Abbiategrasso Vittorio Veneto", displayName: "Abbiategrasso V. Veneto", lines: ["z551", "z552", "z553", "z555", "z556", "z560"], typeOfInterchange: "bus.fill"),
+        .init(key: "Gorgonzola", displayName: "Gorgonzola MM", lines: ["M2", "z401", "z403"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(key: "Cernusco", displayName: "Cernusco sul Naviglio MM", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(key: "Gessate", displayName: "Gessate MM", lines: ["M2", "z404", "z405", "z406", "z407"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(key: "Donato", displayName: "San Donato MM", lines: ["M3", "z411", "z412", "z413", "z415", "z420", "z432", "k501", "k502", "k511", "k512", "k521", "k522", "k523", "k524", "k525"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(key: "Sesto", displayName: "Sesto San Giovanni FS", lines: ["M1", "R13", "R14", "RE8", "S7", "S8", "S9", "S11", "z221", "z222", "z225", "z227"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "Monza FS", displayName: "Monza FS", lines: ["R13", "R14", "RE8", "RE80", "S7", "S8", "S9", "S11", "z228"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "Seregno FS", displayName: "Seregno FS", lines: ["RE80", "S9", "S11", "z228", "z231", "z233"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "Desio FS", displayName: "Desio FS", lines: ["RE80", "S9", "S11", "z250", "z251"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "Crema", displayName: "Crema FS", lines: ["R6", "k503", "k505", "k506", "k507", "k512", "k520", "k521", "k522", "k523", "k524", "k525", "k601"], typeOfInterchange: "bus.fill"),
+        .init(key: "Linate", displayName: "Linate Aereoporto", lines: ["M4", "k510"], typeOfInterchange: "airplane.departure"),
+        .init(key: "Pavia FS", displayName: "Pavia FS", lines: ["R34", "R35", "R36", "R37", "RE13", "S13", "Pavia 2", "Pavia 3", "Pavia 4", "Pavia 6", "Pavia 7"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "Famagosta", displayName: "Famagosta MM", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel")
     ]
+    
     var activeInterchange: InterchangeStation? {
         interchanges.first { branches.contains($0.key) }
     }
@@ -1547,7 +1611,7 @@ struct LineSmallDetailedView: View {
                                 .foregroundStyle(.secondary)
                                 .bold()
                             if let station = activeInterchange {
-                                Text(station.displayName)
+                                Label(station.displayName, systemImage: station.typeOfInterchange)
                                     .font(.title3)
                                     .multilineTextAlignment(.leading)
 
@@ -1597,7 +1661,7 @@ struct LineSmallDetailedView: View {
                             .frame(maxWidth: .infinity)
                             .background(
                                 Capsule()
-                                    .fill((waitMinutes.isEmpty) ? Color(red: 28/255, green: 28/255, blue: 1) : .orange)
+                                    .fill((waitMinutes.isEmpty) ? (lineName.contains("P") ? getColor(for: lineName) : Color(red: 28/255, green: 28/255, blue: 1)) : .orange)
                             )
                             .foregroundStyle((waitMinutes.isEmpty) ? .white : Color(.systemBackground))
                     }
@@ -1748,6 +1812,7 @@ struct InterchangeStation: Identifiable {
     let key: String
     let displayName: String
     let lines: [String]
+    let typeOfInterchange: String
 }
 
 func getColor(for line: String) -> Color {
@@ -1786,6 +1851,8 @@ func getColor(for line: String) -> Color {
             return Color(red: 28/255, green: 28/255, blue: 1)
         case _ where line.contains("Filobus"):
             return Color(red: 101/255, green: 179/255, blue: 46/255)
+        case _ where line.contains("P"):
+            return Color(red: 69/255, green: 56/255, blue: 0)
         
         //OTHER LINES
         case "MXP": return Color(red: 140/255, green: 0, blue: 118/255)
@@ -1860,6 +1927,26 @@ extension Bundle {
     /// CFBundleVersion (build number)
     var buildVersion: String {
         infoDictionary?["CFBundleVersion"] as? String ?? ""
+    }
+}
+
+extension URL: Identifiable {
+    public var id: String { absoluteString }
+}
+
+struct SafariView: UIViewControllerRepresentable {
+    let url: URL
+
+    func makeUIViewController(context: Context) -> SFSafariViewController {
+        let configuration = SFSafariViewController.Configuration()
+        configuration.entersReaderIfAvailable = false
+        
+        let safariVC = SFSafariViewController(url: url, configuration: configuration)
+        safariVC.preferredControlTintColor = .systemBlue
+        return safariVC
+    }
+
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
     }
 }
 
