@@ -906,20 +906,20 @@ struct LinesView: View {
             LineInfo(name: "z413", branches: "Paullo - Mombretto - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z415", branches: "Milano S.Donato M3 - Paullo - Zelo B.P.", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z418", branches: "San Giuliano M. - Melegnano - Riozzo", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z419", branches: "Paullo - Melzo - Gordonzola", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "z419", branches: "Paullo - Melzo - Gorgonzola", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z420", branches: "S.Zenone al L. - Melegnano - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z431", branches: "Melegnano - Vizzolo P. - Carpiano - Locate T.", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z432", branches: "Melegnano - Cerro al L. - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
 
-            // MARK: - Area Monza e Brianza (Lotto 2)
+            // MARK: - Area Monza e Brianza
             LineInfo(name: "z219", branches: "Paderno D. - Nova M. - Cinisello B. - Monza", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z221", branches: "Sesto S.G. (M1/FS) - Monza - Carate B. - Mariano C.", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z222", branches: "Monza FS - S.Fruttuoso - Sesto S.G. (M1/FS)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z225", branches: "Sesto S.G. (M1/FS) - Nova M. - Paderno D.", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "z221", branches: "Sesto S.G. - Monza - Carate B. - Mariano C.", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "z222", branches: "Monza FS - S.Fruttuoso - Sesto S.G.", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "z225", branches: "Sesto S.G. - Nova M. - Paderno D.", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z227", branches: "Monza - Lissone - Muggiò - Cinisello - Sesto S.G.", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z228", branches: "Seregno FS - Lissone - Monza FS", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z229", branches: "Paderno Dugnano - Cinisello B.", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z231", branches: "Desio - Giussano - Carate B.", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "z231", branches: "Desio - Seregno FS - Carate B.", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z232", branches: "Desio - Seregno - Carate B. - Besana B.", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z233", branches: "Triuggio - Albiate - Seregno FS", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z234", branches: "Vedano al L. - Biassono - Macherio - Lissone - Muggiò", type: "Autoguidovie", waitMinutes: "", stations: []),
@@ -947,18 +947,18 @@ struct LinesView: View {
             LineInfo(name: "k214", branches: "Cremona - Pieve d'Olmi - Viadana", type: "Autoguidovie", waitMinutes: "", stations: []),
 
             // MARK: - Area Pavia (Urbano ed Extraurbano)
-            LineInfo(name: "1", branches: "Montemontanino - S.Genesio - C.na Pelizza (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "2", branches: "Vallisneri - Stazione FS - Cravino (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "3", branches: "Maugeri/Mondino - Stazione FS - Montebolone (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "4", branches: "Vallone - Stazione FS - Sora (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "6", branches: "Cascina Pelizza - Stazione FS - Travaco (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "7", branches: "Maugeri/Mondino - Stazione FS - Cura Carpignano (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "172", branches: "Pavia - Binasco - Milano Romolo M2", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "175", branches: "Pavia - Siziano - Milano (M2 Famagosta/Romolo)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "94", branches: "Pavia - Vidigulfo - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "96", branches: "Pavia - Gropello - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "165", branches: "Pavia - Inverno - S.Angelo Lodigiano", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "182", branches: "Pavia - Garlasco - Mortara", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 1", branches: "Montemontanino - S.Genesio - C.na Pelizza (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 2", branches: "Vallisneri - Pavia FS - Cravino (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 3", branches: "Maugeri/Mondino - Stazione FS - Montebolone (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 4", branches: "Vallone - Stazione FS - Sora (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 6", branches: "Cascina Pelizza - Pavia FS - Travaco (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 7", branches: "Maugeri/Mondino - Pavia FS - Cura Carpignano (Urbano PV)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 172", branches: "Pavia - Binasco - Milano Romolo M2", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 175", branches: "Pavia - Siziano - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 94", branches: "Pavia - Vidigulfo - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 96", branches: "Pavia - Gropello - Milano Famagosta", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 165", branches: "Pavia - Inverno - S.Angelo Lodigiano", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "Pavia 182", branches: "Pavia - Garlasco - Mortara", type: "Autoguidovie", waitMinutes: "", stations: []),
         ]
     }
     
@@ -1473,15 +1473,23 @@ struct LineSmallDetailedView: View {
         .init(key: "Rho", displayName: "Rho", lines: ["z616", "z618"]),
         .init(key: "Busto Garolfo", displayName: "Busto Garolfo", lines: ["z625", "z627", "z644", "z647", "z648", "z649"]),
         .init(key: "Legnano", displayName: "Legnano", lines: ["z602", "z612", "z601", "z611", "z642", "z627"]),
-        .init(key: "Bisceglie", displayName: "Bisceglie MM", lines: ["M1", "z560"]),
+        .init(key: "Bisceglie", displayName: "Bisceglie MM", lines: ["M1", "z560", "k506"]),
         .init(key: "Romolo", displayName: "Romolo FS", lines: ["M2", "S9", "S19", "R31"]),
         .init(key: "S. Stefano Ticino", displayName: "Santo Stefano Ticino - Corbetta", lines: ["S6"]),
         .init(key: "Magenta", displayName: "Magente FS", lines: ["S6", "RV"]),
         .init(key: "Abbiategrasso Vittorio Veneto", displayName: "Abbiategrasso V. Veneto", lines: ["z551", "z552", "z553", "z555", "z556", "z560"]),
-        .init(key: "Gorgonzola", displayName: "Gorgonzola MM", lines: ["M2"]),
+        .init(key: "Gorgonzola", displayName: "Gorgonzola MM", lines: ["M2", "z401", "z403"]),
         .init(key: "Cernusco", displayName: "Cernusco sul Naviglio MM", lines: ["M2"]),
-        .init(key: "Gessate", displayName: "Gessate MM", lines: ["M2", "z407", "z409"]),
-        .init(key: "San Donato", displayName: "San Donato MM", lines: ["M3", "z411"])
+        .init(key: "Gessate", displayName: "Gessate MM", lines: ["M2", "z404", "z405", "z406", "z407"]),
+        .init(key: "Donato", displayName: "San Donato MM", lines: ["M3", "z411", "z412", "z413", "z415", "z420", "z432", "k501", "k502", "k511", "k512", "k521", "k522", "k523", "k524", "k525"]),
+        .init(key: "Sesto", displayName: "Sesto San Giovanni FS", lines: ["M1", "R13", "R14", "RE8", "S7", "S8", "S9", "S11", "z221", "z222", "z225", "z227"]),
+        .init(key: "Monza FS", displayName: "Monza FS", lines: ["R13", "R14", "RE8", "RE80", "S7", "S8", "S9", "S11", "z228"]),
+        .init(key: "Seregno FS", displayName: "Seregno FS", lines: ["RE80", "S9", "S11", "z228", "z231", "z233"]),
+        .init(key: "Desio FS", displayName: "Desio FS", lines: ["RE80", "S9", "S11", "z250", "z251"]),
+        .init(key: "Crema", displayName: "Crema FS", lines: ["R6", "k503", "k505", "k506", "k507", "k512", "k520", "k521", "k522", "k523", "k524", "k525", "k601"]),
+        .init(key: "Linate", displayName: "Linate Aereoporto", lines: ["M4", "k510"]),
+        .init(key: "Pavia FS", displayName: "Pavia FS", lines: ["R34", "R35", "R36", "R37", "RE13", "S13", "Pavia 2", "Pavia 3", "Pavia 4", "Pavia 6", "Pavia 7"]),
+        .init(key: "Famagosta", displayName: "Famagosta MM", lines: ["M2"])
     ]
     var activeInterchange: InterchangeStation? {
         interchanges.first { branches.contains($0.key) }
@@ -1774,7 +1782,7 @@ func getColor(for line: String) -> Color {
         case "M5": return Color(red: 165/255, green: 147/255, blue: 198/255)
         
         //BUS LINES
-        case _ where line.contains("z"):
+        case _ where line.contains("z") || line.contains("k"):
             return Color(red: 28/255, green: 28/255, blue: 1)
         case _ where line.contains("Filobus"):
             return Color(red: 101/255, green: 179/255, blue: 46/255)
