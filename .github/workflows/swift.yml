@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-tahoe
 
     steps:
     - uses: actions/checkout@v6
@@ -49,7 +49,7 @@ jobs:
     - name: Build
       run: |
         set -e
-        DEST='platform=iOS Simulator,name=Any iOS Device'
+        DEST='platform=iOS Simulator, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name=Any iOS Device'
         
         if [ -n "${{ steps.detect.outputs.workspace }}" ]; then
           echo "Building workspace ${{ steps.detect.outputs.workspace }} scheme ${{ steps.detect.outputs.scheme }}"
@@ -63,7 +63,7 @@ jobs:
       continue-on-error: true
       run: |
         set -e
-        DEST='platform=iOS Simulator,name=Any iOS Device'
+        DEST='platform=iOS Simulator, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name=Any iOS Device'
         if [ -n "${{ steps.detect.outputs.workspace }}" ]; then
           xcodebuild test -workspace "${{ steps.detect.outputs.workspace }}" -scheme "${{ steps.detect.outputs.scheme }}" -destination "$DEST"
         else
