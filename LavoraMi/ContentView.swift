@@ -995,8 +995,13 @@ struct LinesView: View {
             .padding()
             List{
                 Section(){
-                    ForEach(filteredMetros, id: \.id) { line in
-                        LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                    if(!filteredMetros.isEmpty){
+                        ForEach(filteredMetros, id: \.id) { line in
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                        }
+                    }
+                    else{
+                        Text("Nessuna corrispondenza trovata.")
                     }
                 }
                 header:{
@@ -1024,8 +1029,13 @@ struct LinesView: View {
                     }
                 }
                 Section(){
-                    ForEach(filteredSuburban, id: \.id) { line in
-                        LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                    if(!filteredSuburban.isEmpty){
+                        ForEach(filteredSuburban, id: \.id) { line in
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                        }
+                    }
+                    else{
+                        Text("Nessuna corrispondenza trovata.")
                     }
                 }
                 header:{
@@ -1053,8 +1063,13 @@ struct LinesView: View {
                     }
                 }
                 Section(){
-                    ForEach(filteredTrams, id: \.id) { line in
-                        LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                    if(!filteredTrams.isEmpty){
+                        ForEach(filteredTrams, id: \.id) { line in
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                        }
+                    }
+                    else{
+                        Text("Nessuna corrispondenza trovata.")
                     }
                 }
                 header: {
@@ -1082,8 +1097,13 @@ struct LinesView: View {
                     }
                 }
                 Section(){
-                    ForEach(filteredMovibus, id: \.id){bus in
-                        LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                    if(!filteredMovibus.isEmpty){
+                        ForEach(filteredMovibus, id: \.id){bus in
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                        }
+                    }
+                    else{
+                        Text("Nessuna corrispondenza trovata.")
                     }
                 }
                 header: {
@@ -1111,8 +1131,13 @@ struct LinesView: View {
                     }
                 }
                 Section(){
-                    ForEach(filteredSTAV, id: \.id){bus in
-                        LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                    if(!filteredSTAV.isEmpty){
+                        ForEach(filteredSTAV, id: \.id){bus in
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                        }
+                    }
+                    else{
+                        Text("Nessuna corrispondenza trovata.")
                     }
                 }
                 header: {
@@ -1140,8 +1165,13 @@ struct LinesView: View {
                     }
                 }
                 Section(){
-                    ForEach(filteredAutoguidovie, id: \.id){bus in
-                        LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                    if(!filteredAutoguidovie.isEmpty){
+                        ForEach(filteredAutoguidovie, id: \.id){bus in
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                        }
+                    }
+                    else{
+                        Text("Nessuna corrispondenza trovata.")
                     }
                 }
                 header: {
@@ -1169,8 +1199,13 @@ struct LinesView: View {
                     }
                 }
                 Section(){
-                    ForEach(filteredUrbano, id: \.id){bus in
-                        LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                    if(!filteredUrbano.isEmpty){
+                        ForEach(filteredUrbano, id: \.id){bus in
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                        }
+                    }
+                    else{
+                        Text("Nessuna corrispondenza trovata.")
                     }
                 }
                 header: {
