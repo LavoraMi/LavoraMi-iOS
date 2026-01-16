@@ -69,7 +69,7 @@ class WorkViewModel: ObservableObject {
                     }
                 } catch {
                     self?.errorMessage = "Errore lettura dati: \(error.localizedDescription)"
-                    print("Errore di decoding: \(error)")
+                    print("Errore di decodifica: \(error)")
                 }
             }
         }.resume()

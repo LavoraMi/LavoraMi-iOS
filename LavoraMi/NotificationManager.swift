@@ -25,13 +25,14 @@ class NotificationManager {
         let center = UNUserNotificationCenter.current()
         let calendar = Calendar.current
         
-        var dateComponents = calendar.dateComponents([.year, .month, .day], from: work.endDate)
-        dateComponents.hour = 9
+        var dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: work.endDate)
+        let notificationHour = dateComponents.hour ?? 0
+        dateComponents.hour = (notificationHour >= 0 && notificationHour <= 10) ? 10 : dateComponents.hour
         dateComponents.minute = 0
         
         let contentDayOf = UNMutableNotificationContent()
         contentDayOf.title = "Lavori terminati!"
-        contentDayOf.body = "I lavori per \(work.title) in \(work.roads) dovrebbero terminare oggi, consulta il sito di \(work.company)"
+        contentDayOf.body = "I \(work.title) in \(work.roads) per \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi, consulta il sito di \(work.company)"
         contentDayOf.sound = .default
         
         if let dateOf = calendar.date(from: dateComponents), dateOf > Date() {
@@ -43,39 +44,23 @@ class NotificationManager {
         
         if let dayBeforeDate = calendar.date(byAdding: .day, value: -1, to: work.endDate) {
             
-            var dayBeforeComponents = calendar.dateComponents([.year, .month, .day], from: dayBeforeDate)
-            dayBeforeComponents.hour = 9
+            var dayBeforeComponents = calendar.dateComponents([.year, .month, .day, .hour], from: dayBeforeDate)
+            let notificationHour = dayBeforeComponents.hour ?? 0
+            dayBeforeComponents.hour = (notificationHour >= 0 && notificationHour <= 10) ? 10 : dayBeforeComponents.hour
             dayBeforeComponents.minute = 0
+            
+            let debugDate = calendar.date(from: dayBeforeComponents)
             
             if dayBeforeDate > Date() {
                 let contentDayBefore = UNMutableNotificationContent()
                 contentDayBefore.title = "⚠️ I lavori finiscono domani!"
-                contentDayBefore.body = "Domani terminano i lavori in \(work.roads) della linea \(work.lines.joined(separator: ", ")), consulta il sito di \(work.company)"
+                contentDayBefore.body = "Domani terminano i lavori in \(work.roads) per \(work.lines.joined(separator: ", ")), consulta il sito di \(work.company)"
                 contentDayBefore.sound = .default
                 
                 let triggerDayBefore = UNCalendarNotificationTrigger(dateMatching: dayBeforeComponents, repeats: false)
                 let requestDayBefore = UNNotificationRequest(identifier: "\(work.id.uuidString)_PRE", content: contentDayBefore, trigger: triggerDayBefore)
                 center.add(requestDayBefore)
-                print("Notifica programmata per il preavviso: \(dayBeforeDate.formatted())")
-            }
-        }
-    }
-    
-    func sendNotification(){
-        let lines = ["90", "91"]
-        let contentDayBefore = UNMutableNotificationContent()
-        contentDayBefore.title = "⚠️ I lavori finiscono domani!"
-        contentDayBefore.body = "Domani terminano i lavori in Piazzale Lodi della linea \(lines.joined(separator: ", ")), consulta il sito di ATM"
-        contentDayBefore.sound = .default
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: contentDayBefore, trigger: trigger)
-
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Errore invio notifica: \(error.localizedDescription)")
-            } else {
-                print("Notifica schedulata con successo")
+                print("Notifica programmata per il preavviso: \(debugDate?.formatted())")
             }
         }
     }
@@ -88,7 +73,7 @@ class NotificationManager {
     }
     
     func syncNotifications(for works: [WorkItem], favorites: [String]) {
-        let center = UNUserNotificationCenter.current()
+        _ = UNUserNotificationCenter.current()
         for work in works {
             if work.matchesFavorites(favorites) {
                 scheduleWorkAlerts(for: work)
