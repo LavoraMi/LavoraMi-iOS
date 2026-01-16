@@ -10,7 +10,6 @@ import MapKit
 
 struct StationsDB {
     //MARK: METRO STATIONS:
-    
     static let stationsM1: [MetroStation] = [
         .init(name: "Sesto 1° Maggio FS", coordinate: .init(latitude: 45.54156, longitude: 9.23835), branch: "Main"),
         .init(name: "Sesto Rondò", coordinate: .init(latitude: 45.5342, longitude: 9.23128), branch: "Main"),
@@ -167,7 +166,6 @@ struct StationsDB {
     ]
     
     //MARK: SUBURBAN LINES STATIONS
-    
     static let stationsS1: [MetroStation] = [
         .init(name: "Saronno", coordinate: .init(latitude: 45.62534, longitude: 9.03075), branch: "Main"),
         .init(name: "Saronno Sud", coordinate: .init(latitude: 45.61235, longitude: 9.04557), branch: "Main"),
@@ -193,7 +191,7 @@ struct StationsDB {
         .init(name: "Melegnano", coordinate: .init(latitude: 45.35647, longitude: 9.31936), branch: "Main"),
         .init(name: "S. Zenone Al Lambro", coordinate: .init(latitude: 45.33783, longitude: 9.36165), branch: "Main"),
         .init(name: "Tavazzano", coordinate: .init(latitude: 45.32641, longitude: 9.40282), branch: "Main"),
-        .init(name: "Lodi", coordinate: .init(latitude: 45.3092, longitude: 9.49776), branch: "Main"),
+        .init(name: "Lodi", coordinate: .init(latitude: 45.3092, longitude: 9.49776), branch: "Main")
     ]
     
     static let stationsS2: [MetroStation] = [
@@ -377,7 +375,7 @@ struct StationsDB {
         .init(name: "Cesano Boscone", coordinate: .init(latitude: 45.43044, longitude: 9.09158), branch: "Main"),
         .init(name: "Trezzano sul Naviglio", coordinate: .init(latitude: 45.42025, longitude: 9.0669), branch: "Main"),
         .init(name: "Gaggiano", coordinate: .init(latitude: 45.40874, longitude: 9.03118), branch: "Main"),
-        .init(name: "Albairate - Vermezzo", coordinate: .init(latitude: 45.40435, longitude: 8.95822), branch: "Main"),
+        .init(name: "Albairate - Vermezzo", coordinate: .init(latitude: 45.40435, longitude: 8.95822), branch: "Main")
     ]
     
     static let stationsS11: [MetroStation] = [
@@ -458,10 +456,134 @@ struct StationsDB {
         .init(name: "Iseo", coordinate: .init(latitude: 45.65657, longitude: 10.05003), branch: "Main")
     ]
     
+    static let tiloS10: [MetroStation] = [
+        .init(name: "Biasca", coordinate: .init(latitude: 46.35198, longitude: 8.97416), branch: "Main"),
+        .init(name: "Castione", coordinate: .init(latitude: 46.22363, longitude: 9.0415), branch: "Main"),
+        .init(name: "Bellinzona", coordinate: .init(latitude: 46.19543, longitude: 9.02951), branch: "Main"),
+        .init(name: "Giubiasco", coordinate: .init(latitude: 46.17381, longitude: 9.00359), branch: "Main"),
+        .init(name: "Lugano", coordinate: .init(latitude: 46.00501, longitude: 8.94695), branch: "Main"),
+        .init(name: "Lugano Paradiso", coordinate: .init(latitude: 45.98917, longitude: 8.94656), branch: "Main"),
+        .init(name: "Melide", coordinate: .init(latitude: 45.95576, longitude: 8.94823), branch: "Main"),
+        .init(name: "Maroggia - Melano", coordinate: .init(latitude: 45.93241, longitude: 8.97383), branch: "Main"),
+        .init(name: "Capolago - Riva S. Vitale", coordinate: .init(latitude: 45.90285, longitude: 8.97889), branch: "Main"),
+        .init(name: "Mendrisio S. Martino", coordinate: .init(latitude: 45.87721, longitude: 8.98308), branch: "Main"),
+        .init(name: "Mendrisio", coordinate: .init(latitude: 45.8691, longitude: 8.97878), branch: "Main"),
+        .init(name: "Balerna", coordinate: .init(latitude: 45.84681, longitude: 9.0051), branch: "Main"),
+        .init(name: "Chiasso", coordinate: .init(latitude: 45.83217, longitude: 9.03175), branch: "Main"),
+        .init(name: "Como S. Giovanni", coordinate: .init(latitude: 45.80901, longitude: 9.07279), branch: "Main"),
+        .init(name: "Como Camerlata", coordinate: .init(latitude: 45.78457, longitude: 9.0794), branch: "Main")
+    ]
+    
+    static let tiloS50: [MetroStation] = [
+        .init(name: "Biasca", coordinate: .init(latitude: 46.35198, longitude: 8.97416), branch: "Main"),
+        .init(name: "Castione", coordinate: .init(latitude: 46.22363, longitude: 9.0415), branch: "Main"),
+        .init(name: "Bellinzona", coordinate: .init(latitude: 46.19543, longitude: 9.02951), branch: "Main"),
+        .init(name: "Giubiasco", coordinate: .init(latitude: 46.17381, longitude: 9.00359), branch: "Main"),
+        .init(name: "Lugano", coordinate: .init(latitude: 46.00501, longitude: 8.94695), branch: "Main"),
+        .init(name: "Lugano Paradiso", coordinate: .init(latitude: 45.98917, longitude: 8.94656), branch: "Main"),
+        .init(name: "Melide", coordinate: .init(latitude: 45.95576, longitude: 8.94823), branch: "Main"),
+        .init(name: "Maroggia - Melano", coordinate: .init(latitude: 45.93241, longitude: 8.97383), branch: "Main"),
+        .init(name: "Capolago - Riva S. Vitale", coordinate: .init(latitude: 45.90285, longitude: 8.97889), branch: "Main"),
+        .init(name: "Mendrisio S. Martino", coordinate: .init(latitude: 45.87721, longitude: 8.98308), branch: "Main"),
+        .init(name: "Mendrisio", coordinate: .init(latitude: 45.8691, longitude: 8.97878), branch: "Main"),
+        .init(name: "Stabio", coordinate: .init(latitude: 45.84971, longitude: 8.94394), branch: "Main"),
+        .init(name: "Cantello Gaggiolo", coordinate: .init(latitude: 45.83781, longitude: 8.90739), branch: "Main"),
+        .init(name: "Arcisate", coordinate: .init(latitude: 45.85857, longitude: 8.86291), branch: "Main"),
+        .init(name: "Induno Olona", coordinate: .init(latitude: 45.84587, longitude: 8.83802), branch: "Main"),
+        .init(name: "Varese", coordinate: .init(latitude: 45.81625, longitude: 8.83295), branch: "Main"),
+        .init(name: "Gallarate", coordinate: .init(latitude: 45.65974, longitude: 8.79853), branch: "Main"),
+        .init(name: "Busto Arsizio", coordinate: .init(latitude: 45.61593, longitude: 8.86589), branch: "Main"),
+        .init(name: "Busto Arsizio Nord", coordinate: .init(latitude: 45.60617, longitude: 8.85139), branch: "Main"),
+        .init(name: "Ferno - Lonate Pozzolo", coordinate: .init(latitude: 45.60854, longitude: 8.75525), branch: "Main"),
+        .init(name: "Malpensa Aereoporto Terminal 1", coordinate: .init(latitude: 45.62714, longitude: 8.71129), branch: "Main"),
+        .init(name: "Malpensa Aereoporto Terminal 2", coordinate: .init(latitude: 45.65013, longitude: 8.72133), branch: "Main")
+    ]
+    
+    static let tiloS30: [MetroStation] = [
+        .init(name: "Cadenazzo", coordinate: .init(latitude: 46.15262, longitude: 8.94168), branch: "Main"),
+        .init(name: "Quartino", coordinate: .init(latitude: 46.15129, longitude: 8.88732), branch: "Main"),
+        .init(name: "Magadino - Vira", coordinate: .init(latitude: 46.14531, longitude: 8.85019), branch: "Main"),
+        .init(name: "S. Nazzaro", coordinate: .init(latitude: 46.13519, longitude: 8.80704), branch: "Main"),
+        .init(name: "Gerra", coordinate: .init(latitude: 46.12207, longitude: 8.78494), branch: "Main"),
+        .init(name: "Ranzo - S. Abbondio", coordinate: .init(latitude: 46.11697, longitude: 8.7766), branch: "Main"),
+        .init(name: "Pino - Tronzano", coordinate: .init(latitude: 46.09866, longitude: 8.73706), branch: "Main"),
+        .init(name: "Maccagno", coordinate: .init(latitude: 46.04324, longitude: 8.73763), branch: "Main"),
+        .init(name: "Colmegna", coordinate: .init(latitude: 46.02475, longitude: 8.75189), branch: "Main"),
+        .init(name: "Luino", coordinate: .init(latitude: 45.9969, longitude: 8.73738), branch: "Main"),
+        .init(name: "Porto Valtraglia", coordinate: .init(latitude: 45.95836, longitude: 8.67402), branch: "Main"),
+        .init(name: "Calde'", coordinate: .init(latitude: 45.9457, longitude: 8.66324), branch: "Main"),
+        .init(name: "Laveno Mombello", coordinate: .init(latitude: 45.90326, longitude: 8.6244), branch: "Main"),
+        .init(name: "Sangiano", coordinate: .init(latitude: 45.87449, longitude: 8.63087), branch: "Main"),
+        .init(name: "Besozzo", coordinate: .init(latitude: 45.84233, longitude: 8.66322), branch: "Main"),
+        .init(name: "Travedona Biandronno", coordinate: .init(latitude: 45.80976, longitude: 8.69615), branch: "Main"),
+        .init(name: "Ternate Varano Borghi", coordinate: .init(latitude: 45.78183, longitude: 8.70069), branch: "Main"),
+        .init(name: "Mornago Cimbro", coordinate: .init(latitude: 45.72985, longitude: 8.73441), branch: "Main"),
+        .init(name: "Besnate", coordinate: .init(latitude: 45.69549, longitude: 8.76125), branch: "Main"),
+        .init(name: "Gallarate", coordinate: .init(latitude: 45.65974, longitude: 8.79853), branch: "Main")
+    ]
+    
+    static let tiloS40: [MetroStation] = [
+        .init(name: "Como S. Giovanni", coordinate: .init(latitude: 45.80901, longitude: 9.07279), branch: "Main"),
+        .init(name: "Chiasso", coordinate: .init(latitude: 45.83217, longitude: 9.03175), branch: "Main"),
+        .init(name: "Balerna", coordinate: .init(latitude: 45.84681, longitude: 9.0051), branch: "Main"),
+        .init(name: "Mendrisio", coordinate: .init(latitude: 45.8691, longitude: 8.97878), branch: "Main"),
+        .init(name: "Stabio", coordinate: .init(latitude: 45.84971, longitude: 8.94394), branch: "Main"),
+        .init(name: "Cantello Gaggiolo", coordinate: .init(latitude: 45.83781, longitude: 8.90739), branch: "Main"),
+        .init(name: "Arcisate", coordinate: .init(latitude: 45.85857, longitude: 8.86291), branch: "Main"),
+        .init(name: "Induno Olona", coordinate: .init(latitude: 45.84587, longitude: 8.83802), branch: "Main"),
+        .init(name: "Varese", coordinate: .init(latitude: 45.81625, longitude: 8.83295), branch: "Main")
+    ]
+    
+    static let tiloRE80: [MetroStation] = [
+        .init(name: "Locarno", coordinate: .init(latitude: 46.17264, longitude: 8.80166), branch: "Main"),
+        .init(name: "Minusio", coordinate: .init(latitude: 46.174, longitude: 8.81956), branch: "Main"),
+        .init(name: "Tenero", coordinate: .init(latitude: 46.1774, longitude: 8.85186), branch: "Main"),
+        .init(name: "Gordola", coordinate: .init(latitude: 46.17915, longitude: 8.86585), branch: "Main"),
+        .init(name: "Riazzino", coordinate: .init(latitude: 46.17532, longitude: 8.88625), branch: "Main"),
+        .init(name: "Cadenazzo", coordinate: .init(latitude: 46.15262, longitude: 8.94168), branch: "Main"),
+        .init(name: "S. Antonino", coordinate: .init(latitude: 46.16041, longitude: 8.97392), branch: "Main"),
+        .init(name: "Lugano", coordinate: .init(latitude: 46.00501, longitude: 8.94695), branch: "Main"),
+        .init(name: "Lugano Paradiso", coordinate: .init(latitude: 45.98917, longitude: 8.94656), branch: "Main"),
+        .init(name: "Melide", coordinate: .init(latitude: 45.95576, longitude: 8.94823), branch: "Main"),
+        .init(name: "Maroggia - Melano", coordinate: .init(latitude: 45.93241, longitude: 8.97383), branch: "Main"),
+        .init(name: "Capolago - Riva S. Vitale", coordinate: .init(latitude: 45.90285, longitude: 8.97889), branch: "Main"),
+        .init(name: "Mendrisio S. Martino", coordinate: .init(latitude: 45.87721, longitude: 8.98308), branch: "Main"),
+        .init(name: "Mendrisio", coordinate: .init(latitude: 45.8691, longitude: 8.97878), branch: "Main"),
+        .init(name: "Balerna", coordinate: .init(latitude: 45.84681, longitude: 9.0051), branch: "Main"),
+        .init(name: "Chiasso", coordinate: .init(latitude: 45.83217, longitude: 9.03175), branch: "Main"),
+        .init(name: "Como S. Giovanni", coordinate: .init(latitude: 45.80901, longitude: 9.07279), branch: "Main"),
+        .init(name: "Seregno", coordinate: .init(latitude: 45.64609, longitude: 9.20302), branch: "Main"),
+        .init(name: "Monza", coordinate: .init(latitude: 45.57797, longitude: 9.27289), branch: "Main"),
+        .init(name: "Milano Centrale", coordinate: .init(latitude: 45.48713, longitude: 9.20482), branch: "Main")
+    ]
+    
+    static let mxp1: [MetroStation] = [
+        .init(name: "Malpensa Aereoporto Terminal 2", coordinate: .init(latitude: 45.65013, longitude: 8.72133), branch: "Main"),
+        .init(name: "Malpensa Aereoporto Terminal 1", coordinate: .init(latitude: 45.62714, longitude: 8.71129), branch: "Main"),
+        .init(name: "Busto Arsizio Nord", coordinate: .init(latitude: 45.60617, longitude: 8.85139), branch: "Main"),
+        .init(name: "Saronno", coordinate: .init(latitude: 45.62534, longitude: 9.03075), branch: "Main"),
+        .init(name: "Milano Bovisa", coordinate: .init(latitude: 45.50257, longitude: 9.15925), branch: "Main"),
+        .init(name: "Milano Domodossola", coordinate: .init(latitude: 45.48089, longitude: 9.16224), branch: "Main"),
+        .init(name: "Milano Cadorna", coordinate: .init(latitude: 45.46843, longitude: 9.17553), branch: "Main")
+    ]
+    
+    static let mxp2: [MetroStation] = [
+        .init(name: "Malpensa Aereoporto Terminal 2", coordinate: .init(latitude: 45.65013, longitude: 8.72133), branch: "Main"),
+        .init(name: "Malpensa Aereoporto Terminal 1", coordinate: .init(latitude: 45.62714, longitude: 8.71129), branch: "Main"),
+        .init(name: "Ferno - Lonate Pozzolo", coordinate: .init(latitude: 45.60854, longitude: 8.75525), branch: "Main"),
+        .init(name: "Busto Arsizio Nord", coordinate: .init(latitude: 45.60617, longitude: 8.85139), branch: "Main"),
+        .init(name: "Castellanza", coordinate: .init(latitude: 45.61056, longitude: 8.87547), branch: "Main"),
+        .init(name: "Rescaldina", coordinate: .init(latitude: 45.62229, longitude: 8.94666), branch: "Main"),
+        .init(name: "Saronno", coordinate: .init(latitude: 45.62534, longitude: 9.03075), branch: "Main"),
+        .init(name: "Milano Bovisa", coordinate: .init(latitude: 45.50257, longitude: 9.15925), branch: "Main"),
+        .init(name: "Milano Pta Garibaldi", coordinate: .init(latitude: 45.48449, longitude: 9.18737), branch: "Main"),
+        .init(name: "Milano Centrale", coordinate: .init(latitude: 45.48713, longitude: 9.20482), branch: "Main")
+    ]
+    
     static let interchanges: [InterchageInfo] = [
         .init(name: "Rho Fiera-Milano", lines: ["S5", "S6", "S11", "AV", "M1"], typeOfInterchange: "lightrail"),
         .init(name: "Lotto", lines: ["M1", "M5"], typeOfInterchange: "tram.fill.tunnel"),
-        .init(name: "Cadorna FN", lines: ["MXP", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "M1", "M2"], typeOfInterchange: "lightrail"),
+        .init(name: "Cadorna FN", lines: ["MXP1", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "M1", "M2"], typeOfInterchange: "lightrail"),
         .init(name: "Duomo", lines: ["M1", "M3"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "San Babila", lines: ["M1", "M4"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Porta Venezia", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "M1"], typeOfInterchange: "tram.fill.tunnel"),
@@ -482,6 +604,15 @@ struct StationsDB {
         .init(name: "Dateo", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "M4"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Stazione Forlanini", lines: ["R34", "RE8", "S5", "S6", "S9"], typeOfInterchange: "lightrail"),
         .init(name: "Linate Aereoporto", lines: ["Aereoporto", "M4"], typeOfInterchange: "airplane.departure"),
-        .init(name: "Domodossola FN", lines: ["R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "M5"], typeOfInterchange: "tram.fill.tunnel")
+        .init(name: "Domodossola FN", lines: ["R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "MXP1", "M5"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Como S. Giovanni", lines: ["S10", "S11", "S40","RE80"], typeOfInterchange: "lightrail"),
+        .init(name: "Mendrisio", lines: ["S10", "S40", "S50", "RE80"], typeOfInterchange: "lightrail"),
+        .init(name: "Biasca", lines: ["S10", "S50"], typeOfInterchange: "lightrail"),
+        .init(name: "Varese", lines: ["S5", "S40", "S50"], typeOfInterchange: "lightrail"),
+        .init(name: "Gallarate", lines: ["S30", "S50"], typeOfInterchange: "lightrail"),
+        .init(name: "Busto Arsizio Nord", lines: ["S50","MXP"], typeOfInterchange: "lightrail"),
+        .init(name: "Milano Bovisa", lines: ["S1", "S2", "S3", "S4", "S12", "S13", "MXP"], typeOfInterchange: "lightrail"),
+        .init(name: "Saronno", lines: ["S1", "S3", "MXP"], typeOfInterchange: "lightrail"),
+        .init(name: "Monza", lines: ["S7", "S8", "S9", "S11", "RE80"], typeOfInterchange: "lightrail")
     ]
 }
