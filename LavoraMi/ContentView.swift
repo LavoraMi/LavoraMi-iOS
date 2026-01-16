@@ -307,17 +307,19 @@ struct WorkInProgressRow: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundStyle(Color("TextColor"))
 
-                HStack{
-                    ForEach(item.lines, id: \.self) { line in
-                        Text(line)
-                            .font(.system(size: 12, weight: .bold))
-                            .foregroundStyle(.white)
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 8)
-                            .background(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(getColor(for: line))
-                            )
+                ScrollView(.horizontal, showsIndicators: false){
+                    HStack{
+                        ForEach(item.lines, id: \.self) { line in
+                            Text(line)
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundStyle(.white)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 8)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(getColor(for: line))
+                                )
+                        }
                     }
                 }
                 
@@ -907,7 +909,7 @@ struct LinesView: View {
             LineInfo(name: "z411", branches: "Melzo FS - Liscate - Pantigliate - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z412", branches: "Zelo B.P. - Comazzo - Merlino - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z413", branches: "Paullo - Mombretto - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z415", branches: "Milano S.Donato M3 - Paullo - Zelo B.P.", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "z415", branches: "S.Donato M3 - Paullo - Zelo B.P.", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z418", branches: "San Giuliano M. - Melegnano - Riozzo", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z419", branches: "Paullo - Melzo - Gorgonzola", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z420", branches: "S.Zenone al L. - Melegnano - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
@@ -928,7 +930,7 @@ struct LinesView: View {
             LineInfo(name: "z250", branches: "Desio FS - Cesano M. - Limbiate", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "z251", branches: "Desio FS - Bovisio M. - Varedo - Limbiate - Senago", type: "Autoguidovie", waitMinutes: "", stations: []),
 
-            // MARK: - Area Crema / Cremona / Paullese
+            // MARK: - Area Crema
             LineInfo(name: "k501", branches: "Crema - Pandino - Milano S.Donato", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "k502", branches: "Crema - Agnadello - Rivolta - Milano S.Donato", type: "Autoguidovie", waitMinutes: "", stations: []),
             LineInfo(name: "k503", branches: "Crema - Rivolta d'Adda - Milano", type: "Autoguidovie", waitMinutes: "", stations: []),
@@ -1884,7 +1886,7 @@ func getColor(for line: String) -> Color {
             return Color(red: 28/255, green: 28/255, blue: 1)
         case _ where line.contains("Filobus"):
             return Color(red: 101/255, green: 179/255, blue: 46/255)
-        case _ where line.contains("P"):
+        case _ where line.contains("P") && line != "MXP":
             return Color(red: 69/255, green: 56/255, blue: 0)
         
         //OTHER LINES
