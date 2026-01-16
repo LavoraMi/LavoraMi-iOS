@@ -11,13 +11,12 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Detect Xcode project or workspace and scheme
       id: detect
       run: |
         set -e
-        # Look for workspace first
         if [ -d "LavoraMi.xcodeproj/project.xcworkspace" ]; then
           WORKSPACE="LavoraMi.xcodeproj/project.xcworkspace"
           echo "workspace=$WORKSPACE" >> $GITHUB_OUTPUT
