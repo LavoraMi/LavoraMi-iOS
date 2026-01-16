@@ -764,7 +764,8 @@ struct LinesView: View {
             "Metro": ["metro", "metropolitana", "m"],
             "Suburbano": ["suburbano", "s"],
             "Tram": ["tram", "t"],
-            "Movibus": ["bus", "movibus", "z"]
+            "Movibus": ["bus", "movibus", "z"],
+            "Malpensa Express": ["malpensa", "malpensa express", "express", "mxp"]
         ]
         
         let name = line.name.lowercased()
@@ -799,6 +800,8 @@ struct LinesView: View {
     var filteredSTAV: [LineInfo] { filtered(stav) }
     var filteredAutoguidovie: [LineInfo] { filtered(autoguidovie) }
     var filteredUrbano: [LineInfo] { filtered(urbanoPavia) }
+    var filteredCrossBorders: [LineInfo] { filtered(crossBorderLines) }
+    var filteredMalpensaExpress: [LineInfo] { filtered(malpensaExpress) }
     
     var metros: [LineInfo] {
         [
@@ -826,6 +829,23 @@ struct LinesView: View {
             LineInfo(name: "S13", branches: "Pavia - Milano Bovisa", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS13),
             LineInfo(name: "S19", branches: "Albairate Vermezzo - Milano Rogoredo", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS19),
             LineInfo(name: "S31", branches: "Brescia - Iseo", type: "Suburbano", waitMinutes: "1 ora.", stations: StationsDB.stationsS31)
+        ]
+    }
+    
+    var crossBorderLines: [LineInfo] {
+        [
+            LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "Transfrontaliera", waitMinutes: "1 ora - 45 min.", stations: StationsDB.tiloS10),
+            LineInfo(name: "S30", branches: "Cadenazzo - Gallarate", type: "Transfrontaliera", waitMinutes: "2 ore.", stations: StationsDB.tiloS30),
+            LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "Transfrontaliera", waitMinutes: "1 ora.", stations: StationsDB.tiloS40),
+            LineInfo(name: "S50", branches: "Biasca - Milano Malpensa", type: "Transfrontaliera", waitMinutes: "1 ora", stations: StationsDB.tiloS50),
+            LineInfo(name: "RE80", branches: "Locarno - Milano Centrale", type: "Transfrontaliera", waitMinutes: "30 min - 1 ora.", stations: StationsDB.tiloRE80)
+        ]
+    }
+    
+    var malpensaExpress: [LineInfo] {
+        [
+            LineInfo(name: "MXP", branches: "Milano Cadorna - Malpensa Aereoporto", type: "Malpensa Express 1", waitMinutes: "30 min.", stations: StationsDB.mxp1),
+            LineInfo(name: "MXP", branches: "Milano Centrale - Malpensa Aereoporto", type: "Malpensa Express 2", waitMinutes: "30 min.", stations: StationsDB.mxp2)
         ]
     }
     
@@ -970,8 +990,6 @@ struct LinesView: View {
         ]
     }
     
-    let busLine = ""
-    
     var body: some View {
         NavigationStack{
             HStack {
@@ -1056,6 +1074,74 @@ struct LinesView: View {
                         Spacer()
                         Button(action: {
                             selectedURL = URL(string: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")
+                        }) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+                Section(){
+                    if(!filteredCrossBorders.isEmpty){
+                        ForEach(filteredCrossBorders, id: \.id) { line in
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                        }
+                    }
+                    else{
+                        Text("Nessuna corrispondenza trovata.")
+                    }
+                }
+                header:{
+                    HStack{
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Linee Transfrontaliere")
+                                .font(.title3)
+                                .bold()
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
+                            
+                            Text("TILO")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .textCase(nil)
+                        }
+                        .padding(.bottom, 4)
+                        Spacer()
+                        Button(action: {
+                            selectedURL = URL(string: "https://www.tilo.ch")
+                        }) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+                Section(){
+                    if(!filteredMalpensaExpress.isEmpty){
+                        ForEach(filteredMalpensaExpress, id: \.id) { line in
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                        }
+                    }
+                    else{
+                        Text("Nessuna corrispondenza trovata.")
+                    }
+                }
+                header:{
+                    HStack{
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Linee Malpensa Express")
+                                .font(.title3)
+                                .bold()
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
+                            
+                            Text("Trenord")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .textCase(nil)
+                        }
+                        .padding(.bottom, 4)
+                        Spacer()
+                        Button(action: {
+                            selectedURL = URL(string: "https://www.malpensaexpress.it")
                         }) {
                             Image(systemName: "info.circle.fill")
                                 .foregroundColor(.gray)
@@ -1287,7 +1373,7 @@ struct LineDetailView: View {
         MapCameraBounds(
             centerCoordinateBounds: MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: 45.46443, longitude: 9.18927),
-                span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 2.5)
+                span: MKCoordinateSpan(latitudeDelta: 1.8, longitudeDelta: 2.5)
             ),
             minimumDistance: 1000,
             maximumDistance: 175000
@@ -1921,11 +2007,13 @@ func getColor(for line: String) -> Color {
             return Color(red: 28/255, green: 28/255, blue: 1)
         case _ where line.contains("Filobus"):
             return Color(red: 101/255, green: 179/255, blue: 46/255)
-        case _ where line.contains("P") && line != "MXP":
+        case _ where line.contains("P") && !(line.contains("MXP")):
             return Color(red: 69/255, green: 56/255, blue: 0)
         
         //OTHER LINES
         case "MXP": return Color(red: 140/255, green: 0, blue: 118/255)
+        case "MXP1": return Color(red: 140/255, green: 0, blue: 118/255)
+        case "MXP2": return Color(red: 140/255, green: 0, blue: 118/255)
         case "AV": return .red
         case "Aereoporto": return .black
         case _ where line.contains("R"):
