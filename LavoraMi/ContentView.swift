@@ -713,7 +713,8 @@ struct LineRow: View {
                                 .fill((typeOfTransport == "Tram") ? .orange : getColor(for: line))
                         )
 
-                    Text("\(typeOfTransport) \(line)")
+                    if(line == "MXP"){Text("\(typeOfTransport)")}
+                    else{Text("\(typeOfTransport) \(line)")}
                 }
                 .padding(.vertical, 4)
             }
@@ -1400,10 +1401,18 @@ struct LineDetailView: View {
                                     .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
                             )
                         
-                        Text("\(typeOfTransport) \(lineName)")
-                            .font(.system(size: 30))
-                            .minimumScaleFactor(0.5)
-                            .lineLimit(1)
+                        if(lineName == "MXP"){
+                            Text("\(typeOfTransport)")
+                                .font(.system(size: 30))
+                                .minimumScaleFactor(0.5)
+                                .lineLimit(1)
+                        }
+                        else{
+                            Text("\(typeOfTransport) \(lineName)")
+                                .font(.system(size: 30))
+                                .minimumScaleFactor(0.5)
+                                .lineLimit(1)
+                        }
                     }
                     
                     Divider()
