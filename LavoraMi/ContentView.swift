@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 import SafariServices
+import WidgetKit
 
 struct WorkItem: Identifiable, Hashable, Codable {
     var id = UUID()
@@ -1381,6 +1382,7 @@ struct LineDetailView: View {
     
     private enum LineDetailTab { case map, works, interchanges }
     @State private var selectedTab: LineDetailTab = .map
+    @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
     
     private var centerIndex: Int { max(0, stations.count / 2) }
     private var centerCoordinate: CLLocationCoordinate2D {
@@ -1429,6 +1431,21 @@ struct LineDetailView: View {
                                 .font(.system(size: 30))
                                 .minimumScaleFactor(0.5)
                                 .lineLimit(1)
+                        }
+                        Spacer()
+                        Button(action: {
+                            if(selectedWidgetLine == lineName) {
+                                selectedWidgetLine = ""
+                                DataManager.shared.setSavedLine(SavedLine.empty)
+                            }
+                            else {
+                                DataManager.shared.setSavedLine(SavedLine(id: lineName, name: lineName, longName: typeOfTransport, worksNow: workNow, worksScheduled: workScheduled))
+                                selectedWidgetLine = lineName
+                            }
+                        }){
+                            Image(systemName: (selectedWidgetLine == lineName) ? "widget.small" : "widget.small.badge.plus")
+                                .foregroundStyle((selectedWidgetLine == lineName) ? .yellow : .gray)
+                                .scaleEffect(1.5)
                         }
                     }
                     
@@ -1702,6 +1719,8 @@ struct LineDetailView: View {
 }
 
 struct LineSmallDetailedView: View {
+    @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
+    
     let lineName: String
     let typeOfTransport: String
     let branches: String
@@ -1734,7 +1753,8 @@ struct LineSmallDetailedView: View {
         .init(key: "Crema", displayName: "Crema FS", lines: ["R6", "k503", "k505", "k506", "k507", "k512", "k520", "k521", "k522", "k523", "k524", "k525", "k601"], typeOfInterchange: "bus.fill"),
         .init(key: "Linate", displayName: "Linate Aereoporto", lines: ["M4", "k510"], typeOfInterchange: "airplane.departure"),
         .init(key: "Pavia FS", displayName: "Pavia FS", lines: ["R34", "R35", "R36", "R37", "RE13", "S13", "Pavia 2", "Pavia 3", "Pavia 4", "Pavia 6", "Pavia 7"], typeOfInterchange: "train.side.front.car"),
-        .init(key: "Famagosta", displayName: "Famagosta MM", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel")
+        .init(key: "Famagosta", displayName: "Famagosta MM", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(key: "Cremona", displayName: "Cremona", lines: ["k208", "k214"], typeOfInterchange: "bus.fill")
     ]
     
     var activeInterchange: InterchangeStation? {
@@ -1760,6 +1780,21 @@ struct LineSmallDetailedView: View {
                             .font(.system(size: 30))
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)
+                        
+                        Spacer()
+                        Button(action: {
+                            if(selectedWidgetLine == lineName) {
+                                selectedWidgetLine = ""
+                                DataManager.shared.setSavedLine(SavedLine.empty)
+                            }
+                            else {
+                                DataManager.shared.setSavedLine(SavedLine(id: lineName, name: lineName, longName: typeOfTransport, worksNow: workNow, worksScheduled: workScheduled))
+                                selectedWidgetLine = lineName                            }
+                        }){
+                            Image(systemName: (selectedWidgetLine == lineName) ? "widget.small" : "widget.small.badge.plus")
+                                .foregroundStyle((selectedWidgetLine == lineName) ? .yellow : .gray)
+                                .scaleEffect(1.5)
+                        }
                     }
                     
                     Divider()
@@ -1966,7 +2001,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
     var id: String{self.rawValue}
 }
 
-struct LineInfo: Identifiable {
+struct LineInfo: Identifiable{
     let id = UUID()
     let name: String
     let branches: String
