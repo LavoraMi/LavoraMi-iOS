@@ -35,7 +35,7 @@ class WorkViewModel: ObservableObject {
                 self?.isLoading = false
                 
                 if let error = error {
-                    self?.errorMessage = "Errore connessione: \(error.localizedDescription)"
+                    self?.errorMessage = error.localizedDescription
                     return
                 }
                 
@@ -91,7 +91,7 @@ class WorkViewModel: ObservableObject {
             
             if let error = error {
                 DispatchQueue.main.async {
-                    self?.errorMessage = "Si è verificato un errore: \(error.localizedDescription)"
+                    self?.errorMessage = error.localizedDescription
                 }
                 return
             }

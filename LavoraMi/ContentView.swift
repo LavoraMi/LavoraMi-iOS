@@ -231,16 +231,16 @@ struct MainView: View{
                         if viewModel.isLoading {
                             ProgressView("Caricamento in corso...")
                                 .padding()
-                            Spacer()
+                                .containerRelativeFrame(.vertical)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                             
                         } else if let error = viewModel.errorMessage {
-                            VStack {
+                            VStack (spacing: 10){
                                 Image(systemName: "wifi.slash")
                                     .font(.largeTitle)
                                 Text("Impossibile caricare i dati dal server.")
                                     .font(.title2)
-                                Spacer()
-                                Text("Controlla la tua connessione ad internet e riprova.").font(.title3).foregroundColor(.gray)
+                                Text("Controlla la tua connessione e riprova.").font(.title3).foregroundColor(.gray)
                                 Button(action: {
                                     viewModel.fetchWorks()
                                 })
@@ -248,9 +248,14 @@ struct MainView: View{
                                     Label("Riprova", systemImage: "arrow.clockwise")
                                 }
                                 .buttonStyle(.bordered)
+                                Text("Codice Errore: \(error)")
+                                    .font(.footnote)
+                                    .foregroundStyle(.gray)
                             }
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .containerRelativeFrame(.vertical)
                             .padding()
-                            Spacer()
+                            .offset(y: -50)
                         } else {
                             ScrollView {
                                 LazyVStack(spacing: 12) {

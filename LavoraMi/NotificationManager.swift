@@ -32,7 +32,7 @@ class NotificationManager {
         
         let contentDayOf = UNMutableNotificationContent()
         contentDayOf.title = "Lavori terminati!"
-        contentDayOf.body = "I \(work.title) in \(work.roads) per \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi, consulta il sito di \(work.company)"
+        contentDayOf.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
         contentDayOf.sound = .default
         
         if let dateOf = calendar.date(from: dateComponents), dateOf > Date() {
@@ -54,13 +54,13 @@ class NotificationManager {
             if dayBeforeDate > Date() {
                 let contentDayBefore = UNMutableNotificationContent()
                 contentDayBefore.title = "⚠️ I lavori finiscono domani!"
-                contentDayBefore.body = "Domani terminano i lavori in \(work.roads) per \(work.lines.joined(separator: ", ")), consulta il sito di \(work.company)"
+                contentDayBefore.body = "Domani terminano i lavori in \(work.roads) per \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
                 contentDayBefore.sound = .default
                 
                 let triggerDayBefore = UNCalendarNotificationTrigger(dateMatching: dayBeforeComponents, repeats: false)
                 let requestDayBefore = UNNotificationRequest(identifier: "\(work.id.uuidString)_PRE", content: contentDayBefore, trigger: triggerDayBefore)
                 center.add(requestDayBefore)
-                print("Notifica programmata per il preavviso: \(debugDate?.formatted())")
+                print("Notifica programmata per il preavviso: \(String(describing: debugDate?.formatted()))")
             }
         }
     }
