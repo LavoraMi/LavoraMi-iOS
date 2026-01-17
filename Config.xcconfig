@@ -1,0 +1,17 @@
+//
+//  Config.xcconfig
+//  LavoraMi
+//
+//  Created by Andrea Filice on 17/01/26.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+VERSION = 1.0.0
+BUILD_NUMBER = 17012026
+MARKETING_VERSION = $(VERSION)
+CURRENT_PROJECT_VERSION = $(BUILD_NUMBER)
+
+INFOPLIST_KEY_CFBundleShortVersionString = $(MARKETING_VERSION)
+INFOPLIST_KEY_CFBundleVersion = $(CURRENT_PROJECT_VERSION)

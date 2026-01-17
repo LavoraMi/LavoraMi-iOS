@@ -365,6 +365,7 @@ struct SettingsView: View{
     @State private var expandedATM = false
     @State private var expandedATMLines = false
     @State private var presentedAlertReset = false
+    @State private var showBuildNumber = false
     @StateObject private var viewModel = WorkViewModel()
     
     //APP DATAS
@@ -532,9 +533,20 @@ struct SettingsView: View{
                         Label("Fonti & Sviluppo", systemImage: "person.crop.circle.badge.questionmark")
                     }
                     HStack{
-                        Label("Versione", systemImage: "info.circle.fill")
+                        Button(action: {
+                            showBuildNumber = !showBuildNumber
+                        }){
+                            Label {
+                                    Text("Versione")
+                                        .foregroundColor(Color("TextColor"))
+                                } icon: {
+                                    Image(systemName: "info.circle.fill")
+                                }
+                        }
                         Spacer()
-                        Text("\(Bundle.main.shortVersion)")
+                        if(showBuildNumber){Text("\(Bundle.main.shortVersion) (\(Bundle.main.buildVersion))")}
+                        else{Text("\(Bundle.main.shortVersion)")}
+                        
                     }
                 }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
@@ -2125,4 +2137,3 @@ struct SafariView: UIViewControllerRepresentable {
 #Preview {
     ContentView()
 }
-
