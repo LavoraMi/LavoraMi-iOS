@@ -591,7 +591,7 @@ struct StationsDB {
         .init(name: "Sesto 1° Maggio FS", lines: ["R13", "R14", "RE8", "S7", "S8", "S9", "S11"], typeOfInterchange: "lightrail"),
         .init(name: "Romolo", lines: ["R31", "S9", "S19"], typeOfInterchange: "lightrail"),
         .init(name: "S. Ambrogio", lines: ["M2", "M4"], typeOfInterchange: "tram.fill.tunnel"),
-        .init(name: "Porta Garibaldi", lines: ["AV", "IC", "MXP", "R6", "R13", "R14", "R21", "R23", "R28", "RE2", "RE5", "RE6", "RE13", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "M1", "M5"], typeOfInterchange: "lightrail"),
+        .init(name: "Porta Garibaldi", lines: ["AV", "MXP", "R6", "R13", "R14", "R21", "R23", "R28", "RE2", "RE5", "RE6", "RE13", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "M1", "M5"], typeOfInterchange: "lightrail"),
         .init(name: "Centrale FS", lines: ["AV", "MXP", "R4", "R28", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "M2", "M3"], typeOfInterchange: "lightrail"),
         .init(name: "Lambrate FS", lines: ["R4", "R6", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "S9", "M2"], typeOfInterchange: "lightrail"),
         .init(name: "Affori FN", lines: ["R16", "S2", "S4", "M3"], typeOfInterchange: "lightrail"),

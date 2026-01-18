@@ -12,10 +12,11 @@ struct SavedLine: Identifiable, Codable, Equatable {
     let id: String
     let name: String
     let longName: String
+    let iconTransport: String
     let worksNow: Int
     let worksScheduled: Int
     
-    static let empty = SavedLine(id: "empty", name: "empty", longName: "", worksNow: 0, worksScheduled: 0)
+    static let empty = SavedLine(id: "empty", name: "empty", longName: "", iconTransport: "", worksNow: 0, worksScheduled: 0)
 }
 
 final class DataManager {
@@ -42,4 +43,5 @@ final class DataManager {
     func deleteSavedLine() {
         setSavedLine(.empty)
     }
+    
 }

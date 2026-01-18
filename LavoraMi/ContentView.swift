@@ -1380,9 +1380,11 @@ struct LineDetailView: View {
     
     let stations: [MetroStation]
     
+    @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
+    
     private enum LineDetailTab { case map, works, interchanges }
     @State private var selectedTab: LineDetailTab = .map
-    @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
+    @State private var openPopUpWidget: Bool = false
     
     private var centerIndex: Int { max(0, stations.count / 2) }
     private var centerCoordinate: CLLocationCoordinate2D {
@@ -1439,16 +1441,21 @@ struct LineDetailView: View {
                                 DataManager.shared.deleteSavedLine()
                             }
                             else {
-                                DataManager.shared.setSavedLine(SavedLine(id: lineName, name: lineName, longName: typeOfTransport, worksNow: workNow, worksScheduled: workScheduled))
+                                DataManager.shared.setSavedLine(SavedLine(id: lineName, name: lineName, longName: typeOfTransport, iconTransport: getCurrentTransportIcon(for: typeOfTransport), worksNow: workNow, worksScheduled: workScheduled))
                                 selectedWidgetLine = lineName
+                                openPopUpWidget = true
                             }
                         }){
                             Image(systemName: (selectedWidgetLine == lineName) ? "widget.small" : "widget.small.badge.plus")
                                 .foregroundStyle((selectedWidgetLine == lineName) ? .yellow : .gray)
                                 .scaleEffect(1.5)
                         }
+                        .alert("Linea attivata", isPresented: $openPopUpWidget) {
+                            Button("OK", role: .cancel){}
+                        } message: {
+                            Text("Linea impostata per essere vista sul Widget dell'app!")
+                        }
                     }
-                    
                     Divider()
                     VStack(alignment: .leading, spacing: 5) {
                         Text("DIREZIONI:")
@@ -1720,6 +1727,7 @@ struct LineDetailView: View {
 
 struct LineSmallDetailedView: View {
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
+    @State private var openPopUpWidget: Bool = false
     
     let lineName: String
     let typeOfTransport: String
@@ -1788,12 +1796,19 @@ struct LineSmallDetailedView: View {
                                 DataManager.shared.deleteSavedLine()
                             }
                             else {
-                                DataManager.shared.setSavedLine(SavedLine(id: lineName, name: lineName, longName: typeOfTransport, worksNow: workNow, worksScheduled: workScheduled))
-                                selectedWidgetLine = lineName                            }
+                                DataManager.shared.setSavedLine(SavedLine(id: lineName, name: lineName, longName: typeOfTransport, iconTransport: getCurrentTransportIcon(for: typeOfTransport), worksNow: workNow, worksScheduled: workScheduled))
+                                selectedWidgetLine = lineName
+                                openPopUpWidget = true
+                            }
                         }){
                             Image(systemName: (selectedWidgetLine == lineName) ? "widget.small" : "widget.small.badge.plus")
                                 .foregroundStyle((selectedWidgetLine == lineName) ? .yellow : .gray)
                                 .scaleEffect(1.5)
+                        }
+                        .alert("Linea attivata", isPresented: $openPopUpWidget) {
+                            Button("OK", role: .cancel){}
+                        } message: {
+                            Text("Linea impostata per essere vista sul Widget dell'app!")
                         }
                     }
                     
@@ -2084,6 +2099,33 @@ func getColor(for line: String) -> Color {
     }
 }
 
+func getCurrentTransportIcon(for lineLongName: String) -> String{
+    switch(lineLongName){
+        case "Suburbano":
+            return "train.side.front.car"
+        case "Transfrontaliera":
+            return "train.side.front.car"
+        case "Malpensa Express":
+            return "train.side.front.car"
+            
+        case "Metro":
+            return "tram.tunnel.fill"
+            
+        case "Autoguidovie":
+            return "bus.fill"
+        case "STAV":
+            return "bus.fill"
+        case "Movibus":
+            return "bus.fill"
+            
+        case "Tram":
+            return "tram.fill"
+        
+        default:
+            return "train.side.front.car"
+    }
+}
+
 //EXTENSION: Save files also with arrays
 extension Array: @retroactive RawRepresentable where Element == String {
     public init?(rawValue: String) {
@@ -2172,3 +2214,4 @@ struct SafariView: UIViewControllerRepresentable {
 #Preview {
     ContentView()
 }
+

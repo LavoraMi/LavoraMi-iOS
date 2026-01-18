@@ -18,7 +18,7 @@ struct WorkEntry: TimelineEntry {
 
 struct Provider: TimelineProvider {
     func getSnapshot(in context: Context, completion: @escaping (WorkEntry) -> Void) {
-        let entry = WorkEntry(date: Date(), linea: SavedLine(id: "0", name: "M1", longName: "Metro", worksNow: 0, worksScheduled: 2), stato: "Anteprima")
+        let entry = WorkEntry(date: Date(), linea: SavedLine(id: "0", name: "M1", longName: "Metro", iconTransport: "tram.fill.tunnel", worksNow: 0, worksScheduled: 2), stato: "Anteprima")
         completion(entry)
     }
     
@@ -45,6 +45,7 @@ struct Provider: TimelineProvider {
                     id: line.id,
                     name: line.name,
                     longName: line.longName,
+                    iconTransport: line.iconTransport,
                     worksNow: counts.0,
                     worksScheduled: counts.1
                 )
@@ -59,7 +60,7 @@ struct Provider: TimelineProvider {
     }
 
     func placeholder(in context: Context) -> WorkEntry {
-        WorkEntry(date: Date(), linea: SavedLine(id: "empty", name: "1", longName: "2<", worksNow: 0, worksScheduled: 0), stato: "empty")
+        WorkEntry(date: Date(), linea: SavedLine(id: "empty", name: "1", longName: "2", iconTransport: "", worksNow: 0, worksScheduled: 0), stato: "empty")
     }
 }
 
@@ -147,7 +148,7 @@ struct LavoraMiWidgetEntryView : View {
                     
                     Spacer()
                     
-                    Image(systemName: "tram.fill")
+                    Image(systemName: entry.linea?.iconTransport ?? "tram.fill")
                         .foregroundColor(.secondary)
                 }
                 Text("\(entry.linea?.longName ?? "") \(entry.linea?.name ?? "no")")
@@ -239,5 +240,5 @@ class WidgetNetworkManager {
 #Preview(as: .systemMedium) {
     LavoraMiWidget()
 } timeline: {
-    WorkEntry(date: Date(), linea: SavedLine(id: "M1", name: "M1", longName: "Metro", worksNow: 1, worksScheduled: 2), stato: "empty")
+    WorkEntry(date: Date(), linea: SavedLine(id: "M1", name: "M1", longName: "Metro", iconTransport: "", worksNow: 1, worksScheduled: 2), stato: "empty")
 }
