@@ -62,6 +62,7 @@ struct MainView: View{
     @State private var closedStrike: Bool = false
     @State private var selectedFilter: FilterBy = .all
     @State private var searchInput: String = ""
+    @State private var alreadyRefreshed: Bool = false
     @ObservedObject var viewModel: WorkViewModel
     @FocusState private var isSearchFocused: Bool
     
@@ -283,8 +284,11 @@ struct MainView: View{
                 }
             }
             .onAppear(){
-                viewModel.fetchWorks()
-                viewModel.fetchVariables()
+                if(!alreadyRefreshed){
+                    viewModel.fetchWorks()
+                    viewModel.fetchVariables()
+                    alreadyRefreshed = true
+                }
                 NotificationManager.shared.requestPermission()
             }
         }
