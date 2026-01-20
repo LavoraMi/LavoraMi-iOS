@@ -39,6 +39,7 @@ struct WorkItem: Identifiable, Hashable, Codable {
 
 struct ContentView: View {
     @StateObject private var viewModel = WorkViewModel()
+    @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     
     var body: some View {
         TabView{
@@ -54,6 +55,175 @@ struct ContentView: View {
                 .tabItem{Label("Impostazioni", systemImage: "gear")}
         }
         .tint(.red)
+        .sheet(isPresented: $hasNotCompletedSetup) {
+            SetupView()
+        }
+    }
+}
+
+struct SetupView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
+    @State private var currentPage = 0
+    let pages = [
+        SetupPage(
+            title: "Benvenuto su LavoraMi",
+            description: "Tieniti informato. Prima e durante il tuo viaggio.",
+            transitionImage: "tram.fill",
+            standardImage: "tram.card.fill",
+            details: ""
+        ),
+        SetupPage(
+            title: "Pianifica il Viaggio",
+            description: "Pianifica il tuo viaggio sapendo dei disagi, ben prima di partire.",
+            transitionImage: "mappin",
+            standardImage: "mappin.and.ellipse",
+            details: ""
+        ),
+        SetupPage(
+            title: "Tieni sott'occhio i lavori",
+            description: "Seleziona una linea da poter mostrare nel Widget dell'app per tenerla sempre sott'occhio.",
+            transitionImage: "star.fill",
+            standardImage: "widget.small",
+            details: ""
+        ),
+        SetupPage(
+            title: "Tieniti Aggiornato",
+            description: "Attiva le notifiche per rimanere al passo coi lavori.",
+            transitionImage: "bell.slash.fill",
+            standardImage: "bell.fill",
+            details: ""
+        ),
+        SetupPage(
+            title: "Tu ed ancora Tu.",
+            description: "I tuoi dati sono al sicuro. Crea un Account per salvare le tue linee su altri dispositivi.",
+            transitionImage: "lock.open.fill",
+            standardImage: "lock.fill",
+            details: ""
+        ),
+    ]
+    
+    var body: some View {
+        NavigationStack {
+            VStack {
+                TabView(selection: $currentPage) {
+                    ForEach(0 ..< pages.count, id: \.self) { index in
+                        SetupPageView(page: pages[index])
+                            .tag(index)
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                Spacer()
+                if currentPage == pages.count - 1 {
+                    Button {
+                        hasNotCompletedSetup = false
+                        dismiss()
+                    } label: {
+                        Text("Fine")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .frame(height: 50)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                    }
+                    .padding(.bottom)
+                } else {
+                    Button {
+                        if(currentPage == 3){
+                            NotificationManager.shared.requestPermission()
+                        }
+                        withAnimation { currentPage += 1 }
+                    } label: {
+                        Text("Avanti")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .frame(height: 50)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                    }
+                    .padding(.bottom)
+                }
+            }
+            .navigationTitle(Text("Benvenuto"))
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Salta") { hasNotCompletedSetup = false; dismiss() }
+                }
+            }
+        }
+    }
+
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
+    }
+}
+
+struct SetupPage {
+    let title: LocalizedStringKey
+    let description: LocalizedStringKey
+    let transitionImage: String
+    let standardImage : String
+    let details: LocalizedStringKey
+}
+
+struct SetupPageView: View {
+    @State var startImageTransition : Bool = false
+    @AppStorage("enableAnimations") var enableAnimations = true
+    let page: SetupPage
+
+    var body: some View {
+        VStack(spacing: 30) {
+            if #available(iOS 18.0, *), enableAnimations{
+                Image(systemName: (startImageTransition) ? page.standardImage : page.transitionImage)
+                    .font(.system(size: 80))
+                    .foregroundColor(.red)
+                    .padding(.top, 50)
+                    .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
+                    .onAppear{
+                        Task{
+                            try? await Task.sleep(for: .seconds(1))
+                            withAnimation{
+                                startImageTransition = true
+                            }
+                        }
+                    }
+                    .onDisappear{
+                        startImageTransition = false
+                    }
+            }
+            else{
+                Image(systemName: page.standardImage)
+                    .font(.system(size: 80))
+                    .foregroundColor(.blue)
+                    .padding(.top, 50)
+            }
+
+            Text(page.title)
+                .font(.title)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+
+            Text(page.description)
+                .font(.headline)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+
+            ScrollView {
+                Text(page.details)
+                    .font(.body)
+                    .multilineTextAlignment(.leading)
+                    .padding(.horizontal)
+            }
+
+            Spacer()
+        }
+        .padding()
     }
 }
 
@@ -289,7 +459,6 @@ struct MainView: View{
                     viewModel.fetchVariables()
                     alreadyRefreshed = true
                 }
-                NotificationManager.shared.requestPermission()
             }
         }
     }
