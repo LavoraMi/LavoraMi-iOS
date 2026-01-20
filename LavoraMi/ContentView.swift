@@ -405,6 +405,7 @@ struct SettingsView: View{
                                 } else {
                                     linesFavorites.append("S")
                                 }
+                                NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             }) {
                                 Image(systemName: linesFavorites.contains("S") ? "star.fill" : "star")
                                     .font(.title3)
@@ -431,6 +432,7 @@ struct SettingsView: View{
                                 } else {
                                     linesFavorites.append("R")
                                 }
+                                NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             }) {
                                 Image(systemName: linesFavorites.contains("R") ? "star.fill" : "star")
                                     .font(.title3)
@@ -457,6 +459,7 @@ struct SettingsView: View{
                                 } else {
                                     linesFavorites.append("RE")
                                 }
+                                NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             }) {
                                 Image(systemName: linesFavorites.contains("RE") ? "star.fill" : "star")
                                     .font(.title3)
@@ -471,7 +474,7 @@ struct SettingsView: View{
                     DisclosureGroup(isExpanded: $expandedATM){
                         DisclosureGroup(isExpanded: $expandedATMLines) {
                             ForEach(metroLines, id: \.self) { line in
-                                LineFavouritesRow(line: line, favorites: $linesFavorites)
+                                LineFavouritesRow(line: line, favorites: $linesFavorites, viewModel: viewModel)
                             }
                         } label: {
                             Label("Linee Metro", systemImage: "tram.fill.tunnel")
@@ -488,6 +491,7 @@ struct SettingsView: View{
                                 } else {
                                     linesFavorites.append("Tram")
                                 }
+                                NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             }) {
                                 Image(systemName: linesFavorites.contains("Tram") ? "star.fill" : "star")
                                     .font(.title3)
@@ -507,6 +511,8 @@ struct SettingsView: View{
                                 } else {
                                     linesFavorites.append("Bus")
                                 }
+                                
+                                NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             }) {
                                 Image(systemName: linesFavorites.contains("Bus") ? "star.fill" : "star")
                                     .font(.title3)
@@ -517,6 +523,71 @@ struct SettingsView: View{
                     }
                     label: {
                         Label("Linee ATM", systemImage: "tram.fill")
+                    }
+                    HStack{
+                        Label("Linee Movibus", systemImage: "bus.fill")
+                        Spacer()
+                        Button(action: {
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                            
+                            if linesFavorites.contains("z6") {
+                                linesFavorites.removeAll { $0 == "z6" }
+                            } else {
+                                linesFavorites.append("z6")
+                            }
+                            NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                        }) {
+                            Image(systemName: linesFavorites.contains("z6") ? "star.fill" : "star")
+                                .font(.title3)
+                                .foregroundColor(linesFavorites.contains("z6") ? .orange : .gray)
+                        }
+                        .buttonStyle(.borderless)
+                    }
+                    HStack{
+                        Label("Linee STAV", systemImage: "bus.fill")
+                        Spacer()
+                        Button(action: {
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                            
+                            if linesFavorites.contains("z5") {
+                                linesFavorites.removeAll { $0 == "z5" }
+                            } else {
+                                linesFavorites.append("z5")
+                            }
+                        }) {
+                            Image(systemName: linesFavorites.contains("z5") ? "star.fill" : "star")
+                                .font(.title3)
+                                .foregroundColor(linesFavorites.contains("z5") ? .orange : .gray)
+                        }
+                        .buttonStyle(.borderless)
+                    }
+                    HStack{
+                        Label("Linee Autoguidovie", systemImage: "bus.fill")
+                        Spacer()
+                        Button(action: {
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                            
+                            if linesFavorites.contains("z4") {
+                                linesFavorites.removeAll { $0 == "z4" }
+                                linesFavorites.removeAll { $0 == "z2" }
+                                linesFavorites.removeAll { $0 == "k" }
+                                linesFavorites.removeAll { $0 == "p" }
+                            } else {
+                                linesFavorites.append("z4")
+                                linesFavorites.append("z2")
+                                linesFavorites.append("k")
+                                linesFavorites.append("p")
+                            }
+                            NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                        }) {
+                            Image(systemName: linesFavorites.contains("z4") ? "star.fill" : "star")
+                                .font(.title3)
+                                .foregroundColor(linesFavorites.contains("z4") ? .orange : .gray)
+                        }
+                        .buttonStyle(.borderless)
                     }
                 }
                 Section("Generali"){
@@ -726,7 +797,7 @@ struct InfoView: View {
 struct LineFavouritesRow: View {
     let line: String
     @Binding var favorites: [String]
-    @StateObject private var viewModel = WorkViewModel()
+    @StateObject var viewModel: WorkViewModel
     
     var body: some View {
         HStack(spacing: 12) {
@@ -753,6 +824,7 @@ struct LineFavouritesRow: View {
                 } else {
                     favorites.append(line)
                 }
+                NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: favorites)
             }) {
                 Image(systemName: favorites.contains(line) ? "star.fill" : "star")
                     .font(.title3)
@@ -2218,30 +2290,85 @@ extension Array: @retroactive RawRepresentable where Element == String {
 extension WorkItem {
     func matchesFavorites(_ favorites: [String]) -> Bool {
         let transport = self.typeOfTransport.lowercased()
+        
+        let linesLower = self.lines.map { $0.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() }
+        
+        if favorites.contains("Bus") {
+            let isRubberTire = transport.contains("bus") || transport.contains("autobus")
+            
+            let isMovibus = transport.contains("movibus") || linesLower.contains { $0.hasPrefix("z6") }
+            let isStav = transport.contains("stav") || linesLower.contains { $0.hasPrefix("z5") }
+            let isAutoguidovie = transport.contains("autoguidovie") || linesLower.contains {
+                $0.hasPrefix("z4") || $0.hasPrefix("z2") || $0.hasPrefix("k") || $0.hasPrefix("p")
+            }
+            
+            if isRubberTire && !isMovibus && !isStav && !isAutoguidovie {
+                return true
+            }
+        }
+        
+        if favorites.contains("z6") {
+            if transport.contains("movibus") { return true }
+            if linesLower.contains(where: { $0.hasPrefix("z6") }) { return true }
+        }
+        
+        if favorites.contains("z5"){
+            if transport.contains("STAV") {return true}
+            if linesLower.contains(where: { $0.hasPrefix("z5") }) {return true}
+        }
+        
+        if favorites.contains("z4"){
+            if transport.contains("Autoguidovie") {return true}
+            if linesLower.contains(where: { $0.hasPrefix("z4") }) {return true}
+        }
 
+        if favorites.contains("z2"){
+            if transport.contains("Autoguidovie") {return true}
+            if linesLower.contains(where: { $0.hasPrefix("z2") }) {return true}
+        }
+        
+        if favorites.contains("k"){
+            if transport.contains("Autoguidovie") {return true}
+            if linesLower.contains(where: { $0.hasPrefix("k") }) {return true}
+        }
+        
+        if favorites.contains("p"){
+            if transport.contains("Autoguidovie") {return true}
+            if linesLower.contains(where: { $0.hasPrefix("p") }) {return true}
+        }
+        
         if favorites.contains("Tram") {
             let isTram = transport.contains("tram") && !transport.contains("tram.fill.tunnel") && !transport.contains("metro")
             if isTram { return true }
         }
-
-        if favorites.contains("Bus") && transport.contains("bus") {
-            return true
-        }
-
+        
         for workLine in self.lines {
-            if favorites.contains(workLine) { return true }
-            if favorites.contains("S") && workLine.hasPrefix("S") {
-                let suffix = workLine.dropFirst()
+            let cleanWorkLine = workLine.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+            
+            
+            for fav in favorites {
+                let cleanFav = fav.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+                if cleanWorkLine == cleanFav {
+                    return true
+                }
+            }
+            
+            let upperLine = workLine.uppercased()
+            
+            if favorites.contains("S") && upperLine.hasPrefix("S") {
+                let suffix = upperLine.dropFirst()
                 if !suffix.isEmpty && suffix.allSatisfy({ $0.isNumber }) { return true }
             }
-            if favorites.contains("R") && workLine.hasPrefix("R") && !workLine.hasPrefix("RE") {
+            
+            if favorites.contains("R") && upperLine.hasPrefix("R") && !upperLine.hasPrefix("RE") {
                 return true
             }
-            if favorites.contains("RE") && workLine.hasPrefix("RE") {
+            
+            if favorites.contains("RE") && upperLine.hasPrefix("RE") {
                 return true
             }
         }
-
+        
         return false
     }
 }

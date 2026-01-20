@@ -187,7 +187,7 @@ class NotificationManager {
             if work.matchesFavorites(favorites) {
                 if(workInProgressNotifications){
                     scheduleWorkAlerts(for: work)
-                    print("Attivata notifica per fine lavori: \(work.title) (Match preferiti)")
+                    print("Attivata notifica per fine lavori: \(work.title), zona \(work.roads) (Match preferiti)")
                 }
                 if (workScheduledNotifications){
                     scheduleWorksBefore(for: work)
