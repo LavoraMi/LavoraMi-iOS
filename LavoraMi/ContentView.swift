@@ -372,23 +372,46 @@ struct MainView: View{
                                 selectedFilter = filter
                             }
                         }){
-                            Text(filter.rawValue)
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .background(
-                                ZStack {
-                                    if selectedFilter == filter {
-                                        Capsule()
-                                            .fill(.red)
-                                    } else {
-                                        Capsule()
-                                            .stroke(Color.secondary, lineWidth: 1)
+                            let nameIcon: String = getIconForFilter(for: filter.rawValue)
+                            
+                            if(nameIcon != ""){
+                                Label(filter.rawValue, systemImage: nameIcon)
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 16)
+                                .background(
+                                    ZStack {
+                                        if selectedFilter == filter {
+                                            Capsule()
+                                                .fill(.red)
+                                        } else {
+                                            Capsule()
+                                                .stroke(Color.secondary, lineWidth: 1)
+                                        }
                                     }
-                                }
-                            )
-                            .foregroundStyle(selectedFilter == filter ? Color(.systemBackground) : .primary)
+                                )
+                                .foregroundStyle(selectedFilter == filter ? Color(.systemBackground) : .primary)
+                            }
+                            else{
+                                Text(filter.rawValue)
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 16)
+                                .background(
+                                    ZStack {
+                                        if selectedFilter == filter {
+                                            Capsule()
+                                                .fill(.red)
+                                        } else {
+                                            Capsule()
+                                                .stroke(Color.secondary, lineWidth: 1)
+                                        }
+                                    }
+                                )
+                                .foregroundStyle(selectedFilter == filter ? Color(.systemBackground) : .primary)
+                            }
                         }
                     }
                 }
@@ -2432,6 +2455,28 @@ func getCurrentTransportIcon(for lineLongName: String) -> String{
         
         default:
             return "train.side.front.car"
+    }
+}
+
+func getIconForFilter(for filterName: String) -> String{
+    switch(filterName){
+        case "Tutti":
+            return "line.3.horizontal.decrease"
+        case "Bus":
+            return "bus.fill"
+        case "Tram":
+            return "tram.fill"
+        case "Metropolitana":
+            return "tram.tunnel.fill"
+        case "Treno":
+            return "train.side.front.car"
+        case "In Corso":
+            return "clock.badge.exclamationmark.fill"
+        case "Programmati":
+            return "calendar.badge.clock"
+            
+        default:
+            return ""
     }
 }
 
