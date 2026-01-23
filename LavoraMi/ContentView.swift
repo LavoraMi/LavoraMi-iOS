@@ -71,35 +71,32 @@ struct SetupView: View {
             description: "Tieniti informato. Prima e durante il tuo viaggio.",
             transitionImage: "tram.fill",
             standardImage: "tram.card.fill",
-            details: ""
+            fallbackImage: "person.text.rectangle.fill"
         ),
         SetupPage(
             title: "Pianifica il Viaggio",
             description: "Pianifica il tuo viaggio sapendo dei disagi, ben prima di partire.",
             transitionImage: "mappin",
-            standardImage: "mappin.and.ellipse",
-            details: ""
+            standardImage: "mappin.and.ellipse"
         ),
         SetupPage(
             title: "Tieni sott'occhio i lavori",
             description: "Seleziona una linea da poter mostrare nel Widget dell'app per tenerla sempre sott'occhio.",
             transitionImage: "star.fill",
             standardImage: "widget.small",
-            details: ""
+            fallbackImage: "plus.viewfinder"
         ),
         SetupPage(
             title: "Tieniti Aggiornato",
             description: "Attiva le notifiche per rimanere al passo coi lavori.",
             transitionImage: "bell.slash.fill",
-            standardImage: "bell.fill",
-            details: ""
+            standardImage: "bell.fill"
         ),
         SetupPage(
             title: "Tu ed ancora Tu.",
             description: "I tuoi dati sono al sicuro. Crea un Account per salvare le tue linee su altri dispositivi.",
             transitionImage: "lock.open.fill",
-            standardImage: "lock.fill",
-            details: ""
+            standardImage: "lock.fill"
         ),
     ]
     
@@ -154,6 +151,7 @@ struct SetupView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Salta") { hasNotCompletedSetup = false; dismiss() }
+                        .foregroundStyle(.red)
                 }
             }
         }
@@ -170,7 +168,7 @@ struct SetupPage {
     let description: LocalizedStringKey
     let transitionImage: String
     let standardImage : String
-    let details: LocalizedStringKey
+    var fallbackImage: String? = nil
 }
 
 struct SetupPageView: View {
@@ -199,9 +197,9 @@ struct SetupPageView: View {
                     }
             }
             else{
-                Image(systemName: page.standardImage)
+                Image(systemName: page.fallbackImage ?? page.standardImage)
                     .font(.system(size: 80))
-                    .foregroundColor(.blue)
+                    .foregroundColor(.red)
                     .padding(.top, 50)
             }
 
@@ -214,13 +212,6 @@ struct SetupPageView: View {
                 .font(.headline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-
-            ScrollView {
-                Text(page.details)
-                    .font(.body)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal)
-            }
 
             Spacer()
         }
@@ -850,6 +841,15 @@ struct NotificationsView: View {
     @AppStorage("enableNotifications") var enableNotifications: Bool = true
     @AppStorage("linesFavorites") var linesFavorites: [String] = []
     
+    static var defaultTime: Date { //MARK: SET DEFAULT VALUE OF DATEPICKER
+        var components = DateComponents()
+        components.hour = 10
+        components.minute = 0
+        return Calendar.current.date(from: components) ?? Date()
+    }
+    
+    @AppStorage("dateSchedule") var dateSchedule: Date = defaultTime
+    
     @ObservedObject var viewModel: WorkViewModel
     
     var body: some View {
@@ -918,6 +918,13 @@ struct NotificationsView: View {
                         print("-- INIZIO SYNCH NOTIFICHE STRIKE --")
                     }
                     .disabled(!enableNotifications)
+                }
+                Section(header: Text("Impostazioni Notifiche"), footer: Text("Modifica l'ora delle notifiche di avviso.")){
+                    VStack{
+                        DatePicker(selection: $dateSchedule, displayedComponents: .hourAndMinute){
+                            Label("Orario Notifiche", systemImage: "clock.badge.fill")
+                        }
+                    }
                 }
             }
             .listStyle(.insetGrouped)
@@ -1808,9 +1815,16 @@ struct LineDetailView: View {
                                 openPopUpWidget = true
                             }
                         }){
-                            Image(systemName: (selectedWidgetLine == lineName) ? "widget.small" : "widget.small.badge.plus")
-                                .foregroundStyle((selectedWidgetLine == lineName) ? .yellow : .gray)
-                                .scaleEffect(1.5)
+                            if #available(iOS 18, *){
+                                Image(systemName: (selectedWidgetLine == lineName) ? "widget.small" : "widget.small.badge.plus")
+                                    .foregroundStyle((selectedWidgetLine == lineName) ? .yellow : .gray)
+                                    .scaleEffect(1.5)
+                            }
+                            else{
+                                Image(systemName: (selectedWidgetLine == lineName) ? "app.badge.checkmark" : "plus.viewfinder")
+                                    .foregroundStyle((selectedWidgetLine == lineName) ? .yellow : .gray)
+                                    .scaleEffect(1.5)
+                            }
                         }
                         .alert("Linea attivata", isPresented: $openPopUpWidget) {
                             Button("OK", role: .cancel){}
@@ -2636,6 +2650,16 @@ extension URL: @retroactive Identifiable {
     public var id: String { absoluteString }
 }
 
+extension Date: @retroactive RawRepresentable {
+    public var rawValue: String {
+        ISO8601DateFormatter().string(from: self)
+    }
+
+    public init?(rawValue: String) {
+        self = ISO8601DateFormatter().date(from: rawValue) ?? Date()
+    }
+}
+
 struct SafariView: UIViewControllerRepresentable {
     let url: URL
 
@@ -2655,4 +2679,3 @@ struct SafariView: UIViewControllerRepresentable {
 #Preview {
     ContentView()
 }
-

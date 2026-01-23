@@ -14,6 +14,15 @@ class NotificationManager {
     @AppStorage("workInProgressNotifications") var workInProgressNotifications: Bool = true
     @AppStorage("strikeNotifications") var strikeNotifications: Bool = true
     @AppStorage("enableNotifications") var enableNotifications: Bool = true
+    
+    static var defaultTime: Date {
+        var components = DateComponents()
+        components.hour = 10
+        components.minute = 0
+        return Calendar.current.date(from: components) ?? Date()
+    }
+    @AppStorage("dateSchedule") var dateSchedule: Date = defaultTime
+    
     static let shared = NotificationManager()
     
     func requestPermission() {
@@ -33,8 +42,10 @@ class NotificationManager {
         
         var dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: work.endDate)
         let notificationHour = dateComponents.hour ?? 0
-        dateComponents.hour = (notificationHour >= 0 && notificationHour <= 10) ? 10 : dateComponents.hour
-        dateComponents.minute = 0
+        let preferredHour = Calendar.current.component(.hour, from: dateSchedule)
+        let preferredMinutes = Calendar.current.component(.minute, from: dateSchedule)
+        dateComponents.hour = (notificationHour >= 0 && notificationHour <= 10) ? preferredHour : dateComponents.hour
+        dateComponents.minute = preferredMinutes
         
         let contentDayOf = UNMutableNotificationContent()
         contentDayOf.title = "Lavori terminati!"
@@ -52,8 +63,8 @@ class NotificationManager {
             
             var dayBeforeComponents = calendar.dateComponents([.year, .month, .day, .hour], from: dayBeforeDate)
             let notificationHour = dayBeforeComponents.hour ?? 0
-            dayBeforeComponents.hour = (notificationHour >= 0 && notificationHour <= 10) ? 10 : dayBeforeComponents.hour
-            dayBeforeComponents.minute = 0
+            dayBeforeComponents.hour = (notificationHour >= 0 && notificationHour <= 10) ? preferredHour : dayBeforeComponents.hour
+            dayBeforeComponents.minute = preferredMinutes
             
             let debugDate = calendar.date(from: dayBeforeComponents)
             
@@ -80,8 +91,10 @@ class NotificationManager {
         
         var dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: work.startDate)
         let notificationHour = dateComponents.hour ?? 0
-        dateComponents.hour = (notificationHour >= 0 && notificationHour <= 10) ? 10 : dateComponents.hour
-        dateComponents.minute = 0
+        let preferredHour = Calendar.current.component(.hour, from: dateSchedule)
+        let preferredMinutes = Calendar.current.component(.minute, from: dateSchedule)
+        dateComponents.hour = (notificationHour >= 0 && notificationHour <= 10) ? preferredHour : dateComponents.hour
+        dateComponents.minute = preferredMinutes
         
         let contentDayOf = UNMutableNotificationContent()
         contentDayOf.title = "Lavori Iniziati!"
@@ -99,8 +112,8 @@ class NotificationManager {
             
             var dayBeforeComponents = calendar.dateComponents([.year, .month, .day, .hour], from: dayBeforeDate)
             let notificationHour = dayBeforeComponents.hour ?? 0
-            dayBeforeComponents.hour = (notificationHour >= 0 && notificationHour <= 10) ? 10 : dayBeforeComponents.hour
-            dayBeforeComponents.minute = 0
+            dayBeforeComponents.hour = (notificationHour >= 0 && notificationHour <= 10) ? preferredHour : dayBeforeComponents.hour
+            dayBeforeComponents.minute = preferredMinutes
             
             let debugDate = calendar.date(from: dayBeforeComponents)
             
@@ -141,7 +154,7 @@ class NotificationManager {
             }
             
             var dayOfComponents = calendar.dateComponents([.year, .month, .day, .hour], from: strikeDate)
-            dayOfComponents.hour = 8
+            dayOfComponents.hour = 7
             dayOfComponents.minute = 0
             
             if let fireDate = calendar.date(from: dayOfComponents), fireDate > Date() {
