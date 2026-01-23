@@ -804,8 +804,10 @@ struct SettingsView: View{
                                 }
                         }
                         Spacer()
-                        if(showBuildNumber){Text("\(Bundle.main.shortVersion) (\(Bundle.main.buildVersion))")}
-                        else{Text("\(Bundle.main.shortVersion)")}
+                        if(showBuildNumber){Text("\(Bundle.main.shortVersion) (\(Bundle.main.buildVersion))")
+                            .textSelection(.enabled)}
+                        else{Text("\(Bundle.main.shortVersion)")
+                            .textSelection(.enabled)}
                         
                     }
                 }
@@ -919,11 +921,12 @@ struct NotificationsView: View {
                     }
                     .disabled(!enableNotifications)
                 }
-                Section(header: Text("Impostazioni Notifiche"), footer: Text("Modifica l'ora delle notifiche di avviso.")){
+                Section(header: Text("Impostazioni Notifiche"), footer: Text("Modifica l'orario di arrivo delle notifiche.")){
                     VStack{
                         DatePicker(selection: $dateSchedule, displayedComponents: .hourAndMinute){
                             Label("Orario Notifiche", systemImage: "clock.badge.fill")
                         }
+                        .disabled(!enableNotifications)
                     }
                 }
             }
