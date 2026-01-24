@@ -150,8 +150,13 @@ struct SetupView: View {
             .navigationTitle(Text("LavoraMi"))
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Salta") { hasNotCompletedSetup = false; dismiss() }
-                        .foregroundStyle(.red)
+                    if #available (iOS 26, *){
+                        Button("Salta") { hasNotCompletedSetup = false; dismiss() }
+                    }
+                    else{
+                        Button("Salta") { hasNotCompletedSetup = false; dismiss() }
+                            .foregroundStyle(.red)
+                    }
                 }
             }
         }
