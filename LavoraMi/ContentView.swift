@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 import SafariServices
 import WidgetKit
+import LocalAuthentication
 
 struct WorkItem: Identifiable, Hashable, Codable {
     var id = UUID()
@@ -38,26 +39,154 @@ struct WorkItem: Identifiable, Hashable, Codable {
 }
 
 struct ContentView: View {
+    @State private var isUnlocked = false
     @StateObject private var viewModel = WorkViewModel()
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
+    @AppStorage("enableLockApp") private var lockApplication: Bool = false
+    @AppStorage("timeToLockApp") private var timeToLockApp: TimeToLock = .immediately
+    @Environment(\.scenePhase) private var scenePhase
+
+    @State private var lastBackgroundDate: Date? = nil
+    @State private var lockTask: Task<Void, Never>? = nil
+    private var lockAfterInterval: TimeInterval { getSecondsForLockApp(for: timeToLockApp) }
+    @State private var didPromptThisLaunch: Bool = false
+    @State private var initialLockTask: Task<Void, Never>? = nil
     
+    @State private var isAuthenticating: Bool = false
+
     var body: some View {
-        TabView{
-            MainView(viewModel: viewModel)
-                .tabItem{
-                    Label("Home", systemImage: "house")
-                }
-            LinesView(viewModel: viewModel)
-                .tabItem{
-                    Label("Linee", systemImage: "arrow.branch")
-                }
-            SettingsView(viewModel: viewModel)
-                .tabItem{Label("Impostazioni", systemImage: "gear")}
+        ZStack {
+            TabView{
+                MainView(viewModel: viewModel)
+                    .tabItem{
+                        Label("Home", systemImage: "house")
+                    }
+                LinesView(viewModel: viewModel)
+                    .tabItem{
+                        Label("Linee", systemImage: "arrow.branch")
+                    }
+                SettingsView(viewModel: viewModel)
+                    .tabItem{Label("Impostazioni", systemImage: "gear")}
+            }
+            .blur(radius: isAuthenticating ? 20 : 0)
+            .disabled(isAuthenticating)
+
+            if isAuthenticating {
+                LockOverlayView()
+                    .transition(.opacity)
+            }
         }
         .tint(.red)
-        .sheet(isPresented: $hasNotCompletedSetup) {
+        .sheet(isPresented: Binding(
+            get: { hasNotCompletedSetup && isUnlocked && lockApplication},
+            set: { hasNotCompletedSetup = $0 }
+        )) {
             SetupView()
         }
+        .onAppear{
+            if lockApplication {
+                if lockAfterInterval == 0 {
+                    if !didPromptThisLaunch {
+                        isUnlocked = false
+                        didPromptThisLaunch = true
+                        isAuthenticating = true
+                        unlockWithAuth()
+                    }
+                } else {
+                    if initialLockTask == nil && !didPromptThisLaunch {
+                        initialLockTask = Task {
+                            try? await Task.sleep(for: .seconds(lockAfterInterval))
+                            await MainActor.run {
+                                if lockApplication && !didPromptThisLaunch {
+                                    isUnlocked = false
+                                    didPromptThisLaunch = true
+                                    isAuthenticating = true
+                                    unlockWithAuth()
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                isUnlocked = true
+            }
+        }
+        .onChange(of: scenePhase) { phase in
+            guard lockApplication else {
+                initialLockTask?.cancel()
+                initialLockTask = nil
+                return
+            }
+        }
+        .onChange(of: lockApplication) { enabled in
+            if enabled {
+                didPromptThisLaunch = false
+                initialLockTask?.cancel()
+                initialLockTask = nil
+                if lockAfterInterval == 0 {
+                    isUnlocked = false
+                    didPromptThisLaunch = true
+                    isAuthenticating = true
+                    unlockWithAuth()
+                } else {
+                    initialLockTask = Task {
+                        try? await Task.sleep(for: .seconds(lockAfterInterval))
+                        await MainActor.run {
+                            if lockApplication && !didPromptThisLaunch {
+                                isUnlocked = false
+                                didPromptThisLaunch = true
+                                isAuthenticating = true
+                                unlockWithAuth()
+                            }
+                        }
+                    }
+                }
+            } else {
+                initialLockTask?.cancel()
+                initialLockTask = nil
+                isUnlocked = true
+            }
+        }
+    }
+    
+    func unlockWithAuth(){
+        isAuthenticating = true
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error){
+            let reason = "Per sbloccare l'applicazione."
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason){ success, authError in
+                DispatchQueue.main.async {
+                    isUnlocked = success
+                    isAuthenticating = false
+                }
+            }
+        }
+        else{
+            print("No byometrics found")
+            isAuthenticating = false
+        }
+    }
+}
+
+private struct LockOverlayView: View {
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                .ignoresSafeArea()
+            Color.black.opacity(0.35)
+                .ignoresSafeArea()
+            
+            Image("icon")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150, height: 150)
+                .frame(alignment: .center)
+        }
+        .accessibilityLabel("Schermata bloccata")
     }
 }
 
@@ -566,6 +695,7 @@ struct SettingsView: View{
     @AppStorage("enableNotifications") private var enableNotifications: Bool = true
     @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     @AppStorage("preferredFilter") private var preferredFilter: FilterBy = .all
+    @AppStorage("enableLockApp") private var lockApplication: Bool = false
     
     let metroLines = ["M1", "M2", "M3", "M4", "M5"]
     
@@ -792,6 +922,9 @@ struct SettingsView: View{
                         Label("Filtro Predefinito", systemImage: "line.3.horizontal.decrease.circle.fill")
                     }
                     .pickerStyle(.navigationLink)
+                    NavigationLink(destination: AppLockView()){
+                        Label("Sblocco con FaceID", systemImage: "faceid")
+                    }
                 }
                 Section("Informazioni"){
                     NavigationLink(destination: InfoView()){
@@ -838,6 +971,56 @@ struct SettingsView: View{
                 Text("Sei sicuro di voler ripristinare le impostazioni?")
             }
         }
+    }
+}
+
+struct AppLockView: View {
+    @AppStorage("enableLockApp") private var lockApplication: Bool = false
+    @AppStorage("timeToLockApp") private var timeToLockApp: TimeToLock = .immediately
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            VStack(alignment: .leading, spacing: 8) {
+                Toggle(isOn: $lockApplication) {
+                    HStack (spacing: 15){
+                        Image(systemName: "lock.fill")
+                            .foregroundStyle(.red)
+                            .scaleEffect(1.5)
+                        Text("Richiedi Face ID")
+                            .font(.system(size: 20))
+                            .bold()
+                    }
+                }
+                .tint(.red)
+                .padding()
+                .background(Color(.secondarySystemBackground))
+                .cornerRadius(12)
+                
+                Text("Richiedi Face ID per sbloccare l'applicazione.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+            }
+            .padding(.top, 40)
+            .padding(.horizontal)
+            List {
+                if(lockApplication){
+                    Section("Blocca automaticamente dopo"){
+                        Picker(selection: $timeToLockApp){
+                            ForEach(TimeToLock.allCases) { filter in
+                                Text(filter.rawValue).tag(filter)
+                                    .foregroundStyle(Color("TextColor"))
+                            }
+                        } label:{Text("")}
+                        .labelsHidden()
+                        .pickerStyle(.inline)
+                    }
+                }
+            }
+        }
+        .background(Color(.systemBackground))
+        .navigationTitle("Sblocco con FaceID")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -2416,6 +2599,16 @@ enum FilterBy: String, CaseIterable, Identifiable {
     var id: String{self.rawValue}
 }
 
+enum TimeToLock: String, CaseIterable, Identifiable {
+    case immediately = "Subito"
+    case oneMinute = "Dopo 1 Minuto"
+    case twoMinutes = "Dopo 2 Minuti"
+    case fiveMinutes = "Dopo 5 Minuti"
+    case thirdyMinutes = "Dopo 30 Minuti"
+    
+    var id: String{self.rawValue}
+}
+
 struct LineInfo: Identifiable{
     let id = UUID()
     let name: String
@@ -2498,6 +2691,21 @@ func getColor(for line: String) -> Color {
             return .orange
         
         default: return Color.gray
+    }
+}
+
+func getSecondsForLockApp(for caseSelected: TimeToLock) -> Double {
+    switch(caseSelected){
+        case .immediately:
+            return 0
+        case .oneMinute:
+            return 60
+        case .twoMinutes:
+            return 120
+        case .fiveMinutes:
+            return 300
+        case .thirdyMinutes:
+            return 1800
     }
 }
 
@@ -2703,3 +2911,4 @@ struct SafariView: UIViewControllerRepresentable {
 #Preview {
     ContentView()
 }
+
