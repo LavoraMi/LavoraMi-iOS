@@ -68,7 +68,7 @@ class WorkViewModel: ObservableObject {
                         NotificationManager.shared.syncNotifications(for: decodedItems, favorites: savedFavorites)
                     }
                 } catch {
-                    self?.errorMessage = "Errore lettura dati: \(error.localizedDescription)"
+                    self?.errorMessage = "\(error.localizedDescription)"
                     print("Errore di decodifica: \(error)")
                 }
             }
@@ -124,7 +124,7 @@ class WorkViewModel: ObservableObject {
                 }
             } catch {
                 DispatchQueue.main.async {
-                    self?.errorMessage = "Errore lettura dati: \(error.localizedDescription)"
+                    self?.errorMessage = "\(error.localizedDescription)"
                 }
             }
         }.resume()

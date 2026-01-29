@@ -441,7 +441,7 @@ struct MainView: View{
                                     Label("Riprova", systemImage: "arrow.clockwise")
                                 }
                                 .buttonStyle(.bordered)
-                                Text("Codice Errore: \(error)")
+                                Text("\(error)")
                                     .font(.footnote)
                                     .foregroundStyle(.gray)
                             }

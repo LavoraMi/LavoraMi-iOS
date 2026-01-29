@@ -210,11 +210,11 @@
 				};
 			};
 			buildConfigurationList = 65101F552F0BF3EF0078A19C /* Build configuration list for PBXProject "LavoraMi" */;
-			developmentRegion = en;
+			developmentRegion = it;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				it,
 			);
 			mainGroup = 65101F512F0BF3EF0078A19C;
 			minimizedProjectReferenceProxies = 1;
@@ -401,7 +401,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = LavoraMi/LavoraMi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25012026;
+				CURRENT_PROJECT_VERSION = 29012026;
 				DEVELOPMENT_TEAM = 95V84RP6J7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -441,7 +441,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = LavoraMi/LavoraMi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25012026;
+				CURRENT_PROJECT_VERSION = 29012026;
 				DEVELOPMENT_TEAM = 95V84RP6J7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
