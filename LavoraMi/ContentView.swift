@@ -2293,7 +2293,7 @@ struct LineSmallDetailedView: View {
     let viewModel: WorkViewModel
     
     let interchanges: [InterchangeStation] = [
-        .init(key: "Molino Dorino", displayName: "Molino Dorino MM", lines: ["M1"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(key: "Molino Dorino", displayName: "Molino Dorino MM", lines: ["M1", "z601", "z606", "z617", "z620", "z621", "z648", "z649"], typeOfInterchange: "tram.fill.tunnel"),
         .init(key: "Cadorna FN", displayName: "Milano Cadorna FN", lines: ["M1", "M2", "MXP", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4"], typeOfInterchange: "tram.fill.tunnel"),
         .init(key: "Parabiago", displayName: "Parabiago", lines: ["z644", "z643"], typeOfInterchange: "bus.fill"),
         .init(key: "Rho", displayName: "Rho FS", lines: ["S5", "S6", "S11", "z616", "z618"], typeOfInterchange: "train.side.front.car"),
@@ -2302,7 +2302,7 @@ struct LineSmallDetailedView: View {
         .init(key: "Bisceglie", displayName: "Bisceglie MM", lines: ["M1", "z560", "k506"], typeOfInterchange: "tram.fill.tunnel"),
         .init(key: "Romolo", displayName: "Romolo FS", lines: ["M2", "S9", "S19", "R31"], typeOfInterchange: "train.side.front.car"),
         .init(key: "S. Stefano Ticino", displayName: "Santo Stefano Ticino - Corbetta", lines: ["S6"], typeOfInterchange: "train.side.front.car"),
-        .init(key: "Magenta", displayName: "Magenta FS", lines: ["S6", "RV"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "Magenta", displayName: "Magenta FS", lines: ["S6", "RV", "z641", "z646", "z559"], typeOfInterchange: "train.side.front.car"),
         .init(key: "Abbiategrasso Vittorio Veneto", displayName: "Abbiategrasso V. Veneto", lines: ["z551", "z552", "z553", "z555", "z556", "z560"], typeOfInterchange: "bus.fill"),
         .init(key: "Gorgonzola", displayName: "Gorgonzola MM", lines: ["M2", "z401", "z403"], typeOfInterchange: "tram.fill.tunnel"),
         .init(key: "Cernusco", displayName: "Cernusco sul Naviglio MM", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel"),
