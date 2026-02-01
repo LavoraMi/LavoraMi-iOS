@@ -228,6 +228,7 @@ struct SetupPageView: View {
 struct MainView: View{
     @AppStorage("preferredFilter") private var preferredFilter: FilterBy = .all
     @AppStorage("showErrorMessages") var showErrorMessages: Bool = false
+    @AppStorage("showStrikeBanner") var showStrikeBanner: Bool = true
     
     @State private var closedStrike: Bool = false
     @State private var selectedFilter: FilterBy = .all
@@ -325,7 +326,7 @@ struct MainView: View{
                 }
             }
             .padding()
-            if(viewModel.strikeEnabled && !closedStrike){
+            if(viewModel.strikeEnabled && !closedStrike && showStrikeBanner){
                 VStack(spacing: 8) {
                     Label("AVVISO SCIOPERO", systemImage: "exclamationmark.triangle.fill")
                         .font(.system(size: 25, weight: .bold))
@@ -911,7 +912,7 @@ struct SettingsView: View{
                     }
                     .pickerStyle(.navigationLink)
                     NavigationLink(destination: AdvancedOptionsView()){
-                        Label("Opzioni Avanzate", systemImage: "gearshape.2.fill")
+                        Label("Opzioni Avanzate", systemImage: "gearshape.fill")
                     }
                 }
                 Section("Informazioni"){
@@ -964,6 +965,7 @@ struct SettingsView: View{
 
 struct AdvancedOptionsView: View {
     @AppStorage("showErrorMessages") var showErrorMessages: Bool = false
+    @AppStorage("showStrikeBanner") var showStrikeBanner: Bool = true
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     
     enum linkOpenTypes: String, CaseIterable, Identifiable{
@@ -980,7 +982,13 @@ struct AdvancedOptionsView: View {
                     Label("Mostra messaggi di Errore", systemImage: "exclamationmark.bubble.fill")
                 }
             }
+            Section(footer: Text("Mostra il banner degli scioperi nella Home quando sono presenti.")){
+                Toggle(isOn: $showStrikeBanner){
+                    Label("Mostra banner Scioperi", systemImage: "text.append")
+                }
+            }
             Section(footer: Text("Seleziona la modalità in cui aprire i link. Default: In App")){
+                Label("Apri link:", systemImage: "network")
                 Picker(selection: $howToOpenLinks, content: {
                     ForEach(linkOpenTypes.allCases) { filter in
                         Text(filter.rawValue).tag(filter)
