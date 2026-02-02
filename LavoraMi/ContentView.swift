@@ -431,7 +431,7 @@ struct MainView: View{
                             }
                         } else if let error = viewModel.errorMessage {
                             VStack (spacing: 10){
-                                Image(systemName: "wifi.slash")
+                                Image(systemName: "wifi.exclamationmark")
                                     .font(.largeTitle)
                                 Text("Impossibile caricare i dati dal server.")
                                     .font(.title2)
@@ -987,7 +987,7 @@ struct AdvancedOptionsView: View {
                     Label("Mostra banner Scioperi", systemImage: "text.append")
                 }
             }
-            Section(footer: Text("Seleziona la modalità in cui aprire i link. Default: In App")){
+            Section(footer: Text("Seleziona la modalità in cui aprire i link.")){
                 Label("Apri link:", systemImage: "network")
                 Picker(selection: $howToOpenLinks, content: {
                     ForEach(linkOpenTypes.allCases) { filter in
@@ -1971,7 +1971,7 @@ struct LineDetailView: View {
                             .foregroundStyle(.white)
                             .font(.system(size: 40, weight: .bold))
                             .padding(.vertical, 4)
-                            .padding(.horizontal, 8)
+                            .padding(.horizontal, 15)
                             .background(
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
@@ -2243,7 +2243,7 @@ struct LineDetailView: View {
                                 }
                                 .padding(.vertical, 8)
                             } else {
-                                Text("Nessun lavoro attuale o programmato su questa linea.")
+                                Text("Non ci sono lavori su questa linea.")
                                     .padding()
                                     .bold()
                                     .font(.system(size: 15))
@@ -2476,7 +2476,7 @@ struct LineSmallDetailedView: View {
                             }
                             .padding(.vertical, 8)
                         } else {
-                            Text("Nessun lavoro attuale o programmato su questa linea.")
+                            Text("Non ci sono lavori su questa linea.")
                                 .padding()
                                 .bold()
                                 .font(.system(size: 15))
@@ -2663,7 +2663,7 @@ func getColor(for line: String) -> Color {
         case "MXP1": return Color(red: 140/255, green: 0, blue: 118/255)
         case "MXP2": return Color(red: 140/255, green: 0, blue: 118/255)
         case "AV": return .red
-        case "Aereoporto": return .black
+        case "Aereoporto": return .cyan
         case _ where line.contains("R"):
                 return Color.blue
         case let s where (1...33).contains(Int(s) ?? 0):
