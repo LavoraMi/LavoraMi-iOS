@@ -1501,7 +1501,7 @@ struct InfoView: View {
                         .bold()
                         .padding(.top, 20)
                     
-                    Link(destination: URL(string: "mailto:help.playepik@gmail.com")!) {
+                    Link(destination: URL(string: "mailto:info@lavorami.it")!) {
                         Label("Segnala un bug", systemImage: "ladybug.fill")
                             .font(.system(size: 20))
                     }
