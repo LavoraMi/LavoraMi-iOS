@@ -10,6 +10,7 @@ import MapKit
 import SafariServices
 import WidgetKit
 import LocalAuthentication
+internal import Auth
 
 struct WorkItem: Identifiable, Hashable, Codable {
     var id = UUID()
@@ -680,6 +681,7 @@ struct SettingsView: View{
     @State private var presentedAlertReset = false
     @State private var showBuildNumber = false
     @StateObject var viewModel: WorkViewModel
+    @StateObject var authManager = AuthManager()
     
     //APP DATAS
     @AppStorage("enableNotifications") private var enableNotifications: Bool = true
@@ -691,6 +693,33 @@ struct SettingsView: View{
     var body: some View {
         NavigationStack {
             List {
+                Section("Account"){
+                    NavigationLink(destination: AccountView(auth: authManager)) {
+                        HStack(spacing: 12) {
+                            Image(systemName: "person.crop.circle.fill")
+                                .font(.system(size: 40))
+                                .foregroundStyle(.red)
+                            
+                            VStack(alignment: .leading, spacing: 2) {
+                                if(authManager.isLoggedIn()){
+                                    Text(authManager.getFullName())
+                                        .font(.headline)
+                                        .foregroundStyle(.primary)
+                                }
+                                else{
+                                    Text("Registrati / Login")
+                                        .font(.headline)
+                                        .foregroundStyle(.primary)
+                                }
+                                
+                                Text("Gestisci l'Account")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .padding(.vertical, 4)
+                    }
+                }
                 Section("Preferiti"){
                     DisclosureGroup(isExpanded: $expandedTrenord){
                         HStack{
@@ -959,6 +988,283 @@ struct SettingsView: View{
             } message: {
                 Text("Sei sicuro di voler ripristinare le impostazioni?")
             }
+        }
+    }
+}
+
+struct AccountView: View {
+    @StateObject var auth: AuthManager
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var fullName: String = ""
+    @State private var isLogginIn: Bool = true
+    @State private var loggedIn: Bool = false
+    @State private var showError: Bool = false
+    
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 30) {
+                if isLogginIn && !loggedIn {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Bentornato")
+                            .font(.system(size: 40, weight: .bold))
+                            .foregroundStyle(.primary)
+
+                        Text("Accedi al tuo account per continuare.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 40)
+
+                    VStack(spacing: 20) {
+                        HStack(spacing: 15) {
+                            Image(systemName: "envelope.fill")
+                                .foregroundStyle(.gray)
+                            TextField("Email", text: $email)
+                                .keyboardType(.emailAddress)
+                                .textContentType(.emailAddress)
+                                .textInputAutocapitalization(.never)
+                                .disabled(auth.isLoading)
+                        }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                        HStack(spacing: 15) {
+                            Image(systemName: "lock.fill")
+                                .foregroundStyle(.gray)
+                            SecureField("Password", text: $password)
+                                .disabled(auth.isLoading)
+                        }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                        HStack {
+                            Spacer()
+                            Button("Password dimenticata?") { }
+                                .font(.caption)
+                                .foregroundStyle(.red)
+                            
+                            Button(action: {
+                                isLogginIn = !isLogginIn
+                            }){
+                                Text("Non hai un account?")
+                                    .font(.caption)
+                                    .foregroundStyle(.red)
+                            }
+                        }
+                    }
+                    
+                    if let err = auth.errorMessage, !err.isEmpty {
+                        Text(err)
+                            .font(.footnote)
+                            .foregroundStyle(.red)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+
+                    Spacer()
+
+                    Button(action: {
+                        Task {
+                            await auth.signIn(email: email, password: password)
+                            loggedIn = auth.isLoggedIn()
+                            if loggedIn {
+                                if fullName.isEmpty { fullName = auth.getFullName() }
+                                if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+                            }
+                        }
+                    }) {
+                        HStack {
+                            if auth.isLoading {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                                    .tint(.white)
+                            }
+                            Text(auth.isLoading ? "Accedo..." : "Accedi")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                        }
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background((email.isEmpty || password.isEmpty || auth.isLoading) ? Color.gray.opacity(0.5) : Color.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .shadow(radius: 5, y: 3)
+                    }
+                    .disabled(email.isEmpty || password.isEmpty || auth.isLoading)
+                }; if !isLogginIn && !loggedIn {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Crea account")
+                            .font(.system(size: 40, weight: .bold))
+                            .foregroundStyle(.primary)
+
+                        Text("Registrati per iniziare.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 40)
+
+                    VStack(spacing: 20) {
+                        HStack(spacing: 15) {
+                            Image(systemName: "person.fill")
+                                .foregroundStyle(.gray)
+                            TextField("Nome completo", text: $fullName)
+                                .textInputAutocapitalization(.words)
+                                .disabled(auth.isLoading)
+                        }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                        HStack(spacing: 15) {
+                            Image(systemName: "envelope.fill")
+                                .foregroundStyle(.gray)
+                            TextField("Email", text: $email)
+                                .keyboardType(.emailAddress)
+                                .textContentType(.emailAddress)
+                                .textInputAutocapitalization(.never)
+                                .disabled(auth.isLoading)
+                        }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                        HStack(spacing: 15) {
+                            Image(systemName: "lock.fill")
+                                .foregroundStyle(.gray)
+                            SecureField("Password", text: $password)
+                                .disabled(auth.isLoading)
+                        }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                    }
+                    
+                    if let err = auth.errorMessage, !err.isEmpty {
+                        Text(err)
+                            .font(.footnote)
+                            .foregroundStyle(.red)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+
+                    Spacer()
+
+                    HStack{
+                        Button(action: {
+                            isLogginIn = !isLogginIn
+                        }){
+                            Text("Hai già un account?")
+                                .font(.caption)
+                                .foregroundStyle(.red)
+                        }
+                    }
+                    
+                    Button(action: {
+                        Task {
+                            await auth.signUp(email: email, password: password, name: fullName)
+                        }
+                    }) {
+                        HStack {
+                            if auth.isLoading {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                                    .tint(.white)
+                            }
+                            Text(auth.isLoading ? "Registrazione..." : "Registrati")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                        }
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background((email.isEmpty || password.isEmpty || fullName.isEmpty || auth.isLoading) ? Color.gray.opacity(0.5) : Color.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .shadow(radius: 5, y: 3)
+                    }
+                    .disabled(email.isEmpty || password.isEmpty || fullName.isEmpty || auth.isLoading)
+                }
+                if loggedIn {
+                    VStack(alignment: .leading, spacing: 20) {
+                        Text("Il tuo account")
+                            .font(.system(size: 32, weight: .bold))
+                            .foregroundStyle(.primary)
+
+                        VStack(spacing: 16) {
+                            HStack(spacing: 15) {
+                                Image(systemName: "person.fill")
+                                    .foregroundStyle(.gray)
+                                TextField("Nome completo", text: $fullName)
+                                    .textInputAutocapitalization(.words)
+                            }
+                            .padding()
+                            .background(Color(.systemGray6))
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                            HStack(spacing: 15) {
+                                Image(systemName: "envelope.fill")
+                                    .foregroundStyle(.gray)
+                                TextField("Email", text: $email)
+                                    .keyboardType(.emailAddress)
+                                    .textContentType(.emailAddress)
+                                    .textInputAutocapitalization(.never)
+                                    .disabled(true)
+                            }
+                            .padding()
+                            .background(Color(.systemGray6))
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                            HStack(spacing: 15) {
+                                Image(systemName: "lock.fill")
+                                    .foregroundStyle(.gray)
+                                SecureField("Password", text: $password)
+                                    .disabled(true)
+                            }
+                            .padding()
+                            .background(Color(.systemGray6))
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                        }
+
+                        Spacer()
+
+                        Button(role: .destructive, action: {
+                            Task {
+                                await auth.signOut()
+                                loggedIn = false
+                                isLogginIn = true
+                                email = ""
+                                password = ""
+                                fullName = ""
+                            }
+                        }) {
+                            Text("Esci")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.red)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                                .shadow(radius: 5, y: 3)
+                        }
+                    }
+                    .onAppear {
+                        if fullName.isEmpty { fullName = auth.getFullName() }
+                        if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+                    }
+                }
+            }
+            .padding(25)
+            .onAppear {
+                loggedIn = auth.isLoggedIn()
+                if loggedIn {
+                    if fullName.isEmpty { fullName = auth.getFullName() }
+                    if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+                }
+            }
+            .navigationTitle("Account")
         }
     }
 }
@@ -2279,7 +2585,6 @@ struct LineDetailView: View {
                     .frame(maxHeight: .infinity)
                     .padding(.bottom, 10)
                 }
-                
             }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
