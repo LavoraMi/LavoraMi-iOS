@@ -1507,7 +1507,7 @@ struct InfoView: View {
                     }
                     .padding(.top, 5)
                     .padding(.bottom, 20)
-                    Link(destination: URL(string: "google.com")!) {
+                    Link(destination: URL(string: "lavorami.it")!) {
                         Label("Sito web", systemImage: "network")
                             .font(.system(size: 20))
                     }

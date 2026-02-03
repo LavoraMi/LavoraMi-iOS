@@ -41,7 +41,6 @@ class AuthManager: ObservableObject {
             
             _ = try await supabase.auth.signUp(email: email, password: password, data: metadata)
             print("Registrazione effettuata. Controlla la mail!")
-            // Try to fetch a session if auto-confirm is enabled
             do { self.session = try await supabase.auth.session } catch { }
         } catch {
             errorMessage = error.localizedDescription
