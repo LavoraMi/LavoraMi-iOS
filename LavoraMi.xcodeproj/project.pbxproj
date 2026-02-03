@@ -79,7 +79,6 @@
 				SplashScreenView.swift,
 				StationsDB.swift,
 				SupabaseAuth/AuthManager.swift,
-				SupabaseAuth/SupabaseClient.swift,
 				WorkViewModel.swift,
 			);
 			target = 6582F30A2F1BD9F000F7ADAF /* LavoraMiWidgetExtension */;
