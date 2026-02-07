@@ -706,7 +706,7 @@ struct SettingsView: View{
                                         .font(.headline)
                                         .foregroundStyle(.primary)
                                 }
-                                else{
+                                else {
                                     Text("Il tuo Account")
                                         .font(.headline)
                                         .foregroundStyle(.primary)

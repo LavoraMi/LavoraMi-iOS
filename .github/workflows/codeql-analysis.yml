@@ -32,15 +32,6 @@ jobs:
           queries: +security-and-quality
           config-file: ./.github/codeql/codeql-config.yml
 
-      - name: Exclude AuthManager from build
-        run: |
-          if [ -f LavoraMi/SupabaseAuth/AuthManager.swift ]; then
-            mv LavoraMi/SupabaseAuth/AuthManager.swift LavoraMi/SupabaseAuth/AuthManager.swift.disabled
-            echo "AuthManager.swift renamed to AuthManager.swift.disabled"
-          else
-            echo "AuthManager.swift not found, skipping"
-          fi
-
       - name: Build main targets
         run: |
           xcodebuild -project LavoraMi.xcodeproj \
