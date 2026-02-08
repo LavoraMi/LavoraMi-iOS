@@ -1192,7 +1192,8 @@ struct AccountView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(radius: 5, y: 3)
                     }
-                    .disabled(email.isEmpty || password.isEmpty || fullName.isEmpty || auth.isLoading)
+                    .disabled(email.isEmpty || (password.isEmpty && password.count < 8) || fullName.isEmpty || auth.isLoading)
+                    
                 }
                 if loggedIn {
                     VStack(alignment: .leading, spacing: 20) {
