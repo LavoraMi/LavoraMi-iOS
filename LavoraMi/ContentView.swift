@@ -1370,6 +1370,7 @@ struct AdvancedOptionsView: View {
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     private var currentDeviceBiometric: BiometricType = BiometricAuth.getBiometricType()
+    @State private var presentedCacheAlert = false
     
     var body: some View {
         List{
@@ -1401,6 +1402,23 @@ struct AdvancedOptionsView: View {
                 .pickerStyle(.inline)
                 .labelsHidden()
             }
+            Section(footer: Text("Dimensione memoria Cache attuale: \(getCacheSize())")){
+                Button(role: .destructive) {
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
+                    presentedCacheAlert = true
+                } label: {
+                    Label("Pulisci memoria Cache", systemImage: "trash.fill")
+                }
+            }
+            .alert("Sei sicuro?", isPresented: $presentedCacheAlert) {
+                Button("Annulla", role: .cancel) { }
+                Button("Continua", role: .destructive) {
+                    clearAllCache()
+                }
+            } message: {
+                Text("Sei sicuro di voler pulire la memoria Cache?")
+            }
         }
         .navigationTitle("Opzioni Avanzate")
         .navigationBarTitleDisplayMode(.inline)
@@ -1414,6 +1432,34 @@ struct AdvancedOptionsView: View {
                 return "FaceID"
             default:
                 return "Codice"
+        }
+    }
+    
+    func getCacheSize() -> String {
+        let cacheURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        var totalSize: Int64 = 0
+        
+        if let files = try? FileManager.default.contentsOfDirectory(at: cacheURL, includingPropertiesForKeys: [.fileSizeKey]) {
+            for file in files {
+                let size = (try? file.resourceValues(forKeys: [.fileSizeKey]))?.fileSize ?? 0
+                totalSize += Int64(size)
+            }
+        }
+            
+        let formatter = ByteCountFormatter()
+        formatter.allowedUnits = [.useMB]
+        formatter.countStyle = .file
+        return formatter.string(fromByteCount: totalSize)
+    }
+    
+    func clearAllCache() {
+        URLCache.shared.removeAllCachedResponses()
+        
+        let cacheURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        if let files = try? FileManager.default.contentsOfDirectory(at: cacheURL, includingPropertiesForKeys: nil) {
+            for file in files {
+                try? FileManager.default.removeItem(at: file)
+            }
         }
     }
 }
