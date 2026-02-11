@@ -1402,7 +1402,7 @@ struct AdvancedOptionsView: View {
                 .pickerStyle(.inline)
                 .labelsHidden()
             }
-            Section(footer: Text("Dimensione memoria Cache attuale: \(getCacheSize())")){
+            Section(footer: Text("Elimina la memoria Cache dal dispositivo, liberando spazio su disco.")){
                 Button(role: .destructive) {
                     let generator = UIImpactFeedbackGenerator(style: .light)
                     generator.impactOccurred()
@@ -1433,23 +1433,6 @@ struct AdvancedOptionsView: View {
             default:
                 return "Codice"
         }
-    }
-    
-    func getCacheSize() -> String {
-        let cacheURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        var totalSize: Int64 = 0
-        
-        if let files = try? FileManager.default.contentsOfDirectory(at: cacheURL, includingPropertiesForKeys: [.fileSizeKey]) {
-            for file in files {
-                let size = (try? file.resourceValues(forKeys: [.fileSizeKey]))?.fileSize ?? 0
-                totalSize += Int64(size)
-            }
-        }
-            
-        let formatter = ByteCountFormatter()
-        formatter.allowedUnits = [.useMB]
-        formatter.countStyle = .file
-        return formatter.string(fromByteCount: totalSize)
     }
     
     func clearAllCache() {
