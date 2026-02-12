@@ -1314,21 +1314,6 @@ struct AccountView: View {
                                 .shadow(radius: 5, y: 3)
                         }
                     }
-                    .alert("Sei sicuro?", isPresented: $showConfirmToExitPopUp) {
-                        Button("Annulla", role: .cancel) { }
-                        Button("Conferma", role: .destructive) {
-                            Task {
-                                await auth.signOut()
-                                loggedIn = false
-                                isLogginIn = true
-                                email = ""
-                                password = ""
-                                fullName = ""
-                            }
-                        }
-                    } message: {
-                        Text("Sei sicuro di voler uscire dall'account?")
-                    }
                     .onAppear {
                         if fullName.isEmpty { fullName = auth.getFullName() }
                         if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
@@ -1357,6 +1342,21 @@ struct AccountView: View {
                 else{
                     isLocked = false
                 }
+            }
+            .alert("Sei sicuro?", isPresented: $showConfirmToExitPopUp) {
+                Button("Annulla", role: .cancel) { }
+                Button("Conferma", role: .destructive) {
+                    Task {
+                        await auth.signOut()
+                        loggedIn = false
+                        isLogginIn = true
+                        email = ""
+                        password = ""
+                        fullName = ""
+                    }
+                }
+            } message: {
+                Text("Sei sicuro di voler uscire dall'account?")
             }
             .navigationTitle("Account")
             .navigationBarTitleDisplayMode(.inline)
@@ -1410,14 +1410,14 @@ struct AdvancedOptionsView: View {
                 } label: {
                     Label("Pulisci memoria Cache", systemImage: "trash.fill")
                 }
-            }
-            .alert("Sei sicuro?", isPresented: $presentedCacheAlert) {
-                Button("Annulla", role: .cancel) { }
-                Button("Continua", role: .destructive) {
-                    clearAllCache()
+                .confirmationDialog("Sei sicuro?", isPresented: $presentedCacheAlert) {
+                    Button("Annulla", role: .cancel) { }
+                    Button("Continua", role: .destructive) {
+                        clearAllCache()
+                    }
+                } message: {
+                    Text("Sei sicuro di voler pulire la memoria Cache?")
                 }
-            } message: {
-                Text("Sei sicuro di voler pulire la memoria Cache?")
             }
         }
         .navigationTitle("Opzioni Avanzate")
@@ -1444,6 +1444,45 @@ struct AdvancedOptionsView: View {
                 try? FileManager.default.removeItem(at: file)
             }
         }
+    }
+}
+
+struct CacheAlertSheet: View {
+    @Environment(\.dismiss) var dismiss
+    let onDelete: () -> Void
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Sei sicuro di voler pulire la memoria Cache?")
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .padding(.top, 30)
+            
+            Spacer()
+            
+            Button(role: .destructive) {
+                onDelete()
+                dismiss()
+            } label: {
+                Text("Elimina Cache")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.red.opacity(0.2))
+                    .foregroundColor(.red)
+                    .cornerRadius(12)
+            }
+            
+            Button {
+                dismiss()
+            } label: {
+                Text("Annulla")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(12)
+            }
+        }
+        .padding()
     }
 }
 
