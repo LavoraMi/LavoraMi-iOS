@@ -131,7 +131,7 @@ struct SetupView: View {
                     .padding(.bottom)
                 } else {
                     Button {
-                        if(currentPage == 3){
+                        if(currentPage == 2){
                             NotificationManager.shared.requestPermission()
                         }
                         withAnimation { currentPage += 1 }
