@@ -709,6 +709,7 @@ struct SettingsView: View{
     @AppStorage("showErrorMessages") var showErrorMessages: Bool = false
     @AppStorage("showStrikeBanner") var showStrikeBanner: Bool = true
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
+    @AppStorage("showDebugInfos") var showDebugInfos: Bool = false
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     
     let metroLines = ["M1", "M2", "M3", "M4", "M5"]
@@ -1017,7 +1018,8 @@ struct SettingsView: View{
                     showErrorMessages = false
                     showStrikeBanner = true
                     requireFaceID = true
-                    howToOpenLinks = .inApp 
+                    howToOpenLinks = .inApp
+                    showDebugInfos = false
                 }
             } message: {
                 Text("Sei sicuro di voler ripristinare le impostazioni?")
