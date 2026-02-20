@@ -558,16 +558,7 @@ struct StationsDB {
     ]
     
     static let mxp1: [MetroStation] = [
-        .init(name: "Malpensa Aereoporto Terminal 2", coordinate: .init(latitude: 45.65013, longitude: 8.72133), branch: "Main"),
-        .init(name: "Malpensa Aereoporto Terminal 1", coordinate: .init(latitude: 45.62714, longitude: 8.71129), branch: "Main"),
-        .init(name: "Busto Arsizio Nord", coordinate: .init(latitude: 45.60617, longitude: 8.85139), branch: "Main"),
-        .init(name: "Saronno", coordinate: .init(latitude: 45.62534, longitude: 9.03075), branch: "Main"),
-        .init(name: "Milano Bovisa", coordinate: .init(latitude: 45.50257, longitude: 9.15925), branch: "Main"),
-        .init(name: "Milano Domodossola", coordinate: .init(latitude: 45.48089, longitude: 9.16224), branch: "Main"),
-        .init(name: "Milano Cadorna", coordinate: .init(latitude: 45.46843, longitude: 9.17553), branch: "Main")
-    ]
-    
-    static let mxp2: [MetroStation] = [
+        .init(name: "Gallarate", coordinate: .init(latitude: 45.65974, longitude: 8.79853), branch: "Main"),
         .init(name: "Malpensa Aereoporto Terminal 2", coordinate: .init(latitude: 45.65013, longitude: 8.72133), branch: "Main"),
         .init(name: "Malpensa Aereoporto Terminal 1", coordinate: .init(latitude: 45.62714, longitude: 8.71129), branch: "Main"),
         .init(name: "Ferno - Lonate Pozzolo", coordinate: .init(latitude: 45.60854, longitude: 8.75525), branch: "Main"),
@@ -578,6 +569,16 @@ struct StationsDB {
         .init(name: "Milano Bovisa", coordinate: .init(latitude: 45.50257, longitude: 9.15925), branch: "Main"),
         .init(name: "Milano Pta Garibaldi", coordinate: .init(latitude: 45.48449, longitude: 9.18737), branch: "Main"),
         .init(name: "Milano Centrale", coordinate: .init(latitude: 45.48713, longitude: 9.20482), branch: "Main")
+    ]
+    
+    static let mxp2: [MetroStation] = [
+        .init(name: "Malpensa Aereoporto Terminal 2", coordinate: .init(latitude: 45.65013, longitude: 8.72133), branch: "Main"),
+        .init(name: "Malpensa Aereoporto Terminal 1", coordinate: .init(latitude: 45.62714, longitude: 8.71129), branch: "Main"),
+        .init(name: "Busto Arsizio Nord", coordinate: .init(latitude: 45.60617, longitude: 8.85139), branch: "Main"),
+        .init(name: "Saronno", coordinate: .init(latitude: 45.62534, longitude: 9.03075), branch: "Main"),
+        .init(name: "Milano Bovisa", coordinate: .init(latitude: 45.50257, longitude: 9.15925), branch: "Main"),
+        .init(name: "Milano Domodossola", coordinate: .init(latitude: 45.48089, longitude: 9.16224), branch: "Main"),
+        .init(name: "Milano Cadorna", coordinate: .init(latitude: 45.46843, longitude: 9.17553), branch: "Main")
     ]
     
     static let interchanges: [InterchageInfo] = [
@@ -597,7 +598,7 @@ struct StationsDB {
         .init(name: "Affori FN", lines: ["R16", "S2", "S4", "M3"], typeOfInterchange: "lightrail"),
         .init(name: "Zara", lines: ["M3", "M5"],typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Repubblica", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "M3"], typeOfInterchange: "lightrail"),
-        .init(name: "Lodi TIBB", lines: ["S9", "S19", "M3"], typeOfInterchange: "figure.walk"),
+        .init(name: "Lodi TIBB", lines: ["R31", "S9", "S19", "M3"], typeOfInterchange: "figure.walk"),
         .init(name: "Rogoredo FS", lines: ["R34", "R38", "RE8", "RE11", "RE13", "S1", "S2", "S9", "S12", "S13", "S19", "M3"], typeOfInterchange: "lightrail"),
         .init(name: "San Cristoforo", lines: ["R31", "S9", "S19", "M4"], typeOfInterchange: "lightrail"),
         .init(name: "Sforza - Policlinico", lines: ["M3", "M4"], typeOfInterchange: "figure.walk"),

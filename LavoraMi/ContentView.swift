@@ -1949,8 +1949,8 @@ struct LinesView: View {
     
     var malpensaExpress: [LineInfo] {
         [
-            LineInfo(name: "MXP", branches: "Milano Cadorna - Malpensa Aereoporto", type: "Malpensa Express 1", waitMinutes: "30 min.", stations: StationsDB.mxp1),
-            LineInfo(name: "MXP", branches: "Milano Centrale - Malpensa Aereoporto", type: "Malpensa Express 2", waitMinutes: "30 min.", stations: StationsDB.mxp2)
+            LineInfo(name: "MXP", branches: "Gallarate - Malpensa - Milano Centrale", type: "Malpensa Express 1", waitMinutes: "30 min.", stations: StationsDB.mxp1),
+            LineInfo(name: "MXP", branches: "Malpensa - Milano Cadorna", type: "Malpensa Express 2", waitMinutes: "30 min.", stations: StationsDB.mxp2),
         ]
     }
     
@@ -3013,10 +3013,18 @@ struct InterchangeView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Label(item.name, systemImage: "arrow.left.and.right")
-                .font(.headline)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .foregroundStyle(Color("TextColor"))
+            if(item.name == "Lodi TIBB"){
+                Label("Milano Scalo Romana FS", systemImage: "arrow.left.and.right")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundStyle(Color("TextColor"))
+            }
+            else{
+                Label(item.name, systemImage: "arrow.left.and.right")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundStyle(Color("TextColor"))
+            }
             
             HStack {
                 Text(currentLine)
