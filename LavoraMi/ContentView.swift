@@ -535,15 +535,28 @@ struct WorkInProgressRow: View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
                         ForEach(item.lines, id: \.self) { line in
-                            Text(line)
-                                .font(.system(size: 12, weight: .bold))
-                                .foregroundStyle(.white)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 8)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 6)
-                                        .fill(getColor(for: line))
-                                )
+                            if(line.contains("Filobus")){
+                                Label(line, systemImage: "bolt.fill")
+                                    .font(.system(size: 12, weight: .bold))
+                                    .foregroundStyle(.white)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .fill(getColor(for: line))
+                                    )
+                            }
+                            else{
+                                Text(line)
+                                    .font(.system(size: 12, weight: .bold))
+                                    .foregroundStyle(.white)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .fill(getColor(for: line))
+                                    )
+                            }
                         }
                     }
                 }
@@ -3174,10 +3187,15 @@ func getColor(for line: String) -> Color {
         
         //METRO LINES
         case "M1": return Color(red: 228/255, green: 5/255, blue: 32/255)
+        case "NM1": return Color(red: 228/255, green: 5/255, blue: 32/255)
         case "M2": return Color(red: 95/255, green: 147/255, blue: 34/255)
+        case "NM2": return Color(red: 95/255, green: 147/255, blue: 34/255)
         case "M3": return Color(red: 252/255, green: 190/255, blue: 0)
+        case "NM3": return Color(red: 252/255, green: 190/255, blue: 0)
         case "M4": return Color(red: 0, green: 22/255, blue: 137/255)
+        case "NM4": return Color(red: 0, green: 22/255, blue: 137/255)
         case "M5": return Color(red: 165/255, green: 147/255, blue: 198/255)
+        case "NM5": return Color(red: 165/255, green: 147/255, blue: 198/255)
         
         //BUS LINES
         case _ where line.contains("z"):
