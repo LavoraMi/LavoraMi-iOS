@@ -231,6 +231,7 @@ struct MainView: View{
     @AppStorage("showErrorMessages") var showErrorMessages: Bool = false
     @AppStorage("showStrikeBanner") var showStrikeBanner: Bool = true
     @AppStorage("showDebugInfos") var showDebugInfos: Bool = false
+    @AppStorage("linesFavorites") var linesFavorites: [String] = []
     
     @State private var closedStrike: Bool = false
     @State private var selectedFilter: FilterBy = .all
@@ -1023,9 +1024,6 @@ struct SettingsView: View{
                 }
             } message: {
                 Text("Sei sicuro di voler ripristinare le impostazioni?")
-            }
-            .onAppear{
-                print(linesFavorites)
             }
         }
     }
