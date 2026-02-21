@@ -986,15 +986,39 @@ struct SettingsView: View{
                         Label("Filtro Predefinito", systemImage: "line.3.horizontal.decrease.circle.fill")
                     }
                     .pickerStyle(.navigationLink)
-                    Picker(selection: $appearanceSelection){
-                        ForEach(AppearanceType.allCases) { filter in
-                            Text(filter.description).tag(filter)
-                                .foregroundStyle(Color("TextColor"))
+                    NavigationLink {
+                        List {
+                            ForEach(AppearanceType.allCases) { filter in
+                                Button {
+                                    appearanceSelection = filter
+                                } label: {
+                                    HStack {
+                                        Label{
+                                            Text(filter.description)
+                                        } icon: {
+                                            Image(systemName: filter.iconName)
+                                                .foregroundStyle(.red)
+                                        }
+                                        
+                                        Spacer()
+                                        if appearanceSelection == filter {
+                                            Image(systemName: "checkmark")
+                                                .foregroundColor(.red)
+                                        }
+                                    }
+                                }
+                                .foregroundColor(Color("TextColor"))
+                            }
                         }
+                        .navigationTitle("Aspetto")
+                        .navigationBarTitleDisplayMode(.inline)
                     } label: {
-                        Label("Aspetto", systemImage: "circle.righthalf.filled")
+                        HStack {
+                            Label("Aspetto", systemImage: "circle.righthalf.filled")
+                            Spacer()
+                            Text(appearanceSelection.description)
+                        }
                     }
-                    .pickerStyle(.navigationLink)
                     NavigationLink(destination: AdvancedOptionsView()){
                         Label("Opzioni Avanzate", systemImage: "gearshape.fill")
                     }
@@ -3133,6 +3157,14 @@ enum AppearanceType: Int, CaseIterable, Identifiable {
             case .system: return "Sistema"
             case .light: return "Chiaro"
             case .dark: return "Scuro"
+        }
+    }
+    
+    var iconName: String {
+        switch self {
+            case .system: return "gear"
+            case .dark: return "moon.fill"
+            case .light: return "sun.max.fill"
         }
     }
     
