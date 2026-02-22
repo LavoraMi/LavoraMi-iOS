@@ -18,6 +18,8 @@
 		6531E9CF2F312C29001B03BB /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 6531E9CE2F312C29001B03BB /* Realtime */; };
 		6531E9D12F312C29001B03BB /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 6531E9D02F312C29001B03BB /* Storage */; };
 		6531E9D32F312C29001B03BB /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6531E9D22F312C29001B03BB /* Supabase */; };
+		65632D892F4B6FA3007AD01D /* SwiftUIMailView in Frameworks */ = {isa = PBXBuildFile; productRef = 65632D882F4B6FA3007AD01D /* SwiftUIMailView */; };
+		65632D8B2F4B70CD007AD01D /* SwiftUIMailView in Frameworks */ = {isa = PBXBuildFile; productRef = 65632D8A2F4B70CD007AD01D /* SwiftUIMailView */; };
 		6582F30E2F1BD9F100F7ADAF /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6582F30D2F1BD9F100F7ADAF /* WidgetKit.framework */; };
 		6582F3102F1BD9F100F7ADAF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6582F30F2F1BD9F100F7ADAF /* SwiftUI.framework */; };
 		6582F31D2F1BD9F300F7ADAF /* LavoraMiWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6582F30B2F1BD9F000F7ADAF /* LavoraMiWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -114,6 +116,7 @@
 			files = (
 				6531E9B32F3125BF001B03BB /* PostgREST in Frameworks */,
 				6531E9B12F3125BF001B03BB /* Functions in Frameworks */,
+				65632D892F4B6FA3007AD01D /* SwiftUIMailView in Frameworks */,
 				6531E9C22F312892001B03BB /* Supabase in Frameworks */,
 				6531E9AF2F3125BF001B03BB /* Auth in Frameworks */,
 				6531E9B72F3125BF001B03BB /* Storage in Frameworks */,
@@ -125,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65632D8B2F4B70CD007AD01D /* SwiftUIMailView in Frameworks */,
 				6582F3102F1BD9F100F7ADAF /* SwiftUI.framework in Frameworks */,
 				6582F30E2F1BD9F100F7ADAF /* WidgetKit.framework in Frameworks */,
 				6531E9D12F312C29001B03BB /* Storage in Frameworks */,
@@ -195,6 +199,7 @@
 				6531E9B42F3125BF001B03BB /* Realtime */,
 				6531E9B62F3125BF001B03BB /* Storage */,
 				6531E9C12F312892001B03BB /* Supabase */,
+				65632D882F4B6FA3007AD01D /* SwiftUIMailView */,
 			);
 			productName = LavoraMi;
 			productReference = 65101F5A2F0BF3EF0078A19C /* LavoraMi.app */;
@@ -222,6 +227,7 @@
 				6531E9CE2F312C29001B03BB /* Realtime */,
 				6531E9D02F312C29001B03BB /* Storage */,
 				6531E9D22F312C29001B03BB /* Supabase */,
+				65632D8A2F4B70CD007AD01D /* SwiftUIMailView */,
 			);
 			productName = LavoraMiWidgetExtension;
 			productReference = 6582F30B2F1BD9F000F7ADAF /* LavoraMiWidgetExtension.appex */;
@@ -256,6 +262,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				6531E9AD2F3125BF001B03BB /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				65632D872F4B6F64007AD01D /* XCRemoteSwiftPackageReference "swiftui-mail-view" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 65101F5B2F0BF3EF0078A19C /* Products */;
@@ -619,6 +626,14 @@
 				minimumVersion = 2.5.1;
 			};
 		};
+		65632D872F4B6F64007AD01D /* XCRemoteSwiftPackageReference "swiftui-mail-view" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-mail-view";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -676,6 +691,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6531E9AD2F3125BF001B03BB /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
+		};
+		65632D882F4B6FA3007AD01D /* SwiftUIMailView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65632D872F4B6F64007AD01D /* XCRemoteSwiftPackageReference "swiftui-mail-view" */;
+			productName = SwiftUIMailView;
+		};
+		65632D8A2F4B70CD007AD01D /* SwiftUIMailView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65632D872F4B6F64007AD01D /* XCRemoteSwiftPackageReference "swiftui-mail-view" */;
+			productName = SwiftUIMailView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

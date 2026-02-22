@@ -10,6 +10,7 @@ import MapKit
 import SafariServices
 import WidgetKit
 import LocalAuthentication
+import SwiftUIMailView
 internal import Auth
 
 struct WorkItem: Identifiable, Hashable, Codable {
@@ -1316,7 +1317,7 @@ struct AccountView: View {
                         .foregroundStyle(.gray)
                         
                         Section("Gestisci"){
-                            VStack{
+                            VStack (spacing: 8){
                                 Button(role: .destructive, action: {
                                     showEditPasswordPopUp = true
                                     showEditPasswordPopUp = true
@@ -1335,6 +1336,18 @@ struct AccountView: View {
                                     showDeletePopUp = true
                                 }) {
                                     Label("Elimina Account", systemImage: "trash.fill")
+                                        .font(.system(size: 15))
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(.white)
+                                        .frame(maxWidth: .infinity)
+                                        .padding()
+                                        .background(Color.blue)
+                                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                                        .shadow(radius: 5, y: 3)
+                                }
+                                
+                                NavigationLink(destination: RequestDataDownload()) {
+                                    Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
                                         .font(.system(size: 15))
                                         .fontWeight(.bold)
                                         .foregroundStyle(.white)
@@ -1793,6 +1806,21 @@ struct InfoView: View {
                 }
                 Divider().padding(.top, 10)
                 Section(){
+                    Text("Supportaci")
+                        .font(.system(size: 30))
+                        .bold()
+                        .padding(.top, 20)
+                    
+                    Link(destination: URL(string: "https://www.patreon.com/cw/LavoraMi")!) {
+                        Label("Supportaci su Patreon", systemImage: "person.2.fill")
+                            .font(.system(size: 20))
+                    }
+                    .padding(.top, 5)
+                    .padding(.bottom, 20)
+                    Spacer()
+                }
+                Divider().padding(.top, 10)
+                Section(){
                     Text("Contatti")
                         .font(.system(size: 30))
                         .bold()
@@ -1810,17 +1838,8 @@ struct InfoView: View {
                     }
                     .padding(.top, 5)
                     .padding(.bottom, 20)
-                    Spacer()
-                }
-                Divider().padding(.top, 10)
-                Section(){
-                    Text("Supportaci")
-                        .font(.system(size: 30))
-                        .bold()
-                        .padding(.top, 20)
-                    
-                    Link(destination: URL(string: "https://www.patreon.com/cw/LavoraMi")!) {
-                        Label("Supportaci su Patreon", systemImage: "person.2.fill")
+                    NavigationLink(destination: RequestDataDownload()) {
+                        Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
                             .font(.system(size: 20))
                     }
                     .padding(.top, 5)
@@ -1829,6 +1848,85 @@ struct InfoView: View {
                 }
             }
         }
+    }
+}
+
+struct RequestDataDownload: View {
+    @State private var mailData: ComposeMailData = ComposeMailData(subject: "Richiesta di Dati", recipients: ["info@lavorami.it"], message: "Buongiorno,\nVorrei richiedere l'invio dei miei dati in formato JSON dell'Account con mail: mail@mail.com", attachments: nil)
+    @State private var showMailView: Bool = false
+    @State private var selectedFileType: fileFormatType = .json
+    @State private var emailToSend: String = ""
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 8) {
+                    Image(systemName: "person.and.background.dotted")
+                        .font(.system(size: 30, weight: .bold))
+                        .foregroundStyle(.red)
+                    
+                    Text("Richiedi i tuoi Dati")
+                        .font(.system(size: 30, weight: .bold))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Text("Invia una richiesta al nostro Team per scaricare i tuoi dati.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
+            List{
+                Section(footer: Text("Seleziona il formato in cui i tuoi dati verranno esportati.")){
+                    Label("Formato del File:", systemImage: "arrow.down.document.fill")
+                    Picker(selection: $selectedFileType, content: {
+                        ForEach(fileFormatType.allCases) { filter in
+                            Text(filter.rawValue).tag(filter)
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                    }, label: {
+                        Text("")
+                    })
+                    .pickerStyle(.inline)
+                    .labelsHidden()
+                }
+                Section(footer: Text("L'Invio dei dati richiesti può impiegare dai 5 ai 20 giorni lavorativi. Controlla la mail entro questo limite.")) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "envelope.fill")
+                            .foregroundStyle(.gray)
+                        TextField("Email del tuo Account", text: $emailToSend)
+                            .keyboardType(.emailAddress)
+                            .textContentType(.emailAddress)
+                            .textInputAutocapitalization(.never)
+                    }
+                    .background(Color(.systemGray6))
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                }
+            }
+            
+            Spacer()
+            
+            Button(action: {
+                mailData = ComposeMailData(subject: "Richiesta dei miei Dati", recipients: ["info@lavorami.it"], message: "Buongiorno,\nVorrei richiedere l'invio dei miei dati in formato \(selectedFileType.rawValue) dell'Account con mail:\(emailToSend)\nMessaggio inviato dall'App LavoraMi.", attachments: nil)
+                showMailView = true
+            }) {
+                Label("Richiedi Dati", systemImage: "paperplane.fill")
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+                    .background((emailToSend.isEmpty) ? Color.gray.opacity(0.5) : Color.red)
+                    .foregroundStyle(.white)
+                    .cornerRadius(16)
+            }
+            .sheet(isPresented: $showMailView) {
+                MailView(data: $mailData) { result in
+                    print(result)
+                }
+            }
+            .disabled(emailToSend.isEmpty)
+        }
+        .padding()
+        .navigationTitle("Aiuto")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -3215,6 +3313,13 @@ struct InterchangeStation: Identifiable {
 enum linkOpenTypes: String, CaseIterable, Identifiable{
     case inApp = "In App"
     case safari = "Safari"
+    
+    var id: String{self.rawValue}
+}
+
+enum fileFormatType: String, CaseIterable, Identifiable{
+    case json = "Json"
+    case html = "HTML"
     
     var id: String{self.rawValue}
 }
