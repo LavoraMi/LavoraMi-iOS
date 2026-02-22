@@ -1848,14 +1848,17 @@ struct InfoView: View {
                 }
             }
         }
+        .navigationTitle("Fonti & Sviluppo")
+        .navigationLinkIndicatorVisibility(.hidden)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct RequestDataDownload: View {
     @State private var mailData: ComposeMailData = ComposeMailData(subject: "Richiesta di Dati", recipients: ["info@lavorami.it"], message: "Buongiorno,\nVorrei richiedere l'invio dei miei dati in formato JSON dell'Account con mail: mail@mail.com", attachments: nil)
     @State private var showMailView: Bool = false
-    @State private var selectedFileType: fileFormatType = .json
     @State private var emailToSend: String = ""
+    @State private var selectedFileType: fileFormatType = .json
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
