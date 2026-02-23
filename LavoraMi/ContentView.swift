@@ -1899,7 +1899,7 @@ struct RequestDataDownload: View {
                 Section(footer: Text("L'Invio dei dati richiesti può impiegare dai 5 ai 20 giorni lavorativi. Controlla la mail entro questo limite.")) {
                     HStack(spacing: 8) {
                         Image(systemName: "envelope.fill")
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(.red)
                         TextField("Email del tuo Account", text: $emailToSend)
                             .keyboardType(.emailAddress)
                             .textContentType(.emailAddress)
