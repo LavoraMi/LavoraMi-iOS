@@ -469,7 +469,7 @@ struct MainView: View{
                             .offset(y: -50)
                         } else {
                             ScrollView {
-                                LazyVStack(spacing: 12) {
+                                VStack(spacing: 12) {
                                     if(filteredItems.isEmpty){
                                         Text("Nessun lavoro trovato per il filtro selezionato.")
                                     }
@@ -514,6 +514,8 @@ struct MainView: View{
 struct WorkInProgressRow: View {
     let item: WorkItem
     @State private var isExpanded = false
+    
+    private let italianLoc = Date.FormatStyle(date: .abbreviated, time: .omitted).locale(Locale(identifier: "it_IT"))
 
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded) {
@@ -521,6 +523,7 @@ struct WorkInProgressRow: View {
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .padding(.top, 8)
+                .fixedSize(horizontal: false, vertical: true)
         } label: {
             VStack(alignment: .leading, spacing: 8) {
                 Label(item.title, systemImage: item.titleIcon)
@@ -568,22 +571,22 @@ struct WorkInProgressRow: View {
                         .tint(item.progress == 1.0 ? .green : .red)
 
                     HStack {
-                        let italianLoc = Date.FormatStyle(date: .abbreviated, time: .omitted)
-                                .locale(Locale(identifier: "it_IT"))
-                        
-                        Text(item.startDate.formatted(italianLoc))
+                        Text(item.startDate.formatted(self.italianLoc))
                             .font(.caption)
                             .foregroundStyle(Color("TextColor"))
                         Spacer()
-                        Text(item.endDate.formatted(italianLoc))
+                            .frame(height: 8)
+                        Text(item.endDate.formatted(self.italianLoc))
                             .font(.caption)
                             .foregroundStyle(Color("TextColor"))
                     }
                     Spacer()
+                        .frame(height: 8)
                     Text(item.company)
                         .foregroundStyle(Color("TextColor"))
+                        .padding(.top, 4)
                 }
-            }
+             }
         }
         .padding(16)
         .background(
@@ -2900,8 +2903,7 @@ struct LineDetailView: View {
                             if currentWorks.count > 0 {
                                 LazyVStack(spacing: 12) {
                                     ForEach(currentWorks) { work in
-                                        let item = WorkItem(title: work.title, titleIcon: work.titleIcon, typeOfTransport: work.typeOfTransport, roads: work.roads, lines: work.lines, startDate: work.startDate, endDate: work.endDate, details: work.details, company: work.company)
-                                        WorkInProgressRow(item: item)
+                                        WorkInProgressRow(item: work)
                                             .padding(.horizontal)
                                     }
                                 }
