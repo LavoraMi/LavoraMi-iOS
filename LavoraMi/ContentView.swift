@@ -1094,9 +1094,11 @@ struct AccountView: View {
     @State private var showConfirmToExitPopUp: Bool = false
     @State private var isLocked: Bool = true
     @State private var text: String = ""
+    @State private var isBiometricAuthCompleted: Bool = false
     @Environment(\.dismiss) private var dismiss
     
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
+    @State var isRequiringData: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -1349,7 +1351,7 @@ struct AccountView: View {
                                         .shadow(radius: 5, y: 3)
                                 }
                                 
-                                NavigationLink(destination: RequestDataDownload()) {
+                                NavigationLink(destination: RequestDataDownload(isRequiringData: $isRequiringData)) {
                                     Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
                                         .font(.system(size: 15))
                                         .fontWeight(.bold)
@@ -1423,7 +1425,7 @@ struct AccountView: View {
                     if fullName.isEmpty { fullName = auth.getFullName() }
                     if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
                 }
-                if(requireFaceID && loggedIn){
+                if(requireFaceID && loggedIn && isRequiringData == false && isBiometricAuthCompleted == false){
                     BiometricAuth.authenticate{
                         print("FaceID Recognized!")
                         isLocked = false
@@ -1431,9 +1433,12 @@ struct AccountView: View {
                         print("Error during read of FaceID")
                         dismiss()
                     }
+                    isBiometricAuthCompleted = true
                 }
                 else{
                     isLocked = false
+                    isRequiringData = false
+                    isBiometricAuthCompleted = true
                 }
             }
             .alert("Sei sicuro?", isPresented: $showConfirmToExitPopUp) {
@@ -1841,7 +1846,7 @@ struct InfoView: View {
                     }
                     .padding(.top, 5)
                     .padding(.bottom, 20)
-                    NavigationLink(destination: RequestDataDownload()) {
+                    NavigationLink(destination: RequestDataDownload(isRequiringData: .constant(false))) {
                         Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
                             .font(.system(size: 20))
                     }
@@ -1862,6 +1867,8 @@ struct RequestDataDownload: View {
     @State private var showMailView: Bool = false
     @State private var emailToSend: String = ""
     @State private var selectedFileType: fileFormatType = .json
+    
+    @Binding var isRequiringData: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -1933,6 +1940,9 @@ struct RequestDataDownload: View {
         .padding()
         .navigationTitle("Aiuto")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear{
+            isRequiringData = true
+        }
     }
 }
 

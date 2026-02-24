@@ -43,5 +43,4 @@ final class DataManager {
     func deleteSavedLine() {
         setSavedLine(.empty)
     }
-    
 }
