@@ -50,8 +50,6 @@ struct ContentView: View {
                 .tabItem{Label("Home", systemImage: "house")}
             LinesView(viewModel: viewModel)
                 .tabItem{Label("Linee", systemImage: "arrow.branch")}
-            //LinesView(viewModel: viewModel)
-                //.tabItem{Label("Prolungamenti", systemImage: "line.diagonal.trianglehead.up.right.left.down")}
             SettingsView(viewModel: viewModel)
                 .tabItem{Label("Impostazioni", systemImage: "gear")}
         }
@@ -1082,10 +1080,13 @@ struct SettingsView: View{
 struct AccountView: View {
     @StateObject var auth: AuthManager
     @State private var email: String = ""
+    @State private var emailRecoverPassword: String = ""
     @State private var password: String = ""
     @State private var fullName: String = ""
     @State private var isLogginIn: Bool = true
     @State private var loggedIn: Bool = false
+    @State private var resettingPassword: Bool = false
+    @State private var passwordResetted: Bool = false
     @State private var showError: Bool = false
     @State private var showDeletePopUp: Bool = false
     @State private var showEditPasswordPopUp: Bool = false
@@ -1101,7 +1102,8 @@ struct AccountView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
-                if isLogginIn && !loggedIn {
+                //MARK: LOGIN
+                if isLogginIn && !loggedIn && !resettingPassword {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Bentornato")
                             .font(.system(size: 40, weight: .bold))
@@ -1140,9 +1142,11 @@ struct AccountView: View {
 
                         HStack {
                             Spacer()
-                            /*Button("Password dimenticata?") { }
-                                .font(.caption)
-                                .foregroundStyle(.red)*/
+                            Button("Password dimenticata?") {
+                                resettingPassword = true
+                            }
+                            .font(.caption)
+                            .foregroundStyle(.red)
                             
                             Button(action: {
                                 isLogginIn = !isLogginIn
@@ -1191,7 +1195,9 @@ struct AccountView: View {
                         .shadow(radius: 5, y: 3)
                     }
                     .disabled(email.isEmpty || password.isEmpty || auth.isLoading)
-                }; if !isLogginIn && !loggedIn {
+                };
+                //MARK: CREATING ACCOUNT
+                if !isLogginIn && !loggedIn && !resettingPassword {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Crea account")
                             .font(.system(size: 40, weight: .bold))
@@ -1284,7 +1290,8 @@ struct AccountView: View {
                     .disabled(email.isEmpty || (password.isEmpty && password.count < 8) || fullName.isEmpty || auth.isLoading)
                     
                 }
-                if loggedIn {
+                //MARK: LOGGED-IN
+                if loggedIn && !resettingPassword {
                     VStack(alignment: .leading, spacing: 20) {
                         Text("👋 Ciao \(fullName)")
                             .font(.system(size: 32, weight: .bold))
@@ -1410,6 +1417,58 @@ struct AccountView: View {
                     .onAppear {
                         if fullName.isEmpty { fullName = auth.getFullName() }
                         if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+                    }
+                }
+                //MARK: RESET PASSWORD
+                if(resettingPassword) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Reset Password")
+                            .font(.system(size: 40, weight: .bold))
+                            .foregroundStyle(.primary)
+
+                        Text("Hai dimenticato la tua Password? Non preoccuparti, puoi recuperarla qui.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 40)
+
+                    VStack(spacing: 20) {
+                        HStack(spacing: 15) {
+                            Image(systemName: "envelope.fill")
+                                .foregroundStyle(.gray)
+                            TextField("Email", text: $emailRecoverPassword)
+                                .keyboardType(.emailAddress)
+                                .textContentType(.emailAddress)
+                                .textInputAutocapitalization(.never)
+                        }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                    }
+                    Button(role: .destructive, action: {
+                        Task{
+                            await auth.requestPasswordReset(email: emailRecoverPassword)
+                            passwordResetted = true
+                        }
+                    }) {
+                        Text("Invia Email")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.red)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .shadow(radius: 5, y: 3)
+                    }
+                    .alert("Email inviata!", isPresented: $passwordResetted) {
+                        Button("Chiudi", role: .cancel) {
+                            resettingPassword = false
+                            passwordResetted = false
+                        }
+                    } message: {
+                        Text("Email inviata a \(emailRecoverPassword)!")
                     }
                 }
             }

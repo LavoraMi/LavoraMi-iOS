@@ -132,4 +132,14 @@ class AuthManager: ObservableObject {
             print("Errore durante la modifica della Password.")
         }
     }
+    
+    func requestPasswordReset(email: String) async {
+        do {
+            try await supabase.auth.resetPasswordForEmail(email)
+            print("Mail inviata correttamente!")
+        }
+        catch{
+            print("Errore durante l'invio della mail.")
+        }
+    }
 }
