@@ -47,13 +47,11 @@ struct ContentView: View {
     var body: some View {
         TabView{
             MainView(viewModel: viewModel)
-                .tabItem{
-                    Label("Home", systemImage: "house")
-                }
+                .tabItem{Label("Home", systemImage: "house")}
             LinesView(viewModel: viewModel)
-                .tabItem{
-                    Label("Linee", systemImage: "arrow.branch")
-                }
+                .tabItem{Label("Linee", systemImage: "arrow.branch")}
+            //LinesView(viewModel: viewModel)
+                //.tabItem{Label("Prolungamenti", systemImage: "line.diagonal.trianglehead.up.right.left.down")}
             SettingsView(viewModel: viewModel)
                 .tabItem{Label("Impostazioni", systemImage: "gear")}
         }
