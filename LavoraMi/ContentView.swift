@@ -1087,6 +1087,7 @@ struct AccountView: View {
     @State private var loggedIn: Bool = false
     @State private var resettingPassword: Bool = false
     @State private var passwordResetted: Bool = false
+    @State private var popUpVerifyMail: Bool = false
     @State private var showError: Bool = false
     @State private var showDeletePopUp: Bool = false
     @State private var showEditPasswordPopUp: Bool = false
@@ -1268,6 +1269,7 @@ struct AccountView: View {
                     Button(action: {
                         Task {
                             await auth.signUp(email: email, password: password, name: fullName)
+                            popUpVerifyMail = auth.errorMessage == nil
                         }
                     }) {
                         HStack {
@@ -1286,6 +1288,14 @@ struct AccountView: View {
                         .background((email.isEmpty || password.isEmpty || fullName.isEmpty || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(radius: 5, y: 3)
+                    }
+                    .alert("Conferma Mail", isPresented: $popUpVerifyMail) {
+                        Button("Chiudi", role: .cancel) {
+                            popUpVerifyMail = false
+                            isLogginIn = true
+                        }
+                    } message: {
+                        Text("Verifica il tuo indirizzo Email con la mail che ti abbiamo inviato per continuare.")
                     }
                     .disabled(email.isEmpty || (password.isEmpty && password.count < 8) || fullName.isEmpty || auth.isLoading)
                     
@@ -1329,7 +1339,6 @@ struct AccountView: View {
                         Section("Gestisci"){
                             VStack (spacing: 8){
                                 Button(role: .destructive, action: {
-                                    showEditPasswordPopUp = true
                                     showEditPasswordPopUp = true
                                 }) {
                                     Label("Modifica Password", systemImage: "lock.fill")
@@ -1386,15 +1395,13 @@ struct AccountView: View {
                         }
                         .alert("Modifica Password", isPresented: $showEditPasswordPopUp) {
                             Button("Annulla", role: .cancel) { }
-                            Button("Fine", role: .destructive) {
+                            Button("Continua", role: .destructive) {
                                 Task {
-                                    await auth.editPassword(password: text)
+                                    await auth.requestPasswordReset(email: email)
                                 }
                             }
-                            TextField("Inserisci", text: $text)
-                                .textContentType(.newPassword)
                         } message: {
-                            Text("Inserisci la tua nuova password per accedere.")
+                            Text("Ti invieremo una mail per modificare la tua password, vuoi continuare?")
                         }
                         .foregroundStyle(.gray)
                         

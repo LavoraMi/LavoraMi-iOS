@@ -41,8 +41,6 @@ class AuthManager: ObservableObject {
             
             _ = try await supabase.auth.signUp(email: email, password: password, data: metadata)
             print("Registrazione effettuata.")
-            await signIn(email: email, password: password)
-            do { self.session = try await supabase.auth.session } catch { }
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -118,19 +116,6 @@ class AuthManager: ObservableObject {
         }
         
         isLoading = false
-    }
-    
-    func editPassword(password: String) async {
-        do{
-            try await supabase.auth.update(
-                user: UserAttributes(
-                    password: password
-                )
-            )
-        }
-        catch{
-            print("Errore durante la modifica della Password.")
-        }
     }
     
     func requestPasswordReset(email: String) async {
