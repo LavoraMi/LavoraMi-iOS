@@ -1191,11 +1191,11 @@ struct AccountView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background((email.isEmpty || password.isEmpty || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
+                        .background((email.isEmpty || !email.contains("@") || password.isEmpty || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(radius: 5, y: 3)
                     }
-                    .disabled(email.isEmpty || password.isEmpty || auth.isLoading)
+                    .disabled(email.isEmpty || !email.contains("@") || password.isEmpty || auth.isLoading)
                 };
                 //MARK: CREATING ACCOUNT
                 if !isLogginIn && !loggedIn && !resettingPassword {
@@ -1285,10 +1285,11 @@ struct AccountView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background((email.isEmpty || password.isEmpty || fullName.isEmpty || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
+                        .background((email.isEmpty || !email.contains("@") || password.isEmpty || fullName.isEmpty || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(radius: 5, y: 3)
                     }
+                    .disabled(email.isEmpty || !email.contains("@") || (password.isEmpty && password.count < 8) || fullName.isEmpty || auth.isLoading)
                     .alert("Conferma Mail", isPresented: $popUpVerifyMail) {
                         Button("Chiudi", role: .cancel) {
                             popUpVerifyMail = false
@@ -1297,8 +1298,6 @@ struct AccountView: View {
                     } message: {
                         Text("Verifica il tuo indirizzo Email con la mail che ti abbiamo inviato per continuare.")
                     }
-                    .disabled(email.isEmpty || (password.isEmpty && password.count < 8) || fullName.isEmpty || auth.isLoading)
-                    
                 }
                 //MARK: LOGGED-IN
                 if loggedIn && !resettingPassword {
@@ -1438,7 +1437,6 @@ struct AccountView: View {
                             .foregroundStyle(.secondary)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 40)
 
                     VStack(spacing: 20) {
                         HStack(spacing: 15) {
@@ -1459,16 +1457,17 @@ struct AccountView: View {
                             passwordResetted = true
                         }
                     }) {
-                        Text("Invia Email")
+                        Label("Invia Email", systemImage: "paperplane.fill")
                             .font(.headline)
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.red)
+                            .background((emailRecoverPassword.isEmpty || !emailRecoverPassword.contains("@")) ? Color.gray.opacity(0.5) : Color.red)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                             .shadow(radius: 5, y: 3)
                     }
+                    .disabled(emailRecoverPassword.isEmpty || !emailRecoverPassword.contains("@"))
                     .alert("Email inviata!", isPresented: $passwordResetted) {
                         Button("Chiudi", role: .cancel) {
                             resettingPassword = false
