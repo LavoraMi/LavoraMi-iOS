@@ -93,7 +93,7 @@ struct SetupView: View {
         ),
         SetupPage(
             title: "Tu ed ancora Tu.",
-            description: "I tuoi dati sono al sicuro. Crea un Account per salvare le tue linee su altri dispositivi.",
+            description: "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi.",
             transitionImage: "lock.open.fill",
             standardImage: "lock.fill"
         ),
