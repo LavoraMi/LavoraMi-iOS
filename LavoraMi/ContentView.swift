@@ -1944,8 +1944,7 @@ struct InfoView: View {
             SafariView(url: url)
                 .ignoresSafeArea(.all)
         }
-        .navigationTitle("Fonti & Sviluppo")
-        .navigationLinkIndicatorVisibility(.hidden)
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
