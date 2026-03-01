@@ -1795,6 +1795,10 @@ struct NotificationsView: View {
 }
 
 struct InfoView: View {
+    @Environment(\.openURL) private var openURLAction
+    @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
+    @State private var selectedURL: URL?
+    
     var body: some View {
         Section{
             HStack{
@@ -1881,8 +1885,16 @@ struct InfoView: View {
                         .font(.system(size: 30))
                         .bold()
                         .padding(.top, 20)
-                    
-                    Link(destination: URL(string: "https://www.patreon.com/cw/LavoraMi")!) {
+                    Button {
+                        let url = URL(string: "https://www.patreon.com/cw/LavoraMi")!
+                        
+                        if(howToOpenLinks == .inApp) {
+                            selectedURL = url
+                        }
+                        else {
+                            openURLAction(url)
+                        }
+                    } label: {
                         Label("Supportaci su Patreon", systemImage: "person.2.fill")
                             .font(.system(size: 20))
                     }
@@ -1903,7 +1915,16 @@ struct InfoView: View {
                     }
                     .padding(.top, 5)
                     .padding(.bottom, 20)
-                    Link(destination: URL(string: "https://lavorami.it")!) {
+                    Button {
+                        let url = URL(string: "https://www.lavorami.it")!
+                        
+                        if(howToOpenLinks == .inApp) {
+                            selectedURL = url
+                        }
+                        else {
+                            openURLAction(url)
+                        }
+                    } label: {
                         Label("Sito web", systemImage: "network")
                             .font(.system(size: 20))
                     }
@@ -1918,6 +1939,10 @@ struct InfoView: View {
                     Spacer()
                 }
             }
+        }
+        .sheet(item: $selectedURL) { url in
+            SafariView(url: url)
+                .ignoresSafeArea(.all)
         }
         .navigationTitle("Fonti & Sviluppo")
         .navigationLinkIndicatorVisibility(.hidden)
@@ -2082,6 +2107,7 @@ struct LineRow: View {
 struct LinesView: View {
     @Environment(\.openURL) private var openURLAction
     @ObservedObject var viewModel: WorkViewModel
+    @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
 
     @State private var searchInput: String = ""
     @State private var selectedURL: URL?
@@ -2286,8 +2312,6 @@ struct LinesView: View {
             LineInfo(name: "z251", branches: "Desio FS - Bovisio M. - Limbiate - Cesano FN", type: "Autoguidovie", waitMinutes: "", stations: []),
         ]
     }
-    
-    @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     
     enum linkOpenTypes: String, CaseIterable, Identifiable{
         case inApp = "In App"
