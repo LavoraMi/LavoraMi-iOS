@@ -40,6 +40,7 @@ struct WorkItem: Identifiable, Hashable, Codable {
     }
 }
 
+//MARK: MAIN VIEW
 struct ContentView: View {
     @StateObject private var viewModel = WorkViewModel()
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
@@ -648,9 +649,7 @@ struct ShimmerModifier: ViewModifier {
     }
 }
 
-extension View {
-    func shimmer() -> some View { modifier(ShimmerModifier()) }
-}
+extension View {func shimmer() -> some View { modifier(ShimmerModifier()) }}
 
 struct WorkRowSkeleton: View {
     var body: some View {
@@ -707,6 +706,7 @@ struct WorkRowSkeleton: View {
     }
 }
 
+//MARK: SETTINGS VIEW
 struct SettingsView: View{
     @State private var expandedTrenord = false
     @State private var expandedATM = false
@@ -2009,6 +2009,7 @@ struct RequestDataDownload: View {
     }
 }
 
+//MARK: LINES VIEW
 struct LineRow: View {
     let line: String
     let typeOfTransport: String
@@ -3305,6 +3306,7 @@ struct TransportBadge: View {
     }
 }
 
+//MARK: UTILITIES
 //NOTE: FILTERS
 enum FilterBy: String, CaseIterable, Identifiable {
     case all = "Tutti"
