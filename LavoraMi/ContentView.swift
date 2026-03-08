@@ -1801,9 +1801,13 @@ struct NotificationsView: View {
 }
 
 struct InfoView: View {
+    let device = UIDevice.current
+    
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
+    @State private var mailData: ComposeMailData = ComposeMailData(subject: "Segnalazione Bug App iOS", recipients: ["info@lavorami.it"], message: "", attachments: nil)
+    @State private var showMailView: Bool = false
     
     var body: some View {
         Section{
@@ -1915,7 +1919,9 @@ struct InfoView: View {
                         .bold()
                         .padding(.top, 20)
                     
-                    Link(destination: URL(string: "mailto:info@lavorami.it")!) {
+                    Button {
+                        showMailView = true
+                    } label: {
                         Label("Segnala un bug", systemImage: "ladybug.fill")
                             .font(.system(size: 20))
                     }
@@ -1942,6 +1948,11 @@ struct InfoView: View {
                     }
                     .padding(.top, 5)
                     .padding(.bottom, 20)
+                    .sheet(isPresented: $showMailView) {
+                        MailView(data: $mailData) { result in
+                            print(result)
+                        }
+                    }
                     Spacer()
                 }
             }
