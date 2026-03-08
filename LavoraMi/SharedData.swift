@@ -21,10 +21,10 @@ struct SavedLine: Identifiable, Codable, Equatable {
 
 final class DataManager {
     static let shared = DataManager()
-    private let groupName = "group.com.andreafilice.lavorami"
+    private let groupName = "group.com.lavorami.lavoramiapp"
     private let key = "favouriteLine"
     
-    private let defaults = UserDefaults(suiteName: "group.com.andreafilice.lavorami")
+    private let defaults = UserDefaults(suiteName: "group.com.lavorami.lavoramiapp")
 
     func setSavedLine(_ line: SavedLine) {
         if let encoded = try? JSONEncoder().encode(line) {
