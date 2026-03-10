@@ -11,6 +11,8 @@ import SafariServices
 import WidgetKit
 import LocalAuthentication
 import SwiftUIMailView
+import AuthenticationServices
+import CryptoKit
 internal import Auth
 
 struct WorkItem: Identifiable, Hashable, Codable {
@@ -1109,6 +1111,7 @@ struct AccountView: View {
     
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @State var isRequiringData: Bool = false
+    @State private var currentNonce: String?
     
     var body: some View {
         NavigationStack {
@@ -1273,9 +1276,36 @@ struct AccountView: View {
                             .foregroundStyle(.red)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
-
                     Spacer()
-                    
+                    SignInWithAppleButton(.signIn) { request in
+                        let nonce = randomNonceString()
+                        currentNonce = nonce
+                        request.requestedScopes = [.fullName, .email]
+                        request.nonce = sha256(nonce)
+                    } onCompletion: { result in
+                        Task {
+                            switch result {
+                            case .failure(let error):
+                                print("Apple Sign In error: \(error)")
+                            case .success(let authorization):
+                                guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
+                                      let idTokenData = credential.identityToken,
+                                      let idToken = String(data: idTokenData, encoding: .utf8),
+                                      let nonce = currentNonce else {
+                                    print("Guard fallito - currentNonce: \(String(describing: currentNonce))")
+                                    return
+                                }
+                                
+                                await auth.signInWithApple(nonce: nonce, idToken: idToken)
+                                loggedIn = auth.isLoggedIn()
+                                dismiss()
+                            }
+                        }
+                    }
+                    .signInWithAppleButtonStyle(.black)
+                    .frame(height: 50)
+                    .padding(.horizontal)
+                    .padding(.bottom)
                     Button(action: {
                         Task {
                             await auth.signUp(email: email, password: password, name: fullName)
@@ -1532,6 +1562,17 @@ struct AccountView: View {
             .navigationTitle("Account")
             .navigationBarTitleDisplayMode(.inline)
         }
+    }
+    
+    private func randomNonceString(length: Int = 32) -> String {
+        var randomBytes = [UInt8](repeating: 0, count: length)
+        _ = SecRandomCopyBytes(kSecRandomDefault, randomBytes.count, &randomBytes)
+        return randomBytes.map { String(format: "%02x", $0) }.joined()
+    }
+
+    private func sha256(_ input: String) -> String {
+        let hash = SHA256.hash(data: Data(input.utf8))
+        return hash.compactMap { String(format: "%02x", $0) }.joined()
     }
 }
 

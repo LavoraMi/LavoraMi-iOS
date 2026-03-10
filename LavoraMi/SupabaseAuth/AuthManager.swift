@@ -60,6 +60,15 @@ class AuthManager: ObservableObject {
         }
         isLoading = false
     }
+    
+    func signInWithApple(nonce: String, idToken: String) async {
+        do{
+            try await supabase.auth.signInWithIdToken(credentials: .init(provider: .apple, idToken: idToken, nonce: nonce))
+        }
+        catch{
+            print("Errore durante il login con Apple.")
+        }
+    }
 
     func signOut() async {
         do {
