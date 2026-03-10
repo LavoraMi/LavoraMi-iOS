@@ -65,6 +65,8 @@ struct SetupView: View {
     @Environment(\.presentationMode) var presentationMode
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @State private var currentPage = 0
+    @State private var showPopUpConfirmSkipSetup: Bool = false
+    
     let pages = [
         SetupPage(
             title: "Benvenuto su LavoraMi",
@@ -151,13 +153,21 @@ struct SetupView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     if #available (iOS 26, *){
-                        Button("Salta") { hasNotCompletedSetup = false; dismiss() }
+                        Button("Salta") { showPopUpConfirmSkipSetup = true }
                     }
                     else{
-                        Button("Salta") { hasNotCompletedSetup = false; dismiss() }
+                        Button("Salta") { showPopUpConfirmSkipSetup = true }
                             .foregroundStyle(.red)
                     }
                 }
+            }
+            .alert("Sei sicuro?", isPresented: $showPopUpConfirmSkipSetup){
+                Button("Annulla", role: .cancel) { }
+                Button("Continua", role: .destructive) {
+                    hasNotCompletedSetup = false; dismiss()
+                }
+            } message: {
+                Text("Sei sicuro di voler saltare la parte di configurazione?")
             }
         }
     }
