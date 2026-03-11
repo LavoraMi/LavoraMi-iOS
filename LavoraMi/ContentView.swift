@@ -551,6 +551,17 @@ struct WorkInProgressRow: View {
                                             .fill(getColor(for: line))
                                     )
                             }
+                            else if (line.starts(with: "N")){
+                                Label(line, systemImage: "moon.fill")
+                                    .font(.system(size: 12, weight: .bold))
+                                    .foregroundStyle(.white)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .fill(getColor(for: line))
+                                    )
+                            }
                             else{
                                 Text(line)
                                     .font(.system(size: 12, weight: .bold))
@@ -3538,7 +3549,7 @@ enum fileFormatType: String, CaseIterable, Identifiable{
 
 func getColor(for line: String) -> Color {
     switch line {
-        //SUBURBAN LINES
+        ///SUBURBAN LINES
         case "S1": return Color(red: 228/255, green: 5/255, blue: 32/255)
         case "S2": return Color(red: 0, green: 152/255, blue: 121/255)
         case "S3": return Color(red: 169/255, green: 10/255, blue: 46/255)
@@ -3554,14 +3565,14 @@ func getColor(for line: String) -> Color {
         case "S19": return Color(red: 102/255, green: 13/255, blue: 54/255)
         case "S31": return .gray
         
-        //TILO LINES
+        ///TILO LINES
         case "S10": return Color(red: 228/255, green: 35/255, blue: 19/255)
         case "S30": return Color(red: 0, green: 166/255, blue: 81/255)
         case "S40": return Color(red: 117/255, green: 188/255, blue: 118/255)
         case "S50": return Color(red: 131/255, green: 76/255, blue: 22/255)
         case "RE80": return .blue
         
-        //METRO LINES
+        ///METRO LINES
         case "M1": return Color(red: 228/255, green: 5/255, blue: 32/255)
         case "NM1": return Color(red: 228/255, green: 5/255, blue: 32/255)
         case "M2": return Color(red: 95/255, green: 147/255, blue: 34/255)
@@ -3573,26 +3584,23 @@ func getColor(for line: String) -> Color {
         case "M5": return Color(red: 165/255, green: 147/255, blue: 198/255)
         case "NM5": return Color(red: 165/255, green: 147/255, blue: 198/255)
         
-        //BUS LINES
-        case _ where line.contains("z"):
-            return Color(red: 28/255, green: 28/255, blue: 1)
-        case _ where line.contains("Filobus"):
-            return Color(red: 101/255, green: 179/255, blue: 46/255)
-        case _ where line.contains("P") && !(line.contains("MXP")):
-            return Color(red: 69/255, green: 56/255, blue: 0)
+        ///BUS LINES
+        case _ where line.contains("z"): return Color(red: 28/255, green: 28/255, blue: 1)
+        case _ where line.contains("Filobus"): return Color(red: 101/255, green: 179/255, blue: 46/255)
+        case _ where line.contains("P") && !(line.contains("MXP")): return Color(red: 69/255, green: 56/255, blue: 0)
         
-        //OTHER LINES
+        ///OTHER LINES
         case "MXP": return Color(red: 140/255, green: 0, blue: 118/255)
         case "MXP1": return Color(red: 140/255, green: 0, blue: 118/255)
         case "MXP2": return Color(red: 140/255, green: 0, blue: 118/255)
         case "AV": return .red
         case "Aereoporto": return .cyan
-        case _ where line.contains("R") && !line.contains("RE"):
-            return Color.blue
-        case _ where line.contains("RE"):
-            return Color.red
+        case _ where line.contains("R") && !line.contains("RE"): return Color.blue
+        case _ where line.contains("RE"): return Color.red
         case let s where (1...33).contains(Int(s) ?? 0): return .orange
+        case _ where line.starts(with: "N"): return Color(red: 2/255, green: 27/255, blue: 129/255)
         
+        ///FALLBACK CASE
         default: return Color(red: 101/255, green: 179/255, blue: 46/255)
     }
 }
@@ -3789,4 +3797,3 @@ struct SafariView: UIViewControllerRepresentable {
 #Preview {
     ContentView()
 }
-
