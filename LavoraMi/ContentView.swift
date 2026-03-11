@@ -1217,7 +1217,7 @@ struct AccountView: View {
                                     .progressViewStyle(.circular)
                                     .tint(.white)
                             }
-                            Text(auth.isLoading ? "Accedo..." : "Accedi")
+                            Label(auth.isLoading ? "Accedo..." : "Accedi", systemImage: "rectangle.portrait.and.arrow.right.fill")
                                 .font(.headline)
                                 .fontWeight(.bold)
                         }
@@ -1339,7 +1339,7 @@ struct AccountView: View {
                                     .progressViewStyle(.circular)
                                     .tint(.white)
                             }
-                            Text(auth.isLoading ? "Registrazione..." : "Registrati")
+                            Label(auth.isLoading ? "Registrazione..." : "Registrati", systemImage: "rectangle.portrait.and.arrow.right.fill")
                                 .font(.headline)
                                 .fontWeight(.bold)
                         }
@@ -1484,7 +1484,7 @@ struct AccountView: View {
                         Button(role: .destructive, action: {
                             showConfirmToExitPopUp = true
                         }) {
-                            Text("Esci")
+                            Label("Esci", systemImage: "person.crop.circle.fill.badge.minus")
                                 .font(.headline)
                                 .fontWeight(.bold)
                                 .foregroundStyle(.white)
@@ -1550,6 +1550,18 @@ struct AccountView: View {
                         }
                     } message: {
                         Text("Email inviata a \(emailRecoverPassword)!")
+                    }
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            isLogginIn = true
+                            resettingPassword = false
+                            passwordResetted = false
+                        }){
+                            Text("Torna al Login")
+                                .font(.caption)
+                                .foregroundStyle(.red)
+                        }
                     }
                 }
             }
