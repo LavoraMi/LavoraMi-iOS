@@ -2017,6 +2017,45 @@ struct InfoView: View {
                 }
                 Divider().padding(.top, 10)
                 Section(){
+                    Text("Seguici su")
+                        .font(.system(size: 30))
+                        .bold()
+                        .padding(.top, 20)
+                    Button {
+                        let url = URL(string: "https://www.instagram.com/lavoramiapp_official")!
+                        openURLAction(url)
+                    } label: {
+                        HStack{
+                            Image("instagram")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 22, height: 22)
+                            Text("Instagram")
+                                .font(.system(size: 20))
+                                .bold()
+                        }
+                    }
+                    .padding(.top, 5)
+                    .padding(.bottom, 20)
+                    Button {
+                        let url = URL(string: "https://www.tiktok.com/@applavorami.official")!
+                        openURLAction(url)
+                    } label: {
+                        HStack{
+                            Image("tiktok")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 22, height: 22)
+                            Text("TikTok")
+                                .font(.system(size: 20))
+                                .bold()
+                        }
+                    }
+                    .padding(.top, 5)
+                    .padding(.bottom, 20)
+                }
+                Divider().padding(.top, 10)
+                Section(){
                     Text("Contatti")
                         .font(.system(size: 30))
                         .bold()
