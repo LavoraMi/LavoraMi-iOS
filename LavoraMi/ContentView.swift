@@ -374,7 +374,7 @@ struct MainView: View{
             .padding()
             .task {
                 while !Task.isCancelled {
-                    try? await Task.sleep(nanoseconds: 5_000_000_000)
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
                     withAnimation(.easeInOut(duration: 0.3)) {
                         currentHintIndex = (currentHintIndex + 1) % searchHints.count
                     }
@@ -895,7 +895,7 @@ struct SettingsView: View{
                     }
                     DisclosureGroup(isExpanded: $expandedATM){
                         HStack{
-                            Label("Linee Metro", systemImage: "tram.fill.tunnel")
+                            Label("Linee Metropolitane", systemImage: "tram.fill.tunnel")
                             Spacer()
                             Button(action: {
                                 let generator = UIImpactFeedbackGenerator(style: .light)
@@ -1267,11 +1267,11 @@ struct AccountView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background((email.isEmpty || !email.contains("@") || password.isEmpty || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
+                        .background((!validateEmail(email)) ? Color.gray.opacity(0.5) : Color.red)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(radius: 5, y: 3)
                     }
-                    .disabled(email.isEmpty || !email.contains("@") || password.isEmpty || auth.isLoading)
+                    .disabled(!validateEmail(email) || auth.isLoading)
                 };
                 //MARK: CREATING ACCOUNT
                 if !isLogginIn && !loggedIn && !resettingPassword {
@@ -1332,7 +1332,6 @@ struct AccountView: View {
                             }
                         }
                     }
-                    
                     if let err = auth.errorMessage, !err.isEmpty {
                         Text(err)
                             .font(.footnote)
@@ -1389,11 +1388,11 @@ struct AccountView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background((email.isEmpty || !email.contains("@") || password.isEmpty || fullName.isEmpty || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
+                        .background((!validateEmail(email) || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(radius: 5, y: 3)
                     }
-                    .disabled(email.isEmpty || !email.contains("@") || (password.isEmpty && password.count < 8) || fullName.isEmpty || auth.isLoading)
+                    .disabled(!validateEmail(email) || auth.isLoading)
                     .alert("Conferma Mail", isPresented: $popUpVerifyMail) {
                         Button("Chiudi", role: .cancel) {
                             popUpVerifyMail = false
@@ -1425,7 +1424,6 @@ struct AccountView: View {
                                         .foregroundStyle(.red)
                                         .font(.system(size: 25))
                                 }
-                                
                                 Label {
                                     Text(email)
                                         .foregroundColor(Color("TextColor"))
@@ -1550,12 +1548,12 @@ struct AccountView: View {
                             .font(.system(size: 40, weight: .bold))
                             .foregroundStyle(.primary)
 
-                        Text("Hai dimenticato la tua Password? Non preoccuparti, puoi recuperarla qui.")
+                        Text("Recupera qui la Password del tuo Account.")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
-
+                    .padding(.top, 40)
                     VStack(spacing: 20) {
                         HStack(spacing: 15) {
                             Image(systemName: "envelope.fill")
@@ -1569,6 +1567,20 @@ struct AccountView: View {
                         .background(Color(.systemGray6))
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                     }
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            isLogginIn = true
+                            resettingPassword = false
+                            passwordResetted = false
+                        }){
+                            Text("Torna al Login")
+                                .font(.caption)
+                                .foregroundStyle(.red)
+                        }
+                    }
+                    .padding(.top, -10)
+                    Spacer()
                     Button(role: .destructive, action: {
                         Task{
                             await auth.requestPasswordReset(email: emailRecoverPassword)
@@ -1581,11 +1593,11 @@ struct AccountView: View {
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background((emailRecoverPassword.isEmpty || !emailRecoverPassword.contains("@")) ? Color.gray.opacity(0.5) : Color.red)
+                            .background((!validateEmail(emailRecoverPassword)) ? Color.gray.opacity(0.5) : Color.red)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                             .shadow(radius: 5, y: 3)
                     }
-                    .disabled(emailRecoverPassword.isEmpty || !emailRecoverPassword.contains("@"))
+                    .disabled(!validateEmail(emailRecoverPassword))
                     .alert("Email inviata!", isPresented: $passwordResetted) {
                         Button("Chiudi", role: .cancel) {
                             resettingPassword = false
@@ -1593,18 +1605,6 @@ struct AccountView: View {
                         }
                     } message: {
                         Text("Email inviata a \(emailRecoverPassword)!")
-                    }
-                    HStack{
-                        Spacer()
-                        Button(action: {
-                            isLogginIn = true
-                            resettingPassword = false
-                            passwordResetted = false
-                        }){
-                            Text("Torna al Login")
-                                .font(.caption)
-                                .foregroundStyle(.red)
-                        }
                     }
                 }
             }
@@ -1663,6 +1663,13 @@ struct AccountView: View {
     private func sha256(_ input: String) -> String {
         let hash = SHA256.hash(data: Data(input.utf8))
         return hash.compactMap { String(format: "%02x", $0) }.joined()
+    }
+
+    func validateEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
 }
 
@@ -2538,36 +2545,35 @@ struct LinesView: View {
                             LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
                         }
                     }
-                    else{
-                        Text("Nessuna corrispondenza trovata.")
-                    }
                 }
                 header:{
-                    HStack{
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Linee Metropolitane")
-                                .font(.title3)
-                                .bold()
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                            
-                            Text("ATM")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .textCase(nil)
-                        }
-                        .padding(.bottom, 4)
-                        Spacer()
-                        Button(action: {
-                            let url = URL(string: "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg")!
-                            if howToOpenLinks == .inApp {
-                                selectedURL = url
-                            } else {
-                                openURLAction(url)
+                    if(!filteredMetros.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee Metropolitane")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("ATM")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
                             }
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                 }
@@ -2577,36 +2583,35 @@ struct LinesView: View {
                             LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
                         }
                     }
-                    else{
-                        Text("Nessuna corrispondenza trovata.")
-                    }
                 }
                 header:{
-                    HStack{
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Linee Suburbane")
-                                .font(.title3)
-                                .bold()
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                            
-                            Text("Trenord")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .textCase(nil)
-                        }
-                        .padding(.bottom, 4)
-                        Spacer()
-                        Button(action: {
-                            let url = URL(string: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")!
-                            if howToOpenLinks == .inApp {
-                                selectedURL = url
-                            } else {
-                                openURLAction(url)
+                    if(!filteredSuburban.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee Suburbane")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("Trenord")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
                             }
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                 }
@@ -2616,36 +2621,35 @@ struct LinesView: View {
                             LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
                         }
                     }
-                    else{
-                        Text("Nessuna corrispondenza trovata.")
-                    }
                 }
                 header:{
-                    HStack{
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Linee Transfrontaliere")
-                                .font(.title3)
-                                .bold()
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                            
-                            Text("TILO")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .textCase(nil)
-                        }
-                        .padding(.bottom, 4)
-                        Spacer()
-                        Button(action: {
-                            let url = URL(string: "https://www.tilo.ch")!
-                            if howToOpenLinks == .inApp {
-                                selectedURL = url
-                            } else {
-                                openURLAction(url)
+                    if(!filteredCrossBorders.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee Transfrontaliere")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("TILO")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
                             }
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://www.tilo.ch")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                 }
@@ -2655,36 +2659,35 @@ struct LinesView: View {
                             LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
                         }
                     }
-                    else{
-                        Text("Nessuna corrispondenza trovata.")
-                    }
                 }
                 header:{
-                    HStack{
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Linee Malpensa Express")
-                                .font(.title3)
-                                .bold()
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                            
-                            Text("Trenord")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .textCase(nil)
-                        }
-                        .padding(.bottom, 4)
-                        Spacer()
-                        Button(action: {
-                            let url = URL(string: "https://www.malpensaexpress.it")!
-                            if howToOpenLinks == .inApp {
-                                selectedURL = url
-                            } else {
-                                openURLAction(url)
+                    if(!filteredMalpensaExpress.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee Malpensa Express")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("Trenord")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
                             }
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://www.malpensaexpress.it")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                 }
@@ -2694,36 +2697,35 @@ struct LinesView: View {
                             LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
                         }
                     }
-                    else{
-                        Text("Nessuna corrispondenza trovata.")
-                    }
                 }
                 header: {
-                    HStack{
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Linee Tramviarie")
-                                .font(.title3)
-                                .bold()
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                            
-                            Text("ATM")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .textCase(nil)
-                        }
-                        .padding(.bottom, 4)
-                        Spacer()
-                        Button(action: {
-                            let url = URL(string: "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf")!
-                            if howToOpenLinks == .inApp {
-                                selectedURL = url
-                            } else {
-                                openURLAction(url)
+                    if(!filteredTrams.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee Tramviarie")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("ATM")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
                             }
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                 }
@@ -2733,36 +2735,35 @@ struct LinesView: View {
                             LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
                         }
                     }
-                    else{
-                        Text("Nessuna corrispondenza trovata.")
-                    }
                 }
                 header: {
-                    HStack{
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Linee di Bus")
-                                .font(.title3)
-                                .bold()
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                            
-                            Text("Movibus")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .textCase(nil)
-                        }
-                        .padding(.bottom, 4)
-                        Spacer()
-                        Button(action: {
-                            let url = URL(string: "https://movibus.it/news/")!
-                            if howToOpenLinks == .inApp {
-                                selectedURL = url
-                            } else {
-                                openURLAction(url)
+                    if(!filteredMovibus.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee di Bus")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("Movibus")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
                             }
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://movibus.it/news/")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                 }
@@ -2772,36 +2773,35 @@ struct LinesView: View {
                             LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
                         }
                     }
-                    else{
-                        Text("Nessuna corrispondenza trovata.")
-                    }
                 }
                 header: {
-                    HStack{
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Linee di Bus")
-                                .font(.title3)
-                                .bold()
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                            
-                            Text("STAV")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .textCase(nil)
-                        }
-                        .padding(.bottom, 4)
-                        Spacer()
-                        Button(action: {
-                            let url = URL(string: "https://stavautolinee.it/reti-servite/")!
-                            if howToOpenLinks == .inApp {
-                                selectedURL = url
-                            } else {
-                                openURLAction(url)
+                    if(!filteredSTAV.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee di Bus")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("STAV")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
                             }
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://stavautolinee.it/reti-servite/")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                 }
@@ -2811,36 +2811,35 @@ struct LinesView: View {
                             LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
                         }
                     }
-                    else{
-                        Text("Nessuna corrispondenza trovata.")
-                    }
                 }
                 header: {
-                    HStack{
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Linee di Bus")
-                                .font(.title3)
-                                .bold()
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                            
-                            Text("Autoguidovie")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .textCase(nil)
-                        }
-                        .padding(.bottom, 4)
-                        Spacer()
-                        Button(action: {
-                            let url = URL(string: "https://autoguidovie.it/it/avvisi")!
-                            if howToOpenLinks == .inApp {
-                                selectedURL = url
-                            } else {
-                                openURLAction(url)
+                    if(!filteredAutoguidovie.isEmpty) {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee di Bus")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("Autoguidovie")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
                             }
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://autoguidovie.it/it/avvisi")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                 }
