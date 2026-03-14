@@ -50,7 +50,10 @@ struct StationsDB {
         .init(name: "Bande Nere", coordinate: .init(latitude: 45.46133, longitude: 9.13695), branch: "Bisceglie"),
         .init(name: "Primaticcio", coordinate: .init(latitude: 45.45952, longitude: 9.12961), branch: "Bisceglie"),
         .init(name: "Inganni", coordinate: .init(latitude: 45.45756, longitude: 9.12225), branch: "Bisceglie"),
-        .init(name: "Bisceglie", coordinate: .init(latitude: 45.45531, longitude: 9.11335), branch: "Bisceglie")
+        .init(name: "Bisceglie", coordinate: .init(latitude: 45.45531, longitude: 9.11335), branch: "Bisceglie"),
+        .init(name: "Parri", coordinate: .init(latitude: 45.45188, longitude: 9.09925), branch: "Bisceglie - New"),
+        .init(name: "Baggio", coordinate: .init(latitude: 45.4553, longitude: 9.08892), branch: "Bisceglie - New"),
+        .init(name: "Olmi", coordinate: .init(latitude: 45.45642, longitude: 9.08226), branch: "Bisceglie - New")
     ]
 
     static let stationsM2: [MetroStation] = [

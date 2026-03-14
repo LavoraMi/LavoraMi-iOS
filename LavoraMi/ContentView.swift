@@ -3379,6 +3379,7 @@ struct LineDetailView: View {
                                     MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
                                         .stroke(lineColor, lineWidth: 5)
                                     let pagano = stations.first(where: { $0.name == "Pagano" })!
+                                    let bisceglie = stations.first(where: { $0.name == "Bisceglie" })!
                                     let rhoBranch = [pagano] + stations.filter { $0.branch == "Rho" }
                                     MapPolyline(coordinates: rhoBranch.map(\.coordinate))
                                         .stroke(lineColor, lineWidth: 5)
@@ -3386,6 +3387,10 @@ struct LineDetailView: View {
                                     let bisceglieBranch = [pagano] + stations.filter { $0.branch == "Bisceglie" }
                                     MapPolyline(coordinates: bisceglieBranch.map(\.coordinate))
                                         .stroke(lineColor, lineWidth: 5)
+                                
+                                    let bisceglieBranchNew = [bisceglie] + stations.filter { $0.branch == "Bisceglie - New" }
+                                    MapPolyline(coordinates: bisceglieBranchNew.map(\.coordinate))
+                                    .stroke(lineColor, style: StrokeStyle(lineWidth: 4, dash: [6, 6]))
                                 
                                     ForEach(stations) { station in
                                         Annotation(station.name, coordinate: station.coordinate) {
