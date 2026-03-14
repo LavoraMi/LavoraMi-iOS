@@ -287,6 +287,7 @@
 				65101F572F0BF3EF0078A19C /* Frameworks */,
 				65101F582F0BF3EF0078A19C /* Resources */,
 				6582F3222F1BD9F300F7ADAF /* Embed Foundation Extensions */,
+				652F68422F6618CA00DBF6F7 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -445,6 +446,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		652F68422F6618CA00DBF6F7 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "find \"${DWARF_DSYM_FOLDER_PATH}\" -name \"*.dSYM\" | while read dsym; do\n  uuid=$(dwarfdump --uuid \"$dsym\" 2>/dev/null | awk '{print $2}' | head -1)\n  if [ -z \"$uuid\" ]; then\n    rm -rf \"$dsym\"\n  fi\ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		65101F562F0BF3EF0078A19C /* Sources */ = {
