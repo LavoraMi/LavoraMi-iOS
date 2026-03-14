@@ -633,6 +633,30 @@ struct StationsDB {
         .init(name: "Greco Rovereto", coordinate: .init(latitude: 45.49495, longitude: 9.21625), branch: "Main")
     ]
     
+    static let tram3: [MetroStation] = [
+        .init(name: "Gratosoglio", coordinate: .init(latitude: 45.40365, longitude: 9.17444), branch: "Main"),
+        .init(name: "Via Dei Missaglia", coordinate: .init(latitude: 45.40652, longitude: 9.17481), branch: "Main"),
+        .init(name: "Via Dei Missaglia Via Saponaro", coordinate: .init(latitude: 45.41018, longitude: 9.17447), branch: "Main"),
+        .init(name: "Via Dei Missaglia Via De Ruggiero", coordinate: .init(latitude: 45.4182, longitude: 9.17546), branch: "Main"),
+        .init(name: "Via Dei Missaglia (Isola Anita)", coordinate: .init(latitude: 45.42281, longitude: 9.17698), branch: "Main"),
+        .init(name: "Via Dei Missaglia Via S. Abbondio", coordinate: .init(latitude: 45.42443, longitude: 9.17711), branch: "Main"),
+        .init(name: "Via Dei Missaglia Via Boifava", coordinate: .init(latitude: 45.42655, longitude: 9.17728), branch: "Main"),
+        .init(name: "Piazza Abbiategrasso M2", coordinate: .init(latitude: 45.42924, longitude: 9.17747), branch: "Main"),
+        .init(name: "Via Montegani Via Neera", coordinate: .init(latitude: 45.43284, longitude: 9.17777), branch: "Main"),
+        .init(name: "Via Montegani Via Palmieri", coordinate: .init(latitude: 45.43463, longitude: 9.17799), branch: "Main"),
+        .init(name: "Via Montegani V.Le Da Cermenate", coordinate: .init(latitude: 45.43718, longitude: 9.1783), branch: "Main"),
+        .init(name: "Via Meda Via Spaventa", coordinate: .init(latitude: 45.44006, longitude: 9.17863), branch: "Main"),
+        .init(name: "V.Le Tibaldi Via Meda", coordinate: .init(latitude: 45.44315, longitude: 9.17902), branch: "Main"),
+        .init(name: "Largo Mahler", coordinate: .init(latitude: 45.44579, longitude: 9.17926), branch: "Main"),
+        .init(name: "C.So S. Gottardo Via Lagrange", coordinate: .init(latitude: 45.44861, longitude: 9.17974), branch: "Main"),
+        .init(name: "Piazza XXIV Maggio", coordinate: .init(latitude: 45.45177, longitude: 9.18015), branch: "Main"),
+        .init(name: "Piazza XXIV Maggio", coordinate: .init(latitude: 45.4524, longitude: 9.17969), branch: "Main"),
+        .init(name: "Via Vigevano V.Le Gorizia", coordinate: .init(latitude: 45.45272, longitude: 9.1763), branch: "Main"),
+        .init(name: "Via Vigevano Via Corsico", coordinate: .init(latitude: 45.45308, longitude: 9.17344), branch: "Main"),
+        .init(name: "Porta Genova M2", coordinate: .init(latitude: 45.45322, longitude: 9.17065), branch: "Main"),
+        .init(name: "P.Le Cantore", coordinate: .init(latitude: 45.45491, longitude: 9.17225), branch: "Main"),
+    ]
+    
     static let tram24: [MetroStation] = [
         .init(name: "Vigentino", coordinate: .init(latitude: 45.42196, longitude: 9.20354), branch: "Main"),
         .init(name: "Via Ripamonti Via Chopin", coordinate: .init(latitude: 45.42577, longitude: 9.20336), branch: "Main"),

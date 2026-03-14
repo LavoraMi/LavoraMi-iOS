@@ -2679,7 +2679,7 @@ struct LineRow: View {
     @ObservedObject var viewModel: WorkViewModel
     
     var body: some View {
-        if ((typeOfTransport != "Tram" || (line == "1" || line == "24")) && typeOfTransport != "Movibus" && typeOfTransport != "STAV" && typeOfTransport != "Autoguidovie") {
+        if ((typeOfTransport != "Tram" || (line == "1" || line == "3" || line == "24")) && typeOfTransport != "Movibus" && typeOfTransport != "STAV" && typeOfTransport != "Autoguidovie") {
             NavigationLink(
                 destination: LineDetailView(
                     lineName: line,
@@ -2845,7 +2845,7 @@ struct LinesView: View {
         [
             LineInfo(name: "1", branches: "Roserio - Greco", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram1),
             LineInfo(name: "2", branches: "P.Le Negrelli - P.Za Bausan", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "3", branches: "Duomo M1 M3 - Gratosoglio", type: "Tram", waitMinutes: "5-20 min.", stations: []),
+            LineInfo(name: "3", branches: "Duomo M1 M3 - Gratosoglio", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram3),
             LineInfo(name: "4", branches: "Cairoli M1 - Niguarda (Parco Nord)", type: "Tram", waitMinutes: "5-20 min.", stations: []),
             LineInfo(name: "5", branches: "Niguarda (Ospedale) - Ortica", type: "Tram", waitMinutes: "5-20 min.", stations: []),
             LineInfo(name: "7", branches: "P.Le Lagosta - Q.Re Adriano", type: "Tram", waitMinutes: "5-20 min.", stations: []),
@@ -3471,12 +3471,6 @@ struct LineDetailView: View {
                             .font(.title3)
                             .multilineTextAlignment(.leading)
                     }
-                    if(lineName == "1" || lineName == "24") {
-                        Text("LA MAPPA PER I TRAM È IN BETA.")
-                            .font(.system(size: 12))
-                            .foregroundStyle(.secondary)
-                            .bold()
-                    }
                     Spacer()
                 }
                 .padding()
@@ -3560,7 +3554,7 @@ struct LineDetailView: View {
                         initialPosition: .region(
                             MKCoordinateRegion(
                                 center: centerCoordinate,
-                                span: MKCoordinateSpan(latitudeDelta: ((lineName == "1" || lineName == "24") ? 0.02 : 0.15), longitudeDelta: ((lineName == "1" || lineName == "24") ? 0.02 : 0.15))
+                                span: MKCoordinateSpan(latitudeDelta: ((lineName == "1" || lineName == "3" || lineName == "24") ? 0.02 : 0.15), longitudeDelta: ((lineName == "1" || lineName == "3" || lineName == "24") ? 0.02 : 0.15))
                             )
                         ),
                         bounds: lombardyBounds,
