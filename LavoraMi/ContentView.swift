@@ -3314,8 +3314,12 @@ func getCurrentWorks(line: String, viewModel: WorkViewModel) -> [WorkItem]{
     return viewModel.items.filter{$0.lines.contains(line)}
 }
 
-func getInterchanges(line: String) -> [InterchageInfo]{
-    return StationsDB.interchanges.filter{$0.lines.contains(line)}
+func getInterchanges(line: String) -> [InterchageInfo] {
+    if Int(line) != nil {
+        return StationsDB.interchangesTrams.filter { $0.lines.contains(line) }
+    } else {
+        return StationsDB.interchanges.filter { $0.lines.contains(line) }
+    }
 }
 
 struct LineDetailView: View {
@@ -3427,6 +3431,12 @@ struct LineDetailView: View {
                         
                         if(lineName == "S12"){
                             Text("ATTUALMENTE LA LINEA ATTESTA A: MILANO BOVISA.")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                                .bold()
+                        }
+                        if(lineName == "2" || lineName == "4" || lineName == "12" || lineName == "10" || lineName == "14" || lineName == "3"){
+                            Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
                                 .font(.system(size: 12))
                                 .foregroundStyle(.secondary)
                                 .bold()
@@ -3797,6 +3807,13 @@ struct LineSmallDetailedView: View {
                         Text(branches)
                             .font(.title3)
                             .multilineTextAlignment(.leading)
+                        
+                        if(lineName == "2" || lineName == "4" || lineName == "12" || lineName == "10" || lineName == "14" || lineName == "3"){
+                            Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                                .bold()
+                        }
                     }
                     
                     if(!waitMinutes.isEmpty){
