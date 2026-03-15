@@ -594,7 +594,6 @@ struct StationsDB {
         .init(name: "V.Le Espinasse Via Palizzi", coordinate: .init(latitude: 45.50281, longitude: 9.1387), branch: "Main"),
         .init(name: "P.Le Santorre Di Santarosa", coordinate: .init(latitude: 45.50038, longitude: 9.14012), branch: "Main"),
         .init(name: "V.Le Espinasse Via Nuvolone", coordinate: .init(latitude: 45.49788, longitude: 9.14188), branch: "Main"),
-        .init(name: "V.Le Espinasse Via Nuvolone", coordinate: .init(latitude: 45.49788, longitude: 9.14188), branch: "Main"),
         .init(name: "V.Le Espinasse Via Casella", coordinate: .init(latitude: 45.4956, longitude: 9.14347), branch: "Main"),
         .init(name: "V.Le Espinasse P.Le Accursio", coordinate: .init(latitude: 45.49413, longitude: 9.14448), branch: "Main"),
         .init(name: "P.Le Accursio", coordinate: .init(latitude: 45.49282, longitude: 9.14537), branch: "Main"),
