@@ -2305,7 +2305,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Firebase",
-            version: "12.10.0",
+            version: "12.11.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -2516,7 +2516,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-crypto",
-            version: "4.2.0",
+            version: "4.3.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2019 Apple Inc.",
             licenseText: """
