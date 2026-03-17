@@ -2041,6 +2041,11 @@ struct InfoView: View {
                         .font(.system(size: 30))
                         .bold()
                         .padding(.top, 20)
+                    Text("Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi effettuarci una donazione qui sotto!")
+                        .font(.system(size: 17))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                        .padding(.bottom, 20)
                     Button {
                         let url = URL(string: "https://www.patreon.com/cw/LavoraMi")!
                         
@@ -2160,6 +2165,31 @@ struct InfoView: View {
                         }
                     }
                     Spacer()
+                }
+                Divider().padding(.top, 10)
+                Section(){
+                    Text("Informazioni")
+                        .font(.system(size: 30))
+                        .bold()
+                        .padding(.top, 20)
+                    Button {
+                        let url = URL(string: "https://www.lavorami.it/privacyPolicy")!
+                        openURLAction(url)
+                    } label: {
+                        Label("Privacy Policy", systemImage: "lock.shield.fill")
+                            .font(.system(size: 20))
+                    }
+                    .padding(.top, 5)
+                    .padding(.bottom, 20)
+                    Button {
+                        let url = URL(string: "https://www.lavorami.it/termsofservice")!
+                        openURLAction(url)
+                    } label: {
+                        Label("Termini di Servizio", systemImage: "text.document.fill")
+                            .font(.system(size: 20))
+                    }
+                    .padding(.top, 5)
+                    .padding(.bottom, 20)
                 }
             }
         }
