@@ -25,16 +25,16 @@ struct SplashScreenView: View {
             }
             .opacity(opacity)
             .onAppear {
-                withAnimation(.easeIn(duration: 0.4).delay(0.7)){
+                withAnimation(.easeIn(duration: 0.4).delay(0.5)){
                     scaleEffect = 0.7
                 }
-                withAnimation(.easeIn(duration: 0.4).delay(1)){
-                    scaleEffect = 140
+                withAnimation(.easeIn(duration: 0.4).delay(0.8)){
+                    scaleEffect = 180
                 }
-                withAnimation(.easeIn(duration: 0.15).delay(1.25)) {
+                withAnimation(.easeIn(duration: 0.15).delay(1.05)) {
                     opacity = 0
                 }
-                withAnimation(.easeIn(duration: 0.2).delay(1.15)) {
+                withAnimation(.easeIn(duration: 0.2).delay(1.05)) {
                     contentOpacity = 1.0
                 }
             }
