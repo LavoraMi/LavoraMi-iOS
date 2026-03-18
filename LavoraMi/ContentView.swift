@@ -2218,7 +2218,13 @@ struct InfoView: View {
                         .padding(.top, 20)
                     Button {
                         let url = URL(string: "https://www.lavorami.it/privacyPolicy")!
-                        openURLAction(url)
+                        
+                        if(howToOpenLinks == .inApp) {
+                            selectedURL = url
+                        }
+                        else {
+                            openURLAction(url)
+                        }
                     } label: {
                         Label("Privacy Policy", systemImage: "lock.shield.fill")
                             .font(.system(size: 20))
@@ -2227,7 +2233,13 @@ struct InfoView: View {
                     .padding(.bottom, 20)
                     Button {
                         let url = URL(string: "https://www.lavorami.it/termsofservice")!
-                        openURLAction(url)
+                        
+                        if(howToOpenLinks == .inApp) {
+                            selectedURL = url
+                        }
+                        else {
+                            openURLAction(url)
+                        }
                     } label: {
                         Label("Termini di Servizio", systemImage: "text.document.fill")
                             .font(.system(size: 20))
