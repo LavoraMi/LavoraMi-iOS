@@ -47,6 +47,7 @@ struct WorkItem: Identifiable, Hashable, Codable {
 //MARK: MAIN VIEW
 struct ContentView: View {
     @StateObject private var viewModel = WorkViewModel()
+    @Binding var showSetupScreen: Bool
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
 
     var body: some View {
@@ -59,7 +60,7 @@ struct ContentView: View {
                 .tabItem{Label("Impostazioni", systemImage: "gear")}
         }
         .tint(.red)
-        .sheet(isPresented: $hasNotCompletedSetup){
+        .sheet(isPresented: $showSetupScreen){
             SetupView()
         }
     }
@@ -75,26 +76,26 @@ struct SetupView: View {
         SetupPage(
             title: "Benvenuto su LavoraMi",
             description: "Tieniti informato. Prima e durante il tuo viaggio.",
-            transitionImage: "tram.fill",
-            standardImage: "tram.card.fill",
+            transitionImage: "1",
+            standardImage: "1",
             fallbackImage: "person.text.rectangle.fill"
         ),
         SetupPage(
             title: "Pianifica il Viaggio",
-            description: "Pianifica il tuo viaggio sapendo dei disagi, ben prima di partire.",
+            description: "Pianifica il tuo viaggio sapendo dei disagi sul tragitto, ben prima di partire.",
             transitionImage: "mappin",
             standardImage: "mappin.and.ellipse"
         ),
         SetupPage(
             title: "Tieni sott'occhio i lavori",
-            description: "Seleziona una linea da poter mostrare nel Widget dell'app per tenerla sempre sott'occhio.",
+            description: "Seleziona una linea da poter mostrare nel Widget per tenerla sempre sott'occhio.",
             transitionImage: "star.fill",
             standardImage: "widget.small",
             fallbackImage: "plus.viewfinder"
         ),
         SetupPage(
             title: "Tieniti Aggiornato",
-            description: "Attiva le notifiche per rimanere al passo coi lavori.",
+            description: "Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese.",
             transitionImage: "bell.slash.fill",
             standardImage: "bell.fill"
         ),
@@ -115,7 +116,16 @@ struct SetupView: View {
                             .tag(index)
                     }
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                HStack(spacing: 6) {
+                    ForEach(0..<pages.count, id: \.self) { index in
+                        Capsule()
+                            .fill(currentPage == index ? Color.white : Color.gray.opacity(0.4))
+                            .frame(width: currentPage == index ? 24 : 8, height: 8)
+                            .animation(.spring(), value: currentPage)
+                    }
+                }
+                .padding(.bottom, 8)
                 Spacer()
                 if currentPage == pages.count - 1 {
                     Button {
@@ -155,12 +165,13 @@ struct SetupView: View {
             }
             .navigationTitle(Text("LavoraMi"))
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showPopUpConfirmSkipSetup = true
-                    } label: {
-                        Image(systemName: "forward.fill")
-                            .foregroundStyle(.red)
+                if(currentPage != 4) {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            showPopUpConfirmSkipSetup = true
+                        } label: {
+                            Text("Salta")
+                        }
                     }
                 }
             }
@@ -170,7 +181,7 @@ struct SetupView: View {
                     hasNotCompletedSetup = false; dismiss()
                 }
             } message: {
-                Text("Sei sicuro di voler saltare la parte di configurazione?")
+                Text("Sei sicuro di voler saltare la configurazione?")
             }
         }
     }
@@ -191,28 +202,55 @@ struct SetupPage {
 
 struct SetupPageView: View {
     @State var startImageTransition : Bool = false
+    @State var imageTransitionFirstPage: Bool = false
+    @State var i = 0
     @AppStorage("enableAnimations") var enableAnimations = true
     let page: SetupPage
 
     var body: some View {
         VStack(spacing: 30) {
             if #available(iOS 18.0, *), enableAnimations{
-                Image(systemName: (startImageTransition) ? page.standardImage : page.transitionImage)
-                    .font(.system(size: 80))
-                    .foregroundColor(.red)
-                    .padding(.top, 50)
-                    .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
-                    .onAppear{
-                        Task{
-                            try? await Task.sleep(for: .seconds(1))
-                            withAnimation{
-                                startImageTransition = true
+                if(page.standardImage != "1") {
+                    Image(systemName: (startImageTransition) ? page.standardImage : page.transitionImage)
+                        .font(.system(size: 80))
+                        .foregroundColor(.red)
+                        .padding(.top, 50)
+                        .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
+                        .onAppear{
+                            Task{
+                                try? await Task.sleep(for: .seconds(1))
+                                withAnimation{
+                                    startImageTransition = true
+                                }
                             }
                         }
-                    }
-                    .onDisappear{
-                        startImageTransition = false
-                    }
+                        .onDisappear{
+                            startImageTransition = false
+                        }
+                }
+                else {
+                    let images = ["tram.fill", "tram.fill.tunnel", "lightrail", "bus.fill"]
+
+                    Image(systemName: images[i])
+                        .font(.system(size: 80))
+                        .foregroundColor(.red)
+                        .padding(.top, 50)
+                        .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
+                        .onAppear {
+                            imageTransitionFirstPage = true
+                            Task {
+                                while imageTransitionFirstPage {
+                                    try? await Task.sleep(for: .seconds(1))
+                                    withAnimation {
+                                        i = (i + 1) % images.count
+                                    }
+                                }
+                            }
+                        }
+                        .onDisappear(){
+                            imageTransitionFirstPage = false
+                        }
+                }
             }
             else{
                 Image(systemName: page.fallbackImage ?? page.standardImage)
@@ -231,6 +269,12 @@ struct SetupPageView: View {
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
 
+            if(page.title == "Tu ed ancora Tu."){
+                Text("Creando un Account LavoraMi, accetti i Termini di Servizio e la Privacy Policy. Vai in Impostazioni > Account per saperne di più.")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
             Spacer()
         }
         .padding()
@@ -4378,8 +4422,4 @@ struct SafariView: UIViewControllerRepresentable {
 
     func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
     }
-}
-
-#Preview {
-    ContentView()
 }

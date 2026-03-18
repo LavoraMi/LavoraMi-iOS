@@ -12,10 +12,12 @@ struct SplashScreenView: View {
     @State private var opacity = 1.0
     @State private var scaleEffect = 1.0
     @State private var contentOpacity: Double = 0
+    @State private var showSetupScreen: Bool = false
+    @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     
     var body: some View {
         ZStack {
-            ContentView()
+            ContentView(showSetupScreen: $showSetupScreen)
                 .opacity(contentOpacity)
             VStack {
                 Image("icon")
@@ -26,7 +28,7 @@ struct SplashScreenView: View {
             .opacity(opacity)
             .onAppear {
                 withAnimation(.easeIn(duration: 0.4).delay(0.7)){
-                    scaleEffect = 0.7
+                    scaleEffect = 0.5
                 }
                 withAnimation(.easeIn(duration: 0.4).delay(1)){
                     scaleEffect = 180
@@ -36,6 +38,11 @@ struct SplashScreenView: View {
                 }
                 withAnimation(.easeIn(duration: 0.2).delay(1.15)) {
                     contentOpacity = 1.0
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    if hasNotCompletedSetup {
+                        showSetupScreen = true
+                    }
                 }
             }
         }
