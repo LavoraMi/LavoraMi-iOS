@@ -1480,7 +1480,6 @@ struct AccountView: View {
                                 
                                 await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: name)
                                 loggedIn = auth.isLoggedIn()
-                                dismiss()
                             }
                         }
                     }
