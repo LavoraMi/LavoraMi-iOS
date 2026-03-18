@@ -281,7 +281,7 @@ struct SetupPageView: View {
     }
 }
 
-struct MainView: View{
+struct MainView: View {
     @AppStorage("preferredFilter") private var preferredFilter: FilterBy = .all
     @AppStorage("showErrorMessages") var showErrorMessages: Bool = false
     @AppStorage("showStrikeBanner") var showStrikeBanner: Bool = true

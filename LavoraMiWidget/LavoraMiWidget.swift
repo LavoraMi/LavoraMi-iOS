@@ -205,7 +205,7 @@ struct LavoraMiWidget: Widget {
 
 class WidgetNetworkManager {
     static func fetchCounts(for lineName: String) async -> (Int, Int) {
-        let urlString = "https://cdn-playepik.netlify.app/LavoraMI/lavoriAttuali.json"
+        let urlString = "https://cdn.lavorami.it/lavoriAttuali.json"
         guard let url = URL(string: urlString) else { return (0, 0) }
         
         do {
