@@ -19,16 +19,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
         NotificationCenter.default.addObserver(self, selector: #selector(handlePushToggle(_:)), name: NSNotification.Name("pushNotificationsToggled"), object: nil)
 
-        let pushAbilitate = UserDefaults.standard.object(forKey: "enablePushNotifications") == nil
-            ? false
-            : UserDefaults.standard.bool(forKey: "enablePushNotifications")
-
-        if pushAbilitate {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
-                guard granted else { return }
-                DispatchQueue.main.async {
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+            guard granted else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
             }
         }
 
@@ -48,7 +42,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        guard UserDefaults.standard.bool(forKey: "enablePushNotifications") else { return }
         Messaging.messaging().apnsToken = deviceToken
     }
 
@@ -57,7 +50,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
 
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        guard UserDefaults.standard.bool(forKey: "enablePushNotifications") else { return }
         guard let token = fcmToken else { return }
         print("FCM Token: \(token)")
         UserDefaults.standard.set(token, forKey: "fcmToken")
