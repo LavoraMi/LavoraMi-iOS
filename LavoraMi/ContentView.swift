@@ -1184,13 +1184,16 @@ struct AccountView: View {
     @State private var showConfirmToExitPopUp: Bool = false
     @State private var isLocked: Bool = true
     @State private var text: String = ""
+    @State private var selectedURL: URL?
     @State private var isBiometricAuthCompleted: Bool = false
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) var colorScheme
-    
-    @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @State var isRequiringData: Bool = false
     @State private var currentNonce: String?
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.openURL) private var openURLAction
+    
+    @AppStorage("requireFaceID") var requireFaceID: Bool = true
+    @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     
     var body: some View {
         NavigationStack {
@@ -1250,15 +1253,49 @@ struct AccountView: View {
                             }
                         }
                     }
-                    
                     if let err = auth.errorMessage, !err.isEmpty {
                         Text(err)
                             .font(.footnote)
                             .foregroundStyle(.red)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
-
                     Spacer()
+                    HStack(spacing: 0) {
+                        Text("Continuando, accetti i ")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+
+                        Button {
+                            let url = URL(string: "https://www.lavorami.it/termsofservice")!
+                            
+                            if(howToOpenLinks == .inApp) {
+                                selectedURL = url
+                            }
+                            else {
+                                openURLAction(url)
+                            }
+                        } label: {
+                            Text("Termini")
+                                .font(.subheadline)
+                        }
+                        
+                        Text(" e la ")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        
+                        Button {
+                            let url = URL(string: "https://www.lavorami.it/privacypolicy")!
+                            
+                            if(howToOpenLinks == .inApp) {
+                                selectedURL = url
+                            } else {
+                                openURLAction(url)
+                            }
+                        } label: {
+                            Text("Privacy Policy.")
+                                .font(.subheadline)
+                        }
+                    }
                     SignInWithAppleButton(.signIn) { request in
                         let nonce = randomNonceString()
                         currentNonce = nonce
@@ -1384,6 +1421,42 @@ struct AccountView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     Spacer()
+                    HStack(spacing: 0) {
+                        Text("Continuando, accetti i ")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+
+                        Button {
+                            let url = URL(string: "https://www.lavorami.it/termsofservice")!
+                            
+                            if(howToOpenLinks == .inApp) {
+                                selectedURL = url
+                            }
+                            else {
+                                openURLAction(url)
+                            }
+                        } label: {
+                            Text("Termini")
+                                .font(.subheadline)
+                        }
+                        
+                        Text(" e la ")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        
+                        Button {
+                            let url = URL(string: "https://www.lavorami.it/privacypolicy")!
+                            
+                            if(howToOpenLinks == .inApp) {
+                                selectedURL = url
+                            } else {
+                                openURLAction(url)
+                            }
+                        } label: {
+                            Text("Privacy Policy.")
+                                .font(.subheadline)
+                        }
+                    }
                     SignInWithAppleButton(.signUp) { request in
                         let nonce = randomNonceString()
                         currentNonce = nonce
@@ -1696,6 +1769,10 @@ struct AccountView: View {
             }
             .navigationTitle("Account")
             .navigationBarTitleDisplayMode(.inline)
+            .sheet(item: $selectedURL) { url in
+                SafariView(url: url)
+                    .ignoresSafeArea(.all)
+            }
         }
     }
     
@@ -4434,4 +4511,9 @@ struct SafariView: UIViewControllerRepresentable {
 
     func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
     }
+}
+
+#Preview{
+    @State var showSetupScreen: Bool = false
+    ContentView(showSetupScreen: $showSetupScreen)
 }
