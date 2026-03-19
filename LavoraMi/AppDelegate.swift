@@ -25,6 +25,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                 UIApplication.shared.registerForRemoteNotifications()
             }
         }
+        
+        DispatchQueue.main.async {
+            UIApplication.shared.registerForRemoteNotifications()
+        }
 
         return true
     }
@@ -42,11 +46,26 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenHex = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print("APNs token: \(tokenHex)")
+        UserDefaults.standard.set(tokenHex, forKey: "apnsToken")
+
         Messaging.messaging().apnsToken = deviceToken
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                UserDefaults.standard.set("ERRORE: \(error.localizedDescription)", forKey: "fcmDebug")
+                return
+            }
+            guard let token = token else { return }
+            print("FCM Token rigenerato: \(token)")
+            UserDefaults.standard.set(token, forKey: "fcmToken")
+            UserDefaults.standard.set("OK", forKey: "fcmDebug")
+        }
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Errore registrazione APNs: \(error.localizedDescription)")
+        print("Errore APNs: \(error.localizedDescription)")
+        UserDefaults.standard.set("FALLITO: \(error.localizedDescription)", forKey: "apnsToken")
     }
 
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
