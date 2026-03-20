@@ -25,7 +25,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                 UIApplication.shared.registerForRemoteNotifications()
             }
         }
-        
+
         DispatchQueue.main.async {
             UIApplication.shared.registerForRemoteNotifications()
         }
@@ -46,8 +46,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("APNs token length: \(deviceToken.count)")
         let tokenHex = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        print("APNs token: \(tokenHex)")
+        print("APNs token hex: \(tokenHex)")
+        print("APNs token hex length: \(tokenHex.count)")
         UserDefaults.standard.set(tokenHex, forKey: "apnsToken")
 
         Messaging.messaging().apnsToken = deviceToken
