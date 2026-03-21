@@ -78,7 +78,7 @@ struct SetupView: View {
             description: "Tieniti informato. Prima e durante il tuo viaggio.",
             transitionImage: "1",
             standardImage: "1",
-            fallbackImage: "person.text.rectangle.fill"
+            fallbackImage: "lightrail.fill"
         ),
         SetupPage(
             title: "Pianifica il Viaggio",
@@ -91,7 +91,7 @@ struct SetupView: View {
             description: "Seleziona una linea da poter mostrare nel Widget per tenerla sempre sott'occhio.",
             transitionImage: "star.fill",
             standardImage: "widget.small",
-            fallbackImage: "plus.viewfinder"
+            fallbackImage: "star.fill"
         ),
         SetupPage(
             title: "Tieniti Aggiornato",
@@ -2192,7 +2192,7 @@ struct InfoView: View {
                             openURLAction(url)
                         }
                     } label: {
-                        Label("Supportaci su Buy Me A Coffee", systemImage: "cup.and.heat.waves.fill")
+                        Label("Supportaci su Buy Me A Coffee", systemImage: "cup.and.saucer.fill")
                             .font(.system(size: 20))
                     }
                     .padding(.top, 5)
@@ -2316,7 +2316,7 @@ struct InfoView: View {
                             openURLAction(url)
                         }
                     } label: {
-                        Label("Termini di Servizio", systemImage: "text.document.fill")
+                        Label("Termini di Servizio", systemImage: "doc.text.fill")
                             .font(.system(size: 20))
                     }
                     .padding(.top, 5)
@@ -2786,10 +2786,9 @@ struct RequestDataDownload: View {
                     .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            
             List{
                 Section(footer: Text("Seleziona il formato in cui i tuoi dati verranno esportati.")){
-                    Label("Formato del File:", systemImage: "arrow.down.document.fill")
+                    Label("Formato del File:", systemImage: "arrow.down.doc.fill")
                     Picker(selection: $selectedFileType, content: {
                         ForEach(fileFormatType.allCases) { filter in
                             Text(filter.rawValue).tag(filter)
@@ -2810,13 +2809,10 @@ struct RequestDataDownload: View {
                             .textContentType(.emailAddress)
                             .textInputAutocapitalization(.never)
                     }
-                    .background(Color(.systemGray6))
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
             }
-            
             Spacer()
-            
             Button(action: {
                 mailData = ComposeMailData(subject: "Richiesta dei miei Dati", recipients: ["info@lavorami.it"], message: "Buongiorno,\nVorrei richiedere l'invio dei miei dati in formato \(selectedFileType.rawValue) dell'Account con mail:\(emailToSend)\nMessaggio inviato dall'App LavoraMi.", attachments: nil)
                 showMailView = true
