@@ -1136,15 +1136,6 @@ struct SettingsView: View{
                             .textSelection(.enabled)}
                         
                     }
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("APNs: \(UserDefaults.standard.string(forKey: "apnsToken") ?? "nessuno")")
-                            .lineLimit(nil)
-                            .fixedSize(horizontal: false, vertical: true)
-                        Text("FCM: \(UserDefaults.standard.string(forKey: "fcmDebug") ?? "nessuno")")
-                    }
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
-                    .textSelection(.enabled)
                 }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
                     Button(role: .destructive) {
