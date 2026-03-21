@@ -120,7 +120,7 @@ struct SetupView: View {
                 HStack(spacing: 6) {
                     ForEach(0..<pages.count, id: \.self) { index in
                         Capsule()
-                            .fill(currentPage == index ? Color.white : Color.gray.opacity(0.4))
+                            .fill(currentPage == index ? Color("TextColor") : Color.gray.opacity(0.4))
                             .frame(width: currentPage == index ? 24 : 8, height: 8)
                             .animation(.spring(), value: currentPage)
                     }
@@ -229,7 +229,7 @@ struct SetupPageView: View {
                         }
                 }
                 else {
-                    let images = ["tram.fill", "tram.fill.tunnel", "lightrail", "bus.fill"]
+                    let images = ["tram.fill", "tram.fill.tunnel", "lightrail.fill", "bus.fill"]
 
                     Image(systemName: images[i])
                         .font(.system(size: 80))
@@ -1745,7 +1745,7 @@ struct AccountView: View {
                     }
                     isBiometricAuthCompleted = true
                 }
-                else{
+                else {
                     isLocked = false
                     isRequiringData = false
                     isBiometricAuthCompleted = true
