@@ -2162,9 +2162,10 @@ struct InfoView: View {
                         .bold()
                         .padding(.top, 20)
                     Text("Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi effettuarci una donazione qui sotto!")
-                        .font(.system(size: 17))
+                        .font(.system(size: 14))
                         .multilineTextAlignment(.center)
-                        .padding()
+                        .padding(.top, 1)
+                        .padding(.horizontal, 10)
                         .padding(.bottom, 20)
                     Button {
                         let url = URL(string: "https://www.patreon.com/cw/LavoraMi")!
@@ -2215,7 +2216,6 @@ struct InfoView: View {
                                 .frame(width: 22, height: 22)
                             Text("Instagram")
                                 .font(.system(size: 20))
-                                .bold()
                         }
                     }
                     .padding(.top, 5)
@@ -2231,7 +2231,6 @@ struct InfoView: View {
                                 .frame(width: 22, height: 22)
                             Text("TikTok")
                                 .font(.system(size: 20))
-                                .bold()
                         }
                     }
                     .padding(.top, 5)
