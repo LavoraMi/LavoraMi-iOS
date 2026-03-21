@@ -1755,9 +1755,9 @@ struct AccountView: View {
                 Button("Annulla", role: .cancel) { }
                 Button("Conferma", role: .destructive) {
                     Task {
-                        await auth.signOut()
                         loggedIn = false
                         isLogginIn = true
+                        await auth.signOut()
                         email = ""
                         password = ""
                         fullName = ""
