@@ -19,13 +19,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
         NotificationCenter.default.addObserver(self, selector: #selector(handlePushToggle(_:)), name: NSNotification.Name("pushNotificationsToggled"), object: nil)
 
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
-            guard granted else { return }
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
-
         DispatchQueue.main.async {
             UIApplication.shared.registerForRemoteNotifications()
         }
@@ -46,41 +39,24 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("APNs token length: \(deviceToken.count)")
-        let tokenHex = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        print("APNs token hex: \(tokenHex)")
-        print("APNs token hex length: \(tokenHex.count)")
-        UserDefaults.standard.set(tokenHex, forKey: "apnsToken")
-
         Messaging.messaging().apnsToken = deviceToken
         Messaging.messaging().token { token, error in
-            if let error = error {
-                UserDefaults.standard.set("ERRORE: \(error.localizedDescription)", forKey: "fcmDebug")
-                return
-            }
             guard let token = token else { return }
-            print("FCM Token rigenerato: \(token)")
             UserDefaults.standard.set(token, forKey: "fcmToken")
-            UserDefaults.standard.set("OK", forKey: "fcmDebug")
         }
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Errore APNs: \(error.localizedDescription)")
-        UserDefaults.standard.set("FALLITO: \(error.localizedDescription)", forKey: "apnsToken")
     }
 
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         guard let token = fcmToken else { return }
-        print("FCM Token: \(token)")
         UserDefaults.standard.set(token, forKey: "fcmToken")
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let pushAbilitate = UserDefaults.standard.object(forKey: "enablePushNotifications") == nil
-            ? true
-            : UserDefaults.standard.bool(forKey: "enablePushNotifications")
-
+        let pushAbilitate = UserDefaults.standard.object(forKey: "enablePushNotifications") == nil ? true : UserDefaults.standard.bool(forKey: "enablePushNotifications")
         completionHandler(pushAbilitate ? [.banner, .sound, .badge, .list] : [])
     }
 }
