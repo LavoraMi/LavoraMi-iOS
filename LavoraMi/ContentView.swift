@@ -1194,6 +1194,7 @@ struct AccountView: View {
     @State private var text: String = ""
     @State private var selectedURL: URL?
     @State private var isBiometricAuthCompleted: Bool = false
+    @State private var showMailApple: Bool = false
     @State var isRequiringData: Bool = false
     @State private var currentNonce: String?
     @Environment(\.dismiss) private var dismiss
@@ -1549,14 +1550,34 @@ struct AccountView: View {
                                         .foregroundStyle(.red)
                                         .font(.system(size: 25))
                                 }
-                                Label {
-                                    Text(email)
-                                        .foregroundColor(Color("TextColor"))
-                                        .font(.system(size: 25))
-                                } icon: {
-                                    Image(systemName: "envelope.fill")
-                                        .foregroundStyle(.red)
-                                        .font(.system(size: 25))
+                                
+                                if(email.contains("privaterelay")) {
+                                    Button(action: {
+                                        showMailApple = !showMailApple
+                                    }) {
+                                        Label {
+                                            Text((!showMailApple) ? "PrivateRelay Apple" : email)
+                                                .foregroundColor(Color("TextColor"))
+                                                .font(.system(size: 25))
+                                                .lineLimit(1)
+                                                .truncationMode(.tail)
+                                        } icon: {
+                                            Image(systemName: "envelope.fill")
+                                                .foregroundStyle(.red)
+                                                .font(.system(size: 25))
+                                        }
+                                    }
+                                }
+                                else{
+                                    Label {
+                                        Text(email)
+                                            .foregroundColor(Color("TextColor"))
+                                            .font(.system(size: 25))
+                                    } icon: {
+                                        Image(systemName: "envelope.fill")
+                                            .foregroundStyle(.red)
+                                            .font(.system(size: 25))
+                                    }
                                 }
                                 
                                 if(auth.isLoggedInWithApple()) {
@@ -1622,9 +1643,9 @@ struct AccountView: View {
                             Button("Annulla", role: .cancel) { }
                             Button("Continua", role: .destructive) {
                                 Task {
-                                    await auth.deleteAccount()
                                     loggedIn = false
                                     isLogginIn = true
+                                    await auth.deleteAccount()
                                     email = ""
                                     password = ""
                                     fullName = ""
