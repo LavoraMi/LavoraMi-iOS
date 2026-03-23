@@ -817,6 +817,7 @@ struct SettingsView: View{
     @AppStorage("showStrikeBanner") var showStrikeBanner: Bool = true
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
+    @Environment(\.dismiss) var dismiss
     
     let metroLines = ["M1", "M2", "M3", "M4", "M5"]
     
@@ -1077,33 +1078,7 @@ struct SettingsView: View{
                         Label("Filtro Predefinito", systemImage: "line.3.horizontal.decrease.circle.fill")
                     }
                     .pickerStyle(.navigationLink)
-                    NavigationLink {
-                        List {
-                            ForEach(AppearanceType.allCases) { filter in
-                                Button {
-                                    appearanceSelection = filter
-                                } label: {
-                                    HStack {
-                                        Label{
-                                            Text(filter.description)
-                                        } icon: {
-                                            Image(systemName: filter.iconName)
-                                                .foregroundStyle(.red)
-                                        }
-                                        
-                                        Spacer()
-                                        if appearanceSelection == filter {
-                                            Image(systemName: "checkmark")
-                                                .foregroundColor(.red)
-                                        }
-                                    }
-                                }
-                                .foregroundColor(Color("TextColor"))
-                            }
-                        }
-                        .navigationTitle("Aspetto")
-                        .navigationBarTitleDisplayMode(.inline)
-                    } label: {
+                    NavigationLink(destination: AppearancePickerView()) {
                         HStack {
                             Label("Aspetto", systemImage: "circle.righthalf.filled")
                             Spacer()
@@ -1164,6 +1139,39 @@ struct SettingsView: View{
                 Text("Sei sicuro di voler ripristinare le impostazioni?")
             }
         }
+    }
+}
+
+struct AppearancePickerView: View {
+    @Environment(\.dismiss) var dismiss
+    @AppStorage("appearanceSelection") private var appearanceSelection: AppearanceType = .system
+
+    var body: some View {
+        List {
+            ForEach(AppearanceType.allCases) { filter in
+                Button {
+                    appearanceSelection = filter
+                    dismiss()
+                } label: {
+                    HStack {
+                        Label {
+                            Text(filter.description)
+                        } icon: {
+                            Image(systemName: filter.iconName)
+                                .foregroundStyle(.red)
+                        }
+                        Spacer()
+                        if appearanceSelection == filter {
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
+                .foregroundColor(Color("TextColor"))
+            }
+        }
+        .navigationTitle("Aspetto")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
