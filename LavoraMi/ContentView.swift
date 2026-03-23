@@ -818,6 +818,7 @@ struct SettingsView: View{
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @Environment(\.dismiss) var dismiss
+    @Environment(\.openURL) private var openURLAction
     
     let metroLines = ["M1", "M2", "M3", "M4", "M5"]
     
@@ -1109,7 +1110,9 @@ struct SettingsView: View{
                             .textSelection(.enabled)}
                         else{Text("\(Bundle.main.shortVersion)")
                             .textSelection(.enabled)}
-                        
+                    }
+                    ShareLink(item: URL(string: "https://apps.apple.com/us/app/lavorami/id6760344298")!) {
+                        Label("Condividi LavoraMi", systemImage: "arrowshape.turn.up.right.fill")
                     }
                 }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
