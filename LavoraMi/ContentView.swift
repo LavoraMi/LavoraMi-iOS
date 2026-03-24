@@ -425,42 +425,83 @@ struct MainView: View {
                     }
                 }
             }
-            if(viewModel.strikeEnabled && !closedStrike && showStrikeBanner){
-                VStack(spacing: 8) {
-                    Label("AVVISO SCIOPERO", systemImage: "exclamationmark.triangle.fill")
-                        .font(.system(size: 25, weight: .bold))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundStyle(Color("TextColor"))
-                   
-                    Text("Sciopero proclamato per il \(viewModel.dateStrike).")
-                        .font(.system(size: 15))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundStyle(Color("TextColor"))
-                   
-                    Text("Le fasce garantite (06:00 - 09:00, 18:00 - 21:00) \(viewModel.guaranteed)")
-                        .font(.system(size: 15))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundStyle(Color("TextColor"))
-                        .padding(.horizontal, 10)
-                        .multilineTextAlignment(.center)
-                    HStack {
-                        Text("Aderenti: \(viewModel.companiesStrikes)")
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundStyle(Color("TextColor"))
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 8)
+            if viewModel.strikeEnabled && !closedStrike && showStrikeBanner {
+                VStack(spacing: 0) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundStyle(.white)
+
+                        Text("AVVISO SCIOPERO")
+                            .font(.system(size: 15, weight: .bold))
+                            .foregroundStyle(.white)
+                            .tracking(0.5)
+
+                        Spacer()
+
+                        Button(action: { withAnimation(.spring(duration: 0.3)) { closedStrike = true } }) {
+                            Image(systemName: "xmark")
+                                .font(.system(size: 11, weight: .bold))
+                                .foregroundStyle(.white.opacity(0.9))
+                                .padding(6)
+                                .background(.white.opacity(0.2), in: Circle())
+                        }
                     }
-                    Button(action:{
-                        closedStrike = true
-                    }){
-                        Label("Chiudi", systemImage: "xmark")
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 11)
+                    .background(Color.red)
+                    VStack(alignment: .leading, spacing: 9) {
+                        HStack(alignment: .top, spacing: 8) {
+                            Image(systemName: "calendar")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                                .frame(width: 16)
+                            Text("Sciopero proclamato per il **\(viewModel.dateStrike)**")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.primary)
+                        }
+
+                        HStack(alignment: .top, spacing: 8) {
+                            Image(systemName: "clock")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                                .frame(width: 16)
+                                .padding(.top, 1)
+                            Text("Le fasce garantite \(viewModel.guaranteed)")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.primary)
+                                .multilineTextAlignment(.leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        Divider()
+                            .padding(.vertical, 2)
+
+                        HStack(spacing: 6) {
+                            Image(systemName: "building.2.fill")
+                                .font(.system(size: 11))
+                                .foregroundStyle(.red)
+                            Text("Aderenti:")
+                                .font(.system(size: 13))
+                                .foregroundStyle(.secondary)
+                            Text(viewModel.companiesStrikes)
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundStyle(.primary)
+                        }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 12)
+                    .background(Color(.secondarySystemBackground))
                 }
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .clipShape(RoundedRectangle(cornerRadius: 14))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14)
+                        .stroke(Color.red.opacity(0.25), lineWidth: 1)
+                )
+                .shadow(color: .red.opacity(0.12), radius: 8, x: 0, y: 3)
                 .padding(.horizontal)
                 .padding(.bottom, 10)
+                .transition(.move(edge: .top).combined(with: .opacity))
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
