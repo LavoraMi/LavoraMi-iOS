@@ -1,0 +1,23 @@
+{
+  "sourceLanguage" : "it",
+  "strings" : {
+    "linesTabTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lines"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linee"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.2"
+}

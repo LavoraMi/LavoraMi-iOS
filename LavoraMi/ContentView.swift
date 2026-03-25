@@ -55,7 +55,7 @@ struct ContentView: View {
             MainView(viewModel: viewModel)
                 .tabItem{Label("Home", systemImage: "house")}
             LinesView(viewModel: viewModel)
-                .tabItem{Label("Linee", systemImage: "arrow.branch")}
+                .tabItem{Label("linesTabTitle", systemImage: "arrow.branch")}
             SettingsView(viewModel: viewModel)
                 .tabItem{Label("Impostazioni", systemImage: "gear")}
         }

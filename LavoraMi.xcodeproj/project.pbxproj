@@ -66,6 +66,8 @@
 		6531E9CF2F312C29001B03BB /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 6531E9CE2F312C29001B03BB /* Realtime */; };
 		6531E9D12F312C29001B03BB /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 6531E9D02F312C29001B03BB /* Storage */; };
 		6531E9D32F312C29001B03BB /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6531E9D22F312C29001B03BB /* Supabase */; };
+		6541EED52F7492B700BEC720 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6541EED42F7492B600BEC720 /* Localizable.xcstrings */; };
+		6541EED62F7492B700BEC720 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6541EED42F7492B600BEC720 /* Localizable.xcstrings */; };
 		65632D892F4B6FA3007AD01D /* SwiftUIMailView in Frameworks */ = {isa = PBXBuildFile; productRef = 65632D882F4B6FA3007AD01D /* SwiftUIMailView */; };
 		65632D8B2F4B70CD007AD01D /* SwiftUIMailView in Frameworks */ = {isa = PBXBuildFile; productRef = 65632D8A2F4B70CD007AD01D /* SwiftUIMailView */; };
 		6582F30E2F1BD9F100F7ADAF /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6582F30D2F1BD9F100F7ADAF /* WidgetKit.framework */; };
@@ -99,6 +101,7 @@
 
 /* Begin PBXFileReference section */
 		65101F5A2F0BF3EF0078A19C /* LavoraMi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LavoraMi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6541EED42F7492B600BEC720 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		6582F30B2F1BD9F000F7ADAF /* LavoraMiWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LavoraMiWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6582F30D2F1BD9F100F7ADAF /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		6582F30F2F1BD9F100F7ADAF /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -250,6 +253,7 @@
 		65101F512F0BF3EF0078A19C = {
 			isa = PBXGroup;
 			children = (
+				6541EED42F7492B600BEC720 /* Localizable.xcstrings */,
 				6582F3242F1BE09300F7ADAF /* LavoraMiWidgetExtension.entitlements */,
 				65101F5C2F0BF3EF0078A19C /* LavoraMi */,
 				6582F3112F1BD9F100F7ADAF /* LavoraMiWidget */,
@@ -411,6 +415,7 @@
 			knownRegions = (
 				Base,
 				it,
+				en,
 			);
 			mainGroup = 65101F512F0BF3EF0078A19C;
 			minimizedProjectReferenceProxies = 1;
@@ -435,6 +440,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6541EED52F7492B700BEC720 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +448,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6541EED62F7492B700BEC720 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +562,7 @@
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -613,6 +621,7 @@
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
