@@ -17,9 +17,12 @@ class WorkViewModel: ObservableObject {
     @Published var companiesStrikes: String = ""
     @Published var dateStrike: String = ""
     @Published var guaranteed: String = ""
+    @Published var maintenanceModeEnabled: Bool = false
+    @Published var maintenanceDeps: String = ""
     
     private let urlString = "https://cdn.lavorami.it/lavoriAttuali.json"
     private let urlVariables = "https://cdn.lavorami.it/_vars.json"
+    private let requirements = "https://cdn.lavorami.it/requirements.json"
     
     func fetchWorks() {
         guard let url = URL(string: urlString) else {
@@ -129,6 +132,43 @@ class WorkViewModel: ObservableObject {
             }
         }.resume()
     }
+    
+    func fetchRequirements(completion: (() -> Void)? = nil) {
+        guard let url = URL(string: requirements) else {
+            self.errorMessage = "URL non valido"
+            completion?()
+            return
+        }
+        
+        self.isLoading = true
+        self.errorMessage = nil
+        
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            DispatchQueue.main.async { self?.isLoading = false }
+            
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    self?.errorMessage = error?.localizedDescription ?? "Nessun dato trovato."
+                    completion?()
+                }
+                return
+            }
+            
+            do {
+                let result = try JSONDecoder().decode(RequirementsData.self, from: data)
+                DispatchQueue.main.async {
+                    self?.maintenanceModeEnabled = (result.maintenanceMode == "true")
+                    self?.maintenanceDeps = result.maintenanceDeps
+                    completion?()
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self?.errorMessage = "\(error.localizedDescription)"
+                    completion?()
+                }
+            }
+        }.resume()
+    }
 }
 
 struct RemoteConfigData: Codable {
@@ -136,4 +176,9 @@ struct RemoteConfigData: Codable {
     let date: String
     let companies: String
     let guaranteed: String
+}
+
+struct RequirementsData: Codable {
+    let maintenanceMode: String
+    let maintenanceDeps: String
 }

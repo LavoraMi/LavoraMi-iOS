@@ -55,7 +55,7 @@ struct ContentView: View {
             MainView(viewModel: viewModel)
                 .tabItem{Label("Home", systemImage: "house")}
             LinesView(viewModel: viewModel)
-                .tabItem{Label("linesTabTitle", systemImage: "arrow.branch")}
+                .tabItem{Label("Linee", systemImage: "arrow.branch")}
             SettingsView(viewModel: viewModel)
                 .tabItem{Label("Impostazioni", systemImage: "gear")}
         }
@@ -189,6 +189,84 @@ struct SetupView: View {
     private func dismiss() {
         presentationMode.wrappedValue.dismiss()
         NotificationManager.shared.requestPermission()
+    }
+}
+
+// MARK: MAINTENANCE VIEW
+struct MaintenanceView: View {
+    var maintenanceDeps: String = ""
+    @State private var showSetupScreen: Bool = true
+    @StateObject private var viewModel = WorkViewModel()
+    
+    @State private var isLoading: Bool = false
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Spacer()
+            
+            Image(systemName: "wifi.exclamationmark")
+                .font(.system(size: 64))
+                .foregroundColor(Color("TextColor"))
+            
+            Text("Manutenzione in corso.")
+                .font(.system(size: 28, weight: .bold))
+                .foregroundColor(Color("TextColor"))
+                .multilineTextAlignment(.center)
+                .padding(.top, 12)
+            
+            Text("I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio.")
+                .font(.system(size: 16))
+                .foregroundColor(Color("TextColor"))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+                .padding(.top, 5)
+            
+            if !maintenanceDeps.isEmpty {
+                Text(maintenanceDeps)
+                    .font(.system(size: 10))
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+            }
+            
+            Button {
+                guard !isLoading else { return }
+                isLoading = true
+                
+                viewModel.fetchRequirements {
+                    if (!viewModel.maintenanceModeEnabled){
+                        ContentView(showSetupScreen: $showSetupScreen)
+                    }
+                    
+                    stopLoading()
+                }
+            } label: {
+                HStack(spacing: 8) {
+                    if isLoading {
+                        ProgressView()
+                            .tint(.white)
+                            .scaleEffect(0.85)
+                    } else {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                    Text(isLoading ? "Caricamento..." : "Riprova")
+                }
+                .font(.system(size: 15, weight: .medium))
+                .foregroundColor(.white)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                .background(isLoading ? Color.gray : Color.red)
+                .cornerRadius(8)
+            }
+            .padding(.top, 25)
+            
+            Spacer()
+        }
+    }
+    
+    func stopLoading() {
+        isLoading = false
     }
 }
 
@@ -2175,7 +2253,7 @@ struct InfoView: View {
                     Text("""
                     LavoraMi è un'applicazione indipendente sviluppata da terze parti e NON è in alcun modo affiliata, supportata, autorizzata o sponsorizzata da ATM S.p.A., Trenord S.r.l., Gruppo FNM, RFI o altri enti di trasporto citati.
 
-                    Tutti i dati visualizzati in questa applicazione (orari, stati del servizio, avvisi) sono raccolti da fonti pubbliche ed elaborati automaticamente al solo scopo di migliorarne la comprensione e la leggibilità per l'utente finale.
+                    Tutti i dati visualizzati in questa applicazione (orari, stati del servizio, avvisi) sono raccolti da fonti pubbliche al solo scopo di migliorarne la comprensione ed a solo scopo informativo.
                     
                     Non si fornisce alcuna garanzia, esplicita o implicita, riguardo l'accuratezza, la completezza, l'affidabilità o la tempestività delle informazioni fornite. Le informazioni potrebbero non riflettere variazioni dell'ultimo minuto.
 
@@ -2229,7 +2307,7 @@ struct InfoView: View {
                     }
                 }
                 Divider().padding(.top, 10)
-                Section(){
+                /*Section(){
                     Text("Supportaci")
                         .font(.system(size: 30))
                         .bold()
@@ -2272,7 +2350,7 @@ struct InfoView: View {
                     .padding(.bottom, 20)
                     Spacer()
                 }
-                Divider().padding(.top, 10)
+                Divider().padding(.top, 10)*/
                 Section(){
                     Text("Seguici su")
                         .font(.system(size: 30))

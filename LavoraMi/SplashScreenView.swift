@@ -14,12 +14,19 @@ struct SplashScreenView: View {
     @State private var contentLoaded = false
     @State private var showSetupScreen: Bool = false
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
+    @StateObject private var viewModel = WorkViewModel()
 
     var body: some View {
         ZStack {
             if contentLoaded {
-                ContentView(showSetupScreen: $showSetupScreen)
-                    .opacity(contentOpacity)
+                if(viewModel.maintenanceModeEnabled){
+                    MaintenanceView(maintenanceDeps: viewModel.maintenanceDeps)
+                        .opacity(contentOpacity)
+                }
+                else {
+                    ContentView(showSetupScreen: $showSetupScreen)
+                        .opacity(contentOpacity)
+                }
             }
             Image("icon")
                 .resizable()
@@ -28,7 +35,7 @@ struct SplashScreenView: View {
                 .opacity(opacity)
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            viewModel.fetchRequirements {
                 contentLoaded = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     startAnimation()

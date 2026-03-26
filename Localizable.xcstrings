@@ -1,6 +1,370 @@
 {
   "sourceLanguage" : "it",
   "strings" : {
+    "" : {
+
+    },
+    " e la " : {
+
+    },
+    "%@" : {
+
+    },
+    "%@ (%@)" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "%@ (Build %@)" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (Build %2$@)"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "%lld attuali, %lld programmati." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld attuali, %2$lld programmati."
+          }
+        }
+      }
+    },
+    "👋 Ciao %@" : {
+
+    },
+    "Accedi" : {
+
+    },
+    "Accedi al tuo account per continuare." : {
+
+    },
+    "Accedo..." : {
+
+    },
+    "Account" : {
+
+    },
+    "Account creato con Apple" : {
+
+    },
+    "Aderenti:" : {
+
+    },
+    "Aiuto" : {
+
+    },
+    "Alessandro Rebuscini" : {
+
+    },
+    "Altre Notifiche" : {
+
+    },
+    "Andrea Filice" : {
+
+    },
+    "Annulla" : {
+
+    },
+    "Apri Impostazioni" : {
+
+    },
+    "Apri link:" : {
+
+    },
+    "Aspetto" : {
+
+    },
+    "ATM" : {
+
+    },
+    "Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese." : {
+
+    },
+    "ATTUALMENTE LA LINEA ATTESTA A: MILANO BOVISA." : {
+
+    },
+    "Autoguidovie" : {
+
+    },
+    "Avanti" : {
+
+    },
+    "AVVISO SCIOPERO" : {
+
+    },
+    "Bentornato" : {
+
+    },
+    "Benvenuto su LavoraMi" : {
+
+    },
+    "Bottom %@" : {
+
+    },
+    "Caricamento..." : {
+
+    },
+    "Cerca per tipo o numero..." : {
+
+    },
+    "Chiudi" : {
+
+    },
+    "Condividi LavoraMi" : {
+
+    },
+    "Conferma" : {
+
+    },
+    "Conferma Mail" : {
+
+    },
+    "Contatti" : {
+
+    },
+    "Continua" : {
+
+    },
+    "Continuando, accetti i " : {
+
+    },
+    "Controlla la tua connessione e riprova." : {
+
+    },
+    "Copyright" : {
+
+    },
+    "Crea account" : {
+
+    },
+    "Creando un Account LavoraMi, accetti i Termini di Servizio e la Privacy Policy. Vai in Impostazioni > Account per saperne di più." : {
+
+    },
+    "Dettagli Linea" : {
+
+    },
+    "DIREZIONI:" : {
+
+    },
+    "Elimina Account" : {
+
+    },
+    "Elimina Cache" : {
+
+    },
+    "Elimina la memoria Cache dal dispositivo, liberando spazio su disco." : {
+
+    },
+    "Email" : {
+
+    },
+    "Email del tuo Account" : {
+
+    },
+    "Email inviata a %@!" : {
+
+    },
+    "Email inviata!" : {
+
+    },
+    "Esci" : {
+
+    },
+    "FERMATA DI INTERSCAMBIO:" : {
+
+    },
+    "Filtro Predefinito" : {
+
+    },
+    "Fine" : {
+
+    },
+    "Fonti & Sviluppo" : {
+
+    },
+    "Fonti Dati" : {
+
+    },
+    "Formato del File:" : {
+
+    },
+    "Generali" : {
+
+    },
+    "Gestisci" : {
+
+    },
+    "Gestisci il tuo Account" : {
+
+    },
+    "Hai già un account?" : {
+
+    },
+    "Hello %@" : {
+
+    },
+    "Home" : {
+
+    },
+    "I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio." : {
+
+    },
+    "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi." : {
+
+    },
+    "Il tuo Account" : {
+
+    },
+    "Impossibile caricare i dati dal server." : {
+
+    },
+    "Imposta tutte le notifiche su uno stato." : {
+
+    },
+    "Impostazioni" : {
+
+    },
+    "Impostazioni Notifiche" : {
+
+    },
+    "IN CORSO" : {
+
+    },
+    "Informazioni" : {
+
+    },
+    "Informazioni sul componente" : {
+
+    },
+    "Instagram" : {
+
+    },
+    "Interscambi" : {
+
+    },
+    "Invia Email" : {
+
+    },
+    "Invia una richiesta al nostro Team per scaricare i tuoi dati." : {
+
+    },
+    "L" : {
+
+    },
+    "L'Invio dei dati richiesti può impiegare dai 5 ai 20 giorni lavorativi. Controlla la mail entro questo limite." : {
+
+    },
+    "LA LINEA E' ATTIVA SOLO NEI GIORNI SETTIMANALI." : {
+
+    },
+    "LavoraMi" : {
+
+    },
+    "LavoraMi è un'applicazione indipendente sviluppata da terze parti e NON è in alcun modo affiliata, supportata, autorizzata o sponsorizzata da ATM S.p.A., Trenord S.r.l., Gruppo FNM, RFI o altri enti di trasporto citati.\n\nTutti i dati visualizzati in questa applicazione (orari, stati del servizio, avvisi) sono raccolti da fonti pubbliche al solo scopo di migliorarne la comprensione ed a solo scopo informativo.\n\nNon si fornisce alcuna garanzia, esplicita o implicita, riguardo l'accuratezza, la completezza, l'affidabilità o la tempestività delle informazioni fornite. Le informazioni potrebbero non riflettere variazioni dell'ultimo minuto.\n\nL'uso dell'applicazione è interamente a proprio rischio. Lo sviluppatore declina ogni responsabilità per eventuali inesattezze, ritardi, mancati servizi, danni diretti o indiretti derivanti dall'affidamento sulle informazioni fornite da questa app.\n\nPer le decisioni di viaggio critiche, si raccomanda di fare sempre riferimento ai canali ufficiali, agli annunci sonori e alla segnaletica presente in stazione.\n\nTutti i marchi, i loghi e i nomi commerciali citati appartengono ai legittimi proprietari." : {
+
+    },
+    "Lavori in corso" : {
+
+    },
+    "Lavori linea" : {
+
+    },
+    "LAVORI SULLA LINEA:" : {
+
+    },
+    "Le fasce garantite %@" : {
+
+    },
+    "Le impostazioni vengono salvate automaticamente." : {
+
+    },
+    "Leading" : {
+
+    },
+    "Licenza:" : {
+
+    },
+    "Linea attivata" : {
+
+    },
+    "Linea impostata per essere vista sul Widget dell'app!" : {
+
+    },
+    "Linee" : {
+
+    },
+    "Linee ATM" : {
+
+    },
+    "Linee Autoguidovie" : {
+
+    },
+    "Linee Bus" : {
+
+    },
+    "Linee di Bus" : {
+
+    },
+    "Linee Malpensa Express" : {
+
+    },
+    "Linee Metropolitane" : {
+
+    },
+    "Linee Movibus" : {
+
+    },
+    "Linee R" : {
+
+    },
+    "Linee RE" : {
+
+    },
+    "Linee S" : {
+
+    },
+    "Linee STAV" : {
+
+    },
+    "Linee Suburbane" : {
+
+    },
+    "Linee Tram" : {
+
+    },
+    "Linee Tramviarie" : {
+
+    },
+    "Linee Transfrontaliere" : {
+
+    },
+    "Linee Trenord" : {
+
+    },
     "linesTabTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -17,6 +381,312 @@
           }
         }
       }
+    },
+    "M1" : {
+
+    },
+    "M3" : {
+
+    },
+    "Manutenzione in corso." : {
+
+    },
+    "Mappa" : {
+
+    },
+    "Milano Scalo Romana FS" : {
+
+    },
+    "Modifica l'orario di arrivo delle notifiche." : {
+
+    },
+    "Modifica Password" : {
+
+    },
+    "Mostra banner Scioperi" : {
+
+    },
+    "Mostra il banner degli scioperi nella Home quando sono presenti." : {
+
+    },
+    "Mostra lo stato della linea selezionata." : {
+
+    },
+    "Mostra messaggi di Errore" : {
+
+    },
+    "Mostra messaggi di errore quando fallisce il Download dei dati." : {
+
+    },
+    "Movibus" : {
+
+    },
+    "Nessun interscambio con questa linea." : {
+
+    },
+    "Nessun lavoro trovato per questo filtro." : {
+
+    },
+    "Nessun risultato per: \"%@\"." : {
+
+    },
+    "Nessuna fermata di interscambio." : {
+
+    },
+    "Nome completo" : {
+
+    },
+    "Nome:" : {
+
+    },
+    "Non ci sono lavori su questa linea." : {
+
+    },
+    "Non hai dato il permesso per ricevere notifiche. Vai su Impostazioni > App > LavoraMi ed attiva le notifiche." : {
+
+    },
+    "Non hai un account?" : {
+
+    },
+    "Notifiche" : {
+
+    },
+    "Notifiche Fine Lavori" : {
+
+    },
+    "Notifiche Inizio Lavori" : {
+
+    },
+    "Notifiche Lavori" : {
+
+    },
+    "Notifiche Push" : {
+
+    },
+    "Notifiche Scioperi" : {
+
+    },
+    "OK" : {
+
+    },
+    "Opzioni Avanzate" : {
+
+    },
+    "Orario Notifiche" : {
+
+    },
+    "Password" : {
+
+    },
+    "Password dimenticata?" : {
+
+    },
+    "Permesso Negato" : {
+
+    },
+    "Pianifica il tuo viaggio sapendo dei disagi sul tragitto, ben prima di partire." : {
+
+    },
+    "Pianifica il Viaggio" : {
+
+    },
+    "Preferiti" : {
+
+    },
+    "Privacy Policy" : {
+
+    },
+    "Privacy Policy." : {
+
+    },
+    "PROGRAMMATI" : {
+
+    },
+    "Pulisci memoria Cache" : {
+
+    },
+    "Qua puoi gestire il tuo account e le tue informazioni." : {
+
+    },
+    "Questa applicazione aggrega dati pubblici, accessibili a tutti, per facilitarne la consultazione." : {
+
+    },
+    "QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI." : {
+
+    },
+    "Recupera qui la Password del tuo Account." : {
+
+    },
+    "Registrati" : {
+
+    },
+    "Registrati per iniziare." : {
+
+    },
+    "Registrazione..." : {
+
+    },
+    "Reset Password" : {
+
+    },
+    "Riccardo De Diana" : {
+
+    },
+    "Richiedi %@" : {
+
+    },
+    "Richiedi %@ per bloccare e sbloccare la sezione del tuo Account." : {
+
+    },
+    "Richiedi Dati" : {
+
+    },
+    "Richiedi i tuoi dati" : {
+
+    },
+    "Richiedi i tuoi Dati" : {
+
+    },
+    "Riconoscimenti" : {
+
+    },
+    "Ripristina impostazioni" : {
+
+    },
+    "Riprova" : {
+
+    },
+    "S2" : {
+
+    },
+    "S5" : {
+
+    },
+    "Salta" : {
+
+    },
+    "Sciopero proclamato per il **%@**" : {
+
+    },
+    "Segnala un bug" : {
+
+    },
+    "Seguici su" : {
+
+    },
+    "Sei sicuro di voler Eliminare Definitivamente il tuo Account?" : {
+
+    },
+    "Sei sicuro di voler pulire la memoria Cache?" : {
+
+    },
+    "Sei sicuro di voler ripristinare le impostazioni?" : {
+
+    },
+    "Sei sicuro di voler saltare la configurazione?" : {
+
+    },
+    "Sei sicuro di voler uscire dall'account?" : {
+
+    },
+    "Sei sicuro?" : {
+
+    },
+    "Seleziona il formato in cui i tuoi dati verranno esportati." : {
+
+    },
+    "Seleziona la modalità in cui aprire i link." : {
+
+    },
+    "Seleziona una linea da poter mostrare nel Widget per tenerla sempre sott'occhio." : {
+
+    },
+    "Seleziona una linea in app da mostrare nel Widget." : {
+
+    },
+    "Simone Gallotti" : {
+
+    },
+    "Sito web" : {
+
+    },
+    "Stato Linea" : {
+
+    },
+    "STAV" : {
+
+    },
+    "Sviluppatore iOS:" : {
+
+    },
+    "Sviluppatori Android:" : {
+
+    },
+    "Sviluppatori Web:" : {
+
+    },
+    "T %@" : {
+
+    },
+    "Team di Sviluppo" : {
+
+    },
+    "TEMPO DI ATTESA MEDIO:" : {
+
+    },
+    "Termini" : {
+
+    },
+    "Termini di Servizio" : {
+
+    },
+    "Testo della licenza" : {
+
+    },
+    "Ti invieremo una mail per modificare la tua password, vuoi continuare?" : {
+
+    },
+    "Tieni sott'occhio i lavori" : {
+
+    },
+    "Tieniti Aggiornato" : {
+
+    },
+    "Tieniti informato. Prima e durante il tuo viaggio." : {
+
+    },
+    "TikTok" : {
+
+    },
+    "TILO" : {
+
+    },
+    "Tommaso Ruggeri" : {
+
+    },
+    "Torna al Login" : {
+
+    },
+    "Trailing" : {
+
+    },
+    "Trenord" : {
+
+    },
+    "Tu ed ancora Tu." : {
+
+    },
+    "Verifica il tuo indirizzo Email con la mail che ti abbiamo inviato per continuare." : {
+
+    },
+    "Versione" : {
+
+    },
+    "Versione:" : {
+
+    },
+    "z620" : {
+
     }
   },
   "version" : "1.2"
