@@ -48,7 +48,10 @@ struct WorkItem: Identifiable, Hashable, Codable {
 struct ContentView: View {
     @StateObject private var viewModel = WorkViewModel()
     @Binding var showSetupScreen: Bool
+    @State private var showUpdatePopUp: Bool = false
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
+    
+    @Environment(\.openURL) private var openURLAction
 
     var body: some View {
         TabView{
@@ -62,6 +65,33 @@ struct ContentView: View {
         .tint(.red)
         .sheet(isPresented: $showSetupScreen){
             SetupView()
+        }
+        .onAppear() {
+            checkForUpdates()
+        }
+        .alert("Nuova versione disponibile!", isPresented: $showUpdatePopUp){
+            Button("Aggiorna") {
+                let url = URL(string: "https://apps.apple.com/us/app/lavorami/id6760344298")!
+                openURLAction(url)
+                
+                showUpdatePopUp = false
+                checkForUpdates()
+            }
+        } message: {
+            Text("Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app.")
+        }
+    }
+    
+    func checkForUpdates() {
+        viewModel.fetchRequirements {
+            let current = Bundle.main.shortVersion
+            let minimum = viewModel.minimumVersion
+            
+            let comparisonResult = current.compare(minimum, options: .numeric)
+            
+            if comparisonResult == .orderedAscending {
+                showUpdatePopUp = true
+            }
         }
     }
 }
