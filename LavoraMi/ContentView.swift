@@ -2307,18 +2307,21 @@ struct InfoView: View {
                     }
                 }
                 Divider().padding(.top, 10)
-                /*Section(){
+                Section(){
                     Text("Supportaci")
                         .font(.system(size: 30))
                         .bold()
                         .padding(.top, 20)
-                    Text("Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi effettuarci una donazione qui sotto!")
+                    Text("Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi condividere l'app qui sotto!")
                         .font(.system(size: 14))
                         .multilineTextAlignment(.center)
                         .padding(.top, 1)
                         .padding(.horizontal, 10)
                         .padding(.bottom, 20)
-                    Button {
+                    ShareLink(item: URL(string: "https://apps.apple.com/us/app/lavorami/id6760344298")!) {
+                        Label("Condividi LavoraMi", systemImage: "arrowshape.turn.up.right.fill")
+                    }
+                    /*Button {
                         let url = URL(string: "https://www.patreon.com/cw/LavoraMi")!
                         
                         if(howToOpenLinks == .inApp) {
@@ -2347,10 +2350,10 @@ struct InfoView: View {
                             .font(.system(size: 20))
                     }
                     .padding(.top, 5)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 20)*/
                     Spacer()
                 }
-                Divider().padding(.top, 10)*/
+                Divider().padding(.top, 10)
                 Section(){
                     Text("Seguici su")
                         .font(.system(size: 30))
