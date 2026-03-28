@@ -702,22 +702,19 @@ struct MainView: View {
                             .padding()
                             .offset(y: -50)
                         } else {
-                            ScrollView {
-                                VStack(spacing: 12) {
-                                    if(filteredItems.isEmpty){
-                                        Text("Nessun lavoro trovato per questo filtro.")
-                                    }
-                                    else{
-                                        ForEach(filteredItems) { item in
-                                            if(item.progress != 1){
-                                                WorkInProgressRow(item: item)
-                                                    .padding(.horizontal)
-                                            }
+                            VStack(spacing: 12) {
+                                if filteredItems.isEmpty {
+                                    Text("Nessun lavoro trovato per questo filtro.")
+                                } else {
+                                    ForEach(filteredItems) { item in
+                                        if item.progress != 1 {
+                                            WorkInProgressRow(item: item)
+                                                .padding(.horizontal)
                                         }
                                     }
                                 }
-                                .padding(.vertical, 8)
                             }
+                            .padding(.vertical, 8)
                         }
                     }
                     .padding(.vertical, 8)
@@ -753,10 +750,40 @@ struct WorkInProgressRow: View {
                 .fixedSize(horizontal: false, vertical: true)
         } label: {
             VStack(alignment: .leading, spacing: 8) {
-                Label(item.title, systemImage: item.titleIcon)
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundStyle(Color("TextColor"))
+                if item.titleIcon == "point.bottomleft.forward.to.arrow.triangle.uturn.scurvepath" {
+                    if #available(iOS 18, *) {
+                        Label(item.title, systemImage: item.titleIcon)
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle(Color("TextColor"))
+                    }
+                    else {
+                        Label(item.title, systemImage: "arrow.up.forward.app.fill")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle(Color("TextColor"))
+                    }
+                }
+                else if item.titleIcon == "arrow.trianglehead.2.counterclockwise" {
+                    if #available(iOS 18, *) {
+                        Label(item.title, systemImage: item.titleIcon)
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle(Color("TextColor"))
+                    }
+                    else {
+                        Label(item.title, systemImage: "shuffle")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle(Color("TextColor"))
+                    }
+                }
+                else {
+                    Label(item.title, systemImage: item.titleIcon)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundStyle(Color("TextColor"))
+                }
                 
                 Label(item.roads, systemImage: "mappin")
                     .font(.subheadline)
