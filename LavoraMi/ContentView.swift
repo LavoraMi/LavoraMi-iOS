@@ -2549,7 +2549,6 @@ struct LibraryRowView: View {
                 .foregroundColor(.secondary)
         }
         .padding()
-        .background(Color(.secondarySystemBackground))
         .cornerRadius(12)
     }
 }
@@ -2676,7 +2675,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAppMeasurement",
-            version: "12.10.0",
+            version: "12.11.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -3809,7 +3808,7 @@ struct LineDetailView: View {
                             .multilineTextAlignment(.leading)
                         
                         if(lineName == "S2" || lineName == "S12" || lineName == "S19"){
-                            Text("LA LINEA E' ATTIVA SOLO NEI GIORNI SETTIMANALI.")
+                            Text("LA LINEA E' ATTIVA SOLO NEI GIORNI LAVORATIVI.")
                                 .font(.system(size: 12))
                                 .foregroundStyle(.secondary)
                                 .bold()
