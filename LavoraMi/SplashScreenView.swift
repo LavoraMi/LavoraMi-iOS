@@ -13,15 +13,18 @@ struct SplashScreenView: View {
     @State private var contentOpacity: Double = 0
     @State private var contentLoaded = false
     @State private var showSetupScreen: Bool = false
+    @State private var showMaintenance: Bool = false
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @StateObject private var viewModel = WorkViewModel()
 
     var body: some View {
         ZStack {
             if contentLoaded {
-                if(viewModel.maintenanceModeEnabled){
-                    MaintenanceView(maintenanceDeps: viewModel.maintenanceDeps)
-                        .opacity(contentOpacity)
+                if(showMaintenance){
+                    MaintenanceView(maintenanceDeps: viewModel.maintenanceDeps) {
+                        showMaintenance = false
+                    }
+                    .opacity(contentOpacity)
                 }
                 else {
                     ContentView(showSetupScreen: $showSetupScreen)
@@ -36,6 +39,7 @@ struct SplashScreenView: View {
         }
         .onAppear {
             viewModel.fetchRequirements {
+                showMaintenance = viewModel.maintenanceModeEnabled
                 contentLoaded = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     startAnimation()

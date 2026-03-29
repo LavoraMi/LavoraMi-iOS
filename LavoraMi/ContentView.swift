@@ -225,6 +225,8 @@ struct SetupView: View {
 // MARK: MAINTENANCE VIEW
 struct MaintenanceView: View {
     var maintenanceDeps: String = ""
+    var onResolved: () -> Void = {}
+    
     @State private var showSetupScreen: Bool = true
     @StateObject private var viewModel = WorkViewModel()
     
@@ -266,7 +268,7 @@ struct MaintenanceView: View {
                 
                 viewModel.fetchRequirements {
                     if (!viewModel.maintenanceModeEnabled){
-                        ContentView(showSetupScreen: $showSetupScreen)
+                        onResolved()
                     }
                     
                     stopLoading()
@@ -399,6 +401,7 @@ struct MainView: View {
     @State private var selectedFilter: FilterBy = .all
     @State private var searchInput: String = ""
     @State private var alreadyRefreshed: Bool = false
+    @State private var showMaintenanceMode: Bool = false
     
     @ObservedObject var viewModel: WorkViewModel
     @FocusState private var isSearchFocused: Bool
@@ -475,6 +478,9 @@ struct MainView: View {
                         viewModel.isLoading = true
                         viewModel.fetchWorks()
                         viewModel.fetchVariables()
+                        viewModel.fetchRequirements{
+                            showMaintenanceMode = viewModel.maintenanceModeEnabled
+                        }
                     }) {
                         if(viewModel.isLoading){
                             ProgressView()
@@ -724,12 +730,23 @@ struct MainView: View {
                 if(!alreadyRefreshed){
                     viewModel.fetchWorks()
                     viewModel.fetchVariables()
+                    viewModel.fetchRequirements {
+                        showMaintenanceMode = viewModel.maintenanceModeEnabled
+                    }
                     alreadyRefreshed = true
                 }
             }
             .refreshable {
                 viewModel.fetchWorks()
                 viewModel.fetchVariables()
+                viewModel.fetchRequirements {
+                    showMaintenanceMode = viewModel.maintenanceModeEnabled
+                }
+            }
+            .fullScreenCover(isPresented: $showMaintenanceMode) {
+                MaintenanceView(maintenanceDeps: viewModel.maintenanceDeps) {
+                    showMaintenanceMode = false
+                }
             }
         }
     }
@@ -2186,7 +2203,7 @@ struct NotificationsView: View {
                 }
                 .padding(.top, 40)
                 .padding(.horizontal)
-                .onChange(of: enableNotifications) { newValue in
+                .onChange(of: enableNotifications) { oldValue, newValue in
                     workScheduledNotifications = enableNotifications
                     workInProgressNotifications = enableNotifications
                     strikeNotifications = enableNotifications
@@ -2229,7 +2246,7 @@ struct NotificationsView: View {
                         Toggle(isOn: $enablePushNotifications) {
                             Label("Notifiche Push", systemImage: "bell.and.waves.left.and.right.fill")
                         }
-                        .onChange(of: enablePushNotifications) { enabled in
+                        .onChange(of: enablePushNotifications) { oldValue, enabled in
                             NotificationCenter.default.post(name: NSNotification.Name("pushNotificationsToggled"), object: enabled)
                         }
                         .disabled(!enableNotifications)
@@ -4718,6 +4735,6 @@ struct SafariView: UIViewControllerRepresentable {
 }
 
 #Preview{
-    @State var showSetupScreen: Bool = false
+    @Previewable @State var showSetupScreen: Bool = false
     ContentView(showSetupScreen: $showSetupScreen)
 }
