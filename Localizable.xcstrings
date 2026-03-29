@@ -5,7 +5,14 @@
 
     },
     " e la " : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " and the "
+          }
+        }
+      }
     },
     "%@" : {
 
@@ -45,6 +52,12 @@
     },
     "%lld attuali, %lld programmati." : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld current, %2$lld scheduled."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "new",
@@ -54,22 +67,57 @@
       }
     },
     "👋 Ciao %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "👋 Hi %@"
+          }
+        }
+      }
     },
     "Accedi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in"
+          }
+        }
+      }
     },
     "Accedi al tuo account per continuare." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in to your account to continue."
+          }
+        }
+      }
     },
     "Accedo..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loggin in"
+          }
+        }
+      }
     },
     "Account" : {
 
     },
     "Account creato con Apple" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account created with Apple"
+          }
+        }
+      }
     },
     "Aderenti:" : {
 
@@ -78,82 +126,248 @@
 
     },
     "Aiuto" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help"
+          }
+        }
+      }
     },
     "Alessandro Rebuscini" : {
 
     },
     "Altre Notifiche" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other Notifications"
+          }
+        }
+      }
     },
     "Andrea Filice" : {
 
     },
     "Annulla" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
     },
     "Apri Impostazioni" : {
 
     },
     "Apri link:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open link:"
+          }
+        }
+      }
     },
     "Aspetto" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance and Language"
+          }
+        }
+      }
     },
     "ATM" : {
 
     },
     "Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn on notifications to stay up to date on the work. Don’t miss out on any surprises."
+          }
+        }
+      }
     },
     "ATTUALMENTE LA LINEA ATTESTA A: MILANO BOVISA." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "THE LINE CURRENTLY TERMINATES AT: MILANO BOVISA."
+          }
+        }
+      }
     },
     "Autoguidovie" : {
 
     },
     "Avanti" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
     },
     "AVVISO SCIOPERO" : {
 
     },
     "Bentornato" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome back"
+          }
+        }
+      }
     },
     "Benvenuto su LavoraMi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to LavoraMi"
+          }
+        }
+      }
     },
     "Bottom %@" : {
 
     },
     "Caricamento..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading.."
+          }
+        }
+      }
+    },
+    "Cerca ciò che ami..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find what you love…"
+          }
+        }
+      }
+    },
+    "Cerca la tua linea..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search your line..."
+          }
+        }
+      }
+    },
+    "Cerca nei lavori..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search jobs..."
+          }
+        }
+      }
     },
     "Cerca per tipo o numero..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search by type or number..."
+          }
+        }
+      }
     },
     "Chiudi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
     },
     "Condividi LavoraMi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share LavoraMi"
+          }
+        }
+      }
     },
     "Conferma" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm"
+          }
+        }
+      }
     },
     "Conferma Mail" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mail Confirmation"
+          }
+        }
+      }
     },
     "Contatti" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacts"
+          }
+        }
+      }
     },
     "Continua" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
+      }
     },
     "Continuando, accetti i " : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You agree to the"
+          }
+        }
+      }
     },
     "Controlla la tua connessione e riprova." : {
 
@@ -162,70 +376,255 @@
 
     },
     "Crea account" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create account"
+          }
+        }
+      }
     },
     "Creando un Account LavoraMi, accetti i Termini di Servizio e la Privacy Policy. Vai in Impostazioni > Account per saperne di più." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By creating a LavoraMi account, you agree to the Terms of Service and Privacy Policy. Go to Settings > Account to learn more."
+          }
+        }
+      }
     },
     "Dettagli Linea" : {
 
     },
+    "di ATM" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by ATM"
+          }
+        }
+      }
+    },
+    "di Autoguidovie" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by Autoguidovie"
+          }
+        }
+      }
+    },
+    "di Movibus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by Movibus"
+          }
+        }
+      }
+    },
+    "di STAV" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by STAV"
+          }
+        }
+      }
+    },
+    "di Trenord" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by Trenord"
+          }
+        }
+      }
+    },
     "DIREZIONI:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DIRECTIONS:"
+          }
+        }
+      }
     },
     "Elimina Account" : {
-
-    },
-    "Elimina Cache" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Account"
+          }
+        }
+      }
     },
     "Elimina la memoria Cache dal dispositivo, liberando spazio su disco." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean the cache from your device to free up disk space."
+          }
+        }
+      }
     },
     "Email" : {
 
     },
     "Email del tuo Account" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Account Email"
+          }
+        }
+      }
     },
     "Email inviata a %@!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email sent to %@!"
+          }
+        }
+      }
     },
     "Email inviata!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email sent!"
+          }
+        }
+      }
     },
     "Esci" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign out"
+          }
+        }
+      }
     },
     "FERMATA DI INTERSCAMBIO:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TRANSFER STATION:"
+          }
+        }
+      }
     },
     "Filtro Predefinito" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default Filter"
+          }
+        }
+      }
     },
     "Fine" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End"
+          }
+        }
+      }
     },
     "Fonti & Sviluppo" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources & Development"
+          }
+        }
+      }
     },
     "Fonti Dati" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Sources"
+          }
+        }
+      }
     },
     "Formato del File:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File Format:"
+          }
+        }
+      }
     },
     "Generali" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        }
+      }
     },
     "Gestisci" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage"
+          }
+        }
+      }
     },
     "Gestisci il tuo Account" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage your Account"
+          }
+        }
+      }
     },
     "Hai già un account?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you already have an account?"
+          }
+        }
+      }
     },
     "Hello %@" : {
 
@@ -237,67 +636,201 @@
 
     },
     "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your information is secure. Create an account to sign up for our LavoraMi club."
+          }
+        }
+      }
     },
     "Il tuo Account" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Account"
+          }
+        }
+      }
     },
     "Impossibile caricare i dati dal server." : {
 
     },
     "Imposta tutte le notifiche su uno stato." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set all notifications to a specific status."
+          }
+        }
+      }
     },
     "Impostazioni" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
     },
     "Impostazioni Notifiche" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notification Settings"
+          }
+        }
+      }
+    },
+    "In Corso" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Progress"
+          }
+        }
+      }
     },
     "IN CORSO" : {
 
     },
     "Informazioni" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informations"
+          }
+        }
+      }
     },
     "Informazioni sul componente" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Component Information"
+          }
+        }
+      }
     },
     "Instagram" : {
 
     },
     "Interscambi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interchanges"
+          }
+        }
+      }
     },
     "Invia Email" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send Email"
+          }
+        }
+      }
     },
     "Invia una richiesta al nostro Team per scaricare i tuoi dati." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submit a request to our team to download your data."
+          }
+        }
+      }
     },
     "L" : {
 
     },
     "L'Invio dei dati richiesti può impiegare dai 5 ai 20 giorni lavorativi. Controlla la mail entro questo limite." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It may take  5 to 20 business days for the requested data to be sent. Please check your email within this timeframe."
+          }
+        }
+      }
     },
     "LA LINEA E' ATTIVA SOLO NEI GIORNI LAVORATIVI." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "THE LINE IS AVAILABLE ONLY ON WORKING DAYS."
+          }
+        }
+      }
     },
     "LavoraMi" : {
 
     },
     "LavoraMi è un'applicazione indipendente sviluppata da terze parti e NON è in alcun modo affiliata, supportata, autorizzata o sponsorizzata da ATM S.p.A., Trenord S.r.l., Gruppo FNM, RFI o altri enti di trasporto citati.\n\nTutti i dati visualizzati in questa applicazione (orari, stati del servizio, avvisi) sono raccolti da fonti pubbliche al solo scopo di migliorarne la comprensione ed a solo scopo informativo.\n\nNon si fornisce alcuna garanzia, esplicita o implicita, riguardo l'accuratezza, la completezza, l'affidabilità o la tempestività delle informazioni fornite. Le informazioni potrebbero non riflettere variazioni dell'ultimo minuto.\n\nL'uso dell'applicazione è interamente a proprio rischio. Lo sviluppatore declina ogni responsabilità per eventuali inesattezze, ritardi, mancati servizi, danni diretti o indiretti derivanti dall'affidamento sulle informazioni fornite da questa app.\n\nPer le decisioni di viaggio critiche, si raccomanda di fare sempre riferimento ai canali ufficiali, agli annunci sonori e alla segnaletica presente in stazione.\n\nTutti i marchi, i loghi e i nomi commerciali citati appartengono ai legittimi proprietari." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LavoraMi is an independent application developed by a third party and is NOT in any way affiliated with, supported by, authorized by, or sponsored by ATM S.p.A., Trenord S.r.l., the FNM Group, RFI, or any other transportation entities mentioned.\n\nAll data displayed in this app (schedules, service status, alerts) is collected from public sources solely to improve understanding and for informational purposes only.\n\nNo warranty, express or implied, is provided regarding the accuracy, completeness, reliability, or timeliness of the information provided. The information may not reflect last-minute changes.\n\nUse of the app is entirely at your own risk. The developer disclaims all liability for any inaccuracies, delays, service failures, or direct or indirect damages resulting from reliance on the information provided by this app.\n\nFor critical travel decisions, we recommend always referring to official channels, audio announcements, and signage at the station.\n\nAll trademarks, logos, and trade names mentioned belong to their respective owners."
+          }
+        }
+      }
+    },
+    "Lavori della settimana..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This week’s works..."
+          }
+        }
+      }
     },
     "Lavori in corso" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work in progress"
+          }
+        }
+      }
     },
     "Lavori linea" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line works"
+          }
+        }
+      }
     },
     "LAVORI SULLA LINEA:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WORK ON THE LINE:"
+          }
+        }
+      }
     },
     "Le fasce garantite %@" : {
 
@@ -312,75 +845,191 @@
 
     },
     "Linea attivata" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line Selected"
+          }
+        }
+      }
     },
     "Linea impostata per essere vista sul Widget dell'app!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line set to be displayed on the app widget!"
+          }
+        }
+      }
     },
     "Linee" : {
-
-    },
-    "Linee ATM" : {
-
-    },
-    "Linee Autoguidovie" : {
-
-    },
-    "Linee Bus" : {
-
-    },
-    "Linee di Bus" : {
-
-    },
-    "Linee Malpensa Express" : {
-
-    },
-    "Linee Metropolitane" : {
-
-    },
-    "Linee Movibus" : {
-
-    },
-    "Linee R" : {
-
-    },
-    "Linee RE" : {
-
-    },
-    "Linee S" : {
-
-    },
-    "Linee STAV" : {
-
-    },
-    "Linee Suburbane" : {
-
-    },
-    "Linee Tram" : {
-
-    },
-    "Linee Tramviarie" : {
-
-    },
-    "Linee Transfrontaliere" : {
-
-    },
-    "Linee Trenord" : {
-
-    },
-    "linesTabTitle" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lines"
           }
-        },
-        "it" : {
+        }
+      }
+    },
+    "Linee ATM" : {
+      "localizations" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Linee"
+            "value" : "ATM Lines"
+          }
+        }
+      }
+    },
+    "Linee Autoguidovie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoguidovie Lines"
+          }
+        }
+      }
+    },
+    "Linee Bus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bus Lines"
+          }
+        }
+      }
+    },
+    "Linee di Bus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bus Lines"
+          }
+        }
+      }
+    },
+    "Linee Malpensa Express" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Malpensa Express Lines"
+          }
+        }
+      }
+    },
+    "Linee Metropolitane" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metro Lines"
+          }
+        }
+      }
+    },
+    "Linee Movibus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movibus Lines"
+          }
+        }
+      }
+    },
+    "Linee R" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regional Lines"
+          }
+        }
+      }
+    },
+    "Linee RE" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regio Express Lines"
+          }
+        }
+      }
+    },
+    "Linee S" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suburban Lines"
+          }
+        }
+      }
+    },
+    "Linee STAV" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STAV Lines"
+          }
+        }
+      }
+    },
+    "Linee Suburbane" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suburban Lines"
+          }
+        }
+      }
+    },
+    "Linee Tram" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tram Lines"
+          }
+        }
+      }
+    },
+    "Linee Tramviarie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tram Lines"
+          }
+        }
+      }
+    },
+    "Linee Transfrontaliere" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TILO Lines"
+          }
+        }
+      }
+    },
+    "Linee Trenord" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trenord Lines"
           }
         }
       }
@@ -395,37 +1044,104 @@
 
     },
     "Mappa" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map"
+          }
+        }
+      }
+    },
+    "Metropolitana" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metro"
+          }
+        }
+      }
     },
     "Milano Scalo Romana FS" : {
 
     },
     "Modifica l'orario di arrivo delle notifiche." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change the time when notifications are delivered."
+          }
+        }
+      }
     },
     "Modifica Password" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Password"
+          }
+        }
+      }
     },
     "Mostra banner Scioperi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show strike banners"
+          }
+        }
+      }
     },
     "Mostra il banner degli scioperi nella Home quando sono presenti." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Displays the strike banner on the Home page when strikes are taking place."
+          }
+        }
+      }
     },
     "Mostra lo stato della linea selezionata." : {
 
     },
     "Mostra messaggi di Errore" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show error messages"
+          }
+        }
+      }
     },
     "Mostra messaggi di errore quando fallisce il Download dei dati." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Displays error messages when data download from the server fails."
+          }
+        }
+      }
     },
     "Movibus" : {
 
     },
     "Nessun interscambio con questa linea." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No interchanges with this line."
+          }
+        }
+      }
     },
     "Nessun lavoro trovato per questo filtro." : {
 
@@ -434,40 +1150,128 @@
 
     },
     "Nessuna fermata di interscambio." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No transfer stops."
+          }
+        }
+      }
     },
     "Nome completo" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full name"
+          }
+        }
+      }
     },
     "Nome:" : {
 
     },
     "Non ci sono lavori su questa linea." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are no works on this line."
+          }
+        }
+      }
+    },
+    "Non essere l'ultimo a sapere le cose..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don’t be the last to know it..."
+          }
+        }
+      }
     },
     "Non hai dato il permesso per ricevere notifiche. Vai su Impostazioni > App > LavoraMi ed attiva le notifiche." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You haven’t granted LavoraMi permission to send notifications. Go to Settings > Apps > LavoraMi and enable the permission."
+          }
+        }
+      }
     },
     "Non hai un account?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don’t have an Account?"
+          }
+        }
+      }
     },
     "Notifiche" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
+      }
     },
     "Notifiche Fine Lavori" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work End Notifications"
+          }
+        }
+      }
     },
     "Notifiche Inizio Lavori" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work Start Notifications"
+          }
+        }
+      }
     },
     "Notifiche Lavori" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work Notifications"
+          }
+        }
+      }
     },
     "Notifiche Push" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Push Notifications"
+          }
+        }
+      }
     },
     "Notifiche Scioperi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strike Notifications"
+          }
+        }
+      }
     },
     "Nuova versione disponibile!" : {
 
@@ -476,28 +1280,77 @@
 
     },
     "Opzioni Avanzate" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced Options"
+          }
+        }
+      }
     },
     "Orario Notifiche" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notification Schedule"
+          }
+        }
+      }
     },
     "Password" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        }
+      }
     },
     "Password dimenticata?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forgot your password?"
+          }
+        }
+      }
     },
     "Permesso Negato" : {
 
     },
     "Pianifica il tuo viaggio sapendo dei disagi sul tragitto, ben prima di partire." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan your trip with an awareness of any potential delays along the way well before you leave."
+          }
+        }
+      }
     },
     "Pianifica il Viaggio" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Your Trip"
+          }
+        }
+      }
     },
     "Preferiti" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
+          }
+        }
+      }
     },
     "Privacy Policy" : {
 
@@ -505,29 +1358,89 @@
     "Privacy Policy." : {
 
     },
+    "Programmati" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scheduled"
+          }
+        }
+      }
+    },
     "PROGRAMMATI" : {
 
     },
     "Pulisci memoria Cache" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean Cache memory"
+          }
+        }
+      }
     },
     "Qua puoi gestire il tuo account e le tue informazioni." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Here you can manage your account and your informations."
+          }
+        }
+      }
     },
     "Questa applicazione aggrega dati pubblici, accessibili a tutti, per facilitarne la consultazione." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This application aggregates public data, accessible to everyone, for easy consultation."
+          }
+        }
+      }
     },
     "QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "THIS TRAM LINE IS SUBJECT TO ROUTE CHANGES."
+          }
+        }
+      }
     },
     "Recupera qui la Password del tuo Account." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset your Account password here."
+          }
+        }
+      }
     },
     "Registrati" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
+          }
+        }
+      }
     },
     "Registrati per iniziare." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up to get started."
+          }
+        }
+      }
     },
     "Registrazione..." : {
 
@@ -539,25 +1452,74 @@
 
     },
     "Richiedi %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request %@"
+          }
+        }
+      }
     },
     "Richiedi %@ per bloccare e sbloccare la sezione del tuo Account." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request %@ to unlock your Account section."
+          }
+        }
+      }
     },
     "Richiedi Dati" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Datas"
+          }
+        }
+      }
     },
     "Richiedi i tuoi dati" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request your information"
+          }
+        }
+      }
     },
     "Richiedi i tuoi Dati" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request your Datas"
+          }
+        }
+      }
     },
     "Riconoscimenti" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
+          }
+        }
+      }
     },
     "Ripristina impostazioni" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Settings"
+          }
+        }
+      }
     },
     "Riprova" : {
 
@@ -569,46 +1531,145 @@
 
     },
     "Salta" : {
-
+      "comment" : "Skip"
     },
     "Sciopero proclamato per il **%@**" : {
 
     },
+    "Scopri le novità..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check out what’s new…"
+          }
+        }
+      }
+    },
+    "Scopri qualcosa di nuovo..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discover something new..."
+          }
+        }
+      }
+    },
     "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi condividere l'app qui sotto!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you like LavoraMi and you want to keep it advertising-free, you can share the application down below!"
+          }
+        }
+      }
     },
     "Segnala un bug" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report a bug"
+          }
+        }
+      }
     },
     "Seguici su" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Follow us on"
+          }
+        }
+      }
     },
     "Sei sicuro di voler Eliminare Definitivamente il tuo Account?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to permanently delete your account?"
+          }
+        }
+      }
     },
     "Sei sicuro di voler pulire la memoria Cache?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to clear the app’s cache?"
+          }
+        }
+      }
     },
     "Sei sicuro di voler ripristinare le impostazioni?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to reset the settings?"
+          }
+        }
+      }
     },
     "Sei sicuro di voler saltare la configurazione?" : {
-
+      "comment" : "Are you sure you want to skip the setup?"
     },
     "Sei sicuro di voler uscire dall'account?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to sign out of your account?"
+          }
+        }
+      }
     },
     "Sei sicuro?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure?"
+          }
+        }
+      }
     },
     "Seleziona il formato in cui i tuoi dati verranno esportati." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select the format in which your data will be exported."
+          }
+        }
+      }
     },
     "Seleziona la modalità in cui aprire i link." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select how you want to open links."
+          }
+        }
+      }
     },
     "Seleziona una linea da poter mostrare nel Widget per tenerla sempre sott'occhio." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a line to display in the widget so you can keep an eye on it at all times.\n"
+          }
+        }
+      }
     },
     "Seleziona una linea in app da mostrare nel Widget." : {
 
@@ -617,7 +1678,14 @@
 
     },
     "Sito web" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Web Site"
+          }
+        }
+      }
     },
     "Stato Linea" : {
 
@@ -626,46 +1694,137 @@
 
     },
     "Supportaci" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support us"
+          }
+        }
+      }
     },
     "Sviluppatore iOS:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS Developer:"
+          }
+        }
+      }
     },
     "Sviluppatori Android:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android Developers:"
+          }
+        }
+      }
     },
     "Sviluppatori Web:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Web Developers:"
+          }
+        }
+      }
     },
     "T %@" : {
 
     },
     "Team di Sviluppo" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Development Team"
+          }
+        }
+      }
     },
     "TEMPO DI ATTESA MEDIO:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WAITING TIME:"
+          }
+        }
+      }
     },
     "Termini" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tems"
+          }
+        }
+      }
     },
     "Termini di Servizio" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of services"
+          }
+        }
+      }
     },
     "Testo della licenza" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "License Text"
+          }
+        }
+      }
     },
     "Ti invieremo una mail per modificare la tua password, vuoi continuare?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We’ll send you an email to help you change your password. Would you like to continue?"
+          }
+        }
+      }
     },
     "Tieni sott'occhio i lavori" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep an eye on the work"
+          }
+        }
+      }
     },
     "Tieniti Aggiornato" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stay Informed"
+          }
+        }
+      }
     },
     "Tieniti informato. Prima e durante il tuo viaggio." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stay informed. Before and during your trip."
+          }
+        }
+      }
     },
     "TikTok" : {
 
@@ -677,28 +1836,98 @@
 
     },
     "Torna al Login" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back to Sign In"
+          }
+        }
+      }
     },
     "Trailing" : {
 
     },
+    "Treno" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Train"
+          }
+        }
+      }
+    },
     "Trenord" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trenord"
+          }
+        }
+      }
     },
     "Tu ed ancora Tu." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You, and you again."
+          }
+        }
+      }
+    },
+    "tutti" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutti"
+          }
+        }
+      }
     },
     "Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app." : {
 
     },
     "Verifica il tuo indirizzo Email con la mail che ti abbiamo inviato per continuare." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please verify your email address using the email we sent you to continue."
+          }
+        }
+      }
     },
     "Versione" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
     },
     "Versione:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version:"
+          }
+        }
+      }
     },
     "z620" : {
 
