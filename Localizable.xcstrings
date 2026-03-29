@@ -120,10 +120,24 @@
       }
     },
     "Aderenti:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Members:"
+          }
+        }
+      }
     },
     "Aggiorna" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        }
+      }
     },
     "Aiuto" : {
       "localizations" : {
@@ -162,7 +176,14 @@
       }
     },
     "Apri Impostazioni" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Settings"
+          }
+        }
+      }
     },
     "Apri link:" : {
       "localizations" : {
@@ -221,7 +242,14 @@
       }
     },
     "AVVISO SCIOPERO" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STRIKE NOTICE"
+          }
+        }
+      }
     },
     "Bentornato" : {
       "localizations" : {
@@ -245,6 +273,16 @@
     },
     "Bottom %@" : {
 
+    },
+    "Cambia Lingua" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Language"
+          }
+        }
+      }
     },
     "Caricamento..." : {
       "localizations" : {
@@ -295,6 +333,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search by type or number..."
+          }
+        }
+      }
+    },
+    "Chiaro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
           }
         }
       }
@@ -370,7 +419,14 @@
       }
     },
     "Controlla la tua connessione e riprova." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check your internet connection and try again."
+          }
+        }
+      }
     },
     "Copyright" : {
 
@@ -396,7 +452,14 @@
       }
     },
     "Dettagli Linea" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line Details"
+          }
+        }
+      }
     },
     "di ATM" : {
       "extractionState" : "manual",
@@ -484,7 +547,14 @@
       }
     },
     "Email" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        }
+      }
     },
     "Email del tuo Account" : {
       "localizations" : {
@@ -633,7 +703,14 @@
 
     },
     "I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The LavoraMi servers are currently unavailable. We apologize for the inconvenience."
+          }
+        }
+      }
     },
     "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi." : {
       "localizations" : {
@@ -656,7 +733,14 @@
       }
     },
     "Impossibile caricare i dati dal server." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to load data from the server."
+          }
+        }
+      }
     },
     "Imposta tutte le notifiche su uno stato." : {
       "localizations" : {
@@ -700,7 +784,14 @@
       }
     },
     "IN CORSO" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IN PROGRESS"
+          }
+        }
+      }
     },
     "Informazioni" : {
       "localizations" : {
@@ -833,16 +924,37 @@
       }
     },
     "Le fasce garantite %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guaranteed service hours %@"
+          }
+        }
+      }
     },
     "Le impostazioni vengono salvate automaticamente." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The settings are saved automatically."
+          }
+        }
+      }
     },
     "Leading" : {
 
     },
     "Licenza:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "License:"
+          }
+        }
+      }
     },
     "Linea attivata" : {
       "localizations" : {
@@ -1034,6 +1146,16 @@
         }
       }
     },
+    "Lingua" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        }
+      }
+    },
     "M1" : {
 
     },
@@ -1041,7 +1163,14 @@
 
     },
     "Manutenzione in corso." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenance in progress."
+          }
+        }
+      }
     },
     "Mappa" : {
       "localizations" : {
@@ -1108,7 +1237,14 @@
       }
     },
     "Mostra lo stato della linea selezionata." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the status of the selected line"
+          }
+        }
+      }
     },
     "Mostra messaggi di Errore" : {
       "localizations" : {
@@ -1144,10 +1280,24 @@
       }
     },
     "Nessun lavoro trovato per questo filtro." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results found for this filter"
+          }
+        }
+      }
     },
     "Nessun risultato per: \"%@\"." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results for: “%@\""
+          }
+        }
+      }
     },
     "Nessuna fermata di interscambio." : {
       "localizations" : {
@@ -1170,7 +1320,14 @@
       }
     },
     "Nome:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name:"
+          }
+        }
+      }
     },
     "Non ci sono lavori su questa linea." : {
       "localizations" : {
@@ -1274,7 +1431,14 @@
       }
     },
     "Nuova versione disponibile!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New version available!"
+          }
+        }
+      }
     },
     "OK" : {
 
@@ -1320,7 +1484,14 @@
       }
     },
     "Permesso Negato" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permission Denied"
+          }
+        }
+      }
     },
     "Pianifica il tuo viaggio sapendo dei disagi sul tragitto, ben prima di partire." : {
       "localizations" : {
@@ -1370,7 +1541,14 @@
       }
     },
     "PROGRAMMATI" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SCHEDULED"
+          }
+        }
+      }
     },
     "Pulisci memoria Cache" : {
       "localizations" : {
@@ -1443,7 +1621,14 @@
       }
     },
     "Registrazione..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signing up…"
+          }
+        }
+      }
     },
     "Reset Password" : {
 
@@ -1522,7 +1707,14 @@
       }
     },
     "Riprova" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh"
+          }
+        }
+      }
     },
     "S2" : {
 
@@ -1531,10 +1723,24 @@
 
     },
     "Salta" : {
-      "comment" : "Skip"
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        }
+      }
     },
     "Sciopero proclamato per il **%@**" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A strike has been called for **%@**"
+          }
+        }
+      }
     },
     "Scopri le novità..." : {
       "extractionState" : "manual",
@@ -1554,6 +1760,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Discover something new..."
+          }
+        }
+      }
+    },
+    "Scuro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
           }
         }
       }
@@ -1619,7 +1836,14 @@
       }
     },
     "Sei sicuro di voler saltare la configurazione?" : {
-      "comment" : "Are you sure you want to skip the setup?"
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to skip the setup?"
+          }
+        }
+      }
     },
     "Sei sicuro di voler uscire dall'account?" : {
       "localizations" : {
@@ -1672,10 +1896,28 @@
       }
     },
     "Seleziona una linea in app da mostrare nel Widget." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a line in the app to display in the widget."
+          }
+        }
+      }
     },
     "Simone Gallotti" : {
 
+    },
+    "Sistema" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
     },
     "Sito web" : {
       "localizations" : {
@@ -1688,7 +1930,14 @@
       }
     },
     "Stato Linea" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line Status"
+          }
+        }
+      }
     },
     "STAV" : {
 
@@ -1742,6 +1991,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Development Team"
+          }
+        }
+      }
+    },
+    "Tema" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
           }
         }
       }
@@ -1897,7 +2156,25 @@
       }
     },
     "Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A new version of LavoraMi is available! To continue, update the app first."
+          }
+        }
+      }
+    },
+    "Utente Apple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple User"
+          }
+        }
+      }
     },
     "Verifica il tuo indirizzo Email con la mail che ti abbiamo inviato per continuare." : {
       "localizations" : {

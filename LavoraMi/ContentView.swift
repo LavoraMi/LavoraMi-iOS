@@ -16,6 +16,7 @@ import CryptoKit
 import FirebaseCore
 internal import Auth
 import FirebaseMessaging
+import Translation
 
 struct WorkItem: Identifiable, Hashable, Codable {
     var id = UUID()
@@ -471,9 +472,7 @@ struct MainView: View {
                     Text("Lavori in corso")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                    
                     Spacer()
-                    
                     Button(action: {
                         viewModel.isLoading = true
                         viewModel.fetchWorks()
@@ -676,10 +675,9 @@ struct MainView: View {
             .animation(.default, value: filteredItems)
             .padding(.bottom, 8)
             VStack(alignment: .leading, spacing: 16){
-                ScrollView{
-                    ScrollViewReader { proxy in
+                ScrollViewReader { proxy in
+                    ScrollView {
                         LazyVStack(spacing: 12){
-                            Color.clear.frame(height: 0).id("top")
                             if viewModel.isLoading {
                                 ForEach(0..<6, id: \.self) { _ in
                                     WorkRowSkeleton()
@@ -722,10 +720,9 @@ struct MainView: View {
                                         }
                                     }
                                 }
-                                .padding(.vertical, 8)
                             }
                         }
-                        .padding(.vertical, 8)
+                        .id("top")
                         .onChange(of: selectedFilter) { _, _ in
                             withAnimation {
                                 proxy.scrollTo("top", anchor: .top)
@@ -991,7 +988,7 @@ struct WorkRowSkeleton: View {
             }
             .shimmer()
         }
-        .padding(28)
+        .padding(22)
         .background(
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(Color(.secondarySystemBackground))
@@ -1010,7 +1007,7 @@ struct SettingsView: View{
     @StateObject var viewModel: WorkViewModel
     @StateObject var authManager = AuthManager()
     
-    //APP DATAS
+    ///APP DATAS
     @AppStorage("enableNotifications") private var enableNotifications: Bool = true
     @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     @AppStorage("preferredFilter") private var preferredFilter: FilterBy = .all
@@ -1349,30 +1346,49 @@ struct SettingsView: View{
 
 struct AppearancePickerView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.openURL) private var openURLAction
     @AppStorage("appearanceSelection") private var appearanceSelection: AppearanceType = .system
 
     var body: some View {
         List {
-            ForEach(AppearanceType.allCases) { filter in
+            Section("Tema") {
+                ForEach(AppearanceType.allCases) { filter in
+                    Button {
+                        appearanceSelection = filter
+                        dismiss()
+                    } label: {
+                        HStack {
+                            Label {
+                                Text(filter.description)
+                            } icon: {
+                                Image(systemName: filter.iconName)
+                                    .foregroundStyle(.red)
+                            }
+                            Spacer()
+                            if appearanceSelection == filter {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.red)
+                            }
+                        }
+                    }
+                    .foregroundColor(Color("TextColor"))
+                }
+            }
+            Section("Lingua") {
                 Button {
-                    appearanceSelection = filter
-                    dismiss()
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        openURLAction(url)
+                    }
                 } label: {
                     HStack {
                         Label {
-                            Text(filter.description)
+                            Text("Cambia Lingua")
                         } icon: {
-                            Image(systemName: filter.iconName)
+                            Image(systemName: "globe")
                                 .foregroundStyle(.red)
-                        }
-                        Spacer()
-                        if appearanceSelection == filter {
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.red)
                         }
                     }
                 }
-                .foregroundColor(Color("TextColor"))
             }
         }
         .navigationTitle("Aspetto")
@@ -1530,7 +1546,7 @@ struct AccountView: View {
                                     return
                                 }
                                 
-                                let name = credential.fullName?.givenName ?? "Utente Apple"
+                                let name = credential.fullName?.givenName ?? String(localized: .utenteApple)
                                 
                                 await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: name)
                                 loggedIn = auth.isLoggedIn()
@@ -1690,7 +1706,7 @@ struct AccountView: View {
                                     return
                                 }
                                 
-                                let name = credential.fullName?.givenName ?? "Utente Apple"
+                                let name = credential.fullName?.givenName ?? String(localized: .utenteApple)
                                 
                                 await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: name)
                                 loggedIn = auth.isLoggedIn()
@@ -1848,12 +1864,12 @@ struct AccountView: View {
                             Button("Annulla", role: .cancel) { }
                             Button("Continua", role: .destructive) {
                                 Task {
-                                    loggedIn = false
-                                    isLogginIn = true
-                                    await auth.deleteAccount()
                                     email = ""
                                     password = ""
                                     fullName = ""
+                                    loggedIn = false
+                                    isLogginIn = true
+                                    await auth.deleteAccount()
                                 }
                             }
                         } message: {
@@ -1991,10 +2007,10 @@ struct AccountView: View {
                     Task {
                         loggedIn = false
                         isLogginIn = true
-                        await auth.signOut()
                         email = ""
                         password = ""
                         fullName = ""
+                        await auth.signOut()
                     }
                 }
             } message: {
@@ -4404,9 +4420,9 @@ enum AppearanceType: Int, CaseIterable, Identifiable {
     
     var description: String {
         switch self {
-            case .system: return "Sistema"
-            case .light: return "Chiaro"
-            case .dark: return "Scuro"
+            case .system: return String(localized: .sistema)
+            case .light: return String(localized: .chiaro)
+            case .dark: return String(localized: .scuro)
         }
     }
     
