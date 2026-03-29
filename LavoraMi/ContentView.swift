@@ -677,53 +677,61 @@ struct MainView: View {
             .padding(.bottom, 8)
             VStack(alignment: .leading, spacing: 16){
                 ScrollView{
-                    LazyVStack(spacing: 12){
-                        if viewModel.isLoading {
-                            ForEach(0..<6, id: \.self) { _ in
-                                WorkRowSkeleton()
-                                    .padding(.horizontal)
-                            }
-                        } else if let error = viewModel.errorMessage {
-                            VStack (spacing: 10){
-                                Image(systemName: "wifi.exclamationmark")
-                                    .font(.largeTitle)
-                                Text("Impossibile caricare i dati dal server.")
-                                    .font(.title2)
-                                Text("Controlla la tua connessione e riprova.").font(.title3).foregroundColor(.gray)
-                                Button(action: {
-                                    viewModel.fetchWorks()
-                                })
-                                {
-                                    Label("Riprova", systemImage: "arrow.clockwise")
+                    ScrollViewReader { proxy in
+                        LazyVStack(spacing: 12){
+                            Color.clear.frame(height: 0).id("top")
+                            if viewModel.isLoading {
+                                ForEach(0..<6, id: \.self) { _ in
+                                    WorkRowSkeleton()
+                                        .padding(.horizontal)
                                 }
-                                .buttonStyle(.bordered)
-                                if(showErrorMessages){
-                                    Text("\(error)")
-                                        .font(.footnote)
-                                        .foregroundStyle(.gray)
+                            } else if let error = viewModel.errorMessage {
+                                VStack (spacing: 10){
+                                    Image(systemName: "wifi.exclamationmark")
+                                        .font(.largeTitle)
+                                    Text("Impossibile caricare i dati dal server.")
+                                        .font(.title2)
+                                    Text("Controlla la tua connessione e riprova.").font(.title3).foregroundColor(.gray)
+                                    Button(action: {
+                                        viewModel.fetchWorks()
+                                    })
+                                    {
+                                        Label("Riprova", systemImage: "arrow.clockwise")
+                                    }
+                                    .buttonStyle(.bordered)
+                                    if(showErrorMessages){
+                                        Text("\(error)")
+                                            .font(.footnote)
+                                            .foregroundStyle(.gray)
+                                    }
                                 }
-                            }
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .containerRelativeFrame(.vertical)
-                            .padding()
-                            .offset(y: -50)
-                        } else {
-                            VStack(spacing: 12) {
-                                if filteredItems.isEmpty {
-                                    Text("Nessun lavoro trovato per questo filtro.")
-                                } else {
-                                    ForEach(filteredItems) { item in
-                                        if item.progress != 1 {
-                                            WorkInProgressRow(item: item)
-                                                .padding(.horizontal)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .containerRelativeFrame(.vertical)
+                                .padding()
+                                .offset(y: -50)
+                            } else {
+                                VStack(spacing: 12) {
+                                    if filteredItems.isEmpty {
+                                        Text("Nessun lavoro trovato per questo filtro.")
+                                    } else {
+                                        ForEach(filteredItems) { item in
+                                            if item.progress != 1 {
+                                                WorkInProgressRow(item: item)
+                                                    .padding(.horizontal)
+                                            }
                                         }
                                     }
                                 }
+                                .padding(.vertical, 8)
                             }
-                            .padding(.vertical, 8)
+                        }
+                        .padding(.vertical, 8)
+                        .onChange(of: selectedFilter) { _, _ in
+                            withAnimation {
+                                proxy.scrollTo("top", anchor: .top)
+                            }
                         }
                     }
-                    .padding(.vertical, 8)
                 }
             }
             .onAppear(){
