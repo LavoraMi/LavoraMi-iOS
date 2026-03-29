@@ -760,16 +760,35 @@ struct MainView: View {
 struct WorkInProgressRow: View {
     let item: WorkItem
     @State private var isExpanded = false
+    @State private var showTranslation = false
     
     private let italianLoc = Date.FormatStyle(date: .abbreviated, time: .omitted).locale(Locale(identifier: "it_IT"))
+    
+    var shouldShowTranslationButton: Bool { Locale.current.language.languageCode?.identifier != "it" }
+    var textToTranslate: String { "\(item.title)\n\n\(item.details)\n\nStrade coinvolte: \(item.roads)" }
 
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded) {
-            Text(item.details)
-                .font(.body)
-                .foregroundStyle(.secondary)
-                .padding(.top, 8)
-                .fixedSize(horizontal: false, vertical: true)
+            VStack(alignment: .leading, spacing: 12) {
+                Text(item.details)
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+                if shouldShowTranslationButton {
+                    Button {
+                        showTranslation = true
+                    } label: {
+                        Label("Translate", systemImage: "translate")
+                            .font(.footnote.weight(.semibold))
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(Color.accentColor.opacity(0.15))
+                            .foregroundStyle(Color.accentColor)
+                            .clipShape(Capsule())
+                    }
+                }
+            }
+            .padding(.top, 8)
         } label: {
             VStack(alignment: .leading, spacing: 8) {
                 if item.titleIcon == "point.bottomleft.forward.to.arrow.triangle.uturn.scurvepath" {
@@ -778,29 +797,25 @@ struct WorkInProgressRow: View {
                             .font(.headline)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle(Color("TextColor"))
-                    }
-                    else {
+                    } else {
                         Label(item.title, systemImage: "arrow.up.forward.app.fill")
                             .font(.headline)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle(Color("TextColor"))
                     }
-                }
-                else if item.titleIcon == "arrow.trianglehead.2.counterclockwise" {
+                } else if item.titleIcon == "arrow.trianglehead.2.counterclockwise" {
                     if #available(iOS 18, *) {
                         Label(item.title, systemImage: item.titleIcon)
                             .font(.headline)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle(Color("TextColor"))
-                    }
-                    else {
+                    } else {
                         Label(item.title, systemImage: "shuffle")
                             .font(.headline)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle(Color("TextColor"))
                     }
-                }
-                else {
+                } else {
                     Label(item.title, systemImage: item.titleIcon)
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -812,10 +827,10 @@ struct WorkInProgressRow: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundStyle(Color("TextColor"))
 
-                ScrollView(.horizontal, showsIndicators: false){
-                    HStack{
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
                         ForEach(item.lines, id: \.self) { line in
-                            if(line.contains("Filobus")){
+                            if line.contains("Filobus") {
                                 Label(line, systemImage: "bolt.fill")
                                     .font(.system(size: 12, weight: .bold))
                                     .foregroundStyle(.white)
@@ -825,8 +840,7 @@ struct WorkInProgressRow: View {
                                         RoundedRectangle(cornerRadius: 6)
                                             .fill(getColor(for: line))
                                     )
-                            }
-                            else if (line.starts(with: "N")){
+                            } else if line.starts(with: "N") {
                                 Label(line, systemImage: "moon.fill")
                                     .font(.system(size: 12, weight: .bold))
                                     .foregroundStyle(.white)
@@ -836,8 +850,7 @@ struct WorkInProgressRow: View {
                                         RoundedRectangle(cornerRadius: 6)
                                             .fill(getColor(for: line))
                                     )
-                            }
-                            else{
+                            } else {
                                 Text(line)
                                     .font(.system(size: 12, weight: .bold))
                                     .foregroundStyle(.white)
@@ -873,7 +886,7 @@ struct WorkInProgressRow: View {
                         .foregroundStyle(Color("TextColor"))
                         .padding(.top, 4)
                 }
-             }
+            }
         }
         .padding(16)
         .background(
@@ -881,6 +894,7 @@ struct WorkInProgressRow: View {
                 .fill(Color(.secondarySystemBackground))
         )
         .shadow(color: .black.opacity(0.06), radius: 6, x: 0, y: 3)
+        .translationPresentation(isPresented: $showTranslation, text: textToTranslate)
     }
 }
 
