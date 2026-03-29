@@ -408,13 +408,13 @@ struct MainView: View {
     @State private var currentHintIndex: Int = 0
     
     private let searchHints = [
-        "Cerca nei lavori...",
-        "Scopri qualcosa di nuovo...",
-        "Cerca la tua linea...",
-        "Cerca ciò che ami...",
-        "Non essere l'ultimo a sapere le cose...",
-        "Scopri le novità...",
-        "Lavori della settimana..."
+        String(localized: .cercaNeiLavori),
+        String(localized: .scopriQualcosaDiNuovo),
+        String(localized: .cercaLaTuaLinea),
+        String(localized: .cercaCiòCheAmi),
+        String(localized: .nonEssereLultimoASapereLeCose),
+        String(localized: .scopriLeNovità),
+        String(localized: .lavoriDellaSettimana)
     ]
     
     init(viewModel: WorkViewModel) {
@@ -630,7 +630,7 @@ struct MainView: View {
                             let nameIcon: String = getIconForFilter(for: filter.rawValue)
                             
                             if(nameIcon != ""){
-                                Label(filter.rawValue, systemImage: nameIcon)
+                                Label(filter.localizedTitle, systemImage: nameIcon)
                                 .font(.subheadline)
                                 .fontWeight(.medium)
                                 .padding(.vertical, 8)
@@ -649,7 +649,7 @@ struct MainView: View {
                                 .foregroundStyle(selectedFilter == filter ? Color(.systemBackground) : .primary)
                             }
                             else{
-                                Text(filter.rawValue)
+                                Text(filter.localizedTitle)
                                 .font(.subheadline)
                                 .fontWeight(.medium)
                                 .padding(.vertical, 8)
@@ -1274,7 +1274,7 @@ struct SettingsView: View{
                     }
                     Picker(selection: $preferredFilter){
                         ForEach(FilterBy.allCases) { filter in
-                            Text(filter.rawValue).tag(filter)
+                            Text(filter.localizedTitle).tag(filter)
                                 .foregroundStyle(Color("TextColor"))
                         }
                     } label: {
@@ -2125,44 +2125,7 @@ struct AdvancedOptionsView: View {
     }
 }
 
-struct CacheAlertSheet: View {
-    @Environment(\.dismiss) var dismiss
-    let onDelete: () -> Void
-    
-    var body: some View {
-        VStack(spacing: 20) {
-            Text("Sei sicuro di voler pulire la memoria Cache?")
-                .font(.headline)
-                .multilineTextAlignment(.center)
-                .padding(.top, 30)
-            
-            Spacer()
-            
-            Button(role: .destructive) {
-                onDelete()
-                dismiss()
-            } label: {
-                Text("Elimina Cache")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.red.opacity(0.2))
-                    .foregroundColor(.red)
-                    .cornerRadius(12)
-            }
-            
-            Button {
-                dismiss()
-            } label: {
-                Text("Annulla")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(12)
-            }
-        }
-        .padding()
-    }
-}
+
 
 struct NotificationsView: View {
     @AppStorage("workScheduledNotifications") var workScheduledNotifications: Bool = true
@@ -4414,6 +4377,23 @@ enum FilterBy: String, CaseIterable, Identifiable {
     case STAV = "di STAV"
     case Autoguidovie = "di Autoguidovie"
     
+    var localizedTitle: String {
+        switch self {
+            case .all: return String(localized: .tutti)
+            case .bus: return "Bus"
+            case .tram: return "Tram"
+            case .metro : return String(localized: .metropolitana)
+            case .train: return String(localized: .treno)
+            case .working: return String(localized: .inCorso)
+            case .scheduled: return String(localized: .programmati)
+            case .ATM: return String(localized: .diAtm)
+            case .Trenord: return String(localized: .diTrenord)
+            case .Movibus: return String(localized: .diMovibus)
+            case .STAV: return String(localized: .diStav)
+            case .Autoguidovie: return String(localized: .diAutoguidovie)
+        }
+    }
+    
     var id: String{self.rawValue}
 }
 
@@ -4439,16 +4419,6 @@ enum AppearanceType: Int, CaseIterable, Identifiable {
     }
     
     var id: Int{self.rawValue}
-}
-
-enum TimeToLock: String, CaseIterable, Identifiable {
-    case immediately = "Subito"
-    case oneMinute = "Dopo 1 Minuto"
-    case twoMinutes = "Dopo 2 Minuti"
-    case fiveMinutes = "Dopo 5 Minuti"
-    case thirdyMinutes = "Dopo 30 Minuti"
-    
-    var id: String{self.rawValue}
 }
 
 struct LineInfo: Identifiable{
