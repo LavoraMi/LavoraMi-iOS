@@ -987,10 +987,11 @@ struct WorkRowSkeleton: View {
                 RoundedRectangle(cornerRadius: 4)
                     .fill(Color(.tertiarySystemFill))
                     .frame(width: 120, height: 12)
+                    .frame(alignment: .center)
             }
             .shimmer()
         }
-        .padding(16)
+        .padding(28)
         .background(
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(Color(.secondarySystemBackground))
