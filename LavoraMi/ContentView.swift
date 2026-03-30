@@ -131,6 +131,12 @@ struct SetupView: View {
             standardImage: "bell.fill"
         ),
         SetupPage(
+            title: "Traduci i lavori, nella lingua che vuoi tu.",
+            description: "Traduci i dettagli dei lavori in altre lingue, basta cliccare sui dettagli del lavoro e cliccare \"Traduci\".",
+            transitionImage: "text.append",
+            standardImage: "translate"
+        ),
+        SetupPage(
             title: "Tu ed ancora Tu.",
             description: "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi.",
             transitionImage: "lock.open.fill",
@@ -196,7 +202,7 @@ struct SetupView: View {
             }
             .navigationTitle(Text("LavoraMi"))
             .toolbar {
-                if(currentPage != 4) {
+                if(currentPage != 5) {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             showPopUpConfirmSkipSetup = true
@@ -382,6 +388,12 @@ struct SetupPageView: View {
 
             if(page.title == "Tu ed ancora Tu."){
                 Text("Creando un Account LavoraMi, accetti i Termini di Servizio e la Privacy Policy. Vai in Impostazioni > Account per saperne di più.")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            else if(page.title == "Traduci i lavori, nella lingua che vuoi tu."){
+                Text("Funzionalità disponibile solo con la lingua Inglese selezionata. Vai in Impostazioni > Aspetto e Lingua per selezionarla.")
                     .font(.caption2)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
