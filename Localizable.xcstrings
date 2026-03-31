@@ -660,7 +660,14 @@
       }
     },
     "Funzionalità disponibile solo con la lingua Inglese selezionata. Vai in Impostazioni > Aspetto e Lingua per selezionarla." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This feature is available only when English is selected as the language. Go to Settings > Appearance and Language to select it."
+          }
+        }
+      }
     },
     "Generali" : {
       "localizations" : {
@@ -2111,10 +2118,24 @@
       }
     },
     "Traduci i dettagli dei lavori in altre lingue, basta cliccare sui dettagli del lavoro e cliccare \"Traduci\"." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To translate job details into other languages, simply click on the job details and then click “Translate”"
+          }
+        }
+      }
     },
     "Traduci i lavori, nella lingua che vuoi tu." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Translate the works into the language you select."
+          }
+        }
+      }
     },
     "Trailing" : {
 
