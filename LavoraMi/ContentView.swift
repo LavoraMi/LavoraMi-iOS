@@ -1306,9 +1306,7 @@ struct SettingsView: View{
                     .pickerStyle(.navigationLink)
                     NavigationLink(destination: AppearancePickerView()) {
                         HStack {
-                            Label("Aspetto", systemImage: "circle.righthalf.filled")
-                            Spacer()
-                            Text(appearanceSelection.description)
+                            Label("Aspetto e Lingua", systemImage: "circle.righthalf.filled")
                         }
                     }
                     NavigationLink(destination: AdvancedOptionsView()){
