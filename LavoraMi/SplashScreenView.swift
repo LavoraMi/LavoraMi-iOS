@@ -21,7 +21,7 @@ struct SplashScreenView: View {
         ZStack {
             if contentLoaded {
                 if(showMaintenance){
-                    MaintenanceView(maintenanceDeps: viewModel.maintenanceDeps) {
+                    MaintenanceView(maintenanceDeps: viewModel.maintenanceDeps, maintenanceDepsEn: viewModel.maintenanceDepsEn) {
                         showMaintenance = false
                     }
                     .opacity(contentOpacity)

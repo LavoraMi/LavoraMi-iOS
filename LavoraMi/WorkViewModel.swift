@@ -19,6 +19,7 @@ class WorkViewModel: ObservableObject {
     @Published var guaranteed: String = ""
     @Published var maintenanceModeEnabled: Bool = false
     @Published var maintenanceDeps: String = ""
+    @Published var maintenanceDepsEn: String = ""
     @Published var minimumVersion: String = ""
     
     private let urlString = "https://cdn.lavorami.it/lavoriAttuali.json"
@@ -161,6 +162,7 @@ class WorkViewModel: ObservableObject {
                     self?.maintenanceModeEnabled = (result.maintenanceMode == "true")
                     self?.maintenanceDeps = result.maintenanceDeps
                     self?.minimumVersion = result.minVersioniOS
+                    self?.maintenanceDepsEn = result.maintenanceDepsEn
                     completion?()
                 }
             } catch {
@@ -183,5 +185,6 @@ struct RemoteConfigData: Codable {
 struct RequirementsData: Codable {
     let maintenanceMode: String
     let maintenanceDeps: String
+    let maintenanceDepsEn: String
     let minVersioniOS: String
 }
