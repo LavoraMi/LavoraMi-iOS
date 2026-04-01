@@ -2219,6 +2219,17 @@
         }
       }
     },
+    "Valuta LavoraMi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rate LavoraMi"
+          }
+        }
+      }
+    },
     "Verifica il tuo indirizzo Email con la mail che ti abbiamo inviato per continuare." : {
       "localizations" : {
         "en" : {

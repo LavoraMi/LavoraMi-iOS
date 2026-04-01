@@ -17,6 +17,7 @@ import FirebaseCore
 internal import Auth
 import FirebaseMessaging
 import Translation
+import StoreKit
 
 struct WorkItem: Identifiable, Hashable, Codable {
     var id = UUID()
@@ -1044,6 +1045,7 @@ struct SettingsView: View{
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @Environment(\.dismiss) var dismiss
     @Environment(\.openURL) private var openURLAction
+    @Environment(\.requestReview) var requestReview
     
     let metroLines = ["M1", "M2", "M3", "M4", "M5"]
     
@@ -1336,6 +1338,18 @@ struct SettingsView: View{
                     }
                     ShareLink(item: URL(string: "https://apps.apple.com/us/app/lavorami/id6760344298")!) {
                         Label("Condividi LavoraMi", systemImage: "arrowshape.turn.up.right.fill")
+                    }
+                    Button(action: {
+                        Task {@MainActor in
+                            requestReview()
+                        }
+                    }){
+                        Label {
+                            Text("Valuta LavoraMi")
+                                .foregroundColor(.red)
+                        } icon: {
+                            Image(systemName: "star.fill")
+                        }
                     }
                 }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
