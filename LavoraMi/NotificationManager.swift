@@ -52,7 +52,24 @@ class NotificationManager {
         
         let contentDayOf = UNMutableNotificationContent()
         contentDayOf.title = "Lavori terminati!"
-        contentDayOf.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+        
+        if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
+            if(work.lines.count <= 1){
+                contentDayOf.body = "I lavori in \(work.roads) della linea \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+            }
+            else{
+                contentDayOf.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+            }
+        }
+        else{
+            if(work.lines.count <= 1){
+                contentDayOf.body = "I lavori a \(work.roads) della linea \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+            }
+            else{
+                contentDayOf.body = "I lavori a \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+            }
+        }
+        
         contentDayOf.sound = .default
         
         if let dateOf = calendar.date(from: dateComponents), dateOf > Date() {
@@ -70,7 +87,24 @@ class NotificationManager {
             
             let contentDayBefore = UNMutableNotificationContent()
             contentDayBefore.title = "⚠️ I lavori finiscono domani!"
-            contentDayBefore.body = "Domani terminano i lavori in \(work.roads) per \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+            
+            if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
+                if(work.lines.count <= 1){
+                    contentDayBefore.body = "Domani terminano i lavori in \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+                else{
+                    contentDayBefore.body = "Domani terminano i lavori in \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+            }
+            else {
+                if(work.lines.count <= 1){
+                    contentDayBefore.body = "Domani terminano i lavori a \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+                else{
+                    contentDayBefore.body = "Domani terminano i lavori a \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+            }
+            
             contentDayBefore.sound = .default
             
             let triggerDayBefore = UNCalendarNotificationTrigger(dateMatching: dayBeforeComponents, repeats: false)
@@ -96,7 +130,24 @@ class NotificationManager {
         
         let contentDayOf = UNMutableNotificationContent()
         contentDayOf.title = "Lavori Iniziati!"
-        contentDayOf.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+        
+        if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
+            if(work.lines.count <= 1){
+                contentDayOf.body = "I lavori in \(work.roads) della linea \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+            }
+            else{
+                contentDayOf.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+            }
+        }
+        else {
+            if(work.lines.count <= 1){
+                contentDayOf.body = "I lavori a \(work.roads) della linea \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+            }
+            else{
+                contentDayOf.body = "I lavori a \(work.roads) delle linee \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+            }
+        }
+        
         contentDayOf.sound = .default
         
         if let dateOf = calendar.date(from: dateComponents), dateOf > Date() {
@@ -114,7 +165,24 @@ class NotificationManager {
             
             let contentDayBefore = UNMutableNotificationContent()
             contentDayBefore.title = "⚠️ I lavori iniziano domani!"
-            contentDayBefore.body = "Domani iniziano i lavori in \(work.roads) per \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+            
+            if(work.roads.range(of: "via", options: .caseInsensitive) != nil){
+                if(work.lines.count <= 1){
+                    contentDayBefore.body = "Domani iniziano i lavori in \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+                else{
+                    contentDayBefore.body = "Domani iniziano i lavori in \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+            }
+            else{
+                if(work.lines.count <= 1){
+                    contentDayBefore.body = "Domani iniziano i lavori a \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+                else{
+                    contentDayBefore.body = "Domani iniziano i lavori a \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+            }
+            
             contentDayBefore.sound = .default
             
             let triggerDayBefore = UNCalendarNotificationTrigger(dateMatching: dayBeforeComponents, repeats: false)
@@ -279,7 +347,24 @@ class NotificationManager {
             guard let date = date, date > Date() else { return }
             let content = UNMutableNotificationContent()
             content.title = "Lavori terminati!"
-            content.body  = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+            
+            if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
+                if(work.lines.count <= 1){
+                    content.body = "I lavori in \(work.roads) della linea \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                }
+                else{
+                    content.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                }
+            }
+            else{
+                if(work.lines.count <= 1){
+                    content.body = "I lavori a \(work.roads) della linea \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                }
+                else{
+                    content.body = "I lavori a \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                }
+            }
+            
             content.sound = .default
             center.add(UNNotificationRequest(identifier: "\(work.id.uuidString)_END", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
             print("✅ END: \(date.formatted()) | \(work.title) - \(work.roads)")
@@ -290,7 +375,24 @@ class NotificationManager {
             let (comps, date) = notifDate(from: dayBefore)
             let content = UNMutableNotificationContent()
             content.title = "⚠️ I lavori finiscono domani!"
-            content.body  = "Domani terminano i lavori in \(work.roads) per \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+            
+            if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
+                if(work.lines.count <= 1){
+                    content.body = "Domani terminano i lavori in \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+                else{
+                    content.body = "Domani terminano i lavori in \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+            }
+            else {
+                if(work.lines.count <= 1){
+                    content.body = "Domani terminano i lavori a \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+                else{
+                    content.body = "Domani terminano i lavori a \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+            }
+            
             content.sound = .default
             center.add(UNNotificationRequest(identifier: "\(work.id.uuidString)_PRE", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
             print("✅ PRE_END: \(String(describing: date?.formatted())) | \(work.title) - \(work.roads)")
@@ -316,7 +418,24 @@ class NotificationManager {
             guard let date = date, date > Date() else { return }
             let content = UNMutableNotificationContent()
             content.title = "Lavori Iniziati!"
-            content.body  = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+            
+            if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
+                if(work.lines.count <= 1){
+                    content.body = "I lavori in \(work.roads) della linea \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                }
+                else{
+                    content.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                }
+            }
+            else {
+                if(work.lines.count <= 1){
+                    content.body = "I lavori a \(work.roads) della linea \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                }
+                else{
+                    content.body = "I lavori a \(work.roads) delle linee \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                }
+            }
+            
             content.sound = .default
             center.add(UNNotificationRequest(identifier: "\(work.id.uuidString)_START", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
             print("✅ START: \(date.formatted()) | \(work.title) - \(work.roads)")
@@ -327,7 +446,24 @@ class NotificationManager {
             let (comps, date) = notifDate(from: dayBefore)
             let content = UNMutableNotificationContent()
             content.title = "⚠️ I lavori iniziano domani!"
-            content.body  = "Domani iniziano i lavori in \(work.roads) per \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+            
+            if(work.roads.range(of: "via", options: .caseInsensitive) != nil){
+                if(work.lines.count <= 1){
+                    content.body = "Domani iniziano i lavori in \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+                else{
+                    content.body = "Domani iniziano i lavori in \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+            }
+            else{
+                if(work.lines.count <= 1){
+                    content.body = "Domani iniziano i lavori a \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+                else{
+                    content.body = "Domani iniziano i lavori a \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                }
+            }
+            
             content.sound = .default
             center.add(UNNotificationRequest(identifier: "\(work.id.uuidString)_PRESTART", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
             print("✅ PRE_START: \(String(describing: date?.formatted())) | \(work.title) - \(work.roads)")
