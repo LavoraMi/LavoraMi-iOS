@@ -233,6 +233,7 @@ struct SetupView: View {
 // MARK: MAINTENANCE VIEW
 struct MaintenanceView: View {
     var maintenanceDeps: String = ""
+    var maintenanceDepsEn: String = ""
     var onResolved: () -> Void = {}
     
     @State private var showSetupScreen: Bool = true
@@ -261,8 +262,16 @@ struct MaintenanceView: View {
                 .padding(.horizontal, 20)
                 .padding(.top, 5)
             
-            if !maintenanceDeps.isEmpty {
+            if !maintenanceDeps.isEmpty && Bundle.main.preferredLocalizations.first?.hasPrefix("en") == false {
                 Text(maintenanceDeps)
+                    .font(.system(size: 10))
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+            }
+            else if !maintenanceDepsEn.isEmpty && Bundle.main.preferredLocalizations.first?.hasPrefix("en") == true {
+                Text(maintenanceDepsEn)
                     .font(.system(size: 10))
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
@@ -762,7 +771,7 @@ struct MainView: View {
                 }
             }
             .fullScreenCover(isPresented: $showMaintenanceMode) {
-                MaintenanceView(maintenanceDeps: viewModel.maintenanceDeps) {
+                MaintenanceView(maintenanceDeps: viewModel.maintenanceDeps, maintenanceDepsEn: viewModel.maintenanceDepsEn) {
                     showMaintenanceMode = false
                 }
             }
