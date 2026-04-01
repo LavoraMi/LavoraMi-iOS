@@ -206,7 +206,14 @@
       }
     },
     "Aspetto e Lingua" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance and Language"
+          }
+        }
+      }
     },
     "ATM" : {
 

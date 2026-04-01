@@ -2406,6 +2406,7 @@ struct InfoView: View {
                         .padding(.bottom, 20)
                     ShareLink(item: URL(string: "https://apps.apple.com/us/app/lavorami/id6760344298")!) {
                         Label("Condividi LavoraMi", systemImage: "arrowshape.turn.up.right.fill")
+                            .font(.system(size: 20))
                     }
                     /*Button {
                         let url = URL(string: "https://www.patreon.com/cw/LavoraMi")!
@@ -2916,7 +2917,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-crypto",
-            version: "4.3.0",
+            version: "4.3.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2019 Apple Inc.",
             licenseText: """
