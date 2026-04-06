@@ -350,10 +350,12 @@ class NotificationManager {
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
                 if(work.lines.count <= 1){
-                    content.body = "I lavori in \(work.roads) della linea \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                    content.body = String(localized: .fineLavoriVar1(work.roads, work.lines.joined(separator: ", "), work.company))
+                    print("content.body: \(content.body)")
                 }
                 else{
-                    content.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                    content.body = String(localized: .fineLavoriVar2(work.roads, work.lines.joined(separator: ", "), work.company))
+                    print("content.body: \(content.body)")
                 }
             }
             else{

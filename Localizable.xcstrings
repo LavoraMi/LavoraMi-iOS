@@ -646,6 +646,62 @@
         }
       }
     },
+    "fineLavoriVar1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work in %1$@ of line %2$@ is expected to be completed today, Visit the %3$@ website for more informations."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I lavori in %1$@ della linea %2$@ dovrebbero terminare oggi. Consulta il sito di %3$@ per aggiornamenti all'ultimo minuto."
+          }
+        }
+      }
+    },
+    "fineLavoriVar2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work in %1$@ of lines %2$@ is expected to be completed today, Visit the %3$@ website for more informations."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I lavori in %1$@ delle linee %2$@ dovrebbero terminare oggi. Consulta il sito di %3$@ per aggiornamenti all'ultimo minuto."
+          }
+        }
+      }
+    },
+    "fineLavoriVar3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I lavori a %1$@ della linea %2$@ dovrebbero terminare oggi. Consulta il sito di %3$@ per aggiornamenti all'ultimo minuto."
+          }
+        }
+      }
+    },
+    "fineLavoriVar4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I lavori a %1$@ delle linee %2$@ dovrebbero terminare oggi. Consulta il sito di %3$@ per aggiornamenti all'ultimo minuto."
+          }
+        }
+      }
+    },
     "Fonti & Sviluppo" : {
       "localizations" : {
         "en" : {
@@ -839,6 +895,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Component Information"
+          }
+        }
+      }
+    },
+    "inizioLavoriVar1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I lavori in %1$@ della linea %2$@ sono iniziati oggi. Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "inizioLavoriVar2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I lavori in %1$@ delle linee %2$@ sono iniziati oggi. Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "inizioLavoriVar3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I lavori a %1$@ della linea %2$@ sono iniziati oggi. Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "inizioLavoriVar4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I lavori a %1$@ delle linee %2$@ sono iniziati oggi. Consulta il sito di %3$@ per maggiori info."
           }
         }
       }
@@ -2137,6 +2237,61 @@
     },
     "Tommaso Ruggeri" : {
 
+    },
+    "tomorrowFineLavoriVar1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domani terminano i lavori in %1$@ per la linea %2$@. Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "tomorrowFineLavoriVar2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domani terminano i lavori in %1$@ per le linee %2$@. Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "tomorrowFineLavoriVar3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domani terminano i lavori a %1$@ per la linea %2$@. Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "tomorrowFineLavoriVar4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domani terminano i lavori a %1$@ per le linee %2$@. Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "tomorrowInizioLavoriVar1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domani iniziano i lavori in %1$@ per la linea %2$@ Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
     },
     "Torna al Login" : {
       "localizations" : {
