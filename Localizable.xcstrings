@@ -281,6 +281,16 @@
         }
       }
     },
+    "Bloccato qui? Controlla la tua connessione." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuck here? Check your connection."
+          }
+        }
+      }
+    },
     "Bottom %@" : {
 
     },
@@ -1544,10 +1554,24 @@
       }
     },
     "Privacy Policy" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
     },
     "Privacy Policy." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy."
+          }
+        }
+      }
     },
     "Programmati" : {
       "extractionState" : "manual",
