@@ -14,6 +14,7 @@ struct SplashScreenView: View {
     @State private var contentLoaded = false
     @State private var showSetupScreen: Bool = false
     @State private var showMaintenance: Bool = false
+    @State private var showNoConnection: Bool = false
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @StateObject private var viewModel = WorkViewModel()
 
@@ -31,16 +32,33 @@ struct SplashScreenView: View {
                         .opacity(contentOpacity)
                 }
             }
-            Image("icon")
-                .resizable()
-                .frame(width: 150, height: 150)
-                .scaleEffect(scaleEffect)
-                .opacity(opacity)
+            VStack(spacing: 12) {
+                Image("icon")
+                    .resizable()
+                    .frame(width: 150, height: 150)
+                    .scaleEffect(scaleEffect)
+                
+                if(showNoConnection){
+                    Label("Bloccato qui? Controlla la tua connessione.", systemImage: "wifi.exclamationmark")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                
+            }
+            .opacity(opacity)
         }
         .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                if !contentLoaded {
+                    withAnimation {
+                        showNoConnection = true
+                    }
+                }
+            }
             viewModel.fetchRequirements {
                 showMaintenance = viewModel.maintenanceModeEnabled
                 contentLoaded = true
+                showNoConnection = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     startAnimation()
                 }
