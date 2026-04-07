@@ -322,6 +322,26 @@
         }
       }
     },
+    "Attiva Feedback Vibrazione" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Haptic Feedbacks"
+          }
+        }
+      }
+    },
+    "Attiva i Feedback di vibrazione su alcune schermate." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable haptic feedback on certain screens."
+          }
+        }
+      }
+    },
     "Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese." : {
       "localizations" : {
         "en" : {
@@ -1629,7 +1649,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show strike banners"
+            "value" : "Show Strike Banners"
           }
         }
       }
@@ -1659,7 +1679,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show error messages"
+            "value" : "Show Error Messages"
           }
         }
       }
