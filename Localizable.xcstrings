@@ -2,7 +2,14 @@
   "sourceLanguage" : "it",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     " e la " : {
       "localizations" : {
@@ -108,6 +115,26 @@
         }
       }
     },
+    "12 Nov 2025" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12 Nov 2025"
+          }
+        }
+      }
+    },
+    "15 Dic 2026" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15 Dec 2026"
+          }
+        }
+      }
+    },
     "Accedi" : {
       "localizations" : {
         "en" : {
@@ -174,6 +201,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Update"
+          }
+        }
+      }
+    },
+    "aggiornatoSempre" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updated, Always."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiornato, Sempre."
           }
         }
       }
@@ -324,6 +368,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "STRIKE NOTICE"
+          }
+        }
+      }
+    },
+    "barraDiProgresso" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress bar"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barra di progresso"
           }
         }
       }
@@ -707,6 +768,23 @@
         }
       }
     },
+    "fermataCantiere" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Worksite Stop"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermata Cantiere"
+          }
+        }
+      }
+    },
     "Filtro Predefinito" : {
       "localizations" : {
         "en" : {
@@ -835,6 +913,26 @@
         }
       }
     },
+    "Funzioni dell'app" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App’s functions"
+          }
+        }
+      }
+    },
+    "Funzioni dell'App" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App’s Functions"
+          }
+        }
+      }
+    },
     "Generali" : {
       "localizations" : {
         "en" : {
@@ -876,7 +974,14 @@
       }
     },
     "Hello %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello %@"
+          }
+        }
+      }
     },
     "Home" : {
       "localizations" : {
@@ -1068,7 +1173,14 @@
       }
     },
     "Instagram" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instagram"
+          }
+        }
+      }
     },
     "Interscambi" : {
       "localizations" : {
@@ -1101,7 +1213,14 @@
       }
     },
     "L" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L"
+          }
+        }
+      }
     },
     "L'Invio dei dati richiesti può impiegare dai 5 ai 20 giorni lavorativi. Controlla la mail entro questo limite." : {
       "localizations" : {
@@ -1124,7 +1243,14 @@
       }
     },
     "LavoraMi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LavoraMi"
+          }
+        }
+      }
     },
     "LavoraMi è un'applicazione indipendente sviluppata da terze parti e NON è in alcun modo affiliata, supportata, autorizzata o sponsorizzata da ATM S.p.A., Trenord S.r.l., Gruppo FNM, RFI o altri enti di trasporto citati.\n\nTutti i dati visualizzati in questa applicazione (orari, stati del servizio, avvisi) sono raccolti da fonti pubbliche al solo scopo di migliorarne la comprensione ed a solo scopo informativo.\n\nNon si fornisce alcuna garanzia, esplicita o implicita, riguardo l'accuratezza, la completezza, l'affidabilità o la tempestività delle informazioni fornite. Le informazioni potrebbero non riflettere variazioni dell'ultimo minuto.\n\nL'uso dell'applicazione è interamente a proprio rischio. Lo sviluppatore declina ogni responsabilità per eventuali inesattezze, ritardi, mancati servizi, danni diretti o indiretti derivanti dall'affidamento sulle informazioni fornite da questa app.\n\nPer le decisioni di viaggio critiche, si raccomanda di fare sempre riferimento ai canali ufficiali, agli annunci sonori e alla segnaletica presente in stazione.\n\nTutti i marchi, i loghi e i nomi commerciali citati appartengono ai legittimi proprietari." : {
       "localizations" : {
@@ -1198,7 +1324,14 @@
       }
     },
     "Leading" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leading"
+          }
+        }
+      }
     },
     "Licenza:" : {
       "localizations" : {
@@ -1411,10 +1544,24 @@
       }
     },
     "M1" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "M1"
+          }
+        }
+      }
     },
     "M3" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "M3"
+          }
+        }
+      }
     },
     "Manutenzione in corso." : {
       "localizations" : {
@@ -1448,7 +1595,14 @@
       }
     },
     "Milano Scalo Romana FS" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Milano Scalo Romana FS"
+          }
+        }
+      }
     },
     "Modifica l'orario di arrivo delle notifiche." : {
       "localizations" : {
@@ -1521,7 +1675,14 @@
       }
     },
     "Movibus" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movibus"
+          }
+        }
+      }
     },
     "Nessun interscambio con questa linea." : {
       "localizations" : {
@@ -1624,6 +1785,16 @@
         }
       }
     },
+    "Non solo \"lavori in via\", ti spieghiamo che tipo di lavoro si sta svolgendo ed anche le conseguenze che può portare quel cantiere (Deviazioni, Fermate Sospese...)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not just “work in progress” we explain what type of work is being done and the consequences that construction site may have (detours, suspended stops, etc)."
+          }
+        }
+      }
+    },
     "Notifiche" : {
       "localizations" : {
         "en" : {
@@ -1695,7 +1866,14 @@
       }
     },
     "OK" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "Opzioni Avanzate" : {
       "localizations" : {
@@ -1899,10 +2077,24 @@
       }
     },
     "Reset Password" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Password"
+          }
+        }
+      }
     },
     "Riccardo De Diana" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riccardo De Diana"
+          }
+        }
+      }
     },
     "Richiedi %@" : {
       "localizations" : {
@@ -1985,10 +2177,24 @@
       }
     },
     "S2" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S2"
+          }
+        }
+      }
     },
     "S5" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S5"
+          }
+        }
+      }
     },
     "Salta" : {
       "localizations" : {
@@ -1996,6 +2202,33 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Skip"
+          }
+        }
+      }
+    },
+    "Salva fra i preferiti la linea che usi ogni giorno e quando ci sarà un lavoro su di essa, sarai già aggiornato." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save the line you use every day as a favorite and when there’s work on it, you will be updated."
+          }
+        }
+      }
+    },
+    "scegliLaTuaLinea" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your line"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli la tua linea"
           }
         }
       }
@@ -2242,7 +2475,14 @@
       }
     },
     "Simone Gallotti" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simone Gallotti"
+          }
+        }
+      }
     },
     "Sistema" : {
       "extractionState" : "manual",
@@ -2276,7 +2516,14 @@
       }
     },
     "STAV" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STAV"
+          }
+        }
+      }
     },
     "Supportaci" : {
       "localizations" : {
@@ -2319,7 +2566,14 @@
       }
     },
     "T %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T %@"
+          }
+        }
+      }
     },
     "Team di Sviluppo" : {
       "localizations" : {
@@ -2381,6 +2635,16 @@
         }
       }
     },
+    "Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un Venerdì no." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We’ll notify you the day before work is due to end, when new construction sites appear on your favorite line, and even when it’s a bad Friday."
+          }
+        }
+      }
+    },
     "Ti invieremo una mail per modificare la tua password, vuoi continuare?" : {
       "localizations" : {
         "en" : {
@@ -2422,13 +2686,34 @@
       }
     },
     "TikTok" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TikTok"
+          }
+        }
+      }
     },
     "TILO" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TILO"
+          }
+        }
+      }
     },
     "Tommaso Ruggeri" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tommaso Ruggeri"
+          }
+        }
+      }
     },
     "tomorrowFineLavoriVar1" : {
       "extractionState" : "manual",
@@ -2597,10 +2882,24 @@
       }
     },
     "Trailing" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trailing"
+          }
+        }
+      }
     },
     "Translate" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Translate"
+          }
+        }
+      }
     },
     "Treno" : {
       "extractionState" : "manual",
@@ -2650,6 +2949,16 @@
         }
       }
     },
+    "Tutti gli esempi riportati sono a scopo esemplificativo, possono essere eventi attualmente in corso o passati." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All examples given are for illustrative purposes only and may be current or past events."
+          }
+        }
+      }
+    },
     "Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app." : {
       "localizations" : {
         "en" : {
@@ -2678,6 +2987,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rate LavoraMi"
+          }
+        }
+      }
+    },
+    "Vedi visivamente a che punto sono i lavori e quando è prevista la fine del disagio (basato su data di inizio e fine lavori PREVISTI)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can visually see the progress of the work and when the disruption is expected to end (based on the PLANNED start and end dates of the work)."
           }
         }
       }
@@ -2712,8 +3031,69 @@
         }
       }
     },
+    "Visualizza i percorsi delle linee che preferisci sulla mappa, per non perdersi e per sapere sempre dove vai." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View the routes of your favorite lines on the map, so you don’t get lost and always know where you are going."
+          }
+        }
+      }
+    },
+    "Visualizza le linee che interscambiano con la TUA linea, oppure sui bus visualizza dove fanno capolinea con una fermata di interscambio." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View the lines that interchange with YOUR line, or on buses view where they end with a Transfer Stop."
+          }
+        }
+      }
+    },
+    "visualizzaGliInterscambi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View interchanges"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizza gli Interscambi"
+          }
+        }
+      }
+    },
+    "visualizzaLaMappa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See the Map"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizza la Mappa"
+          }
+        }
+      }
+    },
     "z620" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z620"
+          }
+        }
+      }
     }
   },
   "version" : "1.2"
