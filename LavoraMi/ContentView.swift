@@ -1886,20 +1886,25 @@ struct AccountView: View {
                                 }
                                 
                                 if(email.contains("privaterelay")) {
-                                    Button(action: {
-                                        showMailApple = !showMailApple
-                                    }) {
-                                        Label {
-                                            Text((!showMailApple) ? "PrivateRelay Apple" : email)
-                                                .foregroundColor(Color("TextColor"))
-                                                .font(.system(size: 25))
-                                                .lineLimit(1)
-                                                .truncationMode(.tail)
-                                        } icon: {
-                                            Image(systemName: "envelope.fill")
-                                                .foregroundStyle(.red)
-                                                .font(.system(size: 25))
-                                        }
+                                    Label {
+                                        Text("Apple Private Relay Email")
+                                            .foregroundColor(Color("TextColor"))
+                                            .font(.system(size: 25))
+                                            .lineLimit(1)
+                                            .truncationMode(.tail)
+                                    } icon: {
+                                        Image(systemName: "envelope.fill")
+                                            .foregroundStyle(.red)
+                                            .font(.system(size: 25))
+                                    }
+                                    Label {
+                                        Text("ID: \(email.prefix(while: {$0 != "@"}))")
+                                            .foregroundColor(Color("TextColor"))
+                                            .font(.system(size: 25))
+                                    } icon: {
+                                        Image(systemName: "person.fill.viewfinder")
+                                            .foregroundStyle(.red)
+                                            .font(.system(size: 25))
                                     }
                                 }
                                 else{
@@ -2425,7 +2430,7 @@ struct InfoView: View {
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
-    @State private var mailData: ComposeMailData = ComposeMailData(subject: "Segnalazione Bug App iOS", recipients: ["info@lavorami.it"], message: "", attachments: nil)
+    @State private var mailData: ComposeMailData = ComposeMailData(subject: String(localized: .titoloBugReport), recipients: ["info@lavorami.it"], message: "", attachments: nil)
     @State private var showMailView: Bool = false
     
     var body: some View {
@@ -3322,6 +3327,7 @@ struct RequestDataDownload: View {
     @State private var showMailView: Bool = false
     @State private var emailToSend: String = ""
     @State private var selectedFileType: fileFormatType = .json
+    @State private var openInfoAppleAccount: Bool = false
     
     @Binding var isRequiringData: Bool
     
@@ -3366,12 +3372,20 @@ struct RequestDataDownload: View {
                             .textContentType(.emailAddress)
                             .textInputAutocapitalization(.never)
                     }
+                    Button(action: {
+                        openInfoAppleAccount = true
+                    }){
+                        Label("Hai creato l'Account con Apple?", systemImage: "questionmark")
+                            .foregroundStyle(.red)
+                    }
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
             }
             Spacer()
             Button(action: {
-                mailData = ComposeMailData(subject: "Richiesta dei miei Dati", recipients: ["info@lavorami.it"], message: "Buongiorno,\nVorrei richiedere l'invio dei miei dati in formato \(selectedFileType.rawValue) dell'Account con mail:\(emailToSend)\nMessaggio inviato dall'App LavoraMi.", attachments: nil)
+                let localizedString = String(localized: .messaggioEmailDati(selectedFileType.rawValue, emailToSend))
+                let formattedBody = localizedString.replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\", with: "")
+                mailData = ComposeMailData(subject: String(localized: .richiestaDeiDati), recipients: ["info@lavorami.it"], message: formattedBody, attachments: nil)
                 showMailView = true
             }) {
                 Label("Richiedi Dati", systemImage: "paperplane.fill")
@@ -3387,6 +3401,11 @@ struct RequestDataDownload: View {
                 }
             }
             .disabled(emailToSend.isEmpty)
+        }
+        .alert("Apple Account", isPresented: $openInfoAppleAccount) {
+            Button("OK", role: .cancel){}
+        } message: {
+            Text("Se hai creato un Account LavoraMi con Apple ed hai scelto di NON condividere la tua email, al posto della tua mail dovrai inviare il tuo ID che trovi sotto la scritta \"Apple Private Relay Email\"")
         }
         .padding()
         .navigationTitle("Aiuto")
