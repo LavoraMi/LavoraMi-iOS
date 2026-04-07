@@ -1664,6 +1664,16 @@
         }
       }
     },
+    "Mostra il pulsante per tradurre i lavori anche nella lingua italiana." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Display the button to translate the works into Italian as well."
+          }
+        }
+      }
+    },
     "Mostra lo stato della linea selezionata." : {
       "localizations" : {
         "en" : {
@@ -1690,6 +1700,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Displays error messages when data download from the server fails."
+          }
+        }
+      }
+    },
+    "Mostra Pulsante Traduci" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Translate Button"
           }
         }
       }
@@ -2881,6 +2901,22 @@
         }
       }
     },
+    "Traduci" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Translate"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traduci"
+          }
+        }
+      }
+    },
     "Traduci i dettagli dei lavori in altre lingue, basta cliccare sui dettagli del lavoro e cliccare \"Traduci\"." : {
       "localizations" : {
         "en" : {
@@ -2907,16 +2943,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trailing"
-          }
-        }
-      }
-    },
-    "Translate" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Translate"
           }
         }
       }
