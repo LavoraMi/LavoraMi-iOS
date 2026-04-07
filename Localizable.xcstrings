@@ -272,6 +272,26 @@
         }
       }
     },
+    "Apple Account" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Account"
+          }
+        }
+      }
+    },
+    "Apple Private Relay Email" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Private Relay Email"
+          }
+        }
+      }
+    },
     "Apri Impostazioni" : {
       "localizations" : {
         "en" : {
@@ -983,6 +1003,16 @@
         }
       }
     },
+    "Hai creato l'Account con Apple?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account created with Apple?"
+          }
+        }
+      }
+    },
     "Hai già un account?" : {
       "localizations" : {
         "en" : {
@@ -1029,6 +1059,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your information is secure. Create an account to sign up for our LavoraMi club."
+          }
+        }
+      }
+    },
+    "ID: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID: %@"
           }
         }
       }
@@ -1247,7 +1287,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "It may take  5 to 20 business days for the requested data to be sent. Please check your email within this timeframe."
+            "value" : "It may take 5 to 20 business days for the requested data to be sent. Please check your email within this timeframe."
           }
         }
       }
@@ -1599,6 +1639,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Map"
+          }
+        }
+      }
+    },
+    "messaggioEmailDati" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good morning,\\\\nI would like to request that my account data be sent in %1$@ format to the email address: %2$@\\\\nMessage sent from the LavoraMi app."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buongiorno,\\nVorrei richiedere l'invio dei miei dati in formato %1$@ dell'Account con mail:%2$@\\nMessaggio inviato dall'App LavoraMi."
           }
         }
       }
@@ -2186,6 +2243,23 @@
         }
       }
     },
+    "richiestaDeiDati" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Request"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richiesta dei miei Dati"
+          }
+        }
+      }
+    },
     "Riconoscimenti" : {
       "localizations" : {
         "en" : {
@@ -2380,6 +2454,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dark"
+          }
+        }
+      }
+    },
+    "Se hai creato un Account LavoraMi con Apple ed hai scelto di NON condividere la tua email, al posto della tua mail dovrai inviare il tuo ID che trovi sotto la scritta \"Apple Private Relay Email\"" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you created a LavoraMi account with Apple and chose NOT to share your email address, you’ll need to enter your ID located under the “Apple Private Relay Email” label instead of your email address."
           }
         }
       }
@@ -2741,6 +2825,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "TILO"
+          }
+        }
+      }
+    },
+    "titoloBugReport" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bug Report"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segnalazione Bug App iOS"
           }
         }
       }
