@@ -55,18 +55,22 @@ class NotificationManager {
         
         if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
             if(work.lines.count <= 1){
-                contentDayOf.body = "I lavori in \(work.roads) della linea \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                contentDayOf.body = String(localized: .fineLavoriVar1(work.roads, work.lines.joined(separator: ", "), work.company))
+                print("⚠️ CONTENUTO NOTIFICA: \(contentDayOf.body)")
             }
             else{
-                contentDayOf.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                contentDayOf.body = String(localized: .fineLavoriVar2(work.roads, work.lines.joined(separator: ", "), work.company))
+                print("⚠️ CONTENUTO NOTIFICA: \(contentDayOf.body)")
             }
         }
         else{
             if(work.lines.count <= 1){
-                contentDayOf.body = "I lavori a \(work.roads) della linea \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                contentDayOf.body = String(localized: .fineLavoriVar3(work.roads, work.lines.joined(separator: ", "), work.company))
+                print("⚠️ CONTENUTO NOTIFICA: \(contentDayOf.body)")
             }
             else{
-                contentDayOf.body = "I lavori a \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                contentDayOf.body = String(localized: .fineLavoriVar4(work.roads, work.lines.joined(separator: ", "), work.company))
+                print("⚠️ CONTENUTO NOTIFICA: \(contentDayOf.body)")
             }
         }
         
@@ -90,18 +94,22 @@ class NotificationManager {
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
                 if(work.lines.count <= 1){
-                    contentDayBefore.body = "Domani terminano i lavori in \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    contentDayBefore.body = String(localized: .tomorrowFineLavoriVar1(work.roads, work.lines.joined(separator: ", "), work.company))
+                    print("⚠️ CONTENUTO NOTIFICA: \(contentDayBefore.body)")
                 }
                 else{
-                    contentDayBefore.body = "Domani terminano i lavori in \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    contentDayBefore.body = String(localized: .tomorrowFineLavoriVar2(work.roads, work.lines.joined(separator: ", "), work.company))
+                    print("⚠️ CONTENUTO NOTIFICA: \(contentDayBefore.body)")
                 }
             }
             else {
                 if(work.lines.count <= 1){
-                    contentDayBefore.body = "Domani terminano i lavori a \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    contentDayBefore.body = String(localized: .tomorrowFineLavoriVar3(work.roads, work.lines.joined(separator: ", "), work.company))
+                    print("⚠️ CONTENUTO NOTIFICA: \(contentDayBefore.body)")
                 }
                 else{
-                    contentDayBefore.body = "Domani terminano i lavori a \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    contentDayBefore.body = String(localized: .tomorrowFineLavoriVar4(work.roads, work.lines.joined(separator: ", "), work.company))
+                    print("⚠️ CONTENUTO NOTIFICA: \(contentDayBefore.body)")
                 }
             }
             
@@ -133,18 +141,22 @@ class NotificationManager {
         
         if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
             if(work.lines.count <= 1){
-                contentDayOf.body = "I lavori in \(work.roads) della linea \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                contentDayOf.body = String(localized: .inizioLavoriVar1(work.roads, work.lines.joined(separator: ", "), work.company))
+                print("⚠️ CONTENUTO NOTIFICA: \(contentDayOf.body)")
             }
             else{
-                contentDayOf.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                contentDayOf.body = String(localized: .inizioLavoriVar2(work.roads, work.lines.joined(separator: ", "), work.company))
+                print("⚠️ CONTENUTO NOTIFICA: \(contentDayOf.body)")
             }
         }
         else {
             if(work.lines.count <= 1){
-                contentDayOf.body = "I lavori a \(work.roads) della linea \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                contentDayOf.body = String(localized: .inizioLavoriVar3(work.roads, work.lines.joined(separator: ", "), work.company))
+                print("⚠️ CONTENUTO NOTIFICA: \(contentDayOf.body)")
             }
             else{
-                contentDayOf.body = "I lavori a \(work.roads) delle linee \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                contentDayOf.body = String(localized: .inizioLavoriVar4(work.roads, work.lines.joined(separator: ", "), work.company))
+                print("⚠️ CONTENUTO NOTIFICA: \(contentDayOf.body)")
             }
         }
         
@@ -168,18 +180,22 @@ class NotificationManager {
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil){
                 if(work.lines.count <= 1){
-                    contentDayBefore.body = "Domani iniziano i lavori in \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    contentDayBefore.body = String(localized: .tomorrowInizioLavoriVar1(work.roads, work.lines.joined(separator: ", "), work.company))
+                    print("⚠️ CONTENUTO NOTIFICA: \(contentDayBefore.body)")
                 }
                 else{
-                    contentDayBefore.body = "Domani iniziano i lavori in \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    contentDayBefore.body = String(localized: .tomorrowInizioLavoriVar2(work.roads, work.lines.joined(separator: ", "), work.company))
+                    print("⚠️ CONTENUTO NOTIFICA: \(contentDayBefore.body)")
                 }
             }
             else{
                 if(work.lines.count <= 1){
-                    contentDayBefore.body = "Domani iniziano i lavori a \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    contentDayBefore.body = String(localized: .tomorrowInizioLavoriVar3(work.roads, work.lines.joined(separator: ", "), work.company))
+                    print("⚠️ CONTENUTO NOTIFICA: \(contentDayBefore.body)")
                 }
                 else{
-                    contentDayBefore.body = "Domani iniziano i lavori a \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    contentDayBefore.body = String(localized: .tomorrowInizioLavoriVar4(work.roads, work.lines.joined(separator: ", "), work.company))
+                    print("⚠️ CONTENUTO NOTIFICA: \(contentDayBefore.body)")
                 }
             }
             
@@ -223,8 +239,8 @@ class NotificationManager {
         
         if let fireDate = calendar.date(from: dayOfComponents), fireDate > Date() {
             let content = UNMutableNotificationContent()
-            content.title = "🚫 Oggi Sciopero!"
-            content.body = "Oggi è previsto uno sciopero di \(companies), le fascie garantite \(guaranteed)."
+            content.title = String(localized: .scioperoNotificaTitle)
+            content.body = String(localized: .scioperoTomorrowNotificaDeps(companies, guaranteed))
             content.sound = .default
             
             let req = UNNotificationRequest(identifier: "STRIKE_DAY", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: dayOfComponents, repeats: false))
@@ -239,8 +255,8 @@ class NotificationManager {
             
             if let firePreDate = calendar.date(from: dayBeforeComponents), firePreDate > Date() {
                 let contentPre = UNMutableNotificationContent()
-                contentPre.title = "⚠️ Domani Sciopero!"
-                contentPre.body = "Domani c'è sciopero per \(companies), le fascie garantite \(guaranteed)"
+                contentPre.title = String(localized: .scioperoTomorrowNotificaTitle)
+                contentPre.body = String(localized: .scioperoTomorrowNotificaDeps(companies, guaranteed))
                 contentPre.sound = .default
                 
                 let reqPre = UNNotificationRequest(identifier: "STRIKE_PRE", content: contentPre, trigger: UNCalendarNotificationTrigger(dateMatching: dayBeforeComponents, repeats: false))
@@ -351,25 +367,24 @@ class NotificationManager {
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
                 if(work.lines.count <= 1){
                     content.body = String(localized: .fineLavoriVar1(work.roads, work.lines.joined(separator: ", "), work.company))
-                    print("content.body: \(content.body)")
                 }
                 else{
                     content.body = String(localized: .fineLavoriVar2(work.roads, work.lines.joined(separator: ", "), work.company))
-                    print("content.body: \(content.body)")
                 }
             }
             else{
                 if(work.lines.count <= 1){
-                    content.body = "I lavori a \(work.roads) della linea \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                    content.body = String(localized: .fineLavoriVar3(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
                 else{
-                    content.body = "I lavori a \(work.roads) delle linee \(work.lines.joined(separator: ", ")) dovrebbero terminare oggi. Consulta il sito di \(work.company) per aggiornamenti all'ultimo minuto."
+                    content.body = String(localized: .fineLavoriVar4(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
             }
             
             content.sound = .default
             center.add(UNNotificationRequest(identifier: "\(work.id.uuidString)_END", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
             print("✅ END: \(date.formatted()) | \(work.title) - \(work.roads)")
+            print("⚠️ CONTENUTO NOTIFICA: \(content.body)")
             
         }
         else {
@@ -380,24 +395,25 @@ class NotificationManager {
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
                 if(work.lines.count <= 1){
-                    content.body = "Domani terminano i lavori in \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .tomorrowFineLavoriVar1(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
                 else{
-                    content.body = "Domani terminano i lavori in \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .tomorrowFineLavoriVar2(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
             }
             else {
                 if(work.lines.count <= 1){
-                    content.body = "Domani terminano i lavori a \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .tomorrowFineLavoriVar3(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
                 else{
-                    content.body = "Domani terminano i lavori a \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .tomorrowFineLavoriVar4(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
             }
             
             content.sound = .default
             center.add(UNNotificationRequest(identifier: "\(work.id.uuidString)_PRE", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
             print("✅ PRE_END: \(String(describing: date?.formatted())) | \(work.title) - \(work.roads)")
+            print("⚠️ CONTENUTO NOTIFICA: \(content.body)")
         }
     }
     
@@ -423,24 +439,25 @@ class NotificationManager {
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
                 if(work.lines.count <= 1){
-                    content.body = "I lavori in \(work.roads) della linea \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .inizioLavoriVar1(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
                 else{
-                    content.body = "I lavori in \(work.roads) delle linee \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .inizioLavoriVar2(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
             }
             else {
                 if(work.lines.count <= 1){
-                    content.body = "I lavori a \(work.roads) della linea \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .inizioLavoriVar3(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
                 else{
-                    content.body = "I lavori a \(work.roads) delle linee \(work.lines.joined(separator: ", ")) sono iniziati oggi. Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .inizioLavoriVar4(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
             }
             
             content.sound = .default
             center.add(UNNotificationRequest(identifier: "\(work.id.uuidString)_START", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
             print("✅ START: \(date.formatted()) | \(work.title) - \(work.roads)")
+            print("⚠️ CONTENUTO NOTIFICA: \(content.body)")
             
         }
         else {
@@ -451,24 +468,25 @@ class NotificationManager {
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil){
                 if(work.lines.count <= 1){
-                    content.body = "Domani iniziano i lavori in \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .tomorrowFineLavoriVar1(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
                 else{
-                    content.body = "Domani iniziano i lavori in \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .tomorrowFineLavoriVar2(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
             }
             else{
                 if(work.lines.count <= 1){
-                    content.body = "Domani iniziano i lavori a \(work.roads) per la linea \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .tomorrowFineLavoriVar3(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
                 else{
-                    content.body = "Domani iniziano i lavori a \(work.roads) per le linee \(work.lines.joined(separator: ", ")). Consulta il sito di \(work.company) per maggiori info."
+                    content.body = String(localized: .tomorrowFineLavoriVar4(work.roads, work.lines.joined(separator: ", "), work.company))
                 }
             }
             
             content.sound = .default
             center.add(UNNotificationRequest(identifier: "\(work.id.uuidString)_PRESTART", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
             print("✅ PRE_START: \(String(describing: date?.formatted())) | \(work.title) - \(work.roads)")
+            print("⚠️ CONTENUTO NOTIFICA: \(content.body)")
         }
     }
     
