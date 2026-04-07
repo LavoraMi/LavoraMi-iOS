@@ -2729,7 +2729,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Firebase",
-            version: "12.11.0",
+            version: "12.12.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
