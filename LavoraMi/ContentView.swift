@@ -798,10 +798,12 @@ struct WorkInProgressRow: View {
     @State private var isExpanded = false
     @State private var showTranslation = false
     
+    @AppStorage("showTranslateButton") var showTranslateButton: Bool = false
+    
     private let italianLoc = Date.FormatStyle(date: .abbreviated, time: .omitted).locale(Locale(identifier: "it_IT"))
     
-    var shouldShowTranslationButton: Bool { Locale.current.language.languageCode?.identifier != "it" }
-    var textToTranslate: String { "\(item.title)\n\n\(item.details)\n\nStrade coinvolte: \(item.roads)" }
+    var shouldShowTranslationButton: Bool { Locale.current.language.languageCode?.identifier != "it" || showTranslateButton == true }
+    var textToTranslate: String { "\(item.title)\n\n\(item.details)\n\nStrade: \(item.roads)\n\nLinee coinvolte: \(item.lines.joined(separator: ", "))" }
 
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded) {
@@ -814,7 +816,7 @@ struct WorkInProgressRow: View {
                     Button {
                         showTranslation = true
                     } label: {
-                        Label("Translate", systemImage: "translate")
+                        Label("Traduci", systemImage: "translate")
                             .font(.footnote.weight(.semibold))
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
@@ -1380,7 +1382,7 @@ struct SettingsView: View{
                         Label("Fonti & Sviluppo", systemImage: "person.crop.circle.badge.questionmark")
                     }
                     NavigationLink(destination: HowAppWorksView()){
-                        Label("Funzioni dell'App", systemImage: "questionmark")
+                        Label("Funzioni dell'App", systemImage: "questionmark.circle.fill")
                     }
                     HStack{
                         Button(action: {
@@ -2161,6 +2163,7 @@ struct AdvancedOptionsView: View {
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
+    @AppStorage("showTranslateButton") var showTranslateButton: Bool = false
     private var currentDeviceBiometric: BiometricType = BiometricAuth.getBiometricType()
     @State private var presentedCacheAlert = false
     
@@ -2192,6 +2195,13 @@ struct AdvancedOptionsView: View {
             Section(footer: Text("Attiva i Feedback di vibrazione su alcune schermate.")){
                 Toggle(isOn: $feedbacksEnabled){
                     Label("Attiva Feedback Vibrazione", systemImage: iphoneGenIcon)
+                }
+            }
+            if(Locale.current.language.languageCode?.identifier == "it"){
+                Section(footer: Text("Mostra il pulsante per tradurre i lavori anche nella lingua italiana.")){
+                    Toggle(isOn: $showTranslateButton){
+                        Label("Mostra Pulsante Traduci", systemImage: "translate")
+                    }
                 }
             }
             Section(footer: Text("Richiedi \(getBiometricTypeByEnum()) per bloccare e sbloccare la sezione del tuo Account.")){
