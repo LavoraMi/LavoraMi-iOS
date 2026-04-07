@@ -53,6 +53,7 @@ struct ContentView: View {
     @State private var showUpdatePopUp: Bool = false
     @State private var selectedTab: Int = 0
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
+    @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     
     @Environment(\.openURL) private var openURLAction
 
@@ -70,8 +71,10 @@ struct ContentView: View {
         }
         .tint(.red)
         .onChange(of: selectedTab) {
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
+            if(feedbacksEnabled){
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
+            }
         }
         .sheet(isPresented: $showSetupScreen){
             SetupView()
@@ -427,6 +430,7 @@ struct MainView: View {
     @AppStorage("showErrorMessages") var showErrorMessages: Bool = false
     @AppStorage("showStrikeBanner") var showStrikeBanner: Bool = true
     @AppStorage("linesFavorites") var linesFavorites: [String] = []
+    @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     
     @State private var closedStrike: Bool = false
     @State private var selectedFilter: FilterBy = .all
@@ -651,8 +655,10 @@ struct MainView: View {
                     ForEach(FilterBy.allCases) { filter in
                         Button(action: {
                             withAnimation(.snappy){
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                if(feedbacksEnabled){
+                                    let generator = UIImpactFeedbackGenerator(style: .light)
+                                    generator.impactOccurred()
+                                }
                                 selectedFilter = filter
                             }
                         }){
@@ -1060,6 +1066,7 @@ struct SettingsView: View{
     @AppStorage("showStrikeBanner") var showStrikeBanner: Bool = true
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
+    @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @Environment(\.dismiss) var dismiss
     @Environment(\.openURL) private var openURLAction
     @Environment(\.requestReview) var requestReview
@@ -1109,8 +1116,10 @@ struct SettingsView: View{
                             }
                             Spacer()
                             Button(action: {
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                if(feedbacksEnabled){
+                                    let generator = UIImpactFeedbackGenerator(style: .light)
+                                    generator.impactOccurred()
+                                }
                                 
                                 
                                 if linesFavorites.contains("S") {
@@ -1137,8 +1146,10 @@ struct SettingsView: View{
                             }
                             Spacer()
                             Button(action: {
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                if(feedbacksEnabled){
+                                    let generator = UIImpactFeedbackGenerator(style: .light)
+                                    generator.impactOccurred()
+                                }
                                 
                                 if linesFavorites.contains("R") {
                                     linesFavorites.removeAll { $0 == "R" }
@@ -1164,8 +1175,10 @@ struct SettingsView: View{
                             }
                             Spacer()
                             Button(action: {
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                if(feedbacksEnabled){
+                                    let generator = UIImpactFeedbackGenerator(style: .light)
+                                    generator.impactOccurred()
+                                }
                                 
                                 if linesFavorites.contains("RE") {
                                     linesFavorites.removeAll { $0 == "RE" }
@@ -1184,13 +1197,21 @@ struct SettingsView: View{
                     label: {
                         Label("Linee Trenord", systemImage: "train.side.front.car")
                     }
+                    .onChange(of: expandedTrenord) {
+                        if(feedbacksEnabled){
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                        }
+                    }
                     DisclosureGroup(isExpanded: $expandedATM){
                         HStack{
                             Label("Linee Metropolitane", systemImage: "tram.fill.tunnel")
                             Spacer()
                             Button(action: {
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                if(feedbacksEnabled){
+                                    let generator = UIImpactFeedbackGenerator(style: .light)
+                                    generator.impactOccurred()
+                                }
                                 
                                 if linesFavorites.contains("Metro") {
                                     linesFavorites.removeAll { $0 == "Metro" }
@@ -1209,8 +1230,10 @@ struct SettingsView: View{
                             Label("Linee Tram", systemImage: "tram.fill")
                             Spacer()
                             Button(action: {
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                if(feedbacksEnabled){
+                                    let generator = UIImpactFeedbackGenerator(style: .light)
+                                    generator.impactOccurred()
+                                }
                                 
                                 if linesFavorites.contains("Tram") {
                                     linesFavorites.removeAll { $0 == "Tram" }
@@ -1229,8 +1252,10 @@ struct SettingsView: View{
                             Label("Linee Bus", systemImage: "bus.fill")
                             Spacer()
                             Button(action: {
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                if(feedbacksEnabled){
+                                    let generator = UIImpactFeedbackGenerator(style: .light)
+                                    generator.impactOccurred()
+                                }
                                 
                                 if linesFavorites.contains("Bus") {
                                     linesFavorites.removeAll { $0 == "Bus" }
@@ -1250,12 +1275,20 @@ struct SettingsView: View{
                     label: {
                         Label("Linee ATM", systemImage: "tram.fill")
                     }
+                    .onChange(of: expandedATM) {
+                        if(feedbacksEnabled){
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                        }
+                    }
                     HStack{
                         Label("Linee Movibus", systemImage: "bus.fill")
                         Spacer()
                         Button(action: {
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            if(feedbacksEnabled){
+                                let generator = UIImpactFeedbackGenerator(style: .light)
+                                generator.impactOccurred()
+                            }
                             
                             if linesFavorites.contains("z6") {
                                 linesFavorites.removeAll { $0 == "z6" }
@@ -1274,8 +1307,10 @@ struct SettingsView: View{
                         Label("Linee STAV", systemImage: "bus.fill")
                         Spacer()
                         Button(action: {
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            if(feedbacksEnabled){
+                                let generator = UIImpactFeedbackGenerator(style: .light)
+                                generator.impactOccurred()
+                            }
                             
                             if linesFavorites.contains("z5") {
                                 linesFavorites.removeAll { $0 == "z5" }
@@ -1293,8 +1328,10 @@ struct SettingsView: View{
                         Label("Linee Autoguidovie", systemImage: "bus.fill")
                         Spacer()
                         Button(action: {
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            if(feedbacksEnabled){
+                                let generator = UIImpactFeedbackGenerator(style: .light)
+                                generator.impactOccurred()
+                            }
                             
                             if linesFavorites.contains("Autoguidovie") {
                                 linesFavorites.removeAll { $0 == "Autoguidovie" }
@@ -1323,6 +1360,12 @@ struct SettingsView: View{
                         Label("Filtro Predefinito", systemImage: "line.3.horizontal.decrease.circle.fill")
                     }
                     .pickerStyle(.navigationLink)
+                    .onChange(of: preferredFilter) {
+                        if(feedbacksEnabled){
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                        }
+                    }
                     NavigationLink(destination: AppearancePickerView()) {
                         HStack {
                             Label("Aspetto e Lingua", systemImage: "circle.righthalf.filled")
@@ -1342,6 +1385,10 @@ struct SettingsView: View{
                     HStack{
                         Button(action: {
                             showBuildNumber = !showBuildNumber
+                            if(feedbacksEnabled){
+                                let generator = UIImpactFeedbackGenerator(style: .light)
+                                generator.impactOccurred()
+                            }
                         }){
                             Label {
                                 Text("Versione")
@@ -1362,6 +1409,10 @@ struct SettingsView: View{
                     Button(action: {
                         Task {@MainActor in
                             requestReview()
+                            if(feedbacksEnabled){
+                                let generator = UIImpactFeedbackGenerator(style: .light)
+                                generator.impactOccurred()
+                            }
                         }
                     }){
                         Label {
@@ -1374,8 +1425,10 @@ struct SettingsView: View{
                 }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
                     Button(role: .destructive) {
-                        let generator = UIImpactFeedbackGenerator(style: .light)
-                        generator.impactOccurred()
+                        if(feedbacksEnabled){
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                        }
                         presentedAlertReset = true
                     } label: {
                         Label("Ripristina impostazioni", systemImage: "arrow.counterclockwise")
@@ -2107,8 +2160,22 @@ struct AdvancedOptionsView: View {
     @AppStorage("showStrikeBanner") var showStrikeBanner: Bool = true
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
+    @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     private var currentDeviceBiometric: BiometricType = BiometricAuth.getBiometricType()
     @State private var presentedCacheAlert = false
+    
+    var iphoneGenIcon: String {
+        let height = UIScreen.main.bounds.height
+        
+        switch height {
+        case 852, 932:
+            return "iphone.gen3.radiowaves.left.and.right"
+        case 812, 844, 896, 926:
+            return "iphone.gen2.radiowaves.left.and.right"
+        default:
+            return "iphone.gen1.radiowaves.left.and.right"
+        }
+    }
     
     var body: some View {
         List{
@@ -2120,6 +2187,11 @@ struct AdvancedOptionsView: View {
             Section(footer: Text("Mostra il banner degli scioperi nella Home quando sono presenti.")){
                 Toggle(isOn: $showStrikeBanner){
                     Label("Mostra banner Scioperi", systemImage: "text.append")
+                }
+            }
+            Section(footer: Text("Attiva i Feedback di vibrazione su alcune schermate.")){
+                Toggle(isOn: $feedbacksEnabled){
+                    Label("Attiva Feedback Vibrazione", systemImage: iphoneGenIcon)
                 }
             }
             Section(footer: Text("Richiedi \(getBiometricTypeByEnum()) per bloccare e sbloccare la sezione del tuo Account.")){
@@ -2156,8 +2228,10 @@ struct AdvancedOptionsView: View {
             }
             Section(footer: Text("Elimina la memoria Cache dal dispositivo, liberando spazio su disco.")){
                 Button(role: .destructive) {
-                    let generator = UIImpactFeedbackGenerator(style: .light)
-                    generator.impactOccurred()
+                    if(feedbacksEnabled){
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                    }
                     presentedCacheAlert = true
                 } label: {
                     Label("Pulisci memoria Cache", systemImage: "trash.fill")
@@ -2800,7 +2874,7 @@ struct HowAppWorksView: View {
 
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color(.systemBackground))
-                    .frame(width: 280, height: 280)
+                    .frame(width: 380, height: 280)
                     .overlay(
                         Map(initialPosition: .region(MKCoordinateRegion(
                             center: CLLocationCoordinate2D(latitude: 45.4850, longitude: 9.1600),
@@ -3979,6 +4053,7 @@ struct LineDetailView: View {
     let stations: [MetroStation]
     
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
+    @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @Environment(\.colorScheme) var colorScheme
     
     private enum LineDetailTab { case map, works, interchanges }
@@ -4124,8 +4199,10 @@ struct LineDetailView: View {
                 .background(Color(uiColor: .systemBackground))
                 HStack(spacing: 8) {
                     Button(action: {
-                        let generator = UIImpactFeedbackGenerator(style: .light)
-                        generator.impactOccurred()
+                        if(feedbacksEnabled){
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                        }
                         withAnimation(.snappy) { selectedTab = .map }
                     }) {
                         Text("Mappa")
@@ -4147,8 +4224,10 @@ struct LineDetailView: View {
                     }
 
                     Button(action: {
-                        let generator = UIImpactFeedbackGenerator(style: .light)
-                        generator.impactOccurred()
+                        if(feedbacksEnabled){
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                        }
                         withAnimation(.snappy) { selectedTab = .works }
                     }) {
                         Text("Lavori linea")
@@ -4169,8 +4248,10 @@ struct LineDetailView: View {
                             .foregroundStyle(selectedTab == .works ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground)) : .primary)
                     }
                     Button(action: {
-                        let generator = UIImpactFeedbackGenerator(style: .light)
-                        generator.impactOccurred()
+                        if(feedbacksEnabled){
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                        }
                         withAnimation(.snappy) { selectedTab = .interchanges }
                     }) {
                         Text("Interscambi")
@@ -4350,6 +4431,7 @@ struct LineDetailView: View {
 
 struct LineSmallDetailedView: View {
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
+    @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @State private var openPopUpWidget: Bool = false
     
     let lineName: String
@@ -4509,8 +4591,10 @@ struct LineSmallDetailedView: View {
                 .background(Color(uiColor: .systemBackground))
                 HStack(spacing: 8) {
                     Button(action: {
-                        let generator = UIImpactFeedbackGenerator(style: .light)
-                        generator.impactOccurred()
+                        if(feedbacksEnabled){
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                        }
                         
                     }) {
                         Text("Lavori linea")
