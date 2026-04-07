@@ -15,10 +15,23 @@
       }
     },
     "%@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%@ (%@)" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (%2$@)"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "new",
@@ -29,6 +42,12 @@
     },
     "%@ (Build %@)" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (Build %2$@)"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "new",
@@ -39,6 +58,12 @@
     },
     "%@ %@" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "new",
@@ -48,7 +73,14 @@
       }
     },
     "%lld" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "%lld attuali, %lld programmati." : {
       "localizations" : {
@@ -107,7 +139,14 @@
       }
     },
     "Account" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
+          }
+        }
+      }
     },
     "Account creato con Apple" : {
       "localizations" : {
@@ -150,7 +189,14 @@
       }
     },
     "Alessandro Rebuscini" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alessandro Rebuscini"
+          }
+        }
+      }
     },
     "Altre Notifiche" : {
       "localizations" : {
@@ -163,7 +209,14 @@
       }
     },
     "Andrea Filice" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Andrea Filice"
+          }
+        }
+      }
     },
     "Annulla" : {
       "localizations" : {
@@ -216,7 +269,14 @@
       }
     },
     "ATM" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ATM"
+          }
+        }
+      }
     },
     "Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese." : {
       "localizations" : {
@@ -239,7 +299,14 @@
       }
     },
     "Autoguidovie" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoguidovie"
+          }
+        }
+      }
     },
     "Avanti" : {
       "localizations" : {
@@ -292,7 +359,14 @@
       }
     },
     "Bottom %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottom %@"
+          }
+        }
+      }
     },
     "Cambia Lingua" : {
       "localizations" : {
@@ -449,7 +523,14 @@
       }
     },
     "Copyright" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright"
+          }
+        }
+      }
     },
     "Crea account" : {
       "localizations" : {
@@ -652,7 +733,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work in %1$@ of line %2$@ is expected to be completed today, Visit the %3$@ website for more informations."
+            "value" : "Work on the %2$@ line in %1$@ is expected to be completed today. Visit the %3$@ website for more informations."
           }
         },
         "it" : {
@@ -669,7 +750,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work in %1$@ of lines %2$@ is expected to be completed today, Visit the %3$@ website for more informations."
+            "value" : "Work on the %2$@ lines in %1$@ is expected to be completed today. Visit the %3$@ website for more informations."
           }
         },
         "it" : {
@@ -683,6 +764,12 @@
     "fineLavoriVar3" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on the %2$@ line in %1$@ is expected to be completed today. Visit the %3$@ website for more informations."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -694,6 +781,12 @@
     "fineLavoriVar4" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on the %2$@ lines in %1$@ is expected to be completed today. Visit the %3$@ website for more informations."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -786,7 +879,14 @@
 
     },
     "Home" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        }
+      }
     },
     "I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio." : {
       "localizations" : {
@@ -902,6 +1002,12 @@
     "inizioLavoriVar1" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on the %2$@ line in %1$@ began today. Visit the %3$@ website for more information."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -913,6 +1019,12 @@
     "inizioLavoriVar2" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on the %2$@ lines in %1$@ began today. Visit the %3$@ website for more information."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -924,6 +1036,12 @@
     "inizioLavoriVar3" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on the %2$@ line in %1$@ began today. Visit the %3$@ website for more information."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -935,6 +1053,12 @@
     "inizioLavoriVar4" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on the %2$@ lines in %1$@ began today. Visit the %3$@ website for more information."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1886,6 +2010,74 @@
         }
       }
     },
+    "scioperoNotificaDeps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There is a strike today affecting %1$@ lines, guaranteed service times %2$@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oggi è previsto uno sciopero di %1$@, le fasce garantite %2$@."
+          }
+        }
+      }
+    },
+    "scioperoNotificaTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🚫 Strike Today!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🚫 Oggi Sciopero!"
+          }
+        }
+      }
+    },
+    "scioperoTomorrowNotificaDeps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There will be a strike tomorrow affecting %1$@ lines, guaranteed service times %2$@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domani c'è sciopero per %1$@, le fasce garantite %2$@"
+          }
+        }
+      }
+    },
+    "scioperoTomorrowNotificaTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Strike Tomorrow!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Domani Sciopero!"
+          }
+        }
+      }
+    },
     "Scopri le novità..." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2241,6 +2433,12 @@
     "tomorrowFineLavoriVar1" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on Line %2$@ in %1$@ will be completed tomorrow. Visit the %3$@ website for more information."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2252,6 +2450,12 @@
     "tomorrowFineLavoriVar2" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on Lines %2$@ in %1$@ will be completed tomorrow. Visit the %3$@ website for more information."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2263,6 +2467,12 @@
     "tomorrowFineLavoriVar3" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on Line %2$@ in %1$@ will be completed tomorrow. Visit the %3$@ website for more information."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2274,6 +2484,12 @@
     "tomorrowFineLavoriVar4" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on Lines %2$@ in %1$@ will be completed tomorrow. Visit the %3$@ website for more information."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2285,10 +2501,67 @@
     "tomorrowInizioLavoriVar1" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on Line %2$@ begins tomorrow on %1$@. Visit the %3$@ website for more information."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Domani iniziano i lavori in %1$@ per la linea %2$@ Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "tomorrowInizioLavoriVar2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on Lines %2$@ begins tomorrow on %1$@. Visit the%3$@ website for more information."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domani iniziano i lavori in %1$@ per le linee %2$@ Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "tomorrowInizioLavoriVar3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on Line %2$@ begins tomorrow on %1$@. Visit the%3$@ website for more information."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domani iniziano i lavori a %1$@ per la linea %2$@ Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "tomorrowInizioLavoriVar4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work on Lines %2$@ begins tomorrow on %1$@. Visit the%3$@ website for more information."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domani iniziano i lavori a %1$@ per le linee %2$@ Consulta il sito di %3$@ per maggiori info."
           }
         }
       }
