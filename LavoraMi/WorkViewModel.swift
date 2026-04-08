@@ -14,10 +14,12 @@ class WorkViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     @Published var strikeEnabled: Bool = false
+    @Published var strikeEnabledDebug: Bool = false
     @Published var companiesStrikes: String = ""
     @Published var dateStrike: String = ""
     @Published var guaranteed: String = ""
     @Published var maintenanceModeEnabled: Bool = false
+    @Published var maintenanceModeDebugEnabled: Bool = false
     @Published var maintenanceDeps: String = ""
     @Published var maintenanceDepsEn: String = ""
     @Published var minimumVersion: String = ""
@@ -113,6 +115,7 @@ class WorkViewModel: ObservableObject {
                 let result = try decoder.decode(RemoteConfigData.self, from: data)
                 DispatchQueue.main.async {
                     self?.strikeEnabled = (result.enableStrike == "true")
+                    self?.strikeEnabledDebug = (result.enableStrikeDebug == "true")
                     self?.companiesStrikes = result.companies
                     self?.dateStrike = result.date
                     self?.guaranteed = result.guaranteed
@@ -160,6 +163,7 @@ class WorkViewModel: ObservableObject {
                 let result = try JSONDecoder().decode(RequirementsData.self, from: data)
                 DispatchQueue.main.async {
                     self?.maintenanceModeEnabled = (result.maintenanceMode == "true")
+                    self?.maintenanceModeDebugEnabled = (result.maintenanceModeDebug == "true")
                     self?.maintenanceDeps = result.maintenanceDeps
                     self?.minimumVersion = result.minVersioniOS
                     self?.maintenanceDepsEn = result.maintenanceDepsEn
@@ -177,6 +181,7 @@ class WorkViewModel: ObservableObject {
 
 struct RemoteConfigData: Codable {
     let enableStrike: String
+    let enableStrikeDebug: String
     let date: String
     let companies: String
     let guaranteed: String
@@ -184,6 +189,7 @@ struct RemoteConfigData: Codable {
 
 struct RequirementsData: Codable {
     let maintenanceMode: String
+    let maintenanceModeDebug: String
     let maintenanceDeps: String
     let maintenanceDepsEn: String
     let minVersioniOS: String
