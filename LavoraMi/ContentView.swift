@@ -1073,8 +1073,6 @@ struct SettingsView: View{
     @Environment(\.openURL) private var openURLAction
     @Environment(\.requestReview) var requestReview
     
-    let metroLines = ["M1", "M2", "M3", "M4", "M5"]
-    
     var body: some View {
         NavigationStack {
             List {
@@ -1537,6 +1535,7 @@ struct AccountView: View {
     
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
+    @AppStorage("emailSaved") var emailSaved: String = ""
     
     var body: some View {
         NavigationStack {
@@ -2024,6 +2023,7 @@ struct AccountView: View {
                     .onAppear {
                         if fullName.isEmpty { fullName = auth.getFullName() }
                         if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+                        emailSaved = email
                     }
                 }
                 //MARK: RESET PASSWORD
@@ -2630,12 +2630,6 @@ struct InfoView: View {
                     .padding(.bottom, 20)
                     NavigationLink(destination: LibrariesView()) {
                         Label("Riconoscimenti", systemImage: "person.3.fill")
-                            .font(.system(size: 20))
-                    }
-                    .padding(.top, 5)
-                    .padding(.bottom, 20)
-                    NavigationLink(destination: RequestDataDownload(isRequiringData: .constant(false))) {
-                        Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
                             .font(.system(size: 20))
                     }
                     .padding(.top, 5)
@@ -3323,11 +3317,11 @@ struct LibrariesView: View {
 }
 
 struct RequestDataDownload: View {
+    @AppStorage("emailSaved") var emailSaved: String = ""
+    
     @State private var mailData: ComposeMailData = ComposeMailData(subject: "Richiesta di Dati", recipients: ["info@lavorami.it"], message: "Buongiorno,\nVorrei richiedere l'invio dei miei dati in formato JSON dell'Account con mail: mail@mail.com", attachments: nil)
     @State private var showMailView: Bool = false
-    @State private var emailToSend: String = ""
     @State private var selectedFileType: fileFormatType = .json
-    @State private var openInfoAppleAccount: Bool = false
     
     @Binding var isRequiringData: Bool
     
@@ -3363,27 +3357,10 @@ struct RequestDataDownload: View {
                     .pickerStyle(.inline)
                     .labelsHidden()
                 }
-                Section(footer: Text("L'Invio dei dati richiesti può impiegare dai 5 ai 20 giorni lavorativi. Controlla la mail entro questo limite.")) {
-                    HStack(spacing: 8) {
-                        Image(systemName: "envelope.fill")
-                            .foregroundStyle(.red)
-                        TextField("Email del tuo Account", text: $emailToSend)
-                            .keyboardType(.emailAddress)
-                            .textContentType(.emailAddress)
-                            .textInputAutocapitalization(.never)
-                    }
-                    Button(action: {
-                        openInfoAppleAccount = true
-                    }){
-                        Label("Hai creato l'Account con Apple?", systemImage: "questionmark")
-                            .foregroundStyle(.red)
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                }
             }
             Spacer()
             Button(action: {
-                let localizedString = String(localized: .messaggioEmailDati(selectedFileType.rawValue, emailToSend))
+                let localizedString = String(localized: .messaggioEmailDati(selectedFileType.rawValue, emailSaved))
                 let formattedBody = localizedString.replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\", with: "")
                 mailData = ComposeMailData(subject: String(localized: .richiestaDeiDati), recipients: ["info@lavorami.it"], message: formattedBody, attachments: nil)
                 showMailView = true
@@ -3391,7 +3368,7 @@ struct RequestDataDownload: View {
                 Label("Richiedi Dati", systemImage: "paperplane.fill")
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
-                    .background((emailToSend.isEmpty) ? Color.gray.opacity(0.5) : Color.red)
+                    .background(.red)
                     .foregroundStyle(.white)
                     .cornerRadius(16)
             }
@@ -3400,12 +3377,6 @@ struct RequestDataDownload: View {
                     print(result)
                 }
             }
-            .disabled(emailToSend.isEmpty)
-        }
-        .alert("Apple Account", isPresented: $openInfoAppleAccount) {
-            Button("OK", role: .cancel){}
-        } message: {
-            Text("Se hai creato un Account LavoraMi con Apple ed hai scelto di NON condividere la tua email, al posto della tua mail dovrai inviare il tuo ID che trovi sotto la scritta \"Apple Private Relay Email\"")
         }
         .padding()
         .navigationTitle("Aiuto")

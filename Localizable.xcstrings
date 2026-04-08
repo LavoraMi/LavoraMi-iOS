@@ -272,16 +272,6 @@
         }
       }
     },
-    "Apple Account" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Account"
-          }
-        }
-      }
-    },
     "Apple Private Relay Email" : {
       "localizations" : {
         "en" : {
@@ -758,16 +748,6 @@
         }
       }
     },
-    "Email del tuo Account" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your Account Email"
-          }
-        }
-      }
-    },
     "Email inviata a %@!" : {
       "localizations" : {
         "en" : {
@@ -999,16 +979,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Manage your Account"
-          }
-        }
-      }
-    },
-    "Hai creato l'Account con Apple?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Account created with Apple?"
           }
         }
       }
@@ -1278,16 +1248,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "L"
-          }
-        }
-      }
-    },
-    "L'Invio dei dati richiesti può impiegare dai 5 ai 20 giorni lavorativi. Controlla la mail entro questo limite." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "It may take 5 to 20 business days for the requested data to be sent. Please check your email within this timeframe."
           }
         }
       }
@@ -2459,6 +2419,7 @@
       }
     },
     "Se hai creato un Account LavoraMi con Apple ed hai scelto di NON condividere la tua email, al posto della tua mail dovrai inviare il tuo ID che trovi sotto la scritta \"Apple Private Relay Email\"" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
