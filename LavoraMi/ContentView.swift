@@ -4528,7 +4528,7 @@ struct LineSmallDetailedView: View {
                             .font(.title3)
                             .multilineTextAlignment(.leading)
                         
-                        if(lineName == "2" || lineName == "4" || lineName == "12" || lineName == "10" || lineName == "14" || lineName == "3"){
+                        if(viewModel.linesDeviated.contains(lineName)){
                             Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
                                 .font(.system(size: 12))
                                 .foregroundStyle(.secondary)
