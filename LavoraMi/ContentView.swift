@@ -3393,6 +3393,7 @@ struct LineRow: View {
     let typeOfTransport: String
     let branches: String
     let waitMinutes: String
+    let accessibilityStatus: String
     let stations: [MetroStation]
     @ObservedObject var viewModel: WorkViewModel
     
@@ -3407,7 +3408,8 @@ struct LineRow: View {
                     workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
                     workNow: getWorkNow(line: line, viewModel: viewModel),
                     viewModel: viewModel,
-                    stations: stations
+                    stations: stations,
+                    accessibilityStatus: accessibilityStatus
                 )
             ) {
                 HStack(spacing: 12) {
@@ -3435,6 +3437,7 @@ struct LineRow: View {
                     waitMinutes: waitMinutes,
                     workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
                     workNow: getWorkNow(line: line, viewModel: viewModel),
+                    accessibilityStatus: accessibilityStatus,
                     viewModel: viewModel
                 )
             ) {
@@ -3515,154 +3518,154 @@ struct LinesView: View {
     
     var metros: [LineInfo] {
         [
-            LineInfo(name: "M1", branches: "Sesto F.S. - Rho Fiera / Bisceglie", type: "Metro", waitMinutes: "Sesto FS: 3 min | Rho/Bisceglie: 7-8 min.", stations: StationsDB.stationsM1),
-            LineInfo(name: "M2", branches: "Gessate / Cologno - Assago / Abbiategrasso", type: "Metro", waitMinutes: "Gessate / Cologno: 12-15 min | Assago / Abbiategrasso: 9-10 min", stations: StationsDB.stationsM2),
-            LineInfo(name: "M3", branches: "Comasina - San Donato", type: "Metro", waitMinutes: "4-5 min.", stations: StationsDB.stationsM3),
-            LineInfo(name: "M4", branches: "Linate Aereoporto - San Cristoforo", type: "Metro", waitMinutes: "2-3 min.",stations: StationsDB.stationsM4),
-            LineInfo(name: "M5", branches: "Bignami - San Siro Stadio", type: "Metro", waitMinutes: "4 min.", stations: StationsDB.stationsM5)
+            LineInfo(name: "M1", branches: "Sesto F.S. - Rho Fiera / Bisceglie", type: "Metro", waitMinutes: "Sesto FS: 3 min | Rho/Bisceglie: 7-8 min.", stations: StationsDB.stationsM1, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "M2", branches: "Gessate / Cologno - Assago / Abbiategrasso", type: "Metro", waitMinutes: "Gessate / Cologno: 12-15 min | Assago / Abbiategrasso: 9-10 min", stations: StationsDB.stationsM2, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "M3", branches: "Comasina - San Donato", type: "Metro", waitMinutes: "4-5 min.", stations: StationsDB.stationsM3, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "M4", branches: "Linate Aereoporto - San Cristoforo", type: "Metro", waitMinutes: "2-3 min.",stations: StationsDB.stationsM4, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "M5", branches: "Bignami - San Siro Stadio", type: "Metro", waitMinutes: "4 min.", stations: StationsDB.stationsM5, accessibilityStatus: String(localized: .lineaAccessibile))
         ]
     }
     
     var suburban: [LineInfo] {
         [
-            LineInfo(name: "S1", branches: "Saronno - Lodi", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS1),
-            LineInfo(name: "S2", branches: "Mariano Comense - Milano Rogoredo", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS2),
-            LineInfo(name: "S3", branches: "Saronno - Milano Cadorna", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS3),
-            LineInfo(name: "S4", branches: "Camnago - Milano Cadorna", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS4),
-            LineInfo(name: "S5", branches: "Varese - Treviglio", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS5),
-            LineInfo(name: "S6", branches: "Novara - Pioltello Limito/Treviglio", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS6),
-            LineInfo(name: "S7", branches: "Lecco - Milano Pta Garibaldi", type: "Suburbano", waitMinutes: "1 ora - 30 min.", stations: StationsDB.stationsS7),
-            LineInfo(name: "S8", branches: "Lecco - Carnate - Milano Pta Garibaldi", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS8),
-            LineInfo(name: "S9", branches: "Saronno - Albairate Vermezzo", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS9),
-            LineInfo(name: "S11", branches: "Rho - Como S. Giovanni", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS11),
-            LineInfo(name: "S12", branches: "Melegnano - Cormano Cusano Milanino", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS12),
-            LineInfo(name: "S13", branches: "Pavia - Milano Bovisa", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS13),
-            LineInfo(name: "S19", branches: "Albairate Vermezzo - Milano Rogoredo", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS19),
-            LineInfo(name: "S31", branches: "Brescia - Iseo", type: "Suburbano", waitMinutes: "1 ora.", stations: StationsDB.stationsS31)
+            LineInfo(name: "S1", branches: "Saronno - Lodi", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS1, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S2", branches: "Mariano Comense - Milano Rogoredo", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS2,  accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S3", branches: "Saronno - Milano Cadorna", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS3, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S4", branches: "Camnago - Milano Cadorna", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS4, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S5", branches: "Varese - Treviglio", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS5, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S6", branches: "Novara - Pioltello Limito/Treviglio", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS6, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S7", branches: "Lecco - Milano Pta Garibaldi", type: "Suburbano", waitMinutes: "1 ora - 30 min.", stations: StationsDB.stationsS7, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "S8", branches: "Lecco - Carnate - Milano Pta Garibaldi", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS8, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "S9", branches: "Saronno - Albairate Vermezzo", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS9, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "S11", branches: "Rho - Como S. Giovanni", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS11, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S12", branches: "Melegnano - Cormano Cusano Milanino", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS12, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S13", branches: "Pavia - Milano Bovisa", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS13, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S19", branches: "Albairate Vermezzo - Milano Rogoredo", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS19, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S31", branches: "Brescia - Iseo", type: "Suburbano", waitMinutes: "1 ora.", stations: StationsDB.stationsS31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile))
         ]
     }
     
     var crossBorderLines: [LineInfo] {
         [
-            LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "Transfrontaliera", waitMinutes: "1 ora - 45 min.", stations: StationsDB.tiloS10),
-            LineInfo(name: "S30", branches: "Cadenazzo - Gallarate", type: "Transfrontaliera", waitMinutes: "2 ore.", stations: StationsDB.tiloS30),
-            LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "Transfrontaliera", waitMinutes: "1 ora.", stations: StationsDB.tiloS40),
-            LineInfo(name: "S50", branches: "Biasca - Milano Malpensa", type: "Transfrontaliera", waitMinutes: "1 ora", stations: StationsDB.tiloS50),
-            LineInfo(name: "RE80", branches: "Locarno - Milano Centrale", type: "Transfrontaliera", waitMinutes: "30 min - 1 ora.", stations: StationsDB.tiloRE80)
+            LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "Transfrontaliera", waitMinutes: "1 ora - 45 min.", stations: StationsDB.tiloS10, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S30", branches: "Cadenazzo - Gallarate", type: "Transfrontaliera", waitMinutes: "2 ore.", stations: StationsDB.tiloS30, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "Transfrontaliera", waitMinutes: "1 ora.", stations: StationsDB.tiloS40, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S50", branches: "Biasca - Milano Malpensa", type: "Transfrontaliera", waitMinutes: "1 ora", stations: StationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE80", branches: "Locarno - Milano Centrale", type: "Transfrontaliera", waitMinutes: "30 min - 1 ora.", stations: StationsDB.tiloRE80, accessibilityStatus: String(localized: .lineaAccessibile))
         ]
     }
     
     var malpensaExpress: [LineInfo] {
         [
-            LineInfo(name: "MXP1", branches: "Gallarate - Malpensa - Milano Centrale", type: "Malpensa Express 1", waitMinutes: "30 min.", stations: StationsDB.mxp1),
-            LineInfo(name: "MXP2", branches: "Malpensa - Milano Cadorna", type: "Malpensa Express 2", waitMinutes: "30 min.", stations: StationsDB.mxp2),
+            LineInfo(name: "MXP1", branches: "Gallarate - Malpensa - Milano Centrale", type: "Malpensa Express 1", waitMinutes: "30 min.", stations: StationsDB.mxp1, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "MXP2", branches: "Malpensa - Milano Cadorna", type: "Malpensa Express 2", waitMinutes: "30 min.", stations: StationsDB.mxp2, accessibilityStatus: String(localized: .lineaAccessibile)),
         ]
     }
     
     var trams: [LineInfo] {
         [
-            LineInfo(name: "1", branches: "Roserio - Greco", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram1),
-            LineInfo(name: "2", branches: "P.Le Negrelli - P.Za Bausan", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "3", branches: "Duomo M1 M3 - Gratosoglio", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram3),
-            LineInfo(name: "4", branches: "Cairoli M1 - Niguarda (Parco Nord)", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "5", branches: "Niguarda (Ospedale) - Ortica", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "7", branches: "P.Le Lagosta - Q.Re Adriano", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "9", branches: "Centrale FS M2 M3 - P.Ta Genova M2", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "10", branches: "P.Za 24 Maggio - V.Le Lunigiana", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "12", branches: "P.Za Ovidio - Roserio (Ospedale Sacco)", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "14", branches: "Lorenteggio - Cimitero Maggiore", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "15", branches: "Duomo M1 M3 - Rozzano (Via G. Rossa)", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "16", branches: "San Siro Stadio M5 - Via Monte Velino", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "19", branches: "P.Za Castelli - Lambrate FS M2", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "24", branches: "Piazza Fontana - Vigentino", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram24),
-            LineInfo(name: "27", branches: "V.Le Ungheria - Duomo M1 M3", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "31", branches: "Bicocca M5 - Cinisello (1° Maggio)", type: "Tram", waitMinutes: "5-20 min.", stations: []),
-            LineInfo(name: "33", branches: "P.Le Lagosta - Rimembranze di Lambrate", type: "Tram", waitMinutes: "5-20 min.", stations: []),
+            LineInfo(name: "1", branches: "Roserio - Greco", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram1, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "2", branches: "P.Le Negrelli - P.Za Bausan", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "3", branches: "Duomo M1 M3 - Gratosoglio", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram3, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "4", branches: "Cairoli M1 - Niguarda (Parco Nord)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "5", branches: "Niguarda (Ospedale) - Ortica", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "7", branches: "P.Le Lagosta - Q.Re Adriano", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "9", branches: "Centrale FS M2 M3 - P.Ta Genova M2", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "10", branches: "P.Za 24 Maggio - V.Le Lunigiana", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "12", branches: "P.Za Ovidio - Roserio (Ospedale Sacco)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "14", branches: "Lorenteggio - Cimitero Maggiore", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "15", branches: "Duomo M1 M3 - Rozzano (Via G. Rossa)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "16", branches: "San Siro Stadio M5 - Via Monte Velino", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "19", branches: "P.Za Castelli - Lambrate FS M2", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "24", branches: "Piazza Fontana - Vigentino", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram24, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "27", branches: "V.Le Ungheria - Duomo M1 M3", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "31", branches: "Bicocca M5 - Cinisello (1° Maggio)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "33", branches: "P.Le Lagosta - Rimembranze di Lambrate", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaNonAccessibile)),
         ]
     }
     
     var bus : [LineInfo] {
         [
-            LineInfo(name: "z601", branches: "Legnano - Rho - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z602", branches: "Legnano - Milano Cadorna FN", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z603", branches: "Vittore Olona / Nerviano - Milano Cadorna FN", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z6C3", branches: "Vittore Olona - Cerro Maggiore - Milano Cadorna FN", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z606", branches: "Cerro Maggiore - Rho - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z611", branches: "Legnano - Canegrate - Parabiago", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z612", branches: "Legnano - Cerro Maggiore - Arese", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z616", branches: "Pregnana Milanese - Rho", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z617", branches: "Origgio / Lainate - Molino Dorino M1 ", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z618", branches: "Vanzago - Pogliano M. - Rho", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z619", branches: "Pogliano M. - Plesso IST Maggiolini", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z620", branches: "Magenta - Vittuone - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z621", branches: "Cuggiono - Ossona - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z622", branches: "Cuggiono - Ossona - Cornaredo", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z625", branches: "Busto Arsizio - Busto Garolfo", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z627", branches: "Castano Primo - Legnano", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z636", branches: "Nosate - Legnano", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z641", branches: "Castano Primo - Magenta", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z642", branches: "Magenta - Legnano", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z643", branches: "Vittuone - Parabiago", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z644", branches: "Arconate - Parabiago", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z646", branches: "Magenta - Castano Primo", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z647", branches: "Cornaredo - Castano Primo", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z648", branches: "Arconate - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: []),
-            LineInfo(name: "z649", branches: "Magenta - Arluno - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [])
+            LineInfo(name: "z601", branches: "Legnano - Rho - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z602", branches: "Legnano - Milano Cadorna FN", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z603", branches: "Vittore Olona / Nerviano - Milano Cadorna FN", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z6C3", branches: "Vittore Olona - Cerro Maggiore - Milano Cadorna FN", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z606", branches: "Cerro Maggiore - Rho - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z611", branches: "Legnano - Canegrate - Parabiago", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z612", branches: "Legnano - Cerro Maggiore - Arese", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z616", branches: "Pregnana Milanese - Rho", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z617", branches: "Origgio / Lainate - Molino Dorino M1 ", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z618", branches: "Vanzago - Pogliano M. - Rho", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z619", branches: "Pogliano M. - Plesso IST Maggiolini", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z620", branches: "Magenta - Vittuone - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z621", branches: "Cuggiono - Ossona - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z622", branches: "Cuggiono - Ossona - Cornaredo", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z625", branches: "Busto Arsizio - Busto Garolfo", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z627", branches: "Castano Primo - Legnano", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z636", branches: "Nosate - Legnano", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z641", branches: "Castano Primo - Magenta", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z642", branches: "Magenta - Legnano", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z643", branches: "Vittuone - Parabiago", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z644", branches: "Arconate - Parabiago", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z646", branches: "Magenta - Castano Primo", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z647", branches: "Cornaredo - Castano Primo", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z648", branches: "Arconate - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z649", branches: "Magenta - Arluno - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: "")
         ]
     }
     
     var stav: [LineInfo] {
         [
-            LineInfo(name: "z551", branches: "Abbiategrasso Vittorio Veneto - Bisceglie M1", type: "STAV", waitMinutes: "", stations: []),
-            LineInfo(name: "z552", branches: "Abbiategrasso Vittorio Veneto - S. Stefano Ticino", type: "STAV", waitMinutes: "", stations: []),
-            LineInfo(name: "z553", branches: "Abbiategrasso - Rosate - Milano Romolo", type: "STAV", waitMinutes: "", stations: []),
-            LineInfo(name: "z554", branches: "Albairate - Albairate Vermezzo FS - Bubbiano", type: "STAV", waitMinutes: "", stations: []),
-            LineInfo(name: "z555", branches: "Abbiategrasso Vittorio Veneto - Binasco / Rosate", type: "STAV", waitMinutes: "", stations: []),
-            LineInfo(name: "z556", branches: "Abbiategrasso FS - Motta Visconti", type: "STAV", waitMinutes: "", stations: []),
-            LineInfo(name: "z557", branches: "Gaggiano De Gasperi - Gaggiano FS - San Vito", type: "STAV", waitMinutes: "", stations: []),
-            LineInfo(name: "z559", branches: "Abbiategrasso Stazione FS - Magenta FS", type: "STAV", waitMinutes: "", stations: []),
-            LineInfo(name: "z560", branches: "Abbiategrasso FS - Corsico - Bisceglie M1", type: "STAV", waitMinutes: "", stations: []),
+            LineInfo(name: "z551", branches: "Abbiategrasso Vittorio Veneto - Bisceglie M1", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z552", branches: "Abbiategrasso Vittorio Veneto - S. Stefano Ticino", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z553", branches: "Abbiategrasso - Rosate - Milano Romolo", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z554", branches: "Albairate - Albairate Vermezzo FS - Bubbiano", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z555", branches: "Abbiategrasso Vittorio Veneto - Binasco / Rosate", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z556", branches: "Abbiategrasso FS - Motta Visconti", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z557", branches: "Gaggiano De Gasperi - Gaggiano FS - San Vito", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z559", branches: "Abbiategrasso Stazione FS - Magenta FS", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z560", branches: "Abbiategrasso FS - Corsico - Bisceglie M1", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: "")
         ]
     }
-    
+
     var autoguidovie: [LineInfo] {
         [
-            LineInfo(name: "z401", branches: "Melzo FS - Vignate - Villa Fiorita M2", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z402", branches: "Cernusco M2 - Pioltello FS - S.Felice", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z403", branches: "Gorgonzola M2 - Melzo (Circolare)", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z404", branches: "Melzo FS - Inzago - Gessate M2", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z405", branches: "Gessate M2 - Cassano d'Adda - Treviglio", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z406", branches: "Trecella FS - Bellinzago - Gessate M2", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z407", branches: "Gorgonzola M2 - Truccazzano", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z409", branches: "Rodano - S. Felice - Linate Aereoporto", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z410", branches: "Pantigliate - Peschiera - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z411", branches: "Melzo FS - Settala - Pantigliate - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z412", branches: "Zelo B.P. - Paullo - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z413", branches: "Tribiano - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z415", branches: "Melegnano - Dresano - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z418", branches: "S.Zenone FS - Casalmaiocco", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z419", branches: "Paullo - Melzo - Gorgonzola M2", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z420", branches: "Vizzolo - Melegnano - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z431", branches: "Melegnano FS - Carpiano/Cerro L.", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z432", branches: "Melegnano FS - Dresano  - Vizzolo (Circolare)", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "z401", branches: "Melzo FS - Vignate - Villa Fiorita M2", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z402", branches: "Cernusco M2 - Pioltello FS - S.Felice", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z403", branches: "Gorgonzola M2 - Melzo (Circolare)", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z404", branches: "Melzo FS - Inzago - Gessate M2", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z405", branches: "Gessate M2 - Cassano d'Adda - Treviglio", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z406", branches: "Trecella FS - Bellinzago - Gessate M2", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z407", branches: "Gorgonzola M2 - Truccazzano", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z409", branches: "Rodano - S. Felice - Linate Aereoporto", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z410", branches: "Pantigliate - Peschiera - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z411", branches: "Melzo FS - Settala - Pantigliate - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z412", branches: "Zelo B.P. - Paullo - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z413", branches: "Tribiano - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z415", branches: "Melegnano - Dresano - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z418", branches: "S.Zenone FS - Casalmaiocco", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z419", branches: "Paullo - Melzo - Gorgonzola M2", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z420", branches: "Vizzolo - Melegnano - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z431", branches: "Melegnano FS - Carpiano/Cerro L.", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z432", branches: "Melegnano FS - Dresano  - Vizzolo (Circolare)", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
 
-            LineInfo(name: "z203", branches: "Muggiò - Monza FS - Cologno Nord M2", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z205", branches: "Limbiate Mombello - Varedo - Monza FS", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z209", branches: "Cesano FN - Desio - Lissone", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z219", branches: "Monza FS - Muggiò - Paderno Dugnano", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z221", branches: "Sesto S.G. - Monza FS - Carate", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z222", branches: "Monza FS - S.Fruttuoso - Sesto S.G.", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z225", branches: "Sesto S.G. - Cinisello B. - Nova M.se", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z227", branches: "Monza H/Lissone FS - Muggiò - Cinisello", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z228", branches: "Seregno FS - Lissone - Monza FS", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z229", branches: "Paderno ITC - Cusano - Cinisello B.", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z231", branches: "Carate - Giussano - Seregno FS - Desio", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z232", branches: "Desio - Seregno - Carate - Besana FS", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z233", branches: "Triuggio - Albiate - Seregno FS", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z234", branches: "Vedano al L. - Lissone - Muggiò", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z242", branches: "Desio - Seregno FS - Renate", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z250", branches: "Lissone FS - Desio FS - Cesano FN", type: "Autoguidovie", waitMinutes: "", stations: []),
-            LineInfo(name: "z251", branches: "Desio FS - Bovisio M. - Limbiate - Cesano FN", type: "Autoguidovie", waitMinutes: "", stations: []),
+            LineInfo(name: "z203", branches: "Muggiò - Monza FS - Cologno Nord M2", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z205", branches: "Limbiate Mombello - Varedo - Monza FS", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z209", branches: "Cesano FN - Desio - Lissone", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z219", branches: "Monza FS - Muggiò - Paderno Dugnano", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z221", branches: "Sesto S.G. - Monza FS - Carate", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z222", branches: "Monza FS - S.Fruttuoso - Sesto S.G.", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z225", branches: "Sesto S.G. - Cinisello B. - Nova M.se", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z227", branches: "Monza H/Lissone FS - Muggiò - Cinisello", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z228", branches: "Seregno FS - Lissone - Monza FS", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z229", branches: "Paderno ITC - Cusano - Cinisello B.", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z231", branches: "Carate - Giussano - Seregno FS - Desio", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z232", branches: "Desio - Seregno - Carate - Besana FS", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z233", branches: "Triuggio - Albiate - Seregno FS", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z234", branches: "Vedano al L. - Lissone - Muggiò", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z242", branches: "Desio - Seregno FS - Renate", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z250", branches: "Lissone FS - Desio FS - Cesano FN", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z251", branches: "Desio FS - Bovisio M. - Limbiate - Cesano FN", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: "")
         ]
     }
     
@@ -3698,7 +3701,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredMetros.isEmpty){
                         ForEach(filteredMetros, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel)
                         }
                     }
                 }
@@ -3736,7 +3739,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredSuburban.isEmpty){
                         ForEach(filteredSuburban, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel)
                         }
                     }
                 }
@@ -3774,7 +3777,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredCrossBorders.isEmpty){
                         ForEach(filteredCrossBorders, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel)
                         }
                     }
                 }
@@ -3812,7 +3815,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredMalpensaExpress.isEmpty){
                         ForEach(filteredMalpensaExpress, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel)
                         }
                     }
                 }
@@ -3850,7 +3853,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredTrams.isEmpty){
                         ForEach(filteredTrams, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, stations: line.stations, viewModel: viewModel)
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel)
                         }
                     }
                 }
@@ -3888,7 +3891,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredMovibus.isEmpty){
                         ForEach(filteredMovibus, id: \.id){bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel)
                         }
                     }
                 }
@@ -3926,7 +3929,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredSTAV.isEmpty){
                         ForEach(filteredSTAV, id: \.id){bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel)
                         }
                     }
                 }
@@ -3964,7 +3967,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredAutoguidovie.isEmpty){
                         ForEach(filteredAutoguidovie, id: \.id){ bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, stations: bus.stations, viewModel: viewModel)
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel)
                         }
                     }
                 }
@@ -4051,6 +4054,7 @@ struct LineDetailView: View {
     let viewModel: WorkViewModel
     
     let stations: [MetroStation]
+    let accessibilityStatus: String
     
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
@@ -4059,6 +4063,7 @@ struct LineDetailView: View {
     private enum LineDetailTab { case map, works, interchanges }
     @State private var selectedTab: LineDetailTab = .map
     @State private var openPopUpWidget: Bool = false
+    @State private var openInfoAccessibility: Bool = false
     
     private var centerIndex: Int { max(0, stations.count / 2) }
     private var centerCoordinate: CLLocationCoordinate2D {
@@ -4137,6 +4142,29 @@ struct LineDetailView: View {
                             Text("Linea impostata per essere vista sul Widget dell'app!")
                         }
                     }
+                    VStack(alignment: .leading, spacing: 5) {
+                        if(!accessibilityStatus.isEmpty){
+                            HStack{
+                                Image(systemName: "figure.roll")
+                                    .foregroundStyle(.gray)
+                                    .scaleEffect(1.5)
+                                Image(systemName: (accessibilityStatus == String(localized: .lineaAccessibile) ? "checkmark.circle.fill" : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? "exclamationmark.circle.fill" : "xmark.circle.fill")))
+                                    .foregroundStyle(accessibilityStatus == String(localized: .lineaAccessibile) ? .green : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? .yellow : .red))
+                                    .scaleEffect(1.5)
+                                    .padding(.leading, 5)
+                                Text(accessibilityStatus)
+                                    .foregroundColor(.secondary)
+                                    .padding(.leading, 5)
+                                Spacer()
+                                Button(action: {
+                                    openInfoAccessibility = true;
+                                }) {
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                        }
+                    }
                     Divider()
                     VStack(alignment: .leading, spacing: 5) {
                         Text("DIREZIONI:")
@@ -4190,7 +4218,6 @@ struct LineDetailView: View {
                             .font(.title3)
                             .multilineTextAlignment(.leading)
                     }
-                    Spacer()
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -4421,7 +4448,11 @@ struct LineDetailView: View {
                     .frame(maxWidth: .infinity)
                     .frame(maxHeight: .infinity)
                     .padding(.bottom, 10)
+                    .padding(.top, 6)
                 }
+            }
+            .sheet(isPresented: $openInfoAccessibility) {
+                InfoAccessibilityView(showInfoView: $openInfoAccessibility)
             }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
@@ -4433,6 +4464,7 @@ struct LineSmallDetailedView: View {
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @State private var openPopUpWidget: Bool = false
+    @State private var openInfoAccessibility: Bool = false
     
     let lineName: String
     let typeOfTransport: String
@@ -4441,6 +4473,7 @@ struct LineSmallDetailedView: View {
     
     let workScheduled: Int
     let workNow: Int
+    let accessibilityStatus: String
     let viewModel: WorkViewModel
     
     let interchanges: [InterchangeStation] = [
@@ -4516,7 +4549,29 @@ struct LineSmallDetailedView: View {
                             Text("Linea impostata per essere vista sul Widget dell'app!")
                         }
                     }
-                    
+                    if(!accessibilityStatus.isEmpty) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            HStack{
+                                Image(systemName: "figure.roll")
+                                    .foregroundStyle(.gray)
+                                    .scaleEffect(1.5)
+                                Image(systemName: (accessibilityStatus == String(localized: .lineaAccessibile) ? "checkmark.circle.fill" : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? "exclamationmark.circle.fill" : "xmark.circle.fill")))
+                                    .foregroundStyle(accessibilityStatus == String(localized: .lineaAccessibile) ? .green : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? .yellow : .red))
+                                    .scaleEffect(1.5)
+                                    .padding(.leading, 5)
+                                Text(accessibilityStatus)
+                                    .foregroundColor(.secondary)
+                                    .padding(.leading, 5)
+                                Spacer()
+                                Button(action: {
+                                    openInfoAccessibility = true;
+                                }) {
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                        }
+                    }
                     Divider()
                     VStack(alignment: .leading, spacing: 5) {
                         Text("DIREZIONI:")
@@ -4638,8 +4693,138 @@ struct LineSmallDetailedView: View {
                 .frame(maxHeight: .infinity)
                 .padding(.bottom, 10)
             }
+            .sheet(isPresented: $openInfoAccessibility) {
+                InfoAccessibilityView(showInfoView: $openInfoAccessibility)
+            }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+
+struct InfoAccessibilityView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State private var currentPage = 0
+    @State var startImageTransition: Bool = false
+    @State var imageTransitionFirstPage: Bool = false
+    @State var i = 0
+    @Binding var showInfoView: Bool
+    @AppStorage("enableAnimations") var enableAnimations = true
+
+    var body: some View {
+        NavigationStack {
+            VStack {
+                TabView(selection: $currentPage) {
+                    ScrollView {
+                        VStack(spacing: 30) {
+                            if #available(iOS 18.0, *), enableAnimations {
+                                Image(systemName: startImageTransition ? "figure.roll" : "person.fill")
+                                    .font(.system(size: 80))
+                                    .foregroundColor(.red)
+                                    .padding(.top, 50)
+                                    .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
+                                    .onAppear {
+                                        Task {
+                                            try? await Task.sleep(for: .seconds(1))
+                                            withAnimation {
+                                                startImageTransition = true
+                                            }
+                                        }
+                                    }
+                                    .onDisappear {
+                                        startImageTransition = false
+                                    }
+                            } else {
+                                Image(systemName: "figure.roll")
+                                    .font(.system(size: 80))
+                                    .foregroundColor(.red)
+                                    .padding(.top, 50)
+                            }
+
+                            Text("Informazioni sull'Accessibilità")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+
+                            Text("LavoraMi mostra l'accessibilità di una linea in base agli impianti nelle stazioni ed alla tipologia di mezzo utilizzato.")
+                                .font(.headline)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+
+                            VStack(alignment: .leading, spacing: 20) {
+                                accessibilitySection(
+                                    icon: "checkmark.circle.fill",
+                                    color: .green,
+                                    title: String(localized: .completamenteAccessibile),
+                                    description: String(localized: .completamenteAccessibileDeps)
+                                )
+                                Divider()
+                                accessibilitySection(
+                                    icon: "exclamationmark.circle.fill",
+                                    color: .orange,
+                                    title: String(localized: .parzialmenteAccessibile),
+                                    description: String(localized: .parzialmenteAccessibileDeps)
+                                )
+                                Divider()
+                                accessibilitySection(
+                                    icon: "xmark.circle.fill",
+                                    color: .red,
+                                    title: String(localized: .nonAccessibile),
+                                    description: String(localized: .nonAccessibileDeps)
+                                )
+                            }
+                            .padding()
+                            .background(Color(UIColor.secondarySystemBackground))
+                            .cornerRadius(15)
+                        }
+                        .padding()
+                    }
+                    .tag(0)
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            }
+            .navigationTitle("Accessibilità")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.secondary)
+                            .padding(8)
+                            .clipShape(Circle())
+                    }
+                }
+            }
+        }
+    }
+
+    private func dismiss() {
+        showInfoView = false
+        presentationMode.wrappedValue.dismiss()
+    }
+
+    @ViewBuilder
+    private func accessibilitySection(icon: String, color: Color, title: String, description: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 10) {
+                HStack(spacing: 4) {
+                    Image(systemName: "figure.roll")
+                    Image(systemName: icon)
+                        .foregroundColor(color)
+                }
+                .font(.headline)
+
+                Text(title)
+                    .font(.headline)
+                    .foregroundColor(color)
+            }
+
+            Text(description)
+                .font(.callout)
+                .foregroundColor(.secondary)
+                .lineSpacing(4)
         }
     }
 }
@@ -4786,6 +4971,7 @@ struct LineInfo: Identifiable{
     let type: String
     let waitMinutes: String
     let stations: [MetroStation]
+    let accessibilityStatus: String
 }
 
 struct InterchageInfo: Identifiable {

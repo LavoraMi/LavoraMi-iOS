@@ -165,6 +165,16 @@
         }
       }
     },
+    "Accessibilità" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accessibility"
+          }
+        }
+      }
+    },
     "Account" : {
       "localizations" : {
         "en" : {
@@ -539,6 +549,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Close"
+          }
+        }
+      }
+    },
+    "Completamente Accessibile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fully accessible"
+          }
+        }
+      }
+    },
+    "completamenteAccessibileDeps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All vehicles operating on this route are equipped with boarding ramps (manual or electric) and reserved seating. Furthermore, almost all stops (over 90%) have raised platforms, enabling passengers to board independently or with minimal assistance."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutti i mezzi impiegati su questa linea sono dotati di pedane (manuali o elettriche) e posto riservato. Inoltre, la quasi totalità delle fermate (oltre il 90%) dispone di banchine rialzate che permettono l'incarrozzamento in autonomia o con assistenza minima."
           }
         }
       }
@@ -1134,6 +1172,16 @@
         }
       }
     },
+    "Informazioni sull'Accessibilità" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accessibility Information"
+          }
+        }
+      }
+    },
     "inizioLavoriVar1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1282,6 +1330,16 @@
         }
       }
     },
+    "LavoraMi mostra l'accessibilità di una linea in base agli impianti nelle stazioni ed alla tipologia di mezzo utilizzato." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LavoraMi shows the accessibility of a line based on the facilities at stations and the type of transport used."
+          }
+        }
+      }
+    },
     "Lavori della settimana..." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1379,6 +1437,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Line set to be displayed on the app widget!"
+          }
+        }
+      }
+    },
+    "lineaAccessibile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fully accessible line."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linea completamente accessibile."
+          }
+        }
+      }
+    },
+    "lineaNonAccessibile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not accessible line."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linea non accessibile."
+          }
+        }
+      }
+    },
+    "lineaParzialmenteAccessibile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partially accessible line."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linea parzialmente accessibile."
           }
         }
       }
@@ -1665,8 +1774,14 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Show Strike Banners"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra Banner Scioperi"
           }
         }
       }
@@ -1801,6 +1916,17 @@
         }
       }
     },
+    "Non Accessibile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Accessible"
+          }
+        }
+      }
+    },
     "Non ci sono lavori su questa linea." : {
       "localizations" : {
         "en" : {
@@ -1848,6 +1974,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Not just “work in progress” we explain what type of work is being done and the consequences that construction site may have (detours, suspended stops, etc)."
+          }
+        }
+      }
+    },
+    "nonAccessibileDeps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This route does not meet the minimum accessibility requirements. There may be steps at the entrance to the vehicle, or the road infrastructure along the route may make it impossible to lower the ramp safely."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa linea non garantisce i requisiti minimi di accessibilità. I mezzi potrebbero presentare gradini all'ingresso del mezzo oppure le infrastrutture stradali del percorso rendono impossibile la discesa della pedana in sicurezza."
           }
         }
       }
@@ -1948,6 +2091,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notification Schedule"
+          }
+        }
+      }
+    },
+    "Parzialmente Accessibile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partially Accessible"
+          }
+        }
+      }
+    },
+    "parzialmenteAccessibileDeps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The route has some limitations. Although the buses are accessible, many stops along the route may not have kerbs that meet accessibility standards or sufficient space for the boarding ramp. In other cases, accessibility is only guaranteed on certain specific services."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La linea presenta delle limitazioni. Sebbene i bus siano accessibili, molte fermate lungo il percorso potrebbero non avere marciapiedi a norma o spazio sufficiente per la pedana. In altri casi, l'accessibilità è garantita solo su alcune corse specifiche."
           }
         }
       }
@@ -2414,17 +2585,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dark"
-          }
-        }
-      }
-    },
-    "Se hai creato un Account LavoraMi con Apple ed hai scelto di NON condividere la tua email, al posto della tua mail dovrai inviare il tuo ID che trovi sotto la scritta \"Apple Private Relay Email\"" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "If you created a LavoraMi account with Apple and chose NOT to share your email address, you’ll need to enter your ID located under the “Apple Private Relay Email” label instead of your email address."
           }
         }
       }
