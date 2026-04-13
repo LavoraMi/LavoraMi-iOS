@@ -655,6 +655,27 @@ struct StationsDB {
         .init(name: "Porta Genova M2", coordinate: .init(latitude: 45.45322, longitude: 9.17065), branch: "Main"),
         .init(name: "P.Le Cantore", coordinate: .init(latitude: 45.45491, longitude: 9.17225), branch: "Main"),
     ]
+
+    static let tram7: [MetroStation] = [
+        .init(name: "P.Le Lagosta", coordinate: .init(latitude: 45.48975, longitude: 9.19152), branch: "Main"),
+        .init(name: "Zara M3 M5", coordinate: .init(latitude: 45.49231, longitude: 9.19296), branch: "Main"),
+        .init(name: "Marche M5", coordinate: .init(latitude: 45.49617, longitude: 9.19514), branch: "Main"),
+        .init(name: "V.Le Zara Via Laurana", coordinate: .init(latitude: 45.49907, longitude: 9.19678), branch: "Main"),
+        .init(name: "Istria M5", coordinate: .init(latitude: 45.50183, longitude: 9.19836), branch: "Main"),
+        .init(name: "V.Le Testi Via Dolcebuono", coordinate: .init(latitude: 45.5039, longitude: 9.19949), branch: "Main"),
+        .init(name: "Ca' Granda M5", coordinate: .init(latitude: 45.50687, longitude: 9.20119), branch: "Main"),
+        .init(name: "V.Le Testi Via Pianell", coordinate: .init(latitude: 45.50814, longitude: 9.20191), branch: "Main"),
+        .init(name: "V.Le Testi Via S. Marcellina", coordinate: .init(latitude: 45.51167, longitude: 9.20394), branch: "Main"),
+        .init(name: "Via Pulci V.le Sarca", coordinate: .init(latitude: 45.51431, longitude: 9.20744), branch: "Main"),
+        .init(name: "Università Bicocca Scienza", coordinate: .init(latitude: 45.51372, longitude: 9.21127), branch: "Main"),
+        .init(name: "Milano Greco Pirelli", coordinate: .init(latitude: 45.51288, longitude: 9.21416), branch: "Main"),
+        .init(name: "Arcimboldi Ateneo Nuovo", coordinate: .init(latitude: 45.51598, longitude: 9.21386), branch: "Main"),
+        .init(name: "L.Go Mattei", coordinate: .init(latitude: 45.51395, longitude: 9.22123), branch: "Main"),
+        .init(name: "Precotto M1", coordinate: .init(latitude: 45.51364, longitude: 9.22439), branch: "Main"),
+        .init(name: "Tremelloni", coordinate: .init(latitude: 45.51395, longitude: 9.2276), branch: "Main"),
+        .init(name: "Via Tremelloni Via Anassagora", coordinate: .init(latitude: 45.51429, longitude: 9.23108), branch: "Main"),
+        .init(name: "Precotto Interno Deposito", coordinate: .init(latitude: 45.51786, longitude: 9.2329), branch: "Main")
+    ]
     
     static let tram24: [MetroStation] = [
         .init(name: "Vigentino", coordinate: .init(latitude: 45.42196, longitude: 9.20354), branch: "Main"),

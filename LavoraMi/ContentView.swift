@@ -3035,7 +3035,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAdsOnDeviceConversion",
-            version: "3.4.0",
+            version: "3.4.2",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2023 Google LLC",
             licenseText: """
@@ -3395,10 +3395,11 @@ struct LineRow: View {
     let waitMinutes: String
     let accessibilityStatus: String
     let stations: [MetroStation]
+    @State private var supportedLines: [String] = ["1", "3", "7", "24"]
     @ObservedObject var viewModel: WorkViewModel
     
     var body: some View {
-        if ((typeOfTransport != "Tram" || (line == "1" || line == "3" || line == "24")) && typeOfTransport != "Movibus" && typeOfTransport != "STAV" && typeOfTransport != "Autoguidovie") {
+        if ((typeOfTransport != "Tram" || supportedLines.contains(line)) && typeOfTransport != "Movibus" && typeOfTransport != "STAV" && typeOfTransport != "Autoguidovie") {
             NavigationLink(
                 destination: LineDetailView(
                     lineName: line,
@@ -3569,7 +3570,7 @@ struct LinesView: View {
             LineInfo(name: "3", branches: "Duomo M1 M3 - Gratosoglio", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram3, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "4", branches: "Cairoli M1 - Niguarda (Parco Nord)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "5", branches: "Niguarda (Ospedale) - Ortica", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaNonAccessibile)),
-            LineInfo(name: "7", branches: "P.Le Lagosta - Q.Re Adriano", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "7", branches: "P.Le Lagosta - Q.Re Adriano", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram7, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "9", branches: "Centrale FS M2 M3 - P.Ta Genova M2", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "10", branches: "P.Za 24 Maggio - V.Le Lunigiana", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "12", branches: "P.Za Ovidio - Roserio (Ospedale Sacco)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
@@ -4064,6 +4065,7 @@ struct LineDetailView: View {
     @State private var selectedTab: LineDetailTab = .map
     @State private var openPopUpWidget: Bool = false
     @State private var openInfoAccessibility: Bool = false
+    @State private var tramLinesSupported: [String] = ["1", "3", "7", "24"]
     
     private var centerIndex: Int { max(0, stations.count / 2) }
     private var centerCoordinate: CLLocationCoordinate2D {
@@ -4091,15 +4093,39 @@ struct LineDetailView: View {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 20) {
                     HStack(spacing: 12) {
-                        Text(lineName)
-                            .foregroundStyle(.white)
-                            .font(.system(size: 40, weight: .bold))
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 15)
-                            .background(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
-                            )
+                        if(lineName.contains("S")) {
+                            Text(lineName)
+                                .foregroundStyle(.white)
+                                .font(.custom("TitilliumWeb-Bold", size: 40))
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 15)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
+                                )
+                        }
+                        else if (lineName.contains("M")){
+                            Text(lineName)
+                                .foregroundStyle(.white)
+                                .font(.custom("HelveticaNeue-Bold", size: 40))
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 15)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
+                                )
+                        }
+                        else{
+                            Text(lineName)
+                                .foregroundStyle(.white)
+                                .font(.system(size: 40, weight: .bold))
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 15)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
+                                )
+                        }
                         
                         if(lineName == "MXP1" || lineName == "MXP2"){
                             Text("\(typeOfTransport)")
@@ -4107,11 +4133,25 @@ struct LineDetailView: View {
                                 .minimumScaleFactor(0.5)
                                 .lineLimit(1)
                         }
-                        else{
-                            Text("\(typeOfTransport) \(lineName)")
-                                .font(.system(size: 30))
-                                .minimumScaleFactor(0.5)
-                                .lineLimit(1)
+                        else {
+                            if(lineName.contains("S")){
+                                Text("\(typeOfTransport) \(lineName)")
+                                    .font(.custom("TitilliumWeb-Bold", size: 40))
+                                    .minimumScaleFactor(0.5)
+                                    .lineLimit(1)
+                            }
+                            else if(lineName.contains("M")){
+                                Text("\(typeOfTransport) \(lineName)")
+                                    .font(.custom("HelveticaNeue-Bold", size: 30))
+                                    .minimumScaleFactor(0.5)
+                                    .lineLimit(1)
+                            }
+                            else{
+                                Text("\(typeOfTransport) \(lineName)")
+                                    .font(.system(size: 30))
+                                    .minimumScaleFactor(0.5)
+                                    .lineLimit(1)
+                            }
                         }
                         Spacer()
                         Button(action: {
@@ -4182,7 +4222,7 @@ struct LineDetailView: View {
                                 .foregroundStyle(.secondary)
                                 .bold()
                         }
-                        if(lineName == "2" || lineName == "4" || lineName == "12" || lineName == "10" || lineName == "14" || lineName == "3"){
+                        if(viewModel.linesDeviated.contains(lineName)){
                             Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
                                 .font(.system(size: 12))
                                 .foregroundStyle(.secondary)
@@ -4306,7 +4346,7 @@ struct LineDetailView: View {
                         initialPosition: .region(
                             MKCoordinateRegion(
                                 center: centerCoordinate,
-                                span: MKCoordinateSpan(latitudeDelta: ((lineName == "1" || lineName == "3" || lineName == "24") ? 0.02 : 0.15), longitudeDelta: ((lineName == "1" || lineName == "3" || lineName == "24") ? 0.02 : 0.15))
+                                span: MKCoordinateSpan(latitudeDelta: ((tramLinesSupported.contains(lineName)) ? 0.02 : 0.15), longitudeDelta: ((tramLinesSupported.contains(lineName)) ? 0.02 : 0.15))
                             )
                         ),
                         bounds: lombardyBounds,

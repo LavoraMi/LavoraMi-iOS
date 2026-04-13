@@ -142,6 +142,7 @@
 				StationsDB.swift,
 				SupabaseAuth/AuthManager.swift,
 				SupabaseAuth/SupabaseClient.swift,
+				"TitilliumWeb-Bold.ttf",
 				WorkViewModel.swift,
 			);
 			target = 6582F30A2F1BD9F000F7ADAF /* LavoraMiWidgetExtension */;
