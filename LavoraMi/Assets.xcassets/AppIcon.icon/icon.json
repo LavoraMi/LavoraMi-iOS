@@ -2,7 +2,7 @@
   "fill" : {
     "linear-gradient" : [
       "srgb:1.00000,0.15771,0.00000,1.00000",
-      "srgb:1.00000,0.00000,0.26070,1.00000"
+      "srgb:0.62150,0.01728,0.00000,1.00000"
     ],
     "orientation" : {
       "start" : {
@@ -19,10 +19,10 @@
     {
       "layers" : [
         {
-          "image-name" : "Logo_Metropolitane_Italia.svg.png",
-          "name" : "Logo_Metropolitane_Italia.svg",
+          "image-name" : "logo_2 2.png",
+          "name" : "logo_2 2",
           "position" : {
-            "scale" : 1,
+            "scale" : 0.5,
             "translation-in-points" : [
               0,
               0

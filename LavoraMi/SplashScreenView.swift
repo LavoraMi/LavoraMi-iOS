@@ -71,7 +71,7 @@ struct SplashScreenView: View {
             scaleEffect = 0.5
         }
         withAnimation(.easeIn(duration: 0.4).delay(0.8)) {
-            scaleEffect = 180
+            scaleEffect = 1000
         }
         withAnimation(.easeIn(duration: 0.2).delay(0.95)) {
             contentOpacity = 1.0
