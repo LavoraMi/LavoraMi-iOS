@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![iOS](https://img.shields.io/badge/iOS-17%2B-blue.svg?style=flat)](https://developer.apple.com/ios/)
+[![iOS](https://img.shields.io/badge/iOS-17.4%2B-blue.svg?style=flat)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/Swift-6.0%2B-orange.svg?style=flat)](https://swift.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](LICENSE)
 [![Repository](https://img.shields.io/badge/GitHub-LavoraMi--iOS-black?style=flat&logo=github)](https://github.com/Andrea-Filice/LavoraMi-iOS)
