@@ -24,6 +24,7 @@ class WorkViewModel: ObservableObject {
     @Published var maintenanceDepsEn: String = ""
     @Published var minimumVersion: String = ""
     @Published var linesDeviated: [String] = [""]
+    @Published var linesDeviatedLink: [String] = [""]
     
     private let urlString = "https://cdn.lavorami.it/lavoriAttuali.json"
     private let urlVariables = "https://cdn.lavorami.it/_vars.json"
@@ -121,6 +122,7 @@ class WorkViewModel: ObservableObject {
                     self?.dateStrike = result.date
                     self?.guaranteed = result.guaranteed
                     self?.linesDeviated = result.linesAffectedbyDeviation
+                    self?.linesDeviatedLink = result.linesDeviationLinks
                     
                     if self?.strikeEnabled == true {
                             NotificationManager.shared.scheduleStrikeNotifications(
@@ -188,6 +190,7 @@ struct RemoteConfigData: Codable {
     let companies: String
     let guaranteed: String
     let linesAffectedbyDeviation: [String]
+    let linesDeviationLinks: [String]
 }
 
 struct RequirementsData: Codable {

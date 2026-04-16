@@ -4036,6 +4036,14 @@ func getCurrentWorks(line: String, viewModel: WorkViewModel) -> [WorkItem]{
     return viewModel.items.filter{$0.lines.contains(line)}
 }
 
+func getLineDeviationLink(line: String, viewModel: WorkViewModel) -> URL {
+    if let i = viewModel.linesDeviated.firstIndex(of: line) {
+        return URL(string: viewModel.linesDeviatedLink[i])!
+    }
+    
+    return URL(string: "www.lavorami.it?redirect=nourlfounds")!
+}
+
 func getInterchanges(line: String) -> [InterchageInfo] {
     if Int(line) != nil {
         return StationsDB.interchangesTrams.filter { $0.lines.contains(line) }
@@ -4060,6 +4068,9 @@ struct LineDetailView: View {
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.openURL) private var openURLAction
+    @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
+    @State private var selectedURL: URL?
     
     private enum LineDetailTab { case map, works, interchanges }
     @State private var selectedTab: LineDetailTab = .map
@@ -4223,10 +4234,25 @@ struct LineDetailView: View {
                                 .bold()
                         }
                         if(viewModel.linesDeviated.contains(lineName)){
-                            Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
-                                .font(.system(size: 12))
-                                .foregroundStyle(.secondary)
-                                .bold()
+                            HStack {
+                                Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(.secondary)
+                                    .bold()
+                                Button(action: {
+                                    let url = getLineDeviationLink(line: lineName, viewModel: viewModel)
+                                    
+                                    if(howToOpenLinks == .inApp) {
+                                        selectedURL = url
+                                    }
+                                    else {
+                                        openURLAction(url)
+                                    }
+                                }) {
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.gray)
+                                }
+                            }
                         }
                     }
                     
@@ -4494,6 +4520,10 @@ struct LineDetailView: View {
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)
             }
+            .sheet(item: $selectedURL) { url in
+                SafariView(url: url)
+                    .ignoresSafeArea(.all)
+            }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -4505,6 +4535,9 @@ struct LineSmallDetailedView: View {
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @State private var openPopUpWidget: Bool = false
     @State private var openInfoAccessibility: Bool = false
+    @Environment(\.openURL) private var openURLAction
+    @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
+    @State private var selectedURL: URL?
     
     let lineName: String
     let typeOfTransport: String
@@ -4624,10 +4657,25 @@ struct LineSmallDetailedView: View {
                             .multilineTextAlignment(.leading)
                         
                         if(viewModel.linesDeviated.contains(lineName)){
-                            Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
-                                .font(.system(size: 12))
-                                .foregroundStyle(.secondary)
-                                .bold()
+                            HStack {
+                                Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(.secondary)
+                                    .bold()
+                                Button(action: {
+                                    let url = getLineDeviationLink(line: lineName, viewModel: viewModel)
+                                    
+                                    if(howToOpenLinks == .inApp) {
+                                        selectedURL = url
+                                    }
+                                    else {
+                                        openURLAction(url)
+                                    }
+                                }) {
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.gray)
+                                }
+                            }
                         }
                     }
                     
@@ -4735,6 +4783,10 @@ struct LineSmallDetailedView: View {
             }
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)
+            }
+            .sheet(item: $selectedURL) { url in
+                SafariView(url: url)
+                    .ignoresSafeArea(.all)
             }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
