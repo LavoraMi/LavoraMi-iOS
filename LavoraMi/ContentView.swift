@@ -3548,11 +3548,11 @@ struct LinesView: View {
     
     var crossBorderLines: [LineInfo] {
         [
-            LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "Transfrontaliera", waitMinutes: "1 ora - 45 min.", stations: StationsDB.tiloS10, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "S30", branches: "Cadenazzo - Gallarate", type: "Transfrontaliera", waitMinutes: "2 ore.", stations: StationsDB.tiloS30, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "Transfrontaliera", waitMinutes: "1 ora.", stations: StationsDB.tiloS40, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "S50", branches: "Biasca - Milano Malpensa", type: "Transfrontaliera", waitMinutes: "1 ora", stations: StationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "RE80", branches: "Locarno - Milano Centrale", type: "Transfrontaliera", waitMinutes: "30 min - 1 ora.", stations: StationsDB.tiloRE80, accessibilityStatus: String(localized: .lineaAccessibile))
+            LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "TILO", waitMinutes: "1 ora - 45 min.", stations: StationsDB.tiloS10, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S30", branches: "Cadenazzo - Gallarate", type: "TILO", waitMinutes: "2 ore.", stations: StationsDB.tiloS30, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "TILO", waitMinutes: "1 ora.", stations: StationsDB.tiloS40, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S50", branches: "Biasca - Milano Malpensa", type: "TILO", waitMinutes: "1 ora", stations: StationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE80", branches: "Locarno - Milano Centrale", type: "TILO", waitMinutes: "30 min - 1 ora.", stations: StationsDB.tiloRE80, accessibilityStatus: String(localized: .lineaAccessibile))
         ]
     }
     
@@ -5164,7 +5164,7 @@ func getCurrentTransportIcon(for lineLongName: String) -> String{
     switch(lineLongName){
         case "Suburbano":
             return "train.side.front.car"
-        case "Transfrontaliera":
+        case "TILO":
             return "train.side.front.car"
         case "Malpensa Express":
             return "train.side.front.car"
