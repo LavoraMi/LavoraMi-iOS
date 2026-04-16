@@ -1357,7 +1357,7 @@ struct SettingsView: View{
                                 .foregroundStyle(Color("TextColor"))
                         }
                     } label: {
-                        Label("Filtro Predefinito", systemImage: "line.3.horizontal.decrease.circle.fill")
+                        Label("Filtro Predefinito", systemImage: "line.3.horizontal.decrease")
                     }
                     .pickerStyle(.navigationLink)
                     .onChange(of: preferredFilter) {
