@@ -4104,18 +4104,18 @@ struct LineDetailView: View {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 20) {
                     HStack(spacing: 12) {
-                        if(lineName.contains("S")) {
+                        if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80") {
                             Text(lineName)
                                 .foregroundStyle(.white)
                                 .font(.custom("TitilliumWeb-Bold", size: 40))
-                                .padding(.vertical, 4)
+                                .padding(.vertical, 2)
                                 .padding(.horizontal, 15)
                                 .background(
                                     RoundedRectangle(cornerRadius: 6)
                                         .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
                                 )
                         }
-                        else if (lineName.contains("M")){
+                        else if (lineName.contains("M") && (lineName != "MXP1" || lineName != "MXP2")){
                             Text(lineName)
                                 .foregroundStyle(.white)
                                 .font(.custom("HelveticaNeue-Bold", size: 40))
@@ -4126,7 +4126,7 @@ struct LineDetailView: View {
                                         .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
                                 )
                         }
-                        else{
+                        else {
                             Text(lineName)
                                 .foregroundStyle(.white)
                                 .font(.system(size: 40, weight: .bold))
@@ -4140,18 +4140,18 @@ struct LineDetailView: View {
                         
                         if(lineName == "MXP1" || lineName == "MXP2"){
                             Text("\(typeOfTransport)")
-                                .font(.system(size: 30))
+                                .font(.custom("TitilliumWeb-Bold", size: 30))
                                 .minimumScaleFactor(0.5)
                                 .lineLimit(1)
                         }
                         else {
-                            if(lineName.contains("S")){
+                            if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80"){
                                 Text("\(typeOfTransport) \(lineName)")
                                     .font(.custom("TitilliumWeb-Bold", size: 40))
                                     .minimumScaleFactor(0.5)
                                     .lineLimit(1)
                             }
-                            else if(lineName.contains("M")){
+                            else if(lineName.contains("M") && (lineName != "MXP1" || lineName != "MXP2")){
                                 Text("\(typeOfTransport) \(lineName)")
                                     .font(.custom("HelveticaNeue-Bold", size: 30))
                                     .minimumScaleFactor(0.5)
