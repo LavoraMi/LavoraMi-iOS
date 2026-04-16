@@ -3535,24 +3535,24 @@ struct LinesView: View {
             LineInfo(name: "S4", branches: "Camnago - Milano Cadorna", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS4, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S5", branches: "Varese - Treviglio", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS5, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S6", branches: "Novara - Pioltello Limito/Treviglio", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS6, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "S7", branches: "Lecco - Milano Pta Garibaldi", type: "Suburbano", waitMinutes: "1 ora - 30 min.", stations: StationsDB.stationsS7, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "S7", branches: "Lecco - Milano Pta Garibaldi", type: "Suburbano", waitMinutes: "30 min - \(String(localized: ._1Ora))", stations: StationsDB.stationsS7, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "S8", branches: "Lecco - Carnate - Milano Pta Garibaldi", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS8, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "S9", branches: "Saronno - Albairate Vermezzo", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS9, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "S11", branches: "Rho - Como S. Giovanni", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS11, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S12", branches: "Melegnano - Cormano Cusano Milanino", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS12, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S13", branches: "Pavia - Milano Bovisa", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS13, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S19", branches: "Albairate Vermezzo - Milano Rogoredo", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS19, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "S31", branches: "Brescia - Iseo", type: "Suburbano", waitMinutes: "1 ora.", stations: StationsDB.stationsS31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile))
+            LineInfo(name: "S31", branches: "Brescia - Iseo", type: "Suburbano", waitMinutes: String(localized: ._1Ora), stations: StationsDB.stationsS31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile))
         ]
     }
     
     var crossBorderLines: [LineInfo] {
         [
-            LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "TILO", waitMinutes: "1 ora - 45 min.", stations: StationsDB.tiloS10, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "S30", branches: "Cadenazzo - Gallarate", type: "TILO", waitMinutes: "2 ore.", stations: StationsDB.tiloS30, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "TILO", waitMinutes: "1 ora.", stations: StationsDB.tiloS40, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "S50", branches: "Biasca - Milano Malpensa", type: "TILO", waitMinutes: "1 ora", stations: StationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "RE80", branches: "Locarno - Milano Centrale", type: "TILO", waitMinutes: "30 min - 1 ora.", stations: StationsDB.tiloRE80, accessibilityStatus: String(localized: .lineaAccessibile))
+            LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "TILO", waitMinutes: "\(String(localized: ._1Ora)) - 45 min.", stations: StationsDB.tiloS10, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S30", branches: "Cadenazzo - Gallarate", type: "TILO", waitMinutes: String(localized: ._2Ore), stations: StationsDB.tiloS30, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "TILO", waitMinutes: String(localized: ._1Ora), stations: StationsDB.tiloS40, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S50", branches: "Biasca - Milano Malpensa", type: "TILO", waitMinutes: String(localized: ._1Ora), stations: StationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE80", branches: "Locarno - Milano Centrale", type: "TILO", waitMinutes: "30 min - \(String(localized: ._1Ora))", stations: StationsDB.tiloRE80, accessibilityStatus: String(localized: .lineaAccessibile))
         ]
     }
     
