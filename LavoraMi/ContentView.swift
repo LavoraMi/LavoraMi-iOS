@@ -3186,7 +3186,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-asn1",
-            version: "1.6.0",
+            version: "1.7.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2022 Apple Inc.",
             licenseText: """
@@ -3233,7 +3233,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-crypto",
-            version: "4.3.1",
+            version: "4.4.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2019 Apple Inc.",
             licenseText: """
