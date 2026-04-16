@@ -194,7 +194,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Loggin in"
+            "value" : "Logging in"
           }
         }
       }
@@ -381,7 +381,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enable Haptic Feedbacks"
+            "value" : "Enable Haptic Feedback"
           }
         }
       }
@@ -391,7 +391,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enable haptic feedback on certain screens."
+            "value" : "Enable Haptic Feedback on certain screens."
           }
         }
       }
@@ -518,7 +518,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Loading.."
+            "value" : "Loading…"
           }
         }
       }
@@ -903,7 +903,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work on the %2$@ line in %1$@ is expected to be completed today. Visit the %3$@ website for more informations."
+            "value" : "Work on the %2$@ line in %1$@ is expected to be completed today. Visit the %3$@ website for more information."
           }
         },
         "it" : {
@@ -920,7 +920,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work on the %2$@ lines in %1$@ is expected to be completed today. Visit the %3$@ website for more informations."
+            "value" : "Work on the %2$@ lines in %1$@ is expected to be completed today. Visit the %3$@ website for more information."
           }
         },
         "it" : {
@@ -937,7 +937,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work on the %2$@ line in %1$@ is expected to be completed today. Visit the %3$@ website for more informations."
+            "value" : "Work on the %2$@ line in %1$@ is expected to be completed today. Visit the %3$@ website for more information."
           }
         },
         "it" : {
@@ -954,7 +954,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work on the %2$@ lines in %1$@ is expected to be completed today. Visit the %3$@ website for more informations."
+            "value" : "Work on the %2$@ lines in %1$@ is expected to be completed today. Visit the %3$@ website for more information."
           }
         },
         "it" : {
@@ -1191,7 +1191,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Informations"
+            "value" : "Information"
           }
         }
       }
@@ -1758,7 +1758,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buongiorno,\\nVorrei richiedere l'invio dei miei dati in formato %1$@ dell'Account con mail:%2$@\\nMessaggio inviato dall'App LavoraMi."
+            "value" : "Buongiorno,\\nVorrei richiedere l'invio dei miei dati in formato %1$@ dell'Account con mail: %2$@\\nMessaggio inviato dall'App LavoraMi."
           }
         }
       }
@@ -2273,7 +2273,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Here you can manage your account and your informations."
+            "value" : "Here you can manage your Account and your information."
           }
         }
       }
@@ -2383,7 +2383,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Request Datas"
+            "value" : "Request Data"
           }
         }
       }
@@ -2403,7 +2403,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Request your Datas"
+            "value" : "Request your Data"
           }
         }
       }
@@ -2889,7 +2889,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tems"
+            "value" : "Terms"
           }
         }
       }
@@ -2899,7 +2899,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Terms of services"
+            "value" : "Terms of Services"
           }
         }
       }
@@ -3091,7 +3091,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Domani iniziano i lavori in %1$@ per la linea %2$@ Consulta il sito di %3$@ per maggiori info."
+            "value" : "Domani iniziano i lavori in %1$@ per la linea %2$@. Consulta il sito di %3$@ per maggiori info."
           }
         }
       }
@@ -3102,13 +3102,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work on Lines %2$@ begins tomorrow on %1$@. Visit the%3$@ website for more information."
+            "value" : "Work on Lines %2$@ begins tomorrow on %1$@. Visit the %3$@ website for more information."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Domani iniziano i lavori in %1$@ per le linee %2$@ Consulta il sito di %3$@ per maggiori info."
+            "value" : "Domani iniziano i lavori in %1$@ per le linee %2$@. Consulta il sito di %3$@ per maggiori info."
           }
         }
       }
@@ -3119,13 +3119,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work on Line %2$@ begins tomorrow on %1$@. Visit the%3$@ website for more information."
+            "value" : "Work on Line %2$@ begins tomorrow on %1$@. Visit the %3$@ website for more information."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Domani iniziano i lavori a %1$@ per la linea %2$@ Consulta il sito di %3$@ per maggiori info."
+            "value" : "Domani iniziano i lavori a %1$@ per la linea %2$@. Consulta il sito di %3$@ per maggiori info."
           }
         }
       }
@@ -3136,13 +3136,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work on Lines %2$@ begins tomorrow on %1$@. Visit the%3$@ website for more information."
+            "value" : "Work on Lines %2$@ begins tomorrow on %1$@. Visit the %3$@ website for more information."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Domani iniziano i lavori a %1$@ per le linee %2$@ Consulta il sito di %3$@ per maggiori info."
+            "value" : "Domani iniziano i lavori a %1$@ per le linee %2$@. Consulta il sito di %3$@ per maggiori info."
           }
         }
       }
