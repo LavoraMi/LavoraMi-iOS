@@ -1455,6 +1455,16 @@
         }
       }
     },
+    "Librerie Open-Source" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open-Source Libraries"
+          }
+        }
+      }
+    },
     "Licenza:" : {
       "localizations" : {
         "en" : {
@@ -1920,7 +1930,7 @@
         }
       }
     },
-    "Nessun lavoro trovato per: \"%@\"" : {
+    "Nessun lavoro trovato per: \"%@\"." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2441,16 +2451,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Richiesta dei miei Dati"
-          }
-        }
-      }
-    },
-    "Riconoscimenti" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Credits"
           }
         }
       }

@@ -2641,7 +2641,7 @@ struct InfoView: View {
                     .padding(.top, 5)
                     .padding(.bottom, 20)
                     NavigationLink(destination: LibrariesView()) {
-                        Label("Riconoscimenti", systemImage: "person.3.fill")
+                        Label("Librerie Open-Source", systemImage: "books.vertical.fill")
                             .font(.system(size: 20))
                     }
                     .padding(.top, 5)
@@ -3324,7 +3324,7 @@ struct LibrariesView: View {
                 }
             }
         }
-        .navigationTitle("Riconoscimenti")
+        .navigationTitle("Librerie Open-Source")
     }
 }
 
