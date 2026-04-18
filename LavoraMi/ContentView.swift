@@ -745,9 +745,21 @@ struct MainView: View {
                                 .offset(y: -50)
                             } else {
                                 VStack(spacing: 12) {
-                                    if filteredItems.isEmpty {
+                                    if filteredItems.isEmpty && searchInput.isEmpty {
                                         Text("Nessun lavoro trovato per questo filtro.")
-                                    } else {
+                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                            .containerRelativeFrame(.vertical)
+                                            .multilineTextAlignment(.center)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    else if filteredItems.isEmpty && !searchInput.isEmpty {
+                                        Text("Nessun lavoro trovato per: \"\(searchInput)\".")
+                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                            .containerRelativeFrame(.vertical)
+                                            .multilineTextAlignment(.center)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    else {
                                         ForEach(filteredItems) { item in
                                             if item.progress != 1 {
                                                 WorkInProgressRow(item: item)
@@ -768,7 +780,7 @@ struct MainView: View {
                 }
             }
             .onAppear(){
-                if(!alreadyRefreshed){
+                if(!alreadyRefreshed) {
                     viewModel.fetchWorks()
                     viewModel.fetchVariables()
                     viewModel.fetchRequirements {

@@ -1920,6 +1920,16 @@
         }
       }
     },
+    "Nessun lavoro trovato per: \"%@\"" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No works found for: “%@”"
+          }
+        }
+      }
+    },
     "Nessun risultato per: \"%@\"." : {
       "localizations" : {
         "en" : {
