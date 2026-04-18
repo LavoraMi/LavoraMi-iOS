@@ -3022,7 +3022,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Firebase",
-            version: "12.12.0",
+            version: "12.12.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -3035,7 +3035,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAdsOnDeviceConversion",
-            version: "3.4.2",
+            version: "3.5.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2023 Google LLC",
             licenseText: """
@@ -3048,7 +3048,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAppMeasurement",
-            version: "12.11.0",
+            version: "12.12.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -4830,7 +4830,7 @@ struct InfoAccessibilityView: View {
                                 Image(systemName: "figure.roll")
                                     .font(.system(size: 80))
                                     .foregroundColor(.red)
-                                    .padding(.top, 50)
+                                    .padding(.top, 40)
                             }
 
                             Text("Informazioni sull'Accessibilità")
@@ -4840,6 +4840,11 @@ struct InfoAccessibilityView: View {
 
                             Text("LavoraMi mostra l'accessibilità di una linea in base agli impianti nelle stazioni ed alla tipologia di mezzo utilizzato.")
                                 .font(.headline)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                            
+                            Text("LavoraMi prende queste informazioni da fonti autorevoli e affidabili, i dati potrebbero non essere aggiornati all'ultimo minuto.")
+                                .font(.caption2)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
 
@@ -4884,7 +4889,7 @@ struct InfoAccessibilityView: View {
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundColor(.secondary)
-                            .padding(8)
+                            .padding(4)
                             .clipShape(Circle())
                     }
                 }

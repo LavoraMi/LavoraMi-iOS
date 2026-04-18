@@ -1374,6 +1374,16 @@
         }
       }
     },
+    "LavoraMi prende queste informazioni da fonti autorevoli e affidabili, i dati potrebbero non essere aggiornati all'ultimo minuto." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LavoraMi obtains this information from authoritative and reliable sources. However, the data may not be up to date."
+          }
+        }
+      }
+    },
     "Lavori della settimana..." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1481,13 +1491,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fully accessible line."
+            "value" : "Fully accessible."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Linea completamente accessibile."
+            "value" : "Completamente accessibile."
           }
         }
       }
@@ -1498,13 +1508,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Not accessible line."
+            "value" : "Not accessible."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Linea non accessibile."
+            "value" : "Non accessibile."
           }
         }
       }
@@ -1515,13 +1525,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Partially accessible line."
+            "value" : "Partially accessible."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Linea parzialmente accessibile."
+            "value" : "Parzialmente accessibile."
           }
         }
       }
