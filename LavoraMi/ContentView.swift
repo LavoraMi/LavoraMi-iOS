@@ -72,8 +72,7 @@ struct ContentView: View {
         .tint(.red)
         .onChange(of: selectedTab) {
             if(feedbacksEnabled){
-                let generator = UIImpactFeedbackGenerator(style: .light)
-                generator.impactOccurred()
+                HapticManager.shared.trigger()
             }
         }
         .sheet(isPresented: $showSetupScreen){
@@ -347,7 +346,7 @@ struct SetupPageView: View {
 
     var body: some View {
         VStack(spacing: 30) {
-            if #available(iOS 18.0, *), enableAnimations{
+            if #available(iOS 18.0, *), enableAnimations {
                 if(page.standardImage != "1") {
                     Image(systemName: (startImageTransition) ? page.standardImage : page.transitionImage)
                         .font(.system(size: 80))
@@ -656,8 +655,7 @@ struct MainView: View {
                         Button(action: {
                             withAnimation(.snappy){
                                 if(feedbacksEnabled){
-                                    let generator = UIImpactFeedbackGenerator(style: .light)
-                                    generator.impactOccurred()
+                                    HapticManager.shared.trigger()
                                 }
                                 selectedFilter = filter
                             }
@@ -1134,8 +1132,7 @@ struct SettingsView: View{
                             Spacer()
                             Button(action: {
                                 if(feedbacksEnabled){
-                                    let generator = UIImpactFeedbackGenerator(style: .light)
-                                    generator.impactOccurred()
+                                    HapticManager.shared.trigger()
                                 }
                                 
                                 
@@ -1164,8 +1161,7 @@ struct SettingsView: View{
                             Spacer()
                             Button(action: {
                                 if(feedbacksEnabled){
-                                    let generator = UIImpactFeedbackGenerator(style: .light)
-                                    generator.impactOccurred()
+                                    HapticManager.shared.trigger()
                                 }
                                 
                                 if linesFavorites.contains("R") {
@@ -1193,8 +1189,7 @@ struct SettingsView: View{
                             Spacer()
                             Button(action: {
                                 if(feedbacksEnabled){
-                                    let generator = UIImpactFeedbackGenerator(style: .light)
-                                    generator.impactOccurred()
+                                    HapticManager.shared.trigger()
                                 }
                                 
                                 if linesFavorites.contains("RE") {
@@ -1216,8 +1211,7 @@ struct SettingsView: View{
                     }
                     .onChange(of: expandedTrenord) {
                         if(feedbacksEnabled){
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            HapticManager.shared.trigger()
                         }
                     }
                     DisclosureGroup(isExpanded: $expandedATM){
@@ -1226,8 +1220,7 @@ struct SettingsView: View{
                             Spacer()
                             Button(action: {
                                 if(feedbacksEnabled){
-                                    let generator = UIImpactFeedbackGenerator(style: .light)
-                                    generator.impactOccurred()
+                                    HapticManager.shared.trigger()
                                 }
                                 
                                 if linesFavorites.contains("Metro") {
@@ -1248,8 +1241,7 @@ struct SettingsView: View{
                             Spacer()
                             Button(action: {
                                 if(feedbacksEnabled){
-                                    let generator = UIImpactFeedbackGenerator(style: .light)
-                                    generator.impactOccurred()
+                                    HapticManager.shared.trigger()
                                 }
                                 
                                 if linesFavorites.contains("Tram") {
@@ -1270,8 +1262,7 @@ struct SettingsView: View{
                             Spacer()
                             Button(action: {
                                 if(feedbacksEnabled){
-                                    let generator = UIImpactFeedbackGenerator(style: .light)
-                                    generator.impactOccurred()
+                                    HapticManager.shared.trigger()
                                 }
                                 
                                 if linesFavorites.contains("Bus") {
@@ -1294,8 +1285,7 @@ struct SettingsView: View{
                     }
                     .onChange(of: expandedATM) {
                         if(feedbacksEnabled){
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            HapticManager.shared.trigger()
                         }
                     }
                     HStack{
@@ -1303,8 +1293,7 @@ struct SettingsView: View{
                         Spacer()
                         Button(action: {
                             if(feedbacksEnabled){
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                HapticManager.shared.trigger()
                             }
                             
                             if linesFavorites.contains("z6") {
@@ -1325,8 +1314,7 @@ struct SettingsView: View{
                         Spacer()
                         Button(action: {
                             if(feedbacksEnabled){
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                HapticManager.shared.trigger()
                             }
                             
                             if linesFavorites.contains("z5") {
@@ -1346,8 +1334,7 @@ struct SettingsView: View{
                         Spacer()
                         Button(action: {
                             if(feedbacksEnabled){
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                HapticManager.shared.trigger()
                             }
                             
                             if linesFavorites.contains("Autoguidovie") {
@@ -1379,8 +1366,7 @@ struct SettingsView: View{
                     .pickerStyle(.navigationLink)
                     .onChange(of: preferredFilter) {
                         if(feedbacksEnabled){
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            HapticManager.shared.trigger()
                         }
                     }
                     NavigationLink(destination: AppearancePickerView()) {
@@ -1403,8 +1389,7 @@ struct SettingsView: View{
                         Button(action: {
                             showBuildNumber = !showBuildNumber
                             if(feedbacksEnabled){
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                HapticManager.shared.trigger()
                             }
                         }){
                             Label {
@@ -1427,8 +1412,7 @@ struct SettingsView: View{
                         Task {@MainActor in
                             requestReview()
                             if(feedbacksEnabled){
-                                let generator = UIImpactFeedbackGenerator(style: .light)
-                                generator.impactOccurred()
+                                HapticManager.shared.trigger()
                             }
                         }
                     }){
@@ -1443,8 +1427,7 @@ struct SettingsView: View{
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
                     Button(role: .destructive) {
                         if(feedbacksEnabled){
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            HapticManager.shared.trigger()
                         }
                         presentedAlertReset = true
                     } label: {
@@ -2261,8 +2244,7 @@ struct AdvancedOptionsView: View {
             Section(footer: Text("Elimina la memoria Cache dal dispositivo, liberando spazio su disco.")){
                 Button(role: .destructive) {
                     if(feedbacksEnabled){
-                        let generator = UIImpactFeedbackGenerator(style: .light)
-                        generator.impactOccurred()
+                        HapticManager.shared.trigger()
                     }
                     presentedCacheAlert = true
                 } label: {
@@ -4310,8 +4292,7 @@ struct LineDetailView: View {
                 HStack(spacing: 8) {
                     Button(action: {
                         if(feedbacksEnabled){
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            HapticManager.shared.trigger()
                         }
                         withAnimation(.snappy) { selectedTab = .map }
                     }) {
@@ -4335,8 +4316,7 @@ struct LineDetailView: View {
 
                     Button(action: {
                         if(feedbacksEnabled){
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            HapticManager.shared.trigger()
                         }
                         withAnimation(.snappy) { selectedTab = .works }
                     }) {
@@ -4359,8 +4339,7 @@ struct LineDetailView: View {
                     }
                     Button(action: {
                         if(feedbacksEnabled){
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            HapticManager.shared.trigger()
                         }
                         withAnimation(.snappy) { selectedTab = .interchanges }
                     }) {
@@ -4752,8 +4731,7 @@ struct LineSmallDetailedView: View {
                 HStack(spacing: 8) {
                     Button(action: {
                         if(feedbacksEnabled){
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            HapticManager.shared.trigger()
                         }
                         
                     }) {
@@ -5341,17 +5319,21 @@ extension Bundle {
     }
 }
 
-extension URL: @retroactive Identifiable {
-    public var id: String { absoluteString }
-}
+extension URL: @retroactive Identifiable { public var id: String { absoluteString }}
 
 extension Date: @retroactive RawRepresentable {
+    private static let isoFormatter = ISO8601DateFormatter()
+
     public var rawValue: String {
-        ISO8601DateFormatter().string(from: self)
+        Date.isoFormatter.string(from: self)
     }
 
     public init?(rawValue: String) {
-        self = ISO8601DateFormatter().date(from: rawValue) ?? Date()
+        if let date = Date.isoFormatter.date(from: rawValue) {
+            self = date
+        } else {
+            self = Date()
+        }
     }
 }
 
@@ -5367,8 +5349,17 @@ struct SafariView: UIViewControllerRepresentable {
         return safariVC
     }
 
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
-    }
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {}
+}
+
+struct HapticManager {
+    static let shared = HapticManager()
+    private let generator = UIImpactFeedbackGenerator(style: .light)
+        
+        func trigger() {
+            generator.prepare()
+            generator.impactOccurred()
+        }
 }
 
 #Preview{
