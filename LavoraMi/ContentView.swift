@@ -776,6 +776,11 @@ struct MainView: View {
                                 proxy.scrollTo("top", anchor: .top)
                             }
                         }
+                        .onChange(of: searchInput) { _, _ in
+                            withAnimation {
+                                proxy.scrollTo("top", anchor: .top)
+                            }
+                        }
                     }
                 }
             }
