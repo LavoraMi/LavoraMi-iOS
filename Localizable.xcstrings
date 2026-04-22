@@ -105,6 +105,9 @@
         }
       }
     },
+    "%lld min" : {
+
+    },
     "👋 Ciao %@" : {
       "localizations" : {
         "en" : {
@@ -346,6 +349,9 @@
         }
       }
     },
+    "Arrivi" : {
+
+    },
     "Aspetto" : {
       "localizations" : {
         "en" : {
@@ -512,6 +518,9 @@
           }
         }
       }
+    },
+    "Caricamento orari..." : {
+
     },
     "Caricamento..." : {
       "localizations" : {
@@ -780,6 +789,9 @@
         }
       }
     },
+    "DIREZIONE: %@" : {
+
+    },
     "DIREZIONI:" : {
       "localizations" : {
         "en" : {
@@ -839,6 +851,9 @@
           }
         }
       }
+    },
+    "Errore" : {
+
     },
     "Esci" : {
       "localizations" : {
@@ -1115,6 +1130,9 @@
         }
       }
     },
+    "Il bus può fare un ritardo dai 3 ai 5 minuti, questo è l'orario programmato." : {
+
+    },
     "Il tuo Account" : {
       "localizations" : {
         "en" : {
@@ -1185,6 +1203,9 @@
           }
         }
       }
+    },
+    "In partenza" : {
+
     },
     "Informazioni" : {
       "localizations" : {
@@ -1950,6 +1971,12 @@
         }
       }
     },
+    "Nessuna corsa" : {
+
+    },
+    "Nessuna corsa prevista per oggi" : {
+
+    },
     "Nessuna fermata di interscambio." : {
       "localizations" : {
         "en" : {
@@ -1990,6 +2017,9 @@
           }
         }
       }
+    },
+    "Non ci sono corse disponibili per questa fermata oggi." : {
+
     },
     "Non ci sono lavori su questa linea." : {
       "localizations" : {
@@ -2752,6 +2782,9 @@
           }
         }
       }
+    },
+    "Seleziona una fermata" : {
+
     },
     "Seleziona una linea da poter mostrare nel Widget per tenerla sempre sott'occhio." : {
       "localizations" : {

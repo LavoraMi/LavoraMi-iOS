@@ -18,6 +18,7 @@ internal import Auth
 import FirebaseMessaging
 import Translation
 import StoreKit
+import Combine
 
 struct WorkItem: Identifiable, Hashable, Codable {
     var id = UUID()
@@ -725,6 +726,8 @@ struct MainView: View {
                                         .font(.title2)
                                     Text("Controlla la tua connessione e riprova.").font(.title3).foregroundColor(.gray)
                                     Button(action: {
+                                        viewModel.fetchRequirements()
+                                        viewModel.fetchVariables()
                                         viewModel.fetchWorks()
                                     })
                                     {
@@ -4534,17 +4537,34 @@ struct LineSmallDetailedView: View {
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
-    
+
     let lineName: String
     let typeOfTransport: String
     let branches: String
     let waitMinutes: String
-    
+
     let workScheduled: Int
     let workNow: Int
     let accessibilityStatus: String
     let viewModel: WorkViewModel
+    let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
+
+    private enum LineSmallTab { case works, arrivi }
+    @State private var selectedTab: LineSmallTab = .works
     
+    private var cdnURL: URL? {
+        let upper = lineName.uppercased()
+        return URL(string: "https://cdn.lavorami.it/gtfs/\(upper).json")
+    }
+    
+    @State private var routeData: GTFSRoute? = nil
+    @State private var isLoading = false
+    @State private var errorMessage: String? = nil
+    @State private var selectedStopId: String? = nil
+    @State private var currentTime = Date()
+    @State private var isStartingAnimation = false
+    @State private var opacity: Double = 1.0
+
     let interchanges: [InterchangeStation] = [
         .init(key: "Molino Dorino", displayName: "Molino Dorino MM", lines: ["M1", "z601", "z606", "z617", "z620", "z621", "z648", "z649"], typeOfInterchange: "tram.fill.tunnel"),
         .init(key: "Cadorna FN", displayName: "Milano Cadorna FN", lines: ["M1", "M2", "MXP", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4"], typeOfInterchange: "tram.fill.tunnel"),
@@ -4571,14 +4591,15 @@ struct LineSmallDetailedView: View {
         .init(key: "Seregno", displayName: "Seregno FS", lines: ["RE80", "S9", "S11", "z231", "z232", "z233", "z242"], typeOfInterchange: "train.side.front.car"),
         .init(key: "Desio FS", displayName: "Desio FS", lines: ["RE80", "S9", "S11", "z250", "z251"], typeOfInterchange: "train.side.front.car")
     ]
-    
+
     var activeInterchange: InterchangeStation? {
         interchanges.first { branches.contains($0.key) }
     }
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
+                // MARK: - Header
                 VStack(alignment: .leading, spacing: 20) {
                     HStack(spacing: 12) {
                         Text(lineName)
@@ -4590,114 +4611,101 @@ struct LineSmallDetailedView: View {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
                             )
-                        
+
                         Text("\(typeOfTransport) \(lineName)")
                             .font(.system(size: 30))
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)
-                        
+
                         Spacer()
+
                         Button(action: {
-                            if(selectedWidgetLine == lineName) {
+                            if selectedWidgetLine == lineName {
                                 selectedWidgetLine = ""
                                 DataManager.shared.deleteSavedLine()
-                            }
-                            else {
-                                DataManager.shared.setSavedLine(SavedLine(id: lineName, name: lineName, longName: typeOfTransport, iconTransport: getCurrentTransportIcon(for: typeOfTransport), worksNow: workNow, worksScheduled: workScheduled))
+                            } else {
+                                DataManager.shared.setSavedLine(SavedLine(
+                                    id: lineName, name: lineName, longName: typeOfTransport,
+                                    iconTransport: getCurrentTransportIcon(for: typeOfTransport),
+                                    worksNow: workNow, worksScheduled: workScheduled
+                                ))
                                 selectedWidgetLine = lineName
                                 openPopUpWidget = true
                             }
-                        }){
+                        }) {
                             Image(systemName: (selectedWidgetLine == lineName) ? "widget.small" : "widget.small.badge.plus")
                                 .foregroundStyle((selectedWidgetLine == lineName) ? .yellow : .gray)
                                 .scaleEffect(1.5)
                         }
                         .alert("Linea attivata", isPresented: $openPopUpWidget) {
-                            Button("OK", role: .cancel){}
+                            Button("OK", role: .cancel) {}
                         } message: {
                             Text("Linea impostata per essere vista sul Widget dell'app!")
                         }
                     }
-                    if(!accessibilityStatus.isEmpty) {
-                        VStack(alignment: .leading, spacing: 5) {
-                            HStack{
-                                Image(systemName: "figure.roll")
-                                    .foregroundStyle(.gray)
-                                    .scaleEffect(1.5)
-                                Image(systemName: (accessibilityStatus == String(localized: .lineaAccessibile) ? "checkmark.circle.fill" : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? "exclamationmark.circle.fill" : "xmark.circle.fill")))
-                                    .foregroundStyle(accessibilityStatus == String(localized: .lineaAccessibile) ? .green : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? .yellow : .red))
-                                    .scaleEffect(1.5)
-                                    .padding(.leading, 5)
-                                Text(accessibilityStatus)
-                                    .foregroundColor(.secondary)
-                                    .padding(.leading, 5)
-                                Spacer()
-                                Button(action: {
-                                    openInfoAccessibility = true;
-                                }) {
-                                    Image(systemName: "info.circle.fill")
-                                        .foregroundColor(.gray)
-                                }
+
+                    if !accessibilityStatus.isEmpty {
+                        HStack {
+                            Image(systemName: "figure.roll")
+                                .foregroundStyle(.gray)
+                                .scaleEffect(1.5)
+                            Image(systemName: accessibilityStatus == String(localized: .lineaAccessibile)
+                                ? "checkmark.circle.fill"
+                                : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile)
+                                    ? "exclamationmark.circle.fill"
+                                    : "xmark.circle.fill"))
+                                .foregroundStyle(accessibilityStatus == String(localized: .lineaAccessibile)
+                                    ? .green
+                                    : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? .yellow : .red))
+                                .scaleEffect(1.5)
+                                .padding(.leading, 5)
+                            Text(accessibilityStatus)
+                                .foregroundColor(.secondary)
+                                .padding(.leading, 5)
+                            Spacer()
+                            Button(action: { openInfoAccessibility = true }) {
+                                Image(systemName: "info.circle.fill").foregroundColor(.gray)
                             }
                         }
                     }
+
                     Divider()
+
                     VStack(alignment: .leading, spacing: 5) {
                         Text("DIREZIONI:")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .bold()
-                        
+                            .font(.caption).foregroundStyle(.secondary).bold()
                         Text(branches)
-                            .font(.title3)
-                            .multilineTextAlignment(.leading)
-                        
-                        if(viewModel.linesDeviated.contains(lineName)){
+                            .font(.title3).multilineTextAlignment(.leading)
+
+                        if viewModel.linesDeviated.contains(lineName) {
                             HStack {
                                 Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
-                                    .font(.system(size: 12))
-                                    .foregroundStyle(.secondary)
-                                    .bold()
+                                    .font(.system(size: 12)).foregroundStyle(.secondary).bold()
                                 Button(action: {
                                     let url = getLineDeviationLink(line: lineName, viewModel: viewModel)
-                                    
-                                    if(howToOpenLinks == .inApp) {
-                                        selectedURL = url
-                                    }
-                                    else {
-                                        openURLAction(url)
-                                    }
+                                    if howToOpenLinks == .inApp { selectedURL = url }
+                                    else { openURLAction(url) }
                                 }) {
-                                    Image(systemName: "info.circle.fill")
-                                        .foregroundColor(.gray)
+                                    Image(systemName: "info.circle.fill").foregroundColor(.gray)
                                 }
                             }
                         }
                     }
-                    
-                    if(!waitMinutes.isEmpty){
+
+                    if !waitMinutes.isEmpty {
                         VStack(alignment: .leading, spacing: 5) {
                             Text("TEMPO DI ATTESA MEDIO:")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                .bold()
-                            
+                                .font(.caption).foregroundStyle(.secondary).bold()
                             Text(waitMinutes)
-                                .font(.title3)
-                                .multilineTextAlignment(.leading)
+                                .font(.title3).multilineTextAlignment(.leading)
                         }
-                    }
-                    else {
+                    } else {
                         VStack(alignment: .leading, spacing: 5) {
                             Text("FERMATA DI INTERSCAMBIO:")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                .bold()
+                                .font(.caption).foregroundStyle(.secondary).bold()
                             if let station = activeInterchange {
                                 Label(station.displayName, systemImage: station.typeOfInterchange)
-                                    .font(.title3)
-                                    .multilineTextAlignment(.leading)
-
+                                    .font(.title3).multilineTextAlignment(.leading)
                                 ScrollView(.horizontal, showsIndicators: false) {
                                     HStack {
                                         ForEach(station.lines, id: \.self) { line in
@@ -4706,34 +4714,28 @@ struct LineSmallDetailedView: View {
                                     }
                                 }
                             } else {
-                                Text("Nessuna fermata di interscambio.")
-                                    .foregroundColor(.secondary)
+                                Text("Nessuna fermata di interscambio.").foregroundColor(.secondary)
                             }
                         }
                     }
-                    
+
                     VStack(alignment: .leading, spacing: 5) {
                         Text("LAVORI SULLA LINEA:")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .bold()
-                        
+                            .font(.caption).foregroundStyle(.secondary).bold()
                         Text("\(workNow) attuali, \(workScheduled) programmati.")
-                            .font(.title3)
-                            .multilineTextAlignment(.leading)
+                            .font(.title3).multilineTextAlignment(.leading)
                     }
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .frame(maxHeight: .infinity)
                 .padding(.top, 20)
                 .background(Color(uiColor: .systemBackground))
+
+                // MARK: - Tab Bar
                 HStack(spacing: 8) {
                     Button(action: {
-                        if(feedbacksEnabled){
-                            HapticManager.shared.trigger()
-                        }
-                        
+                        if feedbacksEnabled { HapticManager.shared.trigger() }
+                        withAnimation(.snappy) { selectedTab = .works }
                     }) {
                         Text("Lavori linea")
                             .font(.subheadline)
@@ -4742,49 +4744,275 @@ struct LineSmallDetailedView: View {
                             .padding(.horizontal, 16)
                             .frame(maxWidth: .infinity)
                             .background(
-                                Capsule()
-                                    .fill((waitMinutes.isEmpty) ? (lineName.contains("P") ? getColor(for: lineName) : Color(red: 28/255, green: 28/255, blue: 1)) : .orange)
-                            )
-                            .foregroundStyle((waitMinutes.isEmpty) ? .white : Color(.systemBackground))
-                    }
-                    .buttonStyle(.plain)
-                    .padding(.horizontal)
-                    .padding(.bottom, 8)
-                    .padding(.top, 10)
-                }
-                VStack {
-                    ScrollView {
-                        let currentWorks = getCurrentWorks(line: lineName, viewModel: viewModel)
-                        if currentWorks.count > 0 {
-                            LazyVStack(spacing: 12) {
-                                ForEach(currentWorks) { work in
-                                    let item = WorkItem(title: work.title, titleIcon: work.titleIcon, typeOfTransport: work.typeOfTransport, roads: work.roads, lines: work.lines, startDate: work.startDate, endDate: work.endDate, details: work.details, company: work.company)
-                                    WorkInProgressRow(item: item)
-                                        .padding(.horizontal)
+                                ZStack {
+                                    if selectedTab == .works {
+                                        Capsule().fill(getColor(for: lineName))
+                                    } else {
+                                        Capsule().stroke(Color.secondary, lineWidth: 1)
+                                    }
                                 }
-                            }
-                            .padding(.vertical, 8)
-                        } else {
-                            Text("Non ci sono lavori su questa linea.")
-                                .padding()
-                                .bold()
-                                .font(.system(size: 15))
+                            )
+                            .foregroundStyle(selectedTab == .works ? .white : .primary)
+                    }
+
+                    if(viewModel.linesSupportedGTFS.contains(lineName)) {
+                        Button(action: {
+                            if feedbacksEnabled { HapticManager.shared.trigger() }
+                            withAnimation(.snappy) { selectedTab = .arrivi }
+                        }) {
+                            Text("Arrivi")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 16)
+                                .frame(maxWidth: .infinity)
+                                .background(
+                                    ZStack {
+                                        if selectedTab == .arrivi {
+                                            Capsule().fill(getColor(for: lineName))
+                                        } else {
+                                            Capsule().stroke(Color.secondary, lineWidth: 1)
+                                        }
+                                    }
+                                )
+                                .foregroundStyle(selectedTab == .arrivi ? .white : .primary)
                         }
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .frame(maxHeight: .infinity)
-                .padding(.bottom, 10)
+                .padding(.horizontal)
+                .padding(.bottom, 8)
+
+                // MARK: - Tab Content
+                if selectedTab == .works {
+                    VStack {
+                        ScrollView {
+                            let currentWorks = getCurrentWorks(line: lineName, viewModel: viewModel)
+                            if currentWorks.count > 0 {
+                                LazyVStack(spacing: 12) {
+                                    ForEach(currentWorks) { work in
+                                        WorkInProgressRow(item: WorkItem(
+                                            title: work.title, titleIcon: work.titleIcon,
+                                            typeOfTransport: work.typeOfTransport, roads: work.roads,
+                                            lines: work.lines, startDate: work.startDate,
+                                            endDate: work.endDate, details: work.details,
+                                            company: work.company
+                                        ))
+                                        .padding(.horizontal)
+                                    }
+                                }
+                                .padding(.vertical, 8)
+                            } else {
+                                Text("Non ci sono lavori su questa linea.")
+                                    .padding().bold().font(.system(size: 15))
+                            }
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(maxHeight: .infinity)
+                    .padding(.bottom, 10)
+                } else if selectedTab == .arrivi {
+                    VStack(spacing: 0) {
+                        if isLoading {
+                            Spacer()
+                            ProgressView("Caricamento orari...")
+                                .controlSize(.large)
+                            Spacer()
+                        } else if let route = routeData {
+                            VStack(spacing: 0) {
+                                HStack(spacing: 10) {
+                                    Image(systemName: "location.fill")
+                                        .foregroundStyle(.white)
+                                        .font(.title2)
+
+                                    Menu {
+                                        ForEach(sortedStops(route: route), id: \.id) { stop in
+                                            Button(stop.name) {
+                                                selectedStopId = stop.id
+                                            }
+                                        }
+                                    } label: {
+                                        HStack {
+                                            Text(selectedStopId.flatMap { route.stops[$0]?.n } ?? "Scegli una fermata...")
+                                                .font(.subheadline)
+                                                .fontWeight(.medium)
+                                                .foregroundStyle(.white)
+                                                .lineLimit(1)
+                                            Spacer()
+                                            Image(systemName: "chevron.down")
+                                                .font(.caption)
+                                        }
+                                        .padding(.horizontal, 14)
+                                        .padding(.vertical, 10)
+                                        .background(Color(.secondarySystemBackground))
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    }
+                                }
+                                .padding(.horizontal)
+                                .padding(.vertical, 12)
+                                .background(Color(.systemBackground))
+
+                                Divider()
+                            }
+                            if let stopId = selectedStopId, let departuresByDir = GTFSHelper.getDepartures(for: stopId, in: route, limit: 3) {
+                                ScrollView {
+                                    VStack(spacing: 14) {
+                                        ForEach(Array(departuresByDir.keys).sorted(), id: \.self) { dirId in
+                                            let departures = departuresByDir[dirId] ?? []
+                                            let headsign = departures.first?.headsign ?? "Direzione \(dirId)"
+
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                HStack(spacing: 6) {
+                                                    Image(systemName: "arrow.forward")
+                                                        .font(.caption)
+                                                        .foregroundStyle(.secondary)
+                                                    Text("DIREZIONE: \(headsign.uppercased())")
+                                                        .font(.caption)
+                                                        .fontWeight(.semibold)
+                                                        .foregroundStyle(.secondary)
+                                                }
+                                                .padding(.horizontal, 16)
+                                                .padding(.vertical, 10)
+
+                                                if departures.isEmpty {
+                                                    Text("Nessuna corsa prevista per oggi")
+                                                        .font(.caption)
+                                                        .foregroundStyle(.secondary)
+                                                        .padding(.horizontal, 16)
+                                                        .padding(.bottom, 12)
+                                                } else {
+                                                    let first = departures[0]
+                                                    let rest = Array(departures.dropFirst().prefix(3))
+                                                    
+                                                    VStack(alignment: .leading, spacing: 12) {
+                                                        HStack(alignment: .center, spacing: 10) {
+                                                            Image(systemName: "clock.fill")
+                                                                .foregroundStyle((first.minutesFromNow < 10) ? ((first.minutesFromNow < 5) ? ((first.minutesFromNow == 0) ? .yellow : .red) : .orange) : .green)
+                                                                .font(.system(size: 18))
+
+                                                            Text(first.minutesFromNow == 0 ? "In partenza" : "\(first.minutesFromNow) min")
+                                                                .font(.system(size: 32, weight: .bold, design: .rounded))
+                                                                .foregroundStyle((first.minutesFromNow < 10) ? ((first.minutesFromNow < 5) ? ((first.minutesFromNow == 0) ? .yellow : .red) : .orange) : .green)
+
+                                                            Spacer()
+
+                                                            Text(first.time)
+                                                                .font(.system(size: 15, weight: .medium))
+                                                                .foregroundStyle(.secondary)
+                                                        }
+                                                        
+                                                        Text("Il bus può fare un ritardo dai 3 ai 5 minuti, questo è l'orario programmato.")
+                                                            .font(.system(size: 10, weight: .medium))
+                                                            .foregroundStyle(.secondary)
+
+                                                        if !rest.isEmpty {
+                                                            Divider()
+
+                                                            HStack(spacing: 16) {
+                                                                ForEach(rest) { dep in
+                                                                    HStack(spacing: 5) {
+                                                                        Image(systemName: "clock")
+                                                                            .font(.caption2)
+                                                                            .foregroundStyle(.secondary)
+                                                                        Text("\(dep.minutesFromNow) min")
+                                                                            .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                                                            .foregroundStyle(.primary)
+                                                                        Text(dep.time)
+                                                                            .font(.caption2)
+                                                                            .foregroundStyle(.secondary)
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    .padding(16)
+                                                    .background(Color(.secondarySystemBackground))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                    .padding(.horizontal, 16)
+                                                    .padding(.bottom, 4)
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .padding(.vertical, 12)
+                                    .padding(.bottom, 80)
+                                }
+
+                            } else if selectedStopId != nil {
+                                Spacer()
+                                ContentUnavailableView("Nessuna corsa", systemImage: "clock.badge.exclamationmark", description: Text("Non ci sono corse disponibili per questa fermata oggi."))
+                                Spacer()
+                            } else {
+                                Spacer()
+                                VStack(spacing: 10) {
+                                    Image(systemName: "mappin.and.ellipse")
+                                        .font(.system(size: 44))
+                                        .foregroundStyle(.secondary)
+                                    Text("Seleziona una fermata")
+                                        .font(.headline)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                            }
+
+                        } else if let error = errorMessage {
+                            Spacer()
+                            ContentUnavailableView("Errore", systemImage: "exclamationmark.triangle", description: Text(error))
+                            Spacer()
+                        }
+                    }
+                    .id(currentTime)
+                    .onReceive(timer) { newTime in
+                        currentTime = newTime
+                    }
+                }
             }
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)
             }
             .sheet(item: $selectedURL) { url in
-                SafariView(url: url)
-                    .ignoresSafeArea(.all)
+                SafariView(url: url).ignoresSafeArea(.all)
             }
+            .onAppear { if routeData == nil { loadData() } }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+    
+    private func sortedStops(route: GTFSRoute) -> [(id: String, name: String)] {
+        route.stops.map { ($0.key, $0.value.n) }.sorted { $0.name < $1.name }
+    }
+
+    private func loadData() {
+        guard let url = cdnURL else { return }
+        isLoading = true
+        Task {
+            do {
+                let route = try await GTFSHelper.load(from: url)
+                await MainActor.run {
+                    self.routeData = route
+                    self.isLoading = false
+                    if self.selectedStopId == nil {
+                        self.selectedStopId = sortedStops(route: route).first?.id
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    self.errorMessage = "Errore nel caricamento dati."
+                    self.isLoading = false
+                }
+            }
+        }
+    }
+    
+    private func startAnimation() {
+        withAnimation(.easeIn(duration: 0.15).delay(1.05)) {
+            opacity = 0.5
+        }
+        withAnimation(.easeIn(duration: 0.15).delay(1.35)) {
+            opacity = 1.0
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            startAnimation()
         }
     }
 }
