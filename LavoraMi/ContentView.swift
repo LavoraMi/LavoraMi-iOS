@@ -4011,11 +4011,12 @@ struct LinesView: View {
                     .edgesIgnoringSafeArea(.all)
             }
             .navigationTitle("Linee")
-            let allFiltered = [filteredMetros, filteredSuburban, filteredCrossBorders, filteredMalpensaExpress, filteredTrams, filteredMovibus, filteredSTAV, filteredAutoguidovie]
-
-            if allFiltered.allSatisfy({ $0.isEmpty }) {
-                Text("Nessun risultato per: \"\(searchInput)\".")
-                    .padding(.bottom, 120)
+            .overlay {
+                let allFiltered = [filteredMetros, filteredSuburban, filteredCrossBorders, filteredMalpensaExpress, filteredTrams, filteredMovibus, filteredSTAV, filteredAutoguidovie]
+                if allFiltered.allSatisfy({ $0.isEmpty }) {
+                    Text("Nessun risultato per: \"\(searchInput)\".")
+                        .foregroundStyle(.secondary)
+                }
             }
         }
     }
