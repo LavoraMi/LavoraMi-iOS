@@ -709,6 +709,35 @@ struct StationsDB {
         .init(name: "Precotto Interno Deposito", coordinate: .init(latitude: 45.51786, longitude: 9.2329), branch: "Main")
     ]
     
+    static let tram9: [MetroStation] = [
+        .init(name: "Stazione Centrale M2 M3", coordinate: .init(latitude: 45.48699, longitude: 9.20277), branch: "Main"),
+        .init(name: "Via Filzi Via Pirelli", coordinate: .init(latitude: 45.48431, longitude: 9.20018), branch: "Main"),
+        .init(name: "Via Filzi Via Adda", coordinate: .init(latitude: 45.48316, longitude: 9.19939), branch: "Main"),
+        .init(name: "P.Za S. Gioachimo", coordinate: .init(latitude: 45.48146, longitude: 9.19805), branch: "Main"),
+        .init(name: "V.Le Monte Santo", coordinate: .init(latitude: 45.47978, longitude: 9.19489), branch: "Main"),
+        .init(name: "Repubblica M3", coordinate: .init(latitude: 45.47788, longitude: 9.19775), branch: "Main"),
+        .init(name: "V.Le Vittorio Veneto", coordinate: .init(latitude: 45.47678, longitude: 9.20024), branch: "Main"),
+        .init(name: "Porta Venezia M1", coordinate: .init(latitude: 45.47418, longitude: 9.20594), branch: "Main"),
+        .init(name: "V.Le Piave", coordinate: .init(latitude: 45.47225, longitude: 9.20654), branch: "Main"),
+        .init(name: "Tricolore M4", coordinate: .init(latitude: 45.46831, longitude: 9.2069), branch: "Main"),
+        .init(name: "V.Le Premuda", coordinate: .init(latitude: 45.46545, longitude: 9.20717), branch: "Main"),
+        .init(name: "P.Za 5 Giornate", coordinate: .init(latitude: 45.46279, longitude: 9.20746), branch: "Main"),
+        .init(name: "V.Le Monte Nero Via Spartaco", coordinate: .init(latitude: 45.46, longitude: 9.20727), branch: "Main"),
+        .init(name: "V.Le Monte Nero Via Bergamo", coordinate: .init(latitude: 45.45741, longitude: 9.20542), branch: "Main"),
+        .init(name: "V.Le Monte Nero Via Pier Lombardo", coordinate: .init(latitude: 45.45535, longitude: 9.2043), branch: "Main"),
+        .init(name: "Porta Romana M3", coordinate: .init(latitude: 45.45139, longitude: 9.20241), branch: "Main"),
+        .init(name: "V.Le Sabotino", coordinate: .init(latitude: 45.45098, longitude: 9.20052), branch: "Main"),
+        .init(name: "Via Ripamonti V.Le Sabotino", coordinate: .init(latitude: 45.45102, longitude: 9.19707), branch: "Main"),
+        .init(name: "V.Le Bigny", coordinate: .init(latitude: 45.45098, longitude: 9.1944), branch: "Main"),
+        .init(name: "Via Bocconi", coordinate: .init(latitude: 45.45097, longitude: 9.19069), branch: "Main"),
+        .init(name: "P.Ta Lodovica", coordinate: .init(latitude: 45.45178, longitude: 9.18711), branch: "Main"),
+        .init(name: "V.Le Col Di Lana", coordinate: .init(latitude: 45.45213, longitude: 9.18346), branch: "Main"),
+        .init(name: "Piazza XXIV Maggio", coordinate: .init(latitude: 45.4524, longitude: 9.17969), branch: "Main"),
+        .init(name: "Via Vigevano V.Le Gorizia", coordinate: .init(latitude: 45.45272, longitude: 9.1763), branch: "Main"),
+        .init(name: "P.Le Cantore", coordinate: .init(latitude: 45.45491, longitude: 9.17225), branch: "Main"),
+        .init(name: "Porta Genova M2", coordinate: .init(latitude: 45.45341, longitude: 9.17002), branch: "Main")
+    ]
+    
     static let tram24: [MetroStation] = [
         .init(name: "Vigentino", coordinate: .init(latitude: 45.42196, longitude: 9.20354), branch: "Main"),
         .init(name: "Via Ripamonti Via Chopin", coordinate: .init(latitude: 45.42577, longitude: 9.20336), branch: "Main"),
@@ -728,6 +757,24 @@ struct StationsDB {
         .init(name: "Piazza Missori", coordinate: .init(latitude: 45.46092, longitude: 9.18993), branch: "Main"),
         .init(name: "Via Larga", coordinate: .init(latitude: 45.46237, longitude: 9.19372), branch: "Main"),
         .init(name: "Piazza Fontana", coordinate: .init(latitude: 45.46337, longitude: 9.19405), branch: "Main")
+    ]
+    
+    static let tram31: [MetroStation] = [
+        .init(name: "Bicocca M5", coordinate: .init(latitude: 45.51498, longitude: 9.2058), branch: "Main"),
+        .init(name: "V.Le Testi Via La Farina", coordinate: .init(latitude: 45.51612, longitude: 9.20643), branch: "Main"),
+        .init(name: "V.Le Testi Via S. Glicerio", coordinate: .init(latitude: 45.5189, longitude: 9.20802), branch: "Main"),
+        .init(name: "Ponale M5", coordinate: .init(latitude: 45.52224, longitude: 9.20991), branch: "Main"),
+        .init(name: "Bignami M5", coordinate: .init(latitude: 45.5258, longitude: 9.21192), branch: "Main"),
+        .init(name: "Parco Nord (Torretta)", coordinate: .init(latitude: 45.5258, longitude: 9.21192), branch: "Main"),
+        .init(name: "Parco Nord Clerici (Sesto S.G.)", coordinate: .init(latitude: 45.53379, longitude: 9.21564), branch: "Main"),
+        .init(name: "Parco Nord Ist. Tecnico (Cinisello B.)", coordinate: .init(latitude: 45.53763, longitude: 9.2178), branch: "Main"),
+        .init(name: "Parco Nord Osp. Bassini (Cinisello B.)", coordinate: .init(latitude: 45.54571, longitude: 9.21812), branch: "Main"),
+        .init(name: "Gorky Monfalcone (Cinisello B.)", coordinate: .init(latitude: 45.55119, longitude: 9.21771), branch: "Main"),
+        .init(name: "Libertà (Cinisello B.)", coordinate: .init(latitude: 45.55336, longitude: 9.21663), branch: "Main"),
+        .init(name: "Gramsci (Cinisello B.)", coordinate: .init(latitude: 45.55579, longitude: 9.21562), branch: "Main"),
+        .init(name: "Villa Ghirlanda (Cinisello B.)", coordinate: .init(latitude: 45.55802, longitude: 9.21467), branch: "Main"),
+        .init(name: "Monte Ortigara (Cinisello B.)", coordinate: .init(latitude: 45.5594, longitude: 9.21405), branch: "Main"),
+        .init(name: "Cinisello (Primo Maggio)", coordinate: .init(latitude: 45.56002, longitude: 9.21108), branch: "Main")
     ]
     
     static let interchanges: [InterchageInfo] = [
@@ -775,6 +822,8 @@ struct StationsDB {
         .init(name: "Cordusio M1", lines: ["M1", "1", "12", "14", "16", "19"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Montenapoleone M3", lines: ["M3", "1"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Turati M3", lines: ["M3", "1"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Porta Romana M3", lines: ["M3", "9"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Tricolore M4", lines: ["M4", "9", "19"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Repubblica M3", lines: ["M3", "1", "9", "33", "S1", "S2", "S5", "S6", "S12", "S13"], typeOfInterchange: "lightrail.fill"),
         .init(name: "V.Le Tunisia", lines: ["1", "5", "33"], typeOfInterchange: "tram.fill"),
         .init(name: "Caiazzo M2", lines: ["M2", "1"], typeOfInterchange: "tram.fill.tunnel"),

@@ -3397,7 +3397,7 @@ struct LineRow: View {
     let waitMinutes: String
     let accessibilityStatus: String
     let stations: [MetroStation]
-    @State private var supportedLines: [String] = ["1", "3", "5", "7", "24"]
+    @State private var supportedLines: [String] = ["1", "3", "5", "7", "9", "24", "31"]
     @ObservedObject var viewModel: WorkViewModel
     
     var body: some View {
@@ -3573,7 +3573,7 @@ struct LinesView: View {
             LineInfo(name: "4", branches: "Cairoli M1 - Niguarda (Parco Nord)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "5", branches: "Niguarda (Ospedale) - Ortica", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram5, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "7", branches: "P.Le Lagosta - Q.Re Adriano", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram7, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "9", branches: "Centrale FS M2 M3 - P.Ta Genova M2", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "9", branches: "Centrale FS M2 M3 - P.Ta Genova M2", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram9, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "10", branches: "P.Za 24 Maggio - V.Le Lunigiana", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "12", branches: "P.Za Ovidio - Roserio (Ospedale Sacco)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "14", branches: "Lorenteggio - Cimitero Maggiore", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
@@ -3582,7 +3582,7 @@ struct LinesView: View {
             LineInfo(name: "19", branches: "P.Za Castelli - Lambrate FS M2", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "24", branches: "Piazza Fontana - Vigentino", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram24, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "27", branches: "V.Le Ungheria - Duomo M1 M3", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "31", branches: "Bicocca M5 - Cinisello (1° Maggio)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "31", branches: "Bicocca M5 - Cinisello (1° Maggio)", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "33", branches: "P.Le Lagosta - Rimembranze di Lambrate", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaNonAccessibile)),
         ]
     }
@@ -4078,7 +4078,7 @@ struct LineDetailView: View {
     @State private var selectedTab: LineDetailTab = .map
     @State private var openPopUpWidget: Bool = false
     @State private var openInfoAccessibility: Bool = false
-    @State private var tramLinesSupported: [String] = ["1", "3", "5", "7", "24"]
+    @State private var tramLinesSupported: [String] = ["1", "3", "5", "7", "9", "24", "31"]
     
     private var centerIndex: Int { max(0, stations.count / 2) }
     private var centerCoordinate: CLLocationCoordinate2D {
