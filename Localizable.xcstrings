@@ -106,7 +106,14 @@
       }
     },
     "%lld min" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        }
+      }
     },
     "👋 Ciao %@" : {
       "localizations" : {
@@ -350,7 +357,14 @@
       }
     },
     "Arrivi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrivals"
+          }
+        }
+      }
     },
     "Aspetto" : {
       "localizations" : {
@@ -520,7 +534,14 @@
       }
     },
     "Caricamento orari..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading timetables…"
+          }
+        }
+      }
     },
     "Caricamento..." : {
       "localizations" : {
@@ -790,7 +811,14 @@
       }
     },
     "DIREZIONE: %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DIRECTION: %@"
+          }
+        }
+      }
     },
     "DIREZIONI:" : {
       "localizations" : {
@@ -853,7 +881,14 @@
       }
     },
     "Errore" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        }
+      }
     },
     "Esci" : {
       "localizations" : {
@@ -1131,7 +1166,14 @@
       }
     },
     "Il bus può fare un ritardo dai 3 ai 5 minuti, questo è l'orario programmato." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The bus may be 3 to 5 minutes late. This is the scheduled timetable."
+          }
+        }
+      }
     },
     "Il tuo Account" : {
       "localizations" : {
@@ -1205,7 +1247,14 @@
       }
     },
     "In partenza" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leaving"
+          }
+        }
+      }
     },
     "Informazioni" : {
       "localizations" : {
@@ -1972,10 +2021,24 @@
       }
     },
     "Nessuna corsa" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No routes"
+          }
+        }
+      }
     },
     "Nessuna corsa prevista per oggi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No routes scheduled for today"
+          }
+        }
+      }
     },
     "Nessuna fermata di interscambio." : {
       "localizations" : {
@@ -2019,7 +2082,14 @@
       }
     },
     "Non ci sono corse disponibili per questa fermata oggi." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No services from this stop today."
+          }
+        }
+      }
     },
     "Non ci sono lavori su questa linea." : {
       "localizations" : {
@@ -2314,6 +2384,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "SCHEDULED"
+          }
+        }
+      }
+    },
+    "PROSSIMI ARRIVI: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NEXT ARRIVALS: %@"
           }
         }
       }
@@ -2784,7 +2864,14 @@
       }
     },
     "Seleziona una fermata" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a stop"
+          }
+        }
+      }
     },
     "Seleziona una linea da poter mostrare nel Widget per tenerla sempre sott'occhio." : {
       "localizations" : {

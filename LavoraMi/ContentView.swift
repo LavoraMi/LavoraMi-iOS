@@ -4561,6 +4561,7 @@ struct LineSmallDetailedView: View {
     @State private var isLoading = false
     @State private var errorMessage: String? = nil
     @State private var selectedStopId: String? = nil
+    @State private var selectedStopName: String = ""
     @State private var currentTime = Date()
     @State private var isStartingAnimation = false
     @State private var opacity: Double = 1.0
@@ -4828,6 +4829,7 @@ struct LineSmallDetailedView: View {
                                         ForEach(sortedStops(route: route), id: \.id) { stop in
                                             Button(stop.name) {
                                                 selectedStopId = stop.id
+                                                selectedStopName = stop.name
                                             }
                                         }
                                     } label: {
@@ -4859,19 +4861,23 @@ struct LineSmallDetailedView: View {
                                         ForEach(Array(departuresByDir.keys).sorted(), id: \.self) { dirId in
                                             let departures = departuresByDir[dirId] ?? []
                                             let headsign = departures.first?.headsign ?? "Direzione \(dirId)"
+                                            
+                                            let isLastStop = selectedStopName.caseInsensitiveCompare(headsign) == .orderedSame
 
                                             VStack(alignment: .leading, spacing: 0) {
                                                 HStack(spacing: 6) {
                                                     Image(systemName: "arrow.forward")
                                                         .font(.caption)
                                                         .foregroundStyle(.secondary)
-                                                    Text("DIREZIONE: \(headsign.uppercased())")
+                                                
+                                                    Text(isLastStop ? "PROSSIMI ARRIVI: \(headsign)" : "DIREZIONE: \(headsign.uppercased())")
                                                         .font(.caption)
                                                         .fontWeight(.semibold)
                                                         .foregroundStyle(.secondary)
                                                 }
                                                 .padding(.horizontal, 16)
                                                 .padding(.vertical, 10)
+
 
                                                 if departures.isEmpty {
                                                     Text("Nessuna corsa prevista per oggi")
