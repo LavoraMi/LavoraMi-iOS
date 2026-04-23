@@ -3171,7 +3171,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Supabase",
-            version: "2.44.0",
+            version: "2.44.1",
             license: "MIT License",
             copyright: "Copyright (c) 2021 Supabase",
             licenseText: """
@@ -3235,7 +3235,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-crypto",
-            version: "4.4.0",
+            version: "4.5.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2019 Apple Inc.",
             licenseText: """
