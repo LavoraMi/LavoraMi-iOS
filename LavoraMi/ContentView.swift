@@ -4110,6 +4110,7 @@ struct LineDetailView: View {
     
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
+    @AppStorage("alreadySeenPopUp") var alreadySeenPopUp: Bool = false
     @StateObject private var networkManager = NetworkMonitor()
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) private var openURLAction
@@ -4217,7 +4218,11 @@ struct LineDetailView: View {
                             else {
                                 DataManager.shared.setSavedLine(SavedLine(id: lineName, name: lineName, longName: typeOfTransport, iconTransport: getCurrentTransportIcon(for: typeOfTransport), worksNow: workNow, worksScheduled: workScheduled))
                                 selectedWidgetLine = lineName
-                                openPopUpWidget = true
+                                
+                                if(!alreadySeenPopUp){
+                                    alreadySeenPopUp = true
+                                    openPopUpWidget = true
+                                }
                             }
                         }){
                             if #available(iOS 18, *){
@@ -4574,6 +4579,7 @@ struct LineDetailView: View {
 struct LineSmallDetailedView: View {
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
+    @AppStorage("alreadySeenPopUp") var alreadySeenPopUp: Bool = false
     @State private var openPopUpWidget: Bool = false
     @State private var openInfoAccessibility: Bool = false
     @StateObject private var networkManager = NetworkMonitor()
@@ -4674,7 +4680,10 @@ struct LineSmallDetailedView: View {
                                     worksNow: workNow, worksScheduled: workScheduled
                                 ))
                                 selectedWidgetLine = lineName
-                                openPopUpWidget = true
+                                if(!alreadySeenPopUp) {
+                                    alreadySeenPopUp = true
+                                    openPopUpWidget = true
+                                }
                             }
                         }) {
                             Image(systemName: (selectedWidgetLine == lineName) ? "widget.small" : "widget.small.badge.plus")
@@ -5151,6 +5160,7 @@ struct InfoAccessibilityView: View {
                     .tag(0)
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .ignoresSafeArea(edges: .bottom)
             }
             .navigationTitle("Accessibilità")
             .navigationBarTitleDisplayMode(.inline)
