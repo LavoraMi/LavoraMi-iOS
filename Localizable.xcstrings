@@ -675,6 +675,9 @@
         }
       }
     },
+    "Consulta gli orari dei bus" : {
+
+    },
     "Contatti" : {
       "localizations" : {
         "en" : {
@@ -724,6 +727,9 @@
           }
         }
       }
+    },
+    "Cosa c'è di nuovo?" : {
+
     },
     "Crea account" : {
       "localizations" : {
@@ -2219,6 +2225,9 @@
         }
       }
     },
+    "Novità" : {
+
+    },
     "Nuova versione disponibile!" : {
       "localizations" : {
         "en" : {
@@ -2228,6 +2237,9 @@
           }
         }
       }
+    },
+    "Nuove linee con le mappe" : {
+
     },
     "OK" : {
       "localizations" : {
@@ -2248,6 +2260,12 @@
           }
         }
       }
+    },
+    "Ora le linee di Tram 9 e 31 hanno le mappe! Vai a consultarle subito!" : {
+
+    },
+    "Ora puoi consultare le prossime 3 partenze della tua linea di bus preferita, basta andare nella nuova scheda \"Arrivi\"!" : {
+
     },
     "Orario Notifiche" : {
       "localizations" : {
@@ -2741,6 +2759,9 @@
           }
         }
       }
+    },
+    "Scorri e scopri cosa abbiamo aggiunto, migliorato oppure sistemato!" : {
+
     },
     "Scuro" : {
       "extractionState" : "manual",

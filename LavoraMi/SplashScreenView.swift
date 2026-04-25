@@ -13,8 +13,9 @@ struct SplashScreenView: View {
     @State private var contentOpacity: Double = 0
     @State private var contentLoaded = false
     @State private var showSetupScreen: Bool = false
+    @State private var showWhatsNewScreen: Bool = false
     @State private var showMaintenance: Bool = false
-    @State private var showNoConnection: Bool = false
+    @State private var showNoConnection: Bool = false 
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @StateObject private var viewModel = WorkViewModel()
 
@@ -28,7 +29,7 @@ struct SplashScreenView: View {
                     .opacity(contentOpacity)
                 }
                 else {
-                    ContentView(showSetupScreen: $showSetupScreen)
+                    ContentView(showSetupScreen: $showSetupScreen, showWhatsNewScreen: $showWhatsNewScreen)
                         .opacity(contentOpacity)
                 }
             }
@@ -83,6 +84,8 @@ struct SplashScreenView: View {
             if hasNotCompletedSetup {
                 showSetupScreen = true
             }
+            showWhatsNewScreen = true
+            print("SHOW ATTIVATO")
         }
     }
 }
