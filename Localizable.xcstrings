@@ -630,6 +630,9 @@
         }
       }
     },
+    "Collegamenti" : {
+
+    },
     "Completamente Accessibile" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1145,6 +1148,9 @@
         }
       }
     },
+    "Guarda le Novità" : {
+
+    },
     "Hai già un account?" : {
       "localizations" : {
         "en" : {
@@ -1592,6 +1598,9 @@
         }
       }
     },
+    "Le tue ricerche, sempre lì." : {
+
+    },
     "Leading" : {
       "localizations" : {
         "en" : {
@@ -2019,6 +2028,9 @@
         }
       }
     },
+    "Mostra le tue ricerche recenti nella pagina delle Linee." : {
+
+    },
     "Mostra lo stato della linea selezionata." : {
       "localizations" : {
         "en" : {
@@ -2058,6 +2070,9 @@
           }
         }
       }
+    },
+    "Mostra Ricerche Recenti" : {
+
     },
     "Mostra Schermata Novità" : {
       "localizations" : {
@@ -2411,6 +2426,9 @@
           }
         }
       }
+    },
+    "Ora puoi vedere le tue ricerche e riprendere il tuo viaggio da dove lo hai interrotto." : {
+
     },
     "Orario Notifiche" : {
       "localizations" : {

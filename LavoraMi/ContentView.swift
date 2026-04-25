@@ -1091,6 +1091,7 @@ struct SettingsView: View{
     @State private var presentedAlertReset = false
     @State private var showBuildNumber = false
     @State private var selectedURL: URL?
+    @State private var showWhatsNewScreen: Bool = false
     @StateObject var viewModel: WorkViewModel
     @StateObject var authManager = AuthManager()
     
@@ -1425,6 +1426,8 @@ struct SettingsView: View{
                         else{Text("\(Bundle.main.shortVersion)")
                             .textSelection(.enabled)}
                     }
+                }
+                Section("Collegamenti") {
                     ShareLink(item: URL(string: "https://apps.apple.com/us/app/lavorami/id6760344298")!) {
                         Label("Condividi LavoraMi", systemImage: "arrowshape.turn.up.right.fill")
                     }
@@ -1460,6 +1463,16 @@ struct SettingsView: View{
                             Image(systemName: "arrow.up.right")
                         }
                     }
+                    Button(action: {
+                        showWhatsNewScreen = true
+                    }){
+                        Label {
+                            Text("Guarda le Novità")
+                                .foregroundColor(.red)
+                        } icon: {
+                            Image(systemName: "app.badge.fill")
+                        }
+                    }
                 }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
                     Button(role: .destructive) {
@@ -1491,6 +1504,9 @@ struct SettingsView: View{
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
                     .ignoresSafeArea(.all)
+            }
+            .sheet(isPresented: $showWhatsNewScreen) {
+                WhatsNewViewBase()
             }
         }
     }
@@ -2211,6 +2227,7 @@ struct AdvancedOptionsView: View {
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @AppStorage("showTranslateButton") var showTranslateButton: Bool = false
     @AppStorage("showWhatsNewScreen") var showWhatsNewScreen: Bool = true
+    @AppStorage("showRecentSearches") var showRecentSearches: Bool = true
     private var currentDeviceBiometric: BiometricType = BiometricAuth.getBiometricType()
     @State private var presentedCacheAlert = false
     
@@ -2254,6 +2271,11 @@ struct AdvancedOptionsView: View {
                     Toggle(isOn: $showTranslateButton){
                         Label("Mostra Pulsante Traduci", systemImage: "translate")
                     }
+                }
+            }
+            Section(footer: Text("Mostra le tue ricerche recenti nella pagina delle Linee.")){
+                Toggle(isOn: $showRecentSearches){
+                    Label("Mostra Ricerche Recenti", systemImage: "sparkles")
                 }
             }
             Section(footer: Text("Richiedi \(getBiometricTypeByEnum()) per bloccare e sbloccare la sezione del tuo Account.")){
@@ -3519,6 +3541,7 @@ struct LinesView: View {
     @Environment(\.openURL) private var openURLAction
     @ObservedObject var viewModel: WorkViewModel
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
+    @AppStorage("showRecentSearches") var showRecentSearches: Bool = true
 
     @State private var searchInput: String = ""
     @State private var selectedURL: URL?
@@ -3787,46 +3810,48 @@ struct LinesView: View {
             }
             .padding()
             List {
-                Section(){
-                    if recentlySearchedLines.isEmpty && searchInput.isEmpty {
-                        Text("Nessuna linea cercata di recente.")
-                    } else {
-                        if(searchInput.isEmpty) {
-                            ForEach(recentlySearchedLines) { recent in
-                                LineRow(line: recent.name, typeOfTransport: recent.type, branches: recent.branches, waitMinutes: recent.waitMinutes, accessibilityStatus: recent.accessibilityStatus, stations: [], viewModel: viewModel)
+                if(showRecentSearches) {
+                    Section(){
+                        if recentlySearchedLines.isEmpty && searchInput.isEmpty {
+                            Text("Nessuna linea cercata di recente.")
+                        } else {
+                            if(searchInput.isEmpty) {
+                                ForEach(recentlySearchedLines) { recent in
+                                    LineRow(line: recent.name, typeOfTransport: recent.type, branches: recent.branches, waitMinutes: recent.waitMinutes, accessibilityStatus: recent.accessibilityStatus, stations: [], viewModel: viewModel)
+                                }
                             }
                         }
                     }
-                }
-                header:{
-                    if(searchInput.isEmpty) {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 2) {
-                                Label {
-                                    Text("Cercate di recente")
-                                        .font(.title3)
-                                        .bold()
-                                        .foregroundStyle(.primary)
+                    header:{
+                        if(searchInput.isEmpty) {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Label {
+                                        Text("Cercate di recente")
+                                            .font(.title3)
+                                            .bold()
+                                            .foregroundStyle(.primary)
+                                            .textCase(nil)
+                                            .padding(.leading, -10)
+                                    } icon: {
+                                        Image(systemName: "sparkles")
+                                    }
+                                    
+                                    Text("In base alle tue ricerche")
+                                        .font(.subheadline)
+                                        .foregroundStyle(.secondary)
                                         .textCase(nil)
-                                        .padding(.leading, -10)
-                                } icon: {
-                                    Image(systemName: "sparkles")
                                 }
-                                
-                                Text("In base alle tue ricerche")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            Spacer()
-                            if(!recentlySearchedLines.isEmpty) {
-                                Button(action: {
-                                    showDeletePopUp = true
-                                }) {
-                                    Image(systemName: "delete.backward.fill")
-                                        .foregroundColor(.gray)
+                                Spacer()
+                                if(!recentlySearchedLines.isEmpty) {
+                                    Button(action: {
+                                        showDeletePopUp = true
+                                    }) {
+                                        Image(systemName: "delete.backward.fill")
+                                            .foregroundColor(.gray)
+                                    }
+                                    .padding(.bottom, 4)
                                 }
-                                .padding(.bottom, 4)
                             }
                         }
                     }
@@ -5346,6 +5371,13 @@ struct WhatsNewViewBase: View {
             transitionImage: "square.and.arrow.up",
             standardImage: "arrow.up.right",
             fallbackImage: "arrow.up.right"
+        ),
+        SetupPage(
+            title: "Le tue ricerche, sempre lì.",
+            description: "Ora puoi vedere le tue ricerche e riprendere il tuo viaggio da dove lo hai interrotto.",
+            transitionImage: "sparkles.2",
+            standardImage: "sparkles",
+            fallbackImage: "sparkles"
         )
     ]
     
