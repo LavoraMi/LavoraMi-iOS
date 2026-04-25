@@ -1090,6 +1090,7 @@ struct SettingsView: View{
     @State private var expandedATMLines = false
     @State private var presentedAlertReset = false
     @State private var showBuildNumber = false
+    @State private var selectedURL: URL?
     @StateObject var viewModel: WorkViewModel
     @StateObject var authManager = AuthManager()
     
@@ -1442,6 +1443,23 @@ struct SettingsView: View{
                             Image(systemName: "star.fill")
                         }
                     }
+                    Button(action: {
+                        let url = URL(string: "https://www.buymeacoffee.com/lavorami")!
+                                                
+                        if(howToOpenLinks == .inApp) {
+                            selectedURL = url
+                        }
+                        else {
+                            openURLAction(url)
+                        }
+                    }){
+                        Label {
+                            Text("Supporta LavoraMi")
+                                .foregroundColor(.red)
+                        } icon: {
+                            Image(systemName: "arrow.up.right")
+                        }
+                    }
                 }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
                     Button(role: .destructive) {
@@ -1469,6 +1487,10 @@ struct SettingsView: View{
                 }
             } message: {
                 Text("Sei sicuro di voler ripristinare le impostazioni?")
+            }
+            .sheet(item: $selectedURL) { url in
+                SafariView(url: url)
+                    .ignoresSafeArea(.all)
             }
         }
     }
@@ -2543,17 +2565,13 @@ struct InfoView: View {
                         .font(.system(size: 30))
                         .bold()
                         .padding(.top, 20)
-                    Text("Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi condividere l'app qui sotto!")
+                    Text("Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreo o BuyMeaCoffee!")
                         .font(.system(size: 14))
                         .multilineTextAlignment(.center)
                         .padding(.top, 1)
                         .padding(.horizontal, 10)
                         .padding(.bottom, 20)
-                    ShareLink(item: URL(string: "https://apps.apple.com/us/app/lavorami/id6760344298")!) {
-                        Label("Condividi LavoraMi", systemImage: "arrowshape.turn.up.right.fill")
-                            .font(.system(size: 20))
-                    }
-                    /*Button {
+                    Button {
                         let url = URL(string: "https://www.patreon.com/cw/LavoraMi")!
                         
                         if(howToOpenLinks == .inApp) {
@@ -2582,7 +2600,7 @@ struct InfoView: View {
                             .font(.system(size: 20))
                     }
                     .padding(.top, 5)
-                    .padding(.bottom, 20)*/
+                    .padding(.bottom, 20)
                     Spacer()
                 }
                 Divider().padding(.top, 10)
@@ -5205,6 +5223,13 @@ struct WhatsNewViewBase: View {
             transitionImage: "location.fill",
             standardImage: "tram.fill",
             fallbackImage: "tram.fill"
+        ),
+        SetupPage(
+            title: "Supportaci con le donazioni!",
+            description: "Abbiamo aggiunto le donazioni! Ora puoi supportarci su Buy Me A Coffee e Patreon!",
+            transitionImage: "square.and.arrow.up",
+            standardImage: "arrow.up.right",
+            fallbackImage: "arrow.up.right"
         )
     ]
     

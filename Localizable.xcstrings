@@ -179,6 +179,16 @@
         }
       }
     },
+    "Abbiamo aggiunto le donazioni! Ora puoi supportarci su Buy Me A Coffee e Patreon!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We’ve added a donations option! You can now support us on Buy Me A Coffee and Patreon!"
+          }
+        }
+      }
+    },
     "Accedi" : {
       "localizations" : {
         "en" : {
@@ -2113,7 +2123,14 @@
       }
     },
     "Nessuna connessione ad Internet." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Internet connection."
+          }
+        }
+      }
     },
     "Nessuna corsa" : {
       "localizations" : {
@@ -2908,12 +2925,12 @@
         }
       }
     },
-    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi condividere l'app qui sotto!" : {
+    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreo o BuyMeaCoffee!" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "If you like LavoraMi and you want to keep it advertising-free, you can share the application down below!"
+            "value" : "If you like LavoraMi and want to keep it ad-free, you can support us by making a donation via Patreon or BuyMeaCoffee!"
           }
         }
       }
@@ -3099,12 +3116,52 @@
         }
       }
     },
+    "Supporta LavoraMi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support LavoraMi"
+          }
+        }
+      }
+    },
     "Supportaci" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Support us"
+          }
+        }
+      }
+    },
+    "Supportaci con le donazioni!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support us with a donation!"
+          }
+        }
+      }
+    },
+    "Supportaci su Buy Me A Coffee" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support us on Buy Me A Coffee"
+          }
+        }
+      }
+    },
+    "Supportaci su Patreon" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support us on Patreon"
           }
         }
       }
