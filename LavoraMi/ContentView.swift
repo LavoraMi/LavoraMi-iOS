@@ -19,6 +19,7 @@ import FirebaseMessaging
 import Translation
 import StoreKit
 import Combine
+import SystemConfiguration
 
 struct WorkItem: Identifiable, Hashable, Codable {
     var id = UUID()
@@ -4091,6 +4092,7 @@ struct LineDetailView: View {
     
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
+    @StateObject private var networkManager = NetworkMonitor()
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
@@ -4500,7 +4502,7 @@ struct LineDetailView: View {
                                 }
                                 .padding(.vertical, 8)
                             } else {
-                                Text("Non ci sono lavori su questa linea.")
+                                Label((networkManager.isConnected) ? "Non ci sono lavori su questa linea." : "Nessuna connessione ad Internet.", systemImage: (networkManager.isConnected) ? "info.circle.fill" : "wifi.slash")
                                     .padding()
                                     .bold()
                                     .font(.system(size: 15))
@@ -4556,6 +4558,7 @@ struct LineSmallDetailedView: View {
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @State private var openPopUpWidget: Bool = false
     @State private var openInfoAccessibility: Bool = false
+    @StateObject private var networkManager = NetworkMonitor()
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
@@ -4825,7 +4828,7 @@ struct LineSmallDetailedView: View {
                                 }
                                 .padding(.vertical, 8)
                             } else {
-                                Text("Non ci sono lavori su questa linea.")
+                                Label((networkManager.isConnected) ? "Non ci sono lavori su questa linea." : "Nessuna connessione ad Internet.", systemImage: (networkManager.isConnected) ? "info.circle.fill" : "wifi.slash")
                                     .padding().bold().font(.system(size: 15))
                             }
                         }
@@ -5735,11 +5738,12 @@ struct HapticManager {
     static let shared = HapticManager()
     private let generator = UIImpactFeedbackGenerator(style: .light)
         
-        func trigger() {
-            generator.prepare()
-            generator.impactOccurred()
-        }
+    func trigger() {
+        generator.prepare()
+        generator.impactOccurred()
+    }
 }
+
 
 #Preview{
     @Previewable @State var showSetupScreen: Bool = false

@@ -137,6 +137,7 @@
 				ContentView.swift,
 				"GoogleService-Info.plist",
 				GTFSHelper.swift,
+				NetworkMonitor.swift,
 				NotificationManager.swift,
 				SharedData.swift,
 				SplashScreenView.swift,
