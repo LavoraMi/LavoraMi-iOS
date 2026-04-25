@@ -607,7 +607,14 @@
       }
     },
     "Cercate di recente" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recently Searched"
+          }
+        }
+      }
     },
     "Chiaro" : {
       "extractionState" : "manual",
@@ -631,7 +638,14 @@
       }
     },
     "Collegamenti" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Links"
+          }
+        }
+      }
     },
     "Completamente Accessibile" : {
       "extractionState" : "manual",
@@ -1149,7 +1163,14 @@
       }
     },
     "Guarda le Novità" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See What’s New"
+          }
+        }
+      }
     },
     "Hai già un account?" : {
       "localizations" : {
@@ -1272,7 +1293,14 @@
       }
     },
     "In base alle tue ricerche" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Based on your research"
+          }
+        }
+      }
     },
     "In Corso" : {
       "extractionState" : "manual",
@@ -1599,7 +1627,14 @@
       }
     },
     "Le tue ricerche, sempre lì." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your searches, always there."
+          }
+        }
+      }
     },
     "Leading" : {
       "localizations" : {
@@ -1882,28 +1917,6 @@
         }
       }
     },
-    "M1" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "M1"
-          }
-        }
-      }
-    },
-    "M3" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "M3"
-          }
-        }
-      }
-    },
     "Manutenzione in corso." : {
       "localizations" : {
         "en" : {
@@ -2029,7 +2042,14 @@
       }
     },
     "Mostra le tue ricerche recenti nella pagina delle Linee." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View your recent searches on the Lines page."
+          }
+        }
+      }
     },
     "Mostra lo stato della linea selezionata." : {
       "localizations" : {
@@ -2072,7 +2092,14 @@
       }
     },
     "Mostra Ricerche Recenti" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Recent Research"
+          }
+        }
+      }
     },
     "Mostra Schermata Novità" : {
       "localizations" : {
@@ -2186,7 +2213,14 @@
       }
     },
     "Nessuna linea cercata di recente." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recently searched lines."
+          }
+        }
+      }
     },
     "Nome completo" : {
       "localizations" : {
@@ -2428,7 +2462,14 @@
       }
     },
     "Ora puoi vedere le tue ricerche e riprendere il tuo viaggio da dove lo hai interrotto." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can now view your searches and pick up where you left off."
+          }
+        }
+      }
     },
     "Orario Notifiche" : {
       "localizations" : {
@@ -2776,28 +2817,6 @@
         }
       }
     },
-    "S2" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "S2"
-          }
-        }
-      }
-    },
-    "S5" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "S5"
-          }
-        }
-      }
-    },
     "Salta" : {
       "localizations" : {
         "en" : {
@@ -2987,7 +3006,14 @@
       }
     },
     "Sei sicuro di voler cancellare le ricerche recenti?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete your recent searches?"
+          }
+        }
+      }
     },
     "Sei sicuro di voler Eliminare Definitivamente il tuo Account?" : {
       "localizations" : {
@@ -3786,17 +3812,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Visualizza la Mappa"
-          }
-        }
-      }
-    },
-    "z620" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "z620"
           }
         }
       }

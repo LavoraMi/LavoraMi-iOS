@@ -4743,7 +4743,7 @@ struct LineSmallDetailedView: View {
 
     let interchanges: [InterchangeStation] = [
         .init(key: "Molino Dorino", displayName: "Molino Dorino MM", lines: ["M1", "z601", "z606", "z617", "z620", "z621", "z648", "z649"], typeOfInterchange: "tram.fill.tunnel"),
-        .init(key: "Cadorna FN", displayName: "Milano Cadorna FN", lines: ["M1", "M2", "MXP", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(key: "Cadorna FN", displayName: "Milano Cadorna FN", lines: ["M1", "M2", "MXP", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "z602", "z603", "z6C3"], typeOfInterchange: "tram.fill.tunnel"),
         .init(key: "Parabiago", displayName: "Parabiago", lines: ["z611", "z644", "z643"], typeOfInterchange: "bus.fill"),
         .init(key: "Rho", displayName: "Rho FS", lines: ["S5", "S6", "S11", "z616", "z618"], typeOfInterchange: "train.side.front.car"),
         .init(key: "Busto Garolfo", displayName: "Busto Garolfo", lines: ["z625", "z627", "z644", "z647", "z648", "z649"], typeOfInterchange: "bus.fill"),
