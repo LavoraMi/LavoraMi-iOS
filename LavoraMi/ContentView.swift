@@ -40,9 +40,11 @@ struct WorkItem: Identifiable, Hashable, Codable {
     var progress: Double {
         let now = Date()
         let total = endDate.timeIntervalSince(startDate)
+        
         guard total > 0 else { return 1 }
         let elapsed = now.timeIntervalSince(startDate)
         let fraction = elapsed / total
+        
         return min(max(fraction, 0), 1)
     }
 }
@@ -427,7 +429,7 @@ struct SetupPageView: View {
                     .multilineTextAlignment(.center)
             }
             else if(page.title == "Traduci i lavori, nella lingua che vuoi tu."){
-                Text("Funzionalità disponibile solo con la lingua Inglese selezionata. Vai in Impostazioni > Aspetto e Lingua per selezionarla.")
+                Text("Per attivare questa Funzionalità anche in lingua Italiana, Vai in Impostazioni > Opzioni Avanzate ed attiva \"Mostra Pulsante Traduci\".")
                     .font(.caption2)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)

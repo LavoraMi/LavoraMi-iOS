@@ -903,6 +903,12 @@
     "endWorksTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Works ended!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1072,16 +1078,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "File Format:"
-          }
-        }
-      }
-    },
-    "Funzionalità disponibile solo con la lingua Inglese selezionata. Vai in Impostazioni > Aspetto e Lingua per selezionarla." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This feature is available only when English is selected as the language. Go to Settings > Appearance and Language to select it."
           }
         }
       }
@@ -1529,6 +1525,12 @@
     "lavoriInizianoDomaniTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Work starts tomorrow!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1540,6 +1542,12 @@
     "lavoriIniziatiTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Works Started!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2431,6 +2439,16 @@
         }
       }
     },
+    "Per attivare questa Funzionalità anche in lingua Italiana, Vai in Impostazioni > Opzioni Avanzate ed attiva \"Mostra Pulsante Traduci\"." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This feature is available in all languages."
+          }
+        }
+      }
+    },
     "Permesso Negato" : {
       "localizations" : {
         "en" : {
@@ -3288,6 +3306,12 @@
     "tomorrowFineLavoriTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Work ends tomorrow!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
