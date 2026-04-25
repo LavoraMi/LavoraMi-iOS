@@ -3440,64 +3440,76 @@ struct LineRow: View {
     @State private var supportedLines: [String] = ["1", "3", "5", "7", "9", "24", "31"]
     @ObservedObject var viewModel: WorkViewModel
     
+    var onTap: (() -> Void)? = nil
+    
     var body: some View {
-        if ((typeOfTransport != "Tram" || supportedLines.contains(line)) && typeOfTransport != "Movibus" && typeOfTransport != "STAV" && typeOfTransport != "Autoguidovie") {
-            NavigationLink(
-                destination: LineDetailView(
-                    lineName: line,
-                    typeOfTransport: typeOfTransport,
-                    branches: branches,
-                    waitMinutes: waitMinutes,
-                    workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
-                    workNow: getWorkNow(line: line, viewModel: viewModel),
-                    viewModel: viewModel,
-                    stations: stations,
-                    accessibilityStatus: accessibilityStatus
-                )
-            ) {
-                HStack(spacing: 12) {
-                    Text(line)
-                        .foregroundStyle(.white)
-                        .font(.system(size: 12, weight: .bold))
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 8)
-                        .background(
-                            RoundedRectangle(cornerRadius: 6)
-                                .fill((typeOfTransport == "Tram") ? .orange : getColor(for: line))
-                        )
+        Group {
+            if ((typeOfTransport != "Tram" || supportedLines.contains(line)) && typeOfTransport != "Movibus" && typeOfTransport != "STAV" && typeOfTransport != "Autoguidovie") {
+                NavigationLink(
+                    destination: LineDetailView(
+                        lineName: line,
+                        typeOfTransport: typeOfTransport,
+                        branches: branches,
+                        waitMinutes: waitMinutes,
+                        workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
+                        workNow: getWorkNow(line: line, viewModel: viewModel),
+                        viewModel: viewModel,
+                        stations: stations,
+                        accessibilityStatus: accessibilityStatus,
+                        onAppear: { onTap?() }
+                    )
+                ) {
+                    HStack(spacing: 12) {
+                        Text(line)
+                            .foregroundStyle(.white)
+                            .font(.system(size: 12, weight: .bold))
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill((typeOfTransport == "Tram") ? .orange : getColor(for: line))
+                            )
 
-                    if(line == "MXP1" || line == "MXP2"){Text("\(typeOfTransport)")}
-                    else{Text("\(typeOfTransport) \(line)")}
+                        if(line == "MXP1" || line == "MXP2"){Text("\(typeOfTransport)")}
+                        else{Text("\(typeOfTransport) \(line)")}
+                    }
+                    .padding(.vertical, 4)
                 }
-                .padding(.vertical, 4)
-            }
-        } else {
-            NavigationLink(
-                destination: LineSmallDetailedView(
-                    lineName: line,
-                    typeOfTransport: typeOfTransport,
-                    branches: branches,
-                    waitMinutes: waitMinutes,
-                    workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
-                    workNow: getWorkNow(line: line, viewModel: viewModel),
-                    accessibilityStatus: accessibilityStatus,
-                    viewModel: viewModel
-                )
-            ) {
-                HStack(spacing: 12) {
-                    Text(line)
-                        .foregroundStyle(.white)
-                        .font(.system(size: 12, weight: .bold))
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 8)
-                        .background(
-                            RoundedRectangle(cornerRadius: 6)
-                                .fill((typeOfTransport == "Tram") ? .orange : getColor(for: line))
-                        )
+                .simultaneousGesture(TapGesture().onEnded {
+                    onTap?()
+                })
+            } else {
+                NavigationLink(
+                    destination: LineSmallDetailedView(
+                        lineName: line,
+                        typeOfTransport: typeOfTransport,
+                        branches: branches,
+                        waitMinutes: waitMinutes,
+                        workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
+                        workNow: getWorkNow(line: line, viewModel: viewModel),
+                        accessibilityStatus: accessibilityStatus,
+                        viewModel: viewModel,
+                        onAppear: { onTap?() }
+                    )
+                ) {
+                    HStack(spacing: 12) {
+                        Text(line)
+                            .foregroundStyle(.white)
+                            .font(.system(size: 12, weight: .bold))
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill((typeOfTransport == "Tram") ? .orange : getColor(for: line))
+                            )
 
-                    Text("\(typeOfTransport) \(line)")
+                        Text("\(typeOfTransport) \(line)")
+                    }
+                    .padding(.vertical, 4)
                 }
-                .padding(.vertical, 4)
+                .simultaneousGesture(TapGesture().onEnded {
+                    onTap?()
+                })
             }
         }
     }
@@ -3558,6 +3570,39 @@ struct LinesView: View {
     var filteredAutoguidovie: [LineInfo] { filtered(autoguidovie) }
     var filteredCrossBorders: [LineInfo] { filtered(crossBorderLines) }
     var filteredMalpensaExpress: [LineInfo] { filtered(malpensaExpress) }
+    
+    struct RecentLine: Identifiable, Codable, Hashable {
+        let id: UUID
+        let name: String
+        let branches: String
+        let type: String
+        let waitMinutes: String
+        let accessibilityStatus: String
+        
+        init(from lineInfo: LineInfo) {
+            self.id = lineInfo.id
+            self.name = lineInfo.name
+            self.branches = lineInfo.branches
+            self.type = lineInfo.type
+            self.waitMinutes = lineInfo.waitMinutes
+            self.accessibilityStatus = lineInfo.accessibilityStatus
+        }
+    }
+    
+    @AppStorage("recentlySearchedLinesData") private var recentlySearchedLinesData: Data = Data()
+
+    var recentlySearchedLines: [RecentLine] {
+        get { (try? JSONDecoder().decode([RecentLine].self, from: recentlySearchedLinesData)) ?? [] }
+        set { recentlySearchedLinesData = (try? JSONEncoder().encode(newValue)) ?? Data() }
+    }
+
+    func addToRecent(_ line: LineInfo) {
+        var recent = recentlySearchedLines
+        recent.removeAll { $0.name == line.name }
+        recent.insert(RecentLine(from: line), at: 0)
+        if recent.count > 5 { recent = Array(recent.prefix(5)) }
+        recentlySearchedLinesData = (try? JSONEncoder().encode(recent)) ?? Data()
+    }
     
     var metros: [LineInfo] {
         [
@@ -3742,9 +3787,36 @@ struct LinesView: View {
             .padding()
             List {
                 Section(){
+                    if recentlySearchedLines.isEmpty {
+                        Text("Cerca una linea ed apparirà qui!")
+                    } else {
+                        ForEach(recentlySearchedLines) { recent in
+                            let lineInfo = LineInfo(name: recent.name, branches: recent.branches, type: recent.type, waitMinutes: recent.waitMinutes, stations: [], accessibilityStatus: recent.accessibilityStatus)
+                            LineRow(line: recent.name, typeOfTransport: recent.type, branches: recent.branches, waitMinutes: recent.waitMinutes, accessibilityStatus: recent.accessibilityStatus, stations: [], viewModel: viewModel)
+                        }
+                    }
+                }
+                header:{
+                    HStack{
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Cercate di recente")
+                                .font(.title3)
+                                .bold()
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
+                            
+                            Label("In base alle tue ricerche", systemImage: "sparkles")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .textCase(nil)
+                        }
+                        .padding(.bottom, 4)
+                    }
+                }
+                Section(){
                     if(!filteredMetros.isEmpty){
                         ForEach(filteredMetros, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel)
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
                         }
                     }
                 }
@@ -3782,7 +3854,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredSuburban.isEmpty){
                         ForEach(filteredSuburban, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel)
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
                         }
                     }
                 }
@@ -3820,7 +3892,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredCrossBorders.isEmpty){
                         ForEach(filteredCrossBorders, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel)
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
                         }
                     }
                 }
@@ -3858,7 +3930,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredMalpensaExpress.isEmpty){
                         ForEach(filteredMalpensaExpress, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel)
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
                         }
                     }
                 }
@@ -3896,7 +3968,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredTrams.isEmpty){
                         ForEach(filteredTrams, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel)
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
                         }
                     }
                 }
@@ -3934,7 +4006,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredMovibus.isEmpty){
                         ForEach(filteredMovibus, id: \.id){bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel)
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel, onTap: { addToRecent(bus) })
                         }
                     }
                 }
@@ -3972,7 +4044,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredSTAV.isEmpty){
                         ForEach(filteredSTAV, id: \.id){bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel)
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel, onTap: { addToRecent(bus) })
                         }
                     }
                 }
@@ -4010,7 +4082,7 @@ struct LinesView: View {
                 Section(){
                     if(!filteredAutoguidovie.isEmpty){
                         ForEach(filteredAutoguidovie, id: \.id){ bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel)
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel, onTap: { addToRecent(bus) })
                         }
                     }
                 }
@@ -4143,6 +4215,8 @@ struct LineDetailView: View {
         center: CLLocationCoordinate2D(latitude: 45.4642, longitude: 9.1900),
         span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     )
+    
+    var onAppear: (() -> Void)? = nil
     
     var body: some View {
         NavigationStack {
@@ -4563,6 +4637,9 @@ struct LineDetailView: View {
                     .padding(.top, 6)
                 }
             }
+            .onAppear{
+                onAppear?()
+            }
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)
             }
@@ -4645,6 +4722,8 @@ struct LineSmallDetailedView: View {
     var activeInterchange: InterchangeStation? {
         interchanges.first { branches.contains($0.key) }
     }
+    
+    var onAppear: (() -> Void)? = nil
 
     var body: some View {
         NavigationStack {
@@ -5023,6 +5102,9 @@ struct LineSmallDetailedView: View {
                         currentTime = newTime
                     }
                 }
+            }
+            .onAppear {
+                onAppear?()
             }
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)

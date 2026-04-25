@@ -606,6 +606,12 @@
         }
       }
     },
+    "Cerca una linea ed apparirà qui!" : {
+
+    },
+    "Cercate di recente" : {
+
+    },
     "Chiaro" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1261,6 +1267,9 @@
           }
         }
       }
+    },
+    "In base alle tue ricerche" : {
+
     },
     "In Corso" : {
       "extractionState" : "manual",
