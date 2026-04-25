@@ -85,7 +85,6 @@ struct SplashScreenView: View {
                 showSetupScreen = true
             }
             showWhatsNewScreen = true
-            print("SHOW ATTIVATO")
         }
     }
 }

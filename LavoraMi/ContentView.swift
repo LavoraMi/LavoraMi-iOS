@@ -57,6 +57,7 @@ struct ContentView: View {
     @State private var showWhatsNew: Bool = false
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
+    @AppStorage("showWhatsNewScreen") var showWhatsNewScreenToggle: Bool = true
     @AppStorage("latestVersionInstalled") var latestVersionInstalled: String = "1.1.2"
     
     @Environment(\.openURL) private var openURLAction
@@ -89,11 +90,10 @@ struct ContentView: View {
             checkForUpdates()
         }
         .onChange(of: showWhatsNewScreen) {
-            if(showWhatsNewScreen && latestVersionInstalled != Bundle.main.shortVersion) {
+            if(showWhatsNewScreen && latestVersionInstalled != Bundle.main.shortVersion && showWhatsNewScreenToggle) {
                 showWhatsNew = true
                 latestVersionInstalled = Bundle.main.shortVersion
             }
-            print("SHOW: \(showWhatsNewScreen)")
         }
         .alert("Nuova versione disponibile!", isPresented: $showUpdatePopUp){
             Button("Aggiorna") {
@@ -2185,6 +2185,7 @@ struct AdvancedOptionsView: View {
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @AppStorage("showTranslateButton") var showTranslateButton: Bool = false
+    @AppStorage("showWhatsNewScreen") var showWhatsNewScreen: Bool = true
     private var currentDeviceBiometric: BiometricType = BiometricAuth.getBiometricType()
     @State private var presentedCacheAlert = false
     
@@ -2216,6 +2217,11 @@ struct AdvancedOptionsView: View {
             Section(footer: Text("Attiva i Feedback di vibrazione su alcune schermate.")){
                 Toggle(isOn: $feedbacksEnabled){
                     Label("Attiva Feedback Vibrazione", systemImage: iphoneGenIcon)
+                }
+            }
+            Section(footer: Text("Mostra la schermata delle novità appena l'app viene aggiornata.")){
+                Toggle(isOn: $showWhatsNewScreen){
+                    Label("Mostra Schermata Novità", systemImage: "text.badge.plus")
                 }
             }
             if(Locale.current.language.languageCode?.identifier == "it"){

@@ -1936,6 +1936,9 @@
         }
       }
     },
+    "Mostra la schermata delle novità appena l'app viene aggiornata." : {
+
+    },
     "Mostra lo stato della linea selezionata." : {
       "localizations" : {
         "en" : {
@@ -1975,6 +1978,9 @@
           }
         }
       }
+    },
+    "Mostra Schermata Novità" : {
+
     },
     "Movibus" : {
       "localizations" : {
