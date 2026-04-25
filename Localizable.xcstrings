@@ -2975,12 +2975,12 @@
         }
       }
     },
-    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreo o BuyMeaCoffee!" : {
+    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreon o Buy Me A Coffee!" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "If you like LavoraMi and want to keep it ad-free, you can support us by making a donation via Patreon or BuyMeaCoffee!"
+            "value" : "If you like LavoraMi and want to keep it ad-free, you can support us by making a donation via Patreon or Buy Me A Coffee!"
           }
         }
       }
