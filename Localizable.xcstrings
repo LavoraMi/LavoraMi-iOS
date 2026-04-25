@@ -676,7 +676,14 @@
       }
     },
     "Consulta gli orari dei bus" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the bus timetables"
+          }
+        }
+      }
     },
     "Contatti" : {
       "localizations" : {
@@ -729,7 +736,14 @@
       }
     },
     "Cosa c'è di nuovo?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What’s new?"
+          }
+        }
+      }
     },
     "Crea account" : {
       "localizations" : {
@@ -1937,7 +1951,14 @@
       }
     },
     "Mostra la schermata delle novità appena l'app viene aggiornata." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Display the “What's New” screen as soon as the app is updated."
+          }
+        }
+      }
     },
     "Mostra lo stato della linea selezionata." : {
       "localizations" : {
@@ -1980,7 +2001,25 @@
       }
     },
     "Mostra Schermata Novità" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show What’s New Screen"
+          }
+        }
+      }
+    },
+    "Mostra Schermata Novità 1" : {
+      "extractionState" : "pasted",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show What’s New Screen"
+          }
+        }
+      }
     },
     "Movibus" : {
       "localizations" : {
@@ -2232,7 +2271,14 @@
       }
     },
     "Novità" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What’s new"
+          }
+        }
+      }
     },
     "Nuova versione disponibile!" : {
       "localizations" : {
@@ -2245,7 +2291,14 @@
       }
     },
     "Nuove linee con le mappe" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New lines with maps"
+          }
+        }
+      }
     },
     "OK" : {
       "localizations" : {
@@ -2268,10 +2321,24 @@
       }
     },
     "Ora le linee di Tram 9 e 31 hanno le mappe! Vai a consultarle subito!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tram routes 9 and 31 now have maps! Go and have a look at them now!"
+          }
+        }
+      }
     },
     "Ora puoi consultare le prossime 3 partenze della tua linea di bus preferita, basta andare nella nuova scheda \"Arrivi\"!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can now check the next three departures on your favourite bus route – just go to the new ‘Arrivals’ tab!"
+          }
+        }
+      }
     },
     "Orario Notifiche" : {
       "localizations" : {
@@ -2767,7 +2834,14 @@
       }
     },
     "Scorri e scopri cosa abbiamo aggiunto, migliorato oppure sistemato!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scroll to see what we’ve added, improved or fixed!"
+          }
+        }
+      }
     },
     "Scuro" : {
       "extractionState" : "manual",
