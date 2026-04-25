@@ -1868,6 +1868,7 @@
       }
     },
     "M1" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1878,6 +1879,7 @@
       }
     },
     "M3" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2748,6 +2750,7 @@
       }
     },
     "S2" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2758,6 +2761,7 @@
       }
     },
     "S5" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3757,6 +3761,7 @@
       }
     },
     "z620" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

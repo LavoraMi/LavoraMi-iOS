@@ -67,67 +67,21 @@ struct Provider: TimelineProvider {
 struct LavoraMiWidgetEntryView : View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) var family
+    @Environment(\.widgetRenderingMode) var renderingMode
     
     var body: some View {
         if(entry.stato == "empty") {
             VStack(alignment: .leading, spacing: 12) {
                 HStack{
-                    if(family == .systemSmall){
-                        Text("M1")
-                            .font(.system(size: 16, weight: .black))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(getColor(for: "M1"))
-                            .cornerRadius(6)
-                        Text("S5")
-                            .font(.system(size: 16, weight: .black))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(getColor(for: "S5"))
-                            .cornerRadius(6)
-                    }
-                    else if (family == .systemMedium){
-                        Text("M1")
-                            .font(.system(size: 16, weight: .black))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(getColor(for: "M1"))
-                            .cornerRadius(6)
-                        Text("S5")
-                            .font(.system(size: 16, weight: .black))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(getColor(for: "S5"))
-                            .cornerRadius(6)
-                        Text("M3")
-                            .font(.system(size: 16, weight: .black))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(getColor(for: "M3"))
-                            .cornerRadius(6)
-                        
-                        Text("S2")
-                            .font(.system(size: 16, weight: .black))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(getColor(for: "S2"))
-                            .cornerRadius(6)
-                        
-                        Text("z620")
-                            .font(.system(size: 16, weight: .black))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(getColor(for: "z620"))
-                            .cornerRadius(6)
+                    lineBadge(name: "M1")
+                    lineBadge(name: "S5")
+                    if (family == .systemMedium) {
+                        lineBadge(name: "M3")
+                        lineBadge(name: "S2")
+                        lineBadge(name: "z620")
                     }
                 }
+                
                 Text("Seleziona una linea in app da mostrare nel Widget.")
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -135,16 +89,10 @@ struct LavoraMiWidgetEntryView : View {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }
-        else{
+        else {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text(entry.linea?.name ?? "err")
-                        .font(.system(size: 16, weight: .black))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(getColor(for: entry.linea?.name ?? ""))
-                        .cornerRadius(6)
+                    lineBadge(name: entry.linea?.name ?? "err")
                     
                     Spacer()
                     
@@ -179,6 +127,32 @@ struct LavoraMiWidgetEntryView : View {
                         .foregroundColor(.secondary)
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    func lineBadge(name: String) -> some View {
+        if renderingMode == .accented {
+            Text(name)
+                .font(.system(size: 16, weight: .black))
+                .foregroundColor(.primary)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(Color.primary, lineWidth: 2)
+                )
+        }
+        else {
+            Text(name)
+                .font(.system(size: 16, weight: .black))
+                .foregroundColor(.white)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(getColor(for: name))
+                )
         }
     }
 }
