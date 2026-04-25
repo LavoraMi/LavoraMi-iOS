@@ -606,9 +606,6 @@
         }
       }
     },
-    "Cerca una linea ed apparirà qui!" : {
-
-    },
     "Cercate di recente" : {
 
     },
@@ -2173,6 +2170,9 @@
         }
       }
     },
+    "Nessuna linea cercata di recente." : {
+
+    },
     "Nome completo" : {
       "localizations" : {
         "en" : {
@@ -2967,6 +2967,9 @@
           }
         }
       }
+    },
+    "Sei sicuro di voler cancellare le ricerche recenti?" : {
+
     },
     "Sei sicuro di voler Eliminare Definitivamente il tuo Account?" : {
       "localizations" : {

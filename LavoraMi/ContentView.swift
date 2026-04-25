@@ -3522,6 +3522,7 @@ struct LinesView: View {
 
     @State private var searchInput: String = ""
     @State private var selectedURL: URL?
+    @State private var showDeletePopUp: Bool = false
     @FocusState private var isSearchFocused: Bool
 
     // MARK: - Search helpers
@@ -3787,30 +3788,47 @@ struct LinesView: View {
             .padding()
             List {
                 Section(){
-                    if recentlySearchedLines.isEmpty {
-                        Text("Cerca una linea ed apparirà qui!")
+                    if recentlySearchedLines.isEmpty && searchInput.isEmpty {
+                        Text("Nessuna linea cercata di recente.")
                     } else {
-                        ForEach(recentlySearchedLines) { recent in
-                            let lineInfo = LineInfo(name: recent.name, branches: recent.branches, type: recent.type, waitMinutes: recent.waitMinutes, stations: [], accessibilityStatus: recent.accessibilityStatus)
-                            LineRow(line: recent.name, typeOfTransport: recent.type, branches: recent.branches, waitMinutes: recent.waitMinutes, accessibilityStatus: recent.accessibilityStatus, stations: [], viewModel: viewModel)
+                        if(searchInput.isEmpty) {
+                            ForEach(recentlySearchedLines) { recent in
+                                LineRow(line: recent.name, typeOfTransport: recent.type, branches: recent.branches, waitMinutes: recent.waitMinutes, accessibilityStatus: recent.accessibilityStatus, stations: [], viewModel: viewModel)
+                            }
                         }
                     }
                 }
                 header:{
-                    HStack{
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Cercate di recente")
-                                .font(.title3)
-                                .bold()
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                            
-                            Label("In base alle tue ricerche", systemImage: "sparkles")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .textCase(nil)
+                    if(searchInput.isEmpty) {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Label {
+                                    Text("Cercate di recente")
+                                        .font(.title3)
+                                        .bold()
+                                        .foregroundStyle(.primary)
+                                        .textCase(nil)
+                                        .padding(.leading, -10)
+                                } icon: {
+                                    Image(systemName: "sparkles")
+                                }
+                                
+                                Text("In base alle tue ricerche")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
+                            }
+                            Spacer()
+                            if(!recentlySearchedLines.isEmpty) {
+                                Button(action: {
+                                    showDeletePopUp = true
+                                }) {
+                                    Image(systemName: "delete.backward.fill")
+                                        .foregroundColor(.gray)
+                                }
+                                .padding(.bottom, 4)
+                            }
                         }
-                        .padding(.bottom, 4)
                     }
                 }
                 Section(){
@@ -4129,6 +4147,12 @@ struct LinesView: View {
                     Text("Nessun risultato per: \"\(searchInput)\".")
                         .foregroundStyle(.secondary)
                 }
+            }
+            .alert("Sei sicuro?", isPresented: $showDeletePopUp) {
+                Button("Annulla", role: .cancel){showDeletePopUp = false}
+                Button("Continua"){recentlySearchedLinesData = Data()}
+            } message: {
+                Text("Sei sicuro di voler cancellare le ricerche recenti?")
             }
         }
     }
