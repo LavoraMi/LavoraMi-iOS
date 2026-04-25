@@ -90,7 +90,7 @@ struct ContentView: View {
             checkForUpdates()
         }
         .onChange(of: showWhatsNewScreen) {
-            if(showWhatsNewScreen && latestVersionInstalled != Bundle.main.shortVersion && showWhatsNewScreenToggle) {
+            if(showWhatsNewScreen && latestVersionInstalled != Bundle.main.shortVersion && showWhatsNewScreenToggle && viewModel.showWhatsNewScreen) {
                 showWhatsNew = true
                 latestVersionInstalled = Bundle.main.shortVersion
             }

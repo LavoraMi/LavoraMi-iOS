@@ -15,6 +15,7 @@ class WorkViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
     @Published var strikeEnabled: Bool = false
     @Published var strikeEnabledDebug: Bool = false
+    @Published var showWhatsNewScreen: Bool = false
     @Published var companiesStrikes: String = ""
     @Published var dateStrike: String = ""
     @Published var guaranteed: String = ""
@@ -119,6 +120,7 @@ class WorkViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self?.strikeEnabled = (result.enableStrike == "true")
                     self?.strikeEnabledDebug = (result.enableStrikeDebug == "true")
+                    self?.showWhatsNewScreen = (result.showWhatsNewScreen == "true")
                     self?.companiesStrikes = result.companies
                     self?.dateStrike = result.date
                     self?.guaranteed = result.guaranteed
@@ -188,6 +190,7 @@ class WorkViewModel: ObservableObject {
 struct RemoteConfigData: Codable {
     let enableStrike: String
     let enableStrikeDebug: String
+    let showWhatsNewScreen: String
     let date: String
     let companies: String
     let guaranteed: String
