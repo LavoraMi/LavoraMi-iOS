@@ -900,6 +900,17 @@
         }
       }
     },
+    "endWorksTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lavori terminati!"
+          }
+        }
+      }
+    },
     "Errore" : {
       "localizations" : {
         "en" : {
@@ -1515,6 +1526,28 @@
         }
       }
     },
+    "lavoriInizianoDomaniTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ I lavori iniziano domani!"
+          }
+        }
+      }
+    },
+    "lavoriIniziatiTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lavori Iniziati!"
+          }
+        }
+      }
+    },
     "Le fasce garantite %@" : {
       "localizations" : {
         "en" : {
@@ -2011,7 +2044,7 @@
       }
     },
     "Mostra Schermata Novità 1" : {
-      "extractionState" : "pasted",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3248,6 +3281,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tommaso Ruggeri"
+          }
+        }
+      }
+    },
+    "tomorrowFineLavoriTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ I lavori finiscono domani!"
           }
         }
       }

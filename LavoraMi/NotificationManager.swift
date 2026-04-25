@@ -51,7 +51,7 @@ class NotificationManager {
         dateComponents.minute = preferredMinutes
         
         let contentDayOf = UNMutableNotificationContent()
-        contentDayOf.title = "Lavori terminati!"
+        contentDayOf.title = String(localized: .endWorksTitle)
         
         if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
             if(work.lines.count <= 1){
@@ -90,7 +90,7 @@ class NotificationManager {
             dayBeforeComponents.minute = preferredMinutes
             
             let contentDayBefore = UNMutableNotificationContent()
-            contentDayBefore.title = "⚠️ I lavori finiscono domani!"
+            contentDayBefore.title = String(localized: .tomorrowFineLavoriTitle)
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
                 if(work.lines.count <= 1){
@@ -137,7 +137,7 @@ class NotificationManager {
         dateComponents.minute = preferredMinutes
         
         let contentDayOf = UNMutableNotificationContent()
-        contentDayOf.title = "Lavori Iniziati!"
+        contentDayOf.title = String(localized: .lavoriIniziatiTitle)
         
         if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
             if(work.lines.count <= 1){
@@ -176,7 +176,7 @@ class NotificationManager {
             dayBeforeComponents.minute = preferredMinutes
             
             let contentDayBefore = UNMutableNotificationContent()
-            contentDayBefore.title = "⚠️ I lavori iniziano domani!"
+            contentDayBefore.title = String(localized: .lavoriInizianoDomaniTitle)
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil){
                 if(work.lines.count <= 1){
@@ -240,7 +240,7 @@ class NotificationManager {
         if let fireDate = calendar.date(from: dayOfComponents), fireDate > Date() {
             let content = UNMutableNotificationContent()
             content.title = String(localized: .scioperoNotificaTitle)
-            content.body = String(localized: .scioperoTomorrowNotificaDeps(companies, guaranteed))
+            content.body = String(localized: .scioperoNotificaDeps(companies, guaranteed))
             content.sound = .default
             
             let req = UNNotificationRequest(identifier: "STRIKE_DAY", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: dayOfComponents, repeats: false))
@@ -362,7 +362,7 @@ class NotificationManager {
             let (comps, date) = notifDate(from: work.endDate)
             guard let date = date, date > Date() else { return }
             let content = UNMutableNotificationContent()
-            content.title = "Lavori terminati!"
+            content.title = String(localized: .endWorksTitle)
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
                 if(work.lines.count <= 1){
@@ -391,7 +391,7 @@ class NotificationManager {
             guard let dayBefore = calendar.date(byAdding: .day, value: -1, to: work.endDate), dayBefore > Date() else { return }
             let (comps, date) = notifDate(from: dayBefore)
             let content = UNMutableNotificationContent()
-            content.title = "⚠️ I lavori finiscono domani!"
+            content.title = String(localized: .tomorrowFineLavoriTitle)
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
                 if(work.lines.count <= 1){
@@ -435,7 +435,7 @@ class NotificationManager {
             let (comps, date) = notifDate(from: work.startDate)
             guard let date = date, date > Date() else { return }
             let content = UNMutableNotificationContent()
-            content.title = "Lavori Iniziati!"
+            content.title = String(localized: .lavoriIniziatiTitle)
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil) {
                 if(work.lines.count <= 1){
@@ -464,7 +464,7 @@ class NotificationManager {
             guard let dayBefore = calendar.date(byAdding: .day, value: -1, to: work.startDate), dayBefore > Date() else { return }
             let (comps, date) = notifDate(from: dayBefore)
             let content = UNMutableNotificationContent()
-            content.title = "⚠️ I lavori iniziano domani!"
+            content.title = String(localized: .lavoriInizianoDomaniTitle)
             
             if(work.roads.range(of: "via", options: .caseInsensitive) != nil){
                 if(work.lines.count <= 1){
