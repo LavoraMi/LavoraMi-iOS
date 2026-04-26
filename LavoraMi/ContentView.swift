@@ -2263,7 +2263,7 @@ struct AdvancedOptionsView: View {
             }
             Section(footer: Text("Mostra la schermata delle novità appena l'app viene aggiornata.")){
                 Toggle(isOn: $showWhatsNewScreen){
-                    Label("Mostra Schermata Novità", systemImage: "text.badge.plus")
+                    Label("Mostra Schermata Novità", systemImage: "app.badge.fill")
                 }
             }
             if(Locale.current.language.languageCode?.identifier == "it"){
@@ -2587,7 +2587,7 @@ struct InfoView: View {
                         .font(.system(size: 30))
                         .bold()
                         .padding(.top, 20)
-                    Text("Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreo o BuyMeaCoffee!")
+                    Text("Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreon o Buy Me A Coffee!")
                         .font(.system(size: 14))
                         .multilineTextAlignment(.center)
                         .padding(.top, 1)
@@ -5004,7 +5004,6 @@ struct LineSmallDetailedView: View {
                             VStack(spacing: 0) {
                                 HStack(spacing: 10) {
                                     Image(systemName: "location.fill")
-                                        .foregroundStyle(.white)
                                         .font(.title2)
 
                                     Menu {
@@ -5019,7 +5018,7 @@ struct LineSmallDetailedView: View {
                                             Text(selectedStopId.flatMap { route.stops[$0]?.n } ?? "Scegli una fermata...")
                                                 .font(.subheadline)
                                                 .fontWeight(.medium)
-                                                .foregroundStyle(.white)
+                                                .foregroundStyle(Color("TextColor"))
                                                 .lineLimit(1)
                                             Spacer()
                                             Image(systemName: "chevron.down")
@@ -5116,12 +5115,10 @@ struct LineSmallDetailedView: View {
                                                     .background(Color(.secondarySystemBackground))
                                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                                     .padding(.horizontal, 16)
-                                                    .padding(.bottom, 4)
                                                 }
                                             }
                                         }
                                     }
-                                    .padding(.vertical, 12)
                                     .padding(.bottom, 80)
                                 }
 
@@ -5349,7 +5346,7 @@ struct WhatsNewViewBase: View {
         SetupPage(
             title: "Cosa c'è di nuovo?",
             description: "Scorri e scopri cosa abbiamo aggiunto, migliorato oppure sistemato!",
-            transitionImage: "chevron.up",
+            transitionImage: "person.fill.questionmark",
             standardImage: "checkmark.seal.fill",
             fallbackImage: "checkmark.seal.fill"
         ),

@@ -2976,9 +2976,6 @@
       }
     },
     "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreo o BuyMeaCoffee!" : {
-
-    },
-    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreon o Buy Me A Coffee!" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
@@ -2988,6 +2985,9 @@
           }
         }
       }
+    },
+    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreon o Buy Me A Coffee!" : {
+
     },
     "Segnala un bug" : {
       "localizations" : {
