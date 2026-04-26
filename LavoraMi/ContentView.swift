@@ -3461,78 +3461,65 @@ struct LineRow: View {
     let stations: [MetroStation]
     @State private var supportedLines: [String] = ["1", "3", "5", "7", "9", "24", "31"]
     @ObservedObject var viewModel: WorkViewModel
-    
     var onTap: (() -> Void)? = nil
-    
+
+    private var isDetailView: Bool {
+        (typeOfTransport != "Tram" || supportedLines.contains(line))
+        && typeOfTransport != "Movibus"
+        && typeOfTransport != "STAV"
+        && typeOfTransport != "Autoguidovie"
+    }
+
+    @ViewBuilder
+    private var destination: some View {
+        if isDetailView {
+            LineDetailView(
+                lineName: line,
+                typeOfTransport: typeOfTransport,
+                branches: branches,
+                waitMinutes: waitMinutes,
+                workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
+                workNow: getWorkNow(line: line, viewModel: viewModel),
+                viewModel: viewModel,
+                stations: stations,
+                accessibilityStatus: accessibilityStatus,
+                onAppear: { onTap?() }
+            )
+        } else {
+            LineSmallDetailedView(
+                lineName: line,
+                typeOfTransport: typeOfTransport,
+                branches: branches,
+                waitMinutes: waitMinutes,
+                workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
+                workNow: getWorkNow(line: line, viewModel: viewModel),
+                accessibilityStatus: accessibilityStatus,
+                viewModel: viewModel,
+                onAppear: { onTap?() }
+            )
+        }
+    }
+
     var body: some View {
-        Group {
-            if ((typeOfTransport != "Tram" || supportedLines.contains(line)) && typeOfTransport != "Movibus" && typeOfTransport != "STAV" && typeOfTransport != "Autoguidovie") {
-                NavigationLink(
-                    destination: LineDetailView(
-                        lineName: line,
-                        typeOfTransport: typeOfTransport,
-                        branches: branches,
-                        waitMinutes: waitMinutes,
-                        workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
-                        workNow: getWorkNow(line: line, viewModel: viewModel),
-                        viewModel: viewModel,
-                        stations: stations,
-                        accessibilityStatus: accessibilityStatus,
-                        onAppear: { onTap?() }
-                    )
-                ) {
-                    HStack(spacing: 12) {
-                        Text(line)
-                            .foregroundStyle(.white)
-                            .font(.system(size: 12, weight: .bold))
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 8)
-                            .background(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill((typeOfTransport == "Tram") ? .orange : getColor(for: line))
-                            )
-
-                        if(line == "MXP1" || line == "MXP2"){Text("\(typeOfTransport)")}
-                        else{Text("\(typeOfTransport) \(line)")}
-                    }
+        NavigationLink(destination: destination) {
+            HStack(spacing: 12) {
+                Text(line)
+                    .foregroundStyle(.white)
+                    .font(.system(size: 12, weight: .bold))
                     .padding(.vertical, 4)
-                }
-                .simultaneousGesture(TapGesture().onEnded {
-                    onTap?()
-                })
-            } else {
-                NavigationLink(
-                    destination: LineSmallDetailedView(
-                        lineName: line,
-                        typeOfTransport: typeOfTransport,
-                        branches: branches,
-                        waitMinutes: waitMinutes,
-                        workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
-                        workNow: getWorkNow(line: line, viewModel: viewModel),
-                        accessibilityStatus: accessibilityStatus,
-                        viewModel: viewModel,
-                        onAppear: { onTap?() }
+                    .padding(.horizontal, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill((typeOfTransport == "Tram") ? .orange : getColor(for: line))
                     )
-                ) {
-                    HStack(spacing: 12) {
-                        Text(line)
-                            .foregroundStyle(.white)
-                            .font(.system(size: 12, weight: .bold))
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 8)
-                            .background(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill((typeOfTransport == "Tram") ? .orange : getColor(for: line))
-                            )
 
-                        Text("\(typeOfTransport) \(line)")
-                    }
-                    .padding(.vertical, 4)
+                if line == "MXP1" || line == "MXP2" {
+                    Text(typeOfTransport)
+                } else {
+                    Text("\(typeOfTransport) \(line)")
                 }
-                .simultaneousGesture(TapGesture().onEnded {
-                    onTap?()
-                })
             }
+            .padding(.vertical, 4)
         }
     }
 }
@@ -3618,6 +3605,11 @@ struct LinesView: View {
     var recentlySearchedLines: [RecentLine] {
         get { (try? JSONDecoder().decode([RecentLine].self, from: recentlySearchedLinesData)) ?? [] }
         set { recentlySearchedLinesData = (try? JSONEncoder().encode(newValue)) ?? Data() }
+    }
+    
+    func fullLineInfo(for name: String) -> LineInfo? {
+        let all = metros + suburban + crossBorderLines + malpensaExpress + trams + bus + stav + autoguidovie
+        return all.first { $0.name == name }
     }
 
     func addToRecent(_ line: LineInfo) {
@@ -3817,7 +3809,17 @@ struct LinesView: View {
                         } else {
                             if(searchInput.isEmpty) {
                                 ForEach(recentlySearchedLines) { recent in
-                                    LineRow(line: recent.name, typeOfTransport: recent.type, branches: recent.branches, waitMinutes: recent.waitMinutes, accessibilityStatus: recent.accessibilityStatus, stations: [], viewModel: viewModel)
+                                    if let lineInfo = fullLineInfo(for: recent.name) {
+                                        LineRow(
+                                            line: lineInfo.name,
+                                            typeOfTransport: lineInfo.type,
+                                            branches: lineInfo.branches,
+                                            waitMinutes: lineInfo.waitMinutes,
+                                            accessibilityStatus: lineInfo.accessibilityStatus,
+                                            stations: lineInfo.stations,
+                                            viewModel: viewModel
+                                        )
+                                    }
                                 }
                             }
                         }
