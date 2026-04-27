@@ -80,7 +80,7 @@ struct SplashScreenView: View {
         withAnimation(.easeIn(duration: 0.15).delay(1.05)) {
             opacity = 0
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             if hasNotCompletedSetup {
                 showSetupScreen = true
             }

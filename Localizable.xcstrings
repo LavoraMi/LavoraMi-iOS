@@ -219,6 +219,16 @@
         }
       }
     },
+    "Accessibile, sempre." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accessible, always."
+          }
+        }
+      }
+    },
     "Accessibilità" : {
       "localizations" : {
         "en" : {
@@ -1168,6 +1178,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "See What’s New"
+          }
+        }
+      }
+    },
+    "Guarda se una linea è completamente, parzialmente o per nulla accessibile. Tutto a colpo d'occhio." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See whether a line is fully, partially or not at all accessible. All at a glance."
           }
         }
       }
@@ -2975,8 +2995,7 @@
         }
       }
     },
-    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreo o BuyMeaCoffee!" : {
-      "extractionState" : "stale",
+    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreon o Buy Me A Coffee!" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2985,9 +3004,6 @@
           }
         }
       }
-    },
-    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreon o Buy Me A Coffee!" : {
-
     },
     "Segnala un bug" : {
       "localizations" : {

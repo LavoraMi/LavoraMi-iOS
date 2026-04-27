@@ -61,7 +61,7 @@ struct ContentView: View {
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @AppStorage("showWhatsNewScreen") var showWhatsNewScreenToggle: Bool = true
-    @AppStorage("latestVersionInstalled") var latestVersionInstalled: String = "1.1.2"
+    @AppStorage("latestVersionInstalled") var latestVersionInstalled: String = Bundle.main.shortVersion
     
     @Environment(\.openURL) private var openURLAction
 
@@ -165,6 +165,12 @@ struct SetupView: View {
             standardImage: "translate"
         ),
         SetupPage(
+            title: "Accessibile, sempre.",
+            description: "Guarda se una linea è completamente, parzialmente o per nulla accessibile. Tutto a colpo d'occhio.",
+            transitionImage: "person.fill",
+            standardImage: "figure.roll"
+        ),
+        SetupPage(
             title: "Tu ed ancora Tu.",
             description: "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi.",
             transitionImage: "lock.open.fill",
@@ -230,7 +236,7 @@ struct SetupView: View {
             }
             .navigationTitle(Text("LavoraMi"))
             .toolbar {
-                if(currentPage != 5) {
+                if(currentPage != 6) {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             showPopUpConfirmSkipSetup = true
@@ -2883,7 +2889,7 @@ struct HowAppWorksView: View {
 
                         ProgressView(value: 0.38)
                             .progressViewStyle(.linear)
-                            .tint(Color(red: 253/255, green: 39/255, blue: 45/255))
+                            .tint(.red)
                             .padding(.horizontal, 20)
                             .padding(.vertical, 10)
                     }
@@ -2900,7 +2906,7 @@ struct HowAppWorksView: View {
                 CardView {
                     HStack {
                         Image(systemName: "bus.fill")
-                            .foregroundColor(Color(red: 228/255, green: 20/255, blue: 20/255))
+                            .foregroundColor(.red)
                             .frame(width: 28, height: 28)
                         Text("Linee Movibus")
                             .foregroundColor(.primary)
@@ -3025,10 +3031,10 @@ private struct SectionHeader: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 30, height: 30)
-                .foregroundColor(Color(red: 228/255, green: 20/255, blue: 20/255))
+                .foregroundColor(.red)
             Text(title)
                 .font(.system(size: 30, weight: .bold))
-                .foregroundColor(Color(red: 228/255, green: 20/255, blue: 20/255))
+                .foregroundColor(.red)
         }
         .padding(.top, 10)
     }
