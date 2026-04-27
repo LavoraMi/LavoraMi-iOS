@@ -236,7 +236,7 @@ struct SetupView: View {
             }
             .navigationTitle(Text("LavoraMi"))
             .toolbar {
-                if(currentPage != 6) {
+                if(currentPage == pages.count - 1) {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             showPopUpConfirmSkipSetup = true
