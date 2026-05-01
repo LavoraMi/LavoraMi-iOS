@@ -3239,7 +3239,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Supabase",
-            version: "2.45.0",
+            version: "2.46.0",
             license: "MIT License",
             copyright: "Copyright (c) 2021 Supabase",
             licenseText: """
