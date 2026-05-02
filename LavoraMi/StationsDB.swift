@@ -738,6 +738,32 @@ struct StationsDB {
         .init(name: "Porta Genova M2", coordinate: .init(latitude: 45.45341, longitude: 9.17002), branch: "Main")
     ]
     
+    static let tram10: [MetroStation] = [
+        .init(name: "V.le Lunigiana", coordinate: .init(latitude: 45.49107, longitude: 9.20599), branch: "Main"),
+        .init(name: "Stazione Centrale Via Tonale", coordinate: .init(latitude: 45.48866, longitude: 9.20385), branch: "Main"),
+        .init(name: "Stazione Centrale M2 M3", coordinate: .init(latitude: 45.48685, longitude: 9.20192), branch: "Main"),
+        .init(name: "Via Filzi Via Pirelli", coordinate: .init(latitude: 45.48431, longitude: 9.20018), branch: "Main"),
+        .init(name: "Via Filzi Via Adda", coordinate: .init(latitude: 45.48316, longitude: 9.19939), branch: "Main"),
+        .init(name: "V.le Monte Santo", coordinate: .init(latitude: 45.47978, longitude: 9.19489), branch: "Main"),
+        .init(name: "P.le Principessa Clotilde", coordinate: .init(latitude: 45.47971, longitude: 9.19245), branch: "Main"),
+        .init(name: "Garibaldi FS M2 M5", coordinate: .init(latitude: 45.48351, longitude: 9.18671), branch: "Main"),
+        .init(name: "Via Farini Via Ferrari", coordinate: .init(latitude: 45.48421, longitude: 9.18521), branch: "Main"),
+        .init(name: "Monumentale M5", coordinate: .init(latitude: 45.48532, longitude: 9.18098), branch: "Main"),
+        .init(name: "Via Procaccini Via Nono", coordinate: .init(latitude: 45.48425, longitude: 9.17654), branch: "Main"),
+        .init(name: "Via Procaccini Via Lomazzo", coordinate: .init(latitude: 45.48212, longitude: 9.17123), branch: "Main"),
+        .init(name: "Arco Della Pace", coordinate: .init(latitude: 45.47639, longitude: 9.1714), branch: "Main"),
+        .init(name: "Via Pagano Via Canova", coordinate: .init(latitude: 45.47422, longitude: 9.17002), branch: "Main"),
+        .init(name: "L.go Quinto Alpini", coordinate: .init(latitude: 45.47264, longitude: 9.16761), branch: "Main"),
+        .init(name: "Conciliazione M1", coordinate: .init(latitude: 45.46749, longitude: 9.1663), branch: "Main"),
+        .init(name: "P.le Baracca", coordinate: .init(latitude: 45.46751, longitude: 9.16321), branch: "Main"),
+        .init(name: "P.le Aquileia", coordinate: .init(latitude: 45.46321, longitude: 9.16112), branch: "Main"),
+        .init(name: "V.le Coni Zugna Via Foppa", coordinate: .init(latitude: 45.45891, longitude: 9.16452), branch: "Main"),
+        .init(name: "P.le Cantore", coordinate: .init(latitude: 45.45491, longitude: 9.17225), branch: "Main"),
+        .init(name: "Porta Genova M2", coordinate: .init(latitude: 45.45322, longitude: 9.17065), branch: "Main"),
+        .init(name: "Via Vigevano V.le Gorizia", coordinate: .init(latitude: 45.45272, longitude: 9.1763), branch: "Main"),
+        .init(name: "Piazza XXIV Maggio", coordinate: .init(latitude: 45.4524, longitude: 9.17969), branch: "Main")
+    ]
+    
     static let tram24: [MetroStation] = [
         .init(name: "Vigentino", coordinate: .init(latitude: 45.42196, longitude: 9.20354), branch: "Main"),
         .init(name: "Via Ripamonti Via Chopin", coordinate: .init(latitude: 45.42577, longitude: 9.20336), branch: "Main"),
@@ -775,6 +801,26 @@ struct StationsDB {
         .init(name: "Villa Ghirlanda (Cinisello B.)", coordinate: .init(latitude: 45.55802, longitude: 9.21467), branch: "Main"),
         .init(name: "Monte Ortigara (Cinisello B.)", coordinate: .init(latitude: 45.5594, longitude: 9.21405), branch: "Main"),
         .init(name: "Cinisello (Primo Maggio)", coordinate: .init(latitude: 45.56002, longitude: 9.21108), branch: "Main")
+    ]
+    
+    static let tram33: [MetroStation] = [
+        .init(name: "P.le Lagosta", coordinate: .init(latitude: 45.48975, longitude: 9.19152), branch: "Main"),
+        .init(name: "Via Pola Via P. Eugenio", coordinate: .init(latitude: 45.48782, longitude: 9.19451), branch: "Main"),
+        .init(name: "Via Galvani Via Paoli", coordinate: .init(latitude: 45.48621, longitude: 9.19821), branch: "Main"),
+        .init(name: "Stazione Centrale M2 M3", coordinate: .init(latitude: 45.48469, longitude: 9.20274), branch: "Main"),
+        .init(name: "Via Vitruvio", coordinate: .init(latitude: 45.48217, longitude: 9.20646), branch: "Main"),
+        .init(name: "P.za Cincinnato", coordinate: .init(latitude: 45.4799, longitude: 9.20393), branch: "Main"),
+        .init(name: "V.le Tunisia", coordinate: .init(latitude: 45.47885, longitude: 9.20292), branch: "Main"),
+        .init(name: "P.ta Venezia M1", coordinate: .init(latitude: 45.47418, longitude: 9.20594), branch: "Main"),
+        .init(name: "P.za Otto Novembre", coordinate: .init(latitude: 45.47475, longitude: 9.21084), branch: "Main"),
+        .init(name: "P.za Adelaide di Savoia", coordinate: .init(latitude: 45.4732, longitude: 9.21434), branch: "Main"),
+        .init(name: "P.za Ascoli", coordinate: .init(latitude: 45.47322, longitude: 9.21658), branch: "Main"),
+        .init(name: "P.za Aspari", coordinate: .init(latitude: 45.47195, longitude: 9.22088), branch: "Main"),
+        .init(name: "P.za Ferravilla", coordinate: .init(latitude: 45.47105, longitude: 9.22336), branch: "Main"),
+        .init(name: "Via Bassini Via Golgi", coordinate: .init(latitude: 45.47921, longitude: 9.23121), branch: "Main"),
+        .init(name: "Via Bassini Via Valvassori Peroni", coordinate: .init(latitude: 45.48212, longitude: 9.23345), branch: "Main"),
+        .init(name: "Stazione Lambrate M2", coordinate: .init(latitude: 45.48423, longitude: 9.235), branch: "Main"),
+        .init(name: "Rimembranze di Lambrate", coordinate: .init(latitude: 45.48154, longitude: 9.24351), branch: "Main")
     ]
     
     static let interchanges: [InterchageInfo] = [
