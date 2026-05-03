@@ -1757,11 +1757,11 @@ struct AccountView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background((!validateEmail(email)) ? Color.gray.opacity(0.5) : Color.red)
+                        .background((!validateUserInputs(email: email, password: password)) ? Color.gray.opacity(0.5) : Color.red)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(radius: 5, y: 3)
                     }
-                    .disabled(!validateEmail(email) || auth.isLoading)
+                    .disabled(!validateUserInputs(email: email, password: password) || auth.isLoading)
                 };
                 //MARK: CREATING ACCOUNT
                 if !isLogginIn && !loggedIn && !resettingPassword {
@@ -1915,11 +1915,11 @@ struct AccountView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background((!validateEmail(email) || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
+                        .background((!validateUserInputs(email: email, password: password) || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(radius: 5, y: 3)
                     }
-                    .disabled(!validateEmail(email) || auth.isLoading)
+                    .disabled(!validateUserInputs(email: email, password: password) || auth.isLoading)
                     .alert("Conferma Mail", isPresented: $popUpVerifyMail) {
                         Button("Chiudi", role: .cancel) {
                             popUpVerifyMail = false
@@ -2229,6 +2229,12 @@ struct AccountView: View {
 
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
+    }
+    
+    func validateUserInputs(email: String, password: String) -> Bool {
+        let mailIsValid = validateEmail(email)
+        
+        return password.count >= 8 && mailIsValid
     }
 }
 
