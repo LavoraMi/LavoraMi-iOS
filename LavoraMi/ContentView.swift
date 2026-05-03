@@ -1576,6 +1576,7 @@ struct AccountView: View {
     @State private var emailRecoverPassword: String = ""
     @State private var password: String = ""
     @State private var fullName: String = ""
+    @State private var tabTitle: String = ""
     @State private var isLogginIn: Bool = true
     @State private var loggedIn: Bool = false
     @State private var resettingPassword: Bool = false
@@ -1725,6 +1726,7 @@ struct AccountView: View {
                                 
                                 await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: name)
                                 loggedIn = auth.isLoggedIn()
+                                tabTitle = "Account"
                             }
                         }
                     }
@@ -1735,6 +1737,7 @@ struct AccountView: View {
                         Task {
                             await auth.signIn(email: email, password: password)
                             loggedIn = auth.isLoggedIn()
+                            tabTitle = "Account"
                             if loggedIn {
                                 if fullName.isEmpty { fullName = auth.getFullName() }
                                 if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
@@ -1885,6 +1888,7 @@ struct AccountView: View {
                                 
                                 await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: name)
                                 loggedIn = auth.isLoggedIn()
+                                tabTitle = "Account"
                             }
                         }
                     }
@@ -1895,6 +1899,7 @@ struct AccountView: View {
                         Task {
                             await auth.signUp(email: email, password: password, name: fullName)
                             popUpVerifyMail = auth.errorMessage == nil
+                            tabTitle = "Account"
                         }
                     }) {
                         HStack {
@@ -2165,6 +2170,7 @@ struct AccountView: View {
                 if loggedIn {
                     if fullName.isEmpty { fullName = auth.getFullName() }
                     if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+                    tabTitle = "Account"
                 }
                 if(requireFaceID && loggedIn && isRequiringData == false && isBiometricAuthCompleted == false){
                     BiometricAuth.authenticate{
@@ -2191,13 +2197,14 @@ struct AccountView: View {
                         email = ""
                         password = ""
                         fullName = ""
+                        tabTitle = ""
                         await auth.signOut()
                     }
                 }
             } message: {
                 Text("Sei sicuro di voler uscire dall'account?")
             }
-            .navigationTitle("Account")
+            .navigationTitle(tabTitle)
             .navigationBarTitleDisplayMode(.inline)
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
