@@ -37,6 +37,7 @@ struct SplashScreenView: View {
                 Image("icon")
                     .resizable()
                     .frame(width: 150, height: 150)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
                     .scaleEffect(scaleEffect)
                 
                 if(showNoConnection){
