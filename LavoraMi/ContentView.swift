@@ -4731,7 +4731,7 @@ struct LineSmallDetailedView: View {
     let workNow: Int
     let accessibilityStatus: String
     let viewModel: WorkViewModel
-    let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
 
     private enum LineSmallTab { case works, arrivi }
     @State private var selectedTab: LineSmallTab = .works
@@ -5126,7 +5126,6 @@ struct LineSmallDetailedView: View {
                                             }
                                         }
                                     }
-                                    .padding(.bottom, 80)
                                 }
 
                             } else if selectedStopId != nil {
