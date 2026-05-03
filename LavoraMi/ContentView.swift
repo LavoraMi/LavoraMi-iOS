@@ -1591,6 +1591,7 @@ struct AccountView: View {
     @State private var selectedURL: URL?
     @State private var isBiometricAuthCompleted: Bool = false
     @State private var showMailApple: Bool = false
+    @State private var logginIn: Bool = false
     @State var isRequiringData: Bool = false
     @State private var currentNonce: String?
     @Environment(\.dismiss) private var dismiss
@@ -1709,6 +1710,7 @@ struct AccountView: View {
                         request.nonce = sha256(nonce)
                     } onCompletion: { result in
                         Task {
+                            logginIn = true
                             switch result {
                             case .failure(let error):
                                 print("Apple Sign In error: \(error)")
@@ -1726,6 +1728,7 @@ struct AccountView: View {
                                 
                                 await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: name)
                                 loggedIn = auth.isLoggedIn()
+                                logginIn = false
                                 tabTitle = "Account"
                             }
                         }
@@ -1734,9 +1737,11 @@ struct AccountView: View {
                     .frame(height: 50)
                     .cornerRadius(16)
                     Button(action: {
+                        logginIn = true
                         Task {
                             await auth.signIn(email: email, password: password)
                             loggedIn = auth.isLoggedIn()
+                            logginIn = false
                             tabTitle = "Account"
                             if loggedIn {
                                 if fullName.isEmpty { fullName = auth.getFullName() }
@@ -1757,11 +1762,11 @@ struct AccountView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background((!validateUserInputs(email: email, password: password)) ? Color.gray.opacity(0.5) : Color.red)
+                        .background((!validateUserInputs(email: email, password: password) || logginIn) ? Color.gray.opacity(0.5) : Color.red)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(radius: 5, y: 3)
                     }
-                    .disabled(!validateUserInputs(email: email, password: password) || auth.isLoading)
+                    .disabled(!validateUserInputs(email: email, password: password) || auth.isLoading || logginIn)
                 };
                 //MARK: CREATING ACCOUNT
                 if !isLogginIn && !loggedIn && !resettingPassword {
@@ -1871,6 +1876,7 @@ struct AccountView: View {
                         request.requestedScopes = [.fullName, .email]
                         request.nonce = sha256(nonce)
                     } onCompletion: { result in
+                        logginIn = true
                         Task {
                             switch result {
                             case .failure(let error):
@@ -1888,6 +1894,7 @@ struct AccountView: View {
                                 
                                 await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: name)
                                 loggedIn = auth.isLoggedIn()
+                                logginIn = false
                                 tabTitle = "Account"
                             }
                         }
@@ -1896,9 +1903,11 @@ struct AccountView: View {
                     .frame(height: 50)
                     .cornerRadius(16)
                     Button(action: {
+                        logginIn = true
                         Task {
                             await auth.signUp(email: email, password: password, name: fullName)
                             popUpVerifyMail = auth.errorMessage == nil
+                            logginIn = false
                             tabTitle = "Account"
                         }
                     }) {
@@ -1915,7 +1924,7 @@ struct AccountView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background((!validateUserInputs(email: email, password: password) || auth.isLoading) ? Color.gray.opacity(0.5) : Color.red)
+                        .background((!validateUserInputs(email: email, password: password) || isLogginIn) ? Color.gray.opacity(0.5) : Color.red)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(radius: 5, y: 3)
                     }
