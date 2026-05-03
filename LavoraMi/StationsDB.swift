@@ -910,7 +910,7 @@ struct StationsDB {
         .init(name: "Porta Venezia M1", lines: ["M1", "9", "S1", "S2", "S5", "S6", "S12", "S13"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Porta Venezia V.Le Tunisia", lines: ["M1", "5", "33"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "P.Za Otto Novembre", lines: ["5", "33", "S1", "S2", "S5", "S6", "S12", "S13"], typeOfInterchange: "lightrail.fill"),
-        .init(name: "Garibaldi FS", lines: ["M2", "M5", "9", "33", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13"], typeOfInterchange: "lightrail.fill"),
+        .init(name: "Garibaldi FS", lines: ["M2", "M5", "10", "33", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13"], typeOfInterchange: "lightrail.fill"),
         .init(name: "Monumentale M5", lines: ["M5", "10"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Coni Zugna M4", lines: ["M4", "10"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Repetti M4", lines: ["M4", "12", "27"], typeOfInterchange: "tram.fill.tunnel"),
@@ -928,7 +928,7 @@ struct StationsDB {
         .init(name: "Crocetta M3", lines: ["M3", "16", "24"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Lambrate FS", lines: ["M2", "19", "R4", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "S9"], typeOfInterchange: "lightrail.fill"),
         .init(name: "Via Larga", lines: ["12", "19", "24"], typeOfInterchange: "tram.fill"),
-        .init(name: "P.Le Lagosta", lines: ["17", "31", "33"], typeOfInterchange: "tram.fill"),
+        .init(name: "P.Le Lagosta", lines: ["7", "31", "33"], typeOfInterchange: "tram.fill"),
         .init(name: "Porta Romana M3", lines: ["M3", "9"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Tricolore M4", lines: ["M4", "9", "19"], typeOfInterchange: "tram.fill.tunnel")
     ]
