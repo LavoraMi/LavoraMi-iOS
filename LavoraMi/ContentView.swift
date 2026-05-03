@@ -68,7 +68,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selectedTab){
             MainView(viewModel: viewModel)
-                .tabItem{Label("Home", systemImage: "house")}
+                .tabItem {Label("Home", image: "homeIcon")}
                 .tag(0)
             LinesView(viewModel: viewModel)
                 .tabItem{Label("Linee", systemImage: "arrow.branch")}
