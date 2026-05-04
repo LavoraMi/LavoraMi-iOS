@@ -1501,6 +1501,9 @@
         }
       }
     },
+    "La linea %@ è stata aggiunta nella sezione \"Le tue linee\"!" : {
+
+    },
     "LA LINEA E' ATTIVA SOLO NEI GIORNI LAVORATIVI." : {
       "localizations" : {
         "en" : {
@@ -1510,6 +1513,9 @@
           }
         }
       }
+    },
+    "La nuova funzione \"Le tue linee\" mostra i lavori delle linee che ti interessano. Nessuna distrazione da altri lavori." : {
+
     },
     "LavoraMi" : {
       "localizations" : {
@@ -1705,6 +1711,9 @@
           }
         }
       }
+    },
+    "Linea salvata" : {
+
     },
     "lineaAccessibile" : {
       "extractionState" : "manual",
@@ -2304,6 +2313,9 @@
         }
       }
     },
+    "Non hai aggiunto delle linee a questa sezione." : {
+
+    },
     "Non hai dato il permesso per ricevere notifiche. Vai su Impostazioni > App > LavoraMi ed attiva le notifiche." : {
       "localizations" : {
         "en" : {
@@ -2558,6 +2570,9 @@
           }
         }
       }
+    },
+    "Per un uso corretto di questa funzione, potremmo chiederti di attivare la Posizione per vedere le linee che sono vicino a te." : {
+
     },
     "Permesso Negato" : {
       "localizations" : {
@@ -3114,6 +3129,9 @@
           }
         }
       }
+    },
+    "Seleziona le tue linee." : {
+
     },
     "Seleziona una fermata" : {
       "localizations" : {

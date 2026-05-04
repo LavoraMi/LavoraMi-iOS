@@ -452,6 +452,7 @@ struct MainView: View {
     @AppStorage("showErrorMessages") var showErrorMessages: Bool = false
     @AppStorage("showStrikeBanner") var showStrikeBanner: Bool = true
     @AppStorage("linesFavorites") var linesFavorites: [String] = []
+    @AppStorage("linesSelected") private var linesSelected: [String] = []
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     
     @State private var closedStrike: Bool = false
@@ -486,6 +487,10 @@ struct MainView: View {
         let items = viewModel.items
         
         switch(selectedFilter){
+            case .suggested:
+                categoryFiltered = items.filter { item in
+                    linesSelected.contains { item.lines.contains($0) }
+                }
             case .all:
                 categoryFiltered = items
             case .bus:
@@ -694,8 +699,12 @@ struct MainView: View {
                                 .background(
                                     ZStack {
                                         if selectedFilter == filter {
-                                            Capsule()
-                                                .fill(.red)
+                                            if(selectedFilter == .suggested) {
+                                                GradientCapsule()
+                                            } else {
+                                                Capsule()
+                                                    .fill(.red)
+                                            }
                                         } else {
                                             Capsule()
                                                 .stroke(Color.secondary, lineWidth: 1)
@@ -769,11 +778,20 @@ struct MainView: View {
                             } else {
                                 VStack(spacing: 12) {
                                     if filteredItems.isEmpty && searchInput.isEmpty {
-                                        Text("Nessun lavoro trovato per questo filtro.")
-                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                            .containerRelativeFrame(.vertical)
-                                            .multilineTextAlignment(.center)
-                                            .foregroundStyle(.secondary)
+                                        if(selectedFilter == .suggested) {
+                                            Text("Non hai aggiunto delle linee a questa sezione.")
+                                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                                .multilineTextAlignment(.center)
+                                                .containerRelativeFrame(.vertical)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                        else {
+                                            Text("Nessun lavoro trovato per questo filtro.")
+                                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                                .containerRelativeFrame(.vertical)
+                                                .multilineTextAlignment(.center)
+                                                .foregroundStyle(.secondary)
+                                        }
                                     }
                                     else if filteredItems.isEmpty && !searchInput.isEmpty {
                                         Text("Nessun lavoro trovato per: \"\(searchInput)\".")
@@ -830,6 +848,32 @@ struct MainView: View {
                 }
             }
         }
+    }
+}
+
+struct GradientCapsule: View {
+    @State private var hueShift: Double = 0
+
+    var body: some View {
+        Capsule()
+            .fill(
+                LinearGradient(
+                    colors: [
+                        Color(red: 1.0,  green: 0.55, blue: 0.10),
+                        Color(red: 0.95, green: 0.28, blue: 0.52),
+                        Color(red: 0.55, green: 0.45, blue: 0.88),
+                        Color(red: 0.25, green: 0.65, blue: 1.00),
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
+            .hueRotation(.degrees(hueShift))
+            .onAppear {
+                withAnimation(.linear(duration: 4).repeatForever(autoreverses: true)) {
+                    hueShift = 40
+                }
+            }
     }
 }
 
@@ -4275,6 +4319,8 @@ struct LineDetailView: View {
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @AppStorage("alreadySeenPopUp") var alreadySeenPopUp: Bool = false
+    @AppStorage("alreadySeenPopUpLines") var alreadySeenPopUpLines: Bool = false
+    @AppStorage("linesSelected") private var linesSelected: [String] = []
     @StateObject private var networkManager = NetworkMonitor()
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) private var openURLAction
@@ -4284,6 +4330,7 @@ struct LineDetailView: View {
     private enum LineDetailTab { case map, works, interchanges }
     @State private var selectedTab: LineDetailTab = .map
     @State private var openPopUpWidget: Bool = false
+    @State private var openPopUpLines: Bool = false
     @State private var openInfoAccessibility: Bool = false
     @State private var tramLinesSupported: [String] = ["1", "3", "5", "7", "9", "10", "24", "31", "33"]
     
@@ -4406,6 +4453,29 @@ struct LineDetailView: View {
                             Button("OK", role: .cancel){}
                         } message: {
                             Text("Linea impostata per essere vista sul Widget dell'app!")
+                        }
+                        Button(action: {
+                            if(linesSelected.contains(lineName)) {
+                                linesSelected.removeAll { $0 == lineName }
+                            }
+                            else {
+                                if(!alreadySeenPopUpLines){
+                                    alreadySeenPopUpLines = true
+                                    openPopUpLines = true
+                                }
+                                
+                                linesSelected.append(lineName)
+                            }
+                        }){
+                            Image(systemName: (linesSelected.contains(lineName)) ? "star.fill" : "star")
+                                .foregroundStyle((linesSelected.contains(lineName)) ? .yellow : .gray)
+                                .scaleEffect(1.5)
+                        }
+                        .padding(.leading, 10)
+                        .alert("Linea salvata", isPresented: $openPopUpLines) {
+                            Button("OK", role: .cancel){}
+                        } message: {
+                            Text("La linea \(lineName) è stata aggiunta nella sezione \"Le tue linee\"!")
                         }
                     }
                     VStack(alignment: .leading, spacing: 5) {
@@ -4749,6 +4819,8 @@ struct LineSmallDetailedView: View {
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @AppStorage("alreadySeenPopUp") var alreadySeenPopUp: Bool = false
+    @AppStorage("alreadySeenPopUpLines") var alreadySeenPopUpLines: Bool = false
+    @AppStorage("linesSelected") private var linesSelected: [String] = []
     @State private var openPopUpWidget: Bool = false
     @State private var openInfoAccessibility: Bool = false
     @StateObject private var networkManager = NetworkMonitor()
@@ -4783,6 +4855,7 @@ struct LineSmallDetailedView: View {
     @State private var currentTime = Date()
     @State private var isStartingAnimation = false
     @State private var opacity: Double = 1.0
+    @State private var openPopUpLines: Bool = false
 
     let interchanges: [InterchangeStation] = [
         .init(key: "Molino Dorino", displayName: "Molino Dorino MM", lines: ["M1", "z601", "z606", "z617", "z620", "z621", "z648", "z649"], typeOfInterchange: "tram.fill.tunnel"),
@@ -4865,6 +4938,29 @@ struct LineSmallDetailedView: View {
                             Button("OK", role: .cancel) {}
                         } message: {
                             Text("Linea impostata per essere vista sul Widget dell'app!")
+                        }
+                        Button(action: {
+                            if(linesSelected.contains(lineName)) {
+                                linesSelected.removeAll { $0 == lineName }
+                            }
+                            else {
+                                if(!alreadySeenPopUpLines){
+                                    alreadySeenPopUpLines = true
+                                    openPopUpLines = true
+                                }
+                                
+                                linesSelected.append(lineName)
+                            }
+                        }){
+                            Image(systemName: (linesSelected.contains(lineName)) ? "star.fill" : "star")
+                                .foregroundStyle((linesSelected.contains(lineName)) ? .yellow : .gray)
+                                .scaleEffect(1.5)
+                        }
+                        .padding(.leading, 10)
+                        .alert("Linea salvata", isPresented: $openPopUpLines) {
+                            Button("OK", role: .cancel){}
+                        } message: {
+                            Text("La linea \(lineName) è stata aggiunta nella sezione \"Le tue linee\"!")
                         }
                     }
 
@@ -5515,6 +5611,60 @@ struct WhatsNewView: View {
     }
 }
 
+struct AIFeaturesInfo: View {
+    @State var startImageTransition : Bool = false
+    @State var imageTransitionFirstPage: Bool = false
+    @State var i = 0
+    @AppStorage("enableAnimations") var enableAnimations = true
+
+    var body: some View {
+        VStack(spacing: 30) {
+            if #available(iOS 18.0, *), enableAnimations {
+                Image(systemName: (startImageTransition) ? "sparkles.2" : "sparkle")
+                    .font(.system(size: 80))
+                    .foregroundColor(.red)
+                    .padding(.top, 50)
+                    .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
+                    .onAppear {
+                        startImageTransition = false
+                        Task{
+                            try? await Task.sleep(for: .seconds(1))
+                            withAnimation{
+                                startImageTransition = true
+                            }
+                        }
+                    }
+                    .onDisappear{
+                        startImageTransition = false
+                    }
+            }
+            else {
+                Image(systemName: "sparkle")
+                    .font(.system(size: 80))
+                    .foregroundColor(.red)
+                    .padding(.top, 50)
+            }
+
+            Text("Seleziona le tue linee.")
+                .font(.title)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+
+            Text("La nuova funzione \"Le tue linee\" mostra i lavori delle linee che ti interessano. Nessuna distrazione da altri lavori.")
+                .font(.headline)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+            
+            Text("Per un uso corretto di questa funzione, potremmo chiederti di attivare la Posizione per vedere le linee che sono vicino a te.")
+                .font(.caption2)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+            Spacer()
+        }
+        .padding()
+    }
+}
+
 struct InterchangeView: View {
     let item: InterchageInfo
     let currentLine: String
@@ -5593,6 +5743,7 @@ struct TransportBadge: View {
 //MARK: UTILITIES
 //NOTE: FILTERS
 enum FilterBy: String, CaseIterable, Identifiable {
+    case suggested = "Le tue linee"
     case all = "Tutti"
     case bus = "Bus"
     case tram = "Tram"
@@ -5608,6 +5759,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
     
     var localizedTitle: String {
         switch self {
+            case .suggested: return "Le tue linee"
             case .all: return String(localized: .tutti)
             case .bus: return "Bus"
             case .tram: return "Tram"
@@ -5658,6 +5810,11 @@ struct LineInfo: Identifiable{
     let waitMinutes: String
     let stations: [MetroStation]
     let accessibilityStatus: String
+}
+
+struct LineShortInfo: Identifiable{
+    let id = UUID()
+    let name: String
 }
 
 struct InterchageInfo: Identifiable {
@@ -5783,6 +5940,8 @@ func getCurrentTransportIcon(for lineLongName: String) -> String{
 
 func getIconForFilter(for filterName: String) -> String{
     switch(filterName){
+        case "Le tue linee":
+            return "sparkle"
         case "Tutti":
             return "line.3.horizontal.decrease"
         case "Bus":
