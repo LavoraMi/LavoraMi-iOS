@@ -1118,20 +1118,32 @@ struct SettingsView: View{
     var body: some View {
         NavigationStack {
             List {
-                Section("Account"){
+                Section("Account") {
                     NavigationLink(destination: AccountView(auth: authManager)) {
                         HStack(spacing: 12) {
-                            Image(systemName: "person.crop.circle.fill")
-                                .font(.system(size: 40))
-                                .foregroundStyle(.red)
+                            if authManager.isLoggedIn() {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.red)
+                                        .frame(width: 44, height: 44)
+                                    
+                                    Text(authManager.getInitialIconName())
+                                        .font(.system(size: 18, weight: .bold))
+                                        .foregroundColor(.white)
+                                }
+                            }
+                            else {
+                                Image(systemName: "person.crop.circle.fill")
+                                    .font(.system(size: 35))
+                                    .foregroundStyle(.red)
+                            }
                             
                             VStack(alignment: .leading, spacing: 2) {
-                                if(authManager.isLoggedIn()){
+                                if authManager.isLoggedIn() {
                                     Text(authManager.getFullName())
                                         .font(.headline)
                                         .foregroundStyle(.primary)
-                                }
-                                else {
+                                } else {
                                     Text("Il tuo Account")
                                         .font(.headline)
                                         .foregroundStyle(.primary)

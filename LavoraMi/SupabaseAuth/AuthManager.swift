@@ -101,6 +101,21 @@ class AuthManager: ObservableObject {
         return ""
     }
     
+    func getInitialIconName() -> String {
+        guard let metadata = session?.user.userMetadata,
+              let jsonValue = metadata["full_name"] else { return "" }
+        
+        guard case .string(let name) = jsonValue else { return "" }
+        
+        let components = name.components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }
+        
+        let initials = components.prefix(2).compactMap { component in
+            component.first?.uppercased()
+        }
+        
+        return initials.joined()
+    }
+    
     func setFullName(name: String){
         let metadata: [String: AnyJSON] = ["full_name": .string(name)]
         
