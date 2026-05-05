@@ -1,28 +1,15 @@
 {
   "fill" : {
-    "linear-gradient" : [
-      "srgb:1.00000,0.15771,0.00000,1.00000",
-      "srgb:0.62150,0.01728,0.00000,1.00000"
-    ],
-    "orientation" : {
-      "start" : {
-        "x" : 0.5,
-        "y" : 0
-      },
-      "stop" : {
-        "x" : 0.5,
-        "y" : 0.7
-      }
-    }
+    "solid" : "srgb:1.00000,0.23268,0.26732,1.00000"
   },
   "groups" : [
     {
       "layers" : [
         {
-          "image-name" : "logo_2 2.png",
-          "name" : "logo_2 2",
+          "image-name" : "ic_app.png",
+          "name" : "ic_app",
           "position" : {
-            "scale" : 0.5,
+            "scale" : 0.51,
             "translation-in-points" : [
               0,
               0

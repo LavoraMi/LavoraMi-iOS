@@ -1780,11 +1780,10 @@ struct AccountView: View {
                                     return
                                 }
                                 
-                                let name = credential.fullName?.givenName ?? String(localized: .utenteApple)
-                                
-                                await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: name)
+                                await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: "")
                                 loggedIn = auth.isLoggedIn()
                                 logginIn = false
+                                fullName = auth.getFullName()
                                 tabTitle = "Account"
                             }
                         }
