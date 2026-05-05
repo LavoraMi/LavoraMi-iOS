@@ -460,6 +460,7 @@ struct MainView: View {
     @State private var searchInput: String = ""
     @State private var alreadyRefreshed: Bool = false
     @State private var showMaintenanceMode: Bool = false
+    @State private var suggestedTrigger = 0
     
     @ObservedObject var viewModel: WorkViewModel
     @FocusState private var isSearchFocused: Bool
@@ -681,37 +682,57 @@ struct MainView: View {
                 HStack(spacing: 10) {
                     ForEach(FilterBy.allCases) { filter in
                         Button(action: {
-                            withAnimation(.snappy){
-                                if(feedbacksEnabled){
-                                    HapticManager.shared.trigger()
+                                withAnimation(.snappy){
+                                    if(feedbacksEnabled){
+                                        HapticManager.shared.trigger()
+                                    }
+                                    selectedFilter = filter
                                 }
-                                selectedFilter = filter
-                            }
-                        }){
+                            }){
                             let nameIcon: String = getIconForFilter(for: filter.rawValue)
                             
                             if(nameIcon != ""){
-                                Label(filter.localizedTitle, systemImage: nameIcon)
-                                .font(.subheadline)
-                                .fontWeight(.medium)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 16)
-                                .background(
-                                    ZStack {
-                                        if selectedFilter == filter {
-                                            if(selectedFilter == .suggested) {
-                                                GradientCapsule()
-                                            } else {
+                                if(selectedFilter == .suggested) {
+                                    if #available(iOS 18, *) {
+                                        Label(filter.localizedTitle, systemImage: nameIcon)
+                                        .font(.subheadline)
+                                        .fontWeight(.medium)
+                                        .padding(.vertical, 8)
+                                        .padding(.horizontal, 16)
+                                        .symbolEffect(.rotate, options: .nonRepeating, value: filter == .suggested ? suggestedTrigger : 0)
+                                        .background(
+                                            ZStack {
+                                                if selectedFilter == filter {
+                                                    Capsule()
+                                                        .fill(.red.gradient)
+                                                } else {
+                                                    Capsule()
+                                                        .stroke(Color.secondary, lineWidth: 1)
+                                                }
+                                            }
+                                        )
+                                        .foregroundStyle(.white)
+                                    }
+                                }
+                                else {
+                                    Label(filter.localizedTitle, systemImage: nameIcon)
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
+                                    .padding(.vertical, 8)
+                                    .padding(.horizontal, 16)
+                                    .background(
+                                        ZStack {
+                                            if selectedFilter == filter {
                                                 Capsule()
                                                     .fill(.red)
+                                            } else {
+                                                Capsule()
+                                                    .stroke(Color.secondary, lineWidth: 1)
                                             }
-                                        } else {
-                                            Capsule()
-                                                .stroke(Color.secondary, lineWidth: 1)
                                         }
-                                    }
-                                )
-                                .foregroundStyle(selectedFilter == filter ? Color(.systemBackground) : .primary)
+                                    )
+                                    .foregroundStyle(selectedFilter == filter ? Color(.systemBackground) : .primary)
+                                }
                             }
                             else{
                                 Text(filter.localizedTitle)
@@ -779,11 +800,34 @@ struct MainView: View {
                                 VStack(spacing: 12) {
                                     if filteredItems.isEmpty && searchInput.isEmpty {
                                         if(selectedFilter == .suggested) {
-                                            Text("Non hai aggiunto delle linee a questa sezione.")
-                                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                                .multilineTextAlignment(.center)
-                                                .containerRelativeFrame(.vertical)
-                                                .foregroundStyle(.secondary)
+                                            HStack(alignment: .top, spacing: 16) {
+                                                Image(systemName: "sparkle")
+                                                    .font(.system(size: 36))
+                                                    .foregroundStyle(.red.gradient)
+
+                                                VStack(alignment: .leading, spacing: 6) {
+                                                    Text("Le tue linee.")
+                                                        .font(.title2)
+                                                        .fontWeight(.bold)
+
+                                                    Text("Per aggiungere una linea in questa sezione, vai nella scheda ")
+                                                        .font(.subheadline)
+                                                        .foregroundStyle(.secondary)
+                                                    + Text("Linee").bold()
+                                                        .font(.subheadline)
+                                                        .foregroundStyle(.secondary)
+                                                    + Text(", clicca su ")
+                                                        .font(.subheadline)
+                                                        .foregroundStyle(.secondary)
+                                                    + Text(Image(systemName: "star"))
+                                                    + Text(" per aggiungerla. Puoi modificarla in qualsiasi momento.")
+                                                        .font(.subheadline)
+                                                        .foregroundStyle(.secondary)
+                                                }
+                                            }
+                                            .padding()
+                                            .background(.red.opacity(0.08), in: RoundedRectangle(cornerRadius: 16))
+                                            .padding(.horizontal)
                                         }
                                         else {
                                             Text("Nessun lavoro trovato per questo filtro.")
@@ -801,12 +845,43 @@ struct MainView: View {
                                             .foregroundStyle(.secondary)
                                     }
                                     else {
+                                        if selectedFilter == .suggested {
+                                            HStack(alignment: .top, spacing: 16) {
+                                                Image(systemName: "sparkle")
+                                                    .font(.system(size: 36))
+                                                    .foregroundStyle(.red.gradient)
+
+                                                VStack(alignment: .leading, spacing: 6) {
+                                                    Text("Scegli ciò che ti piace")
+                                                        .font(.title2)
+                                                        .fontWeight(.bold)
+
+                                                    Text("Per aggiungere una linea in questa sezione, vai nella scheda ")
+                                                        .font(.subheadline)
+                                                        .foregroundStyle(.secondary)
+                                                    + Text("Linee").bold()
+                                                        .font(.subheadline)
+                                                        .foregroundStyle(.secondary)
+                                                    + Text(", clicca su ")
+                                                        .font(.subheadline)
+                                                        .foregroundStyle(.secondary)
+                                                    + Text(Image(systemName: "star"))
+                                                    + Text(" per aggiungerla. Puoi modificarla in qualsiasi momento.")
+                                                        .font(.subheadline)
+                                                        .foregroundStyle(.secondary)
+                                                }
+                                            }
+                                            .padding()
+                                            .background(.red.opacity(0.08), in: RoundedRectangle(cornerRadius: 16))
+                                            .padding(.horizontal)
+                                        }
                                         ForEach(filteredItems) { item in
                                             if item.progress != 1 {
                                                 WorkInProgressRow(item: item)
                                                     .padding(.horizontal)
                                             }
                                         }
+                                        .padding(.top, 5)
                                     }
                                 }
                             }
@@ -847,33 +922,34 @@ struct MainView: View {
                     showMaintenanceMode = false
                 }
             }
-        }
-    }
-}
-
-struct GradientCapsule: View {
-    @State private var hueShift: Double = 0
-
-    var body: some View {
-        Capsule()
-            .fill(
-                LinearGradient(
-                    colors: [
-                        Color(red: 1.0,  green: 0.55, blue: 0.10),
-                        Color(red: 0.95, green: 0.28, blue: 0.52),
-                        Color(red: 0.55, green: 0.45, blue: 0.88),
-                        Color(red: 0.25, green: 0.65, blue: 1.00),
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-            .hueRotation(.degrees(hueShift))
-            .onAppear {
-                withAnimation(.linear(duration: 4).repeatForever(autoreverses: true)) {
-                    hueShift = 40
+            .onChange(of: selectedFilter) { newValue in
+                if newValue == .suggested && feedbacksEnabled {
+                    suggestedTrigger += 1 ///TRIGGERS THE HAPTICS
+                    playRotateHaptics()
                 }
             }
+        }
+    }
+    
+    func playRotateHaptics() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.prepare()
+
+        let pulses: [(delay: TimeInterval, intensity: CGFloat)] = [
+            (0.00, 0.2),
+            (0.10, 0.5),
+            (0.20, 0.8),
+            (0.30, 1.0),
+            (0.40, 0.7),
+            (0.50, 0.4),
+            (0.58, 0.15)
+        ]
+
+        for pulse in pulses {
+            DispatchQueue.main.asyncAfter(deadline: .now() + pulse.delay) {
+                generator.impactOccurred(intensity: pulse.intensity)
+            }
+        }
     }
 }
 

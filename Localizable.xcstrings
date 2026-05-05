@@ -21,6 +21,12 @@
         }
       }
     },
+    " per aggiungerla. Puoi modificarla in qualsiasi momento." : {
+
+    },
+    ", clicca su " : {
+
+    },
     "%@" : {
       "localizations" : {
         "en" : {
@@ -1652,6 +1658,9 @@
         }
       }
     },
+    "Le tue linee." : {
+
+    },
     "Le tue ricerche, sempre lì." : {
       "localizations" : {
         "en" : {
@@ -2313,9 +2322,6 @@
         }
       }
     },
-    "Non hai aggiunto delle linee a questa sezione." : {
-
-    },
     "Non hai dato il permesso per ricevere notifiche. Vai su Impostazioni > App > LavoraMi ed attiva le notifiche." : {
       "localizations" : {
         "en" : {
@@ -2560,6 +2566,9 @@
           }
         }
       }
+    },
+    "Per aggiungere una linea in questa sezione, vai nella scheda " : {
+
     },
     "Per attivare questa Funzionalità anche in lingua Italiana, Vai in Impostazioni > Opzioni Avanzate ed attiva \"Mostra Pulsante Traduci\"." : {
       "localizations" : {
@@ -2871,6 +2880,9 @@
           }
         }
       }
+    },
+    "Scegli ciò che ti piace" : {
+
     },
     "scegliLaTuaLinea" : {
       "extractionState" : "manual",
