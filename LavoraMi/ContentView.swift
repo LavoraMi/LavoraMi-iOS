@@ -5842,7 +5842,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
     
     var localizedTitle: String {
         switch self {
-            case .suggested: return "Le tue linee"
+            case .suggested: return String(localized: .yourLinesChip)
             case .all: return String(localized: .tutti)
             case .bus: return "Bus"
             case .tram: return "Tram"

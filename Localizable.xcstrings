@@ -36,7 +36,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ", click on"
+            "value" : ", click on "
           }
         }
       }
@@ -3932,6 +3932,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Visualizza la Mappa"
+          }
+        }
+      }
+    },
+    "yourLinesChip" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Lines"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le tue linee"
           }
         }
       }
