@@ -865,7 +865,7 @@ struct MainView: View {
                                                     + Text(", clicca su ")
                                                         .font(.subheadline)
                                                         .foregroundStyle(.secondary)
-                                                    + Text(Image(systemName: "star"))
+                                                    + Text(Image(systemName: "heart"))
                                                     + Text(" per aggiungerla. Puoi modificarla in qualsiasi momento.")
                                                         .font(.subheadline)
                                                         .foregroundStyle(.secondary)
