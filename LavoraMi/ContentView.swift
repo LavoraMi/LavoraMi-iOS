@@ -5694,60 +5694,6 @@ struct WhatsNewView: View {
     }
 }
 
-struct AIFeaturesInfo: View {
-    @State var startImageTransition : Bool = false
-    @State var imageTransitionFirstPage: Bool = false
-    @State var i = 0
-    @AppStorage("enableAnimations") var enableAnimations = true
-
-    var body: some View {
-        VStack(spacing: 30) {
-            if #available(iOS 18.0, *), enableAnimations {
-                Image(systemName: (startImageTransition) ? "sparkles.2" : "sparkle")
-                    .font(.system(size: 80))
-                    .foregroundColor(.red)
-                    .padding(.top, 50)
-                    .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
-                    .onAppear {
-                        startImageTransition = false
-                        Task{
-                            try? await Task.sleep(for: .seconds(1))
-                            withAnimation{
-                                startImageTransition = true
-                            }
-                        }
-                    }
-                    .onDisappear{
-                        startImageTransition = false
-                    }
-            }
-            else {
-                Image(systemName: "sparkle")
-                    .font(.system(size: 80))
-                    .foregroundColor(.red)
-                    .padding(.top, 50)
-            }
-
-            Text("Seleziona le tue linee.")
-                .font(.title)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-
-            Text("La nuova funzione \"Le tue linee\" mostra i lavori delle linee che ti interessano. Nessuna distrazione da altri lavori.")
-                .font(.headline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-            
-            Text("Per un uso corretto di questa funzione, potremmo chiederti di attivare la Posizione per vedere le linee che sono vicino a te.")
-                .font(.caption2)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-            Spacer()
-        }
-        .padding()
-    }
-}
-
 struct InterchangeView: View {
     let item: InterchageInfo
     let currentLine: String
