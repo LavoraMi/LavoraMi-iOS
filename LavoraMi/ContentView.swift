@@ -711,7 +711,7 @@ struct MainView: View {
                                                 }
                                             }
                                         )
-                                        .foregroundStyle(.white)
+                                        .foregroundStyle(selectedFilter == filter ? .white : .primary)
                                     }
                                 }
                                 else {
@@ -731,7 +731,7 @@ struct MainView: View {
                                             }
                                         }
                                     )
-                                    .foregroundStyle(selectedFilter == filter ? Color(.systemBackground) : .primary)
+                                    .foregroundStyle(selectedFilter == filter ? .white : .primary)
                                 }
                             }
                             else{
@@ -819,7 +819,7 @@ struct MainView: View {
                                                     + Text(", clicca su ")
                                                         .font(.subheadline)
                                                         .foregroundStyle(.secondary)
-                                                    + Text(Image(systemName: "heartd"))
+                                                    + Text(Image(systemName: "heart"))
                                                     + Text(" per aggiungerla. Puoi modificarla in qualsiasi momento.")
                                                         .font(.subheadline)
                                                         .foregroundStyle(.secondary)
@@ -4989,7 +4989,7 @@ struct LineSmallDetailedView: View {
                         }
                         else {
                             Text("\(typeOfTransport)")
-                                .font(.system(size: 30))
+                                .font(.system(size: 25))
                                 .minimumScaleFactor(0.5)
                                 .lineLimit(1)
                         }
