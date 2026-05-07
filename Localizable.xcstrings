@@ -22,10 +22,24 @@
       }
     },
     " per aggiungerla. Puoi modificarla in qualsiasi momento." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " to add it. You can edit it at any time."
+          }
+        }
+      }
     },
     ", clicca su " : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ", click on"
+          }
+        }
+      }
     },
     "%@" : {
       "localizations" : {
@@ -1508,7 +1522,14 @@
       }
     },
     "La linea %@ è stata aggiunta nella sezione \"Le tue linee\"!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The line %@ has been added to the section “Your Lines”"
+          }
+        }
+      }
     },
     "LA LINEA E' ATTIVA SOLO NEI GIORNI LAVORATIVI." : {
       "localizations" : {
@@ -1521,7 +1542,14 @@
       }
     },
     "La nuova funzione \"Le tue linee\" mostra i lavori delle linee che ti interessano. Nessuna distrazione da altri lavori." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The new “Your Lines” feature shows you the work on the lines you're interested in. No distractions from other work."
+          }
+        }
+      }
     },
     "LavoraMi" : {
       "localizations" : {
@@ -1659,7 +1687,14 @@
       }
     },
     "Le tue linee." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Lines"
+          }
+        }
+      }
     },
     "Le tue ricerche, sempre lì." : {
       "localizations" : {
@@ -1722,7 +1757,14 @@
       }
     },
     "Linea salvata" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line Saved"
+          }
+        }
+      }
     },
     "lineaAccessibile" : {
       "extractionState" : "manual",
@@ -2568,7 +2610,14 @@
       }
     },
     "Per aggiungere una linea in questa sezione, vai nella scheda " : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To add a line in this section, go to the tab "
+          }
+        }
+      }
     },
     "Per attivare questa Funzionalità anche in lingua Italiana, Vai in Impostazioni > Opzioni Avanzate ed attiva \"Mostra Pulsante Traduci\"." : {
       "localizations" : {
@@ -2581,7 +2630,14 @@
       }
     },
     "Per un uso corretto di questa funzione, potremmo chiederti di attivare la Posizione per vedere le linee che sono vicino a te." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To use this feature properly, we may ask you to enable Location Services so that you can see the lines near you."
+          }
+        }
+      }
     },
     "Permesso Negato" : {
       "localizations" : {
@@ -2882,7 +2938,14 @@
       }
     },
     "Scegli ciò che ti piace" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose what you like"
+          }
+        }
+      }
     },
     "scegliLaTuaLinea" : {
       "extractionState" : "manual",
@@ -3143,7 +3206,14 @@
       }
     },
     "Seleziona le tue linee." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your lines."
+          }
+        }
+      }
     },
     "Seleziona una fermata" : {
       "localizations" : {
