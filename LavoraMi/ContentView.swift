@@ -1622,6 +1622,41 @@ struct SettingsView: View{
                         Label("Ripristina impostazioni", systemImage: "arrow.counterclockwise")
                     }
                 }
+                Section() {} footer: {
+                    HStack(spacing: 30) {
+                            Spacer()
+                            Link(destination: URL(string: "https://www.instagram.com/lavoramiapp_official")!) {
+                                Image("instagram")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 24, height: 24)
+                            }
+                            Link(destination: URL(string: "https://www.tiktok.com/@applavorami.official")!) {
+                                Image("tiktok")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 24, height: 24)
+                            }
+                            
+                            Button {
+                                let url = URL(string: "https://www.lavorami.it")!
+                                
+                                if(howToOpenLinks == .inApp) {
+                                    selectedURL = url
+                                }
+                                else {
+                                    openURLAction(url)
+                                }
+                            } label: {
+                                Image(systemName: "network")
+                                    .font(.system(size: 20))
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding(.top, 10)
+                        .padding(.bottom, 20)
+                }
             }
             .navigationTitle("Impostazioni")
             .alert("Sei sicuro?", isPresented: $presentedAlertReset) {
