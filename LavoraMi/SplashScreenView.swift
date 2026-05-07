@@ -13,7 +13,6 @@ struct SplashScreenView: View {
     @State private var contentOpacity: Double = 0
     @State private var contentLoaded = false
     @State private var showSetupScreen: Bool = false
-    @State private var showWhatsNewScreen: Bool = false
     @State private var showMaintenance: Bool = false
     @State private var showNoConnection: Bool = false 
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
@@ -29,7 +28,7 @@ struct SplashScreenView: View {
                     .opacity(contentOpacity)
                 }
                 else {
-                    ContentView(showSetupScreen: $showSetupScreen, showWhatsNewScreen: $showWhatsNewScreen)
+                    ContentView(showSetupScreen: $showSetupScreen)
                         .opacity(contentOpacity)
                 }
             }
@@ -85,7 +84,6 @@ struct SplashScreenView: View {
             if hasNotCompletedSetup {
                 showSetupScreen = true
             }
-            showWhatsNewScreen = true
         }
     }
 }

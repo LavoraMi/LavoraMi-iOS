@@ -54,14 +54,11 @@ struct WorkItem: Identifiable, Hashable, Codable {
 struct ContentView: View {
     @StateObject private var viewModel = WorkViewModel()
     @Binding var showSetupScreen: Bool
-    @Binding var showWhatsNewScreen: Bool
     @State private var showUpdatePopUp: Bool = false
     @State private var selectedTab: Int = 0
-    @State private var showWhatsNew: Bool = false
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @AppStorage("showWhatsNewScreen") var showWhatsNewScreenToggle: Bool = true
-    @AppStorage("latestVersionInstalled") var latestVersionInstalled: String = Bundle.main.shortVersion
     
     @Environment(\.openURL) private var openURLAction
 
@@ -86,17 +83,8 @@ struct ContentView: View {
         .sheet(isPresented: $showSetupScreen){
             SetupView()
         }
-        .sheet(isPresented: $showWhatsNew) {
-            WhatsNewViewBase()
-        }
         .onAppear() {
             checkForUpdates()
-        }
-        .onChange(of: showWhatsNewScreen) {
-            if(showWhatsNewScreen && latestVersionInstalled != Bundle.main.shortVersion && showWhatsNewScreenToggle && viewModel.showWhatsNewScreen) {
-                showWhatsNew = true
-                latestVersionInstalled = Bundle.main.shortVersion
-            }
         }
         .alert("Nuova versione disponibile!", isPresented: $showUpdatePopUp){
             Button("Aggiorna") {
@@ -1217,7 +1205,6 @@ struct SettingsView: View{
     @State private var presentedAlertReset = false
     @State private var showBuildNumber = false
     @State private var selectedURL: URL?
-    @State private var showWhatsNewScreen: Bool = false
     @StateObject var viewModel: WorkViewModel
     @StateObject var authManager = AuthManager()
     
@@ -1601,16 +1588,6 @@ struct SettingsView: View{
                             Image(systemName: "arrow.up.right")
                         }
                     }
-                    Button(action: {
-                        showWhatsNewScreen = true
-                    }){
-                        Label {
-                            Text("Guarda le Novità")
-                                .foregroundColor(.red)
-                        } icon: {
-                            Image(systemName: "app.badge.fill")
-                        }
-                    }
                 }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
                     Button(role: .destructive) {
@@ -1677,9 +1654,6 @@ struct SettingsView: View{
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
                     .ignoresSafeArea(.all)
-            }
-            .sheet(isPresented: $showWhatsNewScreen) {
-                WhatsNewViewBase()
             }
         }
     }
@@ -5592,143 +5566,6 @@ struct InfoAccessibilityView: View {
     }
 }
 
-struct WhatsNewViewBase: View {
-    @Environment(\.presentationMode) var presentationMode
-    @State private var currentPage = 0
-    
-    let pages = [
-        SetupPage(
-            title: "Cosa c'è di nuovo?",
-            description: "Scorri e scopri cosa abbiamo aggiunto, migliorato oppure sistemato!",
-            transitionImage: "person.fill.questionmark",
-            standardImage: "checkmark.seal.fill",
-            fallbackImage: "checkmark.seal.fill"
-        ),
-        SetupPage(
-            title: "Consulta gli orari dei bus",
-            description: "Ora puoi consultare le prossime 3 partenze della tua linea di bus preferita, basta andare nella nuova scheda \"Arrivi\"!",
-            transitionImage: "clock.fill",
-            standardImage: "bus.fill",
-            fallbackImage: "bus.fill"
-        ),
-        SetupPage(
-            title: "Nuove linee con le mappe",
-            description: "Ora le linee di Tram 9 e 31 hanno le mappe! Vai a consultarle subito!",
-            transitionImage: "location.fill",
-            standardImage: "tram.fill",
-            fallbackImage: "tram.fill"
-        ),
-        SetupPage(
-            title: "Supportaci con le donazioni!",
-            description: "Abbiamo aggiunto le donazioni! Ora puoi supportarci su Buy Me A Coffee e Patreon!",
-            transitionImage: "square.and.arrow.up",
-            standardImage: "arrow.up.right",
-            fallbackImage: "arrow.up.right"
-        ),
-        SetupPage(
-            title: "Le tue ricerche, sempre lì.",
-            description: "Ora puoi vedere le tue ricerche e riprendere il tuo viaggio da dove lo hai interrotto.",
-            transitionImage: "sparkles.2",
-            standardImage: "sparkles",
-            fallbackImage: "sparkles"
-        )
-    ]
-    
-    var body: some View {
-        NavigationStack {
-            VStack {
-                TabView(selection: $currentPage) {
-                    ForEach(0 ..< pages.count, id: \.self) { index in
-                        WhatsNewView(page: pages[index])
-                            .tag(index)
-                    }
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                HStack(spacing: 6) {
-                    ForEach(0..<pages.count, id: \.self) { index in
-                        Capsule()
-                            .fill(currentPage == index ? Color("TextColor") : Color.gray.opacity(0.4))
-                            .frame(width: currentPage == index ? 24 : 8, height: 8)
-                            .animation(.spring(), value: currentPage)
-                    }
-                }
-                .padding(.bottom, 8)
-                Spacer()
-                Button {
-                    dismiss()
-                } label: {
-                    Text("Chiudi")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .frame(height: 50)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.red)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                }
-                .padding(.bottom)
-            }
-            .navigationTitle(Text("Novità"))
-        }
-    }
-
-    private func dismiss() {
-        presentationMode.wrappedValue.dismiss()
-        NotificationManager.shared.requestPermission()
-    }
-}
-
-struct WhatsNewView: View {
-    @State var startImageTransition : Bool = false
-    @State var imageTransitionFirstPage: Bool = false
-    @State var i = 0
-    @AppStorage("enableAnimations") var enableAnimations = true
-    let page: SetupPage
-
-    var body: some View {
-        VStack(spacing: 30) {
-            if #available(iOS 18.0, *), enableAnimations {
-                Image(systemName: (startImageTransition) ? page.standardImage : page.transitionImage)
-                    .font(.system(size: 80))
-                    .foregroundColor(.red)
-                    .padding(.top, 50)
-                    .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
-                    .onAppear {
-                        startImageTransition = false
-                        Task{
-                            try? await Task.sleep(for: .seconds(1))
-                            withAnimation{
-                                startImageTransition = true
-                            }
-                        }
-                    }
-                    .onDisappear{
-                        startImageTransition = false
-                    }
-            }
-            else {
-                Image(systemName: page.fallbackImage ?? page.standardImage)
-                    .font(.system(size: 80))
-                    .foregroundColor(.red)
-                    .padding(.top, 50)
-            }
-
-            Text(page.title)
-                .font(.title)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-
-            Text(page.description)
-                .font(.headline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-            Spacer()
-        }
-        .padding()
-    }
-}
-
 struct InterchangeView: View {
     let item: InterchageInfo
     let currentLine: String
@@ -6182,6 +6019,5 @@ struct HapticManager {
 
 #Preview{
     @Previewable @State var showSetupScreen: Bool = false
-    @Previewable @State var showWhatsNewScreen: Bool = false
-    ContentView(showSetupScreen: $showSetupScreen, showWhatsNewScreen: $showWhatsNewScreen)
+    ContentView(showSetupScreen: $showSetupScreen)
 }

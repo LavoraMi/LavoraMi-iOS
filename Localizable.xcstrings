@@ -200,6 +200,7 @@
       }
     },
     "Abbiamo aggiunto le donazioni! Ora puoi supportarci su Buy Me A Coffee e Patreon!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -736,6 +737,7 @@
       }
     },
     "Consulta gli orari dei bus" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -796,6 +798,7 @@
       }
     },
     "Cosa c'è di nuovo?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1193,6 +1196,7 @@
       }
     },
     "Guarda le Novità" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1698,6 +1702,7 @@
       }
     },
     "Le tue ricerche, sempre lì." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2473,6 +2478,7 @@
       }
     },
     "Novità" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2493,6 +2499,7 @@
       }
     },
     "Nuove linee con le mappe" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2523,6 +2530,7 @@
       }
     },
     "Ora le linee di Tram 9 e 31 hanno le mappe! Vai a consultarle subito!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2533,6 +2541,7 @@
       }
     },
     "Ora puoi consultare le prossime 3 partenze della tua linea di bus preferita, basta andare nella nuova scheda \"Arrivi\"!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2543,6 +2552,7 @@
       }
     },
     "Ora puoi vedere le tue ricerche e riprendere il tuo viaggio da dove lo hai interrotto." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3067,6 +3077,7 @@
       }
     },
     "Scorri e scopri cosa abbiamo aggiunto, migliorato oppure sistemato!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3320,6 +3331,7 @@
       }
     },
     "Supportaci con le donazioni!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
