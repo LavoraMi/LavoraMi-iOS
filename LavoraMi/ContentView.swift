@@ -819,7 +819,7 @@ struct MainView: View {
                                                     + Text(", clicca su ")
                                                         .font(.subheadline)
                                                         .foregroundStyle(.secondary)
-                                                    + Text(Image(systemName: "star"))
+                                                    + Text(Image(systemName: "heartd"))
                                                     + Text(" per aggiungerla. Puoi modificarla in qualsiasi momento.")
                                                         .font(.subheadline)
                                                         .foregroundStyle(.secondary)
@@ -4542,8 +4542,8 @@ struct LineDetailView: View {
                                 linesSelected.append(lineName)
                             }
                         }){
-                            Image(systemName: (linesSelected.contains(lineName)) ? "star.fill" : "star")
-                                .foregroundStyle((linesSelected.contains(lineName)) ? .yellow : .gray)
+                            Image(systemName: (linesSelected.contains(lineName)) ? "heart.fill" : "heart")
+                                .foregroundStyle((linesSelected.contains(lineName)) ? Color(red: 1, green: 93 / 255, blue: 162 / 255) : .gray)
                                 .scaleEffect(1.5)
                         }
                         .padding(.leading, 10)
@@ -4973,7 +4973,7 @@ struct LineSmallDetailedView: View {
                     HStack(spacing: 12) {
                         Text(lineName)
                             .foregroundStyle(.white)
-                            .font(.system(size: 40, weight: .bold))
+                            .font(.system(size: (typeOfTransport == "Tram") ? 40 : 30, weight: .bold))
                             .padding(.vertical, 4)
                             .padding(.horizontal, 20)
                             .background(
@@ -4981,10 +4981,18 @@ struct LineSmallDetailedView: View {
                                     .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
                             )
 
-                        Text("\(typeOfTransport) \(lineName)")
-                            .font(.system(size: 30))
-                            .minimumScaleFactor(0.5)
-                            .lineLimit(1)
+                        if(typeOfTransport.contains("Tram")) {
+                            Text("\(typeOfTransport) \(lineName)")
+                                .font(.system(size: 30))
+                                .minimumScaleFactor(0.5)
+                                .lineLimit(1)
+                        }
+                        else {
+                            Text("\(typeOfTransport)")
+                                .font(.system(size: 30))
+                                .minimumScaleFactor(0.5)
+                                .lineLimit(1)
+                        }
 
                         Spacer()
 
@@ -5027,8 +5035,8 @@ struct LineSmallDetailedView: View {
                                 linesSelected.append(lineName)
                             }
                         }){
-                            Image(systemName: (linesSelected.contains(lineName)) ? "star.fill" : "star")
-                                .foregroundStyle((linesSelected.contains(lineName)) ? .yellow : .gray)
+                            Image(systemName: (linesSelected.contains(lineName)) ? "heart.fill" : "heart")
+                                .foregroundStyle((linesSelected.contains(lineName)) ? Color(red: 1, green: 93 / 255, blue: 162 / 255) : .gray)
                                 .scaleEffect(1.5)
                         }
                         .padding(.leading, 10)
