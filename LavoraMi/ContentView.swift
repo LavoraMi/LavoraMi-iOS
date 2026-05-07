@@ -3017,7 +3017,7 @@ struct LibraryDetailView: View {
 
 struct HowAppWorksView: View {
     let interchangeInfo: InterchageInfo = .init(name: "Romolo", lines: ["M2", "R31", "S9", "S19"], typeOfInterchange: "lightrail.fill")
-    let workItem: WorkItem = .init(title: "Rallentamenti", titleIcon: "clock.badge.fill", typeOfTransport: "train.side.front.car", roads: "Palazzolo, Camnago Lentate, Seveso", lines: ["R16", "S2", "S4"], startDate: ISO8601DateFormatter().date(from: "2026-02-23T00:00:00+01:00") ?? Date(), endDate: ISO8601DateFormatter().date(from: "2026-04-30T00:00:00+01:00") ?? Date(), details: "Lavori di potenziamento infrastrutturale nella tratta Palazzolo, Camnago Lentate, Seveso con modifiche alla circolazione dei treni", company: "Trenord")
+    let workItem: WorkItem = .init(title: "Rallentamenti", titleIcon: "clock.badge.fill", typeOfTransport: "train.side.front.car", roads: "Palazzolo, Camnago Lentate, Seveso", lines: ["R16", "S2", "S4"], startDate: ISO8601DateFormatter().date(from: "2026-02-23T00:00:00+01:00") ?? Date(), endDate: Calendar.current.date(byAdding: .day, value: 20, to: Date()) ?? Date(), details: "Lavori di potenziamento infrastrutturale nella tratta Palazzolo, Camnago Lentate, Seveso con modifiche alla circolazione dei treni", company: "Trenord")
     let stations: [MetroStation] = StationsDB.stationsM1;
     
     var body: some View {

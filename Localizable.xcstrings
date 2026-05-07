@@ -1542,6 +1542,7 @@
       }
     },
     "La nuova funzione \"Le tue linee\" mostra i lavori delle linee che ti interessano. Nessuna distrazione da altri lavori." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2630,6 +2631,7 @@
       }
     },
     "Per un uso corretto di questa funzione, potremmo chiederti di attivare la Posizione per vedere le linee che sono vicino a te." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3206,6 +3208,7 @@
       }
     },
     "Seleziona le tue linee." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
