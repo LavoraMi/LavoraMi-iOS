@@ -10,7 +10,6 @@ import LocalAuthentication
 struct BiometricAuth {
 
     static func authenticate(onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
-
         let context = LAContext()
         context.localizedCancelTitle = "Annulla"
 
