@@ -459,6 +459,74 @@ struct StationsDB {
         .init(name: "Iseo", coordinate: .init(latitude: 45.65657, longitude: 10.05003), branch: "Main")
     ]
     
+    //MARK: REGIO EXPRESS (RE) LINES STATIONS
+    static let re2: [MetroStation] = [
+        .init(name: "Milano Pta Garibaldi", coordinate: .init(latitude: 45.48449, longitude: 9.18737), branch: "Garibaldi"),
+        .init(name: "Milano Villapizzone", coordinate: .init(latitude: 45.50202, longitude: 9.15092), branch: "Garibaldi"),
+        .init(name: "Milano Greco Pirelli", coordinate: .init(latitude: 45.51288, longitude: 9.21416), branch: "Greco"),
+        .init(name: "Milano Centrale", coordinate: .init(latitude: 45.48713, longitude: 9.20482), branch: "Main"),
+        .init(name: "Milano Lambrate", coordinate: .init(latitude: 45.48475, longitude: 9.23678), branch: "Main"),
+        .init(name: "Pioltello Limito", coordinate: .init(latitude: 45.48611, longitude: 9.32949), branch: "Main"),
+        .init(name: "Treviglio Ovest", coordinate: .init(latitude: 45.52171, longitude: 9.58044), branch: "Main"),
+        .init(name: "Verdello Dalmine", coordinate: .init(latitude: 45.60571, longitude: 9.6198), branch: "Main"),
+        .init(name: "Bergamo", coordinate: .init(latitude: 45.69043, longitude: 9.67504), branch: "Main")
+    ]
+    
+    static let re3: [MetroStation] = [
+        .init(name: "Brescia", coordinate: .init(latitude: 45.53252, longitude: 10.21297), branch: "Main"),
+        .init(name: "Bornato - Calino", coordinate: .init(latitude: 45.59035, longitude: 10.03298), branch: "Main"),
+        .init(name: "Iseo", coordinate: .init(latitude: 45.65657, longitude: 10.05003), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.66224, longitude: 10.05384), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.66488, longitude: 10.06002), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.66539, longitude: 10.06448), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.66646, longitude: 10.06706), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.66806, longitude: 10.06976), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.66965, longitude: 10.07418), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.67325, longitude: 10.07804), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.67854, longitude: 10.08743), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.68051, longitude: 10.09102), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.68363, longitude: 10.09394), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.68583, longitude: 10.09804), branch: "Main"),
+        .init(name: "Sulzano", coordinate: .init(latitude: 45.68955, longitude: 10.10057), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.69264, longitude: 10.10422), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.69966, longitude: 10.10813), branch: "Main"),
+        .init(name: "Sale Marasino", coordinate: .init(latitude: 45.71288, longitude: 10.11159), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.72073, longitude: 10.11019), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.72525, longitude: 10.10525), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.7313, longitude: 10.09426), branch: "Main"),
+        .init(name: "Marone Zone", coordinate: .init(latitude: 45.73838, longitude: 10.09324), branch: "Main"),
+        .init(name: "Pisogne", coordinate: .init(latitude: 45.80659, longitude: 10.10575), branch: "Main"),
+        .init(name: "Darfo - Corna", coordinate: .init(latitude: 45.88429, longitude: 10.18106), branch: "Main"),
+        .init(name: "Boario Terme", coordinate: .init(latitude: 45.89214, longitude: 10.19083), branch: "Main"),
+        .init(name: "Breno", coordinate: .init(latitude: 45.95908, longitude: 10.30571), branch: "Main"),
+        .init(name: "Capo Di Ponte", coordinate: .init(latitude: 46.03108, longitude: 10.34631), branch: "Main"),
+        .init(name: "Cedegolo", coordinate: .init(latitude: 46.07252, longitude: 10.35009), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 46.08773, longitude: 10.31501), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 46.10273, longitude: 10.3108), branch: "Main"),
+        .init(name: "Malonno", coordinate: .init(latitude: 46.11875, longitude: 10.31667), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 46.15891, longitude: 10.349), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 46.16771, longitude: 10.34999), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 46.16965, longitude: 10.34917), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 46.17078, longitude: 10.34739), branch: "Main"),
+        .init(name: "Edolo", coordinate: .init(latitude: 46.17701, longitude: 10.32948), branch: "Main"),
+    ]
+    
+    static let re13: [MetroStation] = [
+        .init(name: "Milano Centrale", coordinate: .init(latitude: 45.48713, longitude: 9.20482), branch: "Main"),
+        .init(name: "Milano Lambrate", coordinate: .init(latitude: 45.48475, longitude: 9.23678), branch: "Main"),
+        .init(name: "Milano Rogoredo", coordinate: .init(latitude: 45.43386, longitude: 9.23911), branch: "Main"),
+        .init(name: "Pavia", coordinate: .init(latitude: 45.18878, longitude: 9.14488), branch: "Main"),
+        .init(name: "Pizzale Lungavilla", coordinate: .init(latitude: 45.04979, longitude: 9.06906), branch: "Main"),
+        .init(name: "Voghera", coordinate: .init(latitude: 44.99789, longitude: 9.00861), branch: "Main"),
+        .init(name: "Tortona", coordinate: .init(latitude: 44.89995, longitude: 8.86206), branch: "Main"),
+        .init(name: "Alessandria", coordinate: .init(latitude: 44.9088, longitude: 8.60757), branch: "Asti"),
+        .init(name: "Asti", coordinate: .init(latitude: 44.8951, longitude: 8.20801), branch: "Asti"),
+        .init(name: "Pozzolo Formigaro", coordinate: .init(latitude: 44.79729, longitude: 8.78265), branch: "Novi Ligure"),
+        .init(name: "Novi Ligure", coordinate: .init(latitude: 44.76251, longitude: 8.78694), branch: "Novi Ligure"),
+        .init(name: "Arquata", coordinate: .init(latitude: 44.69223, longitude: 8.885), branch: "Novi Ligure")
+    ]
+    
+    //MARK: TILO LINES STATIONS
     static let tiloS10: [MetroStation] = [
         .init(name: "Biasca", coordinate: .init(latitude: 46.35198, longitude: 8.97416), branch: "Main"),
         .init(name: "Castione", coordinate: .init(latitude: 46.22363, longitude: 9.0415), branch: "Main"),
@@ -560,6 +628,7 @@ struct StationsDB {
         .init(name: "Milano Centrale", coordinate: .init(latitude: 45.48713, longitude: 9.20482), branch: "Main")
     ]
     
+    //MARK: MALPENSA EXPRESS LINES STATIONS
     static let mxp1: [MetroStation] = [
         .init(name: "Gallarate", coordinate: .init(latitude: 45.65974, longitude: 8.79853), branch: "Main"),
         .init(name: "Malpensa Aereoporto T2", coordinate: .init(latitude: 45.65013, longitude: 8.72133), branch: "Main"),
@@ -584,6 +653,7 @@ struct StationsDB {
         .init(name: "Milano Cadorna", coordinate: .init(latitude: 45.46843, longitude: 9.17553), branch: "Main")
     ]
     
+    //MARK: TRAM LINES STATIONS
     static let tram1: [MetroStation] = [
         .init(name: "Roserio (Ospedale Sacco)", coordinate: .init(latitude: 45.51736, longitude: 9.11962), branch: "Main"),
         .init(name: "Roserio", coordinate: .init(latitude: 45.51762, longitude: 9.11984), branch: "Main"),

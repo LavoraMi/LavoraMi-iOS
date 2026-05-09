@@ -805,6 +805,9 @@
         }
       }
     },
+    "Deviazioni" : {
+
+    },
     "di ATM" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1363,6 +1366,9 @@
         }
       }
     },
+    "Informazioni sulle mappe" : {
+
+    },
     "inizioLavoriVar1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1531,6 +1537,9 @@
         }
       }
     },
+    "LavoraMi potrebbe non mostrare il percorso attuale di questa linea, poichè sono in corso deviazioni, interruzioni di tratte del percorso o di stazioni non accessibili. Consultate gli avvisi nella sezione \"Lavori Linea\" qui in basso!" : {
+
+    },
     "LavoraMi prende queste informazioni da fonti autorevoli e affidabili, i dati potrebbero non essere aggiornati all'ultimo minuto." : {
       "localizations" : {
         "en" : {
@@ -1540,6 +1549,9 @@
           }
         }
       }
+    },
+    "LavoraMi prende queste informazioni da fonti autorevoli e affidabili, le eventuali deviazioni di percorso sono indicate nei lavori qui sotto mostrati, potete prendere le eventuali soluzioni di viaggio nella sezione del lavoro: \"Soluzioni di viaggio\"." : {
+
     },
     "Lavori della settimana..." : {
       "extractionState" : "manual",
@@ -1856,6 +1868,9 @@
           }
         }
       }
+    },
+    "Linee Regio Express" : {
+
     },
     "Linee S" : {
       "localizations" : {
@@ -2649,6 +2664,9 @@
           }
         }
       }
+    },
+    "QUESTA LINEA É SOGGETTA A DEVIAZIONI." : {
+
     },
     "Recupera qui la Password del tuo Account." : {
       "localizations" : {

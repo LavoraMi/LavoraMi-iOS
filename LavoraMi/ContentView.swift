@@ -20,6 +20,7 @@ import Translation
 import StoreKit
 import Combine
 import SystemConfiguration
+import CoreLocation
 
 struct WorkItem: Identifiable, Hashable, Codable {
     var id = UUID()
@@ -3818,6 +3819,14 @@ struct LinesView: View {
         ]
     }
     
+    var regioExpress: [LineInfo] {
+        [
+            LineInfo(name: "RE2", branches: "Milano - Bergamo", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re2, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE3", branches: "Brescia - Iseo - Edolo", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re3, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE13", branches: "Asti - Pavia - Milano", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re13, accessibilityStatus: String(localized: .lineaAccessibile))
+        ]
+    }
+    
     var crossBorderLines: [LineInfo] {
         [
             LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "TILO", waitMinutes: "\(String(localized: ._1Ora)) - 45 min.", stations: StationsDB.tiloS10, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
@@ -4103,6 +4112,44 @@ struct LinesView: View {
                         }
                     }
                 }
+                /*Section(){
+                    if(!regioExpress.isEmpty){
+                        ForEach(regioExpress, id: \.id) { line in
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
+                        }
+                    }
+                }
+                header:{
+                    if(!regioExpress.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee Regio Express")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("Trenord")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
+                            }
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                }*/
                 Section(){
                     if(!filteredCrossBorders.isEmpty){
                         ForEach(filteredCrossBorders, id: \.id) { line in
@@ -4410,6 +4457,7 @@ struct LineDetailView: View {
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
+    @State private var showInfoMapDeviations: Bool = false
     
     private enum LineDetailTab { case map, works, interchanges }
     @State private var selectedTab: LineDetailTab = .map
@@ -4446,7 +4494,7 @@ struct LineDetailView: View {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 20) {
                     HStack(spacing: 12) {
-                        if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80") {
+                        if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80" || lineName.contains("RE")) {
                             Text(lineName)
                                 .foregroundStyle(.white)
                                 .font(.custom("TitilliumWeb-Bold", size: 40))
@@ -4480,14 +4528,14 @@ struct LineDetailView: View {
                                 )
                         }
                         
-                        if(lineName == "MXP1" || lineName == "MXP2"){
+                        if(lineName == "MXP1" || lineName == "MXP2" || lineName.contains("RE")){
                             Text("\(typeOfTransport)")
                                 .font(.custom("TitilliumWeb-Bold", size: 30))
                                 .minimumScaleFactor(0.5)
                                 .lineLimit(1)
                         }
                         else {
-                            if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80"){
+                            if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80" || lineName.contains("RE")){
                                 Text("\(typeOfTransport) \(lineName)")
                                     .font(.custom("TitilliumWeb-Bold", size: 40))
                                     .minimumScaleFactor(0.5)
@@ -4623,6 +4671,20 @@ struct LineDetailView: View {
                                 }
                             }
                         }
+                        if(viewModel.regioExpressLinesDeviated.contains(lineName)){
+                            HStack {
+                                Text("QUESTA LINEA É SOGGETTA A DEVIAZIONI.")
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(.secondary)
+                                    .bold()
+                                Button(action: {
+                                    showInfoMapDeviations = true
+                                }) {
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                        }
                     }
                     
                     VStack(alignment: .leading, spacing: 5) {
@@ -4734,96 +4796,78 @@ struct LineDetailView: View {
                 .padding(.horizontal)
                 .padding(.bottom, 8)
                 if selectedTab == .map {
+                    let lineColor = getColor(for: lineName)
+                    let mainStations = stations.filter { $0.branch == "Main" }
+                    let branchGroups = Dictionary(grouping: stations.filter { $0.branch != "Main" }, by: \.branch)
+
+                    let branchData: [(coords: [CLLocationCoordinate2D], isPlanned: Bool)] = branchGroups.compactMap { branchName, branchStations in
+                        guard !branchStations.isEmpty else { return nil }
+
+                        let isPlanned = branchName.lowercased().contains("new") || branchName.lowercased().contains("nuova")
+                        let searchPool = isPlanned ? stations.filter { $0.branch != branchName } : mainStations
+                        guard !searchPool.isEmpty else { return nil }
+
+                        func minDist(_ s: MetroStation) -> CLLocationDistance {
+                            let loc = CLLocation(latitude: s.coordinate.latitude, longitude: s.coordinate.longitude)
+                            return searchPool.map {
+                                CLLocation(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude).distance(from: loc)
+                            }.min() ?? .infinity
+                        }
+
+                        let firstDist = minDist(branchStations.first!)
+                        let lastDist  = minDist(branchStations.last!)
+                        let oriented  = firstDist <= lastDist ? branchStations : branchStations.reversed()
+
+                        let junctionLoc = CLLocation(latitude: oriented.first!.coordinate.latitude, longitude: oriented.first!.coordinate.longitude)
+                        guard let junction = searchPool.min(by: { a, b in
+                            CLLocation(latitude: a.coordinate.latitude, longitude: a.coordinate.longitude).distance(from: junctionLoc)
+                            < CLLocation(latitude: b.coordinate.latitude, longitude: b.coordinate.longitude).distance(from: junctionLoc)
+                        }) else { return nil }
+
+                        return ([junction.coordinate] + oriented.map(\.coordinate), isPlanned)
+                    }
+
                     Map(
                         initialPosition: .region(
                             MKCoordinateRegion(
                                 center: centerCoordinate,
-                                span: MKCoordinateSpan(latitudeDelta: ((tramLinesSupported.contains(lineName)) ? 0.02 : 0.15), longitudeDelta: ((tramLinesSupported.contains(lineName)) ? 0.02 : 0.15))
+                                span: MKCoordinateSpan(
+                                    latitudeDelta: tramLinesSupported.contains(lineName) ? 0.02 : 0.15,
+                                    longitudeDelta: tramLinesSupported.contains(lineName) ? 0.02 : 0.15
+                                )
                             )
                         ),
                         bounds: lombardyBounds,
                         content: {
-                            let lineColor: Color = getColor(for: lineName)
-                            switch(lineName){
-                                case "M1":
-                                    MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
-                                        .stroke(lineColor, lineWidth: 5)
-                                    let pagano = stations.first(where: { $0.name == "Pagano" })!
-                                    let bisceglie = stations.first(where: { $0.name == "Bisceglie" })!
-                                    let rhoBranch = [pagano] + stations.filter { $0.branch == "Rho" }
-                                    MapPolyline(coordinates: rhoBranch.map(\.coordinate))
-                                        .stroke(lineColor, lineWidth: 5)
-                                    
-                                    let bisceglieBranch = [pagano] + stations.filter { $0.branch == "Bisceglie" }
-                                    MapPolyline(coordinates: bisceglieBranch.map(\.coordinate))
-                                        .stroke(lineColor, lineWidth: 5)
-                                
-                                    let bisceglieBranchNew = [bisceglie] + stations.filter { $0.branch == "Bisceglie - New" }
-                                    MapPolyline(coordinates: bisceglieBranchNew.map(\.coordinate))
-                                    .stroke(lineColor, style: StrokeStyle(lineWidth: 4, dash: [6, 6]))
-                                
-                                    ForEach(stations) { station in
-                                        Annotation(station.name, coordinate: station.coordinate) {
-                                            ZStack {
-                                                Circle()
-                                                    .fill(.white)
-                                                    .frame(width: 12, height: 12)
-                                                Circle()
-                                                    .stroke(lineColor, lineWidth: 3)
-                                                    .frame(width: 12, height: 12)
-                                            }
-                                        }
-                                    }
-                                case "M2":
-                                    MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
-                                        .stroke(lineColor, lineWidth: 5)
-                                    let famagosta = stations.first(where: { $0.name == "Famagosta" })!
-                                    let assagoBranch = [famagosta] + stations.filter { $0.branch == "Assago" }
-                                    MapPolyline(coordinates: assagoBranch.map(\.coordinate))
-                                        .stroke(lineColor, lineWidth: 5)
-                                    
-                                    let abbiategrassoBranch = [famagosta] + stations.filter { $0.branch == "Abbiategrasso" }
-                                    MapPolyline(coordinates: abbiategrassoBranch.map(\.coordinate))
-                                        .stroke(lineColor, lineWidth: 5)
+                            MapPolyline(coordinates: mainStations.map(\.coordinate))
+                                .stroke(lineColor, lineWidth: 5)
 
-                                    let cascinaGobba = stations.first(where: { $0.name == "Cascina Gobba" })!
-                                    let colognoBranch = [cascinaGobba] + stations.filter { $0.branch == "Cologno" }
-                                    MapPolyline(coordinates: colognoBranch.map(\.coordinate))
+                            ForEach(branchData.indices, id: \.self) { i in
+                                if branchData[i].isPlanned {
+                                    MapPolyline(coordinates: branchData[i].coords)
+                                        .stroke(lineColor, style: StrokeStyle(lineWidth: 4, dash: [6, 6]))
+                                } else {
+                                    MapPolyline(coordinates: branchData[i].coords)
                                         .stroke(lineColor, lineWidth: 5)
-                                    
-                                    let gessateBranch = [cascinaGobba] + stations.filter { $0.branch == "Gessate" }
-                                    MapPolyline(coordinates: gessateBranch.map(\.coordinate))
-                                        .stroke(lineColor, lineWidth: 5)
-                                
-                                    ForEach(stations) { station in
-                                        Annotation(station.name, coordinate: station.coordinate) {
-                                            ZStack {
-                                                Circle()
-                                                    .fill(.white)
-                                                    .frame(width: 12, height: 12)
-                                                Circle()
-                                                    .stroke(lineColor, lineWidth: 3)
-                                                    .frame(width: 12, height: 12)
-                                            }
-                                        }
-                                    }
+                                }
+                            }
 
-                                default:
-                                    MapPolyline(coordinates: stations.filter { $0.branch == "Main" }.map(\.coordinate))
-                                        .stroke(lineColor, lineWidth: 5)
-                                
-                                    ForEach(stations) { station in
-                                        Annotation(station.name, coordinate: station.coordinate) {
-                                            ZStack {
-                                                Circle()
-                                                    .fill(.white)
-                                                    .frame(width: 12, height: 12)
-                                                Circle()
-                                                    .stroke(lineColor, lineWidth: 3)
-                                                    .frame(width: 12, height: 12)
-                                            }
+                            ForEach(stations) { station in
+                                if(station.name == "NO_DRAW") {
+                                    Annotation("", coordinate: station.coordinate) {}
+                                }
+                                else {
+                                    Annotation(station.name, coordinate: station.coordinate) {
+                                        ZStack {
+                                            Circle()
+                                                .fill(.white)
+                                                .frame(width: 12, height: 12)
+                                            Circle()
+                                                .stroke(lineColor, lineWidth: 3)
+                                                .frame(width: 12, height: 12)
                                         }
                                     }
+                                }
                             }
                         })
                         .frame(maxWidth: .infinity)
@@ -4889,6 +4933,9 @@ struct LineDetailView: View {
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)
             }
+            .sheet(isPresented: $showInfoMapDeviations) {
+                LineDeviationInfoView(showInfoView: $showInfoMapDeviations)
+            }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
                     .ignoresSafeArea(.all)
@@ -4911,6 +4958,7 @@ struct LineSmallDetailedView: View {
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
+    @State private var showInfoMapDeviations: Bool = false
 
     let lineName: String
     let typeOfTransport: String
@@ -5099,6 +5147,20 @@ struct LineSmallDetailedView: View {
                                     else { openURLAction(url) }
                                 }) {
                                     Image(systemName: "info.circle.fill").foregroundColor(.gray)
+                                }
+                            }
+                        }
+                        if(viewModel.regioExpressLinesDeviated.contains(lineName)){
+                            HStack {
+                                Text("QUESTA LINEA É SOGGETTA A DEVIAZIONI.")
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(.secondary)
+                                    .bold()
+                                Button(action: {
+                                    showInfoMapDeviations = true
+                                }) {
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.gray)
                                 }
                             }
                         }
@@ -5385,6 +5447,9 @@ struct LineSmallDetailedView: View {
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)
             }
+            .sheet(isPresented: $showInfoMapDeviations) {
+                LineDeviationInfoView(showInfoView: $showInfoMapDeviations)
+            }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url).ignoresSafeArea(.all)
             }
@@ -5563,6 +5628,90 @@ struct InfoAccessibilityView: View {
                 .foregroundColor(.secondary)
                 .lineSpacing(4)
         }
+    }
+}
+
+struct LineDeviationInfoView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State private var currentPage = 0
+    @State var startImageTransition: Bool = false
+    @State var imageTransitionFirstPage: Bool = false
+    @State var i = 0
+    @Binding var showInfoView: Bool
+    @AppStorage("enableAnimations") var enableAnimations = true
+
+    var body: some View {
+        NavigationStack {
+            VStack {
+                TabView(selection: $currentPage) {
+                    ScrollView {
+                        VStack(spacing: 30) {
+                            if #available(iOS 18.0, *), enableAnimations {
+                                Image(systemName: startImageTransition ? "arrow.trianglehead.pull" : "arrow.trianglehead.branch")
+                                    .font(.system(size: 80))
+                                    .foregroundColor(.red)
+                                    .padding(.top, 50)
+                                    .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
+                                    .onAppear {
+                                        Task {
+                                            try? await Task.sleep(for: .seconds(1))
+                                            withAnimation {
+                                                startImageTransition = true
+                                            }
+                                        }
+                                    }
+                                    .onDisappear {
+                                        startImageTransition = false
+                                    }
+                            } else {
+                                Image(systemName: "arrow.trianglehead.branch")
+                                    .font(.system(size: 80))
+                                    .foregroundColor(.red)
+                                    .padding(.top, 40)
+                            }
+
+                            Text("Informazioni sulle mappe")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+
+                            Text("LavoraMi potrebbe non mostrare il percorso attuale di questa linea, poichè sono in corso deviazioni, interruzioni di tratte del percorso o di stazioni non accessibili. Consultate gli avvisi nella sezione \"Lavori Linea\" qui in basso!")
+                                .font(.headline)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                            
+                            Text("LavoraMi prende queste informazioni da fonti autorevoli e affidabili, le eventuali deviazioni di percorso sono indicate nei lavori qui sotto mostrati, potete prendere le eventuali soluzioni di viaggio nella sezione del lavoro: \"Soluzioni di viaggio\".")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding()
+                    }
+                    .tag(0)
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .ignoresSafeArea(edges: .bottom)
+            }
+            .navigationTitle("Deviazioni")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.secondary)
+                            .padding(4)
+                            .clipShape(Circle())
+                    }
+                }
+            }
+        }
+    }
+
+    private func dismiss() {
+        showInfoView = false
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
