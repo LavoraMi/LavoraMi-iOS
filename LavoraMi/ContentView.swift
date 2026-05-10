@@ -2395,7 +2395,6 @@ struct AdvancedOptionsView: View {
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @AppStorage("showTranslateButton") var showTranslateButton: Bool = false
-    @AppStorage("showWhatsNewScreen") var showWhatsNewScreen: Bool = true
     @AppStorage("showRecentSearches") var showRecentSearches: Bool = true
     private var currentDeviceBiometric: BiometricType = BiometricAuth.getBiometricType()
     @State private var presentedCacheAlert = false
@@ -2428,11 +2427,6 @@ struct AdvancedOptionsView: View {
             Section(footer: Text("Attiva i Feedback di vibrazione su alcune schermate.")){
                 Toggle(isOn: $feedbacksEnabled){
                     Label("Attiva Feedback Vibrazione", systemImage: iphoneGenIcon)
-                }
-            }
-            Section(footer: Text("Mostra la schermata delle novità appena l'app viene aggiornata.")){
-                Toggle(isOn: $showWhatsNewScreen){
-                    Label("Mostra Schermata Novità", systemImage: "app.badge.fill")
                 }
             }
             if(Locale.current.language.languageCode?.identifier == "it"){

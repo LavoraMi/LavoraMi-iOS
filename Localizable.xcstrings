@@ -2092,6 +2092,7 @@
       }
     },
     "Mostra la schermata delle novità appena l'app viene aggiornata." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2162,6 +2163,7 @@
       }
     },
     "Mostra Schermata Novità" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
