@@ -3815,8 +3815,13 @@ struct LinesView: View {
     
     var regioExpress: [LineInfo] {
         [
+            LineInfo(name: "RE1", branches: "Laveno - Saronno - Milano", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re1, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "RE2", branches: "Milano - Bergamo", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re2, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "RE3", branches: "Brescia - Iseo - Edolo", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re3, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE4", branches: "Domodossola - Milano", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re4, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE5", branches: "Porto Ceresio - Varese - Milano", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re5, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE7", branches: "Como - Saronno - Milano", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re7, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE11", branches: "Mantova - Codogno - Milano", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re11, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "RE13", branches: "Asti - Pavia - Milano", type: "Regio Express", waitMinutes: "\(String(localized: ._1Ora)) - 30 min.", stations: StationsDB.re13, accessibilityStatus: String(localized: .lineaAccessibile))
         ]
     }
@@ -4106,7 +4111,7 @@ struct LinesView: View {
                         }
                     }
                 }
-                /*Section(){
+                Section(){
                     if(!regioExpress.isEmpty){
                         ForEach(regioExpress, id: \.id) { line in
                             LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
@@ -4143,7 +4148,7 @@ struct LinesView: View {
                             }
                         }
                     }
-                }*/
+                }
                 Section(){
                     if(!filteredCrossBorders.isEmpty){
                         ForEach(filteredCrossBorders, id: \.id) { line in
@@ -5678,6 +5683,32 @@ struct LineDeviationInfoView: View {
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
+                            
+                            VStack(alignment: .leading, spacing: 20) {
+                                currentStatus(
+                                    icon: "person.crop.square.fill",
+                                    color: .green,
+                                    title: "Affidati al personale di bordo",
+                                    description: "Se il tragitto del tuo treno continua attraverso un bus sostitutivo, il personale di bordo ti darà tutte le informazioni necessarie per continuare il tuo viaggio in tranquillità."
+                                )
+                                Divider()
+                                currentStatus(
+                                    icon: "exclamationmark.triangle.fill",
+                                    color: .orange,
+                                    title: "Guarda i lavori",
+                                    description: "La mappa contiene il percorso originale della tratta, guarda i lavori nella sezione: \"Lavori linea\" per visualizzare eventuali interruzioni."
+                                )
+                                Divider()
+                                currentStatus(
+                                    icon: "person.crop.circle.badge.exclamationmark",
+                                    color: .red,
+                                    title: "Segnala eventuali incorrettezze",
+                                    description: "Se trovi delle incoerenze nella nostra app con la tua linea, segnalacele a: info@lavorami.it!"
+                                )
+                            }
+                            .padding()
+                            .background(Color(UIColor.secondarySystemBackground))
+                            .cornerRadius(15)
                         }
                         .padding()
                     }
@@ -5706,6 +5737,29 @@ struct LineDeviationInfoView: View {
     private func dismiss() {
         showInfoView = false
         presentationMode.wrappedValue.dismiss()
+    }
+    
+    @ViewBuilder
+    private func currentStatus(icon: String, color: Color, title: String, description: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 10) {
+                HStack(spacing: 4) {
+                    Image(systemName: "arrow.branch")
+                    Image(systemName: icon)
+                        .foregroundColor(color)
+                }
+                .font(.headline)
+
+                Text(title)
+                    .font(.headline)
+                    .foregroundColor(color)
+            }
+
+            Text(description)
+                .font(.callout)
+                .foregroundColor(.secondary)
+                .lineSpacing(4)
+        }
     }
 }
 
