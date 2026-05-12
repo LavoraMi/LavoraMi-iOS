@@ -1,4 +1,4 @@
-# <img src="LavoraMi/Assets.xcassets/AppIcon-iOS-Default-1024x1024@1x.png" alt="Icon" width="30px" height="30px"> LavoraMi
+# <img src="LavoraMi/Assets.xcassets/icon.imageset/iconNew.png" alt="Icon" width="30px" height="30px"> LavoraMi
 
 <div align="center">
 
