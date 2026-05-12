@@ -1219,6 +1219,10 @@ struct SettingsView: View{
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
+    @AppStorage("showTranslateButton") var showTranslateButton: Bool = false
+    @AppStorage("showRecentSearches") var showRecentSearches: Bool = true
+    @AppStorage("recentlySearchedLinesData") private var recentlySearchedLinesData: Data = Data()
+    @AppStorage("linesSelected") private var linesSelected: [String] = []
     @Environment(\.dismiss) var dismiss
     @Environment(\.openURL) private var openURLAction
     @Environment(\.requestReview) var requestReview
@@ -1643,11 +1647,16 @@ struct SettingsView: View{
                     enableNotifications = true
                     preferredFilter = .all
                     linesFavorites = []
+                    linesSelected = []
                     showErrorMessages = false
                     showStrikeBanner = true
                     requireFaceID = true
                     howToOpenLinks = .inApp
                     appearanceSelection = .system
+                    feedbacksEnabled = true
+                    showTranslateButton = false
+                    showRecentSearches = true
+                    recentlySearchedLinesData = Data()
                 }
             } message: {
                 Text("Sei sicuro di voler ripristinare le impostazioni?")

@@ -1898,7 +1898,14 @@
       }
     },
     "Linee Regio Express" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regio Express Lines"
+          }
+        }
+      }
     },
     "Linee S" : {
       "localizations" : {
@@ -2094,17 +2101,6 @@
         }
       }
     },
-    "Mostra la schermata delle novità appena l'app viene aggiornata." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Display the “What's New” screen as soon as the app is updated."
-          }
-        }
-      }
-    },
     "Mostra le tue ricerche recenti nella pagina delle Linee." : {
       "localizations" : {
         "en" : {
@@ -2161,17 +2157,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show Recent Research"
-          }
-        }
-      }
-    },
-    "Mostra Schermata Novità" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show What’s New Screen"
           }
         }
       }
