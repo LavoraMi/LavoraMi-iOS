@@ -3707,6 +3707,7 @@ struct LinesView: View {
         let typeKeywords: [String: [String]] = [
             "Metro": ["metro", "metropolitana", "m"],
             "Suburbano": ["suburbano", "s"],
+            "Regio express": ["regio", "express", "re"],
             "Tram": ["tram", "t"],
             "Movibus": ["bus", "movibus", "z"],
             "Malpensa Express": ["malpensa", "malpensa express", "express", "mxp"]
@@ -3739,6 +3740,7 @@ struct LinesView: View {
 
     var filteredMetros: [LineInfo] { filtered(metros) }
     var filteredSuburban: [LineInfo] { filtered(suburban) }
+    var filteredRegioExpress: [LineInfo] { filtered(regioExpress) }
     var filteredTrams: [LineInfo] { filtered(trams) }
     var filteredMovibus: [LineInfo] { filtered(bus) }
     var filteredSTAV: [LineInfo] { filtered(stav) }
@@ -3772,7 +3774,7 @@ struct LinesView: View {
     }
     
     func fullLineInfo(for name: String) -> LineInfo? {
-        let all = metros + suburban + crossBorderLines + malpensaExpress + trams + bus + stav + autoguidovie
+        let all = metros + suburban + regioExpress + crossBorderLines + malpensaExpress + trams + bus + stav + autoguidovie
         return all.first { $0.name == name }
     }
 
@@ -4386,7 +4388,7 @@ struct LinesView: View {
             }
             .navigationTitle("Linee")
             .overlay {
-                let allFiltered = [filteredMetros, filteredSuburban, filteredCrossBorders, filteredMalpensaExpress, filteredTrams, filteredMovibus, filteredSTAV, filteredAutoguidovie]
+                let allFiltered = [filteredMetros, filteredSuburban, filteredRegioExpress, filteredCrossBorders, filteredMalpensaExpress, filteredTrams, filteredMovibus, filteredSTAV, filteredAutoguidovie]
                 if allFiltered.allSatisfy({ $0.isEmpty }) {
                     Text("Nessun risultato per: \"\(searchInput)\".")
                         .foregroundStyle(.secondary)
