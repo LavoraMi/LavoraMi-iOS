@@ -3827,15 +3827,15 @@ struct LinesView: View {
     var regioExpress: [LineInfo] {
         [
             LineInfo(name: "RE1", branches: "Laveno - Saronno - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re1, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "RE2", branches: "Milano - Bergamo", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re2, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "RE3", branches: "Brescia - Iseo - Edolo", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re3, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "RE4", branches: "Domodossola - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re4, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "RE5", branches: "Porto Ceresio - Varese - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re5, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "RE6", branches: "Verona - Brescia - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re6, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "RE7", branches: "Como - Saronno - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re7, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE2", branches: "Milano - Bergamo", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.re2, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "RE3", branches: "Brescia - Iseo - Edolo", type: "Regio Express", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.re3, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE4", branches: "Domodossola - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.re4, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE5", branches: "Porto Ceresio - Varese - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.re5, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE6", branches: "Verona - Brescia - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.re6, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE7", branches: "Como - Saronno - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.re7, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "RE8", branches: "Tirano - Lecco - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re8, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "RE11", branches: "Mantova - Codogno - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re11, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "RE13", branches: "Asti - Pavia - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re13, accessibilityStatus: String(localized: .lineaAccessibile))
+            LineInfo(name: "RE11", branches: "Mantova - Codogno - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.re11, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "RE13", branches: "Asti - Pavia - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.re13, accessibilityStatus: String(localized: .lineaAccessibile))
         ]
     }
     
