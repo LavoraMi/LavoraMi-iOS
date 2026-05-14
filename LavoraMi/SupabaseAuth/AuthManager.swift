@@ -66,7 +66,7 @@ class AuthManager: ObservableObject {
             try await supabase.auth.signInWithIdToken(credentials: .init(provider: .apple, idToken: idToken, nonce: nonce))
             
             //SETUP THE NAME OF THE ACCOUNT
-            if let name = fullName, !name.isEmpty {
+            if let name = fullName, !name.trimmingCharacters(in: .whitespaces).isEmpty {
                 let metadata: [String: AnyJSON] = ["full_name": .string(name)]
                 try await supabase.auth.update(user: UserAttributes(data: metadata))
                 self.session = try await supabase.auth.session

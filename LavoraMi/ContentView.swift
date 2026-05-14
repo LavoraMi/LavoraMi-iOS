@@ -1875,10 +1875,14 @@ struct AccountView: View {
                                     return
                                 }
                                 
-                                await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: "")
+                                let name = credential.fullName?.givenName ?? ""
+                                let surname = credential.fullName?.familyName ?? ""
+                                let composed = "\(name) \(surname)".trimmingCharacters(in: .whitespaces)
+                                fullName = !auth.getFullName().isEmpty ? auth.getFullName() : composed
+                                
+                                await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: fullName)
                                 loggedIn = auth.isLoggedIn()
                                 logginIn = false
-                                fullName = auth.getFullName()
                                 tabTitle = "Account"
                             }
                         }
@@ -2040,9 +2044,12 @@ struct AccountView: View {
                                     return
                                 }
                                 
-                                let name = credential.fullName?.givenName ?? String(localized: .utenteApple)
+                                let name = credential.fullName?.givenName ?? "User"
+                                let surname = credential.fullName?.familyName ?? ""
+                                let composed = "\(name) \(surname)".trimmingCharacters(in: .whitespaces)
+                                fullName = !auth.getFullName().isEmpty ? auth.getFullName() : composed
                                 
-                                await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: name)
+                                await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: fullName)
                                 loggedIn = auth.isLoggedIn()
                                 logginIn = false
                                 tabTitle = "Account"
@@ -3686,11 +3693,8 @@ struct LineRow: View {
                             .fill((typeOfTransport == "Tram") ? .orange : getColor(for: line))
                     )
 
-                if line == "MXP1" || line == "MXP2" {
-                    Text(typeOfTransport)
-                } else {
-                    Text("\(typeOfTransport) \(line)")
-                }
+                if line == "MXP1" || line == "MXP2" {Text(typeOfTransport)}
+                else {Text("\(typeOfTransport) \(line)")}
             }
             .padding(.vertical, 4)
         }
