@@ -177,6 +177,11 @@ struct SetupView: View {
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .onChange(of: currentPage) { newPage in
+                    if newPage == 3 {
+                        NotificationManager.shared.requestPermission()
+                    }
+                }
                 HStack(spacing: 6) {
                     ForEach(0..<pages.count, id: \.self) { index in
                         Capsule()
@@ -205,9 +210,6 @@ struct SetupView: View {
                     .padding(.bottom)
                 } else {
                     Button {
-                        if(currentPage == 2){
-                            NotificationManager.shared.requestPermission()
-                        }
                         withAnimation { currentPage += 1 }
                     } label: {
                         Text("Avanti")
@@ -225,7 +227,7 @@ struct SetupView: View {
             }
             .navigationTitle(Text("LavoraMi"))
             .toolbar {
-                if(currentPage == pages.count - 1) {
+                if(currentPage != pages.count - 1) {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             showPopUpConfirmSkipSetup = true
