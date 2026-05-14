@@ -4131,14 +4131,14 @@ struct LinesView: View {
                     }
                 }
                 Section(){
-                    if(!regioExpress.isEmpty){
-                        ForEach(regioExpress, id: \.id) { line in
+                    if(!filteredRegioExpress.isEmpty){
+                        ForEach(filteredRegioExpress, id: \.id) { line in
                             LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
                         }
                     }
                 }
                 header:{
-                    if(!regioExpress.isEmpty) {
+                    if(!filteredRegioExpress.isEmpty) {
                         HStack{
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("Linee Regio Express")
