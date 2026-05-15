@@ -1309,6 +1309,40 @@
         }
       }
     },
+    "incorrettezzeDeps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you notice any discrepancies between our app and your mobile plan, please report the issue to: info@lavorami.it!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se trovi delle incoerenze nella nostra app con la tua linea, segnala questo problema a: info@lavorami.it!"
+          }
+        }
+      }
+    },
+    "incorrettezzeTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report any errors"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segnala eventuali incorrettezze"
+          }
+        }
+      }
+    },
     "Informazioni" : {
       "localizations" : {
         "en" : {
@@ -1432,7 +1466,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Interchanges"
+            "value" : "Changes"
           }
         }
       }
@@ -1537,12 +1571,12 @@
         }
       }
     },
-    "LavoraMi prende queste informazioni da fonti autorevoli e affidabili, le eventuali deviazioni di percorso sono indicate nei lavori qui sotto mostrati, potete prendere le eventuali soluzioni di viaggio nella sezione del lavoro: \"Soluzioni di viaggio\"." : {
+    "LavoraMi prende queste informazioni da fonti autorevoli e affidabili, le eventuali deviazioni di percorso sono indicate nei lavori qui sotto mostrati, potete prendere le eventuali soluzioni di viaggio nell'apposita sezione." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LavoraMi obtains this information from authoritative and reliable sources; any route deviations are indicated in the journeys shown below. You can find alternative travel options in the ‘Travel Options’ section of each journey."
+            "value" : "LavoraMi obtains this information from authoritative and reliable sources; any route deviations are indicated in the journeys shown below, and you can find alternative travel options in the relevant section."
           }
         }
       }
@@ -1584,6 +1618,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "WORK ON THE LINE:"
+          }
+        }
+      }
+    },
+    "lavoriDeviationInfoDeps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The map shows the original route; see the diversions in the ‘Line Works’ section!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La mappa contiene il percorso originale della tratta, guarda le deviazioni di essa nella sezione: \\\"Lavori Linea\\\"."
+          }
+        }
+      }
+    },
+    "lavoriDeviationInfoTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View the works"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda i lavori"
           }
         }
       }
@@ -2153,7 +2221,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No interchanges with this line."
+            "value" : "No changes with this line."
           }
         }
       }
@@ -2555,6 +2623,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permission Denied"
+          }
+        }
+      }
+    },
+    "personaleDeps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If your train journey continues by replacement bus, the on-board staff will provide you with all the information you need to continue your journey with peace of mind."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se il tragitto del tuo treno continua attraverso un bus sostitutivo, il personale di bordo ti darà tutte le informazioni necessarie per continuare il tuo viaggio in tranquillità."
+          }
+        }
+      }
+    },
+    "personaleTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please rely on the cabin crew"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affidati al personale di bordo"
           }
         }
       }
@@ -3798,7 +3900,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "View interchanges"
+            "value" : "View changes"
           }
         },
         "it" : {

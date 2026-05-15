@@ -5709,22 +5709,22 @@ struct LineDeviationInfoView: View {
                                 currentStatus(
                                     icon: "person.crop.square.fill",
                                     color: .green,
-                                    title: "Affidati al personale di bordo",
-                                    description: "Se il tragitto del tuo treno continua attraverso un bus sostitutivo, il personale di bordo ti darà tutte le informazioni necessarie per continuare il tuo viaggio in tranquillità."
+                                    title: String(localized: .personaleTitle),
+                                    description: String(localized: .personaleDeps)
                                 )
                                 Divider()
                                 currentStatus(
                                     icon: "exclamationmark.triangle.fill",
                                     color: .orange,
-                                    title: "Guarda i lavori",
-                                    description: "La mappa contiene il percorso originale della tratta, guarda le deviazioni di essa nella sezione: \"Lavori Linea\"."
+                                    title: String(localized: .lavoriDeviationInfoTitle),
+                                    description: String(localized: .lavoriDeviationInfoDeps)
                                 )
                                 Divider()
                                 currentStatus(
                                     icon: "person.crop.circle.badge.exclamationmark",
                                     color: .red,
-                                    title: "Segnala eventuali incorrettezze",
-                                    description: "Se trovi delle incoerenze nella nostra app con la tua linea, segnala questo problema a: info@lavorami.it!"
+                                    title: String(localized: .incorrettezzeTitle),
+                                    description: String(localized: .incorrettezzeDeps)
                                 )
                             }
                             .padding()
