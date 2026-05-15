@@ -5700,7 +5700,7 @@ struct LineDeviationInfoView: View {
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
                             
-                            Text("LavoraMi prende queste informazioni da fonti autorevoli e affidabili, le eventuali deviazioni di percorso sono indicate nei lavori qui sotto mostrati, potete prendere le eventuali soluzioni di viaggio nella sezione del lavoro: \"Soluzioni di viaggio\".")
+                            Text("LavoraMi prende queste informazioni da fonti autorevoli e affidabili, le eventuali deviazioni di percorso sono indicate nei lavori qui sotto mostrati, potete prendere le eventuali soluzioni di viaggio nell'apposita sezione.")
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
@@ -5717,14 +5717,14 @@ struct LineDeviationInfoView: View {
                                     icon: "exclamationmark.triangle.fill",
                                     color: .orange,
                                     title: "Guarda i lavori",
-                                    description: "La mappa contiene il percorso originale della tratta, guarda i lavori nella sezione: \"Lavori linea\" per visualizzare eventuali interruzioni."
+                                    description: "La mappa contiene il percorso originale della tratta, guarda le deviazioni di essa nella sezione: \"Lavori Linea\"."
                                 )
                                 Divider()
                                 currentStatus(
                                     icon: "person.crop.circle.badge.exclamationmark",
                                     color: .red,
                                     title: "Segnala eventuali incorrettezze",
-                                    description: "Se trovi delle incoerenze nella nostra app con la tua linea, segnalacele a: info@lavorami.it!"
+                                    description: "Se trovi delle incoerenze nella nostra app con la tua linea, segnala questo problema a: info@lavorami.it!"
                                 )
                             }
                             .padding()
