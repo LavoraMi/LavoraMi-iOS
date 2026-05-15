@@ -772,6 +772,8 @@ struct MainView: View {
                                         viewModel.fetchRequirements()
                                         viewModel.fetchVariables()
                                         viewModel.fetchWorks()
+                                        
+                                        showMaintenanceMode = viewModel.maintenanceModeEnabled
                                     })
                                     {
                                         Label("Riprova", systemImage: "arrow.clockwise")
