@@ -447,6 +447,7 @@ struct MainView: View {
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     
     @State private var closedStrike: Bool = false
+    @State private var closedSuggested: Bool = false
     @State private var selectedFilter: FilterBy = .all
     @State private var searchInput: String = ""
     @State private var alreadyRefreshed: Bool = false
@@ -679,6 +680,8 @@ struct MainView: View {
                                     }
                                     selectedFilter = filter
                                 }
+                            
+                                if(filter == .suggested){closedSuggested = false}
                             }){
                             let nameIcon: String = getIconForFilter(for: filter.rawValue)
                             
@@ -792,16 +795,28 @@ struct MainView: View {
                             } else {
                                 VStack(spacing: 12) {
                                     if filteredItems.isEmpty && searchInput.isEmpty {
-                                        if(selectedFilter == .suggested) {
+                                        if(selectedFilter == .suggested && !closedSuggested) {
                                             HStack(alignment: .top, spacing: 16) {
                                                 Image(systemName: "sparkle")
                                                     .font(.system(size: 36))
                                                     .foregroundStyle(.red.gradient)
 
                                                 VStack(alignment: .leading, spacing: 6) {
-                                                    Text("Le tue linee.")
-                                                        .font(.title2)
-                                                        .fontWeight(.bold)
+                                                    HStack {
+                                                        Text("Le tue linee.")
+                                                            .font(.title2)
+                                                            .fontWeight(.bold)
+                                                        Spacer()
+                                                        Button {
+                                                            withAnimation(.spring(duration: 0.3)) {
+                                                                closedSuggested = true
+                                                            }
+                                                        } label: {
+                                                            Image(systemName: "xmark.circle.fill")
+                                                                .font(.system(size: 20))
+                                                                .foregroundStyle(.red.gradient)
+                                                        }
+                                                    }
 
                                                     Text("Per aggiungere una linea in questa sezione, vai nella scheda ")
                                                         .font(.subheadline)
@@ -822,7 +837,7 @@ struct MainView: View {
                                             .background(.red.opacity(0.08), in: RoundedRectangle(cornerRadius: 16))
                                             .padding(.horizontal)
                                         }
-                                        else {
+                                        else if selectedFilter != .suggested {
                                             Text("Nessun lavoro trovato per questo filtro.")
                                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                                 .containerRelativeFrame(.vertical)
@@ -838,16 +853,28 @@ struct MainView: View {
                                             .foregroundStyle(.secondary)
                                     }
                                     else {
-                                        if selectedFilter == .suggested {
+                                        if selectedFilter == .suggested && !closedSuggested {
                                             HStack(alignment: .top, spacing: 16) {
                                                 Image(systemName: "sparkle")
                                                     .font(.system(size: 36))
                                                     .foregroundStyle(.red.gradient)
 
                                                 VStack(alignment: .leading, spacing: 6) {
-                                                    Text("Scegli ciò che ti piace")
-                                                        .font(.title2)
-                                                        .fontWeight(.bold)
+                                                    HStack {
+                                                        Text("Scegli ciò che ti piace")
+                                                            .font(.title2)
+                                                            .fontWeight(.bold)
+                                                        Spacer()
+                                                        Button {
+                                                            withAnimation(.spring(duration: 0.3)) {
+                                                                closedSuggested = true
+                                                            }
+                                                        } label: {
+                                                            Image(systemName: "xmark.circle.fill")
+                                                                .font(.system(size: 20))
+                                                                .foregroundStyle(.red.gradient)
+                                                        }
+                                                    }
 
                                                     Text("Per aggiungere una linea in questa sezione, vai nella scheda ")
                                                         .font(.subheadline)
