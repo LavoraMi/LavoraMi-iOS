@@ -3686,6 +3686,7 @@ struct LineRow: View {
         && typeOfTransport != "Movibus"
         && typeOfTransport != "STAV"
         && typeOfTransport != "Autoguidovie"
+        && typeOfTransport != "STAR Mobility"
     }
 
     @ViewBuilder
@@ -3761,6 +3762,9 @@ struct LinesView: View {
             "Regio express": ["regio", "express", "re"],
             "Tram": ["tram", "t"],
             "Movibus": ["bus", "movibus", "z"],
+            "STAR Mobility": ["bus", "star", "z"],
+            "STAV": ["stav", "bus", "z"],
+            "Autoguidovie": ["autoguidovie", "bus", "z"],
             "Malpensa Express": ["malpensa", "malpensa express", "express", "mxp"]
         ]
         
@@ -3794,6 +3798,7 @@ struct LinesView: View {
     var filteredRegioExpress: [LineInfo] { filtered(regioExpress) }
     var filteredTrams: [LineInfo] { filtered(trams) }
     var filteredMovibus: [LineInfo] { filtered(bus) }
+    var filteredSTAR: [LineInfo] { filtered(star) }
     var filteredSTAV: [LineInfo] { filtered(stav) }
     var filteredAutoguidovie: [LineInfo] { filtered(autoguidovie) }
     var filteredCrossBorders: [LineInfo] { filtered(crossBorderLines) }
@@ -3947,6 +3952,16 @@ struct LinesView: View {
             LineInfo(name: "z647", branches: "Cornaredo - Castano Primo", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z648", branches: "Arconate - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z649", branches: "Magenta - Arluno - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: "")
+        ]
+    }
+    
+    var star: [LineInfo] {
+        [
+            LineInfo(name: "z501", branches: "Milano Famagosta - Binasco", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z509", branches: "Motta Visconti - Milano Famagosta", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z510", branches: "Milano Famagosta - Lacchiarella - Giussano", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z515", branches: "Milano Famagosta - Zibido", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z516", branches: "Milano Famagosta - Rosate - Besate", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: "")
         ]
     }
     
@@ -4344,6 +4359,44 @@ struct LinesView: View {
                             Spacer()
                             Button(action: {
                                 let url = URL(string: "https://movibus.it/news/")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                }
+                Section(){
+                    if(!filteredSTAR.isEmpty){
+                        ForEach(filteredSTAR, id: \.id){bus in
+                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel, onTap: { addToRecent(bus) })
+                        }
+                    }
+                }
+                header: {
+                    if(!filteredSTAR.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee di Bus")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("STAR Mobility")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
+                            }
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://starmobility.it/orari-autobus/")!
                                 if howToOpenLinks == .inApp {
                                     selectedURL = url
                                 } else {
@@ -5067,7 +5120,8 @@ struct LineSmallDetailedView: View {
         .init(key: "Monza FS", displayName: "Monza FS", lines: ["R7", "R13", "R14", "RE8", "RE80", "S7", "S8", "S9", "S11", "z203", "z205", "z219", "z221", "z222", "z228"], typeOfInterchange: "train.side.front.car"),
         .init(key: "Sesto S.G", displayName: "Sesto San Giovanni FS M1", lines: ["M1", "R13", "R14", "RE8", "S7", "S8", "S9", "S11", "z221", "z222", "z225"], typeOfInterchange: "train.side.front.car"),
         .init(key: "Seregno", displayName: "Seregno FS", lines: ["RE80", "S9", "S11", "z231", "z232", "z233", "z242"], typeOfInterchange: "train.side.front.car"),
-        .init(key: "Desio FS", displayName: "Desio FS", lines: ["RE80", "S9", "S11", "z250", "z251"], typeOfInterchange: "train.side.front.car")
+        .init(key: "Desio FS", displayName: "Desio FS", lines: ["RE80", "S9", "S11", "z250", "z251"], typeOfInterchange: "train.side.front.car"),
+        .init(key: "Milano Famagosta", displayName: "Famagosta M2", lines: ["M2", "z501", "z509", "z510", "z515", "z516"], typeOfInterchange: "tram.fill.tunnel")
     ]
 
     var activeInterchange: InterchangeStation? {

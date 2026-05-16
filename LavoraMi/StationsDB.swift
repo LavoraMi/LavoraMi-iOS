@@ -59,9 +59,7 @@ struct StationsDB {
     static let stationsM2: [MetroStation] = [
         .init(name: "Assago Forum", coordinate: .init(latitude: 45.40183, longitude: 9.14562), branch: "Assago"),
         .init(name: "Assago Milanofiori Nord", coordinate: .init(latitude: 45.40945, longitude: 9.15004), branch: "Assago"),
-
         .init(name: "P.Za Abbiategrasso", coordinate: .init(latitude: 45.42984, longitude: 9.17838), branch: "Abbiategrasso"),
-
         .init(name: "Famagosta", coordinate: .init(latitude: 45.43719, longitude: 9.16795), branch: "Main"),
         .init(name: "Romolo", coordinate: .init(latitude: 45.44373, longitude: 9.16767), branch: "Main"),
         .init(name: "Porta Genova FS", coordinate: .init(latitude: 45.45273, longitude: 9.16972), branch: "Main"),
@@ -81,11 +79,9 @@ struct StationsDB {
         .init(name: "Cimiano", coordinate: .init(latitude: 45.50004, longitude: 9.24142), branch: "Main"),
         .init(name: "Crescenzago", coordinate: .init(latitude: 45.50521, longitude: 9.24822), branch: "Main"),
         .init(name: "Cascina Gobba", coordinate: .init(latitude: 45.51114, longitude: 9.26052), branch: "Main"),
-
         .init(name: "Cologno Sud", coordinate: .init(latitude: 45.52021, longitude: 9.27492), branch: "Cologno"),
         .init(name: "Cologno Centro", coordinate: .init(latitude: 45.52747, longitude: 9.28296), branch: "Cologno"),
         .init(name: "Cologno Nord", coordinate: .init(latitude: 45.53426, longitude: 9.29111), branch: "Cologno"),
-
         .init(name: "Vimodrone", coordinate: .init(latitude: 45.51574, longitude: 9.28564), branch: "Gessate"),
         .init(name: "Cascina Burrona", coordinate: .init(latitude: 45.51736, longitude: 9.29783), branch: "Gessate"),
         .init(name: "Cernusco Sul Naviglio", coordinate: .init(latitude: 45.52097, longitude: 9.33083), branch: "Gessate"),
