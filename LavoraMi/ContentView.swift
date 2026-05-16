@@ -14,13 +14,14 @@ import SwiftUIMailView
 import AuthenticationServices
 import CryptoKit
 import FirebaseCore
-internal import Auth
 import FirebaseMessaging
 import Translation
 import StoreKit
 import Combine
 import SystemConfiguration
 import CoreLocation
+
+internal import Auth
 
 struct WorkItem: Identifiable, Hashable, Codable {
     var id = UUID()
@@ -3677,7 +3678,7 @@ struct LineRow: View {
     let waitMinutes: String
     let accessibilityStatus: String
     let stations: [MetroStation]
-    @State private var supportedLines: [String] = ["1", "3", "5", "7", "9", "10", "24", "31", "33"]
+    @State private var supportedLines: [String] = ["1", "3", "5", "7", "9", "10", "15", "24", "31", "33"]
     @ObservedObject var viewModel: WorkViewModel
     var onTap: (() -> Void)? = nil
 
@@ -3915,7 +3916,7 @@ struct LinesView: View {
             LineInfo(name: "10", branches: "P.Za 24 Maggio - V.Le Lunigiana", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram10, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "12", branches: "P.Za Ovidio - Roserio (Ospedale Sacco)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "14", branches: "Lorenteggio - Cimitero Maggiore", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "15", branches: "Duomo M1 M3 - Rozzano (Via G. Rossa)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "15", branches: "Duomo M1 M3 - Rozzano (Via G. Rossa)", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram15, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "16", branches: "San Siro Stadio M5 - Via Monte Velino", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "19", branches: "P.Za Castelli - Lambrate FS M2", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "24", branches: "Piazza Fontana - Vigentino", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram24, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
@@ -4571,7 +4572,7 @@ struct LineDetailView: View {
     @State private var openPopUpWidget: Bool = false
     @State private var openPopUpLines: Bool = false
     @State private var openInfoAccessibility: Bool = false
-    @State private var tramLinesSupported: [String] = ["1", "3", "5", "7", "9", "10", "24", "31", "33"]
+    @State private var tramLinesSupported: [String] = ["1", "3", "5", "7", "9", "10", "15", "24", "31", "33"]
     
     private var centerIndex: Int { max(0, stations.count / 2) }
     private var centerCoordinate: CLLocationCoordinate2D {
