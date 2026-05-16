@@ -2463,7 +2463,7 @@ struct AdvancedOptionsView: View {
         List{
             Section(footer: Text("Mostra messaggi di errore quando fallisce il Download dei dati.")){
                 Toggle(isOn: $showErrorMessages){
-                    Label("Mostra messaggi di Errore", systemImage: "exclamationmark.bubble.fill")
+                    Label("Mostra Messaggi Di Errore", systemImage: "exclamationmark.bubble.fill")
                 }
             }
             Section(footer: Text("Mostra il banner degli scioperi nella Home quando sono presenti.")){
