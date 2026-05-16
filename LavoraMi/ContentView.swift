@@ -650,6 +650,13 @@ struct MainView: View {
                             Text("Aderenti:")
                                 .font(.system(size: 13))
                                 .foregroundStyle(.secondary)
+                            if(viewModel.companiesStrikes.split(separator: ", ").count < 4) {
+                                Text(viewModel.companiesStrikes)
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundStyle(.primary)
+                            }
+                        }
+                        if(viewModel.companiesStrikes.split(separator: ", ").count >= 4) {
                             Text(viewModel.companiesStrikes)
                                 .font(.system(size: 13, weight: .semibold))
                                 .foregroundStyle(.primary)
