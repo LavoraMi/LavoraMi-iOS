@@ -4530,7 +4530,7 @@ func getLineDeviationLink(line: String, viewModel: WorkViewModel) -> URL {
         return URL(string: viewModel.linesDeviatedLink[i])!
     }
     
-    return URL(string: "www.lavorami.it?redirect=nourlfounds")!
+    return URL(string: "www.lavorami.it/404")!
 }
 
 func getInterchanges(line: String) -> [InterchageInfo] {
