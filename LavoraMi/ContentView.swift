@@ -607,7 +607,12 @@ struct MainView: View {
 
                         Spacer()
 
-                        Button(action: { withAnimation(.spring(duration: 0.3)) { closedStrike = true } }) {
+                        Button(action: {
+                            withAnimation(.spring(duration: 0.3)) { closedStrike = true }
+                            if(feedbacksEnabled){
+                                HapticManager.shared.trigger()
+                            }
+                        }) {
                             Image(systemName: "xmark")
                                 .font(.system(size: 11, weight: .bold))
                                 .foregroundStyle(.white.opacity(0.9))
@@ -3746,6 +3751,7 @@ struct LinesView: View {
     @ObservedObject var viewModel: WorkViewModel
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @AppStorage("showRecentSearches") var showRecentSearches: Bool = true
+    @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
 
     @State private var searchInput: String = ""
     @State private var selectedURL: URL?
@@ -4096,6 +4102,9 @@ struct LinesView: View {
                                 if(!recentlySearchedLines.isEmpty) {
                                     Button(action: {
                                         showDeletePopUp = true
+                                        if(feedbacksEnabled){
+                                            HapticManager.shared.trigger()
+                                        }
                                     }) {
                                         Image(systemName: "delete.backward.fill")
                                             .foregroundColor(.gray)
