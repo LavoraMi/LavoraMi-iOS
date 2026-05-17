@@ -3966,7 +3966,7 @@ struct LinesView: View {
         [
             LineInfo(name: "z501", branches: "Milano Famagosta - Binasco", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z509", branches: "Motta Visconti - Milano Famagosta", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z510", branches: "Milano Famagosta - Lacchiarella - Giussano", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z510", branches: "Milano Famagosta - Lacchiarella - Giussago", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z515", branches: "Milano Famagosta - Zibido", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z516", branches: "Milano Famagosta - Rosate - Besate", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: "")
         ]
