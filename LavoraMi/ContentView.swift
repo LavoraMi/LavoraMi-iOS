@@ -3878,6 +3878,12 @@ struct LinesView: View {
         ]
     }
     
+    var regionalLines: [LineInfo] {
+        [
+            
+        ]
+    }
+    
     var regioExpress: [LineInfo] {
         [
             LineInfo(name: "RE1", branches: "Laveno - Saronno - Milano", type: "Regio Express", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.re1, accessibilityStatus: String(localized: .lineaAccessibile)),
