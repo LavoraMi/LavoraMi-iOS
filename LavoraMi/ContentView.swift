@@ -85,33 +85,6 @@ struct ContentView: View {
         .sheet(isPresented: $showSetupScreen){
             SetupView()
         }
-        .onAppear() {
-            checkForUpdates()
-        }
-        .alert("Nuova versione disponibile!", isPresented: $showUpdatePopUp){
-            Button("Aggiorna") {
-                let url = URL(string: "https://apps.apple.com/us/app/lavorami/id6760344298")!
-                openURLAction(url)
-                
-                showUpdatePopUp = false
-                checkForUpdates()
-            }
-        } message: {
-            Text("Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app.")
-        }
-    }
-    
-    func checkForUpdates() {
-        viewModel.fetchRequirements {
-            let current = Bundle.main.shortVersion
-            let minimum = viewModel.minimumVersion
-            
-            let comparisonResult = current.compare(minimum, options: .numeric)
-            
-            if comparisonResult == .orderedAscending {
-                showUpdatePopUp = true
-            }
-        }
     }
 }
 
@@ -252,6 +225,67 @@ struct SetupView: View {
     private func dismiss() {
         presentationMode.wrappedValue.dismiss()
         NotificationManager.shared.requestPermission()
+    }
+}
+
+struct ObsoleteVersionView: View {
+    @State private var showSetupScreen: Bool = true
+    @StateObject private var viewModel = WorkViewModel()
+    @Environment(\.openURL) private var openURLAction
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Spacer()
+            
+            Image("icon")
+                .resizable()
+                .frame(width: 100, height: 100)
+                .clipShape(RoundedRectangle(cornerRadius: 6))
+                .font(.system(size: 10))
+                .foregroundColor(Color("TextColor"))
+            
+            Text("Stai usando una versione obsoleta.")
+                .font(.system(size: 28, weight: .bold))
+                .foregroundColor(Color("TextColor"))
+                .multilineTextAlignment(.center)
+                .padding(.top, 12)
+            
+            Text("Stai usando una versione non più supportata di LavoraMi, aggiorna all'ultima versione disponibile per avere accesso a nuove funzionalità e risolvere problemi.")
+                .font(.system(size: 16))
+                .foregroundColor(Color("TextColor"))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+                .padding(.top, 5)
+            
+            Text("Ultima versione supportata: \(viewModel.minimumVersion).")
+                .font(.system(size: 12))
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+                .padding(.top, 5)
+            
+            Button {
+                let url = URL(string: "https://apps.apple.com/us/app/lavorami/id6760344298")!
+                openURLAction(url)
+            } label: {
+                HStack(spacing: 8) {
+                    Image(systemName: "arrow.up.forward")
+                    Text("Aggiorna ora")
+                }
+                .font(.system(size: 15, weight: .medium))
+                .foregroundColor(.white)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                .background(Color.red)
+                .cornerRadius(8)
+            }
+            .padding(.top, 25)
+            
+            Spacer()
+        }
+        .onAppear(){
+            viewModel.fetchRequirements()
+        }
     }
 }
 

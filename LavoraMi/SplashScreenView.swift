@@ -14,7 +14,8 @@ struct SplashScreenView: View {
     @State private var contentLoaded = false
     @State private var showSetupScreen: Bool = false
     @State private var showMaintenance: Bool = false
-    @State private var showNoConnection: Bool = false 
+    @State private var obsoleteVersion: Bool = false
+    @State private var showNoConnection: Bool = false
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @StateObject private var viewModel = WorkViewModel()
 
@@ -27,8 +28,13 @@ struct SplashScreenView: View {
                     }
                     .opacity(contentOpacity)
                 }
-                else {
+                else if (!obsoleteVersion){
                     ContentView(showSetupScreen: $showSetupScreen)
+                        .opacity(contentOpacity)
+                }
+                
+                else if(obsoleteVersion) {
+                    ObsoleteVersionView()
                         .opacity(contentOpacity)
                 }
             }
@@ -60,6 +66,16 @@ struct SplashScreenView: View {
                 showMaintenance = viewModel.maintenanceModeEnabled
                 contentLoaded = true
                 showNoConnection = false
+                
+                let current = Bundle.main.shortVersion
+                let minimum = viewModel.minimumVersion
+                
+                let comparisonResult = current.compare(minimum, options: .numeric)
+                
+                if comparisonResult == .orderedAscending {
+                    obsoleteVersion = true
+                }
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     startAnimation()
                 }

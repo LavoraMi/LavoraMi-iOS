@@ -246,6 +246,7 @@
       }
     },
     "Aggiorna" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -254,6 +255,9 @@
           }
         }
       }
+    },
+    "Aggiorna ora" : {
+
     },
     "aggiornatoSempre" : {
       "extractionState" : "manual",
@@ -2549,6 +2553,7 @@
       }
     },
     "Nuova versione disponibile!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3398,6 +3403,12 @@
         }
       }
     },
+    "Stai usando una versione non più supportata di LavoraMi, aggiorna all'ultima versione disponibile per avere accesso a nuove funzionalità e risolvere problemi." : {
+
+    },
+    "Stai usando una versione obsoleta." : {
+
+    },
     "STAR Mobility" : {
       "localizations" : {
         "en" : {
@@ -3949,7 +3960,11 @@
         }
       }
     },
+    "Ultima versione supportata: %@." : {
+
+    },
     "Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
