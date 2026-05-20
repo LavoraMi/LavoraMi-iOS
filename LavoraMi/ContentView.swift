@@ -452,6 +452,7 @@ struct MainView: View {
     @State private var selectedFilter: FilterBy = .all
     @State private var searchInput: String = ""
     @State private var alreadyRefreshed: Bool = false
+    @State private var showInfoFavoriteLines: Bool = false
     @State private var showMaintenanceMode: Bool = false
     @State private var suggestedTrigger = 0
     
@@ -808,55 +809,11 @@ struct MainView: View {
                             } else {
                                 VStack(spacing: 12) {
                                     if filteredItems.isEmpty && searchInput.isEmpty {
-                                        if(selectedFilter == .suggested && !closedSuggested) {
-                                            HStack(alignment: .top, spacing: 16) {
-                                                Image(systemName: "sparkle")
-                                                    .font(.system(size: 36))
-                                                    .foregroundStyle(.red.gradient)
-
-                                                VStack(alignment: .leading, spacing: 6) {
-                                                    HStack {
-                                                        Text("Le tue linee.")
-                                                            .font(.title2)
-                                                            .fontWeight(.bold)
-                                                        Spacer()
-                                                        Button {
-                                                            withAnimation(.spring(duration: 0.3)) {
-                                                                closedSuggested = true
-                                                            }
-                                                        } label: {
-                                                            Image(systemName: "xmark.circle.fill")
-                                                                .font(.system(size: 20))
-                                                                .foregroundStyle(.red.gradient)
-                                                        }
-                                                    }
-
-                                                    Text("Per aggiungere una linea in questa sezione, vai nella scheda ")
-                                                        .font(.subheadline)
-                                                        .foregroundStyle(.secondary)
-                                                    + Text("Linee").bold()
-                                                        .font(.subheadline)
-                                                        .foregroundStyle(.secondary)
-                                                    + Text(", clicca su ")
-                                                        .font(.subheadline)
-                                                        .foregroundStyle(.secondary)
-                                                    + Text(Image(systemName: "heart"))
-                                                    + Text(" per aggiungerla. Puoi modificarla in qualsiasi momento.")
-                                                        .font(.subheadline)
-                                                        .foregroundStyle(.secondary)
-                                                }
-                                            }
-                                            .padding()
-                                            .background(.red.opacity(0.08), in: RoundedRectangle(cornerRadius: 16))
-                                            .padding(.horizontal)
-                                        }
-                                        else if selectedFilter != .suggested {
-                                            Text("Nessun lavoro trovato per questo filtro.")
-                                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                                .containerRelativeFrame(.vertical)
-                                                .multilineTextAlignment(.center)
-                                                .foregroundStyle(.secondary)
-                                        }
+                                        Text("Nessun lavoro trovato per questo filtro.")
+                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                            .containerRelativeFrame(.vertical)
+                                            .multilineTextAlignment(.center)
+                                            .foregroundStyle(.secondary)
                                     }
                                     else if filteredItems.isEmpty && !searchInput.isEmpty {
                                         Text("Nessun lavoro trovato per: \"\(searchInput)\".")
@@ -867,46 +824,17 @@ struct MainView: View {
                                     }
                                     else {
                                         if selectedFilter == .suggested && !closedSuggested {
-                                            HStack(alignment: .top, spacing: 16) {
-                                                Image(systemName: "sparkle")
-                                                    .font(.system(size: 36))
-                                                    .foregroundStyle(.red.gradient)
-
-                                                VStack(alignment: .leading, spacing: 6) {
-                                                    HStack {
-                                                        Text("Scegli ciò che ti piace")
-                                                            .font(.title2)
-                                                            .fontWeight(.bold)
-                                                        Spacer()
-                                                        Button {
-                                                            withAnimation(.spring(duration: 0.3)) {
-                                                                closedSuggested = true
-                                                            }
-                                                        } label: {
-                                                            Image(systemName: "xmark.circle.fill")
-                                                                .font(.system(size: 20))
-                                                                .foregroundStyle(.red.gradient)
-                                                        }
-                                                    }
-
-                                                    Text("Per aggiungere una linea in questa sezione, vai nella scheda ")
-                                                        .font(.subheadline)
-                                                        .foregroundStyle(.secondary)
-                                                    + Text("Linee").bold()
-                                                        .font(.subheadline)
-                                                        .foregroundStyle(.secondary)
-                                                    + Text(", clicca su ")
-                                                        .font(.subheadline)
-                                                        .foregroundStyle(.secondary)
-                                                    + Text(Image(systemName: "heart"))
-                                                    + Text(" per aggiungerla. Puoi modificarla in qualsiasi momento.")
-                                                        .font(.subheadline)
-                                                        .foregroundStyle(.secondary)
-                                                }
+                                            Button {
+                                                showInfoFavoriteLines = true
+                                            } label: {
+                                                Label("Come funziona?", systemImage: "questionmark.circle.fill")
+                                                    .font(.footnote.weight(.semibold))
+                                                    .padding(.horizontal, 12)
+                                                    .padding(.vertical, 6)
+                                                    .background(Color.accentColor.opacity(0.15))
+                                                    .foregroundStyle(Color.accentColor)
+                                                    .clipShape(Capsule())
                                             }
-                                            .padding()
-                                            .background(.red.opacity(0.08), in: RoundedRectangle(cornerRadius: 16))
-                                            .padding(.horizontal)
                                         }
                                         ForEach(filteredItems) { item in
                                             if item.progress != 1 {
@@ -960,6 +888,9 @@ struct MainView: View {
                     suggestedTrigger += 1 ///TRIGGERS THE HAPTICS
                     playRotateHaptics()
                 }
+            }
+            .sheet(isPresented: $showInfoFavoriteLines) {
+                DetailSetYourLineView(showInfoView: $showInfoFavoriteLines)
             }
         }
     }
@@ -5810,6 +5741,186 @@ struct InfoAccessibilityView: View {
             HStack(spacing: 10) {
                 HStack(spacing: 4) {
                     Image(systemName: "figure.roll")
+                    Image(systemName: icon)
+                        .foregroundColor(color)
+                }
+                .font(.headline)
+
+                Text(title)
+                    .font(.headline)
+                    .foregroundColor(color)
+            }
+
+            Text(description)
+                .font(.callout)
+                .foregroundColor(.secondary)
+                .lineSpacing(4)
+        }
+    }
+}
+
+struct DetailSetYourLineView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State private var currentPage = 0
+    @State var startImageTransition: Bool = false
+    @State var imageTransitionFirstPage: Bool = false
+    @State var i = 0
+    @Binding var showInfoView: Bool
+    @AppStorage("enableAnimations") var enableAnimations = true
+
+    var body: some View {
+        NavigationStack {
+            VStack {
+                TabView(selection: $currentPage) {
+                    ScrollView {
+                        VStack(spacing: 30) {
+                            if #available(iOS 18.0, *), enableAnimations {
+                                Image(systemName: startImageTransition ? "heart.fill" : "plus.app.fill")
+                                    .font(.system(size: 80))
+                                    .foregroundColor(.red)
+                                    .padding(.top, 50)
+                                    .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
+                                    .onAppear {
+                                        Task {
+                                            try? await Task.sleep(for: .seconds(1))
+                                            withAnimation {
+                                                startImageTransition = true
+                                            }
+                                        }
+                                    }
+                                    .onDisappear {
+                                        startImageTransition = false
+                                    }
+                            } else {
+                                Image(systemName: "heart.fill")
+                                    .font(.system(size: 80))
+                                    .foregroundColor(.red)
+                                    .padding(.top, 40)
+                            }
+
+                            Text("Come posso mettere una linea nei preferiti?")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+
+                            (Text("Per poter mettere la TUA linea tra i preferiti, basta che vai nella sezione \"Linee\" con questo simbolo: ")
+                             + Text(Image(systemName: "arrow.trianglehead.branch")))
+                                .font(.headline)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                            
+                            Text("Per aggiungere una linea in questa sezione, vai nella scheda della tua ")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                            + Text("linea").bold()
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                            + Text(", clicca su ")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                            + Text(Image(systemName: "heart"))
+                            + Text(" per aggiungerla alla lista. Puoi modificarla in qualsiasi momento.")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                            
+                            Divider()
+                            
+                            Text("Scegli qualsiasi linea.")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                            
+                            HStack{
+                                Text("M1")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundStyle(.white)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .fill(getColor(for: "M1"))
+                                    )
+                                
+                                Text("S5")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundStyle(.white)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .fill(getColor(for: "S5"))
+                                    )
+                                
+                                Text("M3")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundStyle(.white)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .fill(getColor(for: "M3"))
+                                    )
+                                
+                                Text("S2")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundStyle(.white)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .fill(getColor(for: "S2"))
+                                    )
+                                
+                                Text("z620")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundStyle(.white)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .fill(getColor(for: "z620"))
+                                    )
+                            }
+                            
+                            Text("Non importa se Suburbano, Metro o Bus, scegli la linea che più ti interessa.")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding()
+                    }
+                    .tag(0)
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .ignoresSafeArea(edges: .bottom)
+            }
+            .navigationTitle("Linee Preferite")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.secondary)
+                            .padding(4)
+                            .clipShape(Circle())
+                    }
+                }
+            }
+        }
+    }
+
+    private func dismiss() {
+        showInfoView = false
+        presentationMode.wrappedValue.dismiss()
+    }
+    
+    @ViewBuilder
+    private func currentStatus(icon: String, color: Color, title: String, description: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 10) {
+                HStack(spacing: 4) {
+                    Image(systemName: "arrow.branch")
                     Image(systemName: icon)
                         .foregroundColor(color)
                 }

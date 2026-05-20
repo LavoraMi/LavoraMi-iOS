@@ -21,7 +21,11 @@
         }
       }
     },
+    " per aggiungerla alla lista. Puoi modificarla in qualsiasi momento." : {
+
+    },
     " per aggiungerla. Puoi modificarla in qualsiasi momento." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -632,6 +636,12 @@
           }
         }
       }
+    },
+    "Come funziona?" : {
+
+    },
+    "Come posso mettere una linea nei preferiti?" : {
+
     },
     "Completamente Accessibile" : {
       "extractionState" : "manual",
@@ -1711,6 +1721,7 @@
       }
     },
     "Le tue linee." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1749,6 +1760,9 @@
           }
         }
       }
+    },
+    "linea" : {
+
     },
     "Linea attivata" : {
       "localizations" : {
@@ -1911,6 +1925,9 @@
         }
       }
     },
+    "Linee Preferite" : {
+
+    },
     "Linee R" : {
       "localizations" : {
         "en" : {
@@ -2030,6 +2047,12 @@
           }
         }
       }
+    },
+    "M1" : {
+
+    },
+    "M3" : {
+
     },
     "Manutenzione in corso." : {
       "localizations" : {
@@ -2398,6 +2421,9 @@
         }
       }
     },
+    "Non importa se Suburbano, Metro o Bus, scegli la linea che più ti interessa." : {
+
+    },
     "Non solo \"lavori in via\", ti spieghiamo che tipo di lavoro si sta svolgendo ed anche le conseguenze che può portare quel cantiere (Deviazioni, Fermate Sospese...)" : {
       "localizations" : {
         "en" : {
@@ -2608,6 +2634,7 @@
       }
     },
     "Per aggiungere una linea in questa sezione, vai nella scheda " : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2616,6 +2643,9 @@
           }
         }
       }
+    },
+    "Per aggiungere una linea in questa sezione, vai nella scheda della tua " : {
+
     },
     "Per attivare questa Funzionalità anche in lingua Italiana, Vai in Impostazioni > Opzioni Avanzate ed attiva \"Mostra Pulsante Traduci\"." : {
       "localizations" : {
@@ -2626,6 +2656,9 @@
           }
         }
       }
+    },
+    "Per poter mettere la TUA linea tra i preferiti, basta che vai nella sezione \"Linee\" con questo simbolo: " : {
+
     },
     "Permesso Negato" : {
       "localizations" : {
@@ -2966,6 +2999,12 @@
         }
       }
     },
+    "S2" : {
+
+    },
+    "S5" : {
+
+    },
     "Salta" : {
       "localizations" : {
         "en" : {
@@ -2987,6 +3026,7 @@
       }
     },
     "Scegli ciò che ti piace" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2995,6 +3035,9 @@
           }
         }
       }
+    },
+    "Scegli qualsiasi linea." : {
+
     },
     "scegliLaTuaLinea" : {
       "extractionState" : "manual",
@@ -3998,6 +4041,9 @@
           }
         }
       }
+    },
+    "z620" : {
+
     }
   },
   "version" : "1.2"
