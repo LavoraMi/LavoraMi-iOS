@@ -1238,12 +1238,12 @@
         }
       }
     },
-    "Imposta tutte le notifiche su uno stato." : {
+    "Imposta tutte le notifiche sottostanti su uno stato." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Set all notifications to a specific status."
+            "value" : "Set all the notifications below to a specific status."
           }
         }
       }
@@ -1942,7 +1942,14 @@
       }
     },
     "Linee Regionali" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regional Lines"
+          }
+        }
+      }
     },
     "Linee S" : {
       "localizations" : {
@@ -2805,6 +2812,23 @@
         }
       }
     },
+    "regionale" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regional"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regionale"
+          }
+        }
+      }
+    },
     "Registrati" : {
       "localizations" : {
         "en" : {
@@ -3307,6 +3331,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "STAV"
+          }
+        }
+      }
+    },
+    "suburbano" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suburban"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suburbano"
           }
         }
       }
