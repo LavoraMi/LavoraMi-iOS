@@ -716,7 +716,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You agree to the"
+            "value" : "You agree to the "
           }
         }
       }
@@ -2440,7 +2440,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work End Notifications"
+            "value" : "Work Ended Notifications"
           }
         }
       }
@@ -2450,7 +2450,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Work Start Notifications"
+            "value" : "Work Started Notifications"
           }
         }
       }
