@@ -3880,7 +3880,40 @@ struct LinesView: View {
     
     var regionalLines: [LineInfo] {
         [
-            
+            LineInfo(name: "R1", branches: "Bergamo - Brescia", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.r1, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R2", branches: "Bergamo - Treviglio", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.r2, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R3", branches: "Brescia - Iseo - Breno", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r3, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R4", branches: "Brescia - Treviglio - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.r4, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "R5", branches: "Brescia - Cremona", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.r5, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R6", branches: "Cremona - Treviglio", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.r6, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R7", branches: "Lecco - Bergamo", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.r7, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R8", branches: "Brescia - Piadena - Parma", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r8, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R9", branches: "Rovato - Bornato - Iseo", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r9, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R11", branches: "Colico - Chiavenna", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r11, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R12", branches: "Sondrio - Tirano", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r12, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R13", branches: "Lecco - Colico - Sondrio", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.r13, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R14", branches: "Bergamo - Carnate - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.r14, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R15", branches: "Seregno - Carnate", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.r15, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R16", branches: "Asso - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.r16, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R17", branches: "Como - Saronno - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.r17, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R18", branches: "Como - Molteno - Lecco", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r18, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R21", branches: "Luino - Gallarate - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.r21, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R22", branches: "Varese - Saronno - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.r22, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "R23", branches: "Domodossola - Gallarate - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.r23, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R24", branches: "Laveno - Sesto Calende", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r24, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R25", branches: "Novara - Mortara", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.r25, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R27", branches: "Novara - Saronno - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.r27, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "R31", branches: "Mortara - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.r31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R32", branches: "Mortara - Alessandria", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r32, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R33", branches: "Pavia - Voghera", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.r33, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R34", branches: "Stradella - Pavia - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.r34, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "R35", branches: "Pavia - Torreberetti - Alessandria", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r35, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R36", branches: "Pavia - Mortara - Vercelli", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r36, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R37", branches: "Pavia - Codogno", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r37, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R38", branches: "Piacenza - Lodi - Milano", type: "Regionale", waitMinutes: "1 \(String(localized: .ora)) - 30 min.", stations: StationsDB.r38, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "R39", branches: "Codogno - Cremona", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r39, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R40", branches: "Cremona - Mantova", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r40, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "R41", branches: "Voghera - Piacenza", type: "Regionale", waitMinutes: "2 \(String(localized: .ore)) - 1 \(String(localized: .ora)).", stations: StationsDB.r41, accessibilityStatus: String(localized: .lineaNonAccessibile)),
         ]
     }
     
