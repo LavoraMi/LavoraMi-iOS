@@ -1443,15 +1443,36 @@ struct SettingsView: View{
                                 HapticManager.shared.trigger()
                             }
                             
-                            if linesFavorites.contains("z5") {
-                                linesFavorites.removeAll { $0 == "z5" }
+                            if linesFavorites.contains("z55") {
+                                linesFavorites.removeAll { $0 == "z55" }
                             } else {
-                                linesFavorites.append("z5")
+                                linesFavorites.append("z55")
                             }
                         }) {
-                            Image(systemName: linesFavorites.contains("z5") ? "star.fill" : "star")
+                            Image(systemName: linesFavorites.contains("z55") ? "star.fill" : "star")
                                 .font(.title3)
-                                .foregroundColor(linesFavorites.contains("z5") ? .orange : .gray)
+                                .foregroundColor(linesFavorites.contains("z55") ? .orange : .gray)
+                        }
+                        .buttonStyle(.borderless)
+                    }
+                    HStack{
+                        Label("Linee STAR", systemImage: "bus.fill")
+                        Spacer()
+                        Button(action: {
+                            if(feedbacksEnabled){
+                                HapticManager.shared.trigger()
+                            }
+                            
+                            if linesFavorites.contains("z50") {
+                                linesFavorites.removeAll { $0 == "z50" }
+                            } else {
+                                linesFavorites.append("z50")
+                            }
+                            NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                        }) {
+                            Image(systemName: linesFavorites.contains("z50") ? "star.fill" : "star")
+                                .font(.title3)
+                                .foregroundColor(linesFavorites.contains("z50") ? .orange : .gray)
                         }
                         .buttonStyle(.borderless)
                     }
@@ -6414,9 +6435,14 @@ extension WorkItem {
             if linesLower.contains(where: { $0.hasPrefix("z6") }) { return true }
         }
         
-        if favorites.contains("z5"){
+        if favorites.contains("z55"){
             if transport.contains("stav") { return true }
-            if linesLower.contains(where: { $0.hasPrefix("z5") }) { return true }
+            if linesLower.contains(where: { $0.hasPrefix("z55") || $0.hasPrefix("z56") }) { return true }
+        }
+        
+        if favorites.contains("z50"){
+            if transport.contains("star") { return true }
+            if linesLower.contains(where: { $0.hasPrefix("z50") || $0.hasPrefix("z51") }) { return true }
         }
         
         if favorites.contains("Autoguidovie") {
@@ -6521,7 +6547,6 @@ struct HapticManager {
         generator.impactOccurred()
     }
 }
-
 
 #Preview{
     @Previewable @State var showSetupScreen: Bool = false

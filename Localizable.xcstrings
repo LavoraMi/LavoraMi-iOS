@@ -22,15 +22,11 @@
       }
     },
     " per aggiungerla alla lista. Puoi modificarla in qualsiasi momento." : {
-
-    },
-    " per aggiungerla. Puoi modificarla in qualsiasi momento." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " to add it. You can edit it at any time."
+            "value" : " to add it to the list. You can edit it at any time."
           }
         }
       }
@@ -638,10 +634,24 @@
       }
     },
     "Come funziona?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How does it work?"
+          }
+        }
+      }
     },
     "Come posso mettere una linea nei preferiti?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How do I add a line to my favourites?"
+          }
+        }
+      }
     },
     "Completamente Accessibile" : {
       "extractionState" : "manual",
@@ -1720,17 +1730,6 @@
         }
       }
     },
-    "Le tue linee." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your Lines"
-          }
-        }
-      }
-    },
     "Leading" : {
       "localizations" : {
         "en" : {
@@ -1762,7 +1761,14 @@
       }
     },
     "linea" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "line"
+          }
+        }
+      }
     },
     "Linea attivata" : {
       "localizations" : {
@@ -1926,7 +1932,14 @@
       }
     },
     "Linee Preferite" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorite Lines"
+          }
+        }
+      }
     },
     "Linee R" : {
       "localizations" : {
@@ -1977,6 +1990,9 @@
           }
         }
       }
+    },
+    "Linee STAR" : {
+
     },
     "Linee STAV" : {
       "localizations" : {
@@ -2049,10 +2065,24 @@
       }
     },
     "M1" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "M1"
+          }
+        }
+      }
     },
     "M3" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "M3"
+          }
+        }
+      }
     },
     "Manutenzione in corso." : {
       "localizations" : {
@@ -2422,7 +2452,14 @@
       }
     },
     "Non importa se Suburbano, Metro o Bus, scegli la linea che più ti interessa." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Whether it’s the Suburbano, the Metro or the bus, choose the route that suits you best."
+          }
+        }
+      }
     },
     "Non solo \"lavori in via\", ti spieghiamo che tipo di lavoro si sta svolgendo ed anche le conseguenze che può portare quel cantiere (Deviazioni, Fermate Sospese...)" : {
       "localizations" : {
@@ -2633,19 +2670,15 @@
         }
       }
     },
-    "Per aggiungere una linea in questa sezione, vai nella scheda " : {
-      "extractionState" : "stale",
+    "Per aggiungere una linea in questa sezione, vai nella scheda della tua " : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To add a line in this section, go to the tab "
+            "value" : "To add a line in this section, go to your "
           }
         }
       }
-    },
-    "Per aggiungere una linea in questa sezione, vai nella scheda della tua " : {
-
     },
     "Per attivare questa Funzionalità anche in lingua Italiana, Vai in Impostazioni > Opzioni Avanzate ed attiva \"Mostra Pulsante Traduci\"." : {
       "localizations" : {
@@ -2658,7 +2691,14 @@
       }
     },
     "Per poter mettere la TUA linea tra i preferiti, basta che vai nella sezione \"Linee\" con questo simbolo: " : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To add YOUR line to your favourites, simply go to the ‘Lines’ section marked with this symbol: "
+          }
+        }
+      }
     },
     "Permesso Negato" : {
       "localizations" : {
@@ -3000,10 +3040,24 @@
       }
     },
     "S2" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S2"
+          }
+        }
+      }
     },
     "S5" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S5"
+          }
+        }
+      }
     },
     "Salta" : {
       "localizations" : {
@@ -3025,19 +3079,15 @@
         }
       }
     },
-    "Scegli ciò che ti piace" : {
-      "extractionState" : "stale",
+    "Scegli qualsiasi linea." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose what you like"
+            "value" : "Choose every line."
           }
         }
       }
-    },
-    "Scegli qualsiasi linea." : {
-
     },
     "scegliLaTuaLinea" : {
       "extractionState" : "manual",
@@ -4043,7 +4093,14 @@
       }
     },
     "z620" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z620"
+          }
+        }
+      }
     }
   },
   "version" : "1.2"
