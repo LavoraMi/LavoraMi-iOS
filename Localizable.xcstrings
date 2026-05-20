@@ -245,19 +245,15 @@
         }
       }
     },
-    "Aggiorna" : {
-      "extractionState" : "stale",
+    "Aggiorna ora" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Update"
+            "value" : "Update Now"
           }
         }
       }
-    },
-    "Aggiorna ora" : {
-
     },
     "aggiornatoSempre" : {
       "extractionState" : "manual",
@@ -1996,7 +1992,14 @@
       }
     },
     "Linee STAR" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STAR Lines"
+          }
+        }
+      }
     },
     "Linee STAV" : {
       "localizations" : {
@@ -2548,17 +2551,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Strike Notifications"
-          }
-        }
-      }
-    },
-    "Nuova versione disponibile!" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New version available!"
           }
         }
       }
@@ -3404,10 +3396,24 @@
       }
     },
     "Stai usando una versione non più supportata di LavoraMi, aggiorna all'ultima versione disponibile per avere accesso a nuove funzionalità e risolvere problemi." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are using a version of LavoraMi that is no longer supported. Please update to the latest version to access new features and resolve any issues."
+          }
+        }
+      }
     },
     "Stai usando una versione obsoleta." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are using an outdated version."
+          }
+        }
+      }
     },
     "STAR Mobility" : {
       "localizations" : {
@@ -3961,15 +3967,11 @@
       }
     },
     "Ultima versione supportata: %@." : {
-
-    },
-    "Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A new version of LavoraMi is available! To continue, update the app first."
+            "value" : "Latest supported version: %@."
           }
         }
       }
