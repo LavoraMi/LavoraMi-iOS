@@ -3767,6 +3767,7 @@ struct LinesView: View {
             "Metro": ["metro", "metropolitana", "m"],
             "Suburbano": ["suburbano", "s"],
             "Regio express": ["regio", "express", "re"],
+            "Regionale": ["regio", "regionale", "r"],
             "Tram": ["tram", "t"],
             "Movibus": ["bus", "movibus", "z"],
             "STAR Mobility": ["bus", "star", "z"],
@@ -3803,6 +3804,7 @@ struct LinesView: View {
     var filteredMetros: [LineInfo] { filtered(metros) }
     var filteredSuburban: [LineInfo] { filtered(suburban) }
     var filteredRegioExpress: [LineInfo] { filtered(regioExpress) }
+    var filteredRegional: [LineInfo] { filtered(regionalLines) }
     var filteredTrams: [LineInfo] { filtered(trams) }
     var filteredMovibus: [LineInfo] { filtered(bus) }
     var filteredSTAR: [LineInfo] { filtered(star) }
@@ -3837,7 +3839,7 @@ struct LinesView: View {
     }
     
     func fullLineInfo(for name: String) -> LineInfo? {
-        let all = metros + suburban + regioExpress + crossBorderLines + malpensaExpress + trams + bus + stav + star + autoguidovie
+        let all = metros + suburban + regioExpress + regionalLines + crossBorderLines + malpensaExpress + trams + bus + stav + star + autoguidovie
         return all.first { $0.name == name }
     }
 
@@ -4269,6 +4271,44 @@ struct LinesView: View {
                     }
                 }
                 Section(){
+                    if(!filteredRegional.isEmpty){
+                        ForEach(filteredRegional, id: \.id) { line in
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
+                        }
+                    }
+                }
+                header:{
+                    if(!filteredRegional.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee Regionali")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("Trenord")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
+                            }
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                }
+                Section(){
                     if(!filteredCrossBorders.isEmpty){
                         ForEach(filteredCrossBorders, id: \.id) { line in
                             LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
@@ -4541,7 +4581,7 @@ struct LinesView: View {
             }
             .navigationTitle("Linee")
             .overlay {
-                let allFiltered = [filteredMetros, filteredSuburban, filteredRegioExpress, filteredCrossBorders, filteredMalpensaExpress, filteredTrams, filteredMovibus, filteredSTAV, filteredSTAR, filteredAutoguidovie]
+                let allFiltered = [filteredMetros, filteredSuburban, filteredRegioExpress, filteredRegional, filteredCrossBorders, filteredMalpensaExpress, filteredTrams, filteredMovibus, filteredSTAV, filteredSTAR, filteredAutoguidovie]
                 if allFiltered.allSatisfy({ $0.isEmpty }) {
                     Text("Nessun risultato per: \"\(searchInput)\".")
                         .foregroundStyle(.secondary)
