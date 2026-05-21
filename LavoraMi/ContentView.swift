@@ -2466,28 +2466,33 @@ struct AdvancedOptionsView: View {
                     Label("Mostra Messaggi Di Errore", systemImage: "exclamationmark.bubble.fill")
                 }
             }
+            .listRowBackground(Color(uiColor: .secondarySystemBackground))
             Section(footer: Text("Mostra il banner degli scioperi nella Home quando sono presenti.")){
                 Toggle(isOn: $showStrikeBanner){
                     Label("Mostra banner Scioperi", systemImage: "text.append")
                 }
             }
+            .listRowBackground(Color(uiColor: .secondarySystemBackground))
             Section(footer: Text("Attiva i Feedback di vibrazione su alcune schermate.")){
                 Toggle(isOn: $feedbacksEnabled){
                     Label("Attiva Feedback Vibrazione", systemImage: iphoneGenIcon)
                 }
             }
+            .listRowBackground(Color(uiColor: .secondarySystemBackground))
             if(Locale.current.language.languageCode?.identifier == "it"){
                 Section(footer: Text("Mostra il pulsante per tradurre i lavori anche nella lingua italiana.")){
                     Toggle(isOn: $showTranslateButton){
                         Label("Mostra Pulsante Traduci", systemImage: "translate")
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
             }
             Section(footer: Text("Mostra le tue ricerche recenti nella pagina delle Linee.")){
                 Toggle(isOn: $showRecentSearches){
                     Label("Mostra Ricerche Recenti", systemImage: "sparkles")
                 }
             }
+            .listRowBackground(Color(uiColor: .secondarySystemBackground))
             Section(footer: Text("Richiedi \(getBiometricTypeByEnum()) per bloccare e sbloccare la sezione del tuo Account.")){
                 Toggle(isOn: $requireFaceID){
                     Label("Richiedi \(getBiometricTypeByEnum())", systemImage: (getBiometricTypeByEnum() == "Codice") ? "lock.fill" : getBiometricTypeByEnum().lowercased())
@@ -2507,8 +2512,10 @@ struct AdvancedOptionsView: View {
                     }
                 }
             }
+            .listRowBackground(Color(uiColor: .secondarySystemBackground))
             Section(footer: Text("Seleziona la modalità in cui aprire i link.")){
                 Label("Apri link:", systemImage: "network")
+                    .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Picker(selection: $howToOpenLinks, content: {
                     ForEach(linkOpenTypes.allCases) { filter in
                         Text(filter.rawValue).tag(filter)
@@ -2517,6 +2524,8 @@ struct AdvancedOptionsView: View {
                 }, label: {
                     Text("")
                 })
+                
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 .pickerStyle(.inline)
                 .labelsHidden()
             }
@@ -2538,10 +2547,12 @@ struct AdvancedOptionsView: View {
                     Text("Sei sicuro di voler pulire la memoria Cache?")
                 }
             }
+            .listRowBackground(Color(uiColor: .secondarySystemBackground))
         }
         .padding(.bottom, 20)
         .navigationTitle("Opzioni Avanzate")
         .navigationBarTitleDisplayMode(.inline)
+        .scrollContentBackground(.hidden)
     }
     
     func getBiometricTypeByEnum() -> String {
@@ -4147,6 +4158,7 @@ struct LinesView: View {
                             }
                         }
                     }
+                    .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 }
                 Section(){
                     if(!filteredMetros.isEmpty){
@@ -4186,6 +4198,7 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
                     if(!filteredSuburban.isEmpty){
                         ForEach(filteredSuburban, id: \.id) { line in
@@ -4224,6 +4237,7 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
                     if(!filteredRegioExpress.isEmpty){
                         ForEach(filteredRegioExpress, id: \.id) { line in
@@ -4262,6 +4276,7 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
                     if(!filteredRegional.isEmpty){
                         ForEach(filteredRegional, id: \.id) { line in
@@ -4300,6 +4315,7 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
                     if(!filteredCrossBorders.isEmpty){
                         ForEach(filteredCrossBorders, id: \.id) { line in
@@ -4338,6 +4354,7 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
                     if(!filteredMalpensaExpress.isEmpty){
                         ForEach(filteredMalpensaExpress, id: \.id) { line in
@@ -4376,6 +4393,7 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
                     if(!filteredTrams.isEmpty){
                         ForEach(filteredTrams, id: \.id) { line in
@@ -4414,6 +4432,7 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
                     if(!filteredMovibus.isEmpty){
                         ForEach(filteredMovibus, id: \.id){bus in
@@ -4452,6 +4471,7 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
                     if(!filteredSTAR.isEmpty){
                         ForEach(filteredSTAR, id: \.id){bus in
@@ -4490,6 +4510,7 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
                     if(!filteredSTAV.isEmpty){
                         ForEach(filteredSTAV, id: \.id){bus in
@@ -4528,6 +4549,7 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
                     if(!filteredAutoguidovie.isEmpty){
                         ForEach(filteredAutoguidovie, id: \.id){ bus in
@@ -4566,12 +4588,14 @@ struct LinesView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
             }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
                     .edgesIgnoringSafeArea(.all)
             }
             .navigationTitle("Linee")
+            .scrollContentBackground(.hidden)
             .overlay {
                 let allFiltered = [filteredMetros, filteredSuburban, filteredRegioExpress, filteredRegional, filteredCrossBorders, filteredMalpensaExpress, filteredTrams, filteredMovibus, filteredSTAV, filteredSTAR, filteredAutoguidovie]
                 if allFiltered.allSatisfy({ $0.isEmpty }) {
