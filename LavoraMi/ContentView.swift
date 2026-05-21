@@ -1854,7 +1854,7 @@ struct AccountView: View {
                             .foregroundStyle(.secondary)
 
                         Button {
-                            let url = URL(string: "https://www.lavorami.it/termsofservice")!
+                            let url = URL(string: "https://www.lavorami.it/termsofservice\((colorScheme == .dark) ? "" : "?theme=light")")!
                             
                             if(howToOpenLinks == .inApp) {
                                 selectedURL = url
@@ -1872,7 +1872,7 @@ struct AccountView: View {
                             .foregroundStyle(.secondary)
                         
                         Button {
-                            let url = URL(string: "https://www.lavorami.it/privacypolicy")!
+                            let url = URL(string: "https://www.lavorami.it/privacypolicy\((colorScheme == .dark) ? "" : "?theme=light")")!
                             
                             if(howToOpenLinks == .inApp) {
                                 selectedURL = url
@@ -2705,6 +2705,7 @@ struct InfoView: View {
     let device = UIDevice.current
     
     @Environment(\.openURL) private var openURLAction
+    @Environment(\.colorScheme) var colorScheme
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
     @State private var mailData: ComposeMailData = ComposeMailData(subject: String(localized: .titoloBugReport), recipients: ["info@lavorami.it"], message: "", attachments: nil)
@@ -2922,7 +2923,7 @@ struct InfoView: View {
                         .bold()
                         .padding(.top, 20)
                     Button {
-                        let url = URL(string: "https://www.lavorami.it/privacyPolicy")!
+                        let url = URL(string: "https://www.lavorami.it/privacyPolicy\((colorScheme == .dark) ? "" : "?theme=light")")!
                         
                         if(howToOpenLinks == .inApp) {
                             selectedURL = url
@@ -2937,7 +2938,7 @@ struct InfoView: View {
                     .padding(.top, 5)
                     .padding(.bottom, 20)
                     Button {
-                        let url = URL(string: "https://www.lavorami.it/termsofservice")!
+                        let url = URL(string: "https://www.lavorami.it/termsofservice\((colorScheme == .dark) ? "" : "?theme=light")")!
                         
                         if(howToOpenLinks == .inApp) {
                             selectedURL = url
