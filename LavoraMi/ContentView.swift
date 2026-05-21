@@ -1234,6 +1234,7 @@ struct SettingsView: View{
     @AppStorage("linesSelected") private var linesSelected: [String] = []
     @Environment(\.dismiss) var dismiss
     @Environment(\.openURL) private var openURLAction
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.requestReview) var requestReview
     
     var body: some View {
@@ -1651,7 +1652,7 @@ struct SettingsView: View{
                             }
                             
                             Button {
-                                let url = URL(string: "https://www.lavorami.it")!
+                                let url = URL(string: "https://www.lavorami.it\((colorScheme == .dark) ? "?theme=dark" : "?theme=light")")!
                                 
                                 if(howToOpenLinks == .inApp) {
                                     selectedURL = url
@@ -2024,7 +2025,7 @@ struct AccountView: View {
                             .foregroundStyle(.secondary)
 
                         Button {
-                            let url = URL(string: "https://www.lavorami.it/termsofservice")!
+                            let url = URL(string: "https://www.lavorami.it/termsofservice\((colorScheme == .dark) ? "" : "?theme=light")")!
                             
                             if(howToOpenLinks == .inApp) {
                                 selectedURL = url
@@ -2042,7 +2043,7 @@ struct AccountView: View {
                             .foregroundStyle(.secondary)
                         
                         Button {
-                            let url = URL(string: "https://www.lavorami.it/privacypolicy")!
+                            let url = URL(string: "https://www.lavorami.it/privacypolicy\((colorScheme == .dark) ? "" : "?theme=light")")!
                             
                             if(howToOpenLinks == .inApp) {
                                 selectedURL = url
@@ -2889,7 +2890,7 @@ struct InfoView: View {
                     .padding(.top, 5)
                     .padding(.bottom, 20)
                     Button {
-                        let url = URL(string: "https://www.lavorami.it")!
+                        let url = URL(string: "https://www.lavorami.it\((colorScheme == .dark) ? "?theme=dark" : "?theme=light")")!
                         
                         if(howToOpenLinks == .inApp) {
                             selectedURL = url
