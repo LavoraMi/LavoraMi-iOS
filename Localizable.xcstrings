@@ -135,6 +135,26 @@
         }
       }
     },
+    "🇬🇧 Inglese" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇬🇧 English"
+          }
+        }
+      }
+    },
+    "🇮🇹 Italiano" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇮🇹 Italian"
+          }
+        }
+      }
+    },
     "👋 Ciao %@" : {
       "localizations" : {
         "en" : {
@@ -363,6 +383,7 @@
       }
     },
     "Aspetto" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -520,6 +541,7 @@
       }
     },
     "Cambia Lingua" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2683,6 +2705,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This feature is available in all languages."
+          }
+        }
+      }
+    },
+    "Per modificare la lingua dell'App, sarai reindirizzato alle impostazioni dell'app su iOS." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To change the app’s language, you will be redirected to the app settings on iOS."
           }
         }
       }

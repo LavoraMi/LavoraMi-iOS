@@ -1730,21 +1730,41 @@ struct AppearancePickerView: View {
                     .foregroundColor(Color("TextColor"))
                 }
             }
-            Section("Lingua") {
+            Section() {
                 Button {
                     if let url = URL(string: UIApplication.openSettingsURLString) {
                         openURLAction(url)
                     }
                 } label: {
                     HStack {
-                        Label {
-                            Text("Cambia Lingua")
-                        } icon: {
-                            Image(systemName: "globe")
-                                .foregroundStyle(.red)
+                        Text("🇮🇹 Italiano")
+                        if(Locale.current.language.languageCode?.identifier == "it") {
+                            Spacer()
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.red)
                         }
                     }
                 }
+                .foregroundColor(Color("TextColor"))
+                Button {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        openURLAction(url)
+                    }
+                } label: {
+                    HStack {
+                        Text("🇬🇧 Inglese")
+                        if(Locale.current.language.languageCode?.identifier == "en") {
+                            Spacer()
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
+                .foregroundColor(Color("TextColor"))
+            } header: {
+                Text("Lingua")
+            } footer: {
+                Text("Per modificare la lingua dell'App, sarai reindirizzato alle impostazioni dell'app su iOS.")
             }
         }
         .navigationTitle("Aspetto e Lingua")
