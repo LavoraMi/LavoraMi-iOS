@@ -3624,7 +3624,6 @@ struct RequestDataDownload: View {
                 Section(footer: Text("Seleziona il formato in cui i tuoi dati verranno esportati.")){
                     Label("Formato del File:", systemImage: "arrow.down.doc.fill")
                         .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                        .listRowSeparator(.hidden)
                     Picker(selection: $selectedFileType, content: {
                         ForEach(fileFormatType.allCases) { filter in
                             Text(filter.rawValue).tag(filter)
