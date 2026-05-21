@@ -482,7 +482,6 @@ struct MainView: View {
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     
     @State private var closedStrike: Bool = false
-    @State private var closedSuggested: Bool = false
     @State private var selectedFilter: FilterBy = .all
     @State private var searchInput: String = ""
     @State private var alreadyRefreshed: Bool = false
@@ -728,8 +727,6 @@ struct MainView: View {
                                     }
                                     selectedFilter = filter
                                 }
-                            
-                                if(filter == .suggested){closedSuggested = false}
                             }){
                             let nameIcon: String = getIconForFilter(for: filter.rawValue)
                             
@@ -843,6 +840,19 @@ struct MainView: View {
                             } else {
                                 VStack(spacing: 12) {
                                     if filteredItems.isEmpty && searchInput.isEmpty {
+                                        if selectedFilter == .suggested {
+                                            Button {
+                                                showInfoFavoriteLines = true
+                                            } label: {
+                                                Label("Come funziona?", systemImage: "questionmark.circle.fill")
+                                                    .font(.footnote.weight(.semibold))
+                                                    .padding(.horizontal, 12)
+                                                    .padding(.vertical, 6)
+                                                    .background(Color.accentColor.opacity(0.15))
+                                                    .foregroundStyle(Color.accentColor)
+                                                    .clipShape(Capsule())
+                                            }
+                                        }
                                         Text("Nessun lavoro trovato per questo filtro.")
                                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                                             .containerRelativeFrame(.vertical)
@@ -857,7 +867,7 @@ struct MainView: View {
                                             .foregroundStyle(.secondary)
                                     }
                                     else {
-                                        if selectedFilter == .suggested && !closedSuggested {
+                                        if selectedFilter == .suggested {
                                             Button {
                                                 showInfoFavoriteLines = true
                                             } label: {
