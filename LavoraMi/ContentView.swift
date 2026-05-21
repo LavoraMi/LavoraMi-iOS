@@ -1747,7 +1747,7 @@ struct AppearancePickerView: View {
                 }
             }
         }
-        .navigationTitle("Aspetto")
+        .navigationTitle("Aspetto e Lingua")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -2657,7 +2657,8 @@ struct NotificationsView: View {
                         }
                         .disabled(!enableNotifications)
                     }
-                    
+                    .listRowBackground(Color(uiColor: .secondarySystemBackground))
+                    .listRowBackground(Color(uiColor: .secondarySystemBackground))
                     Section("Altre Notifiche") {
                         Toggle(isOn: $strikeNotifications) {
                             Label("Notifiche Scioperi", systemImage: "bell.badge.waveform.fill")
@@ -2674,6 +2675,7 @@ struct NotificationsView: View {
                         }
                         .disabled(!enableNotifications)
                     }
+                    .listRowBackground(Color(uiColor: .secondarySystemBackground))
                     Section(header: Text("Impostazioni Notifiche"), footer: Text("Modifica l'orario di arrivo delle notifiche.")){
                         VStack{
                             DatePicker(selection: $dateSchedule, displayedComponents: .hourAndMinute){
@@ -2682,6 +2684,7 @@ struct NotificationsView: View {
                             .disabled(!enableNotifications)
                         }
                     }
+                    .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 }
                 .listStyle(.insetGrouped)
                 .scrollContentBackground(.hidden)
