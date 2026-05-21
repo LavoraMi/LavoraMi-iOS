@@ -2539,6 +2539,7 @@ struct AdvancedOptionsView: View {
                 }
             }
         }
+        .padding(.bottom, 20)
         .navigationTitle("Opzioni Avanzate")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -3622,6 +3623,8 @@ struct RequestDataDownload: View {
             List{
                 Section(footer: Text("Seleziona il formato in cui i tuoi dati verranno esportati.")){
                     Label("Formato del File:", systemImage: "arrow.down.doc.fill")
+                        .listRowBackground(Color(uiColor: .secondarySystemBackground))
+                        .listRowSeparator(.hidden)
                     Picker(selection: $selectedFileType, content: {
                         ForEach(fileFormatType.allCases) { filter in
                             Text(filter.rawValue).tag(filter)
@@ -3632,6 +3635,7 @@ struct RequestDataDownload: View {
                     })
                     .pickerStyle(.inline)
                     .labelsHidden()
+                    .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 }
             }
             Spacer()
@@ -3657,6 +3661,7 @@ struct RequestDataDownload: View {
         .padding()
         .navigationTitle("Aiuto")
         .navigationBarTitleDisplayMode(.inline)
+        .scrollContentBackground(.hidden)
         .onAppear{
             isRequiringData = true
         }
