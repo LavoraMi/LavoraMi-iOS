@@ -1388,6 +1388,7 @@ struct SettingsView: View{
                     DisclosureGroup(isExpanded: $expandedATM){
                         HStack{
                             Label("Linee Metropolitane", systemImage: "tram.fill.tunnel")
+                                .foregroundStyle(.primary)
                             Spacer()
                             Button(action: {
                                 if(feedbacksEnabled){
@@ -1409,6 +1410,7 @@ struct SettingsView: View{
                         }
                         HStack{
                             Label("Linee Tram", systemImage: "tram.fill")
+                                .foregroundStyle(.primary)
                             Spacer()
                             Button(action: {
                                 if(feedbacksEnabled){
@@ -1430,6 +1432,7 @@ struct SettingsView: View{
                         }
                         HStack{
                             Label("Linee Bus", systemImage: "bus.fill")
+                                .foregroundStyle(.primary)
                             Spacer()
                             Button(action: {
                                 if(feedbacksEnabled){
