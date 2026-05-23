@@ -18,6 +18,7 @@ struct SplashScreenView: View {
     @State private var showNoConnection: Bool = false
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @StateObject private var viewModel = WorkViewModel()
+    @State private var pendingDeepLink: URL? = nil
 
     var body: some View {
         ZStack {
@@ -81,6 +82,13 @@ struct SplashScreenView: View {
                 }
             }
         }
+        .onOpenURL { url in
+            if contentLoaded {
+                handleDeepLink(url)
+            } else {
+                pendingDeepLink = url
+            }
+        }
     }
 
     private func startAnimation() {
@@ -97,9 +105,20 @@ struct SplashScreenView: View {
             opacity = 0
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            if hasNotCompletedSetup {
+            if hasNotCompletedSetup && pendingDeepLink == nil {
                 showSetupScreen = true
             }
+            if let url = pendingDeepLink {
+                handleDeepLink(url)
+                pendingDeepLink = nil
+            }
+        }
+    }
+
+    private func handleDeepLink(_ url: URL) {
+        guard url.scheme == "lavorami" else { return }
+        if url.host == "letueline" {
+            NotificationCenter.default.post(name: .openLetueLinkInfo, object: nil)
         }
     }
 }

@@ -956,6 +956,10 @@ struct MainView: View {
             .sheet(isPresented: $showInfoFavoriteLines) {
                 DetailSetYourLineView(showInfoView: $showInfoFavoriteLines)
             }
+            .onReceive(NotificationCenter.default.publisher(for: .openLetueLinkInfo)) { _ in
+                selectedFilter = .suggested
+                showInfoFavoriteLines = true
+            }
         }
         .toolbar(.hidden, for: .navigationBar)
     }
@@ -6509,6 +6513,11 @@ func getIconForFilter(for filterName: String) -> String{
         default:
             return ""
     }
+}
+
+// MARK: DEEP LINK
+extension Notification.Name {
+    static let openLetueLinkInfo = Notification.Name("openLetueLinkInfo")
 }
 
 //EXTENSION: Save files also with arrays

@@ -12,5 +12,16 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>lavorami</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>it.andreafilice.lavorami</string>
+		</dict>
+	</array>
 </dict>
 </plist>
