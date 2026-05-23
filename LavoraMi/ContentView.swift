@@ -742,11 +742,25 @@ struct MainView: View {
                                         .background(
                                             ZStack {
                                                 if selectedFilter == filter {
-                                                    Capsule()
-                                                        .fill(.red.gradient)
+                                                    Capsule().fill(.red.gradient)
                                                 } else {
-                                                    Capsule()
-                                                        .stroke(Color.secondary, lineWidth: 1)
+                                                    Capsule().stroke(Color.secondary, lineWidth: 1)
+                                                }
+                                            }
+                                        )
+                                        .foregroundStyle(selectedFilter == filter ? .white : .primary)
+                                    } else {
+                                        Label(filter.localizedTitle, systemImage: nameIcon)
+                                        .font(.subheadline)
+                                        .fontWeight(.medium)
+                                        .padding(.vertical, 8)
+                                        .padding(.horizontal, 16)
+                                        .background(
+                                            ZStack {
+                                                if selectedFilter == filter {
+                                                    Capsule().fill(.red.gradient)
+                                                } else {
+                                                    Capsule().stroke(Color.secondary, lineWidth: 1)
                                                 }
                                             }
                                         )
