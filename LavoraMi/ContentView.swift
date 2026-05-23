@@ -5940,7 +5940,7 @@ struct DetailSetYourLineView: View {
                                 .multilineTextAlignment(.center)
 
                             (Text("Per poter mettere la TUA linea tra i preferiti, basta che vai nella sezione \"Linee\" con questo simbolo: ")
-                             + Text(Image(systemName: "arrow.trianglehead.branch")))
+                             + Text(Image(systemName: "arrow.branch")))
                                 .font(.headline)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
@@ -6108,7 +6108,7 @@ struct LineDeviationInfoView: View {
                                         startImageTransition = false
                                     }
                             } else {
-                                Image(systemName: "arrow.trianglehead.branch")
+                                Image(systemName: "arrow.branch")
                                     .font(.system(size: 80))
                                     .foregroundColor(.red)
                                     .padding(.top, 40)
