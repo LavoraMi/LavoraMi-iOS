@@ -937,6 +937,7 @@ struct MainView: View {
                 DetailSetYourLineView(showInfoView: $showInfoFavoriteLines)
             }
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
     
     func playRotateHaptics() {
