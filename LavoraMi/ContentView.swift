@@ -487,6 +487,7 @@ struct MainView: View {
     @State private var alreadyRefreshed: Bool = false
     @State private var showInfoFavoriteLines: Bool = false
     @State private var showMaintenanceMode: Bool = false
+    @State private var strikeExpanded: Bool = true
     @State private var suggestedTrigger = 0
     
     @ObservedObject var viewModel: WorkViewModel
@@ -627,85 +628,90 @@ struct MainView: View {
                     }
                 }
             }
-            if viewModel.strikeEnabled && !closedStrike && showStrikeBanner {
+            if viewModel.strikeEnabled && showStrikeBanner {
                 VStack(spacing: 0) {
-                    HStack(spacing: 8) {
-                        Image(systemName: "exclamationmark.triangle.fill")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundStyle(.white)
+                    Button(action: {
+                        withAnimation(.spring(duration: 0.3)) {
+                            closedStrike.toggle()
+                        }
+                        if feedbacksEnabled { HapticManager.shared.trigger() }
+                    }) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundStyle(.white)
 
-                        Text("AVVISO SCIOPERO")
-                            .font(.system(size: 15, weight: .bold))
-                            .foregroundStyle(.white)
-                            .tracking(0.5)
+                            Text("AVVISO SCIOPERO")
+                                .font(.system(size: 15, weight: .bold))
+                                .foregroundStyle(.white)
+                                .tracking(0.5)
 
-                        Spacer()
+                            Spacer()
 
-                        Button(action: {
-                            withAnimation(.spring(duration: 0.3)) { closedStrike = true }
-                            if(feedbacksEnabled){
-                                HapticManager.shared.trigger()
-                            }
-                        }) {
-                            Image(systemName: "xmark")
-                                .font(.system(size: 11, weight: .bold))
+                            Image(systemName: "chevron.down")
+                                .font(.system(size: 13, weight: .bold))
                                 .foregroundStyle(.white.opacity(0.9))
-                                .padding(6)
-                                .background(.white.opacity(0.2), in: Circle())
+                                .rotationEffect(.degrees(closedStrike ? -90 : 0))
+                                .animation(.spring(duration: 0.3), value: closedStrike)
                         }
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 11)
+                        .background(Color.red)
                     }
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 11)
-                    .background(Color.red)
-                    VStack(alignment: .leading, spacing: 9) {
-                        HStack(alignment: .top, spacing: 8) {
-                            Image(systemName: "calendar")
-                                .font(.system(size: 12))
-                                .foregroundStyle(.secondary)
-                                .frame(width: 16)
-                            Text("Sciopero proclamato per il **\(viewModel.dateStrike)**")
-                                .font(.system(size: 14))
-                                .foregroundStyle(.primary)
-                        }
+                    .buttonStyle(.plain)
+                    if !closedStrike {
+                        VStack(alignment: .leading, spacing: 9) {
+                            HStack(alignment: .top, spacing: 8) {
+                                Image(systemName: "calendar")
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(.secondary)
+                                    .frame(width: 16)
+                                Text("Sciopero proclamato per il **\(viewModel.dateStrike)**")
+                                    .font(.system(size: 14))
+                                    .foregroundStyle(.primary)
+                            }
 
-                        HStack(alignment: .top, spacing: 8) {
-                            Image(systemName: "clock")
-                                .font(.system(size: 12))
-                                .foregroundStyle(.secondary)
-                                .frame(width: 16)
-                                .padding(.top, 1)
-                            Text("Le fasce garantite \(viewModel.guaranteed)")
-                                .font(.system(size: 14))
-                                .foregroundStyle(.primary)
-                                .multilineTextAlignment(.leading)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                        Divider()
-                            .padding(.vertical, 2)
+                            HStack(alignment: .top, spacing: 8) {
+                                Image(systemName: "clock")
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(.secondary)
+                                    .frame(width: 16)
+                                    .padding(.top, 1)
+                                Text("Le fasce garantite \(viewModel.guaranteed)")
+                                    .font(.system(size: 14))
+                                    .foregroundStyle(.primary)
+                                    .multilineTextAlignment(.leading)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
 
-                        HStack(spacing: 6) {
-                            Image(systemName: "building.2.fill")
-                                .font(.system(size: 11))
-                                .foregroundStyle(.red)
-                            Text("Aderenti:")
-                                .font(.system(size: 13))
-                                .foregroundStyle(.secondary)
-                            if(viewModel.companiesStrikes.split(separator: ", ").count < 4) {
+                            Divider()
+                                .padding(.vertical, 2)
+
+                            HStack(spacing: 6) {
+                                Image(systemName: "building.2.fill")
+                                    .font(.system(size: 11))
+                                    .foregroundStyle(.red)
+                                Text("Aderenti:")
+                                    .font(.system(size: 13))
+                                    .foregroundStyle(.secondary)
+                                if viewModel.companiesStrikes.split(separator: ", ").count < 4 {
+                                    Text(viewModel.companiesStrikes)
+                                        .font(.system(size: 13, weight: .semibold))
+                                        .foregroundStyle(.primary)
+                                }
+                            }
+                            if viewModel.companiesStrikes.split(separator: ", ").count >= 4 {
                                 Text(viewModel.companiesStrikes)
                                     .font(.system(size: 13, weight: .semibold))
                                     .foregroundStyle(.primary)
                             }
                         }
-                        if(viewModel.companiesStrikes.split(separator: ", ").count >= 4) {
-                            Text(viewModel.companiesStrikes)
-                                .font(.system(size: 13, weight: .semibold))
-                                .foregroundStyle(.primary)
-                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 12)
+                        .background(Color(.secondarySystemBackground))
+                        .transition(.move(edge: .top).combined(with: .opacity))
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 12)
-                    .background(Color(.secondarySystemBackground))
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 14))
                 .overlay(
