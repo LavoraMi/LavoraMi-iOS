@@ -382,17 +382,6 @@
         }
       }
     },
-    "Aspetto" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Appearance and Language"
-          }
-        }
-      }
-    },
     "Aspetto e Lingua" : {
       "localizations" : {
         "en" : {
@@ -536,17 +525,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bottom %@"
-          }
-        }
-      }
-    },
-    "Cambia Lingua" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Change Language"
           }
         }
       }
@@ -1261,7 +1239,14 @@
       }
     },
     "Il contributo è completamente volontario. Non si riceveranno alcuni servizi o funzionalità in più." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donations are entirely voluntary. You will not receive any additional services or features."
+          }
+        }
+      }
     },
     "Il tuo Account" : {
       "localizations" : {
@@ -3250,15 +3235,11 @@
       }
     },
     "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Buy Me A Coffee!" : {
-
-    },
-    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreon o Buy Me A Coffee!" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "If you like LavoraMi and want to keep it ad-free, you can support us by making a donation via Patreon or Buy Me A Coffee!"
+            "value" : "If you like LavoraMi and want to keep it ad-free, you can support us by making a donation via Buy Me A Coffee!"
           }
         }
       }
@@ -3527,17 +3508,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Support us on Buy Me A Coffee"
-          }
-        }
-      }
-    },
-    "Supportaci su Patreon" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Support us on Patreon"
           }
         }
       }
