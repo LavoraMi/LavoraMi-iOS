@@ -1260,6 +1260,9 @@
         }
       }
     },
+    "Il contributo è completamente volontario. Non si riceveranno alcuni servizi o funzionalità in più." : {
+
+    },
     "Il tuo Account" : {
       "localizations" : {
         "en" : {
@@ -3246,7 +3249,11 @@
         }
       }
     },
+    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Buy Me A Coffee!" : {
+
+    },
     "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreon o Buy Me A Coffee!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3525,6 +3532,7 @@
       }
     },
     "Supportaci su Patreon" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
