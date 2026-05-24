@@ -2880,7 +2880,7 @@ struct InfoView: View {
                         .padding(.bottom, 20)
                     Text("Il contributo è completamente volontario. Non si riceveranno alcuni servizi o funzionalità in più.")
                         .font(.system(size: 14))
-                        .multilineTextAlignment(.center) 
+                        .multilineTextAlignment(.center)
                         .padding(.horizontal, 10)
                         .padding(.bottom, 20)
                     Button {
