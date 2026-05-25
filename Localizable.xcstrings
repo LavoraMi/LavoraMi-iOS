@@ -1238,16 +1238,6 @@
         }
       }
     },
-    "Il contributo è completamente volontario. Non si riceveranno alcuni servizi o funzionalità in più." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Donations are entirely voluntary. You will not receive any additional services or features."
-          }
-        }
-      }
-    },
     "Il tuo Account" : {
       "localizations" : {
         "en" : {
@@ -3234,16 +3224,6 @@
         }
       }
     },
-    "Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Buy Me A Coffee!" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "If you like LavoraMi and want to keep it ad-free, you can support us by making a donation via Buy Me A Coffee!"
-          }
-        }
-      }
-    },
     "Segnala un bug" : {
       "localizations" : {
         "en" : {
@@ -3478,37 +3458,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suburbano"
-          }
-        }
-      }
-    },
-    "Supporta LavoraMi" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Support LavoraMi"
-          }
-        }
-      }
-    },
-    "Supportaci" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Support us"
-          }
-        }
-      }
-    },
-    "Supportaci su Buy Me A Coffee" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Support us on Buy Me A Coffee"
           }
         }
       }

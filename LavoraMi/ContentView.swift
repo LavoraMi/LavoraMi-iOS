@@ -2851,40 +2851,6 @@ struct InfoView: View {
                 }
                 Divider().padding(.top, 10)
                 Section(){
-                    Text("Supportaci")
-                        .font(.system(size: 30))
-                        .bold()
-                        .padding(.top, 20)
-                    Text("Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Buy Me A Coffee!")
-                        .font(.system(size: 14))
-                        .multilineTextAlignment(.center)
-                        .padding(.top, 1)
-                        .padding(.horizontal, 10)
-                        .padding(.bottom, 20)
-                    Text("Il contributo è completamente volontario. Non si riceveranno alcuni servizi o funzionalità in più.")
-                        .font(.system(size: 14))
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 10)
-                        .padding(.bottom, 20)
-                    Button {
-                        let url = URL(string: "https://www.buymeacoffee.com/lavorami")!
-                        
-                        if(howToOpenLinks == .inApp) {
-                            selectedURL = url
-                        }
-                        else {
-                            openURLAction(url)
-                        }
-                    } label: {
-                        Label("Supportaci su Buy Me A Coffee", systemImage: "cup.and.saucer.fill")
-                            .font(.system(size: 20))
-                    }
-                    .padding(.top, 5)
-                    .padding(.bottom, 20)
-                    Spacer()
-                }
-                Divider().padding(.top, 10)
-                Section(){
                     Text("Seguici su")
                         .font(.system(size: 30))
                         .bold()
