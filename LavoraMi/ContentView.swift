@@ -1645,23 +1645,6 @@ struct SettingsView: View{
                             Image(systemName: "star.fill")
                         }
                     }
-                    Button(action: {
-                        let url = URL(string: "https://www.buymeacoffee.com/lavorami")!
-                                                
-                        if(howToOpenLinks == .inApp) {
-                            selectedURL = url
-                        }
-                        else {
-                            openURLAction(url)
-                        }
-                    }){
-                        Label {
-                            Text("Supporta LavoraMi")
-                                .foregroundColor(.red)
-                        } icon: {
-                            Image(systemName: "arrow.up.right")
-                        }
-                    }
                 }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
                     Button(role: .destructive) {

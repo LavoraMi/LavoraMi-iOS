@@ -3483,6 +3483,7 @@
       }
     },
     "Supporta LavoraMi" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
