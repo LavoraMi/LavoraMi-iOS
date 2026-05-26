@@ -963,6 +963,16 @@
         }
       }
     },
+    "Fasce garantite %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guaranteed service hours: %@"
+          }
+        }
+      }
+    },
     "FERMATA DI INTERSCAMBIO:" : {
       "localizations" : {
         "en" : {
@@ -1706,16 +1716,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lavori Iniziati!"
-          }
-        }
-      }
-    },
-    "Le fasce garantite %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guaranteed service hours %@"
           }
         }
       }

@@ -677,7 +677,7 @@ struct MainView: View {
                                     .foregroundStyle(.secondary)
                                     .frame(width: 16)
                                     .padding(.top, 1)
-                                Text("Le fasce garantite \(viewModel.guaranteed)")
+                                Text("Fasce garantite \(viewModel.guaranteed)")
                                     .font(.system(size: 14))
                                     .foregroundStyle(.primary)
                                     .multilineTextAlignment(.leading)
