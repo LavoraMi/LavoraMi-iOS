@@ -550,7 +550,11 @@ struct MainView: View {
             return categoryFiltered
         } else {
             return categoryFiltered.filter { item in
-                item.lines.contains { $0.localizedCaseInsensitiveContains(searchInput) }
+                let matchLines = item.lines.contains { $0.localizedCaseInsensitiveContains(searchInput) }
+                let matchRoads = item.roads.localizedCaseInsensitiveContains(searchInput)
+                let matchDetails = item.details.localizedCaseInsensitiveContains(searchInput)
+                
+                return matchLines || matchRoads || matchDetails
             }
         }
     }

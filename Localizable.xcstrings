@@ -566,7 +566,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Search your line..."
+            "value" : "Search by line or place…"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca per linea o luogo…"
           }
         }
       }
