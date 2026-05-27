@@ -882,6 +882,23 @@
         }
       }
     },
+    "diStar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by STAR"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "di STAR"
+          }
+        }
+      }
+    },
     "Elimina Account" : {
       "localizations" : {
         "en" : {

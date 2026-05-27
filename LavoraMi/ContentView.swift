@@ -538,6 +538,8 @@ struct MainView: View {
                 categoryFiltered = items.filter{ $0.company.contains("Movibus") }
             case .STAV:
                 categoryFiltered = items.filter{ $0.company.contains("STAV") }
+            case .STAR:
+                categoryFiltered = items.filter { $0.company.contains("STAR") }
             case .Autoguidovie:
                 categoryFiltered = items.filter{ $0.company.contains("Autoguidovie") }
             case .scheduled:
@@ -6251,6 +6253,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
     case Trenord = "di Trenord"
     case Movibus = "di Movibus"
     case STAV = "di STAV"
+    case STAR = "di STAR"
     case Autoguidovie = "di Autoguidovie"
     
     var localizedTitle: String {
@@ -6267,6 +6270,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
             case .Trenord: return String(localized: .diTrenord)
             case .Movibus: return String(localized: .diMovibus)
             case .STAV: return String(localized: .diStav)
+            case .STAR: return String(localized: .diStar)
             case .Autoguidovie: return String(localized: .diAutoguidovie)
         }
     }
