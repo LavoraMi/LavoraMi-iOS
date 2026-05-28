@@ -196,6 +196,22 @@
         }
       }
     },
+    "🇪🇸 Spagnolo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇪🇸 Spanish"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇪🇸 Español"
+          }
+        }
+      }
+    },
     "🇬🇧 Inglese" : {
       "localizations" : {
         "en" : {

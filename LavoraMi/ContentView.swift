@@ -1788,6 +1788,21 @@ struct AppearancePickerView: View {
                     }
                 }
                 .foregroundColor(Color("TextColor"))
+                Button {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        openURLAction(url)
+                    }
+                } label: {
+                    HStack {
+                        Text("🇪🇸 Spagnolo")
+                        if(Locale.current.language.languageCode?.identifier == "es") {
+                            Spacer()
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
+                .foregroundColor(Color("TextColor"))
             } header: {
                 Text("Lingua")
             } footer: {
