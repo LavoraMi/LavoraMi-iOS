@@ -9,7 +9,8 @@
             "value" : ""
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     " e la " : {
       "localizations" : {
@@ -2225,6 +2226,12 @@
             "value" : "Work on the %2$@ line in %1$@ began today. Visit the %3$@ website for more information."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las obras en %1$@ de la línea %2$@ han comenzado hoy. Consulta la página web de %3$@ para obtener más información."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2240,6 +2247,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Work on the %2$@ lines in %1$@ began today. Visit the %3$@ website for more information."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las obras en %1$@ de las líneas %2$@ han comenzado hoy. Consulta la página web de %3$@ para obtener más información."
           }
         },
         "it" : {
@@ -2259,6 +2272,12 @@
             "value" : "Work on the %2$@ line in %1$@ began today. Visit the %3$@ website for more information."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las obras en %1$@ de la línea %2$@ han comenzado hoy. Consulta la página web de %3$@ para obtener más información."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2274,6 +2293,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Work on the %2$@ lines in %1$@ began today. Visit the %3$@ website for more information."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las obras en %1$@ de las líneas %2$@ han comenzado hoy. Consulta la página web de %3$@ para obtener más información."
           }
         },
         "it" : {
@@ -3749,6 +3774,12 @@
             "state" : "translated",
             "value" : "Don’t be the last to know it..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No seas el último en enterarte..."
+          }
         }
       }
     },
@@ -3758,6 +3789,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You haven’t granted LavoraMi permission to send notifications. Go to Settings > Apps > LavoraMi and enable the permission."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No has dado permiso para recibir notificaciones. Ve a Ajustes > Aplicaciones > LavoraMi y activa las notificaciones."
           }
         }
       }
@@ -3769,6 +3806,12 @@
             "state" : "translated",
             "value" : "Don’t have an Account?"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿No tienes una cuenta?"
+          }
         }
       }
     },
@@ -3778,6 +3821,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Whether it’s the Suburbano, the Metro or the bus, choose the route that suits you best."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Da igual si es Suburbano, Metro o Autobús, elige la línea que más te interese."
           }
         }
       }
@@ -3789,6 +3838,12 @@
             "state" : "translated",
             "value" : "Not just “work in progress” we explain what type of work is being done and the consequences that construction site may have (detours, suspended stops, etc)."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No solo «obras en la calle»: te explicamos qué tipo de obras se están llevando a cabo y también las consecuencias que puede acarrear esa obra (desvíos, paradas suspendidas...)"
+          }
         }
       }
     },
@@ -3799,6 +3854,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This route does not meet the minimum accessibility requirements. There may be steps at the entrance to the vehicle, or the road infrastructure along the route may make it impossible to lower the ramp safely."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta línea no cumple los requisitos mínimos de accesibilidad. Es posible que los vehículos tengan escalones en la entrada o que las infraestructuras viarias del recorrido impidan bajar la rampa de forma segura."
           }
         },
         "it" : {
@@ -3816,6 +3877,12 @@
             "state" : "translated",
             "value" : "Notifications"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones"
+          }
         }
       }
     },
@@ -3825,6 +3892,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Work Ended Notifications"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones Fin Obras"
           }
         }
       }
@@ -3836,6 +3909,12 @@
             "state" : "translated",
             "value" : "Work Started Notifications"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones Inicio Obras"
+          }
         }
       }
     },
@@ -3845,6 +3924,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Work Notifications"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones Obras"
           }
         }
       }
@@ -3856,6 +3941,12 @@
             "state" : "translated",
             "value" : "Push Notifications"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones Push"
+          }
         }
       }
     },
@@ -3866,12 +3957,24 @@
             "state" : "translated",
             "value" : "Strike Notifications"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones Huelgas"
+          }
         }
       }
     },
     "OK" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
@@ -3886,6 +3989,12 @@
             "state" : "translated",
             "value" : "Advanced Options"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opciones Avanzadas"
+          }
         }
       }
     },
@@ -3896,6 +4005,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "hour"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hora"
           }
         },
         "it" : {
@@ -3913,6 +4028,12 @@
             "state" : "translated",
             "value" : "Notification Schedule"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horario Notificaciones"
+          }
         }
       }
     },
@@ -3923,6 +4044,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "hours"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "horas"
           }
         },
         "it" : {
@@ -3941,6 +4068,12 @@
             "state" : "translated",
             "value" : "Partially Accessible"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parcialmente Accesible"
+          }
         }
       }
     },
@@ -3951,6 +4084,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The route has some limitations. Although the buses are accessible, many stops along the route may not have kerbs that meet accessibility standards or sufficient space for the boarding ramp. In other cases, accessibility is only guaranteed on certain specific services."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La línea presenta algunas limitaciones. Aunque los autobuses son accesibles, es posible que muchas paradas a lo largo del recorrido no cuenten con aceras que cumplan la normativa o con espacio suficiente para la plataforma. En otros casos, la accesibilidad solo está garantizada en determinados trayectos."
           }
         },
         "it" : {
@@ -3968,6 +4107,12 @@
             "state" : "translated",
             "value" : "Password"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contraseña"
+          }
         }
       }
     },
@@ -3977,6 +4122,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Forgot your password?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Has olvidado tu Contraseña?"
           }
         }
       }
@@ -3988,6 +4139,12 @@
             "state" : "translated",
             "value" : "To add a line in this section, go to your "
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para añadir una línea en esta sección, ve a la pestaña de tu "
+          }
         }
       }
     },
@@ -3997,6 +4154,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This feature is available in all languages."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per attivare questa Funzionalità anche in lingua Italiana, Vai in Impostazioni > Opzioni Avanzate ed attiva \"Mostra Pulsante Traduci\"."
           }
         }
       }
@@ -4008,6 +4171,12 @@
             "state" : "translated",
             "value" : "To change the app’s language, you will be redirected to the app settings on iOS."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para cambiar el idioma de la aplicación, se te redirigirá a los ajustes de la aplicación en iOS."
+          }
         }
       }
     },
@@ -4017,6 +4186,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "To add YOUR line to your favourites, simply go to the ‘Lines’ section marked with this symbol: "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para añadir TU línea a los favoritos, solo tienes que ir a la sección «Líneas», que tiene este símbolo: "
           }
         }
       }
@@ -4028,6 +4203,12 @@
             "state" : "translated",
             "value" : "Permission Denied"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permiso Denegado"
+          }
         }
       }
     },
@@ -4038,6 +4219,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "If your train journey continues by replacement bus, the on-board staff will provide you with all the information you need to continue your journey with peace of mind."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si el trayecto de tu tren continúa en un autobús sustitutivo, el personal de a bordo te proporcionará toda la información necesaria para que puedas continuar tu viaje con tranquilidad."
           }
         },
         "it" : {
@@ -4057,6 +4244,12 @@
             "value" : "Please rely on the cabin crew"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confía en la tripulación"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4072,6 +4265,12 @@
             "state" : "translated",
             "value" : "Plan your trip with an awareness of any potential delays along the way well before you leave."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planifica tu viaje teniendo en cuenta las posibles dificultades que puedas encontrar en el trayecto, mucho antes de salir."
+          }
         }
       }
     },
@@ -4081,6 +4280,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan Your Trip"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planifica el Viaje"
           }
         }
       }
@@ -4092,6 +4297,12 @@
             "state" : "translated",
             "value" : "Favorites"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoritos"
+          }
         }
       }
     },
@@ -4102,12 +4313,24 @@
             "state" : "translated",
             "value" : "Privacy Policy"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
         }
       }
     },
     "Privacy Policy." : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy."
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Privacy Policy."
@@ -4123,6 +4346,12 @@
             "state" : "translated",
             "value" : "Scheduled"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programados"
+          }
         }
       }
     },
@@ -4132,6 +4361,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "SCHEDULED"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PROGRAMADOS"
           }
         }
       }
@@ -4143,6 +4378,12 @@
             "state" : "translated",
             "value" : "NEXT ARRIVALS: %@"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PRÓXIMAS LLEGADAS: %@"
+          }
         }
       }
     },
@@ -4152,6 +4393,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Clean Cache memory"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borra la Caché"
           }
         }
       }
@@ -4163,6 +4410,12 @@
             "state" : "translated",
             "value" : "Here you can manage your Account and your information."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aquí puedes gestionar tu cuenta y tus datos."
+          }
         }
       }
     },
@@ -4172,6 +4425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This application aggregates public data, accessible to everyone, for easy consultation."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta aplicación recopila datos públicos, accesibles para todos, con el fin de facilitar su consulta."
           }
         }
       }
@@ -4183,6 +4442,12 @@
             "state" : "translated",
             "value" : "THIS TRAM LINE IS SUBJECT TO ROUTE CHANGES."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ESTA LÍNEA DE TRAM ESTÁ SUJETA A DESVÍOS."
+          }
         }
       }
     },
@@ -4192,6 +4457,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "THIS ROUTE IS SUBJECT TO CHANGES."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ESTA LÍNEA PUEDE SUFRIR VARIACIONES."
           }
         }
       }
@@ -4203,6 +4474,12 @@
             "state" : "translated",
             "value" : "Reset your Account password here."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recupera aquí la contraseña de tu cuenta."
+          }
         }
       }
     },
@@ -4210,6 +4487,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regional"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regional"
@@ -4230,6 +4513,12 @@
             "state" : "translated",
             "value" : "Sign up"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regístrate"
+          }
         }
       }
     },
@@ -4239,6 +4528,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign up to get started."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regístrate para empezar."
           }
         }
       }
@@ -4250,6 +4545,12 @@
             "state" : "translated",
             "value" : "Signing up…"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registrándose..."
+          }
         }
       }
     },
@@ -4260,12 +4561,24 @@
             "state" : "translated",
             "value" : "Reset Password"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer contraseña"
+          }
         }
       }
     },
     "Riccardo De Diana" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riccardo De Diana"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Riccardo De Diana"
@@ -4280,6 +4593,12 @@
             "state" : "translated",
             "value" : "Request %@"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicitar %@"
+          }
         }
       }
     },
@@ -4289,6 +4608,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Request %@ to unlock your Account section."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicita %@ para bloquear y desbloquear la sección de tu cuenta."
           }
         }
       }
@@ -4300,6 +4625,12 @@
             "state" : "translated",
             "value" : "Request Data"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicitar información"
+          }
         }
       }
     },
@@ -4309,6 +4640,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Request your information"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicita tus datos"
           }
         }
       }
@@ -4320,6 +4657,12 @@
             "state" : "translated",
             "value" : "Request your Data"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicita tus Datos"
+          }
         }
       }
     },
@@ -4330,6 +4673,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Data Request"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicitud de mis Datos"
           }
         },
         "it" : {
@@ -4347,6 +4696,12 @@
             "state" : "translated",
             "value" : "Reset Settings"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer ajustes"
+          }
         }
       }
     },
@@ -4357,12 +4712,24 @@
             "state" : "translated",
             "value" : "Refresh"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inténtalo de nuevo"
+          }
         }
       }
     },
     "S2" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S2"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "S2"
@@ -4377,6 +4744,12 @@
             "state" : "translated",
             "value" : "S5"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S5"
+          }
         }
       }
     },
@@ -4386,6 +4759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Skip"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saltar"
           }
         }
       }
@@ -4397,6 +4776,12 @@
             "state" : "translated",
             "value" : "Save the line you use every day as a favorite and when there’s work on it, you will be updated."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda en tus favoritos la línea que utilizas a diario y, cuando haya alguna novedad al respecto, ya estarás al tanto."
+          }
         }
       }
     },
@@ -4406,6 +4791,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choose every line."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige cualquier línea."
           }
         }
       }
@@ -4417,6 +4808,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choose your line"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige tu línea"
           }
         },
         "it" : {
@@ -4434,6 +4831,12 @@
             "state" : "translated",
             "value" : "A strike has been called for **%@**"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huelga convocada para el **%@**"
+          }
         }
       }
     },
@@ -4444,6 +4847,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "There is a strike today affecting %1$@ lines, guaranteed service times %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy está prevista una huelga de %1$@, con servicios garantizados %2$@."
           }
         },
         "it" : {
@@ -4463,6 +4872,12 @@
             "value" : "🚫 Strike Today!"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🚫 ¡Hoy hay Huelga!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4478,6 +4893,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "There will be a strike tomorrow affecting %1$@ lines, guaranteed service times %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana hay huelga por %1$@, los horarios garantizados %2$@"
           }
         },
         "it" : {
@@ -4497,6 +4918,12 @@
             "value" : "⚠️ Strike Tomorrow!"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ ¡Mañana hay Huelga!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4513,6 +4940,12 @@
             "state" : "translated",
             "value" : "Check out what’s new…"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descubre las novedades..."
+          }
         }
       }
     },
@@ -4523,6 +4956,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Discover something new..."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descubre algo nuevo..."
           }
         }
       }
@@ -4535,6 +4974,12 @@
             "state" : "translated",
             "value" : "Dark"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oscuro"
+          }
         }
       }
     },
@@ -4544,6 +4989,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Report a bug"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informar de un error"
           }
         }
       }
@@ -4555,6 +5006,12 @@
             "state" : "translated",
             "value" : "Follow us on"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Síguenos en"
+          }
         }
       }
     },
@@ -4564,6 +5021,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Are you sure you want to delete your recent searches?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro de que quieres borrar las búsquedas recientes?"
           }
         }
       }
@@ -4575,6 +5038,12 @@
             "state" : "translated",
             "value" : "Are you sure you want to permanently delete your account?"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro de que quieres eliminar tu cuenta definitivamente?"
+          }
         }
       }
     },
@@ -4584,6 +5053,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Are you sure you want to clear the app’s cache?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro de que quieres borrar la memoria caché?"
           }
         }
       }
@@ -4595,6 +5070,12 @@
             "state" : "translated",
             "value" : "Are you sure you want to reset the settings?"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro de que quieres restablecer la configuración?"
+          }
         }
       }
     },
@@ -4604,6 +5085,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Are you sure you want to skip the setup?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro de que quieres saltarte la configuración?"
           }
         }
       }
@@ -4615,6 +5102,12 @@
             "state" : "translated",
             "value" : "Are you sure you want to sign out of your account?"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro de que quieres cerrar sesión?"
+          }
         }
       }
     },
@@ -4624,6 +5117,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Are you sure?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro?"
           }
         }
       }
@@ -4635,6 +5134,12 @@
             "state" : "translated",
             "value" : "Select the format in which your data will be exported."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona el formato en el que se exportarán tus datos."
+          }
         }
       }
     },
@@ -4644,6 +5149,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select how you want to open links."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona la forma en que quieres abrir los enlaces."
           }
         }
       }
@@ -4655,6 +5166,12 @@
             "state" : "translated",
             "value" : "Select a stop"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige una parada"
+          }
         }
       }
     },
@@ -4664,6 +5181,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select a line to display in the widget so you can keep an eye on it at all times.\n"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona una línea para mostrarla en el widget y tenerla siempre a la vista."
           }
         }
       }
@@ -4675,12 +5198,24 @@
             "state" : "translated",
             "value" : "Select a line in the app to display in the widget."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona una línea de la aplicación para mostrarla en el widget."
+          }
         }
       }
     },
     "Simone Gallotti" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simone Gallotti"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Simone Gallotti"
@@ -4696,6 +5231,12 @@
             "state" : "translated",
             "value" : "System"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistema"
+          }
         }
       }
     },
@@ -4705,6 +5246,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Web Site"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sitio web"
           }
         }
       }
@@ -4716,6 +5263,12 @@
             "state" : "translated",
             "value" : "You are using a version of LavoraMi that is no longer supported. Please update to the latest version to access new features and resolve any issues."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estás utilizando una versión de LavoraMi que ya no es compatible. Actualiza a la última versión disponible para acceder a nuevas funciones y solucionar los problemas."
+          }
         }
       }
     },
@@ -4726,12 +5279,24 @@
             "state" : "translated",
             "value" : "You are using an outdated version."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estás usando una versión obsoleta."
+          }
         }
       }
     },
     "STAR Mobility" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STAR Mobility"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "STAR Mobility"
@@ -4746,12 +5311,24 @@
             "state" : "translated",
             "value" : "Line Status"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de la línea"
+          }
         }
       }
     },
     "STAV" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STAV"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "STAV"
@@ -4766,6 +5343,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suburban"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suburbano"
           }
         },
         "it" : {
@@ -4783,6 +5366,12 @@
             "state" : "translated",
             "value" : "iOS Developer:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desarrollador de iOS:"
+          }
         }
       }
     },
@@ -4792,6 +5381,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Android Developers:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desarrollador de Android:"
           }
         }
       }
@@ -4803,12 +5398,24 @@
             "state" : "translated",
             "value" : "Web Developers:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desarrollador Web:"
+          }
         }
       }
     },
     "T %@" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T %@"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "T %@"
@@ -4823,6 +5430,12 @@
             "state" : "translated",
             "value" : "Development Team"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equipo de desarrollo"
+          }
         }
       }
     },
@@ -4832,6 +5445,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Theme"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tema"
           }
         }
       }
@@ -4843,6 +5462,12 @@
             "state" : "translated",
             "value" : "WAITING TIME:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TIEMPO MEDIO DE ESPERA:"
+          }
         }
       }
     },
@@ -4852,6 +5477,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terms"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Términos"
           }
         }
       }
@@ -4863,6 +5494,12 @@
             "state" : "translated",
             "value" : "Terms of Services"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condiciones de servicio"
+          }
         }
       }
     },
@@ -4872,6 +5509,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "License Text"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texto de la licencia"
           }
         }
       }
@@ -4883,6 +5526,12 @@
             "state" : "translated",
             "value" : "We’ll notify you the day before work is due to end, when new construction sites appear on your favorite line, and even when it’s a bad Friday."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te avisaremos el día antes de que terminen las obras, cuando haya nuevas obras en tu línea favorita y también cuando sea viernes."
+          }
         }
       }
     },
@@ -4892,6 +5541,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "We’ll send you an email to help you change your password. Would you like to continue?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te enviaremos un correo electrónico para que cambies tu contraseña. ¿Quieres continuar?"
           }
         }
       }
@@ -4903,6 +5558,12 @@
             "state" : "translated",
             "value" : "Keep an eye on the work"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pierdas de vista las obras"
+          }
         }
       }
     },
@@ -4912,6 +5573,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stay Informed"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantente al Día"
           }
         }
       }
@@ -4923,6 +5590,12 @@
             "state" : "translated",
             "value" : "Stay informed. Before and during your trip."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantente informado. Antes y durante tu viaje."
+          }
         }
       }
     },
@@ -4933,12 +5606,24 @@
             "state" : "translated",
             "value" : "TikTok"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TiKTok"
+          }
         }
       }
     },
     "TILO" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TILO"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "TILO"
@@ -4953,6 +5638,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bug Report"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificación de errores en la aplicación para iOS"
           }
         },
         "it" : {
@@ -4970,6 +5661,12 @@
             "state" : "translated",
             "value" : "Tommaso Ruggeri"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tommaso Ruggeri"
+          }
         }
       }
     },
@@ -4980,6 +5677,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "⚠️ Work ends tomorrow!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ ¡Las obras terminan mañana!"
           }
         },
         "it" : {
@@ -4999,6 +5702,12 @@
             "value" : "Work on Line %2$@ in %1$@ will be completed tomorrow. Visit the %3$@ website for more information."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana finalizan las obras en %1$@ para la línea %2$@. Consulta la página web de %3$@ para obtener más información."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5014,6 +5723,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Work on Lines %2$@ in %1$@ will be completed tomorrow. Visit the %3$@ website for more information."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana finalizan las obras en %1$@ para las líneas %2$@. Consulta la página web de %3$@ para obtener más información."
           }
         },
         "it" : {
@@ -5033,6 +5748,12 @@
             "value" : "Work on Line %2$@ in %1$@ will be completed tomorrow. Visit the %3$@ website for more information."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana finalizan las obras en %1$@ para la línea %2$@. Consulta la página web de %3$@ para obtener más información."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5048,6 +5769,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Work on Lines %2$@ in %1$@ will be completed tomorrow. Visit the %3$@ website for more information."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana finalizan las obras en %1$@ para las líneas %2$@. Consulta la página web de %3$@ para obtener más información."
           }
         },
         "it" : {
@@ -5067,6 +5794,12 @@
             "value" : "Work on Line %2$@ begins tomorrow on %1$@. Visit the %3$@ website for more information."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana comienzan las obras en %1$@ para la línea %2$@. Consulta la página web de %3$@ para obtener más información."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5082,6 +5815,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Work on Lines %2$@ begins tomorrow on %1$@. Visit the %3$@ website for more information."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana comienzan las obras en %1$@ para las líneas %2$@. Consulta la página web de %3$@ para obtener más información."
           }
         },
         "it" : {
@@ -5101,6 +5840,12 @@
             "value" : "Work on Line %2$@ begins tomorrow on %1$@. Visit the %3$@ website for more information."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana comienzan las obras en %1$@ para la línea %2$@. Consulta la página web de %3$@ para obtener más información."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5118,6 +5863,12 @@
             "value" : "Work on Lines %2$@ begins tomorrow on %1$@. Visit the %3$@ website for more information."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana comienzan las obras en %1$@ para las líneas %2$@. Consulta la página web de %3$@ para obtener más información."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5133,6 +5884,12 @@
             "state" : "translated",
             "value" : "Back to Sign In"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volver al inicio de sesión"
+          }
         }
       }
     },
@@ -5142,6 +5899,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Translate"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traducir"
           }
         },
         "it" : {
@@ -5159,6 +5922,12 @@
             "state" : "translated",
             "value" : "To translate job details into other languages, simply click on the job details and then click “Translate”"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para traducir los detalles de los trabajos a otros idiomas, solo tienes que hacer clic en los detalles del trabajo y seleccionar \"Traducir”."
+          }
         }
       }
     },
@@ -5169,12 +5938,24 @@
             "state" : "translated",
             "value" : "Translate the works into the language you select."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traduce los trabajos al idioma que quieras."
+          }
         }
       }
     },
     "Trailing" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trailing"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trailing"
@@ -5190,12 +5971,24 @@
             "state" : "translated",
             "value" : "Train"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tren"
+          }
         }
       }
     },
     "Trenord" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trenord"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trenord"
@@ -5210,6 +6003,12 @@
             "state" : "translated",
             "value" : "You, and you again."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tú y otra vez tú."
+          }
         }
       }
     },
@@ -5220,6 +6019,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "All"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos"
           }
         },
         "it" : {
@@ -5237,6 +6042,12 @@
             "state" : "translated",
             "value" : "All examples given are for illustrative purposes only and may be current or past events."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos los ejemplos citados son meramente ilustrativos; pueden ser acontecimientos actuales o pasados."
+          }
         }
       }
     },
@@ -5246,6 +6057,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Latest supported version: %@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Última versión compatible: %@."
           }
         }
       }
@@ -5258,6 +6075,12 @@
             "state" : "translated",
             "value" : "Apple User"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuario Apple"
+          }
         }
       }
     },
@@ -5269,6 +6092,12 @@
             "state" : "translated",
             "value" : "Rate LavoraMi"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valora LavoraMi"
+          }
         }
       }
     },
@@ -5278,6 +6107,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You can visually see the progress of the work and when the disruption is expected to end (based on the PLANNED start and end dates of the work)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprueba visualmente en qué fase se encuentran las obras y cuándo está previsto que finalicen las molestias (según las fechas PREVISTAS de inicio y finalización de las obras)."
           }
         }
       }
@@ -5289,6 +6124,12 @@
             "state" : "translated",
             "value" : "Please verify your email address using the email we sent you to continue."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifica tu dirección de correo electrónico con el mensaje que te hemos enviado para continuar."
+          }
         }
       }
     },
@@ -5298,6 +6139,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión"
           }
         }
       }
@@ -5309,6 +6156,12 @@
             "state" : "translated",
             "value" : "Version:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión:"
+          }
         }
       }
     },
@@ -5318,6 +6171,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "View the routes of your favorite lines on the map, so you don’t get lost and always know where you are going."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualiza los recorridos de las líneas que prefieras en el mapa, para no perderte y saber siempre adónde vas."
           }
         }
       }
@@ -5329,6 +6188,12 @@
             "state" : "translated",
             "value" : "View the lines that interchange with YOUR line, or on buses view where they end with a Transfer Stop."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta las líneas que hacen transbordo con TU línea, o, en el caso de los autobuses, comprueba dónde terminan su recorrido con una parada de transbordo."
+          }
         }
       }
     },
@@ -5339,6 +6204,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "View changes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver los intercambiadores"
           }
         },
         "it" : {
@@ -5358,6 +6229,12 @@
             "value" : "See the Map"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver el mapa"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5375,6 +6252,12 @@
             "value" : "Your Lines"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus líneas"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5386,6 +6269,12 @@
     "z620" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z620"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "z620"
