@@ -18,6 +18,12 @@
             "state" : "translated",
             "value" : " and the "
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " y la "
+          }
         }
       }
     },
@@ -27,6 +33,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " to add it to the list. You can edit it at any time."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " para añadirla a la lista. Puedes modificarla en cualquier momento."
           }
         }
       }
@@ -38,6 +50,12 @@
             "state" : "translated",
             "value" : ", click on "
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ", haz clic en "
+          }
         }
       }
     },
@@ -48,12 +66,24 @@
             "state" : "translated",
             "value" : "%@"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
         }
       }
     },
     "%@ (%@)" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (%2$@)"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ (%2$@)"
@@ -75,6 +105,12 @@
             "value" : "%1$@ (Build %2$@)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (Build %2$@)"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "new",
@@ -86,6 +122,12 @@
     "%@ %@" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ %2$@"
@@ -106,6 +148,12 @@
             "state" : "translated",
             "value" : "%lld"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
         }
       }
     },
@@ -115,6 +163,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$lld current, %2$lld scheduled."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld actuales, %2$lld programadas."
           }
         },
         "it" : {
@@ -132,6 +186,12 @@
             "state" : "translated",
             "value" : "%lld min"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
         }
       }
     },
@@ -141,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "🇬🇧 English"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇬🇧 Inglés"
           }
         }
       }
@@ -152,6 +218,12 @@
             "state" : "translated",
             "value" : "🇮🇹 Italian"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇮🇹 Italiano"
+          }
         }
       }
     },
@@ -162,12 +234,24 @@
             "state" : "translated",
             "value" : "👋 Hi %@"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "👋 Hola %@"
+          }
         }
       }
     },
     "12 Nov 2025" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12 Nov 2025"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "12 Nov 2025"
@@ -182,6 +266,12 @@
             "state" : "translated",
             "value" : "15 Dec 2026"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15 Dic 2026"
+          }
         }
       }
     },
@@ -191,6 +281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign in"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar sesión"
           }
         }
       }
@@ -202,6 +298,12 @@
             "state" : "translated",
             "value" : "Sign in to your account to continue."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicia sesión en tu cuenta para continuar."
+          }
         }
       }
     },
@@ -211,6 +313,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Logging in"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entro..."
           }
         }
       }
@@ -222,6 +330,12 @@
             "state" : "translated",
             "value" : "Accessible, always."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesible, siempre."
+          }
         }
       }
     },
@@ -231,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accessibility"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesibilidad"
           }
         }
       }
@@ -242,6 +362,12 @@
             "state" : "translated",
             "value" : "Account"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuenta"
+          }
         }
       }
     },
@@ -251,6 +377,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Account created with Apple"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuenta creada con Apple"
           }
         }
       }
@@ -262,6 +394,12 @@
             "state" : "translated",
             "value" : "Members:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adheridos:"
+          }
         }
       }
     },
@@ -271,6 +409,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Update Now"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar ahora"
           }
         }
       }
@@ -282,6 +426,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Updated, Always."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizado, siempre."
           }
         },
         "it" : {
@@ -299,12 +449,24 @@
             "state" : "translated",
             "value" : "Help"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayuda"
+          }
         }
       }
     },
     "Alessandro Rebuscini" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alessandro Rebuscini"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alessandro Rebuscini"
@@ -319,12 +481,24 @@
             "state" : "translated",
             "value" : "Other Notifications"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otras notificaciones"
+          }
         }
       }
     },
     "Andrea Filice" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Andrea Filice"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Andrea Filice"
@@ -339,12 +513,24 @@
             "state" : "translated",
             "value" : "Cancel"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
         }
       }
     },
     "Apple Private Relay Email" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Private Relay Email"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apple Private Relay Email"
@@ -359,6 +545,12 @@
             "state" : "translated",
             "value" : "Open Settings"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre Ajustes"
+          }
         }
       }
     },
@@ -368,6 +560,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Open link:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir enlace:"
           }
         }
       }
@@ -379,6 +577,12 @@
             "state" : "translated",
             "value" : "Arrivals"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llegadas"
+          }
         }
       }
     },
@@ -389,12 +593,24 @@
             "state" : "translated",
             "value" : "Appearance and Language"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aspecto y idioma"
+          }
         }
       }
     },
     "ATM" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ATM"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ATM"
@@ -409,6 +625,12 @@
             "state" : "translated",
             "value" : "Enable Haptic Feedback"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar Vibración Tactil "
+          }
         }
       }
     },
@@ -418,6 +640,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enable Haptic Feedback on certain screens."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activa la vibración táctil en determinadas pantallas o botones."
           }
         }
       }
@@ -429,6 +657,12 @@
             "state" : "translated",
             "value" : "Turn on notifications to stay up to date on the work. Don’t miss out on any surprises."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activa las notificaciones para estar al tanto de los avances. Sin perderte ninguna sorpresa."
+          }
         }
       }
     },
@@ -439,12 +673,24 @@
             "state" : "translated",
             "value" : "THE LINE CURRENTLY TERMINATES AT: MILANO BOVISA."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ACTUALMENTE LA LÍNEA LLEGA HASTA: MILANO BOVISA."
+          }
         }
       }
     },
     "Autoguidovie" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoguidovie"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoguidovie"
@@ -459,6 +705,12 @@
             "state" : "translated",
             "value" : "Next"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
+          }
         }
       }
     },
@@ -468,6 +720,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "STRIKE NOTICE"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AVISO DE HUELGA"
           }
         }
       }
@@ -479,6 +737,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Progress bar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barra de progreso"
           }
         },
         "it" : {
@@ -496,6 +760,12 @@
             "state" : "translated",
             "value" : "Welcome back"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido de nuevo"
+          }
         }
       }
     },
@@ -505,6 +775,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Welcome to LavoraMi"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido a LavoraMi"
           }
         }
       }
@@ -516,12 +792,24 @@
             "state" : "translated",
             "value" : "Stuck here? Check your connection."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿No puedes seguir adelante? Comprueba tu conexión."
+          }
         }
       }
     },
     "Bottom %@" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottom %@"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bottom %@"
@@ -536,6 +824,12 @@
             "state" : "translated",
             "value" : "Loading timetables…"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargando horarios..."
+          }
         }
       }
     },
@@ -545,6 +839,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Loading…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargando..."
           }
         }
       }
@@ -557,6 +857,12 @@
             "state" : "translated",
             "value" : "Find what you love…"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca lo que te gusta..."
+          }
         }
       }
     },
@@ -567,6 +873,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search by line or place…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca por línea o lugar…"
           }
         },
         "it" : {
@@ -585,6 +897,12 @@
             "state" : "translated",
             "value" : "Search jobs..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar en los trabajos..."
+          }
         }
       }
     },
@@ -595,6 +913,12 @@
             "state" : "translated",
             "value" : "Search by type or number..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar por tipo o número..."
+          }
         }
       }
     },
@@ -604,6 +928,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recently Searched"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscadas recientemente"
           }
         }
       }
@@ -616,6 +946,12 @@
             "state" : "translated",
             "value" : "Light"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claro"
+          }
         }
       }
     },
@@ -625,6 +961,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Close"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
           }
         }
       }
@@ -636,6 +978,12 @@
             "state" : "translated",
             "value" : "Links"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enlaces"
+          }
         }
       }
     },
@@ -646,6 +994,12 @@
             "state" : "translated",
             "value" : "How does it work?"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cómo funciona?"
+          }
         }
       }
     },
@@ -655,6 +1009,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "How do I add a line to my favourites?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cómo puedo añadir una línea a favoritos?"
           }
         }
       }
@@ -667,6 +1027,12 @@
             "state" : "translated",
             "value" : "Fully accessible"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completamente accesible"
+          }
         }
       }
     },
@@ -677,6 +1043,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "All vehicles operating on this route are equipped with boarding ramps (manual or electric) and reserved seating. Furthermore, almost all stops (over 90%) have raised platforms, enabling passengers to board independently or with minimal assistance."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos los vehículos que circulan por esta línea están equipados con plataformas (manuales o eléctricas) y asientos reservados. Además, casi todas las paradas (más del 90 %) cuentan con andenes elevados que permiten subir al autobús de forma autónoma o con una asistencia mínima."
           }
         },
         "it" : {
@@ -694,6 +1066,12 @@
             "state" : "translated",
             "value" : "Share LavoraMi"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir LavoraMi"
+          }
         }
       }
     },
@@ -703,6 +1081,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Confirm"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmar"
           }
         }
       }
@@ -714,6 +1098,12 @@
             "state" : "translated",
             "value" : "Mail Confirmation"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmación Mail"
+          }
         }
       }
     },
@@ -723,6 +1113,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contacts"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacto"
           }
         }
       }
@@ -734,6 +1130,12 @@
             "state" : "translated",
             "value" : "Continue"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continúa"
+          }
         }
       }
     },
@@ -743,6 +1145,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You agree to the "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al continuar, aceptas los "
           }
         }
       }
@@ -754,12 +1162,24 @@
             "state" : "translated",
             "value" : "Check your internet connection and try again."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprueba tu conexión e inténtalo de nuevo."
+          }
         }
       }
     },
     "Copyright" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Copyright"
@@ -774,6 +1194,12 @@
             "state" : "translated",
             "value" : "Create account"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear cuenta"
+          }
         }
       }
     },
@@ -783,6 +1209,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "By creating a LavoraMi account, you agree to the Terms of Service and Privacy Policy. Go to Settings > Account to learn more."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al crear una cuenta en LavoraMi, aceptas las Condiciones de servicio y la Política de privacidad. Ve a Ajustes > Cuenta para obtener más información."
           }
         }
       }
@@ -794,6 +1226,12 @@
             "state" : "translated",
             "value" : "Line Details"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalles línea"
+          }
         }
       }
     },
@@ -803,6 +1241,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deviations"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desvíos"
           }
         }
       }
@@ -815,6 +1259,12 @@
             "state" : "translated",
             "value" : "by ATM"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de ATM"
+          }
         }
       }
     },
@@ -825,6 +1275,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "by Autoguidovie"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de Autoguidovie"
           }
         }
       }
@@ -837,6 +1293,12 @@
             "state" : "translated",
             "value" : "by Movibus"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de Movibus"
+          }
         }
       }
     },
@@ -847,6 +1309,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "by STAV"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de STAV"
           }
         }
       }
@@ -859,6 +1327,12 @@
             "state" : "translated",
             "value" : "by Trenord"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de Trenord"
+          }
         }
       }
     },
@@ -868,6 +1342,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DIRECTION: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DIRECCIÓN: %@"
           }
         }
       }
@@ -879,6 +1359,12 @@
             "state" : "translated",
             "value" : "DIRECTIONS:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DIRECCIONES:"
+          }
         }
       }
     },
@@ -889,6 +1375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "by STAR"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de STAR"
           }
         },
         "it" : {
@@ -906,6 +1398,12 @@
             "state" : "translated",
             "value" : "Delete Account"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar cuenta"
+          }
         }
       }
     },
@@ -916,12 +1414,24 @@
             "state" : "translated",
             "value" : "Clean the cache from your device to free up disk space."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borra la caché del dispositivo para liberar espacio en el disco."
+          }
         }
       }
     },
     "Email" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Email"
@@ -936,6 +1446,12 @@
             "state" : "translated",
             "value" : "Email sent to %@!"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email enviada a %@!"
+          }
         }
       }
     },
@@ -945,6 +1461,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Email sent!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Correo enviado!"
           }
         }
       }
@@ -956,6 +1478,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Works ended!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Trabajo terminado!"
           }
         },
         "it" : {
@@ -973,6 +1501,12 @@
             "state" : "translated",
             "value" : "Error"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
         }
       }
     },
@@ -982,6 +1516,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign out"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salir"
           }
         }
       }
@@ -993,6 +1533,12 @@
             "state" : "translated",
             "value" : "Guaranteed service hours: %@"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bandas garantizadas %@"
+          }
         }
       }
     },
@@ -1002,6 +1548,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "TRANSFER STATION:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PARADA DE INTERCAMBIO:"
           }
         }
       }
@@ -1013,6 +1565,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Worksite Stop"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parada Cantiere"
           }
         },
         "it" : {
@@ -1030,6 +1588,12 @@
             "state" : "translated",
             "value" : "Default Filter"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtro predeterminado"
+          }
         }
       }
     },
@@ -1039,6 +1603,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "End"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fin"
           }
         }
       }
@@ -1050,6 +1620,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Work on the %2$@ line in %1$@ is expected to be completed today. Visit the %3$@ website for more information."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las obras en %1$@ de la línea %2$@ deberían terminar hoy. Consulta la página web de %3$@ para conocer las últimas novedades."
           }
         },
         "it" : {
@@ -1069,6 +1645,12 @@
             "value" : "Work on the %2$@ lines in %1$@ is expected to be completed today. Visit the %3$@ website for more information."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las obras en %1$@ de las líneas %2$@ deberían terminar hoy. Consulta la página web de%3$@ para conocer las últimas novedades."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1084,6 +1666,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Work on the %2$@ line in %1$@ is expected to be completed today. Visit the %3$@ website for more information."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las obras en %1$@ de la línea %2$@ deberían terminar hoy. Consulta la página web de %3$@ para conocer las últimas novedades."
           }
         },
         "it" : {
@@ -1103,6 +1691,12 @@
             "value" : "Work on the %2$@ lines in %1$@ is expected to be completed today. Visit the %3$@ website for more information."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las obras en %1$@ de las líneas %2$@ deberían terminar hoy. Consulta la página web de %3$@ para conocer las últimas novedades."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1118,6 +1712,12 @@
             "state" : "translated",
             "value" : "Sources & Development"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuentes y Desarrollo"
+          }
         }
       }
     },
@@ -1127,6 +1727,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Data Sources"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuentes de Datos"
           }
         }
       }
@@ -1138,6 +1744,12 @@
             "state" : "translated",
             "value" : "File Format:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formato del Archivo:"
+          }
         }
       }
     },
@@ -1147,6 +1759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App’s functions"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funciones de la app"
           }
         }
       }
@@ -1158,12 +1776,24 @@
             "state" : "translated",
             "value" : "App’s Functions"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funciones de la app"
+          }
         }
       }
     },
     "Generali" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "General"
@@ -1178,6 +1808,12 @@
             "state" : "translated",
             "value" : "Manage"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestionar"
+          }
         }
       }
     },
@@ -1187,6 +1823,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Manage your Account"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestiona tu Cuenta"
           }
         }
       }
@@ -1198,6 +1840,12 @@
             "state" : "translated",
             "value" : "See whether a line is fully, partially or not at all accessible. All at a glance."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprueba si una línea está totalmente, parcialmente o nada accesible. Todo de un vistazo."
+          }
         }
       }
     },
@@ -1208,12 +1856,24 @@
             "state" : "translated",
             "value" : "Do you already have an account?"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Ya tienes una Cuenta?"
+          }
         }
       }
     },
     "Hello %@" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello %@"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hello %@"
@@ -1228,6 +1888,12 @@
             "state" : "translated",
             "value" : "Home"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicio"
+          }
         }
       }
     },
@@ -1237,6 +1903,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The LavoraMi servers are currently unavailable. We apologize for the inconvenience."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los servidores de LavoraMi no están disponibles en este momento. Lamentamos las molestias."
           }
         }
       }
@@ -1248,12 +1920,24 @@
             "state" : "translated",
             "value" : "Your information is secure. Create an account to sign up for our LavoraMi club."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus datos están a salvo. Crea una cuenta para registrarte en nuestro club LavoraMi."
+          }
         }
       }
     },
     "ID: %@" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID: %@"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ID: %@"
@@ -1268,6 +1952,12 @@
             "state" : "translated",
             "value" : "The bus may be 3 to 5 minutes late. This is the scheduled timetable."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El autobús puede llegar con un retraso de entre 3 y 5 minutos; este es el horario previsto."
+          }
         }
       }
     },
@@ -1277,6 +1967,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your Account"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu Cuenta"
           }
         }
       }
@@ -1288,6 +1984,12 @@
             "state" : "translated",
             "value" : "Unable to load data from the server."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pueden cargar los datos del servidor."
+          }
         }
       }
     },
@@ -1297,6 +1999,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Set all the notifications below to a specific status."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establece todas las notificaciones en un estado determinado."
           }
         }
       }
@@ -1308,6 +2016,12 @@
             "state" : "translated",
             "value" : "Settings"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes"
+          }
         }
       }
     },
@@ -1318,6 +2032,12 @@
             "state" : "translated",
             "value" : "Notification Settings"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes de Notificaciones"
+          }
         }
       }
     },
@@ -1327,6 +2047,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Based on your research"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Según tus búsquedas"
           }
         }
       }
@@ -1339,6 +2065,12 @@
             "state" : "translated",
             "value" : "In Progress"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Curso"
+          }
         }
       }
     },
@@ -1348,6 +2080,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "IN PROGRESS"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EN CURSO"
           }
         }
       }
@@ -1359,6 +2097,12 @@
             "state" : "translated",
             "value" : "Leaving"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En salida"
+          }
         }
       }
     },
@@ -1369,6 +2113,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "If you notice any discrepancies between our app and your mobile plan, please report the issue to: info@lavorami.it!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si detectas alguna inconsistencia en nuestra aplicación con respecto a tu línea, informa de este problema a: info@lavorami.it."
           }
         },
         "it" : {
@@ -1388,6 +2138,12 @@
             "value" : "Report any errors"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informa de cualquier error"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1403,6 +2159,12 @@
             "state" : "translated",
             "value" : "Information"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información"
+          }
         }
       }
     },
@@ -1412,6 +2174,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Component Information"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información sobre el componente"
           }
         }
       }
@@ -1423,6 +2191,12 @@
             "state" : "translated",
             "value" : "Accessibility Information"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información sobre accesibilidad"
+          }
         }
       }
     },
@@ -1432,6 +2206,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Info about deviations"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información sobre los mapas"
           }
         }
       }
@@ -1511,6 +2291,12 @@
             "state" : "translated",
             "value" : "Instagram"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instagram"
+          }
         }
       }
     },
@@ -1520,6 +2306,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Changes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intercambios"
           }
         }
       }
@@ -1531,6 +2323,12 @@
             "state" : "translated",
             "value" : "Send Email"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar correo electrónico"
+          }
         }
       }
     },
@@ -1541,12 +2339,24 @@
             "state" : "translated",
             "value" : "Submit a request to our team to download your data."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envía una solicitud a nuestro equipo para descargar tus datos."
+          }
         }
       }
     },
     "L" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "L"
@@ -1561,6 +2371,12 @@
             "state" : "translated",
             "value" : "The line %@ has been added to the section “Your Lines”"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡La línea %@ se ha añadido a la sección “Tus líneas”!"
+          }
         }
       }
     },
@@ -1571,12 +2387,24 @@
             "state" : "translated",
             "value" : "THE LINE IS AVAILABLE ONLY ON WORKING DAYS."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LA LÍNEA ESTÁ ACTIVA SOLO EN DÍAS LABORABLES."
+          }
         }
       }
     },
     "LavoraMi" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LavoraMi"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "LavoraMi"
@@ -1591,6 +2419,12 @@
             "state" : "translated",
             "value" : "LavoraMi is an independent application developed by a third party and is NOT in any way affiliated with, supported by, authorized by, or sponsored by ATM S.p.A., Trenord S.r.l., the FNM Group, RFI, or any other transportation entities mentioned.\n\nAll data displayed in this app (schedules, service status, alerts) is collected from public sources solely to improve understanding and for informational purposes only.\n\nNo warranty, express or implied, is provided regarding the accuracy, completeness, reliability, or timeliness of the information provided. The information may not reflect last-minute changes.\n\nUse of the app is entirely at your own risk. The developer disclaims all liability for any inaccuracies, delays, service failures, or direct or indirect damages resulting from reliance on the information provided by this app.\n\nFor critical travel decisions, we recommend always referring to official channels, audio announcements, and signage at the station.\n\nAll trademarks, logos, and trade names mentioned belong to their respective owners."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LavoraMi es una aplicación independiente desarrollada por terceros y NO está afiliada, respaldada, autorizada ni patrocinada en modo alguno por ATM S.p.A., Trenord S.r.l., Gruppo FNM, RFI ni otras entidades de transporte mencionadas.\n\nTodos los datos que se muestran en esta aplicación (horarios, estado del servicio, avisos) se recopilan de fuentes públicas con el único fin de facilitar su comprensión y con fines meramente informativos.\n\nNo se ofrece garantía alguna, ni explícita ni implícita, respecto a la exactitud, integridad, fiabilidad o puntualidad de la información proporcionada. Es posible que la información no refleje cambios de última hora.\n\nEl uso de la aplicación es bajo su propia responsabilidad. El desarrollador declina toda responsabilidad por posibles inexactitudes, retrasos, falta de servicio, daños directos o indirectos derivados de la confianza depositada en la información proporcionada por esta aplicación.\n\nPara decisiones de viaje críticas, se recomienda consultar siempre los canales oficiales, los anuncios de voz y la señalización presente en la estación.\n\nTodas las marcas, logotipos y nombres comerciales mencionados pertenecen a sus legítimos propietarios."
+          }
         }
       }
     },
@@ -1600,6 +2434,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LavoraMi shows the accessibility of a line based on the facilities at stations and the type of transport used."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LavoraMi muestra la accesibilidad de una línea en función de las instalaciones de las estaciones y del tipo de medio de transporte utilizado."
           }
         }
       }
@@ -1611,6 +2451,12 @@
             "state" : "translated",
             "value" : "LavoraMi may not show the current route for this line, as there are currently diversions, section closures or stations that are inaccessible. Please check the notices in the ‘Line Works’ section below!"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es posible que LavoraMi no muestre el recorrido actual de esta línea, ya que hay desvíos, interrupciones en el trayecto o estaciones inaccesibles. ¡Consulte los avisos en la sección «Obras en la línea» que aparece a continuación!"
+          }
         }
       }
     },
@@ -1621,6 +2467,12 @@
             "state" : "translated",
             "value" : "LavoraMi obtains this information from authoritative and reliable sources. However, the data may not be up to date."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LavoraMi obtiene esta información de fuentes fidedignas y fiables, por lo que es posible que los datos no estén actualizados al minuto."
+          }
         }
       }
     },
@@ -1630,6 +2482,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LavoraMi obtains this information from authoritative and reliable sources; any route deviations are indicated in the journeys shown below, and you can find alternative travel options in the relevant section."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LavoraMi obtiene esta información de fuentes fidedignas y fiables; las posibles desviaciones en el recorrido se indican en los itinerarios que se muestran a continuación; puede consultar las posibles alternativas de viaje en la sección correspondiente."
           }
         }
       }
@@ -1642,6 +2500,12 @@
             "state" : "translated",
             "value" : "This week’s works..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obras de la semana..."
+          }
         }
       }
     },
@@ -1651,6 +2515,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Work in progress"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obras en curso"
           }
         }
       }
@@ -1662,6 +2532,12 @@
             "state" : "translated",
             "value" : "Line works"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obras en línea"
+          }
         }
       }
     },
@@ -1671,6 +2547,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "WORK ON THE LINE:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OBRAS EN LA LÍNEA:"
           }
         }
       }
@@ -1682,6 +2564,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The map shows the original route; see the diversions in the ‘Line Works’ section!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El mapa muestra el trazado original del tramo; consulta los desvíos en la sección: \\”Obras en línea\\”."
           }
         },
         "it" : {
@@ -1701,6 +2589,12 @@
             "value" : "View the works"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mira las obras"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1716,6 +2610,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "⚠️ Work starts tomorrow!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ ¡Las obras empiezan mañana!"
           }
         },
         "it" : {
@@ -1735,6 +2635,12 @@
             "value" : "Works Started!"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Las obras han comenzado!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1750,12 +2656,24 @@
             "state" : "translated",
             "value" : "The settings are saved automatically."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La configuración se guarda automáticamente."
+          }
         }
       }
     },
     "Leading" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leading"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Leading"
@@ -1770,6 +2688,12 @@
             "state" : "translated",
             "value" : "Open-Source Libraries"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bibliotecas de código abierto"
+          }
         }
       }
     },
@@ -1779,6 +2703,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "License:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licencia:"
           }
         }
       }
@@ -1790,6 +2720,12 @@
             "state" : "translated",
             "value" : "line"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "línea"
+          }
         }
       }
     },
@@ -1799,6 +2735,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Line Selected"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Línea activada"
           }
         }
       }
@@ -1810,6 +2752,12 @@
             "state" : "translated",
             "value" : "Line set to be displayed on the app widget!"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Línea configurada para que se vea en el widget de la aplicación!"
+          }
         }
       }
     },
@@ -1819,6 +2767,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Line Saved"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Línea guardada"
           }
         }
       }
@@ -1830,6 +2784,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fully accessible."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Totalmente accesible."
           }
         },
         "it" : {
@@ -1849,6 +2809,12 @@
             "value" : "Not accessible."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No accesible."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1866,6 +2832,12 @@
             "value" : "Partially accessible."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesible parcialmente."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1881,6 +2853,12 @@
             "state" : "translated",
             "value" : "Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas"
+          }
         }
       }
     },
@@ -1890,6 +2868,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ATM Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas ATM"
           }
         }
       }
@@ -1901,6 +2885,12 @@
             "state" : "translated",
             "value" : "Autoguidovie Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas Autoguidovie"
+          }
         }
       }
     },
@@ -1910,6 +2900,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bus Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas de Autobús"
           }
         }
       }
@@ -1921,6 +2917,12 @@
             "state" : "translated",
             "value" : "Bus Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas de Autobús"
+          }
         }
       }
     },
@@ -1930,6 +2932,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Malpensa Express Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas Malpensa Express"
           }
         }
       }
@@ -1941,6 +2949,12 @@
             "state" : "translated",
             "value" : "Metro Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas Metro"
+          }
         }
       }
     },
@@ -1950,6 +2964,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Movibus Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas Movibus"
           }
         }
       }
@@ -1961,6 +2981,12 @@
             "state" : "translated",
             "value" : "Favorite Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas Favoritas"
+          }
         }
       }
     },
@@ -1970,6 +2996,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regional Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas R"
           }
         }
       }
@@ -1981,6 +3013,12 @@
             "state" : "translated",
             "value" : "Regio Express Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas RE"
+          }
         }
       }
     },
@@ -1990,6 +3028,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regio Express Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas Regio Express"
           }
         }
       }
@@ -2001,6 +3045,12 @@
             "state" : "translated",
             "value" : "Regional Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas Regional"
+          }
         }
       }
     },
@@ -2010,6 +3060,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suburban Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas S"
           }
         }
       }
@@ -2021,6 +3077,12 @@
             "state" : "translated",
             "value" : "STAR Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas STAR"
+          }
         }
       }
     },
@@ -2030,6 +3092,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "STAV Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas STAV"
           }
         }
       }
@@ -2041,6 +3109,12 @@
             "state" : "translated",
             "value" : "Suburban Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas Suburbanas"
+          }
         }
       }
     },
@@ -2050,6 +3124,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tram Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas de Tranvía"
           }
         }
       }
@@ -2061,6 +3141,12 @@
             "state" : "translated",
             "value" : "Tram Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas de Tranvía"
+          }
         }
       }
     },
@@ -2070,6 +3156,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "TILO Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas TILO"
           }
         }
       }
@@ -2081,6 +3173,12 @@
             "state" : "translated",
             "value" : "Trenord Lines"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas Trenord"
+          }
         }
       }
     },
@@ -2091,12 +3189,24 @@
             "state" : "translated",
             "value" : "Language"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma"
+          }
         }
       }
     },
     "M1" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "M1"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "M1"
@@ -2111,6 +3221,12 @@
             "state" : "translated",
             "value" : "M3"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "M3"
+          }
         }
       }
     },
@@ -2120,6 +3236,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Maintenance in progress."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantenimiento en curso."
           }
         }
       }
@@ -2131,6 +3253,12 @@
             "state" : "translated",
             "value" : "Map"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mapa"
+          }
         }
       }
     },
@@ -2141,6 +3269,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Good morning,\\\\nI would like to request that my account data be sent in %1$@ format to the email address: %2$@\\\\nMessage sent from the LavoraMi app."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buongiorno,\\nVorrei richiedere l'invio dei miei dati in formato %1$@ dell'Account con mail: %2$@\\nMessaggio inviato dall'App LavoraMi."
           }
         },
         "it" : {
@@ -2159,12 +3293,24 @@
             "state" : "translated",
             "value" : "Metro"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metro"
+          }
         }
       }
     },
     "Milano Scalo Romana FS" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Milano Scalo Romana FS"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Milano Scalo Romana FS"
@@ -2179,6 +3325,12 @@
             "state" : "translated",
             "value" : "Change the time when notifications are delivered."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia la hora en la que se reciben las notificaciones."
+          }
         }
       }
     },
@@ -2189,6 +3341,12 @@
             "state" : "translated",
             "value" : "Edit Password"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar Contraseña"
+          }
         }
       }
     },
@@ -2198,6 +3356,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show Strike Banners"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar Banner Huelgas"
           }
         },
         "it" : {
@@ -2215,6 +3379,12 @@
             "state" : "translated",
             "value" : "Displays the strike banner on the Home page when strikes are taking place."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra el banner de las huelgas en la página de inicio cuando haya alguna."
+          }
         }
       }
     },
@@ -2224,6 +3394,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Display the button to translate the works into Italian as well."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra il pulsante per tradurre i lavori anche nella lingua italiana."
           }
         }
       }
@@ -2235,6 +3411,12 @@
             "state" : "translated",
             "value" : "View your recent searches on the Lines page."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra tus búsquedas recientes en la parte superior de la página de Líneas."
+          }
         }
       }
     },
@@ -2244,6 +3426,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show the status of the selected line"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra el estado de la línea seleccionada."
           }
         }
       }
@@ -2255,6 +3443,12 @@
             "state" : "translated",
             "value" : "Show Error Messages"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar Mensajes de Error"
+          }
         }
       }
     },
@@ -2264,6 +3458,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Displays error messages when data download from the server fails."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra mensajes de error cuando falla la Descarga de datos."
           }
         }
       }
@@ -2275,6 +3475,12 @@
             "state" : "translated",
             "value" : "Show Translate Button"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra Pulsante Traduci"
+          }
         }
       }
     },
@@ -2285,16 +3491,11 @@
             "state" : "translated",
             "value" : "Show Recent Research"
           }
-        }
-      }
-    },
-    "Mostra Schermata Novità 1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show What’s New Screen"
+            "value" : "Mostrar Recientes"
           }
         }
       }
@@ -2302,6 +3503,12 @@
     "Movibus" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movibus"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Movibus"
@@ -2316,6 +3523,12 @@
             "state" : "translated",
             "value" : "No changes with this line."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay correspondencias con esta línea."
+          }
         }
       }
     },
@@ -2325,6 +3538,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No results found for this filter"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se han encontrado resultados para este filtro."
           }
         }
       }
@@ -2336,6 +3555,12 @@
             "state" : "translated",
             "value" : "No works found for: “%@”"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se han encontrado resultados para: “%@”"
+          }
         }
       }
     },
@@ -2345,6 +3570,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No results for: “%@\""
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se han encontrado resultados para: “%@”."
           }
         }
       }
@@ -2356,6 +3587,12 @@
             "state" : "translated",
             "value" : "No Internet connection."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay conexión a Internet."
+          }
         }
       }
     },
@@ -2365,6 +3602,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No routes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay carreras"
           }
         }
       }
@@ -2376,6 +3619,12 @@
             "state" : "translated",
             "value" : "No routes scheduled for today"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay carreras previstas para hoy"
+          }
         }
       }
     },
@@ -2385,6 +3634,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No transfer stops."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay paradas de interscambio."
           }
         }
       }
@@ -2396,6 +3651,12 @@
             "state" : "translated",
             "value" : "No recently searched lines."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se han buscado líneas recientemente."
+          }
         }
       }
     },
@@ -2406,6 +3667,12 @@
             "state" : "translated",
             "value" : "Full name"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre completo"
+          }
         }
       }
     },
@@ -2415,6 +3682,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Name:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre:"
           }
         }
       }
@@ -2427,6 +3700,12 @@
             "state" : "translated",
             "value" : "Not Accessible"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Accesible"
+          }
         }
       }
     },
@@ -2437,6 +3716,12 @@
             "state" : "translated",
             "value" : "No services from this stop today."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy no hay servicios disponibles para esta parada."
+          }
         }
       }
     },
@@ -2446,6 +3731,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "There are no works on this line."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay obras en esta línea."
           }
         }
       }
