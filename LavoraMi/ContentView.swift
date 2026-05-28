@@ -3316,7 +3316,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Firebase",
-            version: "12.13.0",
+            version: "12.14.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -3329,7 +3329,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAdsOnDeviceConversion",
-            version: "3.5.0",
+            version: "3.6.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2023 Google LLC",
             licenseText: """
@@ -3342,7 +3342,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAppMeasurement",
-            version: "12.13.0",
+            version: "12.14.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -3510,7 +3510,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-concurrency-extras",
-            version: "1.3.2",
+            version: "1.4.0",
             license: "MIT License",
             copyright: "Copyright (c) 2023 Point-Free, Inc.",
             licenseText: """
