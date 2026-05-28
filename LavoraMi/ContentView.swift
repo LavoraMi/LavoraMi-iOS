@@ -2720,10 +2720,9 @@ struct NotificationsView: View {
                         .disabled(!enableNotifications)
                     }
                     .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                    .listRowBackground(Color(uiColor: .secondarySystemBackground))
                     Section("Altre Notifiche") {
                         Toggle(isOn: $strikeNotifications) {
-                            Label("Notifiche Scioperi", systemImage: "bell.badge.waveform.fill")
+                            Label("Notifiche Scioperi", systemImage: "megaphone.fill")
                         }
                         .onChange(of: strikeNotifications){
                             viewModel.fetchVariables()
