@@ -913,6 +913,7 @@ struct MainView: View {
                                             }
                                         }
                                         .padding(.top, 5)
+                                        .padding(.bottom, 20)
                                     }
                                 }
                             }
