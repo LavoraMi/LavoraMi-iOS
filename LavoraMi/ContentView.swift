@@ -2959,12 +2959,6 @@ struct InfoView: View {
                     }
                     .padding(.top, 5)
                     .padding(.bottom, 20)
-                    NavigationLink(destination: LibrariesView()) {
-                        Label("Librerie Open-Source", systemImage: "books.vertical.fill")
-                            .font(.system(size: 20))
-                    }
-                    .padding(.top, 5)
-                    .padding(.bottom, 20)
                     .sheet(isPresented: $showMailView) {
                         MailView(data: $mailData) { result in
                             print(result)
@@ -2978,6 +2972,12 @@ struct InfoView: View {
                         .font(.system(size: 30))
                         .bold()
                         .padding(.top, 20)
+                    NavigationLink(destination: LibrariesView()) {
+                        Label("Librerie Open-Source", systemImage: "books.vertical.fill")
+                            .font(.system(size: 20))
+                    }
+                    .padding(.top, 5)
+                    .padding(.bottom, 20)
                     Button {
                         let url = URL(string: "https://www.lavorami.it/privacyPolicy\((colorScheme == .dark) ? "" : "?theme=light")")!
                         
