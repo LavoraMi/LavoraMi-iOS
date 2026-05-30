@@ -1000,137 +1000,160 @@ struct WorkInProgressRow: View {
     @AppStorage("showTranslateButton") var showTranslateButton: Bool = false
     
     private let italianLoc = Date.FormatStyle(date: .abbreviated, time: .omitted).locale(Locale(identifier: "it_IT"))
+    private var isImportant: Bool {item.details.contains("[LAVORO IMPORTANTE]")}
+    private var cleanedDetails: String {
+        item.details
+            .replacingOccurrences(of: "[LAVORO IMPORTANTE]", with: "")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
     
-    var shouldShowTranslationButton: Bool { Locale.current.language.languageCode?.identifier != "it" || showTranslateButton == true }
-    var textToTranslate: String { "\(item.title)\n\n\(item.details)\n\nStrade: \(item.roads)\n\nLinee coinvolte: \(item.lines.joined(separator: ", "))" }
+    var shouldShowTranslationButton: Bool {Locale.current.language.languageCode?.identifier != "it" || showTranslateButton == true}
+    var textToTranslate: String {"\(item.title)\n\n\(cleanedDetails)\n\nStrade: \(item.roads)\n\nLinee coinvolte: \(item.lines.joined(separator: ", "))"}
 
     var body: some View {
-        DisclosureGroup(isExpanded: $isExpanded) {
-            VStack(alignment: .leading, spacing: 12) {
-                Text(item.details)
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
-                if shouldShowTranslationButton {
-                    Button {
-                        showTranslation = true
-                    } label: {
-                        Label("Traduci", systemImage: "translate")
-                            .font(.footnote.weight(.semibold))
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(Color.accentColor.opacity(0.15))
-                            .foregroundStyle(Color.accentColor)
-                            .clipShape(Capsule())
-                    }
-                }
-            }
-            .padding(.top, 8)
-        } label: {
-            VStack(alignment: .leading, spacing: 8) {
-                if item.titleIcon == "point.bottomleft.forward.to.arrow.triangle.uturn.scurvepath" {
-                    if #available(iOS 18, *) {
-                        Label(item.title, systemImage: item.titleIcon)
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundStyle(Color("TextColor"))
-                    } else {
-                        Label(item.title, systemImage: "arrow.up.forward.app.fill")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundStyle(Color("TextColor"))
-                    }
-                } else if item.titleIcon == "arrow.trianglehead.2.counterclockwise" {
-                    if #available(iOS 18, *) {
-                        Label(item.title, systemImage: item.titleIcon)
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundStyle(Color("TextColor"))
-                    } else {
-                        Label(item.title, systemImage: "shuffle")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundStyle(Color("TextColor"))
-                    }
-                } else {
-                    Label(item.title, systemImage: item.titleIcon)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundStyle(Color("TextColor"))
-                }
-                
-                Label(item.roads, systemImage: "mappin")
-                    .font(.subheadline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundStyle(Color("TextColor"))
+        VStack(spacing: 0) {
+            if isImportant {
+                HStack(spacing: 8) {
+                    Image(systemName: "exclamationmark.octagon.fill")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundStyle(.white)
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(item.lines, id: \.self) { line in
-                            if line.contains("Filobus") {
-                                Label(line, systemImage: "bolt.fill")
-                                    .font(.system(size: 12, weight: .bold))
-                                    .foregroundStyle(.white)
-                                    .padding(.vertical, 4)
-                                    .padding(.horizontal, 8)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .fill(getColor(for: line))
-                                    )
-                            } else if line.starts(with: "N") {
-                                Label(line, systemImage: "moon.fill")
-                                    .font(.system(size: 12, weight: .bold))
-                                    .foregroundStyle(.white)
-                                    .padding(.vertical, 4)
-                                    .padding(.horizontal, 8)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .fill(getColor(for: line))
-                                    )
-                            } else {
-                                Text(line)
-                                    .font(.system(size: 12, weight: .bold))
-                                    .foregroundStyle(.white)
-                                    .padding(.vertical, 4)
-                                    .padding(.horizontal, 8)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .fill(getColor(for: line))
-                                    )
-                            }
+                    Text("LAVORO IMPORTANTE")
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(.white)
+                        .tracking(0.5)
+
+                    Spacer()
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 9)
+                .background(Color.red)
+            }
+            DisclosureGroup(isExpanded: $isExpanded) {
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(cleanedDetails)
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                    if shouldShowTranslationButton {
+                        Button {
+                            showTranslation = true
+                        } label: {
+                            Label("Traduci", systemImage: "translate")
+                                .font(.footnote.weight(.semibold))
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                                .background(Color.accentColor.opacity(0.15))
+                                .foregroundStyle(Color.accentColor)
+                                .clipShape(Capsule())
                         }
                     }
                 }
-                
-                VStack(spacing: 6) {
-                    ProgressView(value: item.progress)
-                        .progressViewStyle(.linear)
-                        .tint(item.progress == 1.0 ? .green : .red)
-
-                    HStack {
-                        Text(item.startDate.formatted(self.italianLoc))
-                            .font(.caption)
-                            .foregroundStyle(Color("TextColor"))
-                        Spacer()
-                            .frame(height: 8)
-                        Text(item.endDate.formatted(self.italianLoc))
-                            .font(.caption)
+                .padding(.top, 8)
+            } label: {
+                VStack(alignment: .leading, spacing: 8) {
+                    if item.titleIcon == "point.bottomleft.forward.to.arrow.triangle.uturn.scurvepath" {
+                        if #available(iOS 18, *) {
+                            Label(item.title, systemImage: item.titleIcon)
+                                .font(.headline)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundStyle(Color("TextColor"))
+                        } else {
+                            Label(item.title, systemImage: "arrow.up.forward.app.fill")
+                                .font(.headline)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                    } else if item.titleIcon == "arrow.trianglehead.2.counterclockwise" {
+                        if #available(iOS 18, *) {
+                            Label(item.title, systemImage: item.titleIcon)
+                                .font(.headline)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundStyle(Color("TextColor"))
+                        } else {
+                            Label(item.title, systemImage: "shuffle")
+                                .font(.headline)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                    } else {
+                        Label(item.title, systemImage: item.titleIcon)
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle(Color("TextColor"))
                     }
-                    Spacer()
-                        .frame(height: 8)
-                    Text(item.company)
+                    Label(item.roads, systemImage: "mappin")
+                        .font(.subheadline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle(Color("TextColor"))
-                        .padding(.top, 4)
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(item.lines, id: \.self) { line in
+                                if line.contains("Filobus") {
+                                    Label(line, systemImage: "bolt.fill")
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 4)
+                                        .padding(.horizontal, 8)
+                                        .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
+                                } else if line.starts(with: "N") {
+                                    Label(line, systemImage: "moon.fill")
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 4)
+                                        .padding(.horizontal, 8)
+                                        .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
+                                } else {
+                                    Text(line)
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 4)
+                                        .padding(.horizontal, 8)
+                                        .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
+                                }
+                            }
+                        }
+                    }
+                    VStack(spacing: 6) {
+                        ProgressView(value: item.progress)
+                            .progressViewStyle(.linear)
+                            .tint(item.progress == 1.0 ? .green : .red)
+
+                        HStack {
+                            Text(item.startDate.formatted(self.italianLoc))
+                                .font(.caption)
+                                .foregroundStyle(Color("TextColor"))
+                            Spacer()
+                                .frame(height: 8)
+                            Text(item.endDate.formatted(self.italianLoc))
+                                .font(.caption)
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                        Spacer().frame(height: 8)
+                        Text(item.company)
+                            .foregroundStyle(Color("TextColor"))
+                            .padding(.top, 4)
+                    }
                 }
             }
+            .padding(16)
+            .background(Color(.secondarySystemBackground))
         }
-        .padding(16)
-        .background(
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay(
             RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .fill(Color(.secondarySystemBackground))
+                .stroke(
+                    isImportant ? Color.red.opacity(0.5) : Color.clear,
+                    lineWidth: 1.5
+                )
         )
-        .shadow(color: .black.opacity(0.06), radius: 6, x: 0, y: 3)
+        .shadow(
+            color: isImportant ? .red.opacity(0.30) : .black.opacity(0.06),
+            radius: isImportant ? 14 : 6,
+            x: 0,
+            y: isImportant ? 4 : 3
+        )
         .translationPresentation(isPresented: $showTranslation, text: textToTranslate)
     }
 }
