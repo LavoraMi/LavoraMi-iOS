@@ -799,7 +799,7 @@ struct MainView: View {
                                     .foregroundStyle(selectedFilter == filter ? .white : .primary)
                                 }
                             }
-                            else{
+                            else {
                                 Text(filter.localizedTitle)
                                 .font(.subheadline)
                                 .fontWeight(.medium)
@@ -816,7 +816,7 @@ struct MainView: View {
                                         }
                                     }
                                 )
-                                .foregroundStyle(selectedFilter == filter ? Color(.systemBackground) : .primary)
+                                .foregroundStyle(selectedFilter == filter ? .white : .primary)
                             }
                         }
                     }
