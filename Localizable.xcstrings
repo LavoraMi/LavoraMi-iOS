@@ -2690,6 +2690,22 @@
         }
       }
     },
+    "LAVORO IMPORTANTE" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IMPORTANT WORK"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OBRA IMPORTANTE"
+          }
+        }
+      }
+    },
     "Le impostazioni vengono salvate automaticamente." : {
       "localizations" : {
         "en" : {
