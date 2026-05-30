@@ -3010,6 +3010,7 @@ struct InfoView: View {
                     .padding(.bottom, 20)
                 }
             }
+            .padding(.bottom, 20)
         }
         .sheet(item: $selectedURL) { url in
             SafariView(url: url)
