@@ -1880,7 +1880,7 @@ struct AccountView: View {
                             .font(.system(size: 40, weight: .bold))
                             .foregroundStyle(.primary)
 
-                        Text("Accedi al tuo account per continuare.")
+                        Text("Accedi al tuo Account per continuare.")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }

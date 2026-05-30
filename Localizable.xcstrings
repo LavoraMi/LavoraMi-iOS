@@ -308,18 +308,18 @@
         }
       }
     },
-    "Accedi al tuo account per continuare." : {
+    "Accedi al tuo Account per continuare." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sign in to your account to continue."
+            "value" : "Sign in to your Account to continue."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Inicia sesión en tu cuenta para continuar."
+            "value" : "Inicia sesión en tu Cuenta para continuar."
           }
         }
       }
