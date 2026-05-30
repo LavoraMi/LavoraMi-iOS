@@ -4196,18 +4196,18 @@
         }
       }
     },
-    "Per modificare la lingua dell'App, sarai reindirizzato alle impostazioni dell'app su iOS." : {
+    "Per modificare la lingua, sarai reindirizzato alle impostazioni dell'app su iOS." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To change the app’s language, you will be redirected to the app settings on iOS."
+            "value" : "To change the language, you will be redirected to the app settings on iOS."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Para cambiar el idioma de la aplicación, se te redirigirá a los ajustes de la aplicación en iOS."
+            "value" : "Para cambiar el idioma, se te redirigirá a los ajustes de la aplicación en iOS."
           }
         }
       }

@@ -1829,7 +1829,7 @@ struct AppearancePickerView: View {
             } header: {
                 Text("Lingua")
             } footer: {
-                Text("Per modificare la lingua dell'App, sarai reindirizzato alle impostazioni dell'app su iOS.")
+                Text("Per modificare la lingua, sarai reindirizzato alle impostazioni dell'app su iOS.")
             }
         }
         .navigationTitle("Aspetto e Lingua")
