@@ -539,23 +539,6 @@
         }
       }
     },
-    "Apple Private Relay Email" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Private Relay Email"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Private Relay Email"
-          }
-        }
-      }
-    },
     "Apri Impostazioni" : {
       "localizations" : {
         "en" : {
@@ -4766,23 +4749,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Resumen de IA"
-          }
-        }
-      }
-    },
-    "Riepilogo in corso..." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Summary in progress..."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resumen en curso..."
           }
         }
       }
