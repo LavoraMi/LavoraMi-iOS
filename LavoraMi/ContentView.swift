@@ -2549,7 +2549,7 @@ struct AdvancedOptionsView: View {
         List{
             Section(footer: Text("Mostra messaggi di errore quando fallisce il Download dei dati.")){
                 Toggle(isOn: $showErrorMessages){
-                    Label("Mostra Messaggi Di Errore", systemImage: "exclamationmark.bubble.fill")
+                    Label("Mostra Messaggi Errore", systemImage: "exclamationmark.bubble.fill")
                 }
             }
             .listRowBackground(Color(uiColor: .secondarySystemBackground))

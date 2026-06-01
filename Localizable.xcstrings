@@ -3493,22 +3493,6 @@
         }
       }
     },
-    "Mostra Messaggi Di Errore" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show Error Messages"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar Mensajes de Error"
-          }
-        }
-      }
-    },
     "Mostra messaggi di errore quando fallisce il Download dei dati." : {
       "localizations" : {
         "en" : {
@@ -3521,6 +3505,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Muestra mensajes de error cuando falla la Descarga de datos."
+          }
+        }
+      }
+    },
+    "Mostra Messaggi Errore" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Error Messages"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar Mensajes Error"
           }
         }
       }
