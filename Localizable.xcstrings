@@ -4602,6 +4602,12 @@
         }
       }
     },
+    "Riassumi" : {
+
+    },
+    "Riassumo..." : {
+
+    },
     "Riccardo De Diana" : {
       "localizations" : {
         "en" : {
@@ -4720,6 +4726,12 @@
           }
         }
       }
+    },
+    "Riepilogo AI" : {
+
+    },
+    "Riepilogo in corso..." : {
+
     },
     "Ripristina impostazioni" : {
       "localizations" : {

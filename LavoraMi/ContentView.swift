@@ -20,6 +20,7 @@ import StoreKit
 import Combine
 import SystemConfiguration
 import CoreLocation
+import FoundationModels
 
 internal import Auth
 
@@ -995,8 +996,11 @@ struct MainView: View {
 
 struct WorkInProgressRow: View {
     let item: WorkItem
+    
     @State private var isExpanded = false
     @State private var showTranslation = false
+    @State private var aiSummary: String = ""
+    @State private var isAiSummaryLoading: Bool = false
     
     @AppStorage("showTranslateButton") var showTranslateButton: Bool = false
     
@@ -1036,18 +1040,53 @@ struct WorkInProgressRow: View {
                         .font(.body)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
-                    if shouldShowTranslationButton {
-                        Button {
-                            showTranslation = true
-                        } label: {
-                            Label("Traduci", systemImage: "translate")
-                                .font(.footnote.weight(.semibold))
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
-                                .background(Color.accentColor.opacity(0.15))
-                                .foregroundStyle(Color.accentColor)
-                                .clipShape(Capsule())
+                    HStack(spacing: 8) {
+                        if shouldShowTranslationButton {
+                            Button {
+                                showTranslation = true
+                            } label: {
+                                Label("Traduci", systemImage: "translate")
+                                    .font(.footnote.weight(.semibold))
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
+                                    .background(Color.accentColor.opacity(0.15))
+                                    .foregroundStyle(Color.accentColor)
+                                    .clipShape(Capsule())
+                            }
                         }
+
+                        if #available(iOS 26, *) {
+                            AISummarizeButton(
+                                text: cleanedDetails,
+                                summary: $aiSummary,
+                                isLoading: $isAiSummaryLoading
+                            )
+                        }
+                    }
+                    
+                    if isAiSummaryLoading {
+                        HStack(spacing: 6) {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                            Text("Riepilogo in corso...")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(.top, 4)
+                    } else if !aiSummary.isEmpty {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Label("Riepilogo AI", systemImage: "sparkles")
+                                .font(.footnote.weight(.semibold))
+                                .foregroundStyle(.secondary)
+                            Text(aiSummary)
+                                .font(.footnote)
+                                .foregroundStyle(.primary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .padding(10)
+                        .background(Color.accentColor.opacity(0.07))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .padding(.top, 4)
                     }
                 }
                 .padding(.top, 8)
@@ -1156,6 +1195,62 @@ struct WorkInProgressRow: View {
             y: isImportant ? 4 : 3
         )
         .translationPresentation(isPresented: $showTranslation, text: textToTranslate)
+    }
+}
+
+@available(iOS 26, *)
+struct AISummarizeButton: View {
+    let text: String
+    @Binding var summary: String
+    @Binding var isLoading: Bool
+
+    private var isAvailable: Bool {
+        if case .available = SystemLanguageModel.default.availability { return true }
+        return false
+    }
+
+    var body: some View {
+        if isAvailable {
+            Button {
+                Task { await summarize() }
+            } label: {
+                Label(
+                    isLoading ? "Riassumo..." : "Riassumi",
+                    systemImage: "sparkles"
+                )
+                .font(.footnote.weight(.semibold))
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+                .background(Color.red.opacity(0.12))
+                .foregroundStyle(.red.gradient)
+                .clipShape(Capsule())
+            }
+            .disabled(isLoading)
+        }
+    }
+
+    private func summarize() async {
+        isLoading = true
+        summary = ""
+        defer { isLoading = false }
+
+        let session = LanguageModelSession {
+            """
+            Sei un assistente per i trasporti pubblici lombardi.
+            Riassumi in 2-3 frasi brevi e chiare la descrizione di un lavoro/disservizio,
+            indicando il tipo di problema e le conseguenze per i passeggeri.
+            Rispondi sempre in italiano, senza elenchi puntati.
+            """
+        }
+
+        do {
+            let stream = session.streamResponse(to: text)
+            for try await partial in stream {
+                summary = partial.content
+            }
+        } catch {
+            summary = "Impossibile generare il riepilogo."
+        }
     }
 }
 
