@@ -1056,11 +1056,13 @@ struct WorkInProgressRow: View {
                         }
 
                         if #available(iOS 26, *) {
-                            AISummarizeButton(
-                                text: cleanedDetails,
-                                summary: $aiSummary,
-                                isLoading: $isAiSummaryLoading
-                            )
+                            if(Locale.current.language.languageCode?.identifier == "it") {
+                                AISummarizeButton(
+                                    text: cleanedDetails,
+                                    summary: $aiSummary,
+                                    isLoading: $isAiSummaryLoading
+                                )
+                            }
                         }
                     }
                     
