@@ -2753,7 +2753,7 @@ struct NotificationsView: View {
                         }
                         .disabled(!enableNotifications)
                         Toggle(isOn: $enablePushNotifications) {
-                            Label("Notifiche Push", systemImage: "bell.and.waves.left.and.right.fill")
+                            Label("Notifiche In Tempo Reale", systemImage: "bell.and.waves.left.and.right.fill")
                         }
                         .onChange(of: enablePushNotifications) { oldValue, enabled in
                             NotificationCenter.default.post(name: NSNotification.Name("pushNotificationsToggled"), object: enabled)

@@ -3934,6 +3934,22 @@
         }
       }
     },
+    "Notifiche In Tempo Reale" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Real-time Notifications"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones En Tiempo Real"
+          }
+        }
+      }
+    },
     "Notifiche Inizio Lavori" : {
       "localizations" : {
         "en" : {
@@ -3962,22 +3978,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notificaciones Obras"
-          }
-        }
-      }
-    },
-    "Notifiche Push" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Push Notifications"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notificaciones Push"
           }
         }
       }
