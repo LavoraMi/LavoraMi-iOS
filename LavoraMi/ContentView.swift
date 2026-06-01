@@ -1065,14 +1065,7 @@ struct WorkInProgressRow: View {
                     }
                     
                     if isAiSummaryLoading {
-                        HStack(spacing: 6) {
-                            ProgressView()
-                                .scaleEffect(0.8)
-                            Text("Riepilogo in corso...")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                        }
-                        .padding(.top, 4)
+                        AiSummarySkeletonView()
                     } else if !aiSummary.isEmpty {
                         VStack(alignment: .leading, spacing: 6) {
                             Label("Riepilogo AI", systemImage: "text.line.3.summary")
@@ -1195,6 +1188,49 @@ struct WorkInProgressRow: View {
             y: isImportant ? 4 : 3
         )
         .translationPresentation(isPresented: $showTranslation, text: textToTranslate)
+    }
+}
+
+struct AiSummarySkeletonView: View {
+    @State private var startPoint: UnitPoint = .init(x: -1.8, y: -1.2)
+    @State private var endPoint: UnitPoint = .init(x: -0.6, y: -0.2)
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label("Riepilogo AI", systemImage: "text.line.3.summary")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.secondary)
+            
+            VStack(alignment: .leading, spacing: 8) {
+                RoundedRectangle(cornerRadius: 4)
+                    .frame(height: 10)
+                RoundedRectangle(cornerRadius: 4)
+                    .frame(height: 10)
+                RoundedRectangle(cornerRadius: 4)
+                    .frame(height: 10)
+                RoundedRectangle(cornerRadius: 4)
+                    .frame(height: 10)
+                    .frame(maxWidth: 160)
+            }
+            .foregroundStyle(
+                LinearGradient(
+                    colors: [Color(.systemGray3), Color(.systemGray2), Color(.systemGray3)],
+                    startPoint: startPoint,
+                    endPoint: endPoint
+                )
+            )
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(10)
+        .background(Color.accentColor.opacity(0.07))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .padding(.top, 4)
+        .onAppear {
+            withAnimation(.linear(duration: 1.3).repeatForever(autoreverses: false)) {
+                startPoint = .init(x: 1.2, y: 1.2)
+                endPoint = .init(x: 2.4, y: 2.2)
+            }
+        }
     }
 }
 
