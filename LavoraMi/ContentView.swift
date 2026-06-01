@@ -1075,7 +1075,7 @@ struct WorkInProgressRow: View {
                         .padding(.top, 4)
                     } else if !aiSummary.isEmpty {
                         VStack(alignment: .leading, spacing: 6) {
-                            Label("Riepilogo AI", systemImage: "sparkles")
+                            Label("Riepilogo AI", systemImage: "text.line.3.summary")
                                 .font(.footnote.weight(.semibold))
                                 .foregroundStyle(.secondary)
                             Text(aiSummary)
@@ -1216,7 +1216,7 @@ struct AISummarizeButton: View {
             } label: {
                 Label(
                     isLoading ? "Riassumo..." : "Riassumi",
-                    systemImage: "sparkles"
+                    systemImage: "text.line.3.summary"
                 )
                 .font(.footnote.weight(.semibold))
                 .padding(.horizontal, 12)
