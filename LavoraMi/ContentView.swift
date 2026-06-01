@@ -913,9 +913,9 @@ struct MainView: View {
                                             }
                                         }
                                         .padding(.top, 5)
-                                        .padding(.bottom, 20)
                                     }
                                 }
+                                .padding(.bottom, 20)
                             }
                         }
                         .id("top")
@@ -2536,12 +2536,12 @@ struct AdvancedOptionsView: View {
         let height = UIScreen.main.bounds.height
         
         switch height {
-        case 852, 932:
-            return "iphone.gen3.radiowaves.left.and.right"
-        case 812, 844, 896, 926:
-            return "iphone.gen2.radiowaves.left.and.right"
-        default:
-            return "iphone.gen1.radiowaves.left.and.right"
+            case 852, 932:
+                return "iphone.gen3.radiowaves.left.and.right"
+            case 812, 844, 896, 926:
+                return "iphone.gen2.radiowaves.left.and.right"
+            default:
+                return "iphone.gen1.radiowaves.left.and.right"
         }
     }
     
