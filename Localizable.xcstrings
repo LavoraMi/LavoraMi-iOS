@@ -540,6 +540,7 @@
       }
     },
     "Apple Private Relay Email" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

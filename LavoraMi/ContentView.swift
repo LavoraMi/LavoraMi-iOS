@@ -2368,17 +2368,6 @@ struct AccountView: View {
                                 
                                 if(email.contains("privaterelay")) {
                                     Label {
-                                        Text("Apple Private Relay Email")
-                                            .foregroundColor(Color("TextColor"))
-                                            .font(.system(size: 25))
-                                            .lineLimit(1)
-                                            .truncationMode(.tail)
-                                    } icon: {
-                                        Image(systemName: "envelope.fill")
-                                            .foregroundStyle(.red)
-                                            .font(.system(size: 25))
-                                    }
-                                    Label {
                                         Text("ID: \(email.prefix(while: {$0 != "@"}))")
                                             .foregroundColor(Color("TextColor"))
                                             .font(.system(size: 25))
@@ -2388,7 +2377,7 @@ struct AccountView: View {
                                             .font(.system(size: 25))
                                     }
                                 }
-                                else{
+                                else {
                                     Label {
                                         Text(email)
                                             .foregroundColor(Color("TextColor"))
