@@ -5254,55 +5254,56 @@ struct LineDetailView: View {
                         return ([junction.coordinate] + oriented.map(\.coordinate), isPlanned)
                     }
 
-                    Map(
-                        initialPosition: .region(
-                            MKCoordinateRegion(
-                                center: centerCoordinate,
-                                span: MKCoordinateSpan(
-                                    latitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains("Filobus")) ? 0.02 : 0.15,
-                                    longitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains("Filobus")) ? 0.02 : 0.15
+                    VStack(spacing: 0) {
+                        Map(
+                            initialPosition: .region(
+                                MKCoordinateRegion(
+                                    center: centerCoordinate,
+                                    span: MKCoordinateSpan(
+                                        latitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains("Filobus")) ? 0.02 : 0.15,
+                                        longitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains("Filobus")) ? 0.02 : 0.15
+                                    )
                                 )
-                            )
-                        ),
-                        bounds: lombardyBounds,
-                        content: {
-                            MapPolyline(coordinates: mainStations.map(\.coordinate))
-                                .stroke(lineColor, lineWidth: 5)
+                            ),
+                            bounds: lombardyBounds,
+                            content: {
+                                MapPolyline(coordinates: mainStations.map(\.coordinate))
+                                    .stroke(lineColor, lineWidth: 5)
 
-                            ForEach(branchData.indices, id: \.self) { i in
-                                if branchData[i].isPlanned {
-                                    MapPolyline(coordinates: branchData[i].coords)
-                                        .stroke(lineColor, style: StrokeStyle(lineWidth: 4, dash: [6, 6]))
-                                } else {
-                                    MapPolyline(coordinates: branchData[i].coords)
-                                        .stroke(lineColor, lineWidth: 5)
+                                ForEach(branchData.indices, id: \.self) { i in
+                                    if branchData[i].isPlanned {
+                                        MapPolyline(coordinates: branchData[i].coords)
+                                            .stroke(lineColor, style: StrokeStyle(lineWidth: 4, dash: [6, 6]))
+                                    } else {
+                                        MapPolyline(coordinates: branchData[i].coords)
+                                            .stroke(lineColor, lineWidth: 5)
+                                    }
                                 }
-                            }
 
-                            ForEach(stations) { station in
-                                if(station.name == "NO_DRAW") {
-                                    Annotation("", coordinate: station.coordinate) {}
-                                }
-                                else {
-                                    Annotation(station.name, coordinate: station.coordinate) {
-                                        ZStack {
-                                            Circle()
-                                                .fill(.white)
-                                                .frame(width: 12, height: 12)
-                                            Circle()
-                                                .stroke(lineColor, lineWidth: 3)
-                                                .frame(width: 12, height: 12)
+                                ForEach(stations) { station in
+                                    if(station.name == "NO_DRAW") {
+                                        Annotation("", coordinate: station.coordinate) {}
+                                    }
+                                    else {
+                                        Annotation(station.name, coordinate: station.coordinate) {
+                                            ZStack {
+                                                Circle()
+                                                    .fill(.white)
+                                                    .frame(width: 12, height: 12)
+                                                Circle()
+                                                    .stroke(lineColor, lineWidth: 3)
+                                                    .frame(width: 12, height: 12)
+                                            }
                                         }
                                     }
                                 }
                             }
-                        })
-                        .frame(maxWidth: .infinity)
-                        .frame(maxHeight: .infinity)
-                        .padding(.bottom, 100)
+                        )
                         .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
-                        .ignoresSafeArea(edges: .bottom)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.bottom, 10)
                 } else if selectedTab == .works{
                     VStack {
                         ScrollView {
@@ -5354,6 +5355,7 @@ struct LineDetailView: View {
                     .padding(.top, 6)
                 }
             }
+            .padding(.top, -20)
             .onAppear{
                 onAppear?()
             }
