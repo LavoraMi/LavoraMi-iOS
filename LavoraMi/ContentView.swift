@@ -3872,7 +3872,7 @@ struct LineRow: View {
                 branches: branches,
                 waitMinutes: waitMinutes,
                 workScheduled: getWorkScheduled(line: line, viewModel: viewModel),
-                workNow: getWorkNow(line: line, viewModel: viewModel),
+                workNow: getWorkNow(line: (typeOfTransport.contains("Filobus") ? "Filobus \(line)" : line), viewModel: viewModel),
                 viewModel: viewModel,
                 stations: stations,
                 accessibilityStatus: accessibilityStatus,
@@ -5306,7 +5306,7 @@ struct LineDetailView: View {
                 } else if selectedTab == .works{
                     VStack {
                         ScrollView {
-                            let currentWorks = getCurrentWorks(line: lineName, viewModel: viewModel)
+                            let currentWorks = getCurrentWorks(line: (typeOfTransport.contains("Filobus") ? "Filobus \(lineName)" : lineName), viewModel: viewModel)
                             if currentWorks.count > 0 {
                                 LazyVStack(spacing: 12) {
                                     ForEach(currentWorks) { work in
