@@ -3937,6 +3937,7 @@ struct LinesView: View {
             "Regio express": ["regio", "express", "re"],
             "Regionale": ["regio", "regionale", "r"],
             "Tram": ["tram", "t"],
+            "Filobus": ["filobus", "9"],
             "Movibus": ["bus", "movibus", "z"],
             "STAR Mobility": ["bus", "star", "z"],
             "STAV": ["stav", "bus", "z"],
@@ -3974,6 +3975,7 @@ struct LinesView: View {
     var filteredRegioExpress: [LineInfo] { filtered(regioExpress) }
     var filteredRegional: [LineInfo] { filtered(regionalLines) }
     var filteredTrams: [LineInfo] { filtered(trams) }
+    var filteredFilobus: [LineInfo] { filtered(filobus) }
     var filteredMovibus: [LineInfo] { filtered(bus) }
     var filteredSTAR: [LineInfo] { filtered(star) }
     var filteredSTAV: [LineInfo] { filtered(stav) }
@@ -4138,6 +4140,15 @@ struct LinesView: View {
             LineInfo(name: "27", branches: "V.Le Ungheria - Duomo M1 M3", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "31", branches: "Bicocca M5 - Cinisello (1° Maggio)", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "33", branches: "P.Le Lagosta - Rimembranze di Lambrate", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram33, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+        ]
+    }
+    
+    var filobus: [LineInfo] {
+        [
+            LineInfo(name: "90", branches: "Circolare Destra (Lotto M1 M5 - Lodi M3)", type: "Filobus", waitMinutes: "4-6 min.", stations: StationsDB.filobus90, accessibilityStatus: String(localized: .completamenteAccessibile)),
+            LineInfo(name: "91", branches: "Circolare Sinistra (Lodi M3 - Lotto M1 M5)", type: "Filobus", waitMinutes: "4-6 min.", stations: StationsDB.filobus91, accessibilityStatus: String(localized: .completamenteAccessibile)),
+            LineInfo(name: "92", branches: "Via Varè (Bovisa FN) - Lodi M3", type: "Filobus", waitMinutes: "7-10 min.", stations: StationsDB.filobus92, accessibilityStatus: String(localized: .completamenteAccessibile)),
+            LineInfo(name: "93", branches: "V.Le Omero - Lambrate FS", type: "Filobus", waitMinutes: "10-12 min.", stations: StationsDB.filobus93, accessibilityStatus: String(localized: .completamenteAccessibile))
         ]
     }
     
@@ -4571,6 +4582,45 @@ struct LinesView: View {
                         HStack{
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("Linee Tramviarie")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundStyle(.primary)
+                                    .textCase(nil)
+                                
+                                Text("ATM")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .textCase(nil)
+                            }
+                            .padding(.bottom, 4)
+                            Spacer()
+                            Button(action: {
+                                let url = URL(string: "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf")!
+                                if howToOpenLinks == .inApp {
+                                    selectedURL = url
+                                } else {
+                                    openURLAction(url)
+                                }
+                            }) {
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                }
+                .listRowBackground(Color(uiColor: .secondarySystemBackground))
+                Section(){
+                    if(!filteredFilobus.isEmpty){
+                        ForEach(filteredFilobus, id: \.id) { line in
+                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
+                        }
+                    }
+                }
+                header: {
+                    if(!filteredFilobus.isEmpty) {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Linee Filoviarie")
                                     .font(.title3)
                                     .bold()
                                     .foregroundStyle(.primary)
