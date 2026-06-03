@@ -4009,7 +4009,7 @@ struct LinesView: View {
     }
     
     func fullLineInfo(for name: String) -> LineInfo? {
-        let all = metros + suburban + regioExpress + regionalLines + crossBorderLines + malpensaExpress + trams + bus + stav + star + autoguidovie
+        let all = metros + suburban + regioExpress + regionalLines + crossBorderLines + malpensaExpress + trams + filobus + bus + stav + star + autoguidovie
         return all.first { $0.name == name }
     }
 
@@ -4812,7 +4812,7 @@ struct LinesView: View {
             .navigationTitle("Linee")
             .scrollContentBackground(.hidden)
             .overlay {
-                let allFiltered = [filteredMetros, filteredSuburban, filteredRegioExpress, filteredRegional, filteredCrossBorders, filteredMalpensaExpress, filteredTrams, filteredMovibus, filteredSTAV, filteredSTAR, filteredAutoguidovie]
+                let allFiltered = [filteredMetros, filteredSuburban, filteredRegioExpress, filteredRegional, filteredCrossBorders, filteredMalpensaExpress, filteredTrams, filteredFilobus, filteredMovibus, filteredSTAV, filteredSTAR, filteredAutoguidovie]
                 if allFiltered.allSatisfy({ $0.isEmpty }) {
                     Text("Nessun risultato per: \"\(searchInput)\".")
                         .foregroundStyle(.secondary)
