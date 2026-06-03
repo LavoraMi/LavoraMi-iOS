@@ -4855,6 +4855,8 @@ func getLineDeviationLink(line: String, viewModel: WorkViewModel) -> URL {
 
 func getInterchanges(line: String) -> [InterchageInfo] {
     if Int(line) != nil {
+        if(line.wholeMatch(of: /9[0-3]/) != nil) { return StationsDB.interchangesFilobus.filter { $0.lines.contains(line) } }
+        
         return StationsDB.interchangesTrams.filter { $0.lines.contains(line) }
     } else {
         return StationsDB.interchanges.filter { $0.lines.contains(line) }

@@ -2411,4 +2411,42 @@ struct StationsDB {
         .init(name: "Porta Romana M3", lines: ["M3", "9"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Tricolore M4", lines: ["M4", "9", "19"], typeOfInterchange: "tram.fill.tunnel")
     ]
+    
+    static let interchangesFilobus: [InterchageInfo] = [
+        .init(name: "Lodi M3", lines: ["M3", "90", "91", "92"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "V.Le Isonzo Via Ripamonti", lines: ["24", "90", "91"], typeOfInterchange: "tram.fill"),
+        .init(name: "Tibaldi", lines: ["S9", "S19", "R31", "15", "90", "91"], typeOfInterchange: "lightrail"),
+        .init(name: "V.Le Tibaldi Via Meda", lines: ["3", "90", "91"], typeOfInterchange: "lightrail"),
+        .init(name: "Romolo M2", lines: ["M2", "S9", "S19", "R31", "90", "91"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Ponte Guido Crepax", lines: ["2", "90", "91"], typeOfInterchange: "tram.fill"),
+        .init(name: "Bolivar M4", lines: ["M4", "90", "91"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "P.Le Brescia", lines: ["16", "90", "91"], typeOfInterchange: "tram.fill"),
+        .init(name: "Lotto M1 M5", lines: ["M1", "M5", "90", "91"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "P.Le Cuoco", lines: ["16", "90", "91", "93"], typeOfInterchange: "tram.fill"),
+        .init(name: "Porta Vittoria FS", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "90", "91", "93"], typeOfInterchange: "lightrail"),
+        .init(name: "V.Le Campania V.Le Corsica", lines: ["12", "27", "90", "91", "93"], typeOfInterchange: "tram.fill"),
+        .init(name: "Susa M4", lines: ["M4", "38", "54", "90", "91"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "P.Za Ferravilla", lines: ["5", "90", "91"], typeOfInterchange: "tram.fill"),
+        .init(name: "V.Le Romagna Via Pascoli", lines: ["19", "33", "90", "91"], typeOfInterchange: "tram.fill"),
+        .init(name: "V.Le Romagna Piola M2", lines: ["M2", "39", "62", "90", "91"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Loreto M1 M2", lines: ["M1", "M2", "39", "55", "56", "90", "91", "NM2"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Caiazzo M2", lines: ["M2", "1", "90", "91", "92"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Stazione Centrale Via Tonale", lines: ["5", "10", "42", "90", "91", "92"], typeOfInterchange: "tram.fill"),
+        .init(name: "Sondrio M3", lines: ["M3", "90", "91", "92", "NM3"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Zara M3 M5", lines: ["M3", "M5", "7", "31", "51", "60", "82", "90", "91", "92", "NM3", "166"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Via Farini V.Le Stelvio", lines: ["2", "4", "70", "82", "90", "91", "92"], typeOfInterchange: "tram.fill"),
+        .init(name: "Mac Mahon / M.Te Ceneri", lines: ["12", "90", "91"], typeOfInterchange: "tram.fill"),
+        .init(name: "V.Le Certosa V.Le Serra", lines: ["1", "14", "69", "90", "91"], typeOfInterchange: "tram.fill"),
+        .init(name: "V.Le Umbria Via Comelico", lines: ["16", "92"], typeOfInterchange: "tram.fill"),
+        .init(name: "P.Za Emilia", lines: ["12", "27", "973", "92"], typeOfInterchange: "tram.fill"),
+        .init(name: "Dateo FS M4", lines: ["M4", "S1", "S2", "S5", "S6", "S12", "S13", "54", "61", "92", "NM4"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "P.Za Ascoli", lines: ["5", "19", "33", "60", "61", "92"], typeOfInterchange: "tram.fill"),
+        .init(name: "Lancetti FS", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "2", "92"], typeOfInterchange: "lightrail"),
+        .init(name: "Via Varè (Bovisa FN)", lines: ["R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "S1", "S2", "S3", "S4", "S12", "S13", "92"], typeOfInterchange: "lightrail"),
+        .init(name: "Corvetto M3", lines: ["M3", "84", "93"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Argonne M4", lines: ["M4", "38", "54", "93"], typeOfInterchange: "tram.fill.tunnel"),
+        .init(name: "Via B. Angelico Via Aselli", lines: ["5", "93"], typeOfInterchange: "tram.fill"),
+        .init(name: "Via Bassini Via Golgi", lines: ["19", "33", "45", "93", "175"], typeOfInterchange: "tram.fill"),
+        .init(name: "Lambrate FS M2", lines: ["M2", "R4", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "S9", "19", "39", "45", "54", "81", "93", "175", "924", "NM2"], typeOfInterchange: "lightrail")
+    ]
 }
