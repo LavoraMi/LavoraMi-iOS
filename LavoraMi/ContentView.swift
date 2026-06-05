@@ -5881,6 +5881,7 @@ struct LineSmallDetailedView: View {
                     }
                 }
             }
+            .padding(.top, -20)
             .onAppear {
                 onAppear?()
             }
