@@ -2683,7 +2683,7 @@ struct AdvancedOptionsView: View {
             .listRowBackground(Color(uiColor: .secondarySystemBackground))
             Section(footer: Text("Mostra il banner degli scioperi nella Home quando sono presenti.")){
                 Toggle(isOn: $showStrikeBanner){
-                    Label("Mostra banner Scioperi", systemImage: "text.append")
+                    Label("Mostra banner Scioperi", systemImage: "megaphone.fill")
                 }
             }
             .listRowBackground(Color(uiColor: .secondarySystemBackground))
