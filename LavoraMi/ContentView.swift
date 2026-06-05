@@ -562,7 +562,7 @@ struct MainView: View {
         }
     }
 
-    var body: some View{
+    var body: some View {
         NavigationStack{
             VStack(spacing: 0) {
                 HStack {
@@ -731,38 +731,57 @@ struct MainView: View {
                 .transition(.move(edge: .top).combined(with: .opacity))
             }
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(FilterBy.allCases) { filter in
-                        Button(action: {
-                                withAnimation(.snappy){
-                                    if(feedbacksEnabled){
-                                        HapticManager.shared.trigger()
+                ScrollViewReader { proxy in
+                    HStack(spacing: 10) {
+                        ForEach(FilterBy.allCases) { filter in
+                            Button(action: {
+                                    withAnimation(.snappy){
+                                        if(feedbacksEnabled){
+                                            HapticManager.shared.trigger()
+                                        }
+                                        selectedFilter = filter
                                     }
-                                    selectedFilter = filter
-                                }
-                            }){
-                            let nameIcon: String = getIconForFilter(for: filter.rawValue)
-                            
-                            if(nameIcon != ""){
-                                if(selectedFilter == .suggested) {
-                                    if #available(iOS 18, *) {
-                                        Label(filter.localizedTitle, systemImage: nameIcon)
-                                        .font(.subheadline)
-                                        .fontWeight(.medium)
-                                        .padding(.vertical, 8)
-                                        .padding(.horizontal, 16)
-                                        .symbolEffect(.rotate, options: .nonRepeating, value: filter == .suggested ? suggestedTrigger : 0)
-                                        .background(
-                                            ZStack {
-                                                if selectedFilter == filter {
-                                                    Capsule().fill(.red.gradient)
-                                                } else {
-                                                    Capsule().stroke(Color.secondary, lineWidth: 1)
+                                }){
+                                let nameIcon: String = getIconForFilter(for: filter.rawValue)
+                                
+                                if(nameIcon != ""){
+                                    if(selectedFilter == .suggested) {
+                                        if #available(iOS 18, *) {
+                                            Label(filter.localizedTitle, systemImage: nameIcon)
+                                            .font(.subheadline)
+                                            .fontWeight(.medium)
+                                            .padding(.vertical, 8)
+                                            .padding(.horizontal, 16)
+                                            .symbolEffect(.rotate, options: .nonRepeating, value: filter == .suggested ? suggestedTrigger : 0)
+                                            .background(
+                                                ZStack {
+                                                    if selectedFilter == filter {
+                                                        Capsule().fill(.red.gradient)
+                                                    } else {
+                                                        Capsule().stroke(Color.secondary, lineWidth: 1)
+                                                    }
                                                 }
-                                            }
-                                        )
-                                        .foregroundStyle(selectedFilter == filter ? .white : .primary)
-                                    } else {
+                                            )
+                                            .foregroundStyle(selectedFilter == filter ? .white : .primary)
+                                        } else {
+                                            Label(filter.localizedTitle, systemImage: nameIcon)
+                                            .font(.subheadline)
+                                            .fontWeight(.medium)
+                                            .padding(.vertical, 8)
+                                            .padding(.horizontal, 16)
+                                            .background(
+                                                ZStack {
+                                                    if selectedFilter == filter {
+                                                        Capsule().fill(.red.gradient)
+                                                    } else {
+                                                        Capsule().stroke(Color.secondary, lineWidth: 1)
+                                                    }
+                                                }
+                                            )
+                                            .foregroundStyle(selectedFilter == filter ? .white : .primary)
+                                        }
+                                    }
+                                    else {
                                         Label(filter.localizedTitle, systemImage: nameIcon)
                                         .font(.subheadline)
                                         .fontWeight(.medium)
@@ -771,9 +790,11 @@ struct MainView: View {
                                         .background(
                                             ZStack {
                                                 if selectedFilter == filter {
-                                                    Capsule().fill(.red.gradient)
+                                                    Capsule()
+                                                        .fill(.red)
                                                 } else {
-                                                    Capsule().stroke(Color.secondary, lineWidth: 1)
+                                                    Capsule()
+                                                        .stroke(Color.secondary, lineWidth: 1)
                                                 }
                                             }
                                         )
@@ -781,7 +802,7 @@ struct MainView: View {
                                     }
                                 }
                                 else {
-                                    Label(filter.localizedTitle, systemImage: nameIcon)
+                                    Text(filter.localizedTitle)
                                     .font(.subheadline)
                                     .fontWeight(.medium)
                                     .padding(.vertical, 8)
@@ -800,29 +821,16 @@ struct MainView: View {
                                     .foregroundStyle(selectedFilter == filter ? .white : .primary)
                                 }
                             }
-                            else {
-                                Text(filter.localizedTitle)
-                                .font(.subheadline)
-                                .fontWeight(.medium)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 16)
-                                .background(
-                                    ZStack {
-                                        if selectedFilter == filter {
-                                            Capsule()
-                                                .fill(.red)
-                                        } else {
-                                            Capsule()
-                                                .stroke(Color.secondary, lineWidth: 1)
-                                        }
-                                    }
-                                )
-                                .foregroundStyle(selectedFilter == filter ? .white : .primary)
-                            }
+                            .id(filter)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .onAppear(){
+                        withAnimation {
+                            proxy.scrollTo(selectedFilter, anchor: .center)
                         }
                     }
                 }
-                .padding(.horizontal)
             }
             .scrollDismissesKeyboard(.immediately)
             .animation(.default, value: filteredItems)
