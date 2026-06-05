@@ -666,59 +666,59 @@ struct MainView: View {
                         .background(Color.red)
                     }
                     .buttonStyle(.plain)
-                    if !closedStrike {
-                        VStack(alignment: .leading, spacing: 9) {
-                            HStack(alignment: .top, spacing: 8) {
-                                Image(systemName: "calendar")
-                                    .font(.system(size: 12))
-                                    .foregroundStyle(.secondary)
-                                    .frame(width: 16)
-                                Text("Sciopero proclamato per il **\(viewModel.dateStrike)**")
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(.primary)
-                            }
+                    VStack(alignment: .leading, spacing: 9) {
+                        HStack(alignment: .top, spacing: 8) {
+                            Image(systemName: "calendar")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                                .frame(width: 16)
+                            Text("Sciopero proclamato per il **\(viewModel.dateStrike)**")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.primary)
+                        }
 
-                            HStack(alignment: .top, spacing: 8) {
-                                Image(systemName: "clock")
-                                    .font(.system(size: 12))
-                                    .foregroundStyle(.secondary)
-                                    .frame(width: 16)
-                                    .padding(.top, 1)
-                                Text("Fasce garantite \(viewModel.guaranteed)")
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(.primary)
-                                    .multilineTextAlignment(.leading)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
+                        HStack(alignment: .top, spacing: 8) {
+                            Image(systemName: "clock")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                                .frame(width: 16)
+                                .padding(.top, 1)
+                            Text("Fasce garantite \(viewModel.guaranteed)")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.primary)
+                                .multilineTextAlignment(.leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
 
-                            Divider()
-                                .padding(.vertical, 2)
+                        Divider()
+                            .padding(.vertical, 2)
 
-                            HStack(spacing: 6) {
-                                Image(systemName: "building.2.fill")
-                                    .font(.system(size: 11))
-                                    .foregroundStyle(.red)
-                                Text("Aderenti:")
-                                    .font(.system(size: 13))
-                                    .foregroundStyle(.secondary)
-                                if viewModel.companiesStrikes.split(separator: ", ").count < 4 {
-                                    Text(viewModel.companiesStrikes)
-                                        .font(.system(size: 13, weight: .semibold))
-                                        .foregroundStyle(.primary)
-                                }
-                            }
-                            if viewModel.companiesStrikes.split(separator: ", ").count >= 4 {
+                        HStack(spacing: 6) {
+                            Image(systemName: "building.2.fill")
+                                .font(.system(size: 11))
+                                .foregroundStyle(.red)
+                            Text("Aderenti:")
+                                .font(.system(size: 13))
+                                .foregroundStyle(.secondary)
+                            if viewModel.companiesStrikes.split(separator: ", ").count < 4 {
                                 Text(viewModel.companiesStrikes)
                                     .font(.system(size: 13, weight: .semibold))
                                     .foregroundStyle(.primary)
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 12)
-                        .background(Color(.secondarySystemBackground))
-                        .transition(.move(edge: .top).combined(with: .opacity))
+                        if viewModel.companiesStrikes.split(separator: ", ").count >= 4 {
+                            Text(viewModel.companiesStrikes)
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundStyle(.primary)
+                        }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, closedStrike ? 0 : 12)
+                    .background(Color(.secondarySystemBackground))
+                    .frame(height: closedStrike ? 0 : nil, alignment: .top)
+                    .opacity(closedStrike ? 0 : 1)
+                    .clipped()
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 14))
                 .overlay(
@@ -728,7 +728,6 @@ struct MainView: View {
                 .shadow(color: .red.opacity(0.12), radius: 8, x: 0, y: 3)
                 .padding(.horizontal)
                 .padding(.bottom, 10)
-                .transition(.move(edge: .top).combined(with: .opacity))
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 ScrollViewReader { proxy in
