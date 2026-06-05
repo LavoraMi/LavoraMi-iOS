@@ -825,8 +825,10 @@ struct MainView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        withAnimation {
-                            proxy.scrollTo(selectedFilter, anchor: .center)
+                        if(selectedFilter != .suggested && selectedFilter != .all && selectedFilter != .bus) {
+                            withAnimation {
+                                proxy.scrollTo(selectedFilter, anchor: .center)
+                            }
                         }
                     }
                 }
