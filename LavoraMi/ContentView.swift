@@ -2164,7 +2164,7 @@ struct AccountView: View {
                                     .progressViewStyle(.circular)
                                     .tint(.white)
                             }
-                            Label(auth.isLoading ? "Accedo..." : "Accedi", systemImage: "rectangle.portrait.and.arrow.right.fill")
+                            Label(auth.isLoading ? "Accedo..." : "Accedi", systemImage: "arrow.up.forward.app.fill")
                                 .font(.headline)
                                 .fontWeight(.bold)
                         }
@@ -2487,7 +2487,7 @@ struct AccountView: View {
                         Button(role: .destructive, action: {
                             showConfirmToExitPopUp = true
                         }) {
-                            Label("Esci", systemImage: "person.crop.circle.fill.badge.minus")
+                            Label("Esci", systemImage: "rectangle.portrait.and.arrow.right.fill")
                                 .font(.headline)
                                 .fontWeight(.bold)
                                 .foregroundStyle(.white)
