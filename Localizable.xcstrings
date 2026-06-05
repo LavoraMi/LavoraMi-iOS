@@ -972,6 +972,52 @@
         }
       }
     },
+    "circolareDestra" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clockwise Circular"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circular Derecha"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circolare Destra"
+          }
+        }
+      }
+    },
+    "circolareSinistra" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anticlockwise Circular"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circular Izquierda"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circolare Sinistra"
+          }
+        }
+      }
+    },
     "Collegamenti" : {
       "localizations" : {
         "en" : {
@@ -2968,7 +3014,20 @@
       }
     },
     "Linee Filoviarie" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trolleybus Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas Trolebús"
+          }
+        }
+      }
     },
     "Linee Malpensa Express" : {
       "localizations" : {
