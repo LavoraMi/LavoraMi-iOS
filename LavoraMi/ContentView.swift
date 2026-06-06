@@ -5942,93 +5942,85 @@ struct LineSmallDetailedView: View {
 
 struct InfoAccessibilityView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var currentPage = 0
     @State var startImageTransition: Bool = false
-    @State var imageTransitionFirstPage: Bool = false
-    @State var i = 0
     @Binding var showInfoView: Bool
     @AppStorage("enableAnimations") var enableAnimations = true
 
     var body: some View {
         NavigationStack {
-            VStack {
-                TabView(selection: $currentPage) {
-                    ScrollView {
-                        VStack(spacing: 30) {
-                            if #available(iOS 18.0, *), enableAnimations {
-                                Image(systemName: startImageTransition ? "figure.roll" : "person.fill")
-                                    .font(.system(size: 80))
-                                    .foregroundColor(.red)
-                                    .padding(.top, 50)
-                                    .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
-                                    .onAppear {
-                                        Task {
-                                            try? await Task.sleep(for: .seconds(1))
-                                            withAnimation {
-                                                startImageTransition = true
-                                            }
-                                        }
+            ScrollView {
+                VStack(spacing: 30) {
+                    
+                    if #available(iOS 18.0, *), enableAnimations {
+                        Image(systemName: startImageTransition ? "figure.roll" : "person.fill")
+                            .font(.system(size: 80))
+                            .foregroundColor(.red)
+                            .padding(.top, 50)
+                            .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
+                            .onAppear {
+                                Task {
+                                    try? await Task.sleep(for: .seconds(1))
+                                    withAnimation {
+                                        startImageTransition = true
                                     }
-                                    .onDisappear {
-                                        startImageTransition = false
-                                    }
-                            } else {
-                                Image(systemName: "figure.roll")
-                                    .font(.system(size: 80))
-                                    .foregroundColor(.red)
-                                    .padding(.top, 40)
+                                }
                             }
-
-                            Text("Informazioni sull'Accessibilità")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.center)
-
-                            Text("LavoraMi mostra l'accessibilità di una linea in base agli impianti nelle stazioni ed alla tipologia di mezzo utilizzato.")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.center)
-                            
-                            Text("LavoraMi prende queste informazioni da fonti autorevoli e affidabili, i dati potrebbero non essere aggiornati all'ultimo minuto.")
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.center)
-
-                            VStack(alignment: .leading, spacing: 20) {
-                                accessibilitySection(
-                                    icon: "checkmark.circle.fill",
-                                    color: .green,
-                                    title: String(localized: .completamenteAccessibile),
-                                    description: String(localized: .completamenteAccessibileDeps)
-                                )
-                                Divider()
-                                accessibilitySection(
-                                    icon: "exclamationmark.circle.fill",
-                                    color: .orange,
-                                    title: String(localized: .parzialmenteAccessibile),
-                                    description: String(localized: .parzialmenteAccessibileDeps)
-                                )
-                                Divider()
-                                accessibilitySection(
-                                    icon: "xmark.circle.fill",
-                                    color: .red,
-                                    title: String(localized: .nonAccessibile),
-                                    description: String(localized: .nonAccessibileDeps)
-                                )
+                            .onDisappear {
+                                startImageTransition = false
                             }
-                            .padding()
-                            .background(Color(UIColor.secondarySystemBackground))
-                            .cornerRadius(15)
-                        }
-                        .padding()
+                    } else {
+                        Image(systemName: "figure.roll")
+                            .font(.system(size: 80))
+                            .foregroundColor(.red)
+                            .padding(.top, 40)
                     }
-                    .tag(0)
+
+                    Text("Informazioni sull'Accessibilità")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+
+                    Text("LavoraMi mostra l'accessibilità di una linea in base agli impianti nelle stazioni ed alla tipologia di mezzo utilizzato.")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("LavoraMi prende queste informazioni da fonti autorevoli e affidabili, i dati potrebbero non essere aggiornati all'ultimo minuto.")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+
+                    VStack(alignment: .leading, spacing: 20) {
+                        accessibilitySection(
+                            icon: "checkmark.circle.fill",
+                            color: .green,
+                            title: String(localized: .completamenteAccessibile),
+                            description: String(localized: .completamenteAccessibileDeps)
+                        )
+                        Divider()
+                        accessibilitySection(
+                            icon: "exclamationmark.circle.fill",
+                            color: .orange,
+                            title: String(localized: .parzialmenteAccessibile),
+                            description: String(localized: .parzialmenteAccessibileDeps)
+                        )
+                        Divider()
+                        accessibilitySection(
+                            icon: "xmark.circle.fill",
+                            color: .red,
+                            title: String(localized: .nonAccessibile),
+                            description: String(localized: .nonAccessibileDeps)
+                        )
+                    }
+                    .padding()
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .cornerRadius(15)
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .ignoresSafeArea(edges: .bottom)
+                .padding()
             }
             .navigationTitle("Accessibilità")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.visible, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -6255,90 +6247,80 @@ struct DetailSetYourLineView: View {
 
 struct LineDeviationInfoView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var currentPage = 0
     @State var startImageTransition: Bool = false
-    @State var imageTransitionFirstPage: Bool = false
-    @State var i = 0
     @Binding var showInfoView: Bool
     @AppStorage("enableAnimations") var enableAnimations = true
 
     var body: some View {
         NavigationStack {
-            VStack {
-                TabView(selection: $currentPage) {
-                    ScrollView {
-                        VStack(spacing: 30) {
-                            if #available(iOS 18.0, *), enableAnimations {
-                                Image(systemName: startImageTransition ? "arrow.trianglehead.pull" : "arrow.trianglehead.branch")
-                                    .font(.system(size: 80))
-                                    .foregroundColor(.red)
-                                    .padding(.top, 50)
-                                    .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
-                                    .onAppear {
-                                        Task {
-                                            try? await Task.sleep(for: .seconds(1))
-                                            withAnimation {
-                                                startImageTransition = true
-                                            }
-                                        }
+            ScrollView {
+                VStack(spacing: 30) {
+                    if #available(iOS 18.0, *), enableAnimations {
+                        Image(systemName: startImageTransition ? "arrow.trianglehead.pull" : "arrow.trianglehead.branch")
+                            .font(.system(size: 80))
+                            .foregroundColor(.red)
+                            .padding(.top, 50)
+                            .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
+                            .onAppear {
+                                Task {
+                                    try? await Task.sleep(for: .seconds(1))
+                                    withAnimation {
+                                        startImageTransition = true
                                     }
-                                    .onDisappear {
-                                        startImageTransition = false
-                                    }
-                            } else {
-                                Image(systemName: "arrow.branch")
-                                    .font(.system(size: 80))
-                                    .foregroundColor(.red)
-                                    .padding(.top, 40)
+                                }
                             }
-
-                            Text("Informazioni sulle mappe")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.center)
-
-                            Text("LavoraMi potrebbe non mostrare il percorso attuale di questa linea, poichè sono in corso deviazioni, interruzioni di tratte del percorso o di stazioni non accessibili. Consultate gli avvisi nella sezione \"Lavori Linea\" qui in basso!")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.center)
-                            
-                            Text("LavoraMi prende queste informazioni da fonti autorevoli e affidabili, le eventuali deviazioni di percorso sono indicate nei lavori qui sotto mostrati, potete prendere le eventuali soluzioni di viaggio nell'apposita sezione.")
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.center)
-                            
-                            VStack(alignment: .leading, spacing: 20) {
-                                currentStatus(
-                                    icon: "person.crop.square.fill",
-                                    color: .green,
-                                    title: String(localized: .personaleTitle),
-                                    description: String(localized: .personaleDeps)
-                                )
-                                Divider()
-                                currentStatus(
-                                    icon: "exclamationmark.triangle.fill",
-                                    color: .orange,
-                                    title: String(localized: .lavoriDeviationInfoTitle),
-                                    description: String(localized: .lavoriDeviationInfoDeps)
-                                )
-                                Divider()
-                                currentStatus(
-                                    icon: "person.crop.circle.badge.exclamationmark",
-                                    color: .red,
-                                    title: String(localized: .incorrettezzeTitle),
-                                    description: String(localized: .incorrettezzeDeps)
-                                )
+                            .onDisappear {
+                                startImageTransition = false
                             }
-                            .padding()
-                            .background(Color(UIColor.secondarySystemBackground))
-                            .cornerRadius(15)
-                        }
-                        .padding()
+                    } else {
+                        Image(systemName: "arrow.branch")
+                            .font(.system(size: 80))
+                            .foregroundColor(.red)
+                            .padding(.top, 40)
                     }
-                    .tag(0)
+
+                    Text("Informazioni sulle mappe")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+
+                    Text("LavoraMi potrebbe non mostrare il percorso attuale di questa linea, poichè sono in corso deviazioni, interruzioni di tratte del percorso o di stazioni non accessibili. Consultate gli avvisi nella sezione \"Lavori Linea\" qui in basso!")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("LavoraMi prende queste informazioni da fonti autorevoli e affidabili, le eventuali deviazioni di percorso sono indicate nei lavori qui sotto mostrati, potete prendere le eventuali soluzioni di viaggio nell'apposita sezione.")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    VStack(alignment: .leading, spacing: 20) {
+                        currentStatus(
+                            icon: "person.crop.square.fill",
+                            color: .green,
+                            title: String(localized: .personaleTitle),
+                            description: String(localized: .personaleDeps)
+                        )
+                        Divider()
+                        currentStatus(
+                            icon: "exclamationmark.triangle.fill",
+                            color: .orange,
+                            title: String(localized: .lavoriDeviationInfoTitle),
+                            description: String(localized: .lavoriDeviationInfoDeps)
+                        )
+                        Divider()
+                        currentStatus(
+                            icon: "person.crop.circle.badge.exclamationmark",
+                            color: .red,
+                            title: String(localized: .incorrettezzeTitle),
+                            description: String(localized: .incorrettezzeDeps)
+                        )
+                    }
+                    .padding()
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .cornerRadius(15)
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .ignoresSafeArea(edges: .bottom)
+                .padding()
             }
             .navigationTitle("Deviazioni")
             .navigationBarTitleDisplayMode(.inline)
