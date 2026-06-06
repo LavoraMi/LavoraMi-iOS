@@ -2183,8 +2183,11 @@ struct StationsDB {
         .init(name: "V.Le Monte Grappa Via Gioia", coordinate: .init(latitude: 45.48083, longitude: 9.18907), branch: "Main"),
         .init(name: "Garibaldi FS M2 M5", coordinate: .init(latitude: 45.48374, longitude: 9.1867), branch: "Main"),
         .init(name: "Via Farini Via Ferrari", coordinate: .init(latitude: 45.48573, longitude: 9.18262), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48576, longitude: 9.18211), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48838, longitude: 9.18258), branch: "Main"),
         .init(name: "Via Ugo Bassi", coordinate: .init(latitude: 45.48897, longitude: 9.18468), branch: "Main"),
         .init(name: "Via Porro Lambertenghi", coordinate: .init(latitude: 45.48909, longitude: 9.18702), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48903, longitude: 9.19041), branch: "Main"),
         .init(name: "P.Le Lagosta", coordinate: .init(latitude: 45.48964, longitude: 9.19153), branch: "Main"),
     ]
     
