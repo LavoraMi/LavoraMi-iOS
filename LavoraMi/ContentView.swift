@@ -6416,15 +6416,28 @@ struct InterchangeView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
                     ForEach(item.lines, id: \.self) { line in
-                        Text(line)
-                            .font(.system(size: 12, weight: .bold))
-                            .foregroundStyle(.white)
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 8)
-                            .background(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(getColor(for: line))
-                            )
+                        if line.contains("Filobus") || line.wholeMatch(of: /9[0-3]/) != nil {
+                            Label(line, systemImage: "bolt.fill")
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundStyle(.white)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 8)
+                                .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
+                        } else if line.starts(with: "N") {
+                            Label(line, systemImage: "moon.fill")
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundStyle(.white)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 8)
+                                .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
+                        } else {
+                            Text(line)
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundStyle(.white)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 8)
+                                .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
+                        }
                     }
                 }
             }
