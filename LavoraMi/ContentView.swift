@@ -3708,7 +3708,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-http-types",
-            version: "1.5.1",
+            version: "1.6.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2023 Apple Inc.",
             licenseText: """
