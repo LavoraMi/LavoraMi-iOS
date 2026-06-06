@@ -5829,7 +5829,7 @@ struct LineSmallDetailedView: View {
                                                             HStack(spacing: 16) {
                                                                 ForEach(rest) { dep in
                                                                     HStack(spacing: 5) {
-                                                                        Image(systemName: "clock")
+                                                                        Image(systemName: "clock.arrow.trianglehead.clockwise.rotate.90.path.dotted")
                                                                             .font(.caption2)
                                                                             .foregroundStyle(.secondary)
                                                                         Text("\(dep.minutesFromNow) min")
