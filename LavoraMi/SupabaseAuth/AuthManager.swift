@@ -162,4 +162,48 @@ class AuthManager: ObservableObject {
     }
     
     func isLoggedInWithApple() -> Bool {return session?.user.appMetadata["provider"]?.stringValue == "apple"}
+    
+    func saveDatasToDb(favorites: [String]) async {
+        let userID = session?.user.id
+        let linesToSave = LinesFavoriteDatas(id_user: userID ?? UUID(), lines: favorites)
+        
+        await inserDataToDb(linesToSave: linesToSave)
+    }
+    
+    func inserDataToDb(linesToSave: LinesFavoriteDatas) async {
+        do {
+            try await supabase
+                .from("linesFavorites")
+                .upsert(linesToSave)
+                .execute()
+        } catch {
+            print("Errore durante l'upsert: \(error)")
+        }
+    }
+    
+    func fetchUserFavorites() async -> [String] {
+        let userID = session?.user.id
+        
+        do {
+            let response = try await supabase
+                .from("linesFavorites")
+                .select()
+                .eq("id_user", value: userID)
+                .execute()
+            
+            let decodedRows = try JSONDecoder().decode([LinesFavoriteDatas].self, from: response.data)
+            
+            return decodedRows.first?.lines ?? []
+            
+        } catch {
+            print("Errore reale nel fetch dei dati: \(error)")
+            return []
+        }
+    }
+}
+
+
+struct LinesFavoriteDatas: Encodable, Decodable {
+    let id_user: UUID
+    let lines: [String]
 }

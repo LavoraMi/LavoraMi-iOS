@@ -1508,6 +1508,10 @@ struct SettingsView: View{
                                     linesFavorites.append("S")
                                 }
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                                
+                                Task {
+                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                }
                             }) {
                                 Image(systemName: linesFavorites.contains("S") ? "star.fill" : "star")
                                     .font(.title3)
@@ -1536,6 +1540,10 @@ struct SettingsView: View{
                                     linesFavorites.append("R")
                                 }
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                                
+                                Task {
+                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                }
                             }) {
                                 Image(systemName: linesFavorites.contains("R") ? "star.fill" : "star")
                                     .font(.title3)
@@ -1564,6 +1572,10 @@ struct SettingsView: View{
                                     linesFavorites.append("RE")
                                 }
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                                
+                                Task {
+                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                }
                             }) {
                                 Image(systemName: linesFavorites.contains("RE") ? "star.fill" : "star")
                                     .font(.title3)
@@ -1596,6 +1608,10 @@ struct SettingsView: View{
                                     linesFavorites.append("Metro")
                                 }
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                                
+                                Task {
+                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                }
                             }) {
                                 Image(systemName: linesFavorites.contains("Metro") ? "star.fill" : "star")
                                     .font(.title3)
@@ -1618,6 +1634,10 @@ struct SettingsView: View{
                                     linesFavorites.append("Tram")
                                 }
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                                
+                                Task {
+                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                }
                             }) {
                                 Image(systemName: linesFavorites.contains("Tram") ? "star.fill" : "star")
                                     .font(.title3)
@@ -1641,6 +1661,10 @@ struct SettingsView: View{
                                 }
                                 
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                                
+                                Task {
+                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                }
                             }) {
                                 Image(systemName: linesFavorites.contains("Bus") ? "star.fill" : "star")
                                     .font(.title3)
@@ -1671,6 +1695,10 @@ struct SettingsView: View{
                                 linesFavorites.append("z6")
                             }
                             NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                            
+                            Task {
+                                await authManager.saveDatasToDb(favorites: linesFavorites)
+                            }
                         }) {
                             Image(systemName: linesFavorites.contains("z6") ? "star.fill" : "star")
                                 .font(.title3)
@@ -1690,6 +1718,10 @@ struct SettingsView: View{
                                 linesFavorites.removeAll { $0 == "z55" }
                             } else {
                                 linesFavorites.append("z55")
+                            }
+                            
+                            Task {
+                                await authManager.saveDatasToDb(favorites: linesFavorites)
                             }
                         }) {
                             Image(systemName: linesFavorites.contains("z55") ? "star.fill" : "star")
@@ -1712,6 +1744,10 @@ struct SettingsView: View{
                                 linesFavorites.append("z50")
                             }
                             NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                            
+                            Task {
+                                await authManager.saveDatasToDb(favorites: linesFavorites)
+                            }
                         }) {
                             Image(systemName: linesFavorites.contains("z50") ? "star.fill" : "star")
                                 .font(.title3)
@@ -1733,6 +1769,10 @@ struct SettingsView: View{
                                 linesFavorites.append("Autoguidovie")
                             }
                             NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                            
+                            Task {
+                                await authManager.saveDatasToDb(favorites: linesFavorites)
+                            }
                         }) {
                             Image(systemName: linesFavorites.contains("Autoguidovie") ? "star.fill" : "star")
                                 .font(.title3)
@@ -2009,6 +2049,7 @@ struct AccountView: View {
     @AppStorage("requireFaceID") var requireFaceID: Bool = true
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @AppStorage("emailSaved") var emailSaved: String = ""
+    @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     
     var body: some View {
         NavigationStack {
@@ -2158,6 +2199,8 @@ struct AccountView: View {
                                 if fullName.isEmpty { fullName = auth.getFullName() }
                                 if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
                             }
+                            
+                            linesFavorites = await auth.fetchUserFavorites()
                         }
                     }) {
                         HStack {
@@ -2503,6 +2546,7 @@ struct AccountView: View {
                     .onAppear {
                         if fullName.isEmpty { fullName = auth.getFullName() }
                         if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+                        if let sess = auth.session { linesFavorites = await auth.fetchUserFavorites() }
                         emailSaved = email
                     }
                 }
