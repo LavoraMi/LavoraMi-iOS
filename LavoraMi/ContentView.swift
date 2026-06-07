@@ -2772,9 +2772,13 @@ struct AccountDatasInfoView: View {
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                     
-                    Label("Gestisci ciò che vuoi salvare", systemImage: "gearshape.fill")
-                        .font(.headline)
-                        .multilineTextAlignment(.leading)
+                    HStack {
+                        Text("Dati da Salvare")
+                            .foregroundColor(.secondary)
+                            .bold()
+                        Spacer()
+                    }
+                    .padding(.bottom, -20)
                     
                     VStack(alignment: .leading, spacing: 8) {
                         Toggle(isOn: $saveFavoritesData) {
@@ -6153,7 +6157,6 @@ struct InfoAccessibilityView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 30) {
-                    
                     if #available(iOS 18.0, *), enableAnimations {
                         Image(systemName: startImageTransition ? "figure.roll" : "person.fill")
                             .font(.system(size: 80))

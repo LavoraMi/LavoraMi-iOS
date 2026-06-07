@@ -1266,6 +1266,9 @@
         }
       }
     },
+    "Dati da Salvare" : {
+
+    },
     "Dettagli Linea" : {
       "localizations" : {
         "en" : {
@@ -1866,9 +1869,6 @@
           }
         }
       }
-    },
-    "Gestisci ciò che vuoi salvare" : {
-
     },
     "Gestisci il tuo Account" : {
       "localizations" : {
