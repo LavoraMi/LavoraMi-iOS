@@ -1273,6 +1273,12 @@
             "state" : "translated",
             "value" : "Data to be Saved"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos que hay que Guardar"
+          }
         }
       }
     },
@@ -1573,6 +1579,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Connection Error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de conexión"
           }
         }
       }
@@ -1986,6 +1998,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your LavoraMi data is completely private and secure. You can request it at any time by selecting “Request your data”."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus datos de LavoraMi son totalmente privados y están protegidos. Puedes solicitarlos cuando quieras seleccionando “Solicita tus datos”."
           }
         }
       }
@@ -2788,6 +2806,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus Líneas"
           }
         }
       }
@@ -4415,6 +4439,12 @@
             "state" : "translated",
             "value" : "Data Preferences"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferencias Datos"
+          }
         }
       }
     },
@@ -4968,6 +4998,12 @@
             "state" : "translated",
             "value" : "Choose what type of data you want to be saved in our Databases, so that you can always access it from your Account."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige qué tipo de datos quieres que se guarden en nuestras bases de datos, para poder acceder a ellos en cualquier momento desde tu Cuenta."
+          }
         }
       }
     },
@@ -4977,6 +5013,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choose your Data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige tus Datos"
           }
         }
       }
@@ -5410,6 +5452,12 @@
             "state" : "translated",
             "value" : "An error occurred whilst saving your favourite routes. Please check your internet connection."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha producido un error de conexión al guardar las rutas favoritas. Comprueba tu conexión a Internet."
+          }
         }
       }
     },
@@ -5420,6 +5468,12 @@
             "state" : "translated",
             "value" : "An error occurred whilst saving your favourite routes. Please try again later."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha producido un error de conexión al guardar las rutas favoritas. Inténtalo de nuevo más tarde."
+          }
         }
       }
     },
@@ -5429,6 +5483,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "An error occurred whilst saving. Please check your internet connection."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha producido un error de conexión al guardar. Comprueba tu conexión a Internet."
           }
         }
       }
