@@ -2841,8 +2841,11 @@ struct AccountDatasInfoView: View {
                             Task {
                                 let res: Bool
                                 await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
+                                
                                 if(saveFavoritesData) { res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected) }
-                                else { res = await authManager.saveDatasToDb(favorites: [], yourLines: []) }
+                                else if(!saveFavoritesData && saveYourLinesData){ res = await authManager.saveDatasToDb(favorites: [], yourLines: linesSelected) }
+                                else{res = await authManager.saveDatasToDb(favorites: [], yourLines: [])}
+                                
                                 print("RESULT: \(res)")
                             }
                         }
@@ -2864,7 +2867,14 @@ struct AccountDatasInfoView: View {
                         }
                         .onChange(of: saveYourLinesData) {
                             Task {
+                                let res: Bool
                                 await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
+                                
+                                if(saveYourLinesData) { res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected) }
+                                else if(!saveYourLinesData && saveFavoritesData){ res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: []) }
+                                else{res = await authManager.saveDatasToDb(favorites: [], yourLines: [])}
+                                
+                                print("RESULT: \(res)")
                             }
                         }
                         .tint(.red)
@@ -5297,7 +5307,11 @@ struct LineDetailView: View {
                             }
                             
                             Task {
-                                await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                let preferences: UserPreferencesDatas = await authManager.fetchUserPreferences()
+                                
+                                if(preferences.enable_your_lines) {
+                                    await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                }
                             }
                         }){
                             Image(systemName: (linesSelected.contains(lineName)) ? "heart.fill" : "heart")
@@ -5799,7 +5813,11 @@ struct LineSmallDetailedView: View {
                             }
                             
                             Task {
-                                await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                let preferences: UserPreferencesDatas = await authManager.fetchUserPreferences()
+                                
+                                if(preferences.enable_your_lines) {
+                                    await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                }
                             }
                         }){
                             Image(systemName: (linesSelected.contains(lineName)) ? "heart.fill" : "heart")
