@@ -1864,6 +1864,9 @@
         }
       }
     },
+    "Gestisci ciò che vuoi salvare" : {
+
+    },
     "Gestisci il tuo Account" : {
       "localizations" : {
         "en" : {
@@ -1959,6 +1962,9 @@
           }
         }
       }
+    },
+    "I tuoi dati di LavoraMi sono completamente privati e protetti, potrai richiederli quando vuoi con il pulsante \"Richiedi i tuoi dati\"." : {
+
     },
     "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi." : {
       "localizations" : {
@@ -2751,6 +2757,9 @@
           }
         }
       }
+    },
+    "Le Tue Linee" : {
+
     },
     "Leading" : {
       "localizations" : {
@@ -4368,6 +4377,9 @@
         }
       }
     },
+    "Preferenze Dati" : {
+
+    },
     "Preferiti" : {
       "localizations" : {
         "en" : {
@@ -4910,6 +4922,12 @@
           }
         }
       }
+    },
+    "Scegli che tipologia di dati vuoi che vengano salvati nei nostri Database, per poterci accedere sempre dal tuo Account." : {
+
+    },
+    "Scegli i tuoi Dati" : {
+
     },
     "Scegli qualsiasi linea." : {
       "localizations" : {

@@ -2032,6 +2032,7 @@ struct AccountView: View {
     @State private var popUpVerifyMail: Bool = false
     @State private var showError: Bool = false
     @State private var showDeletePopUp: Bool = false
+    @State private var showDataManagementPopUp: Bool = false
     @State private var showEditPasswordPopUp: Bool = false
     @State private var showConfirmToExitPopUp: Bool = false
     @State private var isLocked: Bool = true
@@ -2487,6 +2488,20 @@ struct AccountView: View {
                                         .shadow(radius: 5, y: 3)
                                 }
                                 
+                                Button(role: .destructive, action: {
+                                    showDataManagementPopUp = true
+                                }) {
+                                    Label("Preferenze Dati", systemImage: "externaldrive.fill.badge.person.crop")
+                                        .font(.system(size: 15))
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(.white)
+                                        .frame(maxWidth: .infinity)
+                                        .padding()
+                                        .background(Color.blue)
+                                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                                        .shadow(radius: 5, y: 3)
+                                }
+                                
                                 NavigationLink(destination: RequestDataDownload(isRequiringData: $isRequiringData)) {
                                     Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
                                         .font(.system(size: 15))
@@ -2545,8 +2560,14 @@ struct AccountView: View {
                     }
                     .onAppear {
                         if fullName.isEmpty { fullName = auth.getFullName() }
-                        if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
-                        if let sess = auth.session { linesFavorites = await auth.fetchUserFavorites() }
+                        if email.isEmpty, let sess = auth.session {
+                            email = sess.user.email ?? email
+                            
+                            Task {
+                                linesFavorites = await auth.fetchUserFavorites()
+                            }
+                        }
+                        
                         emailSaved = email
                     }
                 }
@@ -2666,6 +2687,9 @@ struct AccountView: View {
                 SafariView(url: url)
                     .ignoresSafeArea(.all)
             }
+            .sheet(isPresented: $showDataManagementPopUp) {
+                AccountDatasInfoView()
+            }
         }
     }
     
@@ -2691,6 +2715,101 @@ struct AccountView: View {
         let mailIsValid = validateEmail(email)
         
         return password.count >= 8 && mailIsValid
+    }
+}
+
+struct AccountDatasInfoView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State var startImageTransition: Bool = false
+    
+    @AppStorage("saveFavoritesData") var saveFavoritesData = true
+    @AppStorage("saveYourLinesData") var saveYourLinesData = true
+    @AppStorage("enableAnimations") var enableAnimations = true
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 30) {
+                    Image(systemName: "externaldrive.fill.badge.person.crop")
+                        .font(.system(size: 80))
+                        .foregroundColor(.red)
+                        .padding(.top, 40)
+
+                    Text("Scegli i tuoi Dati")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+
+                    Text("Scegli che tipologia di dati vuoi che vengano salvati nei nostri Database, per poterci accedere sempre dal tuo Account.")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("I tuoi dati di LavoraMi sono completamente privati e protetti, potrai richiederli quando vuoi selezionando \"Richiedi i tuoi dati\".")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    Label("Gestisci ciò che vuoi salvare", systemImage: "gearshape.fill")
+                        .font(.headline)
+                        .multilineTextAlignment(.leading)
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        Toggle(isOn: $saveFavoritesData) {
+                            HStack(spacing: 12) {
+                                Image(systemName: "star.fill")
+                                    .foregroundStyle(.red)
+                                    .font(.title3)
+                                
+                                Text("Linee Preferite")
+                                    .font(.system(size: 16, weight: .medium))
+                            }
+                        }
+                        .tint(.red)
+                        .padding(.vertical, 12)
+                        .padding(.horizontal, 16)
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(12)
+                        
+                        Toggle(isOn: $saveYourLinesData) {
+                            HStack(spacing: 12) {
+                                Image(systemName: "heart.fill")
+                                    .foregroundStyle(.red)
+                                    .font(.title3)
+                                
+                                Text("Le Tue Linee")
+                                    .font(.system(size: 16, weight: .medium))
+                            }
+                        }
+                        .tint(.red)
+                        .padding(.vertical, 12)
+                        .padding(.horizontal, 16)
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(12)
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle("Preferenze Dati")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.secondary)
+                            .padding(4)
+                            .clipShape(Circle())
+                    }
+                }
+            }
+        }
+    }
+
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
