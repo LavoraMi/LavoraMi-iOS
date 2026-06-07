@@ -2747,6 +2747,7 @@ struct AccountDatasInfoView: View {
     @State var saveFavoritesData: Bool
     @State var saveYourLinesData: Bool
     @AppStorage("enableAnimations") var enableAnimations = true
+    @AppStorage("linesFavorites") private var linesFavorites: [String] = []
 
     var body: some View {
         NavigationStack {
@@ -2794,6 +2795,8 @@ struct AccountDatasInfoView: View {
                         .onChange(of: saveFavoritesData) {
                             Task {
                                 await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
+                                if(saveFavoritesData) { await authManager.saveDatasToDb(favorites: linesFavorites) }
+                                else { await authManager.saveDatasToDb(favorites: []) }
                             }
                         }
                         .tint(.red)
