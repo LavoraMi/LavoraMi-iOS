@@ -5445,7 +5445,7 @@ struct LineDetailView: View {
                         withAnimation(.snappy) { selectedTab = .map }
                     }) {
                         HStack(spacing: 8) {
-                            Image(systemName: "map.fill")
+                            Image(systemName: "location.app.fill")
                                 .font(.title3)
                             
                             if selectedTab == .map {
@@ -5465,7 +5465,7 @@ struct LineDetailView: View {
                                       : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
                         )
                         .foregroundStyle(selectedTab == .map
-                                         ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground))
+                                         ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4" || lineName == "S3") ? .white : Color(.systemBackground))
                                          : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
                     }
                     Button(action: {
@@ -5473,7 +5473,7 @@ struct LineDetailView: View {
                         withAnimation(.snappy) { selectedTab = .works }
                     }) {
                         HStack(spacing: 8) {
-                            Image(systemName: "wrench.and.screwdriver.fill")
+                            Image(systemName: "exclamationmark.triangle.fill")
                                 .font(.title3)
                             
                             if selectedTab == .works {
@@ -5962,7 +5962,7 @@ struct LineSmallDetailedView: View {
                         withAnimation(.snappy) { selectedTab = .works }
                     }) {
                         HStack(spacing: 8) {
-                            Image(systemName: "wrench.and.screwdriver.fill")
+                            Image(systemName: "exclamationmark.triangle.fill")
                                 .font(.title3)
                             
                             if selectedTab == .works {
