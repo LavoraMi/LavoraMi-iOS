@@ -1074,7 +1074,7 @@ struct WorkInProgressRow: View {
                     }
                     
                     if isAiSummaryLoading {
-                        AiSummarySkeletonView()
+                        AISummarySkeletonView()
                     } else if !aiSummary.isEmpty {
                         VStack(alignment: .leading, spacing: 6) {
                             Label("Riepilogo AI", systemImage: "text.line.3.summary")
@@ -1200,7 +1200,7 @@ struct WorkInProgressRow: View {
     }
 }
 
-struct AiSummarySkeletonView: View {
+struct AISummarySkeletonView: View {
     @State private var startPoint: UnitPoint = .init(x: -1.8, y: -1.2)
     @State private var endPoint: UnitPoint = .init(x: -0.6, y: -0.2)
 
