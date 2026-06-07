@@ -163,32 +163,45 @@ class AuthManager: ObservableObject {
     
     func isLoggedInWithApple() -> Bool {return session?.user.appMetadata["provider"]?.stringValue == "apple"}
     
-    func saveDatasToDb(favorites: [String]) async {
+    func saveDatasToDb(favorites: [String]) async -> Bool{
         let userID = session?.user.id
-        let linesToSave = LinesFavoriteDatas(id_user: userID ?? UUID(), lines: favorites)
+        let userEmail = session?.user.email
         
-        await inserDataToDb(linesToSave: linesToSave)
+        let linesToSave = LinesFavoriteDatas(id_user: userID ?? UUID(), user_email: userEmail ?? "", lines: favorites)
+        
+        let res = await inserDataToDb(linesToSave: linesToSave)
+        
+        return res
     }
     
-    func inserDataToDb(linesToSave: LinesFavoriteDatas) async {
+    func inserDataToDb(linesToSave: LinesFavoriteDatas) async -> Bool{
+        
+        if(linesToSave.user_email.isEmpty){
+            print("ERRORE: Email vuota.")
+            return false
+        }
+            
         do {
             try await supabase
                 .from("linesFavorites")
                 .upsert(linesToSave)
                 .execute()
+            
+            return true
         } catch {
             print("Errore durante l'upsert: \(error)")
+            return false
         }
     }
     
     func fetchUserFavorites() async -> [String] {
-        let userID = session?.user.id
+        let userID = session?.user.email
         
         do {
             let response = try await supabase
                 .from("linesFavorites")
                 .select()
-                .eq("id_user", value: userID)
+                .eq("user_email", value: userID)
                 .execute()
             
             let decodedRows = try JSONDecoder().decode([LinesFavoriteDatas].self, from: response.data)
@@ -205,5 +218,6 @@ class AuthManager: ObservableObject {
 
 struct LinesFavoriteDatas: Encodable, Decodable {
     let id_user: UUID
+    let user_email: String
     let lines: [String]
 }

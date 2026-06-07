@@ -1420,6 +1420,7 @@ struct SettingsView: View{
     @State private var presentedAlertReset = false
     @State private var showBuildNumber = false
     @State private var selectedURL: URL?
+    @State private var showErrorDBSavePopUp = false
     @StateObject var viewModel: WorkViewModel
     @StateObject var authManager = AuthManager()
     
@@ -1510,7 +1511,8 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    showErrorDBSavePopUp = !res
                                 }
                             }) {
                                 Image(systemName: linesFavorites.contains("S") ? "star.fill" : "star")
@@ -1542,7 +1544,8 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    showErrorDBSavePopUp = !res
                                 }
                             }) {
                                 Image(systemName: linesFavorites.contains("R") ? "star.fill" : "star")
@@ -1574,7 +1577,8 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    showErrorDBSavePopUp = !res
                                 }
                             }) {
                                 Image(systemName: linesFavorites.contains("RE") ? "star.fill" : "star")
@@ -1610,7 +1614,8 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    showErrorDBSavePopUp = !res
                                 }
                             }) {
                                 Image(systemName: linesFavorites.contains("Metro") ? "star.fill" : "star")
@@ -1636,7 +1641,8 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    showErrorDBSavePopUp = !res
                                 }
                             }) {
                                 Image(systemName: linesFavorites.contains("Tram") ? "star.fill" : "star")
@@ -1663,7 +1669,8 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    showErrorDBSavePopUp = !res
                                 }
                             }) {
                                 Image(systemName: linesFavorites.contains("Bus") ? "star.fill" : "star")
@@ -1697,7 +1704,8 @@ struct SettingsView: View{
                             NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             
                             Task {
-                                await authManager.saveDatasToDb(favorites: linesFavorites)
+                                let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                showErrorDBSavePopUp = !res
                             }
                         }) {
                             Image(systemName: linesFavorites.contains("z6") ? "star.fill" : "star")
@@ -1721,7 +1729,8 @@ struct SettingsView: View{
                             }
                             
                             Task {
-                                await authManager.saveDatasToDb(favorites: linesFavorites)
+                                let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                showErrorDBSavePopUp = !res
                             }
                         }) {
                             Image(systemName: linesFavorites.contains("z55") ? "star.fill" : "star")
@@ -1746,7 +1755,8 @@ struct SettingsView: View{
                             NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             
                             Task {
-                                await authManager.saveDatasToDb(favorites: linesFavorites)
+                                let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                showErrorDBSavePopUp = !res
                             }
                         }) {
                             Image(systemName: linesFavorites.contains("z50") ? "star.fill" : "star")
@@ -1771,7 +1781,8 @@ struct SettingsView: View{
                             NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             
                             Task {
-                                await authManager.saveDatasToDb(favorites: linesFavorites)
+                                let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                showErrorDBSavePopUp = !res
                             }
                         }) {
                             Image(systemName: linesFavorites.contains("Autoguidovie") ? "star.fill" : "star")
@@ -1923,6 +1934,11 @@ struct SettingsView: View{
             } message: {
                 Text("Sei sicuro di voler ripristinare le impostazioni?")
             }
+            .alert("Errore di connessione", isPresented: $showErrorDBSavePopUp) {
+                Button("Chiudi", role: .cancel) { }
+            } message: {
+                Text("Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Riprova più tardi.")
+            }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
                     .ignoresSafeArea(.all)
@@ -2034,6 +2050,7 @@ struct AccountView: View {
     @State private var showDeletePopUp: Bool = false
     @State private var showDataManagementPopUp: Bool = false
     @State private var showEditPasswordPopUp: Bool = false
+    @State private var showErrorDBSavePopUp: Bool = false
     @State private var showConfirmToExitPopUp: Bool = false
     @State private var isLocked: Bool = true
     @State private var text: String = ""
@@ -2646,7 +2663,13 @@ struct AccountView: View {
                 loggedIn = auth.isLoggedIn()
                 if loggedIn {
                     if fullName.isEmpty { fullName = auth.getFullName() }
-                    if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+                    if email.isEmpty, let sess = auth.session {
+                        email = sess.user.email ?? email
+                        Task {
+                            let res = await auth.saveDatasToDb(favorites: linesFavorites)
+                            showErrorDBSavePopUp = !res
+                        }
+                    }
                     tabTitle = "Account"
                 }
                 if(requireFaceID && loggedIn && isRequiringData == false && isBiometricAuthCompleted == false){
@@ -2680,6 +2703,11 @@ struct AccountView: View {
                 }
             } message: {
                 Text("Sei sicuro di voler uscire dall'account?")
+            }
+            .alert("Errore di connessione", isPresented: $showErrorDBSavePopUp) {
+                Button("Chiudi", role: .cancel) { }
+            } message: {
+                Text("Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Riprova più tardi.")
             }
             .navigationTitle(tabTitle)
             .navigationBarTitleDisplayMode(.inline)
