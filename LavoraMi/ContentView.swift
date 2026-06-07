@@ -2059,6 +2059,8 @@ struct AccountView: View {
     @State private var showMailApple: Bool = false
     @State private var logginIn: Bool = false
     @State var isRequiringData: Bool = false
+    @State var saveFavoritesData = true
+    @State var saveYourLinesData = true
     @State private var currentNonce: String?
     
     @Environment(\.dismiss) private var dismiss
@@ -2112,7 +2114,7 @@ struct AccountView: View {
                     .ignoresSafeArea(.all)
             }
             .sheet(isPresented: $showDataManagementPopUp) {
-                AccountDatasInfoView(authManager: auth)
+                AccountDatasInfoView(authManager: auth, saveFavoritesData: saveFavoritesData, saveYourLinesData: saveYourLinesData)
             }
         }
     }
@@ -2622,6 +2624,7 @@ struct AccountView: View {
             email = sess.user.email ?? email
             Task {
                 linesFavorites = await auth.fetchUserFavorites()
+                await auth.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
             }
         }
         emailSaved = email
@@ -2631,14 +2634,16 @@ struct AccountView: View {
         logginIn = true
         Task {
             await auth.signIn(email: email, password: password)
-            loggedIn = auth.isLoggedIn()
-            logginIn = false
-            tabTitle = "Account"
-            if loggedIn {
+            
+            if auth.isLoggedIn() {
                 if fullName.isEmpty { fullName = auth.getFullName() }
                 if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+                
+                linesFavorites = await auth.fetchUserFavorites()
+                
+                self.loggedIn = true
             }
-            linesFavorites = await auth.fetchUserFavorites()
+            logginIn = false
         }
     }
     
@@ -2739,8 +2744,8 @@ struct AccountDatasInfoView: View {
     @State var startImageTransition: Bool = false
     @StateObject var authManager: AuthManager
     
-    @AppStorage("saveFavoritesData") var saveFavoritesData = true
-    @AppStorage("saveYourLinesData") var saveYourLinesData = true
+    @State var saveFavoritesData: Bool
+    @State var saveYourLinesData: Bool
     @AppStorage("enableAnimations") var enableAnimations = true
 
     var body: some View {
@@ -2830,6 +2835,14 @@ struct AccountDatasInfoView: View {
                             .padding(4)
                             .clipShape(Circle())
                     }
+                }
+            }
+            .onAppear{
+                Task {
+                    let res: UserPreferencesDatas = await authManager.fetchUserPreferences()
+                    
+                    saveYourLinesData = res.enable_your_lines
+                    saveFavoritesData = res.enable_favorites
                 }
             }
         }

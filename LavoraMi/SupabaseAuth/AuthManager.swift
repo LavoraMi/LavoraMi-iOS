@@ -215,7 +215,6 @@ class AuthManager: ObservableObject {
     }
     
     func saveUserPreferences(enableFavorites: Bool, enableYourLines: Bool) async {
-        let userID = session?.user.id
         let userEmail = session?.user.email
         
         let dataToSave = UserPreferencesDatas(user_email: userEmail ?? "", enable_favorites: enableFavorites, enable_your_lines: enableYourLines)
@@ -232,6 +231,25 @@ class AuthManager: ObservableObject {
             
         } catch {
             print("Errore durante l'upsert: \(error)")
+        }
+    }
+    
+    func fetchUserPreferences() async -> UserPreferencesDatas {
+        let userID = session?.user.email
+        
+        do {
+            let response = try await supabase
+                .from("userPreferences")
+                .select()
+                .eq("user_email", value: userID)
+                .execute()
+            
+            let decodedRows = try JSONDecoder().decode([UserPreferencesDatas].self, from: response.data)
+            return decodedRows.first ?? UserPreferencesDatas(user_email: "", enable_favorites: true, enable_your_lines: true)
+            
+        } catch {
+            print("Errore reale nel fetch dei dati: \(error)")
+            return UserPreferencesDatas(user_email: "", enable_favorites: true, enable_your_lines: true) ///Fallback value
         }
     }
 }
