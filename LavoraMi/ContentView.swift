@@ -5165,6 +5165,7 @@ struct LineDetailView: View {
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
     @State private var showInfoMapDeviations: Bool = false
+    @State private var showErrorDBSavePopUp: Bool = false
     
     private enum LineDetailTab { case map, works, interchanges }
     @State private var selectedTab: LineDetailTab = .map
@@ -5310,7 +5311,8 @@ struct LineDetailView: View {
                                 let preferences: UserPreferencesDatas = await authManager.fetchUserPreferences()
                                 
                                 if(preferences.enable_your_lines) {
-                                    await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                    showErrorDBSavePopUp = !res
                                 }
                             }
                         }){
@@ -5657,6 +5659,11 @@ struct LineDetailView: View {
                 SafariView(url: url)
                     .ignoresSafeArea(.all)
             }
+            .alert("Errore di connessione", isPresented: $showErrorDBSavePopUp) {
+                Button("Chiudi", role: .cancel) { }
+            } message: {
+                Text("Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Controlla la tua connessione ad Internet.")
+            }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -5678,6 +5685,7 @@ struct LineSmallDetailedView: View {
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
     @State private var showInfoMapDeviations: Bool = false
+    @State private var showErrorDBSavePopUp: Bool = false
 
     let lineName: String
     let typeOfTransport: String
@@ -5816,7 +5824,8 @@ struct LineSmallDetailedView: View {
                                 let preferences: UserPreferencesDatas = await authManager.fetchUserPreferences()
                                 
                                 if(preferences.enable_your_lines) {
-                                    await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                    showErrorDBSavePopUp = !res
                                 }
                             }
                         }){
@@ -6181,6 +6190,11 @@ struct LineSmallDetailedView: View {
             }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url).ignoresSafeArea(.all)
+            }
+            .alert("Errore di connessione", isPresented: $showErrorDBSavePopUp) {
+                Button("Chiudi", role: .cancel) { }
+            } message: {
+                Text("Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Controlla la tua connessione ad Internet.")
             }
             .onAppear { if routeData == nil { loadData() } }
             .navigationTitle("Dettagli Linea")
