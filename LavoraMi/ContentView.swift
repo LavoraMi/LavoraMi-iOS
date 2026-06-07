@@ -5662,7 +5662,7 @@ struct LineDetailView: View {
             .alert("Errore di connessione", isPresented: $showErrorDBSavePopUp) {
                 Button("Chiudi", role: .cancel) { }
             } message: {
-                Text("Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Controlla la tua connessione ad Internet.")
+                Text("Si è verificato un errore di connessione durante il salvataggio. Controlla la tua connessione ad Internet.")
             }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
@@ -6194,7 +6194,7 @@ struct LineSmallDetailedView: View {
             .alert("Errore di connessione", isPresented: $showErrorDBSavePopUp) {
                 Button("Chiudi", role: .cancel) { }
             } message: {
-                Text("Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Controlla la tua connessione ad Internet.")
+                Text("Si è verificato un errore di connessione durante il salvataggio. Controlla la tua connessione ad Internet.")
             }
             .onAppear { if routeData == nil { loadData() } }
             .navigationTitle("Dettagli Linea")

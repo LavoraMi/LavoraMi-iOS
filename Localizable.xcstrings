@@ -1267,7 +1267,14 @@
       }
     },
     "Dati da Salvare" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data to be Saved"
+          }
+        }
+      }
     },
     "Dettagli Linea" : {
       "localizations" : {
@@ -1561,7 +1568,14 @@
       }
     },
     "Errore di connessione" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connection Error"
+          }
+        }
+      }
     },
     "Esci" : {
       "localizations" : {
@@ -1967,7 +1981,14 @@
       }
     },
     "I tuoi dati di LavoraMi sono completamente privati e protetti, potrai richiederli quando vuoi selezionando \"Richiedi i tuoi dati\"." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your LavoraMi data is completely private and secure. You can request it at any time by selecting “Request your data”."
+          }
+        }
+      }
     },
     "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi." : {
       "localizations" : {
@@ -2762,7 +2783,14 @@
       }
     },
     "Le Tue Linee" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Lines"
+          }
+        }
+      }
     },
     "Leading" : {
       "localizations" : {
@@ -4381,7 +4409,14 @@
       }
     },
     "Preferenze Dati" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Preferences"
+          }
+        }
+      }
     },
     "Preferiti" : {
       "localizations" : {
@@ -4927,10 +4962,24 @@
       }
     },
     "Scegli che tipologia di dati vuoi che vengano salvati nei nostri Database, per poterci accedere sempre dal tuo Account." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose what type of data you want to be saved in our Databases, so that you can always access it from your Account."
+          }
+        }
+      }
     },
     "Scegli i tuoi Dati" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your Data"
+          }
+        }
+      }
     },
     "Scegli qualsiasi linea." : {
       "localizations" : {
@@ -5355,10 +5404,34 @@
       }
     },
     "Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Controlla la tua connessione ad Internet." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An error occurred whilst saving your favourite routes. Please check your internet connection."
+          }
+        }
+      }
     },
     "Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Riprova più tardi." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An error occurred whilst saving your favourite routes. Please try again later."
+          }
+        }
+      }
+    },
+    "Si è verificato un errore di connessione durante il salvataggio. Controlla la tua connessione ad Internet." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An error occurred whilst saving. Please check your internet connection."
+          }
+        }
+      }
     },
     "Simone Gallotti" : {
       "localizations" : {
