@@ -5160,6 +5160,7 @@ struct LineDetailView: View {
     @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     @StateObject private var networkManager = NetworkMonitor()
     @StateObject private var authManager = AuthManager()
+    @StateObject private var locationManager = LocationManager()
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
@@ -5571,6 +5572,7 @@ struct LineDetailView: View {
                             ),
                             bounds: lombardyBounds,
                             content: {
+                                UserAnnotation()
                                 MapPolyline(coordinates: mainStations.map(\.coordinate))
                                     .stroke(lineColor, lineWidth: 5)
 
@@ -5604,10 +5606,17 @@ struct LineDetailView: View {
                             }
                         )
                         .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
+                        .mapControls{
+                            MapUserLocationButton()
+                        }
+                        .tint(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding(.bottom, 10)
+                    .onAppear {
+                        locationManager.requestPermission()
+                    }
                 } else if selectedTab == .works{
                     VStack {
                         ScrollView {

@@ -137,6 +137,7 @@
 				ContentView.swift,
 				"GoogleService-Info.plist",
 				GTFSHelper.swift,
+				LocationManager.swift,
 				NetworkMonitor.swift,
 				NotificationManager.swift,
 				SharedData.swift,
@@ -625,6 +626,7 @@
 				INFOPLIST_FILE = LavoraMi/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Per proteggere i tuoi dati personali e garantire un accesso sicuro al tuo Account.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Per poter visualizzare la tua posizione sulla Mappa.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -670,6 +672,7 @@
 				INFOPLIST_FILE = LavoraMi/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Per proteggere i tuoi dati personali e garantire un accesso sicuro al tuo Account.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Per poter visualizzare la tua posizione sulla Mappa.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
