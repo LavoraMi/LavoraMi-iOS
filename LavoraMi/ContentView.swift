@@ -5438,76 +5438,89 @@ struct LineDetailView: View {
                 .frame(maxHeight: .infinity)
                 .padding(.top, 20)
                 .background(Color(uiColor: .systemBackground))
-                HStack(spacing: 8) {
+                // MARK: - Tab Bar
+                HStack(spacing: 12) {
                     Button(action: {
-                        if(feedbacksEnabled){
-                            HapticManager.shared.trigger()
-                        }
+                        if feedbacksEnabled { HapticManager.shared.trigger() }
                         withAnimation(.snappy) { selectedTab = .map }
                     }) {
-                        Text("Mappa")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity)
-                            .background(
-                                ZStack {
-                                    if selectedTab == .map {
-                                        Capsule().fill((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName))
-                                    } else {
-                                        Capsule().stroke(Color.secondary, lineWidth: 1)
-                                    }
-                                }
-                            )
-                            .foregroundStyle(selectedTab == .map ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground)) : .primary)
-                    }
-
-                    Button(action: {
-                        if(feedbacksEnabled){
-                            HapticManager.shared.trigger()
+                        HStack(spacing: 8) {
+                            Image(systemName: "map.fill")
+                                .font(.title3)
+                            
+                            if selectedTab == .map {
+                                Text("Mappa")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .lineLimit(1)
+                                    .fixedSize(horizontal: true, vertical: false)
+                            }
                         }
+                        .frame(maxWidth: selectedTab == .map ? .infinity : 70)
+                        .frame(height: 38)
+                        .background(
+                            Capsule()
+                                .fill(selectedTab == .map
+                                      ? ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName))
+                                      : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
+                        )
+                        .foregroundStyle(selectedTab == .map
+                                         ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground))
+                                         : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
+                    }
+                    Button(action: {
+                        if feedbacksEnabled { HapticManager.shared.trigger() }
                         withAnimation(.snappy) { selectedTab = .works }
                     }) {
-                        Text("Lavori linea")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity)
-                            .background(
-                                ZStack {
-                                    if selectedTab == .works {
-                                        Capsule().fill((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName))
-                                    } else {
-                                        Capsule().stroke(Color.secondary, lineWidth: 1)
-                                    }
-                                }
-                            )
-                            .foregroundStyle(selectedTab == .works ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground)) : .primary)
+                        HStack(spacing: 8) {
+                            Image(systemName: "wrench.and.screwdriver.fill")
+                                .font(.title3)
+                            
+                            if selectedTab == .works {
+                                Text("Lavori linea")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .lineLimit(1)
+                                    .fixedSize(horizontal: true, vertical: false)
+                            }
+                        }
+                        .frame(maxWidth: selectedTab == .works ? .infinity : 70)
+                        .frame(height: 38)
+                        .background(
+                            Capsule()
+                                .fill(selectedTab == .works
+                                      ? ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName))
+                                      : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
+                        )
+                        .foregroundStyle(selectedTab == .works
+                                         ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground))
+                                         : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
                     }
                     Button(action: {
-                        if(feedbacksEnabled){
-                            HapticManager.shared.trigger()
-                        }
+                        if feedbacksEnabled { HapticManager.shared.trigger() }
                         withAnimation(.snappy) { selectedTab = .interchanges }
                     }) {
-                        Text("Interscambi")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity)
-                            .background(
-                                ZStack {
-                                    if selectedTab == .interchanges {
-                                        Capsule().fill((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName))
-                                    } else {
-                                        Capsule().stroke(Color.secondary, lineWidth: 1)
-                                    }
-                                }
-                            )
-                            .foregroundStyle(selectedTab == .interchanges ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground)) : .primary)
+                        HStack(spacing: 8) {
+                            Image(systemName: "arrow.left.arrow.right")
+                                .font(.title3)
+                            
+                            if selectedTab == .interchanges {
+                                Text("Interscambi")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .lineLimit(1)
+                                    .fixedSize(horizontal: true, vertical: false)
+                            }
+                        }
+                        .frame(maxWidth: selectedTab == .interchanges ? .infinity : 70)
+                        .frame(height: 38)
+                        .background(
+                            Capsule()
+                                .fill(selectedTab == .interchanges ? ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)) : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
+                        )
+                        .foregroundStyle(selectedTab == .interchanges
+                                         ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground))
+                                         : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
                     }
                 }
                 .padding(.horizontal)
@@ -5943,50 +5956,55 @@ struct LineSmallDetailedView: View {
                 .background(Color(uiColor: .systemBackground))
 
                 // MARK: - Tab Bar
-                HStack(spacing: 8) {
+                HStack(spacing: 12) {
                     Button(action: {
                         if feedbacksEnabled { HapticManager.shared.trigger() }
                         withAnimation(.snappy) { selectedTab = .works }
                     }) {
-                        Text("Lavori linea")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity)
-                            .background(
-                                ZStack {
-                                    if selectedTab == .works {
-                                        Capsule().fill(getColor(for: lineName))
-                                    } else {
-                                        Capsule().stroke(Color.secondary, lineWidth: 1)
-                                    }
-                                }
-                            )
-                            .foregroundStyle(selectedTab == .works ? .white : .primary)
+                        HStack(spacing: 8) {
+                            Image(systemName: "wrench.and.screwdriver.fill")
+                                .font(.title3)
+                            
+                            if selectedTab == .works {
+                                Text("Lavori linea")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .lineLimit(1)
+                                    .fixedSize(horizontal: true, vertical: false)
+                            }
+                        }
+                        .frame(maxWidth: selectedTab == .works ? .infinity : 70)
+                        .frame(height: 38)
+                        .background(
+                            Capsule()
+                                .fill(selectedTab == .works ? getColor(for: lineName) : getColor(for: lineName).opacity(0.15))
+                        )
+                        .foregroundStyle(selectedTab == .works ? .white : getColor(for: lineName))
                     }
-
-                    if(viewModel.linesSupportedGTFS.contains(lineName)) {
+                    if viewModel.linesSupportedGTFS.contains(lineName) {
                         Button(action: {
                             if feedbacksEnabled { HapticManager.shared.trigger() }
                             withAnimation(.snappy) { selectedTab = .arrivi }
                         }) {
-                            Text("Arrivi")
-                                .font(.subheadline)
-                                .fontWeight(.medium)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 16)
-                                .frame(maxWidth: .infinity)
-                                .background(
-                                    ZStack {
-                                        if selectedTab == .arrivi {
-                                            Capsule().fill(getColor(for: lineName))
-                                        } else {
-                                            Capsule().stroke(Color.secondary, lineWidth: 1)
-                                        }
-                                    }
-                                )
-                                .foregroundStyle(selectedTab == .arrivi ? .white : .primary)
+                            HStack(spacing: 8) {
+                                Image(systemName: "clock.fill")
+                                    .font(.title3)
+                                
+                                if selectedTab == .arrivi {
+                                    Text("Arrivi")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .lineLimit(1)
+                                        .fixedSize(horizontal: true, vertical: false)
+                                }
+                            }
+                            .frame(maxWidth: selectedTab == .arrivi ? .infinity : 70)
+                            .frame(height: 38)
+                            .background(
+                                Capsule()
+                                    .fill(selectedTab == .arrivi ? getColor(for: lineName) : getColor(for: lineName).opacity(0.15))
+                            )
+                            .foregroundStyle(selectedTab == .arrivi ? .white : getColor(for: lineName))
                         }
                     }
                 }
