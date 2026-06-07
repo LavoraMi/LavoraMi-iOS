@@ -1977,7 +1977,7 @@ struct SettingsView: View{
             .alert("Errore di connessione", isPresented: $showErrorDBSavePopUp) {
                 Button("Chiudi", role: .cancel) { }
             } message: {
-                Text("Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Riprova più tardi.")
+                Text("Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Controlla la tua connessione ad Internet.")
             }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
