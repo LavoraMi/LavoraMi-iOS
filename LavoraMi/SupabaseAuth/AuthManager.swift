@@ -163,11 +163,11 @@ class AuthManager: ObservableObject {
     
     func isLoggedInWithApple() -> Bool {return session?.user.appMetadata["provider"]?.stringValue == "apple"}
     
-    func saveDatasToDb(favorites: [String]) async -> Bool{
+    func saveDatasToDb(favorites: [String], yourLines: [String]) async -> Bool{
         let userID = session?.user.id
         let userEmail = session?.user.email
         
-        let linesToSave = LinesFavoriteDatas(id_user: userID ?? UUID(), user_email: userEmail ?? "", lines: favorites)
+        let linesToSave = LinesFavoriteDatas(id_user: userID ?? UUID(), user_email: userEmail ?? "", lines: favorites, your_lines: yourLines)
         
         let res = await inserDataToDb(linesToSave: linesToSave)
         
@@ -183,7 +183,7 @@ class AuthManager: ObservableObject {
             
         do {
             try await supabase
-                .from("linesFavorites")
+                .from("userDatas")
                 .upsert(linesToSave)
                 .execute()
             
@@ -199,7 +199,7 @@ class AuthManager: ObservableObject {
         
         do {
             let response = try await supabase
-                .from("linesFavorites")
+                .from("userDatas")
                 .select()
                 .eq("user_email", value: userID)
                 .execute()
@@ -207,6 +207,26 @@ class AuthManager: ObservableObject {
             let decodedRows = try JSONDecoder().decode([LinesFavoriteDatas].self, from: response.data)
             
             return decodedRows.first?.lines ?? []
+            
+        } catch {
+            print("Errore reale nel fetch dei dati: \(error)")
+            return []
+        }
+    }
+    
+    func fetchUserLines() async -> [String] {
+        let userID = session?.user.email
+        
+        do {
+            let response = try await supabase
+                .from("userDatas")
+                .select()
+                .eq("user_email", value: userID)
+                .execute()
+            
+            let decodedRows = try JSONDecoder().decode([LinesFavoriteDatas].self, from: response.data)
+            
+            return decodedRows.first?.your_lines ?? []
             
         } catch {
             print("Errore reale nel fetch dei dati: \(error)")
@@ -258,6 +278,7 @@ struct LinesFavoriteDatas: Encodable, Decodable {
     let id_user: UUID
     let user_email: String
     let lines: [String]
+    let your_lines: [String]
 }
 
 struct UserPreferencesDatas: Encodable, Decodable {

@@ -1511,7 +1511,7 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                                     showErrorDBSavePopUp = !res
                                 }
                             }) {
@@ -1544,7 +1544,7 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                                     showErrorDBSavePopUp = !res
                                 }
                             }) {
@@ -1577,7 +1577,7 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                                     showErrorDBSavePopUp = !res
                                 }
                             }) {
@@ -1614,7 +1614,7 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                                     showErrorDBSavePopUp = !res
                                 }
                             }) {
@@ -1641,7 +1641,7 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                                     showErrorDBSavePopUp = !res
                                 }
                             }) {
@@ -1669,7 +1669,7 @@ struct SettingsView: View{
                                 NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                                 
                                 Task {
-                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                                     showErrorDBSavePopUp = !res
                                 }
                             }) {
@@ -1704,7 +1704,7 @@ struct SettingsView: View{
                             NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             
                             Task {
-                                let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                                 showErrorDBSavePopUp = !res
                             }
                         }) {
@@ -1729,7 +1729,7 @@ struct SettingsView: View{
                             }
                             
                             Task {
-                                let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                                 showErrorDBSavePopUp = !res
                             }
                         }) {
@@ -1755,7 +1755,7 @@ struct SettingsView: View{
                             NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             
                             Task {
-                                let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                                 showErrorDBSavePopUp = !res
                             }
                         }) {
@@ -1781,7 +1781,7 @@ struct SettingsView: View{
                             NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
                             
                             Task {
-                                let res = await authManager.saveDatasToDb(favorites: linesFavorites)
+                                let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                                 showErrorDBSavePopUp = !res
                             }
                         }) {
@@ -2071,6 +2071,7 @@ struct AccountView: View {
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @AppStorage("emailSaved") var emailSaved: String = ""
     @AppStorage("linesFavorites") private var linesFavorites: [String] = []
+    @AppStorage("linesSelected") private var linesSelected: [String] = []
     
     var body: some View {
         NavigationStack {
@@ -2598,8 +2599,8 @@ struct AccountView: View {
             if email.isEmpty, let sess = auth.session {
                 email = sess.user.email ?? email
                 Task {
-                    let res = await auth.saveDatasToDb(favorites: linesFavorites)
-                    showErrorDBSavePopUp = !res
+                    linesFavorites = await auth.fetchUserFavorites()
+                    linesSelected = await auth.fetchUserLines()
                 }
             }
             tabTitle = "Account"
@@ -2624,6 +2625,7 @@ struct AccountView: View {
             email = sess.user.email ?? email
             Task {
                 linesFavorites = await auth.fetchUserFavorites()
+                linesSelected = await auth.fetchUserLines()
                 await auth.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
             }
         }
@@ -2748,6 +2750,7 @@ struct AccountDatasInfoView: View {
     @State var saveYourLinesData: Bool
     @AppStorage("enableAnimations") var enableAnimations = true
     @AppStorage("linesFavorites") private var linesFavorites: [String] = []
+    @AppStorage("linesSelected") private var linesSelected: [String] = []
 
     var body: some View {
         NavigationStack {
@@ -2796,8 +2799,8 @@ struct AccountDatasInfoView: View {
                             Task {
                                 let res: Bool
                                 await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
-                                if(saveFavoritesData) { res = await authManager.saveDatasToDb(favorites: linesFavorites) }
-                                else { res = await authManager.saveDatasToDb(favorites: []) }
+                                if(saveFavoritesData) { res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected) }
+                                else { res = await authManager.saveDatasToDb(favorites: [], yourLines: []) }
                                 print("RESULT: \(res)")
                             }
                         }
@@ -5102,7 +5105,9 @@ struct LineDetailView: View {
     @AppStorage("alreadySeenPopUp") var alreadySeenPopUp: Bool = false
     @AppStorage("alreadySeenPopUpLines") var alreadySeenPopUpLines: Bool = false
     @AppStorage("linesSelected") private var linesSelected: [String] = []
+    @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     @StateObject private var networkManager = NetworkMonitor()
+    @StateObject private var authManager = AuthManager()
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
@@ -5247,6 +5252,10 @@ struct LineDetailView: View {
                                 }
                                 
                                 linesSelected.append(lineName)
+                            }
+                            
+                            Task {
+                                await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                             }
                         }){
                             Image(systemName: (linesSelected.contains(lineName)) ? "heart.fill" : "heart")
@@ -5604,9 +5613,11 @@ struct LineSmallDetailedView: View {
     @AppStorage("alreadySeenPopUp") var alreadySeenPopUp: Bool = false
     @AppStorage("alreadySeenPopUpLines") var alreadySeenPopUpLines: Bool = false
     @AppStorage("linesSelected") private var linesSelected: [String] = []
+    @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     @State private var openPopUpWidget: Bool = false
     @State private var openInfoAccessibility: Bool = false
     @StateObject private var networkManager = NetworkMonitor()
+    @StateObject private var authManager = AuthManager()
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
@@ -5743,6 +5754,10 @@ struct LineSmallDetailedView: View {
                                 }
                                 
                                 linesSelected.append(lineName)
+                            }
+                            
+                            Task {
+                                await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
                             }
                         }){
                             Image(systemName: (linesSelected.contains(lineName)) ? "heart.fill" : "heart")
