@@ -2060,6 +2060,7 @@ struct AccountView: View {
     @State private var logginIn: Bool = false
     @State var isRequiringData: Bool = false
     @State private var currentNonce: String?
+    
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) private var openURLAction
@@ -2072,635 +2073,30 @@ struct AccountView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
-                //MARK: LOGIN
                 if isLogginIn && !loggedIn && !resettingPassword {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Bentornato")
-                            .font(.system(size: 40, weight: .bold))
-                            .foregroundStyle(.primary)
-
-                        Text("Accedi al tuo Account per continuare.")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 40)
-
-                    VStack(spacing: 20) {
-                        HStack(spacing: 15) {
-                            Image(systemName: "envelope.fill")
-                                .foregroundStyle(.gray)
-                            TextField("Email", text: $email)
-                                .keyboardType(.emailAddress)
-                                .textContentType(.emailAddress)
-                                .textInputAutocapitalization(.never)
-                                .disabled(auth.isLoading)
-                        }
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-
-                        HStack(spacing: 15) {
-                            Image(systemName: "lock.fill")
-                                .foregroundStyle(.gray)
-                            SecureField("Password", text: $password)
-                                .disabled(auth.isLoading)
-                        }
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-
-                        HStack {
-                            Spacer()
-                            Button("Password dimenticata?") {
-                                resettingPassword = true
-                            }
-                            .font(.caption)
-                            .foregroundStyle(.red)
-                            
-                            Button(action: {
-                                isLogginIn = !isLogginIn
-                            }){
-                                Text("Non hai un account?")
-                                    .font(.caption)
-                                    .foregroundStyle(.red)
-                            }
-                        }
-                    }
-                    if let err = auth.errorMessage, !err.isEmpty {
-                        Text(err)
-                            .font(.footnote)
-                            .foregroundStyle(.red)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    Spacer()
-                    HStack(spacing: 0) {
-                        Text("Continuando, accetti i ")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-
-                        Button {
-                            let url = URL(string: "https://www.lavorami.it/termsofservice\((colorScheme == .dark) ? "" : "?theme=light")")!
-                            
-                            if(howToOpenLinks == .inApp) {
-                                selectedURL = url
-                            }
-                            else {
-                                openURLAction(url)
-                            }
-                        } label: {
-                            Text("Termini")
-                                .font(.subheadline)
-                        }
-                        
-                        Text(" e la ")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                        
-                        Button {
-                            let url = URL(string: "https://www.lavorami.it/privacypolicy\((colorScheme == .dark) ? "" : "?theme=light")")!
-                            
-                            if(howToOpenLinks == .inApp) {
-                                selectedURL = url
-                            } else {
-                                openURLAction(url)
-                            }
-                        } label: {
-                            Text("Privacy Policy.")
-                                .font(.subheadline)
-                        }
-                    }
-                    SignInWithAppleButton(.signIn) { request in
-                        let nonce = randomNonceString()
-                        currentNonce = nonce
-                        request.requestedScopes = [.fullName, .email]
-                        request.nonce = sha256(nonce)
-                    } onCompletion: { result in
-                        Task {
-                            logginIn = true
-                            switch result {
-                            case .failure(let error):
-                                print("Apple Sign In error: \(error)")
-                            case .success(let authorization):
-                                guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
-                                      let idTokenData = credential.identityToken,
-                                      let idToken = String(data: idTokenData, encoding: .utf8),
-                                      let nonce = currentNonce
-                                else {
-                                    print("Error Guard, currentNonce: \(String(describing: currentNonce))")
-                                    return
-                                }
-                                
-                                let name = credential.fullName?.givenName ?? ""
-                                let surname = credential.fullName?.familyName ?? ""
-                                let composed = "\(name) \(surname)".trimmingCharacters(in: .whitespaces)
-                                fullName = !auth.getFullName().isEmpty ? auth.getFullName() : composed
-                                
-                                await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: fullName)
-                                loggedIn = auth.isLoggedIn()
-                                logginIn = false
-                                tabTitle = "Account"
-                            }
-                        }
-                    }
-                    .signInWithAppleButtonStyle((colorScheme == .dark) ? .whiteOutline : .black)
-                    .frame(height: 50)
-                    .cornerRadius(16)
-                    Button(action: {
-                        logginIn = true
-                        Task {
-                            await auth.signIn(email: email, password: password)
-                            loggedIn = auth.isLoggedIn()
-                            logginIn = false
-                            tabTitle = "Account"
-                            if loggedIn {
-                                if fullName.isEmpty { fullName = auth.getFullName() }
-                                if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
-                            }
-                            
-                            linesFavorites = await auth.fetchUserFavorites()
-                        }
-                    }) {
-                        HStack {
-                            if auth.isLoading {
-                                ProgressView()
-                                    .progressViewStyle(.circular)
-                                    .tint(.white)
-                            }
-                            Label(auth.isLoading ? "Accedo..." : "Accedi", systemImage: "arrow.up.forward.app.fill")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                        }
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background((!validateUserInputs(email: email, password: password) || logginIn) ? Color.gray.opacity(0.5) : Color.red)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                        .shadow(radius: 5, y: 3)
-                    }
-                    .disabled(!validateUserInputs(email: email, password: password) || auth.isLoading || logginIn)
-                };
-                //MARK: CREATING ACCOUNT
+                    loginSection
+                }
+                
                 if !isLogginIn && !loggedIn && !resettingPassword {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Crea account")
-                            .font(.system(size: 40, weight: .bold))
-                            .foregroundStyle(.primary)
-
-                        Text("Registrati per iniziare.")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 40)
-
-                    VStack(spacing: 20) {
-                        HStack(spacing: 15) {
-                            Image(systemName: "person.fill")
-                                .foregroundStyle(.gray)
-                            TextField("Nome completo", text: $fullName)
-                                .textInputAutocapitalization(.words)
-                                .disabled(auth.isLoading)
-                        }
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-
-                        HStack(spacing: 15) {
-                            Image(systemName: "envelope.fill")
-                                .foregroundStyle(.gray)
-                            TextField("Email", text: $email)
-                                .keyboardType(.emailAddress)
-                                .textContentType(.emailAddress)
-                                .textInputAutocapitalization(.never)
-                                .disabled(auth.isLoading)
-                        }
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-
-                        HStack(spacing: 15) {
-                            Image(systemName: "lock.fill")
-                                .foregroundStyle(.gray)
-                            SecureField("Password", text: $password)
-                                .disabled(auth.isLoading)
-                        }
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                        HStack{
-                            Spacer()
-                            Button(action: {
-                                isLogginIn = !isLogginIn
-                            }){
-                                Text("Hai già un account?")
-                                    .font(.caption)
-                                    .foregroundStyle(.red)
-                            }
-                        }
-                    }
-                    if let err = auth.errorMessage, !err.isEmpty {
-                        Text(err)
-                            .font(.footnote)
-                            .foregroundStyle(.red)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    Spacer()
-                    HStack(spacing: 0) {
-                        Text("Continuando, accetti i ")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-
-                        Button {
-                            let url = URL(string: "https://www.lavorami.it/termsofservice\((colorScheme == .dark) ? "" : "?theme=light")")!
-                            
-                            if(howToOpenLinks == .inApp) {
-                                selectedURL = url
-                            }
-                            else {
-                                openURLAction(url)
-                            }
-                        } label: {
-                            Text("Termini")
-                                .font(.subheadline)
-                        }
-                        
-                        Text(" e la ")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                        
-                        Button {
-                            let url = URL(string: "https://www.lavorami.it/privacypolicy\((colorScheme == .dark) ? "" : "?theme=light")")!
-                            
-                            if(howToOpenLinks == .inApp) {
-                                selectedURL = url
-                            } else {
-                                openURLAction(url)
-                            }
-                        } label: {
-                            Text("Privacy Policy.")
-                                .font(.subheadline)
-                        }
-                    }
-                    SignInWithAppleButton(.signUp) { request in
-                        let nonce = randomNonceString()
-                        currentNonce = nonce
-                        request.requestedScopes = [.fullName, .email]
-                        request.nonce = sha256(nonce)
-                    } onCompletion: { result in
-                        logginIn = true
-                        Task {
-                            switch result {
-                            case .failure(let error):
-                                print("Apple Sign In error: \(error)")
-                            case .success(let authorization):
-                                guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
-                                      let idTokenData = credential.identityToken,
-                                      let idToken = String(data: idTokenData, encoding: .utf8),
-                                      let nonce = currentNonce else {
-                                    print("Guard fallito - currentNonce: \(String(describing: currentNonce))")
-                                    return
-                                }
-                                
-                                let name = credential.fullName?.givenName ?? "User"
-                                let surname = credential.fullName?.familyName ?? ""
-                                let composed = "\(name) \(surname)".trimmingCharacters(in: .whitespaces)
-                                fullName = !auth.getFullName().isEmpty ? auth.getFullName() : composed
-                                
-                                await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: fullName)
-                                loggedIn = auth.isLoggedIn()
-                                logginIn = false
-                                tabTitle = "Account"
-                            }
-                        }
-                    }
-                    .signInWithAppleButtonStyle((colorScheme == .dark) ? .whiteOutline : .black)
-                    .frame(height: 50)
-                    .cornerRadius(16)
-                    Button(action: {
-                        logginIn = true
-                        Task {
-                            await auth.signUp(email: email, password: password, name: fullName)
-                            popUpVerifyMail = auth.errorMessage == nil
-                            logginIn = false
-                            tabTitle = "Account"
-                        }
-                    }) {
-                        HStack {
-                            if auth.isLoading {
-                                ProgressView()
-                                    .progressViewStyle(.circular)
-                                    .tint(.white)
-                            }
-                            Label(auth.isLoading ? "Registrazione..." : "Registrati", systemImage: "rectangle.portrait.and.arrow.right.fill")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                        }
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background((!validateUserInputs(email: email, password: password) || isLogginIn) ? Color.gray.opacity(0.5) : Color.red)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                        .shadow(radius: 5, y: 3)
-                    }
-                    .disabled(!validateUserInputs(email: email, password: password) || auth.isLoading)
-                    .alert("Conferma Mail", isPresented: $popUpVerifyMail) {
-                        Button("Chiudi", role: .cancel) {
-                            popUpVerifyMail = false
-                            isLogginIn = true
-                        }
-                    } message: {
-                        Text("Verifica il tuo indirizzo Email con la mail che ti abbiamo inviato per continuare.")
-                    }
+                    signUpSection
                 }
-                //MARK: LOGGED-IN
+                
                 if loggedIn && !resettingPassword {
-                    VStack(alignment: .leading, spacing: 20) {
-                        Text("👋 Ciao \(fullName)")
-                            .font(.system(size: 32, weight: .bold))
-                            .foregroundStyle(.primary)
-                        Text("Qua puoi gestire il tuo account e le tue informazioni.")
-                            .font(.system(size: 12))
-                            .foregroundStyle(.gray)
-                            .padding(.top, -8)
-                        
-                        Section("Informazioni"){
-                            VStack(alignment: .leading, spacing: 16) {
-                                Label {
-                                    Text(fullName)
-                                        .foregroundColor(Color("TextColor"))
-                                        .font(.system(size: 25))
-                                } icon: {
-                                    Image(systemName: "person.fill")
-                                        .foregroundStyle(.red)
-                                        .font(.system(size: 25))
-                                }
-                                
-                                if(email.contains("privaterelay")) {
-                                    Label {
-                                        Text("ID: \(email.prefix(while: {$0 != "@"}))")
-                                            .foregroundColor(Color("TextColor"))
-                                            .font(.system(size: 25))
-                                    } icon: {
-                                        Image(systemName: "person.fill.viewfinder")
-                                            .foregroundStyle(.red)
-                                            .font(.system(size: 25))
-                                    }
-                                }
-                                else {
-                                    Label {
-                                        Text(email)
-                                            .foregroundColor(Color("TextColor"))
-                                            .font(.system(size: 25))
-                                    } icon: {
-                                        Image(systemName: "envelope.fill")
-                                            .foregroundStyle(.red)
-                                            .font(.system(size: 25))
-                                    }
-                                }
-                                
-                                if(auth.isLoggedInWithApple()) {
-                                    Label {
-                                        Text("Account creato con Apple")
-                                            .foregroundColor(Color("TextColor"))
-                                            .font(.system(size: 25))
-                                    } icon: {
-                                        Image(systemName: "apple.logo")
-                                            .foregroundStyle(Color("TextColor"))
-                                            .font(.system(size: 25))
-                                    }
-                                }
-                            }
-                        }
-                        .foregroundStyle(.gray)
-                        
-                        Section("Gestisci"){
-                            VStack (spacing: 8){
-                                if(!auth.isLoggedInWithApple()){
-                                    Button(role: .destructive, action: {
-                                        showEditPasswordPopUp = true
-                                    }) {
-                                        Label("Modifica Password", systemImage: "lock.fill")
-                                            .font(.system(size: 15))
-                                            .fontWeight(.bold)
-                                            .foregroundStyle(.white)
-                                            .frame(maxWidth: .infinity)
-                                            .padding()
-                                            .background(Color.blue)
-                                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                                            .shadow(radius: 5, y: 3)
-                                    }
-                                }
-                                Button(role: .destructive, action: {
-                                    showDeletePopUp = true
-                                }) {
-                                    Label("Elimina Account", systemImage: "trash.fill")
-                                        .font(.system(size: 15))
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(.white)
-                                        .frame(maxWidth: .infinity)
-                                        .padding()
-                                        .background(Color.blue)
-                                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                                        .shadow(radius: 5, y: 3)
-                                }
-                                
-                                Button(role: .destructive, action: {
-                                    showDataManagementPopUp = true
-                                }) {
-                                    Label("Preferenze Dati", systemImage: "externaldrive.fill.badge.person.crop")
-                                        .font(.system(size: 15))
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(.white)
-                                        .frame(maxWidth: .infinity)
-                                        .padding()
-                                        .background(Color.blue)
-                                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                                        .shadow(radius: 5, y: 3)
-                                }
-                                
-                                NavigationLink(destination: RequestDataDownload(isRequiringData: $isRequiringData)) {
-                                    Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
-                                        .font(.system(size: 15))
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(.white)
-                                        .frame(maxWidth: .infinity)
-                                        .padding()
-                                        .background(Color.blue)
-                                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                                        .shadow(radius: 5, y: 3)
-                                }
-                            }
-                        }
-                        .alert("Sei sicuro?", isPresented: $showDeletePopUp) {
-                            Button("Annulla", role: .cancel) { }
-                            Button("Continua", role: .destructive) {
-                                Task {
-                                    email = ""
-                                    password = ""
-                                    fullName = ""
-                                    loggedIn = false
-                                    isLogginIn = true
-                                    await auth.deleteAccount()
-                                }
-                            }
-                        } message: {
-                            Text("Sei sicuro di voler Eliminare Definitivamente il tuo Account?")
-                        }
-                        .alert("Modifica Password", isPresented: $showEditPasswordPopUp) {
-                            Button("Annulla", role: .cancel) { }
-                            Button("Continua", role: .destructive) {
-                                Task {
-                                    await auth.requestPasswordReset(email: email)
-                                }
-                            }
-                        } message: {
-                            Text("Ti invieremo una mail per modificare la tua password, vuoi continuare?")
-                        }
-                        .foregroundStyle(.gray)
-                        
-                        Spacer()
-
-                        Button(role: .destructive, action: {
-                            showConfirmToExitPopUp = true
-                        }) {
-                            Label("Esci", systemImage: "rectangle.portrait.and.arrow.right.fill")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.red)
-                                .clipShape(RoundedRectangle(cornerRadius: 16))
-                                .shadow(radius: 5, y: 3)
-                        }
-                    }
-                    .onAppear {
-                        if fullName.isEmpty { fullName = auth.getFullName() }
-                        if email.isEmpty, let sess = auth.session {
-                            email = sess.user.email ?? email
-                            
-                            Task {
-                                linesFavorites = await auth.fetchUserFavorites()
-                            }
-                        }
-                        
-                        emailSaved = email
-                    }
+                    loggedInSection
                 }
-                //MARK: RESET PASSWORD
-                if(resettingPassword) {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Reset Password")
-                            .font(.system(size: 40, weight: .bold))
-                            .foregroundStyle(.primary)
-
-                        Text("Recupera qui la Password del tuo Account.")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 40)
-                    VStack(spacing: 20) {
-                        HStack(spacing: 15) {
-                            Image(systemName: "envelope.fill")
-                                .foregroundStyle(.gray)
-                            TextField("Email", text: $emailRecoverPassword)
-                                .keyboardType(.emailAddress)
-                                .textContentType(.emailAddress)
-                                .textInputAutocapitalization(.never)
-                        }
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                    }
-                    HStack{
-                        Spacer()
-                        Button(action: {
-                            isLogginIn = true
-                            resettingPassword = false
-                            passwordResetted = false
-                        }){
-                            Text("Torna al Login")
-                                .font(.caption)
-                                .foregroundStyle(.red)
-                        }
-                    }
-                    .padding(.top, -10)
-                    Spacer()
-                    Button(role: .destructive, action: {
-                        Task{
-                            await auth.requestPasswordReset(email: emailRecoverPassword)
-                            passwordResetted = true
-                        }
-                    }) {
-                        Label("Invia Email", systemImage: "paperplane.fill")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background((!validateEmail(emailRecoverPassword)) ? Color.gray.opacity(0.5) : Color.red)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .shadow(radius: 5, y: 3)
-                    }
-                    .disabled(!validateEmail(emailRecoverPassword))
-                    .alert("Email inviata!", isPresented: $passwordResetted) {
-                        Button("Chiudi", role: .cancel) {
-                            resettingPassword = false
-                            passwordResetted = false
-                        }
-                    } message: {
-                        Text("Email inviata a \(emailRecoverPassword)!")
-                    }
+                
+                if resettingPassword {
+                    resetPasswordSection
                 }
             }
             .padding(25)
             .blur(radius: isLocked ? 12 : 0)
             .animation(.easeInOut(duration: 0.25), value: isLocked)
             .allowsHitTesting(!isLocked)
-            .onAppear {
-                loggedIn = auth.isLoggedIn()
-                if loggedIn {
-                    if fullName.isEmpty { fullName = auth.getFullName() }
-                    if email.isEmpty, let sess = auth.session {
-                        email = sess.user.email ?? email
-                        Task {
-                            let res = await auth.saveDatasToDb(favorites: linesFavorites)
-                            showErrorDBSavePopUp = !res
-                        }
-                    }
-                    tabTitle = "Account"
-                }
-                if(requireFaceID && loggedIn && isRequiringData == false && isBiometricAuthCompleted == false){
-                    BiometricAuth.authenticate{
-                        print("FaceID Recognized!")
-                        isLocked = false
-                    } onFailure: { error in
-                        print("Error during read of FaceID")
-                        dismiss()
-                    }
-                    isBiometricAuthCompleted = true
-                }
-                else {
-                    isLocked = false
-                    isRequiringData = false
-                    isBiometricAuthCompleted = true
-                }
-            }
+            .onAppear(perform: handleOnAppear)
             .alert("Sei sicuro?", isPresented: $showConfirmToExitPopUp) {
                 Button("Annulla", role: .cancel) { }
-                Button("Conferma", role: .destructive) {
-                    Task {
-                        loggedIn = false
-                        isLogginIn = true
-                        email = ""
-                        password = ""
-                        fullName = ""
-                        tabTitle = ""
-                        await auth.signOut()
-                    }
-                }
+                Button("Conferma", role: .destructive, action: performSignOut)
             } message: {
                 Text("Sei sicuro di voler uscire dall'account?")
             }
@@ -2716,7 +2112,602 @@ struct AccountView: View {
                     .ignoresSafeArea(.all)
             }
             .sheet(isPresented: $showDataManagementPopUp) {
-                AccountDatasInfoView()
+                AccountDatasInfoView(authManager: auth)
+            }
+        }
+    }
+    
+    private var loginSection: some View {
+        Group {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Bentornato")
+                    .font(.system(size: 40, weight: .bold))
+                    .foregroundStyle(.primary)
+
+                Text("Accedi al tuo Account per continuare.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 40)
+
+            VStack(spacing: 20) {
+                HStack(spacing: 15) {
+                    Image(systemName: "envelope.fill")
+                        .foregroundStyle(.gray)
+                    TextField("Email", text: $email)
+                        .keyboardType(.emailAddress)
+                        .textContentType(.emailAddress)
+                        .textInputAutocapitalization(.never)
+                        .disabled(auth.isLoading)
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                HStack(spacing: 15) {
+                    Image(systemName: "lock.fill")
+                        .foregroundStyle(.gray)
+                    SecureField("Password", text: $password)
+                        .disabled(auth.isLoading)
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                HStack {
+                    Spacer()
+                    Button("Password dimenticata?") {
+                        resettingPassword = true
+                    }
+                    .font(.caption)
+                    .foregroundStyle(.red)
+                    
+                    Button(action: { isLogginIn = false }) {
+                        Text("Non hai un account?")
+                            .font(.caption)
+                            .foregroundStyle(.red)
+                    }
+                }
+            }
+            
+            if let err = auth.errorMessage, !err.isEmpty {
+                Text(err)
+                    .font(.footnote)
+                    .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            
+            Spacer()
+            
+            termsAndPrivacyView
+            appleSignInLoginButton
+            loginButton
+        }
+    }
+    
+    private var signUpSection: some View {
+        Group {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Crea account")
+                    .font(.system(size: 40, weight: .bold))
+                    .foregroundStyle(.primary)
+
+                Text("Registrati per iniziare.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 40)
+
+            VStack(spacing: 20) {
+                HStack(spacing: 15) {
+                    Image(systemName: "person.fill")
+                        .foregroundStyle(.gray)
+                    TextField("Nome completo", text: $fullName)
+                        .textInputAutocapitalization(.words)
+                        .disabled(auth.isLoading)
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                HStack(spacing: 15) {
+                    Image(systemName: "envelope.fill")
+                        .foregroundStyle(.gray)
+                    TextField("Email", text: $email)
+                        .keyboardType(.emailAddress)
+                        .textContentType(.emailAddress)
+                        .textInputAutocapitalization(.never)
+                        .disabled(auth.isLoading)
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                HStack(spacing: 15) {
+                    Image(systemName: "lock.fill")
+                        .foregroundStyle(.gray)
+                    SecureField("Password", text: $password)
+                        .disabled(auth.isLoading)
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                
+                HStack{
+                    Spacer()
+                    Button(action: { isLogginIn = true }) {
+                        Text("Hai già un account?")
+                            .font(.caption)
+                            .foregroundStyle(.red)
+                    }
+                }
+            }
+            
+            if let err = auth.errorMessage, !err.isEmpty {
+                Text(err)
+                    .font(.footnote)
+                    .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            
+            Spacer()
+            
+            termsAndPrivacyView
+            appleSignInSignUpButton
+            signUpButton
+        }
+    }
+    
+    private var loggedInSection: some View {
+        Group {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("👋 Ciao \(fullName)")
+                    .font(.system(size: 32, weight: .bold))
+                    .foregroundStyle(.primary)
+                Text("Qua puoi gestire il tuo account e le tue informazioni.")
+                    .font(.system(size: 12))
+                    .foregroundStyle(.gray)
+                    .padding(.top, -8)
+                
+                Section("Informazioni") {
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack(spacing: 12) {
+                            Image(systemName: "person.fill")
+                                .foregroundStyle(.red)
+                                .font(.system(size: 25))
+                            
+                            Text(fullName)
+                                .foregroundColor(Color("TextColor"))
+                                .font(.system(size: 25))
+                        }
+                        
+                        if email.contains("privaterelay") {
+                            HStack(spacing: 12) {
+                                Image(systemName: "person.fill.viewfinder")
+                                    .foregroundStyle(.red)
+                                    .font(.system(size: 25))
+                                
+                                Text("ID: \(email.prefix(while: {$0 != "@"}))")
+                                    .foregroundColor(Color("TextColor"))
+                                    .font(.system(size: 25))
+                            }
+                        } else {
+                            HStack(spacing: 12) {
+                                Image(systemName: "envelope.fill")
+                                    .foregroundStyle(.red)
+                                    .font(.system(size: 25))
+                                
+                                Text(email)
+                                    .foregroundColor(Color("TextColor"))
+                                    .font(.system(size: 25))
+                            }
+                        }
+                        
+                        if auth.isLoggedInWithApple() {
+                            HStack(spacing: 12) {
+                                Image(systemName: "apple.logo")
+                                    .foregroundStyle(Color("TextColor"))
+                                    .font(.system(size: 25))
+                                
+                                Text("Account creato con Apple")
+                                    .foregroundColor(Color("TextColor"))
+                                    .font(.system(size: 25))
+                            }
+                        }
+                    }
+                }
+                .foregroundStyle(.gray)
+                
+                Section("Gestisci") {
+                    VStack(spacing: 8) {
+                        if !auth.isLoggedInWithApple() {
+                            Button(role: .destructive, action: { showEditPasswordPopUp = true }) {
+                                Label("Modifica Password", systemImage: "lock.fill")
+                                    .font(.system(size: 15))
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                                    .shadow(radius: 5, y: 3)
+                            }
+                        }
+                        Button(role: .destructive, action: { showDeletePopUp = true }) {
+                            Label("Elimina Account", systemImage: "trash.fill")
+                                .font(.system(size: 15))
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                                .shadow(radius: 5, y: 3)
+                        }
+                        
+                        Button(role: .destructive, action: { showDataManagementPopUp = true }) {
+                            Label("Preferenze Dati", systemImage: "externaldrive.fill.badge.person.crop")
+                                .font(.system(size: 15))
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                                .shadow(radius: 5, y: 3)
+                        }
+                        
+                        NavigationLink(destination: RequestDataDownload(isRequiringData: $isRequiringData)) {
+                            Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
+                                .font(.system(size: 15))
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                                .shadow(radius: 5, y: 3)
+                        }
+                    }
+                }
+                .alert("Sei sicuro?", isPresented: $showDeletePopUp) {
+                    Button("Annulla", role: .cancel) { }
+                    Button("Continua", role: .destructive, action: performAccountDeletion)
+                } message: {
+                    Text("Sei sicuro di voler Eliminare Definitivamente il tuo Account?")
+                }
+                .alert("Modifica Password", isPresented: $showEditPasswordPopUp) {
+                    Button("Annulla", role: .cancel) { }
+                    Button("Continua", role: .destructive) {
+                        Task { await auth.requestPasswordReset(email: email) }
+                    }
+                } message: {
+                    Text("Ti invieremo una mail per modificare la tua password, vuoi continuare?")
+                }
+                .foregroundStyle(.gray)
+                
+                Spacer()
+
+                Button(role: .destructive, action: { showConfirmToExitPopUp = true }) {
+                    Label("Esci", systemImage: "rectangle.portrait.and.arrow.right.fill")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.red)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .shadow(radius: 5, y: 3)
+                }
+            }
+            .onAppear(perform: populateUserData)
+        }
+    }
+    
+    private var resetPasswordSection: some View {
+        Group {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Reset Password")
+                    .font(.system(size: 40, weight: .bold))
+                    .foregroundStyle(.primary)
+
+                Text("Recupera qui la Password del tuo Account.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 40)
+            
+            VStack(spacing: 20) {
+                HStack(spacing: 15) {
+                    Image(systemName: "envelope.fill")
+                        .foregroundStyle(.gray)
+                    TextField("Email", text: $emailRecoverPassword)
+                        .keyboardType(.emailAddress)
+                        .textContentType(.emailAddress)
+                        .textInputAutocapitalization(.never)
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+            }
+            
+            HStack{
+                Spacer()
+                Button(action: {
+                    isLogginIn = true
+                    resettingPassword = false
+                    passwordResetted = false
+                }){
+                    Text("Torna al Login")
+                        .font(.caption)
+                        .foregroundStyle(.red)
+                }
+            }
+            .padding(.top, -10)
+            
+            Spacer()
+            
+            Button(role: .destructive, action: performPasswordResetRequest) {
+                Label("Invia Email", systemImage: "paperplane.fill")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background((!validateEmail(emailRecoverPassword)) ? Color.gray.opacity(0.5) : Color.red)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .shadow(radius: 5, y: 3)
+            }
+            .disabled(!validateEmail(emailRecoverPassword))
+            .alert("Email inviata!", isPresented: $passwordResetted) {
+                Button("Chiudi", role: .cancel) {
+                    resettingPassword = false
+                    passwordResetted = false
+                }
+            } message: {
+                Text("Email inviata a \(emailRecoverPassword)!")
+            }
+        }
+    }
+    
+    private var termsAndPrivacyView: some View {
+        HStack(spacing: 0) {
+            Text("Continuando, accetti i ")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+
+            Button {
+                let url = URL(string: "https://www.lavorami.it/termsofservice\((colorScheme == .dark) ? "" : "?theme=light")")!
+                if howToOpenLinks == .inApp {
+                    selectedURL = url
+                } else {
+                    openURLAction(url)
+                }
+            } label: {
+                Text("Termini")
+                    .font(.subheadline)
+            }
+            
+            Text(" e la ")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            
+            Button {
+                let url = URL(string: "https://www.lavorami.it/privacypolicy\((colorScheme == .dark) ? "" : "?theme=light")")!
+                if howToOpenLinks == .inApp {
+                    selectedURL = url
+                } else {
+                    openURLAction(url)
+                }
+            } label: {
+                Text("Privacy Policy.")
+                    .font(.subheadline)
+            }
+        }
+    }
+    
+    private var appleSignInLoginButton: some View {
+        SignInWithAppleButton(.signIn) { request in
+            let nonce = randomNonceString()
+            currentNonce = nonce
+            request.requestedScopes = [.fullName, .email]
+            request.nonce = sha256(nonce)
+        } onCompletion: { result in
+            handleAppleSignInCompletion(result: result)
+        }
+        .signInWithAppleButtonStyle((colorScheme == .dark) ? .whiteOutline : .black)
+        .frame(height: 50)
+        .cornerRadius(16)
+    }
+    
+    private var appleSignInSignUpButton: some View {
+        SignInWithAppleButton(.signUp) { request in
+            let nonce = randomNonceString()
+            currentNonce = nonce
+            request.requestedScopes = [.fullName, .email]
+            request.nonce = sha256(nonce)
+        } onCompletion: { result in
+            handleAppleSignInCompletion(result: result)
+        }
+        .signInWithAppleButtonStyle((colorScheme == .dark) ? .whiteOutline : .black)
+        .frame(height: 50)
+        .cornerRadius(16)
+    }
+    
+    private var loginButton: some View {
+        Button(action: performLogin) {
+            HStack {
+                if auth.isLoading {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .tint(.white)
+                }
+                Label(auth.isLoading ? "Accedo..." : "Accedi", systemImage: "arrow.up.forward.app.fill")
+                    .font(.headline)
+                    .fontWeight(.bold)
+            }
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background((!validateUserInputs(email: email, password: password) || logginIn) ? Color.gray.opacity(0.5) : Color.red)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .shadow(radius: 5, y: 3)
+        }
+        .disabled(!validateUserInputs(email: email, password: password) || auth.isLoading || logginIn)
+    }
+    
+    private var signUpButton: some View {
+        Button(action: performSignUp) {
+            HStack {
+                if auth.isLoading {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .tint(.white)
+                }
+                Label(auth.isLoading ? "Registrazione..." : "Registrati", systemImage: "rectangle.portrait.and.arrow.right.fill")
+                    .font(.headline)
+                    .fontWeight(.bold)
+            }
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background((!validateUserInputs(email: email, password: password) || isLogginIn) ? Color.gray.opacity(0.5) : Color.red)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .shadow(radius: 5, y: 3)
+        }
+        .disabled(!validateUserInputs(email: email, password: password) || auth.isLoading)
+        .alert("Conferma Mail", isPresented: $popUpVerifyMail) {
+            Button("Chiudi", role: .cancel) {
+                popUpVerifyMail = false
+                isLogginIn = true
+            }
+        } message: {
+            Text("Verifica il tuo indirizzo Email con la mail che ti abbiamo inviato per continuare.")
+        }
+    }
+    
+    private func handleOnAppear() {
+        loggedIn = auth.isLoggedIn()
+        if loggedIn {
+            if fullName.isEmpty { fullName = auth.getFullName() }
+            if email.isEmpty, let sess = auth.session {
+                email = sess.user.email ?? email
+                Task {
+                    let res = await auth.saveDatasToDb(favorites: linesFavorites)
+                    showErrorDBSavePopUp = !res
+                }
+            }
+            tabTitle = "Account"
+        }
+        if requireFaceID && loggedIn && !isRequiringData && !isBiometricAuthCompleted {
+            BiometricAuth.authenticate {
+                isLocked = false
+            } onFailure: { error in
+                dismiss()
+            }
+            isBiometricAuthCompleted = true
+        } else {
+            isLocked = false
+            isRequiringData = false
+            isBiometricAuthCompleted = true
+        }
+    }
+    
+    private func populateUserData() {
+        if fullName.isEmpty { fullName = auth.getFullName() }
+        if email.isEmpty, let sess = auth.session {
+            email = sess.user.email ?? email
+            Task {
+                linesFavorites = await auth.fetchUserFavorites()
+            }
+        }
+        emailSaved = email
+    }
+    
+    private func performLogin() {
+        logginIn = true
+        Task {
+            await auth.signIn(email: email, password: password)
+            loggedIn = auth.isLoggedIn()
+            logginIn = false
+            tabTitle = "Account"
+            if loggedIn {
+                if fullName.isEmpty { fullName = auth.getFullName() }
+                if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+            }
+            linesFavorites = await auth.fetchUserFavorites()
+        }
+    }
+    
+    private func performSignUp() {
+        logginIn = true
+        Task {
+            await auth.signUp(email: email, password: password, name: fullName)
+            popUpVerifyMail = auth.errorMessage == nil
+            logginIn = false
+            tabTitle = "Account"
+        }
+    }
+    
+    private func performSignOut() {
+        Task {
+            loggedIn = false
+            isLogginIn = true
+            email = ""
+            password = ""
+            fullName = ""
+            tabTitle = ""
+            await auth.signOut()
+        }
+    }
+    
+    private func performAccountDeletion() {
+        Task {
+            email = ""
+            password = ""
+            fullName = ""
+            loggedIn = false
+            isLogginIn = true
+            await auth.deleteAccount()
+        }
+    }
+    
+    private func performPasswordResetRequest() {
+        Task {
+            await auth.requestPasswordReset(email: emailRecoverPassword)
+            passwordResetted = true
+        }
+    }
+    
+    private func handleAppleSignInCompletion(result: Result<ASAuthorization, Error>) {
+        Task {
+            logginIn = true
+            switch result {
+            case .failure(let error):
+                print("Apple Sign In error: \(error)")
+                logginIn = false
+            case .success(let authorization):
+                guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
+                      let idTokenData = credential.identityToken,
+                      let idToken = String(data: idTokenData, encoding: .utf8),
+                      let nonce = currentNonce
+                else {
+                    logginIn = false
+                    return
+                }
+                
+                let name = credential.fullName?.givenName ?? "User"
+                let surname = credential.fullName?.familyName ?? ""
+                let composed = "\(name) \(surname)".trimmingCharacters(in: .whitespaces)
+                fullName = !auth.getFullName().isEmpty ? auth.getFullName() : composed
+                
+                await auth.signInWithApple(nonce: nonce, idToken: idToken, fullName: fullName)
+                loggedIn = auth.isLoggedIn()
+                logginIn = false
+                tabTitle = "Account"
             }
         }
     }
@@ -2734,21 +2725,19 @@ struct AccountView: View {
 
     func validateEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
     
     func validateUserInputs(email: String, password: String) -> Bool {
-        let mailIsValid = validateEmail(email)
-        
-        return password.count >= 8 && mailIsValid
+        return password.count >= 8 && validateEmail(email)
     }
 }
 
 struct AccountDatasInfoView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var startImageTransition: Bool = false
+    @StateObject var authManager: AuthManager
     
     @AppStorage("saveFavoritesData") var saveFavoritesData = true
     @AppStorage("saveYourLinesData") var saveYourLinesData = true
@@ -2793,6 +2782,11 @@ struct AccountDatasInfoView: View {
                                     .font(.system(size: 16, weight: .medium))
                             }
                         }
+                        .onChange(of: saveFavoritesData) {
+                            Task {
+                                await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
+                            }
+                        }
                         .tint(.red)
                         .padding(.vertical, 12)
                         .padding(.horizontal, 16)
@@ -2807,6 +2801,11 @@ struct AccountDatasInfoView: View {
                                 
                                 Text("Le Tue Linee")
                                     .font(.system(size: 16, weight: .medium))
+                            }
+                        }
+                        .onChange(of: saveYourLinesData) {
+                            Task {
+                                await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
                             }
                         }
                         .tint(.red)

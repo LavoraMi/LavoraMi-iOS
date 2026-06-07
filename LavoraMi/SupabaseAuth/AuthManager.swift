@@ -213,11 +213,37 @@ class AuthManager: ObservableObject {
             return []
         }
     }
+    
+    func saveUserPreferences(enableFavorites: Bool, enableYourLines: Bool) async {
+        let userID = session?.user.id
+        let userEmail = session?.user.email
+        
+        let dataToSave = UserPreferencesDatas(user_email: userEmail ?? "", enable_favorites: enableFavorites, enable_your_lines: enableYourLines)
+        
+        if(dataToSave.user_email.isEmpty){
+            print("ERRORE: Email vuota.")
+        }
+            
+        do {
+            try await supabase
+                .from("userPreferences")
+                .upsert(dataToSave)
+                .execute()
+            
+        } catch {
+            print("Errore durante l'upsert: \(error)")
+        }
+    }
 }
-
 
 struct LinesFavoriteDatas: Encodable, Decodable {
     let id_user: UUID
     let user_email: String
     let lines: [String]
+}
+
+struct UserPreferencesDatas: Encodable, Decodable {
+    let user_email: String
+    let enable_favorites: Bool
+    let enable_your_lines: Bool
 }
