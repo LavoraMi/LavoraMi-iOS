@@ -2794,9 +2794,11 @@ struct AccountDatasInfoView: View {
                         }
                         .onChange(of: saveFavoritesData) {
                             Task {
+                                let res: Bool
                                 await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
-                                if(saveFavoritesData) { await authManager.saveDatasToDb(favorites: linesFavorites) }
-                                else { await authManager.saveDatasToDb(favorites: []) }
+                                if(saveFavoritesData) { res = await authManager.saveDatasToDb(favorites: linesFavorites) }
+                                else { res = await authManager.saveDatasToDb(favorites: []) }
+                                print("RESULT: \(res)")
                             }
                         }
                         .tint(.red)
