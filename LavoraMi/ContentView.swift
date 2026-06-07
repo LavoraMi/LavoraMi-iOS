@@ -5173,6 +5173,7 @@ struct LineDetailView: View {
     @State private var openPopUpLines: Bool = false
     @State private var openInfoAccessibility: Bool = false
     @State private var tramLinesSupported: [String] = ["1", "3", "5", "7", "9", "10", "15", "19", "24", "31", "33"]
+    @State private var linesWithBlackText: [String] = ["M3", "M5", "S5", "S6", "S8", "S11", "S12"]
     
     private var centerIndex: Int { max(0, stations.count / 2) }
     private var centerCoordinate: CLLocationCoordinate2D {
@@ -5465,7 +5466,7 @@ struct LineDetailView: View {
                                       : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
                         )
                         .foregroundStyle(selectedTab == .map
-                                         ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4" || lineName == "S3") ? .white : Color(.systemBackground))
+                                         ? ((!linesWithBlackText.contains(lineName)) ? .white : Color(.systemBackground))
                                          : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
                     }
                     Button(action: {
@@ -5493,7 +5494,7 @@ struct LineDetailView: View {
                                       : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
                         )
                         .foregroundStyle(selectedTab == .works
-                                         ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground))
+                                         ? ((!linesWithBlackText.contains(lineName)) ? .white : Color(.systemBackground))
                                          : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
                     }
                     Button(action: {
@@ -5519,7 +5520,7 @@ struct LineDetailView: View {
                                 .fill(selectedTab == .interchanges ? ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)) : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
                         )
                         .foregroundStyle(selectedTab == .interchanges
-                                         ? ((lineName == "S19" || lineName == "S1" || lineName == "M1" || lineName == "M4") ? .white : Color(.systemBackground))
+                                         ? ((!linesWithBlackText.contains(lineName)) ? .white : Color(.systemBackground))
                                          : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
                     }
                 }
