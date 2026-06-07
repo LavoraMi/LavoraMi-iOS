@@ -137,7 +137,7 @@ class AuthManager: ObservableObject {
                 return
             }
             
-            try await supabase.rpc("delete_self").execute()
+            try await supabase.rpc("delete_self_dev_test").execute()
             try await supabase.auth.signOut()
             
             self.session = nil
