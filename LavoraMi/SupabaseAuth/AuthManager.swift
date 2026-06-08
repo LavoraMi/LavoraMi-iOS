@@ -164,10 +164,9 @@ class AuthManager: ObservableObject {
     func isLoggedInWithApple() -> Bool {return session?.user.appMetadata["provider"]?.stringValue == "apple"}
     
     func saveDatasToDb(favorites: [String], yourLines: [String]) async -> Bool{
-        let userID = session?.user.id
         let userEmail = session?.user.email
         
-        let linesToSave = LinesFavoriteDatas(id_user: userID ?? UUID(), user_email: userEmail ?? "", lines: favorites, your_lines: yourLines)
+        let linesToSave = LinesFavoriteDatas(user_email: userEmail ?? "", lines: favorites, your_lines: yourLines)
         
         let res = await inserDataToDb(linesToSave: linesToSave)
         
@@ -275,7 +274,6 @@ class AuthManager: ObservableObject {
 }
 
 struct LinesFavoriteDatas: Encodable, Decodable {
-    let id_user: UUID
     let user_email: String
     let lines: [String]
     let your_lines: [String]
