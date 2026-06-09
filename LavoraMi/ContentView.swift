@@ -2103,6 +2103,7 @@ struct AccountView: View {
     @State var saveYourLinesData = true
     @State private var currentNonce: String?
     @State private var currentSyncStatus: String = "Sincronizzazione..."
+    @State private var currentSyncStatusIcon: String = "cloudSyncing"
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
@@ -2350,9 +2351,12 @@ struct AccountView: View {
                         }
                         
                         HStack(spacing: 12) {
-                            Image(systemName: "cloud.fill")
+                            Image(currentSyncStatusIcon)
+                                .renderingMode(.template)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 25, height: 25)
                                 .foregroundStyle(.red)
-                                .font(.system(size: 25))
                             
                             Text(currentSyncStatus)
                                 .foregroundColor(Color("TextColor"))
@@ -2655,9 +2659,11 @@ struct AccountView: View {
                     
                     if res.enable_favorites {
                         currentSyncStatus = "Dati Sincronizzati"
+                        currentSyncStatusIcon = "cloudSynced"
                         linesFavorites = try await auth.fetchUserFavorites()
                     } else {
                         currentSyncStatus = "Errore Sincronizzazione"
+                        currentSyncStatusIcon = "cloudFailSync"
                     }
                     
                     if res.enable_your_lines {
@@ -2666,6 +2672,7 @@ struct AccountView: View {
                     
                 } catch {
                     currentSyncStatus = "Errore Sincronizzazione"
+                    currentSyncStatusIcon = "cloudFailSync"
                 }
             }
             
@@ -2698,6 +2705,7 @@ struct AccountView: View {
                 }
                 catch {
                     currentSyncStatus = "Errore Sincronizzazione"
+                    currentSyncStatusIcon = "cloudFailSync"
                 }
             }
         }
@@ -2716,9 +2724,11 @@ struct AccountView: View {
                 do {
                     linesFavorites = try await auth.fetchUserFavorites()
                     currentSyncStatus = "Dati Sincronizzati"
+                    currentSyncStatusIcon = "cloudSynced"
                 }
                 catch {
                     currentSyncStatus = "Errore Sincronizzazione"
+                    currentSyncStatusIcon = "cloudFailSync"
                 }
                 
                 self.loggedIn = true
