@@ -2157,7 +2157,7 @@ struct AccountView: View {
                     .ignoresSafeArea(.all)
             }
             .sheet(isPresented: $showDataManagementPopUp) {
-                AccountDatasInfoView(authManager: auth, saveFavoritesData: saveFavoritesData, saveYourLinesData: saveYourLinesData)
+                AccountDatasInfoView(authManager: auth, saveFavoritesData: saveFavoritesData, saveYourLinesData: saveYourLinesData, currentSyncStatus: $currentSyncStatus, currentSyncStatusIcon: $currentSyncStatusIcon)
             }
         }
     }
@@ -2670,12 +2670,16 @@ struct AccountView: View {
                         linesSelected = try await auth.fetchUserLines()
                     }
                     
+                    if(!res.enable_favorites && !res.enable_your_lines){
+                        currentSyncStatus = "Non Sincronizzato"
+                        currentSyncStatusIcon = "cloudDisabled"
+                    }
+                    
                 } catch {
                     currentSyncStatus = "Errore Sincronizzazione"
                     currentSyncStatusIcon = "cloudFailSync"
                 }
             }
-            
             
             tabTitle = "Account"
         }
@@ -2836,6 +2840,8 @@ struct AccountDatasInfoView: View {
     
     @State var saveFavoritesData: Bool
     @State var saveYourLinesData: Bool
+    @Binding var currentSyncStatus: String
+    @Binding var currentSyncStatusIcon: String
     @AppStorage("enableAnimations") var enableAnimations = true
     @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     @AppStorage("linesSelected") private var linesSelected: [String] = []
@@ -2892,6 +2898,15 @@ struct AccountDatasInfoView: View {
                                 else if(!saveFavoritesData && saveYourLinesData){ res = await authManager.saveDatasToDb(favorites: [], yourLines: linesSelected) }
                                 else{res = await authManager.saveDatasToDb(favorites: [], yourLines: [])}
                                 
+                                if(!saveFavoritesData && !saveYourLinesData) {
+                                    currentSyncStatus = "Non Sincronizzato"
+                                    currentSyncStatusIcon = "cloudDisabled"
+                                }
+                                else {
+                                    currentSyncStatus = "Dati Sincronizzati"
+                                    currentSyncStatusIcon = "cloudSynced"
+                                }
+                                
                                 print("RESULT: \(res)")
                             }
                         }
@@ -2914,11 +2929,21 @@ struct AccountDatasInfoView: View {
                         .onChange(of: saveYourLinesData) {
                             Task {
                                 let res: Bool
+                                
                                 try await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
                                 
                                 if(saveYourLinesData) { res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected) }
                                 else if(!saveYourLinesData && saveFavoritesData){ res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: []) }
                                 else{res = await authManager.saveDatasToDb(favorites: [], yourLines: [])}
+                                
+                                if(!saveFavoritesData && !saveYourLinesData) {
+                                    currentSyncStatus = "Non Sincronizzato"
+                                    currentSyncStatusIcon = "cloudDisabled"
+                                }
+                                else {
+                                    currentSyncStatus = "Dati Sincronizzati"
+                                    currentSyncStatusIcon = "cloudSynced"
+                                }
                                 
                                 print("RESULT: \(res)")
                             }
