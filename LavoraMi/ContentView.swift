@@ -2922,7 +2922,7 @@ struct AccountDatasInfoView: View {
                                     .foregroundStyle(.red)
                                     .font(.title3)
                                 
-                                Text("Le Tue Linee")
+                                Text("Le tue linee")
                                     .font(.system(size: 16, weight: .medium))
                             }
                         }
