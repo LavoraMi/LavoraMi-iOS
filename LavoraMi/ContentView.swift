@@ -3916,7 +3916,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "nanopb",
-            version: "2.30910.0",
+            version: "2.30910.1",
             license: "Zlib License",
             copyright: "Copyright (c) 2011 Petteri Aimonen",
             licenseText: """
@@ -3931,7 +3931,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Promises",
-            version: "2.4.0",
+            version: "2.4.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2018 Google LLC",
             licenseText: """
@@ -3974,7 +3974,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-clocks",
-            version: "1.0.6",
+            version: "1.1.0",
             license: "MIT License",
             copyright: "Copyright (c) 2022 Point-Free, Inc.",
             licenseText: """
