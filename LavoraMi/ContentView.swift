@@ -2658,11 +2658,11 @@ struct AccountView: View {
                     let res: UserPreferencesDatas = try await auth.fetchUserPreferencesAccount()
                     
                     if res.enable_favorites {
-                        currentSyncStatus = "Dati Sincronizzati"
+                        currentSyncStatus = String(localized: .sincronizzato)
                         currentSyncStatusIcon = "cloudSynced"
                         linesFavorites = try await auth.fetchUserFavorites()
                     } else {
-                        currentSyncStatus = "Errore Sincronizzazione"
+                        currentSyncStatus = String(localized: .erroreSincronizzato)
                         currentSyncStatusIcon = "cloudFailSync"
                     }
                     
@@ -2671,12 +2671,12 @@ struct AccountView: View {
                     }
                     
                     if(!res.enable_favorites && !res.enable_your_lines){
-                        currentSyncStatus = "Non Sincronizzato"
+                        currentSyncStatus = String(localized: .nonSincronizzato)
                         currentSyncStatusIcon = "cloudDisabled"
                     }
                     
                 } catch {
-                    currentSyncStatus = "Errore Sincronizzazione"
+                    currentSyncStatus = String(localized: .erroreSincronizzato)
                     currentSyncStatusIcon = "cloudFailSync"
                 }
             }
@@ -2708,7 +2708,7 @@ struct AccountView: View {
                     try await auth.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
                 }
                 catch {
-                    currentSyncStatus = "Errore Sincronizzazione"
+                    currentSyncStatus = String(localized: .erroreSincronizzato)
                     currentSyncStatusIcon = "cloudFailSync"
                 }
             }
@@ -2727,11 +2727,11 @@ struct AccountView: View {
                 
                 do {
                     linesFavorites = try await auth.fetchUserFavorites()
-                    currentSyncStatus = "Dati Sincronizzati"
+                    currentSyncStatus = String(localized: .sincronizzato)
                     currentSyncStatusIcon = "cloudSynced"
                 }
                 catch {
-                    currentSyncStatus = "Errore Sincronizzazione"
+                    currentSyncStatus = String(localized: .erroreSincronizzato)
                     currentSyncStatusIcon = "cloudFailSync"
                 }
                 
@@ -2899,11 +2899,11 @@ struct AccountDatasInfoView: View {
                                 else{res = await authManager.saveDatasToDb(favorites: [], yourLines: [])}
                                 
                                 if(!saveFavoritesData && !saveYourLinesData) {
-                                    currentSyncStatus = "Non Sincronizzato"
+                                    currentSyncStatus = String(localized: .nonSincronizzato)
                                     currentSyncStatusIcon = "cloudDisabled"
                                 }
                                 else {
-                                    currentSyncStatus = "Dati Sincronizzati"
+                                    currentSyncStatus = String(localized: .sincronizzato)
                                     currentSyncStatusIcon = "cloudSynced"
                                 }
                                 
@@ -2937,11 +2937,11 @@ struct AccountDatasInfoView: View {
                                 else{res = await authManager.saveDatasToDb(favorites: [], yourLines: [])}
                                 
                                 if(!saveFavoritesData && !saveYourLinesData) {
-                                    currentSyncStatus = "Non Sincronizzato"
+                                    currentSyncStatus = String(localized: .nonSincronizzato)
                                     currentSyncStatusIcon = "cloudDisabled"
                                 }
                                 else {
-                                    currentSyncStatus = "Dati Sincronizzati"
+                                    currentSyncStatus = String(localized: .sincronizzato)
                                     currentSyncStatusIcon = "cloudSynced"
                                 }
                                 

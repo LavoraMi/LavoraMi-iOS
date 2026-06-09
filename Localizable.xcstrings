@@ -1589,6 +1589,29 @@
         }
       }
     },
+    "erroreSincronizzato" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync Error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error Sincronización"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errore Sincronizzazione"
+          }
+        }
+      }
+    },
     "Esci" : {
       "localizations" : {
         "en" : {
@@ -4012,6 +4035,29 @@
         }
       }
     },
+    "nonSincronizzato" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Synched"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin Sincronizar"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non Sincronizzato"
+          }
+        }
+      }
+    },
     "Notifiche" : {
       "localizations" : {
         "en" : {
@@ -5505,6 +5551,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Simone Gallotti"
+          }
+        }
+      }
+    },
+    "sincronizzato" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synched Data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos Sincronizados"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dati Sincronizzati"
           }
         }
       }
