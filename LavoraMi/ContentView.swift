@@ -2102,7 +2102,7 @@ struct AccountView: View {
     @State var saveFavoritesData = true
     @State var saveYourLinesData = true
     @State private var currentNonce: String?
-    @State private var currentSyncStatus: String = "Sincronizzazione..."
+    @State private var currentSyncStatus: String = String(localized: .sincronizzazione)
     @State private var currentSyncStatusIcon: String = "cloudSyncing"
     
     @Environment(\.dismiss) private var dismiss
@@ -2358,7 +2358,7 @@ struct AccountView: View {
                                 .frame(width: 25, height: 25)
                                 .foregroundStyle(.red)
                             
-                            if(currentSyncStatus.contains("Sincronizzazione")){
+                            if(currentSyncStatus.contains(String(localized: .sincronizzazione))){
                                 ProgressView()
                                     .foregroundStyle(.red)
                             }
