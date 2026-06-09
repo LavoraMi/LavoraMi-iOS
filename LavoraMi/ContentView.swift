@@ -2102,6 +2102,7 @@ struct AccountView: View {
     @State var saveFavoritesData = true
     @State var saveYourLinesData = true
     @State private var currentNonce: String?
+    @State private var currentSyncStatus: String = "Sincronizzazione..."
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
@@ -2346,6 +2347,16 @@ struct AccountView: View {
                                     .foregroundColor(Color("TextColor"))
                                     .font(.system(size: 25))
                             }
+                        }
+                        
+                        HStack(spacing: 12) {
+                            Image(systemName: "cloud.fill")
+                                .foregroundStyle(.red)
+                                .font(.system(size: 25))
+                            
+                            Text(currentSyncStatus)
+                                .foregroundColor(Color("TextColor"))
+                                .font(.system(size: 25))
                         }
                         
                         if auth.isLoggedInWithApple() {
@@ -2636,15 +2647,29 @@ struct AccountView: View {
         loggedIn = auth.isLoggedIn()
         if loggedIn {
             if fullName.isEmpty { fullName = auth.getFullName() }
-            if email.isEmpty, let sess = auth.session {
-                email = sess.user.email ?? email
-                Task {
-                    let res: UserPreferencesDatas = await auth.fetchUserPreferences()
+            if email.isEmpty, let sess = auth.session {email = sess.user.email ?? email}
+            
+            Task {
+                do {
+                    let res: UserPreferencesDatas = try await auth.fetchUserPreferencesAccount()
                     
-                    if(res.enable_favorites) {linesFavorites = await auth.fetchUserFavorites()}
-                    if(res.enable_your_lines) {linesSelected = await auth.fetchUserLines()}
+                    if res.enable_favorites {
+                        currentSyncStatus = "Dati Sincronizzati"
+                        linesFavorites = try await auth.fetchUserFavorites()
+                    } else {
+                        currentSyncStatus = "Errore Sincronizzazione"
+                    }
+                    
+                    if res.enable_your_lines {
+                        linesSelected = try await auth.fetchUserLines()
+                    }
+                    
+                } catch {
+                    currentSyncStatus = "Errore Sincronizzazione"
                 }
             }
+            
+            
             tabTitle = "Account"
         }
         if requireFaceID && loggedIn && !isRequiringData && !isBiometricAuthCompleted {
@@ -2666,9 +2691,14 @@ struct AccountView: View {
         if email.isEmpty, let sess = auth.session {
             email = sess.user.email ?? email
             Task {
-                linesFavorites = await auth.fetchUserFavorites()
-                linesSelected = await auth.fetchUserLines()
-                await auth.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
+                do {
+                    linesFavorites = try await auth.fetchUserFavorites()
+                    linesSelected = try await auth.fetchUserLines()
+                    try await auth.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
+                }
+                catch {
+                    currentSyncStatus = "Errore Sincronizzazione"
+                }
             }
         }
         emailSaved = email
@@ -2683,7 +2713,13 @@ struct AccountView: View {
                 if fullName.isEmpty { fullName = auth.getFullName() }
                 if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
                 
-                linesFavorites = await auth.fetchUserFavorites()
+                do {
+                    linesFavorites = try await auth.fetchUserFavorites()
+                    currentSyncStatus = "Dati Sincronizzati"
+                }
+                catch {
+                    currentSyncStatus = "Errore Sincronizzazione"
+                }
                 
                 self.loggedIn = true
             }
@@ -2840,7 +2876,7 @@ struct AccountDatasInfoView: View {
                         .onChange(of: saveFavoritesData) {
                             Task {
                                 let res: Bool
-                                await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
+                                try await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
                                 
                                 if(saveFavoritesData) { res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected) }
                                 else if(!saveFavoritesData && saveYourLinesData){ res = await authManager.saveDatasToDb(favorites: [], yourLines: linesSelected) }
@@ -2868,7 +2904,7 @@ struct AccountDatasInfoView: View {
                         .onChange(of: saveYourLinesData) {
                             Task {
                                 let res: Bool
-                                await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
+                                try await authManager.saveUserPreferences(enableFavorites: saveFavoritesData, enableYourLines: saveYourLinesData)
                                 
                                 if(saveYourLinesData) { res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected) }
                                 else if(!saveYourLinesData && saveFavoritesData){ res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: []) }

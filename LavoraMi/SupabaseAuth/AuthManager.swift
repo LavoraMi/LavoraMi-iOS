@@ -193,47 +193,35 @@ class AuthManager: ObservableObject {
         }
     }
     
-    func fetchUserFavorites() async -> [String] {
+    func fetchUserFavorites() async throws -> [String] {
         let userID = session?.user.email
         
-        do {
-            let response = try await supabase
-                .from("userDatas")
-                .select()
-                .eq("user_email", value: userID)
-                .execute()
-            
-            let decodedRows = try JSONDecoder().decode([LinesFavoriteDatas].self, from: response.data)
-            
-            return decodedRows.first?.lines ?? []
-            
-        } catch {
-            print("Errore reale nel fetch dei dati: \(error)")
-            return []
-        }
+        let response = try await supabase
+            .from("userDatas")
+            .select()
+            .eq("user_email", value: userID)
+            .execute()
+        
+        let decodedRows = try JSONDecoder().decode([LinesFavoriteDatas].self, from: response.data)
+        
+        return decodedRows.first?.lines ?? []
     }
     
-    func fetchUserLines() async -> [String] {
+    func fetchUserLines() async throws -> [String] {
         let userID = session?.user.email
         
-        do {
-            let response = try await supabase
-                .from("userDatas")
-                .select()
-                .eq("user_email", value: userID)
-                .execute()
-            
-            let decodedRows = try JSONDecoder().decode([LinesFavoriteDatas].self, from: response.data)
-            
-            return decodedRows.first?.your_lines ?? []
-            
-        } catch {
-            print("Errore reale nel fetch dei dati: \(error)")
-            return []
-        }
+        let response = try await supabase
+            .from("userDatas")
+            .select()
+            .eq("user_email", value: userID)
+            .execute()
+        
+        let decodedRows = try JSONDecoder().decode([LinesFavoriteDatas].self, from: response.data)
+        
+        return decodedRows.first?.your_lines ?? []
     }
     
-    func saveUserPreferences(enableFavorites: Bool, enableYourLines: Bool) async {
+    func saveUserPreferences(enableFavorites: Bool, enableYourLines: Bool) async throws {
         let userEmail = session?.user.email
         
         let dataToSave = UserPreferencesDatas(user_email: userEmail ?? "", enable_favorites: enableFavorites, enable_your_lines: enableYourLines)
@@ -242,15 +230,10 @@ class AuthManager: ObservableObject {
             print("ERRORE: Email vuota.")
         }
             
-        do {
-            try await supabase
-                .from("userPreferences")
-                .upsert(dataToSave)
-                .execute()
-            
-        } catch {
-            print("Errore durante l'upsert: \(error)")
-        }
+        try await supabase
+            .from("userPreferences")
+            .upsert(dataToSave)
+            .execute()
     }
     
     func fetchUserPreferences() async -> UserPreferencesDatas {
@@ -270,6 +253,19 @@ class AuthManager: ObservableObject {
             print("Errore reale nel fetch dei dati: \(error)")
             return UserPreferencesDatas(user_email: "", enable_favorites: true, enable_your_lines: true) ///Fallback value
         }
+    }
+    
+    func fetchUserPreferencesAccount() async throws -> UserPreferencesDatas {
+        let userID = session?.user.email
+        
+        let response = try await supabase
+            .from("userPreferences")
+            .select()
+            .eq("user_email", value: userID)
+            .execute()
+        
+        let decodedRows = try JSONDecoder().decode([UserPreferencesDatas].self, from: response.data)
+        return decodedRows.first ?? UserPreferencesDatas(user_email: "", enable_favorites: true, enable_your_lines: true)
     }
 }
 
