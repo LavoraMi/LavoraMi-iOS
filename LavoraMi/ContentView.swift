@@ -2358,6 +2358,11 @@ struct AccountView: View {
                                 .frame(width: 25, height: 25)
                                 .foregroundStyle(.red)
                             
+                            if(currentSyncStatus.contains("Sincronizzazione")){
+                                ProgressView()
+                                    .foregroundStyle(.red)
+                            }
+                            
                             Text(currentSyncStatus)
                                 .foregroundColor(Color("TextColor"))
                                 .font(.system(size: 25))
