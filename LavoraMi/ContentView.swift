@@ -2869,6 +2869,7 @@ struct AccountDatasInfoView: View {
     
     @State var saveFavoritesData: Bool
     @State var saveYourLinesData: Bool
+    @State var isLoading: Bool = true
     @Binding var currentSyncStatus: String
     @Binding var currentSyncStatusIcon: String
     @AppStorage("enableAnimations") var enableAnimations = true
@@ -2921,6 +2922,7 @@ struct AccountDatasInfoView: View {
                                     .font(.system(size: 16, weight: .medium))
                             }
                         }
+                        .disabled(isLoading)
                         .onChange(of: saveFavoritesData) {
                             Task {
                                 let res: Bool
@@ -2958,6 +2960,7 @@ struct AccountDatasInfoView: View {
                                     .font(.system(size: 16, weight: .medium))
                             }
                         }
+                        .disabled(isLoading)
                         .onChange(of: saveYourLinesData) {
                             Task {
                                 let res: Bool
@@ -2985,6 +2988,17 @@ struct AccountDatasInfoView: View {
                         .padding(.horizontal, 16)
                         .background(Color(.secondarySystemBackground))
                         .cornerRadius(12)
+                        
+                        if(isLoading) {
+                            HStack(spacing: 8) {
+                                ProgressView()
+                                    .tint(.red)
+                                Text("Caricamento...")
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.top, 10)
+                            .padding(.leading, 5)
+                        }
                     }
                 }
                 .padding()
@@ -3010,6 +3024,8 @@ struct AccountDatasInfoView: View {
                     
                     saveYourLinesData = res.enable_your_lines
                     saveFavoritesData = res.enable_favorites
+                    
+                    isLoading = false
                 }
             }
         }
