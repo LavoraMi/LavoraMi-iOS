@@ -1283,7 +1283,20 @@
       }
     },
     "Dati non Sincronizzati" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data not Synched"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos no Sincronizados"
+          }
+        }
+      }
     },
     "Dettagli Linea" : {
       "localizations" : {
@@ -1971,7 +1984,20 @@
       }
     },
     "Hai scelto di non sincronizzare i dati del tuo Account attraverso la funzione \"Preferenze Dati\". Per sincronizzarli, attiva almeno una delle opzioni disponibili." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have chosen not to synchronise your Account data via the \"Data Preferences\" feature. To synchronise it, please enable at least one of the available options."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Has decidido no sincronizar los datos de tu Cuenta a través de la función \"Preferencias Datos”. Para sincronizarlos, activa al menos una de las opciones disponibles."
+          }
+        }
+      }
     },
     "Hello %@" : {
       "localizations" : {
