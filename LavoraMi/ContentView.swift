@@ -2421,15 +2421,24 @@ struct AccountView: View {
                         }
                         
                         Button(role: .destructive, action: { showDataManagementPopUp = true }) {
-                            Label("Preferenze Dati", systemImage: "externaldrive.fill.badge.person.crop")
-                                .font(.system(size: 15))
-                                .fontWeight(.bold)
-                                .foregroundStyle(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.blue)
-                                .clipShape(RoundedRectangle(cornerRadius: 16))
-                                .shadow(radius: 5, y: 3)
+                            Label {
+                                Text("Preferenze Dati")
+                            } icon: {
+                                Image("cloudManage")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundStyle(.white)
+                            }
+                            .font(.system(size: 15))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .shadow(radius: 5, y: 3)
                         }
                         
                         NavigationLink(destination: RequestDataDownload(isRequiringData: $isRequiringData)) {
@@ -2870,9 +2879,12 @@ struct AccountDatasInfoView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 30) {
-                    Image(systemName: "externaldrive.fill.badge.person.crop")
-                        .font(.system(size: 80))
-                        .foregroundColor(.red)
+                    Image("cloudIcon")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80, height: 80)
+                        .foregroundStyle(.red)
                         .padding(.top, 40)
 
                     Text("Scegli i tuoi Dati")
