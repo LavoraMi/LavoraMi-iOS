@@ -2104,6 +2104,7 @@ struct AccountView: View {
     @State private var currentNonce: String?
     @State private var currentSyncStatus: String = String(localized: .sincronizzazione)
     @State private var currentSyncStatusIcon: String = "cloudSyncing"
+    @State private var showPopUpNotSynched: Bool = false
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
@@ -2366,6 +2367,15 @@ struct AccountView: View {
                             Text(currentSyncStatus)
                                 .foregroundColor(Color("TextColor"))
                                 .font(.system(size: 25))
+                            
+                            if(currentSyncStatus.contains(String(localized: .nonSincronizzato))) {
+                                Button(action: {
+                                    showPopUpNotSynched = true
+                                }) {
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.gray)
+                                }
+                            }
                         }
                         
                         if auth.isLoggedInWithApple() {
@@ -2450,6 +2460,11 @@ struct AccountView: View {
                     Text("Ti invieremo una mail per modificare la tua password, vuoi continuare?")
                 }
                 .foregroundStyle(.gray)
+                .alert("Dati non Sincronizzati", isPresented: $showPopUpNotSynched) {
+                    Button("Chiudi", role: .cancel) { }
+                } message: {
+                    Text("Hai scelto di non sincronizzare i dati del tuo Account attraverso la funzione \"Preferenze Dati\". Per sincronizzarli, attiva almeno una delle opzioni disponibili.")
+                }
                 
                 Spacer()
 

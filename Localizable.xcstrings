@@ -1282,6 +1282,9 @@
         }
       }
     },
+    "Dati non Sincronizzati" : {
+
+    },
     "Dettagli Linea" : {
       "localizations" : {
         "en" : {
@@ -1966,6 +1969,9 @@
           }
         }
       }
+    },
+    "Hai scelto di non sincronizzare i dati del tuo Account attraverso la funzione \"Preferenze Dati\". Per sincronizzarli, attiva almeno una delle opzioni disponibili." : {
+
     },
     "Hello %@" : {
       "localizations" : {
