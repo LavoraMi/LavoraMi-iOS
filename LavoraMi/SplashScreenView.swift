@@ -16,6 +16,7 @@ struct SplashScreenView: View {
     @State private var showMaintenance: Bool = false
     @State private var obsoleteVersion: Bool = false
     @State private var showNoConnection: Bool = false
+    @State private var status: Double = 0
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @StateObject private var viewModel = WorkViewModel()
     @State private var pendingDeepLink: URL? = nil
@@ -47,6 +48,11 @@ struct SplashScreenView: View {
                     .scaleEffect(scaleEffect)
                 
                 if(showNoConnection){
+                    ProgressView(value: status, total: 1.0)
+                        .tint(.red)
+                        .progressViewStyle(.linear)
+                        .frame(width: 100)
+                    
                     Label("Bloccato qui? Controlla la tua connessione.", systemImage: "wifi.exclamationmark")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
@@ -59,12 +65,14 @@ struct SplashScreenView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 if !contentLoaded {
                     withAnimation {
+                        status = 0.5
                         showNoConnection = true
                     }
                 }
             }
             viewModel.fetchRequirements {
                 showMaintenance = viewModel.maintenanceModeEnabled
+                status = 1
                 contentLoaded = true
                 showNoConnection = false
                 
