@@ -1492,9 +1492,12 @@ struct SettingsView: View{
                                 Text("Linee S")
                             } icon: {
                                 Image("sLinesIcon")
+                                    .renderingMode(.template)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 30, height: 30)
+                                    .foregroundStyle(Color("TextColor"))
+                                    .tint(Color("TextColor"))
                             }
                             Spacer()
                             Button(action: {
@@ -1530,9 +1533,12 @@ struct SettingsView: View{
                                 Text("Linee R")
                             } icon: {
                                 Image("rLinesIcon")
+                                    .renderingMode(.template)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 30, height: 30)
+                                    .foregroundStyle(Color("TextColor"))
+                                    .tint(Color("TextColor"))
                             }
                             Spacer()
                             Button(action: {
@@ -1567,9 +1573,12 @@ struct SettingsView: View{
                                 Text("Linee RE")
                             } icon: {
                                 Image("reLinesIcon")
+                                    .renderingMode(.template)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 30, height: 30)
+                                    .foregroundStyle(Color("TextColor"))
+                                    .tint(Color("TextColor"))
                             }
                             Spacer()
                             Button(action: {
