@@ -1421,6 +1421,7 @@ struct SettingsView: View{
     @State private var showBuildNumber = false
     @State private var selectedURL: URL?
     @State private var showErrorDBSavePopUp = false
+    @State private var showInfoMapDeviations: Bool = false
     @StateObject var viewModel: WorkViewModel
     @StateObject var authManager = AuthManager()
     
@@ -1915,6 +1916,16 @@ struct SettingsView: View{
                             Image(systemName: "star.fill")
                         }
                     }
+                    Button(action: {
+                        showInfoMapDeviations = true
+                    }){
+                        Label {
+                            Text("Info sulle Mappe")
+                                .foregroundColor(.red)
+                        } icon: {
+                            Image(systemName: "location.fill")
+                        }
+                    }
                 }
                 Section(footer: Text("Le impostazioni vengono salvate automaticamente.")) {
                     Button(role: .destructive) {
@@ -1987,6 +1998,9 @@ struct SettingsView: View{
                 Button("Chiudi", role: .cancel) { }
             } message: {
                 Text("Si è verificato un errore di connessione durante il salvataggio delle linee preferite. Controlla la tua connessione ad Internet.")
+            }
+            .sheet(isPresented: $showInfoMapDeviations) {
+                LineDeviationInfoView()
             }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
@@ -6668,7 +6682,6 @@ struct DetailSetYourLineView: View {
 struct LineDeviationInfoView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var startImageTransition: Bool = false
-    @Binding var showInfoView: Bool
     @AppStorage("enableAnimations") var enableAnimations = true
 
     var body: some View {
@@ -6760,7 +6773,6 @@ struct LineDeviationInfoView: View {
     }
 
     private func dismiss() {
-        showInfoView = false
         presentationMode.wrappedValue.dismiss()
     }
     

@@ -2302,6 +2302,9 @@
         }
       }
     },
+    "Info sulle Mappe" : {
+
+    },
     "Informazioni" : {
       "localizations" : {
         "en" : {
@@ -4688,6 +4691,7 @@
       }
     },
     "QUESTA LINEA É SOGGETTA A DEVIAZIONI." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
