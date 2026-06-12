@@ -5293,7 +5293,6 @@ struct LineDetailView: View {
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
-    @State private var showInfoMapDeviations: Bool = false
     @State private var showErrorDBSavePopUp: Bool = false
     
     private enum LineDetailTab { case map, works, interchanges }
@@ -5512,20 +5511,6 @@ struct LineDetailView: View {
                                     else {
                                         openURLAction(url)
                                     }
-                                }) {
-                                    Image(systemName: "info.circle.fill")
-                                        .foregroundColor(.gray)
-                                }
-                            }
-                        }
-                        if(viewModel.regioExpressLinesDeviated.contains(lineName)){
-                            HStack {
-                                Text("QUESTA LINEA É SOGGETTA A DEVIAZIONI.")
-                                    .font(.system(size: 12))
-                                    .foregroundStyle(.secondary)
-                                    .bold()
-                                Button(action: {
-                                    showInfoMapDeviations = true
                                 }) {
                                     Image(systemName: "info.circle.fill")
                                         .foregroundColor(.gray)
@@ -5803,9 +5788,6 @@ struct LineDetailView: View {
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)
             }
-            .sheet(isPresented: $showInfoMapDeviations) {
-                LineDeviationInfoView(showInfoView: $showInfoMapDeviations)
-            }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
                     .ignoresSafeArea(.all)
@@ -5835,7 +5817,6 @@ struct LineSmallDetailedView: View {
     @Environment(\.openURL) private var openURLAction
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
-    @State private var showInfoMapDeviations: Bool = false
     @State private var showErrorDBSavePopUp: Bool = false
 
     let lineName: String
@@ -6035,20 +6016,6 @@ struct LineSmallDetailedView: View {
                                     else { openURLAction(url) }
                                 }) {
                                     Image(systemName: "info.circle.fill").foregroundColor(.gray)
-                                }
-                            }
-                        }
-                        if(viewModel.regioExpressLinesDeviated.contains(lineName)){
-                            HStack {
-                                Text("QUESTA LINEA É SOGGETTA A DEVIAZIONI.")
-                                    .font(.system(size: 12))
-                                    .foregroundStyle(.secondary)
-                                    .bold()
-                                Button(action: {
-                                    showInfoMapDeviations = true
-                                }) {
-                                    Image(systemName: "info.circle.fill")
-                                        .foregroundColor(.gray)
                                 }
                             }
                         }
@@ -6340,9 +6307,6 @@ struct LineSmallDetailedView: View {
             }
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)
-            }
-            .sheet(isPresented: $showInfoMapDeviations) {
-                LineDeviationInfoView(showInfoView: $showInfoMapDeviations)
             }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url).ignoresSafeArea(.all)

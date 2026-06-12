@@ -24,7 +24,6 @@ class WorkViewModel: ObservableObject {
     @Published var maintenanceDepsEn: String = ""
     @Published var minimumVersion: String = ""
     @Published var linesDeviated: [String] = [""]
-    @Published var regioExpressLinesDeviated: [String] = [""]
     @Published var linesDeviatedLink: [String] = [""]
     @Published var linesSupportedGTFS: [String] = [""]
     
@@ -126,7 +125,6 @@ class WorkViewModel: ObservableObject {
                     self?.linesDeviated = result.linesAffectedbyDeviation
                     self?.linesDeviatedLink = result.linesDeviationLinks
                     self?.linesSupportedGTFS = result.linesSupportedGTFS
-                    self?.regioExpressLinesDeviated = result.regioExpressLinesDeviated
                     
                     if self?.strikeEnabled == true {
                             NotificationManager.shared.scheduleStrikeNotifications(
@@ -196,7 +194,6 @@ struct RemoteConfigData: Codable {
     let linesAffectedbyDeviation: [String]
     let linesDeviationLinks: [String]
     let linesSupportedGTFS: [String]
-    let regioExpressLinesDeviated: [String]
 }
 
 struct RequirementsData: Codable {
