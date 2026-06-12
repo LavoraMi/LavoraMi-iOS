@@ -3866,7 +3866,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "AppCheck",
-            version: "11.2.0",
+            version: "11.3.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2020 Google LLC",
             licenseText: """
@@ -3931,7 +3931,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleUtilities",
-            version: "8.1.0",
+            version: "8.1.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2017 Google LLC",
             licenseText: """
@@ -4133,7 +4133,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView (
             name: "xctest-dynamic-overlay",
-            version: "1.9.0",
+            version: "1.10.0",
             license: "MIT License",
             copyright: "Copyright (c) 2021 Point-Free, Inc.",
             licenseText: """
