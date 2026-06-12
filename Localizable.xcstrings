@@ -2303,7 +2303,20 @@
       }
     },
     "Info sulle Mappe" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info about Maps"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información sobre los Mapas"
+          }
+        }
+      }
     },
     "Informazioni" : {
       "localizations" : {
