@@ -2621,18 +2621,18 @@
         }
       }
     },
-    "LavoraMi potrebbe non mostrare il percorso attuale di questa linea, poichè sono in corso deviazioni, interruzioni di tratte del percorso o di stazioni non accessibili. Consultate gli avvisi nella sezione \"Lavori Linea\" qui in basso!" : {
+    "LavoraMi potrebbe non mostrare il percorso attuale di questa linea, poichè sono in corso deviazioni, interruzioni di tratte del percorso o di stazioni non accessibili. Consultate gli avvisi nella sezione \"Lavori Linea\"!" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LavoraMi may not show the current route for this line, as there are currently diversions, section closures or stations that are inaccessible. Please check the notices in the ‘Line Works’ section below!"
+            "value" : "LavoraMi may not show the current route for this line, as there are currently diversions, section closures or stations that are inaccessible. Please check the notices in the ‘Line Works’ section!"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es posible que LavoraMi no muestre el recorrido actual de esta línea, ya que hay desvíos, interrupciones en el trayecto o estaciones inaccesibles. ¡Consulte los avisos en la sección «Obras en la línea» que aparece a continuación!"
+            "value" : "Es posible que LavoraMi no muestre el recorrido actual de esta línea, ya que hay desvíos, interrupciones en el trayecto o estaciones inaccesibles. ¡Consulte los avisos en la sección “Obras en la línea”!"
           }
         }
       }
@@ -4686,23 +4686,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ESTA LÍNEA DE TRAM ESTÁ SUJETA A DESVÍOS."
-          }
-        }
-      }
-    },
-    "QUESTA LINEA É SOGGETTA A DEVIAZIONI." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "THIS ROUTE IS SUBJECT TO CHANGES."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ESTA LÍNEA PUEDE SUFRIR VARIACIONES."
           }
         }
       }
