@@ -5600,7 +5600,7 @@ struct LineDetailView: View {
                         withAnimation(.snappy) { selectedTab = .map }
                     }) {
                         HStack(spacing: 8) {
-                            Image(systemName: "location.app.fill")
+                            Image(systemName: "location.square.fill")
                                 .font(.title3)
                             
                             if selectedTab == .map {
