@@ -5849,6 +5849,22 @@
         }
       }
     },
+    "Sviluppatore Principale:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lead Developer:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desarrollador Principal:"
+          }
+        }
+      }
+    },
     "Sviluppatori Android:" : {
       "localizations" : {
         "en" : {
