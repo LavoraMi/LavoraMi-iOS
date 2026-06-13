@@ -3419,6 +3419,13 @@ struct InfoView: View {
                             .bold()
                             .padding(.top, 20)
                         
+                        Text("Sviluppatore Principale:")
+                            .font(.system(size: 20))
+                        Text("Andrea Filice")
+                            .bold()
+                            .font(.system(size: 25))
+                            .padding(.top, -5)
+                        
                         Text("Sviluppatore iOS:")
                             .font(.system(size: 20))
                         Text("Andrea Filice")
