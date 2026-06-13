@@ -159,7 +159,7 @@ struct SetupView: View {
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .onChange(of: currentPage) { newPage in
+                .onChange(of: currentPage) { oldPage, newPage in
                     if newPage == 3 {
                         NotificationManager.shared.requestPermission()
                     }
@@ -975,7 +975,7 @@ struct MainView: View {
                     showMaintenanceMode = false
                 }
             }
-            .onChange(of: selectedFilter) { newValue in
+            .onChange(of: selectedFilter) { oldValue, newValue in
                 if newValue == .suggested && feedbacksEnabled {
                     suggestedTrigger += 1 ///TRIGGERS THE HAPTICS
                     playRotateHaptics()
