@@ -917,7 +917,7 @@ struct MainView: View {
                                             }
                                         }
                                         ForEach(filteredItems) { item in
-                                            if item.progress != 1 {
+                                            if !item.isFinishedMoreThanOneDayAgo {
                                                 WorkInProgressRow(item: item)
                                                     .padding(.horizontal)
                                             }
@@ -7216,6 +7216,15 @@ extension WorkItem {
         }
         
         return false
+    }
+    
+    var isFinishedMoreThanOneDayAgo: Bool {
+        let calendar = Calendar.current
+        guard let dayDifference = calendar.dateComponents([.day], from: endDate, to: Date()).day else {
+            return false
+        }
+        
+        return dayDifference >= 1
     }
 }
 
