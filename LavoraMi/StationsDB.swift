@@ -2372,7 +2372,7 @@ struct StationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44725, longitude: 9.25544), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44735, longitude: 9.25546), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44745, longitude: 9.25544), branch: "Main"),
-        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44752, longitude: 9.2554, branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44752, longitude: 9.2554), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44757, longitude: 9.25535), branch: "Main"),
         .init(name: "Via Mecenate Via Quintiliano", coordinate: .init(latitude: 45.4495, longitude: 9.25273), branch: "Main"),
         .init(name: "Via Mecenate Via Fantoli", coordinate: .init(latitude: 45.45071, longitude: 9.25114), branch: "Main"),
