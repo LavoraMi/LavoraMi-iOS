@@ -491,7 +491,7 @@ struct MainView: View {
     @AppStorage("linesFavorites") var linesFavorites: [String] = []
     @AppStorage("linesSelected") private var linesSelected: [String] = []
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
-    @AppStorage("showPopUpDatas") var showPopUpDatas: Bool = true
+    @AppStorage("showPopUpDatas") var showPopUpDatas: Bool = false
     
     @State private var closedStrike: Bool = false
     @State private var selectedFilter: FilterBy = .all
@@ -503,6 +503,7 @@ struct MainView: View {
     @State private var suggestedTrigger = 0
     
     @ObservedObject var viewModel: WorkViewModel
+    @StateObject var authManager = AuthManager()
     @FocusState private var isSearchFocused: Bool
     @State private var currentHintIndex: Int = 0
     
@@ -962,6 +963,8 @@ struct MainView: View {
                     }
                     alreadyRefreshed = true
                 }
+                
+                if(authManager.isLoggedIn()) { showPopUpDatas = true }
             }
             .refreshable {
                 viewModel.fetchWorks()
