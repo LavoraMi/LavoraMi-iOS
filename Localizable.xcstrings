@@ -1122,6 +1122,9 @@
         }
       }
     },
+    "Con il nuovo aggiornamento, puoi salvare Le Tue Linee e le Linee Preferite sul tuo Account! Per gestire i tuoi dati, vai in: Impostazioni > Account > Preferenze Dati." : {
+
+    },
     "Condividi LavoraMi" : {
       "localizations" : {
         "en" : {
@@ -5100,6 +5103,9 @@
           }
         }
       }
+    },
+    "Salva le tue Linee!" : {
+
     },
     "Scegli che tipologia di dati vuoi che vengano salvati nei nostri Database, per poterci accedere sempre dal tuo Account." : {
       "localizations" : {

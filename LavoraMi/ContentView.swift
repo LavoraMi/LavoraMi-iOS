@@ -491,6 +491,7 @@ struct MainView: View {
     @AppStorage("linesFavorites") var linesFavorites: [String] = []
     @AppStorage("linesSelected") private var linesSelected: [String] = []
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
+    @AppStorage("showPopUpDatas") var showPopUpDatas: Bool = true
     
     @State private var closedStrike: Bool = false
     @State private var selectedFilter: FilterBy = .all
@@ -986,6 +987,13 @@ struct MainView: View {
             .onReceive(NotificationCenter.default.publisher(for: .openLetueLinkInfo)) { _ in
                 selectedFilter = .suggested
                 showInfoFavoriteLines = true
+            }
+            .alert("Salva le tue Linee!", isPresented: $showPopUpDatas){
+                Button("Chiudi", role: .cancel) {
+                    showPopUpDatas = false
+                }
+            } message: {
+                Text("Con il nuovo aggiornamento, puoi salvare Le Tue Linee e le Linee Preferite sul tuo Account! Per gestire i tuoi dati, vai in: Impostazioni > Account > Preferenze Dati.")
             }
         }
         .toolbar(.hidden, for: .navigationBar)
