@@ -491,7 +491,7 @@ struct MainView: View {
     @AppStorage("linesFavorites") var linesFavorites: [String] = []
     @AppStorage("linesSelected") private var linesSelected: [String] = []
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
-    @AppStorage("showPopUpDatas") var showPopUpDatas: Bool = false
+    @AppStorage("showPopUpDatas") var showPopUpDatas: Bool = true
     
     @State private var closedStrike: Bool = false
     @State private var selectedFilter: FilterBy = .all
@@ -963,8 +963,6 @@ struct MainView: View {
                     }
                     alreadyRefreshed = true
                 }
-                
-                if(authManager.isLoggedIn()) { showPopUpDatas = true }
             }
             .refreshable {
                 viewModel.fetchWorks()
