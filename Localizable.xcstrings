@@ -651,6 +651,9 @@
         }
       }
     },
+    "Attiva la posizione per sapere sempre dove sei e non perdere mai la tua fermata." : {
+
+    },
     "Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese." : {
       "localizations" : {
         "en" : {
@@ -4043,6 +4046,9 @@
           }
         }
       }
+    },
+    "Non perderti Mai." : {
+
     },
     "Non solo \"lavori in via\", ti spieghiamo che tipo di lavoro si sta svolgendo ed anche le conseguenze che può portare quel cantiere (Deviazioni, Fermate Sospese...)" : {
       "localizations" : {

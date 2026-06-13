@@ -94,6 +94,7 @@ struct SetupView: View {
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @State private var currentPage = 0
     @State private var showPopUpConfirmSkipSetup: Bool = false
+    @StateObject private var locationManager = LocationManager()
     
     let pages = [
         SetupPage(
@@ -129,6 +130,12 @@ struct SetupView: View {
             standardImage: "translate"
         ),
         SetupPage(
+            title: "Non perderti Mai.",
+            description: "Attiva la posizione per sapere sempre dove sei e non perdere mai la tua fermata.",
+            transitionImage: "map.fill",
+            standardImage: "location.fill"
+        ),
+        SetupPage(
             title: "Accessibile, sempre.",
             description: "Guarda se una linea è completamente, parzialmente o per nulla accessibile. Tutto a colpo d'occhio.",
             transitionImage: "person.fill",
@@ -155,6 +162,9 @@ struct SetupView: View {
                 .onChange(of: currentPage) { newPage in
                     if newPage == 3 {
                         NotificationManager.shared.requestPermission()
+                    }
+                    if newPage == 5 {
+                        locationManager.requestPermission()
                     }
                 }
                 HStack(spacing: 6) {
