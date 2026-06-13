@@ -4290,7 +4290,7 @@ struct LineRow: View {
     let waitMinutes: String
     let accessibilityStatus: String
     let stations: [MetroStation]
-    @State private var supportedLines: [String] = ["1", "3", "5", "7", "9", "10", "15", "16", "19", "24", "31", "33"]
+    @State private var supportedLines: [String] = ["1", "3", "5", "7", "9", "10", "15", "16", "19", "24", "27", "31", "33"]
     @ObservedObject var viewModel: WorkViewModel
     var onTap: (() -> Void)? = nil
 
@@ -4576,7 +4576,7 @@ struct LinesView: View {
             LineInfo(name: "16", branches: "San Siro Stadio M5 - Via Monte Velino", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram16, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "19", branches: "P.Za Castelli - Lambrate FS M2", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram19, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "24", branches: "Piazza Fontana - Vigentino", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram24, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "27", branches: "V.Le Ungheria - Duomo M1 M3", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "27", branches: "V.Le Ungheria - Duomo M1 M3", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram27, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "31", branches: "Bicocca M5 - Cinisello (1° Maggio)", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "33", branches: "P.Le Lagosta - Rimembranze di Lambrate", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram33, accessibilityStatus: String(localized: .lineaNonAccessibile)),
         ]
@@ -5335,7 +5335,7 @@ struct LineDetailView: View {
     @State private var openPopUpWidget: Bool = false
     @State private var openPopUpLines: Bool = false
     @State private var openInfoAccessibility: Bool = false
-    @State private var tramLinesSupported: [String] = ["1", "3", "5", "7", "9", "10", "15", "16", "19", "24", "31", "33"]
+    @State private var tramLinesSupported: [String] = ["1", "3", "5", "7", "9", "10", "15", "16", "19", "24", "27", "31", "33"]
     @State private var linesWithBlackText: [String] = ["M3", "M5", "S5", "S6", "S8", "S11", "S12"]
     
     private var centerIndex: Int { max(0, stations.count / 2) }
