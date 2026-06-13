@@ -4574,7 +4574,7 @@ struct LinesView: View {
             LineInfo(name: "16", branches: "San Siro Stadio M5 - Via Monte Velino", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram16, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "19", branches: "P.Za Castelli - Lambrate FS M2", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram19, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "24", branches: "Piazza Fontana - Vigentino", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram24, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "27", branches: "V.Le Ungheria - Duomo M1 M3", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram27, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "27", branches: "V.Le Ungheria - Piazza Fontana", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram27, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "31", branches: "Bicocca M5 - Cinisello (1° Maggio)", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "33", branches: "P.Le Lagosta - Rimembranze di Lambrate", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram33, accessibilityStatus: String(localized: .lineaNonAccessibile)),
         ]
