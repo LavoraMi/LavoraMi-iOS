@@ -5718,8 +5718,8 @@ struct LineDetailView: View {
                                 MKCoordinateRegion(
                                     center: centerCoordinate,
                                     span: MKCoordinateSpan(
-                                        latitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains("Filobus")) ? 0.02 : 0.14,
-                                        longitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains("Filobus")) ? 0.02 : 0.14
+                                        latitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains("Filobus")) ? 0.02 : ((lineName.starts(with: "M")) ? 0.045 : 0.14),
+                                        longitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains("Filobus")) ? 0.02 : ((lineName.starts(with: "M")) ? 0.045 : 0.14),
                                     )
                                 )
                             ),
