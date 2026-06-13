@@ -1346,22 +1346,6 @@
         }
       }
     },
-    "Deviazioni" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deviations"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desvíos"
-          }
-        }
-      }
-    },
     "di ATM" : {
       "extractionState" : "manual",
       "localizations" : {

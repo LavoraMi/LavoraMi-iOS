@@ -6781,7 +6781,7 @@ struct LineDeviationInfoView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Deviazioni")
+            .navigationTitle("Info sulle Mappe")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
