@@ -652,7 +652,20 @@
       }
     },
     "Attiva la posizione per sapere sempre dove sei e non perdere mai la tua fermata." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn on your location so you always know where you are and never miss your stop."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activa la ubicación para saber siempre dónde estás y no perderte nunca tu parada."
+          }
+        }
+      }
     },
     "Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese." : {
       "localizations" : {
@@ -4048,7 +4061,20 @@
       }
     },
     "Non perderti Mai." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't get lost."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No te pierdas nunca."
+          }
+        }
+      }
     },
     "Non solo \"lavori in via\", ti spieghiamo che tipo di lavoro si sta svolgendo ed anche le conseguenze che può portare quel cantiere (Deviazioni, Fermate Sospese...)" : {
       "localizations" : {
