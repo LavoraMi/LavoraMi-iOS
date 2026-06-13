@@ -1123,7 +1123,20 @@
       }
     },
     "Con il nuovo aggiornamento, puoi salvare Le Tue Linee e le Linee Preferite sul tuo Account! Per gestire i tuoi dati, vai in: Impostazioni > Account > Preferenze Dati." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "With the new update, you can save your Routes and Favourite Routes to your account! To manage your data, go to: Settings > Account > Data Preferences."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Con la nueva actualización, puedes guardar tus rutas y tus rutas favoritas en tu cuenta! Para gestionar tus datos, ve a: Ajustes > Cuenta > Preferencias Datos."
+          }
+        }
+      }
     },
     "Condividi LavoraMi" : {
       "localizations" : {
@@ -5105,7 +5118,20 @@
       }
     },
     "Salva le tue Linee!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save your Lines!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Salva tus Líneas!"
+          }
+        }
+      }
     },
     "Scegli che tipologia di dati vuoi che vengano salvati nei nostri Database, per poterci accedere sempre dal tuo Account." : {
       "localizations" : {
