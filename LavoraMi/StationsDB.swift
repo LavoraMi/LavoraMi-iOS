@@ -2441,7 +2441,7 @@ struct StationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46301, longitude: 9.19484), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46306, longitude: 9.19481), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46322, longitude: 9.19476), branch: "Main"),
-        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46326, longitude: 9.1947, branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46326, longitude: 9.1947), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4633, longitude: 9.19465), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46333, longitude: 9.19458), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46334, longitude: 9.19442), branch: "Main"),
