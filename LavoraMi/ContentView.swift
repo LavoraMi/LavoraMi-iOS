@@ -6314,7 +6314,20 @@ struct LineSmallDetailedView: View {
 
                             } else if selectedStopId != nil {
                                 Spacer()
-                                ContentUnavailableView("Nessuna corsa", systemImage: "clock.badge.exclamationmark", description: Text("Non ci sono corse disponibili per questa fermata oggi."))
+                                VStack(spacing: 10) {
+                                    Image(systemName: "clock.badge.questionmark.fill")
+                                        .font(.system(size: 44))
+                                        .foregroundStyle(.secondary)
+                                    
+                                    Text("Nessuna corsa prevista per oggi.")
+                                        .font(.system(size: 16, weight: .bold))
+                                        .foregroundStyle(.primary)
+                                    Text("Per oggi non c'è nessuna corsa programmata per questa fermata, prova a sceglierne un altra.")
+                                        .font(.system(size: 12))
+                                        .padding(.horizontal, 10)
+                                        .foregroundStyle(.secondary)
+                                        .multilineTextAlignment(.center)
+                                }
                                 Spacer()
                             } else {
                                 Spacer()

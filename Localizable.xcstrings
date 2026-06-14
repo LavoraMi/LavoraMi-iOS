@@ -3851,6 +3851,7 @@
       }
     },
     "Nessuna corsa" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3881,6 +3882,9 @@
           }
         }
       }
+    },
+    "Nessuna corsa prevista per oggi." : {
+
     },
     "Nessuna fermata di interscambio." : {
       "localizations" : {
@@ -3964,6 +3968,7 @@
       }
     },
     "Non ci sono corse disponibili per questa fermata oggi." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4447,6 +4452,9 @@
           }
         }
       }
+    },
+    "Per oggi non c'è nessuna corsa programmata per questa fermata, prova a sceglierne un altra." : {
+
     },
     "Per poter mettere la TUA linea tra i preferiti, basta che vai nella sezione \"Linee\" con questo simbolo: " : {
       "localizations" : {
