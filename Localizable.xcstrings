@@ -3850,23 +3850,6 @@
         }
       }
     },
-    "Nessuna corsa" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No routes"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No hay carreras"
-          }
-        }
-      }
-    },
     "Nessuna corsa prevista per oggi" : {
       "localizations" : {
         "en" : {
@@ -3884,7 +3867,20 @@
       }
     },
     "Nessuna corsa prevista per oggi." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No buses are scheduled for today."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay ninguna carrera prevista para hoy."
+          }
+        }
+      }
     },
     "Nessuna fermata di interscambio." : {
       "localizations" : {
@@ -3963,23 +3959,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Accesible"
-          }
-        }
-      }
-    },
-    "Non ci sono corse disponibili per questa fermata oggi." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No services from this stop today."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hoy no hay servicios disponibles para esta parada."
           }
         }
       }
@@ -4454,7 +4433,20 @@
       }
     },
     "Per oggi non c'è nessuna corsa programmata per questa fermata, prova a sceglierne un altra." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are no scheduled services for this stop today. Please try another one."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy no hay ningún trayecto programado para esta parada; prueba a elegir otra."
+          }
+        }
+      }
     },
     "Per poter mettere la TUA linea tra i preferiti, basta che vai nella sezione \"Linee\" con questo simbolo: " : {
       "localizations" : {
