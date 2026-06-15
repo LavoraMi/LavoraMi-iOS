@@ -576,10 +576,11 @@ struct StationsDB {
         .init(name: "Sesto S. Giovanni", coordinate: .init(latitude: 45.54126, longitude: 9.23903), branch: "Main"),
         .init(name: "Milano Greco Pirelli", coordinate: .init(latitude: 45.51288, longitude: 9.21416), branch: "Main"),
         .init(name: "Milano Pta Garibaldi", coordinate: .init(latitude: 45.48449, longitude: 9.18737), branch: "Main"),
+        /* MODIFICHE ALLA CIRCOLAZIONE: I treni della linea S11 circolano tra Como S. Giovanni e Milano Pta Garibaldi.
         .init(name: "Milano Villapizzone", coordinate: .init(latitude: 45.50202, longitude: 9.15092), branch: "Main"),
         .init(name: "Milano Certosa", coordinate: .init(latitude: 45.50683, longitude: 9.13593), branch: "Main"),
         .init(name: "Rho FieraMilano", coordinate: .init(latitude: 45.52113, longitude: 9.0885), branch: "Main"),
-        .init(name: "Rho", coordinate: .init(latitude: 45.52411, longitude: 9.04355), branch: "Main")
+        .init(name: "Rho", coordinate: .init(latitude: 45.52411, longitude: 9.04355), branch: "Main")*/
     ]
     
     static let stationsS12: [MetroStation] = [
