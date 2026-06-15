@@ -2507,7 +2507,20 @@
       }
     },
     "INTERRUZIONI SULLA LINEA PER LAVORI." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SERVICE DISRUPTIONS DUE TO WORKS ON THE LINE."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INTERRUPCIONES EN LA LÍNEA POR OBRAS."
+          }
+        }
+      }
     },
     "Interscambi" : {
       "localizations" : {
