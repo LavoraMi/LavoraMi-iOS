@@ -79,7 +79,7 @@ struct StationsDB {
         .init(name: "Lambrate FS", coordinate: .init(latitude: 45.48423, longitude: 9.235), branch: "Main"),
         .init(name: "Udine", coordinate: .init(latitude: 45.49145, longitude: 9.23688), branch: "Main"),
         .init(name: "Cimiano", coordinate: .init(latitude: 45.50004, longitude: 9.24142), branch: "Main"),
-        .init(name: "Crescenzago", coordinate: .init(latitude: 45.50521, longitude: 9.24822), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50521, longitude: 9.24822), branch: "Main"), //CRESCENZAGO
         .init(name: "Cascina Gobba", coordinate: .init(latitude: 45.51114, longitude: 9.26052), branch: "Main"),
         .init(name: "Cologno Sud", coordinate: .init(latitude: 45.52021, longitude: 9.27492), branch: "Cologno"),
         .init(name: "Cologno Centro", coordinate: .init(latitude: 45.52747, longitude: 9.28296), branch: "Cologno"),
