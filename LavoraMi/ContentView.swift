@@ -5297,6 +5297,14 @@ func getLineDeviationLink(line: String, viewModel: WorkViewModel) -> URL {
     return URL(string: "www.lavorami.it/404")!
 }
 
+func getSuburbanDeviationLink(line: String, viewModel: WorkViewModel) -> URL {
+    if let i = viewModel.suburbanWithInterruptions.firstIndex(of: line) {
+        return URL(string: viewModel.suburbanInterruptionLinks[i])!
+    }
+    
+    return URL(string: "www.lavorami.it/404")!
+}
+
 func getInterchanges(line: String) -> [InterchageInfo] {
     if Int(line) != nil {
         if(line.wholeMatch(of: /9[0-3]/) != nil) { return StationsDB.interchangesFilobus.filter { $0.lines.contains(line) } }
@@ -5342,7 +5350,6 @@ struct LineDetailView: View {
     @State private var openInfoAccessibility: Bool = false
     @State private var tramLinesSupported: [String] = ["1", "3", "5", "7", "9", "10", "15", "16", "19", "24", "27", "31", "33"]
     @State private var linesWithBlackText: [String] = ["M3", "M5", "S5", "S6", "S8", "S11", "S12"]
-    @State private var linesAffectedWithWorks: [String] = ["S6", "S11"]
     
     private var centerIndex: Int { max(0, stations.count / 2) }
     private var centerCoordinate: CLLocationCoordinate2D {
@@ -5537,14 +5544,14 @@ struct LineDetailView: View {
                                 .foregroundStyle(.secondary)
                                 .bold()
                         }
-                        if(linesAffectedWithWorks.contains(lineName)){
+                        if(viewModel.suburbanWithInterruptions.contains(lineName)){
                             HStack {
                                 Text("INTERRUZIONI SULLA LINEA PER LAVORI.")
                                     .font(.system(size: 12))
                                     .foregroundStyle(.secondary)
                                     .bold()
                                 Button(action: {
-                                    let url = URL(string: "https://cantieri.trenord.it/it/lavori-tra-rho-e-milano-certosa")!
+                                    let url = getSuburbanDeviationLink(line: lineName, viewModel: viewModel)
                                     
                                     if(howToOpenLinks == .inApp) {
                                         selectedURL = url

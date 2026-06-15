@@ -26,6 +26,8 @@ class WorkViewModel: ObservableObject {
     @Published var linesDeviated: [String] = [""]
     @Published var linesDeviatedLink: [String] = [""]
     @Published var linesSupportedGTFS: [String] = [""]
+    @Published var suburbanWithInterruptions: [String] = [""]
+    @Published var suburbanInterruptionLinks: [String] = [""]
     
     private let urlString = "https://cdn.lavorami.it/lavoriAttuali.json"
     private let urlVariables = "https://cdn.lavorami.it/_vars.json"
@@ -125,6 +127,8 @@ class WorkViewModel: ObservableObject {
                     self?.linesDeviated = result.linesAffectedbyDeviation
                     self?.linesDeviatedLink = result.linesDeviationLinks
                     self?.linesSupportedGTFS = result.linesSupportedGTFS
+                    self?.suburbanWithInterruptions = result.suburbanWithInterruptions
+                    self?.suburbanInterruptionLinks = result.suburbanInterruptionLinks
                     
                     if self?.strikeEnabled == true {
                             NotificationManager.shared.scheduleStrikeNotifications(
@@ -194,6 +198,8 @@ struct RemoteConfigData: Codable {
     let linesAffectedbyDeviation: [String]
     let linesDeviationLinks: [String]
     let linesSupportedGTFS: [String]
+    let suburbanWithInterruptions: [String]
+    let suburbanInterruptionLinks: [String]
 }
 
 struct RequirementsData: Codable {
