@@ -36,8 +36,11 @@ struct BiometricAuth {
 
     static func getBiometricType() -> BiometricType {
         let authContext = LAContext()
-        _ = authContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
-
+        
+        guard authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) else {
+            return .none
+        }
+        
         switch authContext.biometryType {
         case .faceID:
             return .faceID
