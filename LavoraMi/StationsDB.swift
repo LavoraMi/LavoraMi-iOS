@@ -409,19 +409,35 @@ struct StationsDB {
     ]
     
     static let stationsS3: [MetroStation] = [
-        .init(name: "Milano Cadorna", coordinate: .init(latitude: 45.46843, longitude: 9.17553), branch: "Main"),
-        .init(name: "Milano Domodossola", coordinate: .init(latitude: 45.48089, longitude: 9.16224), branch: "Main"),
-        .init(name: "Milano Bovisa", coordinate: .init(latitude: 45.50257, longitude: 9.15925), branch: "Main"),
-        .init(name: "Milano Quarto Oggiaro", coordinate: .init(latitude: 45.51918, longitude: 9.14562), branch: "Main"),
-        .init(name: "Novate Milanese", coordinate: .init(latitude: 45.533, longitude: 9.13238), branch: "Main"),
-        .init(name: "Bollate Centro", coordinate: .init(latitude: 45.54289, longitude: 9.12283), branch: "Main"),
-        .init(name: "Bollate Nord", coordinate: .init(latitude: 45.55262, longitude: 9.11209), branch: "Main"),
-        .init(name: "Garbagnate Parco Delle Groane", coordinate: .init(latitude: 45.57108, longitude: 9.09097), branch: "Main"),
-        .init(name: "Garbagnate Milanese", coordinate: .init(latitude: 45.58014, longitude: 9.08042), branch: "Main"),
-        .init(name: "Cesate", coordinate: .init(latitude: 45.5908, longitude: 9.06631), branch: "Main"),
-        .init(name: "Caronno Pertusella", coordinate: .init(latitude: 45.5981, longitude: 9.05794), branch: "Main"),
+        .init(name: "Saronno", coordinate: .init(latitude: 45.62534, longitude: 9.03075), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.62222, longitude: 9.03503), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.62111, longitude: 9.03663), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.62055, longitude: 9.03738), branch: "Main"),
         .init(name: "Saronno Sud", coordinate: .init(latitude: 45.61235, longitude: 9.04557), branch: "Main"),
-        .init(name: "Saronno", coordinate: .init(latitude: 45.62534, longitude: 9.03075), branch: "Main")
+        .init(name: "Caronno Pertusella", coordinate: .init(latitude: 45.5981, longitude: 9.05794), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.59291, longitude: 9.06421), branch: "Main"),
+        .init(name: "Cesate", coordinate: .init(latitude: 45.5908, longitude: 9.06631), branch: "Main"),
+        .init(name: "Garbagnate Milanese", coordinate: .init(latitude: 45.58014, longitude: 9.08042), branch: "Main"),
+        .init(name: "Garbagnate Parco Delle Groane", coordinate: .init(latitude: 45.57108, longitude: 9.09097), branch: "Main"),
+        .init(name: "Bollate Nord", coordinate: .init(latitude: 45.55262, longitude: 9.11209), branch: "Main"),
+        .init(name: "Bollate Centro", coordinate: .init(latitude: 45.54289, longitude: 9.12283), branch: "Main"),
+        .init(name: "Novate Milanese", coordinate: .init(latitude: 45.533, longitude: 9.13238), branch: "Main"),
+        .init(name: "Milano Quarto Oggiaro", coordinate: .init(latitude: 45.51918, longitude: 9.14562), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50806, longitude: 9.15509), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50617, longitude: 9.15685), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.5055, longitude: 9.15771), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50477, longitude: 9.15824), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.5043, longitude: 9.15852), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50376, longitude: 9.15876), branch: "Main"),
+        .init(name: "Milano Bovisa", coordinate: .init(latitude: 45.50257, longitude: 9.15925), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50046, longitude: 9.15957), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.49641, longitude: 9.1601), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.49394, longitude: 9.16044), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.49002, longitude: 9.161), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.49002, longitude: 9.161), branch: "Main"),
+        .init(name: "Milano Domodossola", coordinate: .init(latitude: 45.48089, longitude: 9.16224), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.47308, longitude: 9.16977), branch: "Main"),
+        .init(name: "Milano Cadorna", coordinate: .init(latitude: 45.46843, longitude: 9.17553), branch: "Main")
     ]
     
     static let stationsS4: [MetroStation] = [
