@@ -4691,13 +4691,6 @@ struct LinesView: View {
         ]
     }
     
-    enum linkOpenTypes: String, CaseIterable, Identifiable{
-        case inApp = "In App"
-        case safari = "Safari"
-        
-        var id: String{self.rawValue}
-    }
-    
     var body: some View {
         NavigationStack{
             HStack {
