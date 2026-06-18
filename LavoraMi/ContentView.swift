@@ -3811,8 +3811,8 @@ struct HowAppWorksView: View {
                     .frame(width: 380, height: 280)
                     .overlay(
                         Map(initialPosition: .region(MKCoordinateRegion(
-                            center: CLLocationCoordinate2D(latitude: 45.4850, longitude: 9.1600),
-                            span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+                            center: CLLocationCoordinate2D(latitude: 45.4682, longitude: 9.17588),
+                            span: MKCoordinateSpan(latitudeDelta: 0.045, longitudeDelta: 0.045)
                         ))) {
                             let lineColor = getColor(for: "M1")
                             
