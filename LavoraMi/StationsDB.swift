@@ -879,6 +879,18 @@ struct StationsDB {
     ]
     
     static let stationsS13: [MetroStation] = [
+        .init(name: "Garbagnate Milanese", coordinate: .init(latitude: 45.58014, longitude: 9.08042), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.57108, longitude: 9.09097), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.55262, longitude: 9.11209), branch: "Main"),
+        .init(name: "Bollate Centro", coordinate: .init(latitude: 45.54289, longitude: 9.12283), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.533, longitude: 9.13238), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.51918, longitude: 9.14562), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50806, longitude: 9.15509), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50617, longitude: 9.15685), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.5055, longitude: 9.15771), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50477, longitude: 9.15824), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.5043, longitude: 9.15852), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50376, longitude: 9.15876), branch: "Main"),
         .init(name: "Milano Bovisa", coordinate: .init(latitude: 45.50257, longitude: 9.15925), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.49897, longitude: 9.16027), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.49846, longitude: 9.16051), branch: "Main"),
