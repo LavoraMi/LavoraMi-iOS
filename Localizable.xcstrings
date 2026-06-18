@@ -3563,7 +3563,20 @@
       }
     },
     "Metro M1" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metro M1"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metro M1"
+          }
+        }
+      }
     },
     "Metropolitana" : {
       "extractionState" : "manual",
@@ -4261,7 +4274,20 @@
       }
     },
     "Oppure salva una linea nella sezione \"Le tue Linee\" per vedere, tramite l'apposito filtro, solo i lavori che interessano a te." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternatively, save a route in the “Your Lines” section to use the filter to view only the works that interest you."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O bien guarda una línea en la sección “Tus Líneas” para ver, mediante el filtro correspondiente, solo los obras que te interesan."
+          }
+        }
+      }
     },
     "Opzioni Avanzate" : {
       "localizations" : {
@@ -6758,7 +6784,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tus líneas"
+            "value" : "Tus Líneas"
           }
         },
         "it" : {
