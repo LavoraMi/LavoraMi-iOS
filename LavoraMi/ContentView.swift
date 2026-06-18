@@ -4498,18 +4498,18 @@ struct LinesView: View {
     
     var suburban: [LineInfo] {
         [
-            LineInfo(name: "S1", branches: "Saronno - Lodi", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS1, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S1", branches: "Saronno - Lodi", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.getStationS1(isPassanteClosed: viewModel.enablePassanteWork), accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S2", branches: "Seveso - Milano Rogoredo", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS2,  accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S3", branches: "Saronno - Milano Cadorna", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS3, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S4", branches: "Camnago - Milano Cadorna", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS4, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "S5", branches: "Gallarate - Treviglio", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS5, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S5", branches: "Gallarate - Treviglio", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.getStationS5(isPassanteClosed: viewModel.enablePassanteWork), accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S6", branches: "Novara - Rho", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS6, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S7", branches: "Triuggio - Milano Pta Garibaldi", type: String(localized: .suburbano), waitMinutes: "30 min - 1 \(String(localized: .ora)).", stations: StationsDB.stationsS7, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "S8", branches: "Lecco - Carnate - Milano Pta Garibaldi", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS8, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "S9", branches: "Saronno - Albairate Vermezzo", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS9, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "S11", branches: "Milano Pta Garibaldi - Como S. Giovanni", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS11, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S12", branches: "Melegnano - Cormano Cusano Milanino", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS12, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "S13", branches: "Garbagnate Milanese - Pavia", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.stationsS13, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S13", branches: "Garbagnate Milanese - Pavia", type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.getStationS13(isPassanteClosed: viewModel.enablePassanteWork), accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S19", branches: "Albairate Vermezzo - Milano Rogoredo", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS19, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S31", branches: "Brescia - Iseo", type: "Suburbano", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.stationsS31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile))
         ]

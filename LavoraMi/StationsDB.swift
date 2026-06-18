@@ -286,6 +286,11 @@ struct StationsDB {
     ]
     
     //MARK: SUBURBAN LINES STATIONS
+    static func getStationS1(isPassanteClosed: Bool) -> [MetroStation] {
+        if(isPassanteClosed) {return stationsS1_ClosedPassante}
+        else {return stationsS1}
+    }
+    
     static let stationsS1: [MetroStation] = [
         .init(name: "Saronno", coordinate: .init(latitude: 45.62534, longitude: 9.03075), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.62222, longitude: 9.03503), branch: "Main"),
@@ -694,6 +699,11 @@ struct StationsDB {
         .init(name: "Milano Cadorna", coordinate: .init(latitude: 45.46843, longitude: 9.17553), branch: "Main")
     ]
     
+    static func getStationS5(isPassanteClosed: Bool) -> [MetroStation] {
+        if(isPassanteClosed) {return stationsS5_ClosedPassante}
+        else {return stationsS5}
+    }
+    
     static let stationsS5: [MetroStation] = [
         /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Gallarate e Treviglio
         .init(name: "Varese", coordinate: .init(latitude: 45.81625, longitude: 8.83295), branch: "Main"),
@@ -1076,6 +1086,11 @@ struct StationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.36976, longitude: 9.31091), branch: "Main"),
         .init(name: "Melegnano", coordinate: .init(latitude: 45.35647, longitude: 9.31936), branch: "Main")
     ]
+    
+    static func getStationS13(isPassanteClosed: Bool) -> [MetroStation] {
+        if(isPassanteClosed) {return stationsS13_ClosedPassante}
+        else {return stationsS13}
+    }
     
     static let stationsS13: [MetroStation] = [
         .init(name: "Garbagnate Milanese", coordinate: .init(latitude: 45.58014, longitude: 9.08042), branch: "Main"),
