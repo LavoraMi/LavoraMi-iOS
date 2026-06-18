@@ -6722,19 +6722,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "View changes"
+            "value" : "Changes"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver los intercambiadores"
+            "value" : "Intercambiadores"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Visualizza gli Interscambi"
+            "value" : "Interscambi"
           }
         }
       }
@@ -6745,19 +6745,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "See the Map"
+            "value" : "Maps"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver el mapa"
+            "value" : "Mapas"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Visualizza la Mappa"
+            "value" : "Mappe"
           }
         }
       }
