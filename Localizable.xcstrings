@@ -1887,22 +1887,6 @@
         }
       }
     },
-    "Funzioni dell'app" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App’s functions"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Funciones de la app"
-          }
-        }
-      }
-    },
     "Funzioni dell'App" : {
       "localizations" : {
         "en" : {
@@ -1914,7 +1898,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Funciones de la app"
+            "value" : "Funciones de la App"
           }
         }
       }
@@ -5215,7 +5199,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Choose your lines"
           }
         },

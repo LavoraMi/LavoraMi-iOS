@@ -3871,7 +3871,7 @@ struct HowAppWorksView: View {
             }
             .padding(.top, 10)
         }
-        .navigationTitle("Funzioni dell'app")
+        .navigationTitle("Funzioni dell'App")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
