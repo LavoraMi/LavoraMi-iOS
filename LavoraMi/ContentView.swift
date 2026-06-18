@@ -3746,6 +3746,34 @@ struct HowAppWorksView: View {
                     .frame(height: 56)
                     .background(Color(uiColor: .secondarySystemGroupedBackground))
                 }
+                
+                Text("Oppure salva una linea nella sezione \"Le tue Linee\" per vedere, tramite l'apposito filtro, solo i lavori che interessano a te.")
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+
+                CardView {
+                    HStack {
+                        Text("M1")
+                            .font(.system(size: 16, weight: .black))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(getColor(for: "M1"))
+                            )
+                        Text("Metro M1")
+                            .foregroundColor(.primary)
+                        Spacer()
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(Color(red: 1, green: 93 / 255, blue: 162 / 255))
+                            .frame(width: 18, height: 18)
+                    }
+                    .padding(.horizontal, 16)
+                    .frame(height: 56)
+                    .background(Color(uiColor: .secondarySystemGroupedBackground))
+                }
 
                 SectionDivider()
 

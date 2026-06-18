@@ -24,11 +24,7 @@ struct Provider: TimelineProvider {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<WorkEntry>) -> Void) {
         let savedLine = DataManager.shared.getSavedLine()
-        
-        let isInvalid = (savedLine == nil ||
-                         savedLine?.id == "empty" ||
-                         savedLine?.id == "EMPTY" ||
-                         savedLine?.id == "0")
+        let isInvalid = (savedLine == nil || savedLine?.id == "empty" || savedLine?.id == "EMPTY" || savedLine?.id == "0")
         
         if isInvalid {
             let entry = WorkEntry(date: Date(), linea: nil, stato: "empty")
