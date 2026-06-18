@@ -4328,7 +4328,7 @@ struct LineRow: View {
     var onTap: (() -> Void)? = nil
 
     private var isDetailView: Bool {
-        (typeOfTransport != "Tram" || supportedLines.contains(line))
+        (typeOfTransport != String(localized: .tram) || supportedLines.contains(line))
         && typeOfTransport != "Movibus"
         && typeOfTransport != "STAV"
         && typeOfTransport != "Autoguidovie"
@@ -4375,7 +4375,7 @@ struct LineRow: View {
                     .padding(.horizontal, 8)
                     .background(
                         RoundedRectangle(cornerRadius: 6)
-                            .fill((typeOfTransport == "Tram") ? .orange : getColor(for: line))
+                            .fill((typeOfTransport == String(localized: .tram)) ? .orange : getColor(for: line))
                     )
 
                 if line == "MXP1" || line == "MXP2" {Text(typeOfTransport)}
@@ -4408,7 +4408,7 @@ struct LinesView: View {
             "Suburbano": ["suburbano", "s"],
             "Regio express": ["regio", "express", "re"],
             "Regionale": ["regio", "regionale", "r"],
-            "Tram": ["tram", "t"],
+            String(localized: .tram): ["tram", "tranvía", "t"],
             "Filobus": ["filobus", "9"],
             "Movibus": ["bus", "movibus", "z"],
             "STAR Mobility": ["bus", "star", "z"],
@@ -4595,23 +4595,23 @@ struct LinesView: View {
     
     var trams: [LineInfo] {
         [
-            LineInfo(name: "1", branches: "Roserio - Greco", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram1, accessibilityStatus: String(localized: .lineaNonAccessibile)),
-            LineInfo(name: "2", branches: "P.Le Negrelli - P.Za Bausan", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "3", branches: "Duomo M1 M3 - Gratosoglio", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram3, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "4", branches: "Cairoli M1 - Niguarda (Parco Nord)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "5", branches: "Niguarda (Ospedale) - Ortica", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram5, accessibilityStatus: String(localized: .lineaNonAccessibile)),
-            LineInfo(name: "7", branches: "P.Le Lagosta - Q.Re Adriano", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram7, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "9", branches: "Centrale FS M2 M3 - P.Ta Genova M2", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram9, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "10", branches: "P.Za 24 Maggio - V.Le Lunigiana", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram10, accessibilityStatus: String(localized: .lineaNonAccessibile)),
-            LineInfo(name: "12", branches: "P.Za Ovidio - Roserio (Ospedale Sacco)", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "14", branches: "Lorenteggio - Cimitero Maggiore", type: "Tram", waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "15", branches: "Duomo M1 M3 - Rozzano (Via G. Rossa)", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram15, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "16", branches: "San Siro Stadio M5 - Via Monte Velino", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram16, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "19", branches: "P.Za Castelli - Lambrate FS M2", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram19, accessibilityStatus: String(localized: .lineaNonAccessibile)),
-            LineInfo(name: "24", branches: "Piazza Fontana - Vigentino", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram24, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "27", branches: "V.Le Ungheria - Piazza Fontana", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram27, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "31", branches: "Bicocca M5 - Cinisello (1° Maggio)", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "33", branches: "P.Le Lagosta - Rimembranze di Lambrate", type: "Tram", waitMinutes: "5-20 min.", stations: StationsDB.tram33, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "1", branches: "Roserio - Greco", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram1, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "2", branches: "P.Le Negrelli - P.Za Bausan", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "3", branches: "Duomo M1 M3 - Gratosoglio", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram3, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "4", branches: "Cairoli M1 - Niguarda (Parco Nord)", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "5", branches: "Niguarda (Ospedale) - Ortica", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram5, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "7", branches: "P.Le Lagosta - Q.Re Adriano", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram7, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "9", branches: "Centrale FS M2 M3 - P.Ta Genova M2", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram9, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "10", branches: "P.Za 24 Maggio - V.Le Lunigiana", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram10, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "12", branches: "P.Za Ovidio - Roserio (Ospedale Sacco)", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "14", branches: "Lorenteggio - Cimitero Maggiore", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: [], accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "15", branches: "Duomo M1 M3 - Rozzano (Via G. Rossa)", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram15, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "16", branches: "San Siro Stadio M5 - Via Monte Velino", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram16, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "19", branches: "P.Za Castelli - Lambrate FS M2", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram19, accessibilityStatus: String(localized: .lineaNonAccessibile)),
+            LineInfo(name: "24", branches: "Piazza Fontana - Vigentino", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram24, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "27", branches: "V.Le Ungheria - Piazza Fontana", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram27, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "31", branches: "Bicocca M5 - Cinisello (1° Maggio)", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "33", branches: "P.Le Lagosta - Rimembranze di Lambrate", type: String(localized: .tram), waitMinutes: "5-20 min.", stations: StationsDB.tram33, accessibilityStatus: String(localized: .lineaNonAccessibile)),
         ]
     }
     
@@ -5408,7 +5408,7 @@ struct LineDetailView: View {
                                 .padding(.horizontal, 15)
                                 .background(
                                     RoundedRectangle(cornerRadius: 6)
-                                        .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
+                                        .fill((typeOfTransport == String(localized: .tram)) ? .orange : getColor(for: lineName))
                                 )
                         }
                         else if (lineName.contains("M") && (lineName != "MXP1" || lineName != "MXP2")){
@@ -5419,7 +5419,7 @@ struct LineDetailView: View {
                                 .padding(.horizontal, 15)
                                 .background(
                                     RoundedRectangle(cornerRadius: 6)
-                                        .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
+                                        .fill((typeOfTransport == String(localized: .tram)) ? .orange : getColor(for: lineName))
                                 )
                         }
                         else {
@@ -5430,7 +5430,7 @@ struct LineDetailView: View {
                                 .padding(.horizontal, 15)
                                 .background(
                                     RoundedRectangle(cornerRadius: 6)
-                                        .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
+                                        .fill((typeOfTransport == String(localized: .tram)) ? .orange : getColor(for: lineName))
                                 )
                         }
                         
@@ -5980,15 +5980,15 @@ struct LineSmallDetailedView: View {
                     HStack(spacing: 12) {
                         Text(lineName)
                             .foregroundStyle(.white)
-                            .font(.system(size: (typeOfTransport == "Tram") ? 40 : 30, weight: .bold))
+                            .font(.system(size: (typeOfTransport == String(localized: .tram)) ? 40 : 30, weight: .bold))
                             .padding(.vertical, 4)
                             .padding(.horizontal, 20)
                             .background(
                                 RoundedRectangle(cornerRadius: 6)
-                                    .fill((typeOfTransport == "Tram") ? .orange : getColor(for: lineName))
+                                    .fill((typeOfTransport == String(localized: .tram)) ? .orange : getColor(for: lineName))
                             )
 
-                        if(typeOfTransport.contains("Tram")) {
+                        if(typeOfTransport.contains(String(localized: .tram))) {
                             Text("\(typeOfTransport) \(lineName)")
                                 .font(.system(size: 30))
                                 .minimumScaleFactor(0.5)
@@ -7000,7 +7000,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
             case .suggested: return String(localized: .yourLinesChip)
             case .all: return String(localized: .tutti)
             case .bus: return "Bus"
-            case .tram: return "Tram"
+            case .tram: return String(localized: .tram)
             case .metro : return String(localized: .metropolitana)
             case .train: return String(localized: .treno)
             case .working: return String(localized: .inCorso)
@@ -7175,7 +7175,7 @@ func getCurrentTransportIcon(for lineLongName: String) -> String{
         case "Movibus":
             return "bus.fill"
             
-        case "Tram":
+        case String(localized: .tram):
             return "tram.fill"
         
         default:
