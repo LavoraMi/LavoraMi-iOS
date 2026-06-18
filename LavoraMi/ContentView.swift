@@ -236,6 +236,7 @@ struct SetupView: View {
     private func dismiss() {
         presentationMode.wrappedValue.dismiss()
         NotificationManager.shared.requestPermission()
+        locationManager.requestPermission()
     }
 }
 
