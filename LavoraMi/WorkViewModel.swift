@@ -14,6 +14,7 @@ class WorkViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     @Published var strikeEnabled: Bool = false
+    @Published var enablePassanteWork: Bool = false
     @Published var strikeEnabledDebug: Bool = false
     @Published var companiesStrikes: String = ""
     @Published var dateStrike: String = ""
@@ -129,6 +130,7 @@ class WorkViewModel: ObservableObject {
                     self?.linesSupportedGTFS = result.linesSupportedGTFS
                     self?.suburbanWithInterruptions = result.suburbanWithInterruptions
                     self?.suburbanInterruptionLinks = result.suburbanInterruptionLinks
+                    self?.enablePassanteWork = (result.enablePassanteWork == "true")
                     
                     if self?.strikeEnabled == true {
                             NotificationManager.shared.scheduleStrikeNotifications(
@@ -192,6 +194,7 @@ class WorkViewModel: ObservableObject {
 struct RemoteConfigData: Codable {
     let enableStrike: String
     let enableStrikeDebug: String
+    let enablePassanteWork: String
     let date: String
     let companies: String
     let guaranteed: String
