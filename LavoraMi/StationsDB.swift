@@ -393,6 +393,7 @@ struct StationsDB {
     ]
     
     static let stationsS2: [MetroStation] = [
+        /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Seveso e Rogoredo
         .init(name: "Mariano Comense", coordinate: .init(latitude: 45.69358, longitude: 9.18141), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.67783, longitude: 9.17024), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.67703, longitude: 9.16952), branch: "Main"),
@@ -410,7 +411,7 @@ struct StationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.65177, longitude: 9.14074), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.65083, longitude: 9.14018), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.65019, longitude: 9.14008), branch: "Main"),
-        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.64966, longitude: 9.14011), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.64966, longitude: 9.14011), branch: "Main"),*/
         .init(name: "Seveso", coordinate: .init(latitude: 45.6483, longitude: 9.14018), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.64507, longitude: 9.14113), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.64208, longitude: 9.14166), branch: "Main"),
@@ -575,11 +576,12 @@ struct StationsDB {
     ]
     
     static let stationsS5: [MetroStation] = [
+        /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Gallarate e Treviglio
         .init(name: "Varese", coordinate: .init(latitude: 45.81625, longitude: 8.83295), branch: "Main"),
         .init(name: "Gazzada Schianno Morazzone", coordinate: .init(latitude: 45.77868, longitude: 8.82473), branch: "Main"),
         .init(name: "Castronno", coordinate: .init(latitude: 45.74525, longitude: 8.81051), branch: "Main"),
         .init(name: "Albizzate - Solbiate Arno", coordinate: .init(latitude: 45.7233, longitude: 8.80628), branch: "Main"),
-        .init(name: "Cavaria", coordinate: .init(latitude: 45.69814, longitude: 8.80371), branch: "Main"),
+        .init(name: "Cavaria", coordinate: .init(latitude: 45.69814, longitude: 8.80371), branch: "Main"),*/
         .init(name: "Gallarate", coordinate: .init(latitude: 45.65974, longitude: 8.79853), branch: "Main"),
         .init(name: "Busto Arsizio", coordinate: .init(latitude: 45.61593, longitude: 8.86589), branch: "Main"),
         .init(name: "Legnano", coordinate: .init(latitude: 45.5937, longitude: 8.91087), branch: "Main"),
@@ -708,6 +710,7 @@ struct StationsDB {
     ]
     
     static let stationsS7: [MetroStation] = [
+        /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Triuggio e Milano Pta Garibaldi
         .init(name: "Lecco", coordinate: .init(latitude: 45.85637, longitude: 9.3934), branch: "Main"),
         .init(name: "Valmadrera", coordinate: .init(latitude: 45.84641, longitude: 9.36801), branch: "Main"),
         .init(name: "Civate", coordinate: .init(latitude: 45.83133, longitude: 9.35275), branch: "Main"),
@@ -719,7 +722,7 @@ struct StationsDB {
         .init(name: "Renate - Veduggio", coordinate: .init(latitude: 45.7284, longitude: 9.27997), branch: "Main"),
         .init(name: "Besana", coordinate: .init(latitude: 45.70274, longitude: 9.28303), branch: "Main"),
         .init(name: "Villa Raverio", coordinate: .init(latitude: 45.69038, longitude: 9.26172), branch: "Main"),
-        .init(name: "Carate Calo'", coordinate: .init(latitude: 45.67642, longitude: 9.25213), branch: "Main"),
+        .init(name: "Carate Calo'", coordinate: .init(latitude: 45.67642, longitude: 9.25213), branch: "Main"),*/
         .init(name: "Triuggio - Ponte Albiate", coordinate: .init(latitude: 45.65892, longitude: 9.26682), branch: "Main"),
         .init(name: "Macherio - Canonica", coordinate: .init(latitude: 45.64556, longitude: 9.2869), branch: "Main"),
         .init(name: "Biassono - Lesmo Parco", coordinate: .init(latitude: 45.63221, longitude: 9.29829), branch: "Main"),
