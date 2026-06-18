@@ -2272,6 +2272,29 @@
         }
       }
     },
+    "inAppLocalized" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In App"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En App"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In App"
+          }
+        }
+      }
+    },
     "incorrettezzeDeps" : {
       "extractionState" : "manual",
       "localizations" : {

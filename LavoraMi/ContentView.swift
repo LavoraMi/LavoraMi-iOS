@@ -3161,7 +3161,7 @@ struct AdvancedOptionsView: View {
                     .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Picker(selection: $howToOpenLinks, content: {
                     ForEach(linkOpenTypes.allCases) { filter in
-                        Text(filter.rawValue).tag(filter)
+                        Text(filter.localizedID).tag(filter)
                             .foregroundStyle(Color("TextColor"))
                     }
                 }, label: {
@@ -7055,6 +7055,12 @@ enum linkOpenTypes: String, CaseIterable, Identifiable{
     case safari = "Safari"
     
     var id: String{self.rawValue}
+    var localizedID: String {
+        switch self {
+            case .inApp: return String(localized: .inAppLocalized)
+            case .safari: return "Safari"
+        }
+    }
 }
 
 enum fileFormatType: String, CaseIterable, Identifiable{
