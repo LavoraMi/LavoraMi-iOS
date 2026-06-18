@@ -6999,7 +6999,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
         switch self {
             case .suggested: return String(localized: .yourLinesChip)
             case .all: return String(localized: .tutti)
-            case .bus: return "Bus"
+            case .bus: return String(localized: .bus)
             case .tram: return String(localized: .tram)
             case .metro : return String(localized: .metropolitana)
             case .train: return String(localized: .treno)
