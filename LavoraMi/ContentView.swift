@@ -4194,7 +4194,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView (
             name: "xctest-dynamic-overlay",
-            version: "1.10.0",
+            version: "1.10.1",
             license: "MIT License",
             copyright: "Copyright (c) 2021 Point-Free, Inc.",
             licenseText: """
