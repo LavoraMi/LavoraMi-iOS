@@ -5394,7 +5394,7 @@ struct LineDetailView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     HStack(spacing: 12) {
                         if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80" || lineName.contains("RE")) {
-                            Text(lineName)
+                            Text((lineName.contains("MXP")) ? "MXP" : lineName)
                                 .foregroundStyle(.white)
                                 .font(.custom("TitilliumWeb-Bold", size: 40))
                                 .padding(.vertical, 2)
