@@ -5972,6 +5972,11 @@ extension LineDetailView {
                 }
             }
         }
+        .onAppear(){
+            if selectedBranch == nil, let first = availableBranches.first {
+                selectedBranch = first
+            }
+        }
         .frame(maxWidth: .infinity)
         .frame(maxHeight: .infinity)
         .padding(.bottom, 10)
