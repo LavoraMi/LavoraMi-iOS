@@ -5847,7 +5847,7 @@ extension LineDetailView {
             .mapControls{
                 MapUserLocationButton()
             }
-            .tint(.blue)
+            .tint(getColor(for: lineName))
             .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
