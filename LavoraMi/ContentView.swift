@@ -5898,7 +5898,7 @@ extension LineDetailView {
                         ForEach(availableBranches, id: \.self) { branch in
                             Button(action: { selectedBranch = branch }) {
                                 Text(branch)
-                                    .font(.system(size: 13, weight: .bold))
+                                    .font(.system(size: 15))
                                     .foregroundStyle(selectedBranch == branch ? .white : Color("TextColor"))
                                     .padding(.vertical, 7)
                                     .padding(.horizontal, 14)
@@ -7011,7 +7011,7 @@ struct MetroInterchangeRow: View {
                 }
                 else {
                     Text("Fermata senza interscambi.")
-                        .font(.custom("TitilliumWeb-Bold", size: 13))
+                        .font(.custom("TitilliumWeb-Bold", size: 15))
                         .foregroundStyle(Color("TextColor"))
                         .padding(.top, 12)
                 }
