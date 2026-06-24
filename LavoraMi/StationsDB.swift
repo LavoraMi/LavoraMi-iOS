@@ -4490,7 +4490,6 @@ struct StationsDB {
     ]
 
     static func getMetroInterchanges(line: String) -> [InterchageInfo] {
-        var seen = Set<String>()
-        return interchangesMetro.filter { $0.lines.contains(line) && seen.insert($0.name).inserted }
+        return interchangesMetro.filter { $0.lines.contains(line) }
     }
 }

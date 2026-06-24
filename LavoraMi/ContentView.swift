@@ -5914,18 +5914,26 @@ extension LineDetailView {
             ScrollView {
                 let toShow: [InterchageInfo] = {
                     if isMetro {
-                        let sortedMain = mainItems.sorted { $1.lineOrder > $0.lineOrder }
+                        let validMain = mainItems.filter { $0.lines.first == lineName }
+                        let sortedMain = validMain.sorted { $1.lineOrder > $0.lineOrder }
                         
                         if let branch = selectedBranch {
-                            let branchItems = (branchMap[branch] ?? []).sorted { $1.lineOrder > $0.lineOrder }
+                            let validBranch = (branchMap[branch] ?? []).filter { $0.lines.first == lineName }
+                            let branchItems = validBranch.sorted { $1.lineOrder > $0.lineOrder }
                             return branchItems + sortedMain
                         }
                         else {
-                            let allBranch = availableBranches.flatMap { (branchMap[$0] ?? []).sorted { $1.lineOrder > $0.lineOrder } }
+                            let allBranch = availableBranches.flatMap { branch in
+                                (branchMap[branch] ?? [])
+                                    .filter { $0.lines.first == lineName }
+                                    .sorted { $1.lineOrder > $0.lineOrder }
+                            }
                             return sortedMain + allBranch
                         }
                     }
-                    else {return allInterchanges}
+                    else {
+                        return allInterchanges
+                    }
                 }()
 
                 if !toShow.isEmpty {
