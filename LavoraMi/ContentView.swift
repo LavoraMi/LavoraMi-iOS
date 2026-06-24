@@ -5892,7 +5892,7 @@ extension LineDetailView {
         let availableBranches = branchMap.keys.sorted()
 
         VStack(spacing: 0) {
-            if isMetro && !availableBranches.isEmpty {
+            if isMetro && availableBranches.count > 1 {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
                         ForEach(availableBranches, id: \.self) { branch in
