@@ -6942,7 +6942,7 @@ struct LineDeviationInfoView: View {
 
     private func dismiss() {presentationMode.wrappedValue.dismiss()}
     
-    @ViewBuilder.
+    @ViewBuilder
     private func currentStatus(icon: String, color: Color, title: String, description: String) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 10) {
