@@ -6995,7 +6995,7 @@ struct MetroInterchangeRow: View {
 
             VStack(alignment: .leading, spacing: 8) {
                 Text(interchange.name.uppercased())
-                    .font(.system(size: 15))
+                    .font(.custom("TitilliumWeb-Bold", size: 21))
                     .foregroundStyle(Color("TextColor"))
                     .padding(.top, 12)
 
