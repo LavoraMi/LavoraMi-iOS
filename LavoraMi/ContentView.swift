@@ -5918,9 +5918,16 @@ extension LineDetailView {
                         let sortedMain = validMain.sorted { $1.lineOrder > $0.lineOrder }
                         
                         if let branch = selectedBranch {
-                            let validBranch = (branchMap[branch] ?? []).filter { $0.lines.first == lineName }
-                            let branchItems = validBranch.sorted { $1.lineOrder > $0.lineOrder }
-                            return branchItems + sortedMain
+                            if(branch == "Assago Milanofiori Forum" || branch == "P.Za Abbiategrasso"){
+                                let validBranch = (branchMap[branch] ?? []).filter { $0.lines.first == lineName }
+                                let branchItems = validBranch.sorted { $0.lineOrder > $1.lineOrder }
+                                return sortedMain + branchItems
+                            }
+                            else {
+                                let validBranch = (branchMap[branch] ?? []).filter { $0.lines.first == lineName }
+                                let branchItems = validBranch.sorted { $1.lineOrder > $0.lineOrder }
+                                return branchItems + sortedMain
+                            }
                         }
                         else {
                             let allBranch = availableBranches.flatMap { branch in
