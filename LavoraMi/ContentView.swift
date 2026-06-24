@@ -6940,11 +6940,9 @@ struct LineDeviationInfoView: View {
         }
     }
 
-    private func dismiss() {
-        presentationMode.wrappedValue.dismiss()
-    }
+    private func dismiss() {presentationMode.wrappedValue.dismiss()}
     
-    @ViewBuilder
+    @ViewBuilder.
     private func currentStatus(icon: String, color: Color, title: String, description: String) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 10) {
@@ -6975,7 +6973,6 @@ struct MetroInterchangeRow: View {
     let isLast: Bool
 
     var lineColor: Color { getColor(for: currentLine) }
-    var displayName: String { interchange.name == "Lodi TIBB" ? "Milano Scalo Romana FS" : interchange.name }
     var otherLines: [String] { interchange.lines.filter { $0 != currentLine && $0 != "N\(currentLine)" } }
 
     var body: some View {
@@ -6997,8 +6994,8 @@ struct MetroInterchangeRow: View {
             .frame(width: 38)
 
             VStack(alignment: .leading, spacing: 8) {
-                Text(displayName.uppercased())
-                    .font(.system(size: 15, weight: .bold))
+                Text(interchange.name.uppercased())
+                    .font(.system(size: 15))
                     .foregroundStyle(Color("TextColor"))
                     .padding(.top, 12)
 
@@ -7007,13 +7004,9 @@ struct MetroInterchangeRow: View {
                         HStack(spacing: 6) {
                             ForEach(otherLines, id: \.self) { line in
                                 Group {
-                                    if line.contains("Filobus") || line.wholeMatch(of: /9[0-3]/) != nil {
-                                        Label(line, systemImage: "bolt.fill")
-                                    } else if line.starts(with: "N") {
-                                        Label(line, systemImage: "moon.fill")
-                                    } else {
-                                        Text(line)
-                                    }
+                                    if line.contains("Filobus") || line.wholeMatch(of: /9[0-3]/) != nil {Label(line, systemImage: "bolt.fill")}
+                                    else if line.starts(with: "N") {Label(line, systemImage: "moon.fill")}
+                                    else {Text(line)}
                                 }
                                 .font(.system(size: 11, weight: .bold))
                                 .foregroundStyle(.white)
