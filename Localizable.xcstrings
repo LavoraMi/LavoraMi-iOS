@@ -1700,7 +1700,20 @@
       }
     },
     "Fermata senza interscambi." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop with no interchanges."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parada sin transbordos."
+          }
+        }
+      }
     },
     "fermataCantiere" : {
       "extractionState" : "manual",
