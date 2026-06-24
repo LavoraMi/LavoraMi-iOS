@@ -7001,11 +7001,28 @@ struct MetroInterchangeRow: View {
             .frame(width: 38)
 
             VStack(alignment: .leading, spacing: 8) {
-                Text(interchange.name.uppercased())
-                    .font(.custom("TitilliumWeb-Bold", size: 21))
-                    .foregroundStyle(Color("TextColor"))
+                if interchange.typeOfInterchange == "stadium.fill" {
+                    HStack(spacing: 8) {
+                        Image(interchange.typeOfInterchange)
+                            .renderingMode(.template)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 24, height: 24)
+                            .foregroundStyle(Color("TextColor"))
+                        
+                        Text(interchange.name.uppercased())
+                            .font(.custom("TitilliumWeb-Bold", size: 21))
+                            .foregroundStyle(Color("TextColor"))
+                    }
                     .padding(.top, 12)
-
+                }
+                else {
+                    Label(interchange.name.uppercased(), systemImage: interchange.typeOfInterchange)
+                        .font(.custom("TitilliumWeb-Bold", size: 21))
+                        .foregroundStyle(Color("TextColor"))
+                        .padding(.top, 12)
+                }
+                
                 if !otherLines.isEmpty {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 6) {
