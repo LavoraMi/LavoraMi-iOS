@@ -5895,14 +5895,6 @@ extension LineDetailView {
             if isMetro && !availableBranches.isEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
-                        Button(action: { selectedBranch = nil }) {
-                            Text("Tutti")
-                                .font(.system(size: 13, weight: .bold))
-                                .foregroundStyle(selectedBranch == nil ? .white : Color("TextColor"))
-                                .padding(.vertical, 7)
-                                .padding(.horizontal, 14)
-                                .background(Capsule().fill(selectedBranch == nil ? getColor(for: lineName) : Color(.tertiarySystemBackground)))
-                        }
                         ForEach(availableBranches, id: \.self) { branch in
                             Button(action: { selectedBranch = branch }) {
                                 Text(branch)
@@ -7016,6 +7008,12 @@ struct MetroInterchangeRow: View {
                             }
                         }
                     }
+                }
+                else {
+                    Text("Fermata senza interscambi.")
+                        .font(.custom("TitilliumWeb-Bold", size: 13))
+                        .foregroundStyle(Color("TextColor"))
+                        .padding(.top, 12)
                 }
             }
             .padding(.bottom, 16)
