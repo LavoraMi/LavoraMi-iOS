@@ -504,6 +504,7 @@ struct MainView: View {
     @State private var suggestedTrigger = 0
     @State private var marqueeOffset: CGFloat = 0
     @State private var marqueeContainerWidth: CGFloat = 0
+    @State private var marqueeId = UUID()
     
     @ObservedObject var viewModel: WorkViewModel
     @StateObject var authManager = AuthManager()
@@ -734,6 +735,7 @@ struct MainView: View {
                                 .foregroundStyle(.primary)
 
                             MarqueeText(text: "Sciopero in corso · Aggiornamenti automatici ogni minuto")
+                                .id(marqueeId)
                         }
 
                         Divider()
@@ -765,6 +767,11 @@ struct MainView: View {
                     .frame(height: closedStrike ? 0 : nil, alignment: .top)
                     .opacity(closedStrike ? 0 : 1)
                     .clipped()
+                }
+                .onChange(of: closedStrike) { oldValue, newValue in
+                    if !newValue {
+                        marqueeId = UUID()
+                    }
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 14))
                 .overlay(
@@ -997,6 +1004,10 @@ struct MainView: View {
                     }
                     alreadyRefreshed = true
                 }
+                
+                if viewModel.strikeEnabled && showStrikeBanner && !closedStrike {
+                    marqueeId = UUID()
+                }
             }
             .refreshable {
                 viewModel.fetchWorks()
@@ -1061,7 +1072,8 @@ private struct MarqueeText: View {
     @State private var offset: CGFloat = 0
     @State private var textWidth: CGFloat = 0
     @State private var containerWidth: CGFloat = 0
-    @State private var animationToken: Int = 0
+    @State private var isReady: Bool = false
+    @State private var isAnimating: Bool = false
 
     var body: some View {
         GeometryReader { geo in
@@ -1077,61 +1089,73 @@ private struct MarqueeText: View {
                         )
                     }
                 )
-            Text(text)
-                .font(.system(size: 13))
-                .foregroundStyle(.secondary)
-                .fixedSize()
-                .frame(height: geo.size.height, alignment: .center)
-                .offset(x: offset)
+            
+            if isReady {
+                Text(text)
+                    .font(.system(size: 13))
+                    .foregroundStyle(.secondary)
+                    .fixedSize()
+                    .frame(height: geo.size.height, alignment: .center)
+                    .offset(x: offset)
+            }
         }
         .frame(height: 18)
         .clipped()
         .onPreferenceChange(MarqueeTextWidthKey.self) { tw in
-            guard tw > 0 else { return }
             textWidth = tw
-            if containerWidth > 0 { restartLoop() }
+            if containerWidth > 0 && tw > 0 && !isReady {
+                isReady = true
+                startMarquee()
+            }
         }
         .background(
             GeometryReader { cg in
                 Color.clear
                     .onAppear {
-                        let cw = cg.size.width
-                        guard cw > 0 else { return }
-                        containerWidth = cw
-                        if textWidth > 0 { restartLoop() }
+                        containerWidth = cg.size.width
+                        if textWidth > 0 && containerWidth > 0 && !isReady {
+                            isReady = true
+                            startMarquee()
+                        }
                     }
                     .onChange(of: cg.size.width) { _, cw in
-                        guard cw > 0 else { return }
                         containerWidth = cw
-                        if textWidth > 0 { restartLoop() }
+                        if textWidth > 0 && cw > 0 && !isReady {
+                            isReady = true
+                            startMarquee()
+                        }
                     }
             }
         )
-        .onAppear {
-            if textWidth > 0, containerWidth > 0 { restartLoop() }
-        }
         .onDisappear {
-            animationToken &+= 1
+            isAnimating = false
+        }
+        .onAppear {
+            if isReady && !isAnimating {
+                startMarquee()
+            }
         }
     }
 
-    private func restartLoop() {
-        animationToken &+= 1
-        let token = animationToken
-        offset = containerWidth
-        startLoop(token: token)
+    private func startMarquee() {
+        guard !isAnimating, textWidth > 0, containerWidth > 0 else { return }
+        isAnimating = true
+        animateMarquee()
     }
 
-    private func startLoop(token: Int) {
-        guard token == animationToken, textWidth > 0, containerWidth > 0 else { return }
+    private func animateMarquee() {
+        guard isAnimating else { return }
         offset = containerWidth
-        let duration = Double(containerWidth + textWidth) / 55.0
+        let totalWidth = containerWidth + textWidth
+        let duration = Double(totalWidth) / 55.0
+        
         withAnimation(.linear(duration: duration)) {
             offset = -textWidth
         }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-            guard token == animationToken else { return }
-            startLoop(token: token)
+            guard isAnimating else { return }
+            animateMarquee()
         }
     }
 }
