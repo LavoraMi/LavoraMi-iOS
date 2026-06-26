@@ -1049,47 +1049,89 @@ struct MainView: View {
     }
 }
 
+private struct MarqueeTextWidthKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
+    }
+}
+
 private struct MarqueeText: View {
     let text: String
     @State private var offset: CGFloat = 0
     @State private var textWidth: CGFloat = 0
     @State private var containerWidth: CGFloat = 0
+    @State private var animationToken: Int = 0
 
     var body: some View {
         GeometryReader { geo in
             Text(text)
                 .font(.system(size: 13))
+                .fixedSize()
+                .hidden()
+                .background(
+                    GeometryReader { tg in
+                        Color.clear.preference(
+                            key: MarqueeTextWidthKey.self,
+                            value: tg.size.width
+                        )
+                    }
+                )
+            Text(text)
+                .font(.system(size: 13))
                 .foregroundStyle(.secondary)
                 .fixedSize()
                 .frame(height: geo.size.height, alignment: .center)
-                .background(
-                    GeometryReader { tg in
-                        Color.clear.onAppear {
-                            textWidth = tg.size.width
-                            containerWidth = geo.size.width
-                            startMarquee()
-                        }
-                    }
-                )
                 .offset(x: offset)
         }
         .frame(height: 18)
         .clipped()
+        .onPreferenceChange(MarqueeTextWidthKey.self) { tw in
+            guard tw > 0 else { return }
+            textWidth = tw
+            if containerWidth > 0 { restartLoop() }
+        }
+        .background(
+            GeometryReader { cg in
+                Color.clear
+                    .onAppear {
+                        let cw = cg.size.width
+                        guard cw > 0 else { return }
+                        containerWidth = cw
+                        if textWidth > 0 { restartLoop() }
+                    }
+                    .onChange(of: cg.size.width) { _, cw in
+                        guard cw > 0 else { return }
+                        containerWidth = cw
+                        if textWidth > 0 { restartLoop() }
+                    }
+            }
+        )
         .onAppear {
-            guard textWidth > 0 else { return }
-            startMarquee()
+            if textWidth > 0, containerWidth > 0 { restartLoop() }
+        }
+        .onDisappear {
+            animationToken &+= 1
         }
     }
 
-    private func startMarquee() {
+    private func restartLoop() {
+        animationToken &+= 1
+        let token = animationToken
         offset = containerWidth
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            withAnimation(
-                .linear(duration: Double(containerWidth + textWidth) / 55.0)
-                .repeatForever(autoreverses: false)
-            ) {
-                offset = -textWidth
-            }
+        startLoop(token: token)
+    }
+
+    private func startLoop(token: Int) {
+        guard token == animationToken, textWidth > 0, containerWidth > 0 else { return }
+        offset = containerWidth
+        let duration = Double(containerWidth + textWidth) / 55.0
+        withAnimation(.linear(duration: duration)) {
+            offset = -textWidth
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            guard token == animationToken else { return }
+            startLoop(token: token)
         }
     }
 }
