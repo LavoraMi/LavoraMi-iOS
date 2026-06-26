@@ -734,7 +734,7 @@ struct MainView: View {
                                 .font(.system(size: 13, weight: .semibold))
                                 .foregroundStyle(.primary)
 
-                            MarqueeText(text: "Sciopero in corso · Aggiornamenti automatici ogni minuto")
+                            MarqueeText(text: viewModel.strikeUpdateLive)
                                 .id(marqueeId)
                         }
 
