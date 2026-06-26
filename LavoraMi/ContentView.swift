@@ -730,7 +730,7 @@ struct MainView: View {
                                 }
                             }
 
-                            Text("ACCADE ORA:")
+                            Text("LIVE: ")
                                 .font(.system(size: 13, weight: .semibold))
                                 .foregroundStyle(.primary)
 
