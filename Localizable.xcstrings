@@ -292,9 +292,6 @@
         }
       }
     },
-    "ACCADE ORA:" : {
-
-    },
     "Accedi" : {
       "localizations" : {
         "en" : {
@@ -3497,6 +3494,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Idioma"
+          }
+        }
+      }
+    },
+    "LIVE: " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LIVE: "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EN DIRECTO: "
           }
         }
       }
