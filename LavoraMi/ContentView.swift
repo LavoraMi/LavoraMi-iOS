@@ -500,7 +500,10 @@ struct MainView: View {
     @State private var showInfoFavoriteLines: Bool = false
     @State private var showMaintenanceMode: Bool = false
     @State private var strikeExpanded: Bool = true
+    @State private var livePulse = true
     @State private var suggestedTrigger = 0
+    @State private var marqueeOffset: CGFloat = 0
+    @State private var marqueeContainerWidth: CGFloat = 0
     
     @ObservedObject var viewModel: WorkViewModel
     @StateObject var authManager = AuthManager()
@@ -700,6 +703,37 @@ struct MainView: View {
                                 .foregroundStyle(.primary)
                                 .multilineTextAlignment(.leading)
                                 .fixedSize(horizontal: false, vertical: true)
+                        }
+                        
+                        Divider()
+                            .padding(.vertical, 2)
+
+                        HStack(spacing: 8) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color.red.opacity(0.35))
+                                    .frame(width: 8, height: 8)
+                                    .scaleEffect(livePulse ? 2.8 : 1.0)
+                                    .opacity(livePulse ? 0.0 : 1.0)
+                                Circle()
+                                    .fill(Color.red)
+                                    .frame(width: 8, height: 8)
+                            }
+                            .frame(width: 16, height: 16)
+                            .onAppear {
+                                livePulse = false
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                    withAnimation(.easeOut(duration: 1.4).repeatForever(autoreverses: false)) {
+                                        livePulse = true
+                                    }
+                                }
+                            }
+
+                            Text("ACCADE ORA:")
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundStyle(.primary)
+
+                            MarqueeText(text: "Sciopero in corso · Aggiornamenti automatici ogni minuto")
                         }
 
                         Divider()
@@ -1010,6 +1044,51 @@ struct MainView: View {
         for pulse in pulses {
             DispatchQueue.main.asyncAfter(deadline: .now() + pulse.delay) {
                 generator.impactOccurred(intensity: pulse.intensity)
+            }
+        }
+    }
+}
+
+private struct MarqueeText: View {
+    let text: String
+    @State private var offset: CGFloat = 0
+    @State private var textWidth: CGFloat = 0
+    @State private var containerWidth: CGFloat = 0
+
+    var body: some View {
+        GeometryReader { geo in
+            Text(text)
+                .font(.system(size: 13))
+                .foregroundStyle(.secondary)
+                .fixedSize()
+                .frame(height: geo.size.height, alignment: .center)
+                .background(
+                    GeometryReader { tg in
+                        Color.clear.onAppear {
+                            textWidth = tg.size.width
+                            containerWidth = geo.size.width
+                            startMarquee()
+                        }
+                    }
+                )
+                .offset(x: offset)
+        }
+        .frame(height: 18)
+        .clipped()
+        .onAppear {
+            guard textWidth > 0 else { return }
+            startMarquee()
+        }
+    }
+
+    private func startMarquee() {
+        offset = containerWidth
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            withAnimation(
+                .linear(duration: Double(containerWidth + textWidth) / 55.0)
+                .repeatForever(autoreverses: false)
+            ) {
+                offset = -textWidth
             }
         }
     }
