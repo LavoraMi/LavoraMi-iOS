@@ -73,6 +73,8 @@
 		6582F30E2F1BD9F100F7ADAF /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6582F30D2F1BD9F100F7ADAF /* WidgetKit.framework */; };
 		6582F3102F1BD9F100F7ADAF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6582F30F2F1BD9F100F7ADAF /* SwiftUI.framework */; };
 		6582F31D2F1BD9F300F7ADAF /* LavoraMiWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6582F30B2F1BD9F000F7ADAF /* LavoraMiWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		65C4C6022FF2E7B6006DB907 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 65C4C6012FF2E7B6006DB907 /* GoogleMobileAds */; };
+		65C4C6042FF2E7C2006DB907 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 65C4C6032FF2E7C2006DB907 /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +208,7 @@
 				652D9B842F65A41D00A4CAAD /* FirebaseCrashlytics in Frameworks */,
 				652D9B862F65A41D00A4CAAD /* FirebaseDatabase in Frameworks */,
 				652D9B9E2F65A41D00A4CAAD /* FirebaseStorageCombine-Community in Frameworks */,
+				65C4C6022FF2E7B6006DB907 /* GoogleMobileAds in Frameworks */,
 				652D9B962F65A41D00A4CAAD /* FirebaseMLModelDownloader in Frameworks */,
 				6531E9B52F3125BF001B03BB /* Realtime in Frameworks */,
 				652D9B802F65A41C00A4CAAD /* FirebaseAuthCombine-Community in Frameworks */,
@@ -243,6 +246,7 @@
 				652D9BBC2F65A42600A4CAAD /* FirebaseFunctions in Frameworks */,
 				6531E9CF2F312C29001B03BB /* Realtime in Frameworks */,
 				6531E9CD2F312C29001B03BB /* PostgREST in Frameworks */,
+				65C4C6042FF2E7C2006DB907 /* GoogleMobileAds in Frameworks */,
 				652D9BB22F65A42600A4CAAD /* FirebaseCore in Frameworks */,
 				652D9BAE2F65A42600A4CAAD /* FirebaseAuth in Frameworks */,
 				652D9BB82F65A42600A4CAAD /* FirebaseFirestore in Frameworks */,
@@ -337,6 +341,7 @@
 				652D9B992F65A41D00A4CAAD /* FirebaseRemoteConfig */,
 				652D9B9B2F65A41D00A4CAAD /* FirebaseStorage */,
 				652D9B9D2F65A41D00A4CAAD /* FirebaseStorageCombine-Community */,
+				65C4C6012FF2E7B6006DB907 /* GoogleMobileAds */,
 			);
 			productName = LavoraMi;
 			productReference = 65101F5A2F0BF3EF0078A19C /* LavoraMi.app */;
@@ -389,6 +394,7 @@
 				652D9BC92F65A42700A4CAAD /* FirebaseRemoteConfig */,
 				652D9BCB2F65A42700A4CAAD /* FirebaseStorage */,
 				652D9BCD2F65A42700A4CAAD /* FirebaseStorageCombine-Community */,
+				65C4C6032FF2E7C2006DB907 /* GoogleMobileAds */,
 			);
 			productName = LavoraMiWidgetExtension;
 			productReference = 6582F30B2F1BD9F000F7ADAF /* LavoraMiWidgetExtension.appex */;
@@ -427,6 +433,7 @@
 				6531E9AD2F3125BF001B03BB /* XCRemoteSwiftPackageReference "supabase-swift" */,
 				65632D872F4B6F64007AD01D /* XCRemoteSwiftPackageReference "swiftui-mail-view" */,
 				652D9B6E2F65A3FA00A4CAAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				65C4C6002FF2E7B6006DB907 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 65101F5B2F0BF3EF0078A19C /* Products */;
@@ -834,6 +841,14 @@
 				minimumVersion = 1.0.1;
 			};
 		};
+		65C4C6002FF2E7B6006DB907 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1141,6 +1156,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 65632D872F4B6F64007AD01D /* XCRemoteSwiftPackageReference "swiftui-mail-view" */;
 			productName = SwiftUIMailView;
+		};
+		65C4C6012FF2E7B6006DB907 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65C4C6002FF2E7B6006DB907 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+		65C4C6032FF2E7C2006DB907 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65C4C6002FF2E7B6006DB907 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
