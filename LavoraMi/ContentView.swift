@@ -4098,7 +4098,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAdsOnDeviceConversion",
-            version: "3.6.0",
+            version: "3.6.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2023 Google LLC",
             licenseText: """
@@ -4163,7 +4163,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleUtilities",
-            version: "8.1.1",
+            version: "8.1.2",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2017 Google LLC",
             licenseText: """
