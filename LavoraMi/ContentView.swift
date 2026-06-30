@@ -508,6 +508,7 @@ struct MainView: View {
     
     @ObservedObject var viewModel: WorkViewModel
     @StateObject var authManager = AuthManager()
+    @StateObject var adMobManager = AdMobManager()
     @FocusState private var isSearchFocused: Bool
     @State private var currentHintIndex: Int = 0
     
@@ -969,10 +970,20 @@ struct MainView: View {
                                                     .clipShape(Capsule())
                                             }
                                         }
-                                        ForEach(filteredItems) { item in
-                                            if !item.isFinishedMoreThanOneDayAgo {
+                                        let itemsToShow = filteredItems.filter { !$0.isFinishedMoreThanOneDayAgo }
+                                        let itemsWithAds = itemsToShow.withAdsInserted(adCount: adMobManager.nativeAds.count)
+                                        
+                                        ForEach(itemsWithAds, id: \.index) { entry in
+                                            if entry.type == .item, let item = entry.item {
                                                 WorkInProgressRow(item: item)
                                                     .padding(.horizontal)
+                                            } else if entry.type == .ad {
+                                                if let adIndex = AdPositionCalculator(itemCount: itemsToShow.count, adCount: adMobManager.nativeAds.count).getAdIndexForPosition(entry.index),
+                                                   adIndex < adMobManager.nativeAds.count {
+                                                    NativeAdView(nativeAd: adMobManager.nativeAds[adIndex])
+                                                        .frame(height: 160)
+                                                        .padding(.horizontal)
+                                                }
                                             }
                                         }
                                         .padding(.top, 5)
@@ -1007,6 +1018,10 @@ struct MainView: View {
                 
                 if viewModel.strikeEnabled && showStrikeBanner && !closedStrike {
                     marqueeId = UUID()
+                }
+                
+                if let adUnitID = Bundle.main.infoDictionary?["AdUnitID"] as? String {
+                    adMobManager.loadNativeAds(adUnitID: adUnitID)
                 }
             }
             .refreshable {

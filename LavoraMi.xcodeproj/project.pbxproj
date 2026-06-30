@@ -135,11 +135,14 @@
 		6582F3292F1BEB6100F7ADAF /* Exceptions for "LavoraMi" folder in "LavoraMiWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AdMobManager.swift,
+				AdPositionCalculator.swift,
 				BiometricAuth.swift,
 				ContentView.swift,
 				"GoogleService-Info.plist",
 				GTFSHelper.swift,
 				LocationManager.swift,
+				NativeAdView.swift,
 				NetworkMonitor.swift,
 				NotificationManager.swift,
 				SharedData.swift,
