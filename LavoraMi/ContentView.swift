@@ -2300,6 +2300,9 @@ struct AccountView: View {
     @State private var currentSyncStatus: String = String(localized: .sincronizzazione)
     @State private var currentSyncStatusIcon: String = "cloudSyncing"
     @State private var showPopUpNotSynched: Bool = false
+    @State private var newUsername: String = ""
+    @State private var showChangeUsernamePopUp: Bool = false
+    @State private var unknownErrorPopUp: Bool = false
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
@@ -2511,6 +2514,13 @@ struct AccountView: View {
                             Text(fullName)
                                 .foregroundColor(Color("TextColor"))
                                 .font(.system(size: 25))
+                            
+                            Button(action: {
+                                showChangeUsernamePopUp = true
+                            }) {
+                                Image(systemName: "square.and.pencil")
+                                    .foregroundColor(.gray)
+                            }
                         }
                         
                         if email.contains("privaterelay") {
@@ -2657,6 +2667,30 @@ struct AccountView: View {
                     Button("Chiudi", role: .cancel) { }
                 } message: {
                     Text("Hai scelto di non sincronizzare i dati del tuo Account attraverso la funzione \"Preferenze Dati\". Per sincronizzarli, attiva almeno una delle opzioni disponibili.")
+                }
+                .alert("Errore sconosciuto", isPresented: $unknownErrorPopUp) {
+                    Button("Chiudi", role: .cancel) { unknownErrorPopUp = false }
+                } message: {
+                    Text("Si è verificato un errore sconosciuto, controlla la tua connessione ad Internet e riprova.")
+                }
+                .alert("Modifica Nome Utente", isPresented: $showChangeUsernamePopUp) {
+                    TextField("Nome utente", text: $newUsername)
+                    Button("Annulla", role: .cancel) { showChangeUsernamePopUp = false }
+                    Button("Continua") {
+                        Task {
+                            do {
+                                try await auth.updateUserName(newUserName: newUsername)
+                                fullName = newUsername
+                                newUsername = ""
+                                showChangeUsernamePopUp = false
+                            }
+                            catch {
+                                unknownErrorPopUp = true
+                            }
+                        }
+                    }
+                } message: {
+                    Text("Inserisci il nuovo nome utente per il tuo Account.")
                 }
                 
                 Spacer()

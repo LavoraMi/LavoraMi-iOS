@@ -267,6 +267,15 @@ class AuthManager: ObservableObject {
         let decodedRows = try JSONDecoder().decode([UserPreferencesDatas].self, from: response.data)
         return decodedRows.first ?? UserPreferencesDatas(user_email: "", enable_favorites: true, enable_your_lines: true)
     }
+    
+    func updateUserName(newUserName: String) async throws {
+        try await supabase.auth.update(user: UserAttributes(
+            data: [
+                "full_name": .string(newUserName)
+            ]
+          )
+       )
+    }
 }
 
 struct LinesFavoriteDatas: Encodable, Decodable {

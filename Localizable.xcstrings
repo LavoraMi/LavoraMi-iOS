@@ -1628,6 +1628,9 @@
         }
       }
     },
+    "Errore sconosciuto" : {
+
+    },
     "erroreSincronizzato" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2519,6 +2522,9 @@
           }
         }
       }
+    },
+    "Inserisci il nuovo nome utente per il tuo Account." : {
+
     },
     "Instagram" : {
       "localizations" : {
@@ -3688,6 +3694,9 @@
           }
         }
       }
+    },
+    "Modifica Nome Utente" : {
+
     },
     "Modifica Password" : {
       "localizations" : {
@@ -5719,6 +5728,9 @@
           }
         }
       }
+    },
+    "Si è verificato un errore sconosciuto, controlla la tua connessione ad Internet e riprova." : {
+
     },
     "Simone Gallotti" : {
       "localizations" : {
