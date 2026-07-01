@@ -86,7 +86,7 @@ struct NativeAdView: UIViewControllerRepresentable {
         
         let headlineLabel = UILabel()
         headlineLabel.text = nativeAd.headline
-        headlineLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        headlineLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         headlineLabel.textColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor.white : UIColor.black }
         headlineLabel.numberOfLines = 1
         titleStack.addArrangedSubview(headlineLabel)
@@ -112,7 +112,7 @@ struct NativeAdView: UIViewControllerRepresentable {
         let ctaButton = UIButton(type: .system)
         ctaButton.setTitle(nativeAd.callToAction ?? String(localized: .installa), for: .normal)
         ctaButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        ctaButton.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.8)
+        ctaButton.backgroundColor = UIColor.red
         ctaButton.setTitleColor(.white, for: .normal)
         ctaButton.layer.cornerRadius = 6
         ctaButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
