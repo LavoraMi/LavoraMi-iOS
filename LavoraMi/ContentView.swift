@@ -2690,7 +2690,7 @@ struct AccountView: View {
                         }
                     }
                 } message: {
-                    Text("Inserisci il nuovo nome utente per il tuo Account.")
+                    Text("Inserisci un nuovo nome utente per il tuo Account.")
                 }
                 
                 Spacer()
