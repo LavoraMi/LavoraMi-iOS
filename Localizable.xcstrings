@@ -2169,6 +2169,9 @@
         }
       }
     },
+    "Il tuo Account non ha un nome utente, inseriscine uno." : {
+
+    },
     "Impossibile caricare i dati dal server." : {
       "localizations" : {
         "en" : {
@@ -2538,6 +2541,9 @@
           }
         }
       }
+    },
+    "Inserisci Nome Utente" : {
+
     },
     "Inserisci un nuovo nome utente per il tuo Account." : {
       "localizations" : {

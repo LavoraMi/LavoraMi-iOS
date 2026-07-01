@@ -2302,6 +2302,7 @@ struct AccountView: View {
     @State private var showPopUpNotSynched: Bool = false
     @State private var newUsername: String = ""
     @State private var showChangeUsernamePopUp: Bool = false
+    @State private var showAddUsernamePopUp: Bool = false
     @State private var unknownErrorPopUp: Bool = false
     @State private var emptyUsernamePopUp: Bool = false
     
@@ -2703,6 +2704,27 @@ struct AccountView: View {
                 } message: {
                     Text("Inserisci un nuovo nome utente per il tuo Account.")
                 }
+                .alert("Inserisci Nome Utente", isPresented: $showAddUsernamePopUp) {
+                    TextField("Nome utente", text: $newUsername)
+                    Button("Continua") {
+                        Task {
+                            do {
+                                if(!newUsername.isEmpty) {
+                                    try await auth.updateUserName(newUserName: newUsername)
+                                    fullName = newUsername
+                                    newUsername = ""
+                                    showChangeUsernamePopUp = false
+                                }
+                            }
+                            catch {
+                                unknownErrorPopUp = true
+                            }
+                        }
+                    }
+                    .disabled(newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                } message: {
+                    Text("Il tuo Account non ha un nome utente, inseriscine uno.")
+                }
                 
                 Spacer()
 
@@ -2971,6 +2993,9 @@ struct AccountView: View {
                 }
             }
         }
+        
+        if(auth.getFullName().trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || auth.getFullName().contains("User")){showAddUsernamePopUp = true}
+        
         emailSaved = email
     }
     
