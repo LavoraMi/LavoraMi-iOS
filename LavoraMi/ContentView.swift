@@ -2303,6 +2303,7 @@ struct AccountView: View {
     @State private var newUsername: String = ""
     @State private var showChangeUsernamePopUp: Bool = false
     @State private var unknownErrorPopUp: Bool = false
+    @State private var emptyUsernamePopUp: Bool = false
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
@@ -2673,16 +2674,26 @@ struct AccountView: View {
                 } message: {
                     Text("Si è verificato un errore sconosciuto, controlla la tua connessione ad Internet e riprova.")
                 }
+                .alert("Nome utente non valido", isPresented: $emptyUsernamePopUp) {
+                    Button("Chiudi", role: .cancel) { emptyUsernamePopUp = false }
+                } message: {
+                    Text("Il nome utente non può essere vuoto.")
+                }
                 .alert("Modifica Nome Utente", isPresented: $showChangeUsernamePopUp) {
                     TextField("Nome utente", text: $newUsername)
                     Button("Annulla", role: .cancel) { showChangeUsernamePopUp = false }
                     Button("Continua") {
                         Task {
                             do {
-                                try await auth.updateUserName(newUserName: newUsername)
-                                fullName = newUsername
-                                newUsername = ""
-                                showChangeUsernamePopUp = false
+                                if(newUsername.isEmpty) {
+                                    emptyUsernamePopUp = true
+                                }
+                                else {
+                                    try await auth.updateUserName(newUserName: newUsername)
+                                    fullName = newUsername
+                                    newUsername = ""
+                                    showChangeUsernamePopUp = false
+                                }
                             }
                             catch {
                                 unknownErrorPopUp = true
