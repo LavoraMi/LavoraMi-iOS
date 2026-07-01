@@ -2314,21 +2314,10 @@ struct AccountView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
-                if isLogginIn && !loggedIn && !resettingPassword {
-                    loginSection
-                }
-                
-                if !isLogginIn && !loggedIn && !resettingPassword {
-                    signUpSection
-                }
-                
-                if loggedIn && !resettingPassword {
-                    loggedInSection
-                }
-                
-                if resettingPassword {
-                    resetPasswordSection
-                }
+                if isLogginIn && !loggedIn && !resettingPassword {loginSection}
+                if !isLogginIn && !loggedIn && !resettingPassword {signUpSection}
+                if loggedIn && !resettingPassword {loggedInSection}
+                if resettingPassword {resetPasswordSection}
             }
             .padding(25)
             .blur(radius: isLocked ? 12 : 0)
@@ -2443,9 +2432,9 @@ struct AccountView: View {
 
             VStack(spacing: 20) {
                 HStack(spacing: 15) {
-                    Image(systemName: "person.fill")
+                    Image(systemName: "at")
                         .foregroundStyle(.gray)
-                    TextField("Nome completo", text: $fullName)
+                    TextField("Nome utente", text: $fullName)
                         .textInputAutocapitalization(.words)
                         .disabled(auth.isLoading)
                 }
@@ -2515,7 +2504,7 @@ struct AccountView: View {
                 Section("Informazioni") {
                     VStack(alignment: .leading, spacing: 16) {
                         HStack(spacing: 12) {
-                            Image(systemName: "person.fill")
+                            Image(systemName: "at")
                                 .foregroundStyle(.red)
                                 .font(.system(size: 25))
                             
