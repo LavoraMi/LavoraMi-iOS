@@ -2536,6 +2536,29 @@
         }
       }
     },
+    "installa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalar"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installa"
+          }
+        }
+      }
+    },
     "INTERRUZIONI SULLA LINEA PER LAVORI." : {
       "localizations" : {
         "en" : {

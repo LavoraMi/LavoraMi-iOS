@@ -110,7 +110,7 @@ struct NativeAdView: UIViewControllerRepresentable {
         contentStack.addArrangedSubview(bodyLabel)
         
         let ctaButton = UIButton(type: .system)
-        ctaButton.setTitle(nativeAd.callToAction ?? "Installa", for: .normal)
+        ctaButton.setTitle(nativeAd.callToAction ?? String(localized: .installa), for: .normal)
         ctaButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         ctaButton.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.8)
         ctaButton.setTitleColor(.white, for: .normal)
