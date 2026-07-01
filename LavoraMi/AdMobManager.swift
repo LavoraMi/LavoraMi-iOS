@@ -18,6 +18,7 @@ class AdMobManager: NSObject, ObservableObject {
     private var loadedCount = 0
     private let totalDesired = 15
     private let batchSize = 5
+    private var adUnitIDInUse: String = ""
     
     override init() {
         super.init()
@@ -31,11 +32,12 @@ class AdMobManager: NSObject, ObservableObject {
     func loadNativeAds(adUnitID: String) {
         isLoading = true
         loadedCount = 0
+        adUnitIDInUse = adUnitID
         nativeAds.removeAll()
-        loadNextBatch(adUnitID: adUnitID)
+        loadNextBatch()
     }
     
-    private func loadNextBatch(adUnitID: String) {
+    private func loadNextBatch() {
         if loadedCount >= totalDesired {
             isLoading = false
             return
@@ -44,14 +46,21 @@ class AdMobManager: NSObject, ObservableObject {
         let remaining = totalDesired - loadedCount
         let toLoad = min(batchSize, remaining)
         
-        let options = NativeAdImageAdLoaderOptions()
-        options.shouldRequestMultipleImages = false
+        let imageOptions = NativeAdImageAdLoaderOptions()
+        imageOptions.shouldRequestMultipleImages = false
+        
+        var loaderOptions: [GADAdLoaderOptions] = [imageOptions]
+        if toLoad > 1 {
+            let multipleAdsOptions = MultipleAdsAdLoaderOptions()
+            multipleAdsOptions.numberOfAds = toLoad
+            loaderOptions.append(multipleAdsOptions)
+        }
         
         adLoader = AdLoader(
-            adUnitID: adUnitID,
+            adUnitID: adUnitIDInUse,
             rootViewController: nil,
             adTypes: [.native],
-            options: [options]
+            options: loaderOptions
         )
         
         adLoader?.delegate = self
@@ -68,11 +77,11 @@ class AdMobManager: NSObject, ObservableObject {
 
 extension AdMobManager: AdLoaderDelegate {
     func adLoader(_ adLoader: AdLoader, didFailToReceiveAdWithError error: Error) {
-        let remaining = totalDesired - loadedCount
-        if remaining > 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.loadNextBatch(adUnitID: adLoader.adUnitID)
-            }
+    }
+    
+    func adLoaderDidFinishLoading(_ adLoader: AdLoader) {
+        if loadedCount < totalDesired {
+            loadNextBatch()
         } else {
             isLoading = false
         }
@@ -84,14 +93,6 @@ extension AdMobManager: NativeAdLoaderDelegate {
         DispatchQueue.main.async {
             self.nativeAds.append(nativeAd)
             self.loadedCount += 1
-            
-            if self.loadedCount % self.batchSize == 0 || self.loadedCount >= self.totalDesired {
-                if self.loadedCount < self.totalDesired {
-                    self.loadNextBatch(adUnitID: adLoader.adUnitID)
-                } else {
-                    self.isLoading = false
-                }
-            }
         }
     }
 }

@@ -21,16 +21,16 @@ struct AdPositionCalculator {
             return false
         }
         
-        if position == 4 && totalItems >= 6 {
-            return true
+        guard position >= 4, (position - 4) % 8 == 0 else {
+            return false
         }
         
-        if position > 4 && (position - 5) % 8 == 0 {
-            let adIndex = (position - 4) / 8
-            return adIndex < totalAds
+        let k = (position - 4) / 8
+        guard k < totalAds else {
+            return false
         }
         
-        return false
+        return totalItems > 4 + 7 * k
     }
     
     func getRealEventPosition(for adapterPosition: Int) -> Int {

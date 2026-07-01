@@ -29,11 +29,11 @@ struct NativeAdView: UIViewControllerRepresentable {
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
     
-    private func createAdView(nativeAd: NativeAd) -> UIView {
-        let containerView = UIView()
-        containerView.backgroundColor = .clear
-        containerView.layer.cornerRadius = 16
-        containerView.clipsToBounds = true
+    private func createAdView(nativeAd: NativeAd) -> GoogleMobileAds.NativeAdView {
+        let adView = GoogleMobileAds.NativeAdView()
+        adView.backgroundColor = .clear
+        adView.layer.cornerRadius = 16
+        adView.clipsToBounds = true
         
         let cardView = UIView()
         cardView.backgroundColor = UIColor(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.11, green: 0.11, blue: 0.12, alpha: 1) : UIColor.white }))
@@ -42,14 +42,14 @@ struct NativeAdView: UIViewControllerRepresentable {
         cardView.layer.shadowOpacity = 0.1
         cardView.layer.shadowOffset = CGSize(width: 0, height: 2)
         cardView.layer.shadowRadius = 4
-        containerView.addSubview(cardView)
+        adView.addSubview(cardView)
         
         cardView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12),
-            cardView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12),
-            cardView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 12),
-            cardView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12)
+            cardView.topAnchor.constraint(equalTo: adView.topAnchor, constant: 12),
+            cardView.bottomAnchor.constraint(equalTo: adView.bottomAnchor, constant: -12),
+            cardView.leadingAnchor.constraint(equalTo: adView.leadingAnchor, constant: 12),
+            cardView.trailingAnchor.constraint(equalTo: adView.trailingAnchor, constant: -12)
         ])
         
         let contentStack = UIStackView()
@@ -72,15 +72,13 @@ struct NativeAdView: UIViewControllerRepresentable {
         headerStack.spacing = 12
         headerStack.alignment = .top
         
-        if let icon = nativeAd.icon?.image {
-            let iconView = UIImageView(image: icon)
-            iconView.translatesAutoresizingMaskIntoConstraints = false
-            iconView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-            iconView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-            iconView.layer.cornerRadius = 8
-            iconView.clipsToBounds = true
-            headerStack.addArrangedSubview(iconView)
-        }
+        let iconView = UIImageView(image: nativeAd.icon?.image)
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        iconView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        iconView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        iconView.layer.cornerRadius = 8
+        iconView.clipsToBounds = true
+        headerStack.addArrangedSubview(iconView)
         
         let titleStack = UIStackView()
         titleStack.axis = .vertical
@@ -104,26 +102,21 @@ struct NativeAdView: UIViewControllerRepresentable {
         
         contentStack.addArrangedSubview(headerStack)
         
-        if let body = nativeAd.body {
-            let bodyLabel = UILabel()
-            bodyLabel.text = body
-            bodyLabel.font = UIFont.systemFont(ofSize: 14)
-            bodyLabel.textColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor.lightGray : UIColor.darkGray }
-            bodyLabel.numberOfLines = 2
-            contentStack.addArrangedSubview(bodyLabel)
-        }
+        let bodyLabel = UILabel()
+        bodyLabel.text = nativeAd.body
+        bodyLabel.font = UIFont.systemFont(ofSize: 14)
+        bodyLabel.textColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor.lightGray : UIColor.darkGray }
+        bodyLabel.numberOfLines = 2
+        contentStack.addArrangedSubview(bodyLabel)
         
         let ctaButton = UIButton(type: .system)
-        if let cta = nativeAd.callToAction {
-            ctaButton.setTitle(cta, for: .normal)
-        } else {
-            ctaButton.setTitle("Installa", for: .normal)
-        }
+        ctaButton.setTitle(nativeAd.callToAction ?? "Installa", for: .normal)
         ctaButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         ctaButton.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.8)
         ctaButton.setTitleColor(.white, for: .normal)
         ctaButton.layer.cornerRadius = 6
         ctaButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
+        ctaButton.isUserInteractionEnabled = false
         
         let ctaContainer = UIView()
         ctaContainer.addSubview(ctaButton)
@@ -136,9 +129,16 @@ struct NativeAdView: UIViewControllerRepresentable {
         
         contentStack.addArrangedSubview(ctaContainer)
         
-        containerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 140).isActive = true
+        adView.heightAnchor.constraint(greaterThanOrEqualToConstant: 140).isActive = true
         
-        return containerView
+        adView.iconView = iconView
+        adView.headlineView = headlineLabel
+        adView.bodyView = bodyLabel
+        adView.callToActionView = ctaButton
+        
+        adView.nativeAd = nativeAd
+        
+        return adView
     }
 }
 
