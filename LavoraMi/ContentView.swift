@@ -2675,32 +2675,23 @@ struct AccountView: View {
                 } message: {
                     Text("Si è verificato un errore sconosciuto, controlla la tua connessione ad Internet e riprova.")
                 }
-                .alert("Nome utente non valido", isPresented: $emptyUsernamePopUp) {
-                    Button("Chiudi", role: .cancel) { emptyUsernamePopUp = false }
-                } message: {
-                    Text("Il nome utente non può essere vuoto.")
-                }
                 .alert("Modifica Nome Utente", isPresented: $showChangeUsernamePopUp) {
                     TextField("Nome utente", text: $newUsername)
                     Button("Annulla", role: .cancel) { showChangeUsernamePopUp = false }
                     Button("Continua") {
                         Task {
                             do {
-                                if(newUsername.isEmpty) {
-                                    emptyUsernamePopUp = true
-                                }
-                                else {
-                                    try await auth.updateUserName(newUserName: newUsername)
-                                    fullName = newUsername
-                                    newUsername = ""
-                                    showChangeUsernamePopUp = false
-                                }
+                                try await auth.updateUserName(newUserName: newUsername)
+                                fullName = newUsername
+                                newUsername = ""
+                                showChangeUsernamePopUp = false
                             }
                             catch {
                                 unknownErrorPopUp = true
                             }
                         }
                     }
+                    .disabled(newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 } message: {
                     Text("Inserisci un nuovo nome utente per il tuo Account.")
                 }

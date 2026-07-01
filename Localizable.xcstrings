@@ -2150,9 +2150,6 @@
         }
       }
     },
-    "Il nome utente non può essere vuoto." : {
-
-    },
     "Il tuo Account" : {
       "localizations" : {
         "en" : {
@@ -4087,9 +4084,6 @@
           }
         }
       }
-    },
-    "Nome utente non valido" : {
-
     },
     "Nome:" : {
       "localizations" : {
