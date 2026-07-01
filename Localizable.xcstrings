@@ -1629,7 +1629,20 @@
       }
     },
     "Errore sconosciuto" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown Error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error desconocido"
+          }
+        }
+      }
     },
     "erroreSincronizzato" : {
       "extractionState" : "manual",
@@ -2524,7 +2537,20 @@
       }
     },
     "Inserisci un nuovo nome utente per il tuo Account." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a new username for your Account."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce un nuevo nombre de usuario para tu Cuenta."
+          }
+        }
+      }
     },
     "Instagram" : {
       "localizations" : {
@@ -3696,7 +3722,20 @@
       }
     },
     "Modifica Nome Utente" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Username"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modificar Nombre Usuario"
+          }
+        }
+      }
     },
     "Modifica Password" : {
       "localizations" : {
@@ -5730,7 +5769,20 @@
       }
     },
     "Si è verificato un errore sconosciuto, controlla la tua connessione ad Internet e riprova." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An unknown error has occurred. Please check your internet connection and try again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha producido un error desconocido. Comprueba tu conexión a Internet e inténtalo de nuevo."
+          }
+        }
+      }
     },
     "Simone Gallotti" : {
       "localizations" : {
