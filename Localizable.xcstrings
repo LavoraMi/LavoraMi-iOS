@@ -4015,18 +4015,18 @@
         }
       }
     },
-    "Nome completo" : {
+    "Nome utente" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Full name"
+            "value" : "Username"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nombre completo"
+            "value" : "Nombre usuario"
           }
         }
       }
