@@ -25,12 +25,8 @@ struct AdPositionCalculator {
             return true
         }
         
-        if position == getItemCount() - 1 && totalAds > 0 {
-            return true
-        }
-        
-        if position % 8 == 7 && position != 7 {
-            let adIndex = (position + 1) / 8 - 1
+        if position > 4 && (position - 5) % 8 == 0 {
+            let adIndex = (position - 4) / 8
             return adIndex < totalAds
         }
         
@@ -38,10 +34,22 @@ struct AdPositionCalculator {
     }
     
     func getRealEventPosition(for adapterPosition: Int) -> Int {
-        if totalAds == 0 || totalItems >= 6 && adapterPosition > 4 {
-            return adapterPosition - 1
+        if totalAds == 0 {
+            return adapterPosition
         }
-        return adapterPosition
+        
+        var itemsCount = 0
+        var adsCount = 0
+        
+        for i in 0..<adapterPosition {
+            if shouldShowAdAtAdapterPosition(i) {
+                adsCount += 1
+            } else {
+                itemsCount += 1
+            }
+        }
+        
+        return itemsCount
     }
     
     func getItemCount() -> Int {
@@ -50,12 +58,11 @@ struct AdPositionCalculator {
         }
         
         if totalItems >= 6 {
-            return totalItems + 1
+            let adsToShow = min(totalAds, 1 + ((totalItems - 5) / 7))
+            return totalItems + adsToShow
         }
         
-        let totalSlots = (totalItems / 7) + 1
-        let maxAds = min(totalSlots, totalAds)
-        return totalItems + maxAds
+        return totalItems
     }
     
     func getAdIndexForPosition(_ position: Int) -> Int? {

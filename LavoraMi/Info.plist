@@ -23,5 +23,9 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-1768959234616789~9514999727</string>
+	<key>AdUnitID</key>
+	<string>ca-app-pub-1768959234616789/6091166551</string>
 </dict>
 </plist>

@@ -31,7 +31,9 @@ struct NativeAdView: UIViewControllerRepresentable {
     
     private func createAdView(nativeAd: NativeAd) -> UIView {
         let containerView = UIView()
-        containerView.backgroundColor = UIColor(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.11, green: 0.11, blue: 0.12, alpha: 1) : UIColor.white }))
+        containerView.backgroundColor = .clear
+        containerView.layer.cornerRadius = 16
+        containerView.clipsToBounds = true
         
         let cardView = UIView()
         cardView.backgroundColor = UIColor(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.11, green: 0.11, blue: 0.12, alpha: 1) : UIColor.white }))
