@@ -4858,7 +4858,7 @@
         }
       }
     },
-    "Qua puoi gestire il tuo account e le tue informazioni." : {
+    "Qua puoi gestire il tuo Account e le tue informazioni." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4869,7 +4869,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aquí puedes gestionar tu cuenta y tus datos."
+            "value" : "Aquí puedes gestionar tu Cuenta y tus datos."
           }
         }
       }
