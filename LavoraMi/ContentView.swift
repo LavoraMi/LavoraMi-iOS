@@ -2304,7 +2304,6 @@ struct AccountView: View {
     @State private var showChangeUsernamePopUp: Bool = false
     @State private var showAddUsernamePopUp: Bool = false
     @State private var unknownErrorPopUp: Bool = false
-    @State private var emptyUsernamePopUp: Bool = false
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
@@ -2501,7 +2500,7 @@ struct AccountView: View {
                 Text("👋 Ciao \(fullName)")
                     .font(.system(size: 32, weight: .bold))
                     .foregroundStyle(.primary)
-                Text("Qua puoi gestire il tuo account e le tue informazioni.")
+                Text("Qua puoi gestire il tuo Account e le tue informazioni.")
                     .font(.system(size: 12))
                     .foregroundStyle(.gray)
                     .padding(.top, -8)
