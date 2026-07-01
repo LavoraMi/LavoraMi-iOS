@@ -2167,7 +2167,20 @@
       }
     },
     "Il tuo Account non ha un nome utente, inseriscine uno." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your account does not have a username. Please enter one."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu cuenta no tiene nombre de Usuario. Introduce uno."
+          }
+        }
+      }
     },
     "Impossibile caricare i dati dal server." : {
       "localizations" : {
@@ -2540,7 +2553,20 @@
       }
     },
     "Inserisci Nome Utente" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Your Username"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce Nombre Usuario"
+          }
+        }
+      }
     },
     "Inserisci un nuovo nome utente per il tuo Account." : {
       "localizations" : {
