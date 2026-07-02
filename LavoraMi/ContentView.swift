@@ -3171,7 +3171,7 @@ struct ChangeUsernameView: View {
                             .frame(maxWidth: .infinity)
                             .background((newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) ? Color.gray : Color.red)
                             .foregroundColor(.white)
-                            .cornerRadius(10)
+                            .cornerRadius(14)
                     }
                     .padding(.top, 10)
                     .disabled(newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
