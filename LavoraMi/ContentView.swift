@@ -3169,12 +3169,27 @@ struct ChangeUsernameView: View {
                             .fontWeight(.semibold)
                             .frame(height: 50)
                             .frame(maxWidth: .infinity)
-                            .background((newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) ? Color.gray : Color.red)
+                            .background((newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || newUsername == fullName) ? Color.gray : Color.red)
                             .foregroundColor(.white)
                             .cornerRadius(14)
                     }
                     .padding(.top, 10)
-                    .disabled(newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                    .disabled(newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || newUsername.trimmingCharacters(in: .whitespacesAndNewlines) == fullName.trimmingCharacters(in: .whitespacesAndNewlines))
+                    
+                    if(newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) {
+                        Text("Il Nome Utente non può essere vuoto.")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                            .padding(.top, -15)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    else if(newUsername.trimmingCharacters(in: .whitespacesAndNewlines) == fullName.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                        Text("Il nuovo Nome Utente non può essere uguale al tuo Nome Utente attuale.")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                            .padding(.top, -15)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
                 .padding()
             }
