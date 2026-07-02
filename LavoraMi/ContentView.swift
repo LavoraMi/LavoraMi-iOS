@@ -2316,13 +2316,15 @@ struct AccountView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 30) {
-                if isLogginIn && !loggedIn && !resettingPassword {loginSection}
-                if !isLogginIn && !loggedIn && !resettingPassword {signUpSection}
-                if loggedIn && !resettingPassword {loggedInSection}
-                if resettingPassword {resetPasswordSection}
+            ScrollView {
+                VStack(spacing: 30) {
+                    if isLogginIn && !loggedIn && !resettingPassword {loginSection}
+                    if !isLogginIn && !loggedIn && !resettingPassword {signUpSection}
+                    if loggedIn && !resettingPassword {loggedInSection}
+                    if resettingPassword {resetPasswordSection}
+                }
+                .padding(25)
             }
-            .padding(25)
             .blur(radius: isLocked ? 12 : 0)
             .animation(.easeInOut(duration: 0.25), value: isLocked)
             .allowsHitTesting(!isLocked)
@@ -2348,6 +2350,7 @@ struct AccountView: View {
                 AccountDatasInfoView(authManager: auth, saveFavoritesData: saveFavoritesData, saveYourLinesData: saveYourLinesData, currentSyncStatus: $currentSyncStatus, currentSyncStatusIcon: $currentSyncStatusIcon)
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
     
     private var loginSection: some View {
@@ -3192,7 +3195,6 @@ struct ChangeUsernameView: View {
                 }
             }
         }
-        .ignoresSafeArea(.keyboard)
     }
 
     private func dismiss() {
