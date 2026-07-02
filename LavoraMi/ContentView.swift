@@ -3121,20 +3121,34 @@ struct ChangeUsernameView: View {
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                     
-                    HStack(spacing: 15) {
+                    Text("I tuoi dati di LavoraMi sono completamente privati e protetti, potrai richiederli quando vuoi selezionando \"Richiedi i tuoi dati\".")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    HStack(spacing: 12) {
                         Image(systemName: "at")
+                            .font(.system(size: 16, weight: .semibold))
                             .foregroundStyle(.gray)
-                        TextField("Nome utente", text: $newUsername)
+                        
+                        TextField("Nome Utente", text: $newUsername)
                             .textInputAutocapitalization(.words)
                             .keyboardType(.alphabet)
                             .keyboardShortcut(.end)
                             .disabled(auth.isLoading)
+                            .foregroundStyle(.white)
                     }
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
-                    .background(Color(.systemGray6))
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .padding(.horizontal, 16)
+                    .background(
+                        Color(UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1))
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 14))
                     
                     Button {
                         Task {
@@ -3155,13 +3169,13 @@ struct ChangeUsernameView: View {
                             .background((newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) ? Color.gray : Color.red)
                             .foregroundColor(.white)
                             .cornerRadius(10)
-                            .padding(.horizontal)
                     }
                     .padding(.top, 10)
                     .disabled(newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
                 .padding()
             }
+            .scrollDismissesKeyboard(.interactively)
             .navigationTitle("Personalizza")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.visible, for: .navigationBar)
@@ -3178,6 +3192,7 @@ struct ChangeUsernameView: View {
                 }
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 
     private func dismiss() {
