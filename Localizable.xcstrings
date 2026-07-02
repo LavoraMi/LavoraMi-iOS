@@ -1628,23 +1628,6 @@
         }
       }
     },
-    "Errore sconosciuto" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unknown Error"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error desconocido"
-          }
-        }
-      }
-    },
     "erroreSincronizzato" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2152,10 +2135,36 @@
       }
     },
     "Il Nome Utente non può essere vuoto." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Username cannot be left blank."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El nombre de usuario no puede estar vacío."
+          }
+        }
+      }
     },
     "Il nuovo Nome Utente non può essere uguale al tuo Nome Utente attuale." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your new Username cannot be the same as your current Username."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El nuevo nombre de usuario no puede ser igual que tu nombre de usuario actual."
+          }
+        }
+      }
     },
     "Il tuo Account" : {
       "localizations" : {
@@ -4119,7 +4128,20 @@
       }
     },
     "Nome Utente" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Username"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre Usuario"
+          }
+        }
+      }
     },
     "Nome:" : {
       "localizations" : {
@@ -4734,7 +4756,20 @@
       }
     },
     "Personalizza" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customise"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizar"
+          }
+        }
+      }
     },
     "Pianifica il tuo viaggio sapendo dei disagi sul tragitto, ben prima di partire." : {
       "localizations" : {
@@ -5809,23 +5844,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se ha producido un error de conexión al guardar. Comprueba tu conexión a Internet."
-          }
-        }
-      }
-    },
-    "Si è verificato un errore sconosciuto, controlla la tua connessione ad Internet e riprova." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "An unknown error has occurred. Please check your internet connection and try again."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se ha producido un error desconocido. Comprueba tu conexión a Internet e inténtalo de nuevo."
           }
         }
       }
