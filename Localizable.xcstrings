@@ -1629,6 +1629,7 @@
       }
     },
     "Errore sconosciuto" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4723,6 +4724,9 @@
         }
       }
     },
+    "Personalizza" : {
+
+    },
     "Pianifica il tuo viaggio sapendo dei disagi sul tragitto, ben prima di partire." : {
       "localizations" : {
         "en" : {
@@ -5801,6 +5805,7 @@
       }
     },
     "Si è verificato un errore sconosciuto, controlla la tua connessione ad Internet e riprova." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -2303,7 +2303,6 @@ struct AccountView: View {
     @State private var newUsername: String = ""
     @State private var showChangeUsernamePopUp: Bool = false
     @State private var showAddUsernamePopUp: Bool = false
-    @State private var unknownErrorPopUp: Bool = false
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
@@ -2588,66 +2587,9 @@ struct AccountView: View {
                 }
                 .foregroundStyle(.gray)
                 
-                Section("Gestisci") {
-                    VStack(spacing: 8) {
-                        if !auth.isLoggedInWithApple() {
-                            Button(role: .destructive, action: { showEditPasswordPopUp = true }) {
-                                Label("Modifica Password", systemImage: "lock.fill")
-                                    .font(.system(size: 15))
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.white)
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.blue)
-                                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                                    .shadow(radius: 5, y: 3)
-                            }
-                        }
-                        Button(role: .destructive, action: { showDeletePopUp = true }) {
-                            Label("Elimina Account", systemImage: "trash.fill")
-                                .font(.system(size: 15))
-                                .fontWeight(.bold)
-                                .foregroundStyle(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.blue)
-                                .clipShape(RoundedRectangle(cornerRadius: 16))
-                                .shadow(radius: 5, y: 3)
-                        }
-                        
-                        Button(role: .destructive, action: { showDataManagementPopUp = true }) {
-                            Label {
-                                Text("Preferenze Dati")
-                            } icon: {
-                                Image("cloudManage")
-                                    .renderingMode(.template)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundStyle(.white)
-                            }
-                            .font(.system(size: 15))
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .shadow(radius: 5, y: 3)
-                        }
-                        
-                        NavigationLink(destination: RequestDataDownload(isRequiringData: $isRequiringData)) {
-                            Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
-                                .font(.system(size: 15))
-                                .fontWeight(.bold)
-                                .foregroundStyle(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.blue)
-                                .clipShape(RoundedRectangle(cornerRadius: 16))
-                                .shadow(radius: 5, y: 3)
-                        }
-                    }
+                manageSection
+                .sheet(isPresented: $showChangeUsernamePopUp) {
+                    ChangeUsernameView(auth: auth, fullName: $fullName)
                 }
                 .alert("Sei sicuro?", isPresented: $showDeletePopUp) {
                     Button("Annulla", role: .cancel) { }
@@ -2669,31 +2611,6 @@ struct AccountView: View {
                 } message: {
                     Text("Hai scelto di non sincronizzare i dati del tuo Account attraverso la funzione \"Preferenze Dati\". Per sincronizzarli, attiva almeno una delle opzioni disponibili.")
                 }
-                .alert("Errore sconosciuto", isPresented: $unknownErrorPopUp) {
-                    Button("Chiudi", role: .cancel) { unknownErrorPopUp = false }
-                } message: {
-                    Text("Si è verificato un errore sconosciuto, controlla la tua connessione ad Internet e riprova.")
-                }
-                .alert("Modifica Nome Utente", isPresented: $showChangeUsernamePopUp) {
-                    TextField("Nome utente", text: $newUsername)
-                    Button("Annulla", role: .cancel) { showChangeUsernamePopUp = false }
-                    Button("Continua") {
-                        Task {
-                            do {
-                                try await auth.updateUserName(newUserName: newUsername)
-                                fullName = newUsername
-                                newUsername = ""
-                                showChangeUsernamePopUp = false
-                            }
-                            catch {
-                                unknownErrorPopUp = true
-                            }
-                        }
-                    }
-                    .disabled(newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                } message: {
-                    Text("Inserisci un nuovo nome utente per il tuo Account.")
-                }
                 .alert("Inserisci Nome Utente", isPresented: $showAddUsernamePopUp) {
                     TextField("Nome utente", text: $newUsername)
                     Button("Continua") {
@@ -2706,9 +2623,7 @@ struct AccountView: View {
                                     showChangeUsernamePopUp = false
                                 }
                             }
-                            catch {
-                                unknownErrorPopUp = true
-                            }
+                            catch {}
                         }
                     }
                     .disabled(newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
@@ -2731,6 +2646,70 @@ struct AccountView: View {
                 }
             }
             .onAppear(perform: populateUserData)
+        }
+    }
+    
+    private var manageSection: some View {
+        Section("Gestisci") {
+            VStack(spacing: 8) {
+                if !auth.isLoggedInWithApple() {
+                    Button(role: .destructive, action: { showEditPasswordPopUp = true }) {
+                        Label("Modifica Password", systemImage: "lock.fill")
+                            .font(.system(size: 15))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .shadow(radius: 5, y: 3)
+                    }
+                }
+                Button(role: .destructive, action: { showDeletePopUp = true }) {
+                    Label("Elimina Account", systemImage: "trash.fill")
+                        .font(.system(size: 15))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .shadow(radius: 5, y: 3)
+                }
+                
+                Button(role: .destructive, action: { showDataManagementPopUp = true }) {
+                    Label {
+                        Text("Preferenze Dati")
+                    } icon: {
+                        Image("cloudManage")
+                            .renderingMode(.template)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 15, height: 15)
+                            .foregroundStyle(.white)
+                    }
+                    .font(.system(size: 15))
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .shadow(radius: 5, y: 3)
+                }
+                
+                NavigationLink(destination: RequestDataDownload(isRequiringData: $isRequiringData)) {
+                    Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
+                        .font(.system(size: 15))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .shadow(radius: 5, y: 3)
+                }
+            }
         }
     }
     
@@ -3105,6 +3084,108 @@ struct AccountView: View {
         return password.count >= 8 && validateEmail(email)
     }
 }
+
+struct ChangeUsernameView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State var startImageTransition: Bool = false
+    @StateObject var auth: AuthManager
+    
+    @State var newUsername: String = ""
+    @State var isLoading: Bool = true
+    @State var focused: Bool = false
+    @Binding var fullName: String
+    @AppStorage("enableAnimations") var enableAnimations = true
+    @AppStorage("linesFavorites") private var linesFavorites: [String] = []
+    @AppStorage("linesSelected") private var linesSelected: [String] = []
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 30) {
+                    Image(systemName: "at")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80, height: 80)
+                        .foregroundStyle(.red)
+                        .padding(.top, 40)
+
+                    Text("Modifica Nome Utente")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                        .multilineTextAlignment(.center)
+
+                    Text("Inserisci un nuovo nome utente per il tuo Account.")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    HStack(spacing: 15) {
+                        Image(systemName: "at")
+                            .foregroundStyle(.gray)
+                        TextField("Nome utente", text: $newUsername)
+                            .textInputAutocapitalization(.words)
+                            .keyboardType(.alphabet)
+                            .keyboardShortcut(.end)
+                            .disabled(auth.isLoading)
+                    }
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+                    .background(Color(.systemGray6))
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    
+                    Button {
+                        Task {
+                            do {
+                                try await auth.updateUserName(newUserName: newUsername)
+                                fullName = newUsername
+                                presentationMode.wrappedValue.dismiss()
+                                newUsername = ""
+                            }
+                            catch {}
+                        }
+                    } label: {
+                        Text("Continua")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .frame(height: 50)
+                            .frame(maxWidth: .infinity)
+                            .background((newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) ? Color.gray : Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                    }
+                    .padding(.top, 10)
+                    .disabled(newUsername.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                }
+                .padding()
+            }
+            .navigationTitle("Personalizza")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.secondary)
+                            .padding(4)
+                            .clipShape(Circle())
+                    }
+                }
+            }
+        }
+    }
+
+    private func dismiss() {
+        fullName = fullName
+        presentationMode.wrappedValue.dismiss()
+    }
+}
+
 
 struct AccountDatasInfoView: View {
     @Environment(\.presentationMode) var presentationMode
