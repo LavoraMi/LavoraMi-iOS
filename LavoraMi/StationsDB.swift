@@ -976,6 +976,8 @@ struct StationsDB {
         .init(name: "Milano Greco Pirelli", coordinate: .init(latitude: 45.51288, longitude: 9.21416), branch: "Main"),
         .init(name: "Milano Lambrate", coordinate: .init(latitude: 45.48475, longitude: 9.23678), branch: "Main"),
         .init(name: "Milano Forlanini", coordinate: .init(latitude: 45.46438, longitude: 9.23691), branch: "Main"),
+        .init(name: "Milano Rogoredo", coordinate: .init(latitude: 45.43386, longitude: 9.23911), branch: "Main"),
+        /* MODIFICHE CIRCOLAZIONE: Il ponte sul naviglio grande è in manutenzione.
         .init(name: "Milano Scalo Romana", coordinate: .init(latitude: 45.44585, longitude: 9.21303), branch: "Main"),
         .init(name: "Milano Tibaldi - Bocconi", coordinate: .init(latitude: 45.44394, longitude: 9.18506), branch: "Main"),
         .init(name: "Milano Romolo", coordinate: .init(latitude: 45.44335, longitude: 9.1675), branch: "Main"),
@@ -984,7 +986,7 @@ struct StationsDB {
         .init(name: "Cesano Boscone", coordinate: .init(latitude: 45.43044, longitude: 9.09158), branch: "Main"),
         .init(name: "Trezzano sul Naviglio", coordinate: .init(latitude: 45.42025, longitude: 9.0669), branch: "Main"),
         .init(name: "Gaggiano", coordinate: .init(latitude: 45.40874, longitude: 9.03118), branch: "Main"),
-        .init(name: "Albairate - Vermezzo", coordinate: .init(latitude: 45.40435, longitude: 8.95822), branch: "Main")
+        .init(name: "Albairate - Vermezzo", coordinate: .init(latitude: 45.40435, longitude: 8.95822), branch: "Main")*/
     ]
     
     static let stationsS11: [MetroStation] = [
@@ -1380,6 +1382,7 @@ struct StationsDB {
     ]
     
     static let stationsS19: [MetroStation] = [
+        /* MODIFICHE CIRCOLAZIONE: Il ponte sul naviglio grande è in manutenzione.
         .init(name: "Milano Rogoredo", coordinate: .init(latitude: 45.4336, longitude: 9.2383), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44368, longitude: 9.23497), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44466, longitude: 9.23462), branch: "Main"),
@@ -1437,7 +1440,7 @@ struct StationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4478, longitude: 9.15177), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44513, longitude: 9.14033), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44493, longitude: 9.13938), branch: "Main"),
-        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44466, longitude: 9.13841), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44466, longitude: 9.13841), branch: "Main"),*/
         .init(name: "Milano S. Cristoforo", coordinate: .init(latitude: 45.44235, longitude: 9.13016), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44038, longitude: 9.1231), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.43969, longitude: 9.12073), branch: "Main"),
