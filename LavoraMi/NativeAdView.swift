@@ -14,7 +14,6 @@ struct NativeAdView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         let controller = UIViewController()
         let adView = createAdView(nativeAd: nativeAd)
-        
         controller.view.addSubview(adView)
         adView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -23,7 +22,6 @@ struct NativeAdView: UIViewControllerRepresentable {
             adView.leadingAnchor.constraint(equalTo: controller.view.leadingAnchor),
             adView.trailingAnchor.constraint(equalTo: controller.view.trailingAnchor)
         ])
-        
         return controller
     }
     
@@ -99,7 +97,6 @@ struct NativeAdView: UIViewControllerRepresentable {
         
         headerStack.addArrangedSubview(titleStack)
         headerStack.addArrangedSubview(adBadge)
-        
         contentStack.addArrangedSubview(headerStack)
         
         let bodyLabel = UILabel()
@@ -107,27 +104,34 @@ struct NativeAdView: UIViewControllerRepresentable {
         bodyLabel.font = UIFont.systemFont(ofSize: 14)
         bodyLabel.textColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor.lightGray : UIColor.darkGray }
         bodyLabel.numberOfLines = 2
+        bodyLabel.lineBreakMode = .byTruncatingTail
+        bodyLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        bodyLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
         contentStack.addArrangedSubview(bodyLabel)
         
         let ctaButton = UIButton(type: .system)
         ctaButton.setTitle(nativeAd.callToAction ?? String(localized: .installa), for: .normal)
-        ctaButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        ctaButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         ctaButton.backgroundColor = UIColor.red
         ctaButton.setTitleColor(.white, for: .normal)
         ctaButton.layer.cornerRadius = 6
-        ctaButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
+        ctaButton.clipsToBounds = true
+        ctaButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         ctaButton.isUserInteractionEnabled = false
         
-        let ctaContainer = UIView()
-        ctaContainer.addSubview(ctaButton)
+        let buttonContainer = UIView()
+        buttonContainer.addSubview(ctaButton)
         ctaButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            ctaButton.trailingAnchor.constraint(equalTo: ctaContainer.trailingAnchor),
-            ctaButton.topAnchor.constraint(equalTo: ctaContainer.topAnchor),
-            ctaButton.bottomAnchor.constraint(equalTo: ctaContainer.bottomAnchor)
+            ctaButton.trailingAnchor.constraint(equalTo: buttonContainer.trailingAnchor),
+            ctaButton.topAnchor.constraint(equalTo: buttonContainer.topAnchor),
+            ctaButton.bottomAnchor.constraint(equalTo: buttonContainer.bottomAnchor),
+            ctaButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 80),
+            ctaButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 36)
         ])
+        buttonContainer.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
-        contentStack.addArrangedSubview(ctaContainer)
+        contentStack.addArrangedSubview(buttonContainer)
         
         adView.heightAnchor.constraint(greaterThanOrEqualToConstant: 140).isActive = true
         
