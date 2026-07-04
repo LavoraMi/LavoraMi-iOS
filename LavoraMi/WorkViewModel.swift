@@ -24,6 +24,7 @@ class WorkViewModel: ObservableObject {
     @Published var maintenanceModeDebugEnabled: Bool = false
     @Published var maintenanceDeps: String = ""
     @Published var maintenanceDepsEn: String = ""
+    @Published var maintenanceDepsEs: String = ""
     @Published var minimumVersion: String = ""
     @Published var linesDeviated: [String] = [""]
     @Published var linesDeviatedLink: [String] = [""]
@@ -181,6 +182,7 @@ class WorkViewModel: ObservableObject {
                     self?.maintenanceDeps = result.maintenanceDeps
                     self?.minimumVersion = result.minVersioniOS
                     self?.maintenanceDepsEn = result.maintenanceDepsEn
+                    self?.maintenanceDepsEs = result.maintenanceDepsEs
                     completion?()
                 }
             } catch {
@@ -213,5 +215,6 @@ struct RequirementsData: Codable {
     let maintenanceModeDebug: String
     let maintenanceDeps: String
     let maintenanceDepsEn: String
+    let maintenanceDepsEs: String
     let minVersioniOS: String
 }

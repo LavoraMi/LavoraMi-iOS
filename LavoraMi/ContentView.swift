@@ -305,6 +305,7 @@ struct ObsoleteVersionView: View {
 struct MaintenanceView: View {
     var maintenanceDeps: String = ""
     var maintenanceDepsEn: String = ""
+    var maintenanceDepsEs: String = ""
     var onResolved: () -> Void = {}
     
     @State private var showSetupScreen: Bool = true
@@ -333,7 +334,7 @@ struct MaintenanceView: View {
                 .padding(.horizontal, 20)
                 .padding(.top, 5)
             
-            if !maintenanceDeps.isEmpty && Bundle.main.preferredLocalizations.first?.hasPrefix("en") == false {
+            if !maintenanceDeps.isEmpty && Bundle.main.preferredLocalizations.first?.hasPrefix("it") == true {
                 Text(maintenanceDeps)
                     .font(.system(size: 10))
                     .foregroundColor(.gray)
@@ -343,6 +344,14 @@ struct MaintenanceView: View {
             }
             else if !maintenanceDepsEn.isEmpty && Bundle.main.preferredLocalizations.first?.hasPrefix("en") == true {
                 Text(maintenanceDepsEn)
+                    .font(.system(size: 10))
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+            }
+            else if !maintenanceDepsEs.isEmpty && Bundle.main.preferredLocalizations.first?.hasPrefix("es") == true {
+                Text(maintenanceDepsEs)
                     .font(.system(size: 10))
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
