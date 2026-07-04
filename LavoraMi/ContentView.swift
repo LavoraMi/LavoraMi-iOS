@@ -4990,7 +4990,6 @@ struct LinesView: View {
             LineInfo(name: "z644", branches: "Arconate - Parabiago", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z646", branches: "Magenta - Castano Primo", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z647", branches: "Cornaredo - Castano Primo", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z648", branches: "Arconate - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z649", branches: "Magenta - Arluno - Molino Dorino M1", type: "Movibus", waitMinutes: "", stations: [], accessibilityStatus: "")
         ]
     }
@@ -6382,7 +6381,7 @@ struct LineSmallDetailedView: View {
         .init(key: "Cadorna FN", displayName: "Milano Cadorna FN", lines: ["M1", "NM1", "M2", "NM2", "S3", "S4", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "lightrail"),
         .init(key: "Parabiago", displayName: "Parabiago", lines: ["z611", "z644", "z643"], typeOfInterchange: "bus.fill"),
         .init(key: "Rho", displayName: "Rho FS", lines: ["S5", "S6", "S11", "z616", "z618"], typeOfInterchange: "train.side.front.car"),
-        .init(key: "Busto Garolfo", displayName: "Busto Garolfo", lines: ["z625", "z627", "z644", "z647", "z648", "z649"], typeOfInterchange: "bus.fill"),
+        .init(key: "Busto Garolfo", displayName: "Busto Garolfo", lines: ["z625", "z627", "z644", "z647", "z649"], typeOfInterchange: "bus.fill"),
         .init(key: "Legnano", displayName: "Legnano", lines: ["z601", "z602", "z611", "z612", "z642", "z627"], typeOfInterchange: "bus.fill"),
         .init(key: "Bisceglie", displayName: "Bisceglie MM", lines: ["M1", "NM1", "47", "58", "63", "76", "78", "321", "322", "323", "327", "433", "z551", "z560"], typeOfInterchange: "tram.fill.tunnel"),
         .init(key: "Romolo", displayName: "Romolo FS", lines: ["M2", "NM2", "S9", "S19", "R31", "47", "Filobus 90", "Filobus 91", "71", "324", "325", "z553"], typeOfInterchange: "train.side.front.car"),
