@@ -25,9 +25,16 @@ class AdMobManager: NSObject, ObservableObject {
         initializeMobileAds()
     }
     
-    private func initializeMobileAds() {MobileAds.shared.start()}
+    private func initializeMobileAds() {
+        MobileAds.shared.start()
+    }
     
     func loadNativeAds(adUnitID: String) {
+        guard ConsentManager.shared.canRequestAds else {
+            isLoading = false
+            return
+        }
+        
         isLoading = true
         loadedCount = 0
         adUnitIDInUse = adUnitID

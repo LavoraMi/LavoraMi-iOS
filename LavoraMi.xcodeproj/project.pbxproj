@@ -138,6 +138,7 @@
 				AdMobManager.swift,
 				AdPositionCalculator.swift,
 				BiometricAuth.swift,
+				ConsentManager.swift,
 				ContentView.swift,
 				"GoogleService-Info.plist",
 				GTFSHelper.swift,

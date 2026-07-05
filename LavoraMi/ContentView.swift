@@ -501,11 +501,13 @@ struct MainView: View {
     @AppStorage("linesFavorites") var linesFavorites: [String] = []
     @AppStorage("linesSelected") private var linesSelected: [String] = []
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
+    @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     
     @State private var closedStrike: Bool = false
     @State private var selectedFilter: FilterBy = .all
     @State private var searchInput: String = ""
     @State private var alreadyRefreshed: Bool = false
+    @State private var adsRequested: Bool = false
     @State private var showInfoFavoriteLines: Bool = false
     @State private var showMaintenanceMode: Bool = false
     @State private var strikeExpanded: Bool = true
@@ -518,6 +520,7 @@ struct MainView: View {
     @ObservedObject var viewModel: WorkViewModel
     @StateObject var authManager = AuthManager()
     @StateObject var adMobManager = AdMobManager()
+    @ObservedObject var consentManager = ConsentManager.shared
     @FocusState private var isSearchFocused: Bool
     @State private var currentHintIndex: Int = 0
     
@@ -1029,7 +1032,25 @@ struct MainView: View {
                     marqueeId = UUID()
                 }
                 
-                if let adUnitID = Bundle.main.infoDictionary?["AdUnitID"] as? String {
+                if !hasNotCompletedSetup {
+                    consentManager.requestConsentInfoUpdate()
+                }
+                
+                if consentManager.isReady && !adsRequested {
+                    if let adUnitID = Bundle.main.infoDictionary?["AdUnitID"] as? String {
+                        adsRequested = true
+                        adMobManager.loadNativeAds(adUnitID: adUnitID)
+                    }
+                }
+            }
+            .onChange(of: hasNotCompletedSetup) { _, completed in
+                if !completed {
+                    consentManager.requestConsentInfoUpdate()
+                }
+            }
+            .onChange(of: consentManager.isReady) { _, ready in
+                if ready && !adsRequested, let adUnitID = Bundle.main.infoDictionary?["AdUnitID"] as? String {
+                    adsRequested = true
                     adMobManager.loadNativeAds(adUnitID: adUnitID)
                 }
             }
