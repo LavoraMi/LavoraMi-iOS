@@ -5752,9 +5752,11 @@ struct LineDetailView: View {
         stations.filter { $0.branch == "Main" }
     }
     
-    private var branchData: [(coords: [CLLocationCoordinate2D], isPlanned: Bool)] {
+    @State private var branchData: [(coords: [CLLocationCoordinate2D], isPlanned: Bool)] = []
+
+    private func computeBranchData() -> [(coords: [CLLocationCoordinate2D], isPlanned: Bool)] {
         let branchGroups = Dictionary(grouping: stations.filter { $0.branch != "Main" }, by: \.branch)
-        return branchGroups.compactMap { branchName, branchStations in
+        return branchGroups.compactMap { branchName, branchStations -> (coords: [CLLocationCoordinate2D], isPlanned: Bool)? in
             guard !branchStations.isEmpty else { return nil }
 
             let isPlanned = branchName.lowercased().contains("new") || branchName.lowercased().contains("nuova")
@@ -5776,7 +5778,9 @@ struct LineDetailView: View {
             guard let junction = searchPool.min(by: { a, b in
                 CLLocation(latitude: a.coordinate.latitude, longitude: a.coordinate.longitude).distance(from: junctionLoc)
                 < CLLocation(latitude: b.coordinate.latitude, longitude: b.coordinate.longitude).distance(from: junctionLoc)
-            }) else { return nil }
+            }) else {
+                return nil
+            }
 
             return ([junction.coordinate] + oriented.map(\.coordinate), isPlanned)
         }
@@ -6210,6 +6214,9 @@ extension LineDetailView {
         .padding(.bottom, 10)
         .onAppear {
             locationManager.requestPermission()
+            if branchData.isEmpty {
+                branchData = computeBranchData()
+            }
         }
     }
     
