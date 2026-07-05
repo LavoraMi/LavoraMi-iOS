@@ -4483,7 +4483,7 @@ struct StationsDB {
         // M2 - Gessate
         .init(name: "Gessate", lines: ["M2", "z404", "z405"], typeOfInterchange: "tram.fill.tunnel", branch: "Gessate", lineOrder: 0),
         .init(name: "Cascina Antonietta", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel", branch: "Gessate", lineOrder: 1),
-        .init(name: "Gorgonzola", lines: ["M2", "z403", "Z407", "z411", "z419"], typeOfInterchange: "tram.fill.tunnel", branch: "Gessate", lineOrder: 2),
+        .init(name: "Gorgonzola", lines: ["M2", "z403", "z407", "z411", "z419"], typeOfInterchange: "tram.fill.tunnel", branch: "Gessate", lineOrder: 2),
         .init(name: "Villa Pompea", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel", branch: "Gessate", lineOrder: 3),
         .init(name: "Bussero", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel", branch: "Gessate", lineOrder: 4),
         .init(name: "Cassina de Pecchi", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel", branch: "Gessate", lineOrder: 5),
