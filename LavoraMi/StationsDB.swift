@@ -964,7 +964,6 @@ struct StationsDB {
         .init(name: "Milano Greco Pirelli", coordinate: .init(latitude: 45.51288, longitude: 9.21416), branch: "Main"),
         .init(name: "Milano Lambrate", coordinate: .init(latitude: 45.48475, longitude: 9.23678), branch: "Main"),
         .init(name: "Milano Forlanini", coordinate: .init(latitude: 45.46438, longitude: 9.23691), branch: "Main"),
-        .init(name: "Milano Rogoredo", coordinate: .init(latitude: 45.43386, longitude: 9.23911), branch: "Main"),
         .init(name: "Milano Scalo Romana", coordinate: .init(latitude: 45.44585, longitude: 9.21303), branch: "Main"),
         .init(name: "Milano Tibaldi - Bocconi", coordinate: .init(latitude: 45.44394, longitude: 9.18506), branch: "Main"),
         .init(name: "Milano Romolo", coordinate: .init(latitude: 45.44335, longitude: 9.1675), branch: "Main"),
