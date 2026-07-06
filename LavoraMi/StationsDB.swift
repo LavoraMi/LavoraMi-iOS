@@ -920,6 +920,18 @@ struct StationsDB {
     ]
     
     static let stationsS7: [MetroStation] = [
+        .init(name: "Lecco", coordinate: .init(latitude: 45.85637, longitude: 9.3934), branch: "Main"),
+        .init(name: "Valmadrera", coordinate: .init(latitude: 45.84641, longitude: 9.36801), branch: "Main"),
+        .init(name: "Civate", coordinate: .init(latitude: 45.83133, longitude: 9.35275), branch: "Main"),
+        .init(name: "Sala Al Barro - Galbiate", coordinate: .init(latitude: 45.82118, longitude: 9.35937), branch: "Main"),
+        .init(name: "Oggiono", coordinate: .init(latitude: 45.78891, longitude: 9.33758), branch: "Main"),
+        .init(name: "Molteno", coordinate: .init(latitude: 45.78085, longitude: 9.30171), branch: "Main"),
+        .init(name: "Costa Masnaga", coordinate: .init(latitude: 45.76347, longitude: 9.2849), branch: "Main"),
+        .init(name: "Cassano Nibionno Bulciago", coordinate: .init(latitude: 45.74621, longitude: 9.27996), branch: "Main"),
+        .init(name: "Renate - Veduggio", coordinate: .init(latitude: 45.7284, longitude: 9.27997), branch: "Main"),
+        .init(name: "Besana", coordinate: .init(latitude: 45.70274, longitude: 9.28303), branch: "Main"),
+        .init(name: "Villa Raverio", coordinate: .init(latitude: 45.69038, longitude: 9.26172), branch: "Main"),
+        .init(name: "Carate Calo'", coordinate: .init(latitude: 45.67642, longitude: 9.25213), branch: "Main"),
         .init(name: "Triuggio - Ponte Albiate", coordinate: .init(latitude: 45.65892, longitude: 9.26682), branch: "Main"),
         .init(name: "Macherio - Canonica", coordinate: .init(latitude: 45.64556, longitude: 9.2869), branch: "Main"),
         .init(name: "Biassono - Lesmo Parco", coordinate: .init(latitude: 45.63221, longitude: 9.29829), branch: "Main"),
