@@ -706,12 +706,11 @@ struct StationsDB {
     }
     
     static let stationsS5: [MetroStation] = [
-        /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Gallarate e Treviglio
         .init(name: "Varese", coordinate: .init(latitude: 45.81625, longitude: 8.83295), branch: "Main"),
         .init(name: "Gazzada Schianno Morazzone", coordinate: .init(latitude: 45.77868, longitude: 8.82473), branch: "Main"),
         .init(name: "Castronno", coordinate: .init(latitude: 45.74525, longitude: 8.81051), branch: "Main"),
         .init(name: "Albizzate - Solbiate Arno", coordinate: .init(latitude: 45.7233, longitude: 8.80628), branch: "Main"),
-        .init(name: "Cavaria", coordinate: .init(latitude: 45.69814, longitude: 8.80371), branch: "Main"),*/
+        .init(name: "Cavaria", coordinate: .init(latitude: 45.69814, longitude: 8.80371), branch: "Main"),
         .init(name: "Gallarate", coordinate: .init(latitude: 45.65974, longitude: 8.79853), branch: "Main"),
         .init(name: "Busto Arsizio", coordinate: .init(latitude: 45.61593, longitude: 8.86589), branch: "Main"),
         .init(name: "Legnano", coordinate: .init(latitude: 45.5937, longitude: 8.91087), branch: "Main"),
