@@ -2220,6 +2220,7 @@ struct StationsDB {
     
     //MARK: MALPENSA EXPRESS LINES STATIONS
     static let mxp1: [MetroStation] = [
+        /* MODIFICHE CIRCOLAZIONE: Fino al 24 luglio, circola tra Malpensa T2 e Milano Centrale.
         .init(name: "Gallarate", coordinate: .init(latitude: 45.65974, longitude: 8.79853), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.66166, longitude: 8.79602), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.66354, longitude: 8.7938), branch: "Main"),
@@ -2268,7 +2269,7 @@ struct StationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.65301, longitude: 8.72957), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.65225, longitude: 8.72808), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.65145, longitude: 8.72692), branch: "Main"),
-        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.65104, longitude: 8.72515), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.65104, longitude: 8.72515), branch: "Main"),*/
         .init(name: "Malpensa Aereoporto Terminal 2", coordinate: .init(latitude: 45.65013, longitude: 8.72133), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.64847, longitude: 8.7129), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.64736, longitude: 8.71028), branch: "Main"),
