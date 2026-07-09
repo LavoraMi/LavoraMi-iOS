@@ -5698,14 +5698,17 @@ func getSuburbanDeviationLink(line: String, viewModel: WorkViewModel) -> URL {
 
 func getInterchanges(line: String) -> [InterchageInfo] {
     if line.starts(with: "M") && !line.starts(with: "MXP") {
-        return StationsDB.getMetroInterchanges(line: line)
+        return InterchangesDB.getMetroInterchanges(line: line)
+    }
+    else if line.starts(with: "S") && (line != "S10" || line != "S30" || line != "S40" || line != "S50") {
+        return InterchangesDB.getSuburbanInterchanges(line: line)
     }
     else if Int(line) != nil {
-        if(line.wholeMatch(of: /9[0-3]/) != nil) { return StationsDB.interchangesFilobus.filter { $0.lines.contains(line) } }
-        return StationsDB.interchangesTrams.filter { $0.lines.contains(line) }
+        if(line.wholeMatch(of: /9[0-3]/) != nil) { return InterchangesDB.interchangesFilobus.filter { $0.lines.contains(line) } }
+        return InterchangesDB.interchangesTrams.filter { $0.lines.contains(line) }
     }
     else {
-        return StationsDB.interchanges.filter { $0.lines.contains(line) }
+        return InterchangesDB.interchanges.filter { $0.lines.contains(line) }
     }
 }
 
@@ -6270,13 +6273,14 @@ extension LineDetailView {
     @ViewBuilder
     private var interchangesTabContent: some View {
         let isMetro = lineName.starts(with: "M") && !lineName.starts(with: "MXP")
+        let isSuburban = lineName.starts(with: "S") && (lineName != "S10" || lineName != "S30" || lineName != "S40" || lineName != "S50")
         let allInterchanges = getInterchanges(line: lineName)
         let mainItems = allInterchanges.filter { $0.branch == "Main" }
         let branchMap = Dictionary(grouping: allInterchanges.filter { $0.branch != "Main" }, by: \.branch)
         let availableBranches = branchMap.keys.sorted()
 
         VStack(spacing: 0) {
-            if isMetro && availableBranches.count > 1 {
+            if (isMetro || isSuburban) && availableBranches.count > 1 {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
                         ForEach(availableBranches, id: \.self) { branch in
@@ -6297,7 +6301,7 @@ extension LineDetailView {
 
             ScrollView {
                 let toShow: [InterchageInfo] = {
-                    if isMetro {
+                    if isMetro || isSuburban {
                         let validMain = mainItems.filter { $0.lines.first == lineName }
                         let sortedMain = validMain.sorted { $1.lineOrder > $0.lineOrder }
                         
@@ -6328,7 +6332,7 @@ extension LineDetailView {
                 }()
 
                 if !toShow.isEmpty {
-                    if isMetro {
+                    if isMetro || isSuburban {
                         VStack(spacing: 0) {
                             ForEach(Array(toShow.enumerated()), id: \.element.id) { idx, interchange in
                                 MetroInterchangeRow(

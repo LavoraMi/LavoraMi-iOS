@@ -142,6 +142,7 @@
 				ContentView.swift,
 				"GoogleService-Info.plist",
 				GTFSHelper.swift,
+				InterchangesDB.swift,
 				LocationManager.swift,
 				NativeAdView.swift,
 				NetworkMonitor.swift,
