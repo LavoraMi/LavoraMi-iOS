@@ -4279,7 +4279,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "AppCheck",
-            version: "11.3.0",
+            version: "11.3.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2020 Google LLC",
             licenseText: """
@@ -4292,7 +4292,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Firebase",
-            version: "12.15.0",
+            version: "12.16.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -4318,7 +4318,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAppMeasurement",
-            version: "12.15.0",
+            version: "12.16.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -4465,7 +4465,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Supabase",
-            version: "2.50.0",
+            version: "2.51.0",
             license: "MIT License",
             copyright: "Copyright (c) 2021 Supabase",
             licenseText: """
@@ -4572,7 +4572,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView (
             name: "xctest-dynamic-overlay",
-            version: "1.10.1",
+            version: "1.11.0",
             license: "MIT License",
             copyright: "Copyright (c) 2021 Point-Free, Inc.",
             licenseText: """
