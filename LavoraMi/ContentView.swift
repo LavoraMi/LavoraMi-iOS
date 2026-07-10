@@ -4034,7 +4034,7 @@ struct LibraryDetailView: View {
 }
 
 struct HowAppWorksView: View {
-    let interchangeInfo: InterchageInfo = .init(name: "Romolo", lines: ["M2", "R31", "S9", "S19"], typeOfInterchange: "lightrail.fill")
+    let interchangeInfo: InterchangeInfo = .init(name: "Romolo", lines: ["M2", "R31", "S9", "S19"], typeOfInterchange: "lightrail.fill")
     let workItem: WorkItem = .init(title: "Rallentamenti", titleIcon: "clock.badge.fill", typeOfTransport: "train.side.front.car", roads: "Palazzolo, Camnago Lentate, Seveso", lines: ["R16", "S2", "S4"], startDate: ISO8601DateFormatter().date(from: "2026-02-23T00:00:00+01:00") ?? Date(), endDate: Calendar.current.date(byAdding: .day, value: 20, to: Date()) ?? Date(), details: "Lavori di potenziamento infrastrutturale nella tratta Palazzolo, Camnago Lentate, Seveso con modifiche alla circolazione dei treni", company: "Trenord")
     let stations: [MetroStation] = StationsDB.stationsM1;
     
@@ -5696,7 +5696,7 @@ func getSuburbanDeviationLink(line: String, viewModel: WorkViewModel) -> URL {
     return URL(string: "www.lavorami.it/404")!
 }
 
-func getInterchanges(line: String) -> [InterchageInfo] {
+func getInterchanges(line: String) -> [InterchangeInfo] {
     if line.starts(with: "M") && !line.starts(with: "MXP") {
         return InterchangesDB.getMetroInterchanges(line: line)
     }
@@ -6304,7 +6304,7 @@ extension LineDetailView {
             }
 
             ScrollView {
-                let toShow: [InterchageInfo] = {
+                let toShow: [InterchangeInfo] = {
                     if isMetro || isSuburban || isMalpensaExpress {
                         let validMain = mainItems.filter { $0.lines.first == lineName }
                         let sortedMain = validMain.sorted { $1.lineOrder > $0.lineOrder }
@@ -7371,7 +7371,7 @@ struct LineDeviationInfoView: View {
 }
 
 struct MetroInterchangeRow: View {
-    let interchange: InterchageInfo
+    let interchange: InterchangeInfo
     let currentLine: String
     let isFirst: Bool
     let isLast: Bool
@@ -7455,7 +7455,7 @@ struct MetroInterchangeRow: View {
 }
 
 struct InterchangeView: View {
-    let item: InterchageInfo
+    let item: InterchangeInfo
     let currentLine: String
     @State private var isExpanded = false
 
@@ -7621,7 +7621,7 @@ struct LineShortInfo: Identifiable{
     let name: String
 }
 
-struct InterchageInfo: Identifiable {
+struct InterchangeInfo: Identifiable {
     let id = UUID()
     let name: String
     let lines: [String]

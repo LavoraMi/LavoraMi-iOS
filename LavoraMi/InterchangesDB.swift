@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 struct InterchangesDB {
-    static let interchanges: [InterchageInfo] = [
+    static let interchanges: [InterchangeInfo] = [
         .init(name: "Rho Fiera-Milano", lines: ["M1", "AV", "R21", "R23", "RE4", "RE5", "S5", "S6", "S11"], typeOfInterchange: "lightrail.fill"),
         .init(name: "Lotto", lines: ["M1", "M5"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "Cadorna FN", lines: ["M1", "M2", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "MXP1"], typeOfInterchange: "lightrail.fill"),
@@ -45,7 +45,7 @@ struct InterchangesDB {
         .init(name: "Monza", lines: ["S7", "S8", "S9", "S11", "RE80"], typeOfInterchange: "lightrail.fill")
     ]
     
-    static let interchangesTrams: [InterchageInfo] = [
+    static let interchangesTrams: [InterchangeInfo] = [
         .init(name: "Certosa FS", lines: ["1", "12", "RE13", "S5", "S6", "S11"], typeOfInterchange: "lightrail.fill"),
         .init(name: "Piazza Firenze", lines: ["1", "14", "19"], typeOfInterchange: "tram.fill"),
         .init(name: "Domodossola FN", lines: ["M5", "1", "19", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "S3", "S4"], typeOfInterchange: "lightrail.fill"),
@@ -102,7 +102,7 @@ struct InterchangesDB {
         .init(name: "Tricolore M4", lines: ["M4", "9", "19"], typeOfInterchange: "tram.fill.tunnel")
     ]
     
-    static let interchangesFilobus: [InterchageInfo] = [
+    static let interchangesFilobus: [InterchangeInfo] = [
         .init(name: "Lodi M3", lines: ["M3", "NM3", "90", "91", "92"], typeOfInterchange: "tram.fill.tunnel"),
         .init(name: "V.Le Isonzo Via Ripamonti", lines: ["24", "90", "91", "N24"], typeOfInterchange: "tram.fill"),
         .init(name: "Tibaldi", lines: ["S9", "S19", "R31", "15", "59", "90", "91"], typeOfInterchange: "lightrail"),
@@ -140,7 +140,7 @@ struct InterchangesDB {
         .init(name: "Lambrate FS M2", lines: ["M2", "NM2", "R4", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "S9", "19", "39", "45", "54", "81", "93", "175", "924"], typeOfInterchange: "lightrail")
     ]
 
-    static let interchangesMetro: [InterchageInfo] = [
+    static let interchangesMetro: [InterchangeInfo] = [
         // M1 - Main
         .init(name: "Sesto 1° Maggio FS", lines: ["M1", "NM1", "S7", "S8", "S9", "S11", "R13", "R14", "RE8", "700", "702", "712", "727", "729"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 19),
         .init(name: "Sesto Rondò", lines: ["M1", "NM1", "700", "701", "708", "713"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 18),
@@ -294,7 +294,7 @@ struct InterchangesDB {
         .init(name: "San Siro Stadio", lines: ["M5", "Stadio", "16", "49"], typeOfInterchange: "stadium.fill", branch: "Main", lineOrder: 16),
     ]
     
-    static let suburbanInterchanges: [InterchageInfo] = [
+    static let suburbanInterchanges: [InterchangeInfo] = [
         // SUBURBAN LINES
         
         // Suburbano S1
@@ -573,7 +573,7 @@ struct InterchangesDB {
         .init(name: "Iseo", lines: ["S31", "R3", "R9", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
     ]
     
-    static let malpensaExpressInterchanges: [InterchageInfo] = [
+    static let malpensaExpressInterchanges: [InterchangeInfo] = [
         // MALPENSA EXPRESS LINES
         
         // Malpensa Express 1
@@ -599,15 +599,15 @@ struct InterchangesDB {
         .init(name: "Milano Cadorna", lines: ["MXP2", "S3", "S4", "R16", "RE17", "R22", "R27", "RE1", "RE7", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 6),
     ]
 
-    static func getMetroInterchanges(line: String) -> [InterchageInfo] {
+    static func getMetroInterchanges(line: String) -> [InterchangeInfo] {
         return interchangesMetro.filter { $0.lines.contains(line) }
     }
     
-    static func getSuburbanInterchanges(line: String) -> [InterchageInfo] {
+    static func getSuburbanInterchanges(line: String) -> [InterchangeInfo] {
         return suburbanInterchanges.filter { $0.lines.contains(line) }
     }
     
-    static func getMalpensaExpressInterchanges(line: String) -> [InterchageInfo] {
+    static func getMalpensaExpressInterchanges(line: String) -> [InterchangeInfo] {
         return malpensaExpressInterchanges.filter { $0.lines.contains(line) }
     }
 }
