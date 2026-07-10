@@ -7457,12 +7457,14 @@ struct MetroInterchangeRow: View {
                             .font(.custom("TitilliumWeb-Bold", size: 21))
                             .foregroundStyle(Color("TextColor"))
                             .padding(.top, 12)
+                            .lineLimit(1)
                     }
                     else {
                         Label(interchange.name.uppercased(), systemImage: interchange.typeOfInterchange)
                             .font(.custom("TitilliumWeb-Bold", size: 21))
                             .foregroundStyle(Color("TextColor"))
                             .padding(.top, 12)
+                            .lineLimit(1)
                     }
                 }
                 
