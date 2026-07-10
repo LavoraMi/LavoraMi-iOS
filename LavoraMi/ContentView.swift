@@ -4950,9 +4950,11 @@ struct LinesView: View {
     var crossBorderLines: [LineInfo] {
         [
             LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "TILO", waitMinutes: "1 \(String(localized: .ora)) - 45 min.", stations: StationsDB.tiloS10, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S20", branches: "Castione - Locarno", type: "TILO", waitMinutes: "30 min.", stations: StationsDB.tiloS20, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S30", branches: "Cadenazzo - Gallarate", type: "TILO", waitMinutes: "2 \(String(localized: .ore)).", stations: StationsDB.tiloS30, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "TILO", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.tiloS40, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S50", branches: "Biasca - Milano Malpensa", type: "TILO", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S90", branches: "Bellinzona - Mendrisio", type: "TILO", waitMinutes: "30 min.", stations: StationsDB.tiloS90, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "RE80", branches: "Locarno - Milano Centrale", type: "TILO", waitMinutes: "30 min - 1 \(String(localized: .ora)).", stations: StationsDB.tiloRE80, accessibilityStatus: String(localized: .lineaAccessibile))
         ]
     }
@@ -7705,9 +7707,11 @@ func getColor(for line: String) -> Color {
         
         ///TILO LINES
         case "S10": return Color(red: 228/255, green: 35/255, blue: 19/255)
+        case "S20": return Color(red: 25/255, green: 57/255, blue: 105/255)
         case "S30": return Color(red: 0, green: 166/255, blue: 81/255)
         case "S40": return Color(red: 117/255, green: 188/255, blue: 118/255)
         case "S50": return Color(red: 131/255, green: 76/255, blue: 22/255)
+        case "S90": return Color(red: 231/255, green: 197/255, blue: 61/255)
         case "RE80": return .blue
         
         ///METRO LINES
