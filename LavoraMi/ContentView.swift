@@ -7567,7 +7567,9 @@ struct InterchangeView: View {
 }
 
 struct TransportBadge: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     let line: String
+    
     private var badgeColor: Color {
         if line.starts(with: "z") {
             return getColor(for: "z")
@@ -7734,7 +7736,9 @@ func getColor(for line: String) -> Color {
         case "S8": return Color(red: 246/255, green: 182/255, blue: 182/255)
         case "S9": return Color(red: 162/255, green: 51/255, blue: 138/255)
         case "S11": return Color(red: 165/255, green: 147/255, blue: 198/255)
-        case "S12": return .black
+        case "S12": return Color(uiColor: UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ? UIColor(white: 35/255, alpha: 1) : .black
+        })
         case "S13": return Color(red: 167/255, green: 109/255, blue: 17/255)
         case "S19": return Color(red: 102/255, green: 13/255, blue: 54/255)
         case "S31": return .gray
