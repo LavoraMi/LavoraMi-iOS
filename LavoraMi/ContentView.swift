@@ -6233,7 +6233,19 @@ extension LineDetailView {
                 ),
                 bounds: lombardyBounds,
                 content: {
-                    UserAnnotation()
+                    if let userCoordinate = locationManager.userLocation?.coordinate {
+                        Annotation("", coordinate: userCoordinate) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color.white)
+                                    .frame(width: 18, height: 18)
+                                Circle()
+                                    .fill(Color.blue)
+                                    .frame(width: 12, height: 12)
+                            }
+                        }
+                    }
+
                     MapPolyline(coordinates: mainStations.map(\.coordinate))
                         .stroke(lineColor, lineWidth: 5)
 
@@ -6268,7 +6280,7 @@ extension LineDetailView {
                 }
             )
             .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
-            .mapControls{
+            .mapControls {
                 MapUserLocationButton()
             }
             .tint(getColor(for: lineName))
