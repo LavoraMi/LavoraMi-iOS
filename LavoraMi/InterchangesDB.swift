@@ -598,6 +598,131 @@ struct InterchangesDB {
         .init(name: "Milano Domodossola", lines: ["MXP2", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 5),
         .init(name: "Milano Cadorna", lines: ["MXP2", "S3", "S4", "R16", "RE17", "R22", "R27", "RE1", "RE7", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 6),
     ]
+    
+    static let tiloInterchanges: [InterchangeInfo] = [
+        // TILO LINES
+        
+        // TILO S10
+        .init(name: "Como Camerlata", lines: ["S10", "S11", "S40", "R17", "R18", "RE7", "RE13", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Como San Giovanni", lines: ["S10", "S11", "S40", "R18", "RE13", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Chiasso", lines: ["S10", "S40", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Balerna", lines: ["S10", "S40", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Mendrisio", lines: ["S10", "S40", "S50", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Mendrisio San Martino", lines: ["S10", "S50", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Capolago - Riva San Vitale", lines: ["S10", "S50", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Maroggia - Melano", lines: ["S10", "S50", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Melide", lines: ["S10", "S50", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Lugano Paradiso", lines: ["S10", "S40", "S50", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Lugano", lines: ["S10", "S40", "S50", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Giubiasco", lines: ["S10", "S20", "S30", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Bellinzona", lines: ["S10", "S20", "S30", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
+        .init(name: "Arbedo - Castione", lines: ["S10", "S20", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
+        .init(name: "Biasca", lines: ["S10", "S50"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
+        
+        // TILO S20
+        .init(name: "Arbedo - Castione", lines: ["S20", "S10", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Bellinzona", lines: ["S20", "S10", "S30", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Giubiasco", lines: ["S20", "S10", "S30", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "San Antonino", lines: ["S20", "S30", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Cadenazzo", lines: ["S20", "S30", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Riazzino", lines: ["S20", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Gordola", lines: ["S20", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Tenero", lines: ["S20", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Minusio", lines: ["S20", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Locarno", lines: ["S20", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        
+        // TILO S30
+        .init(name: "Gallarate", lines: ["S30", "S5", "S50", "R21", "R23", "RV", "RE4", "RE5", "MXP1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Besnate", lines: ["S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Mornago Cimbro", lines: ["S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Ternate Varano Borghi", lines: ["S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Travedona Biandronno", lines: ["S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Besozzo", lines: ["S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Sangiano", lines: ["S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Laveno Mombello", lines: ["S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Calde'", lines: ["S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Porto Valtravaglia", lines: ["S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Luino", lines: ["S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Colmegna", lines: ["S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Maccagno", lines: ["S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
+        .init(name: "Pino - Tronzano", lines: ["S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
+        .init(name: "Ranzo - San Abbondio", lines: ["S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
+        .init(name: "Gerra", lines: ["S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 15),
+        .init(name: "San Nazzaro", lines: ["S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
+        .init(name: "Magradino - Vira", lines: ["S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 17),
+        .init(name: "Quartino", lines: ["S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 18),
+        .init(name: "Cadenazzo", lines: ["S30", "S20", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
+        
+        // TILO S40
+        .init(name: "Varese", lines: ["S40", "S5", "S50", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Induno Olona", lines: ["S40", "S50", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Arcisate", lines: ["S40", "S50", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Cantello Gaggiolo", lines: ["S40", "S50"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Stabio", lines: ["S40", "S50", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Mendrisio", lines: ["S40", "S10", "S50", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Balerna", lines: ["S40", "S10", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Chiasso", lines: ["S40", "S10", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Como San Giovanni", lines: ["S40", "S10", "S11", "R18", "RE13", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        
+        // TILO S50
+        .init(name: "Malpensa Aereoporto T2", lines: ["S50", "Aereoporto", "MXP1", "MXP2"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 0),
+        .init(name: "Malpensa Aereoporto T1", lines: ["S50", "Aereoporto", "MXP1", "MXP2"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 1),
+        .init(name: "Ferno - Lonate Pozzolo", lines: ["S50", "MXP1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Busto Arsizio Nord", lines: ["S50", "R27", "MXP1", "MXP2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Busto Arsizio", lines: ["S50", "S5", "R21", "R23", "RV", "RE4", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Gallarate", lines: ["S50", "S5", "S30", "R21", "R23", "RV", "RE4", "RE5", "MXP1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Varese", lines: ["S50", "S5", "S40", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Induno Olona", lines: ["S50", "S40", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Arcisate", lines: ["S50", "S40", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Cantello Gaggiolo", lines: ["S50", "S40"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Stabio", lines: ["S50", "S40", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Mendrisio", lines: ["S50", "S10", "S40", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Capolago - Riva San Vitale", lines: ["S50", "S10", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
+        .init(name: "Maroggia - Melano", lines: ["S50", "S10", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
+        .init(name: "Melide", lines: ["S50", "S10", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
+        .init(name: "Lugano Paradiso", lines: ["S50", "S10", "S40", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 15),
+        .init(name: "Lugano", lines: ["S50", "S10", "S40", "S90", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
+        .init(name: "Bellinzona", lines: ["S50", "S10", "S20", "S30", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 17),
+        .init(name: "Arbedo - Castione", lines: ["S50", "S10", "S20", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 18),
+        .init(name: "Biasca", lines: ["S50", "S10"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
+        
+        // TILO S90
+        .init(name: "Bellinzona", lines: ["S90", "S10", "S20", "S30", "S50"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Giubiasco", lines: ["S90", "S10", "S20", "S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Rivera - Bironico", lines: ["S90", "S10", "S50"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Mezzovico", lines: ["S90", "S10", "S40", "S50"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Taverne - Torricella", lines: ["S90", "S10", "S40", "S50"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Lamone - Cadempino", lines: ["S90", "S10", "S40", "S50"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Lugano", lines: ["S90", "S10", "S40", "S50", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Lugano Paradiso", lines: ["S90", "S10", "S40", "S50", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Melide", lines: ["S90", "S10", "S50", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Maroggia - Melano", lines: ["S90", "S10", "S50", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Capolago - Riva San Vitale", lines: ["S90", "S10", "S50", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Mendrisio San Martino", lines: ["S90", "S10", "S50", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Mendrisio", lines: ["S90", "S10", "S40", "S50", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
+        
+        // TILO RE80
+        .init(name: "Milano Centrale", lines: ["RE80", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "MXP1", "M2", "NM2", "M3", "NM3", "5", "9", "10", "42", "60", "81", "87", "Filobus 90", "Filobus 91", "Filobus 92", "728", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
+        .init(name: "Monza", lines: ["RE80", "S7", "S8", "S9", "S11", "R7", "R13", "R14", "RE8", "RE13", "z201", "z203", "z205", "z206", "z208", "z211", "z213", "z221", "z222", "z228"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Seregno", lines: ["RE80", "S9", "S11", "RE13", "z233"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Como San Giovanni", lines: ["RE80", "S10", "S11", "S40", "R18", "RE13"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Chiasso", lines: ["RE80", "S10", "S40"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Balerna", lines: ["RE80", "S10", "S40"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Mendrisio", lines: ["RE80", "S10", "S40", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Mendrisio San Martino", lines: ["RE80", "S10", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Capolago - Riva San Vitale", lines: ["RE80", "S10", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Maroggia - Melano", lines: ["RE80", "S10", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Melide", lines: ["RE80", "S10", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Lugano Paradiso", lines: ["RE80", "S10", "S40", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Lugano", lines: ["RE80", "S10", "S40", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
+        .init(name: "San Antonino", lines: ["RE80", "S20", "S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
+        .init(name: "Cadenazzo", lines: ["RE80", "S20", "S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
+        .init(name: "Riazzino", lines: ["RE80", "S20"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 15),
+        .init(name: "Gordola", lines: ["RE80", "S20"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
+        .init(name: "Tenero", lines: ["RE80", "S20"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 17),
+        .init(name: "Minusio", lines: ["RE80", "S20"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 18),
+        .init(name: "Locarno", lines: ["RE80", "S20"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
+    ]
 
     static func getMetroInterchanges(line: String) -> [InterchangeInfo] {
         return interchangesMetro.filter { $0.lines.contains(line) }
@@ -609,5 +734,9 @@ struct InterchangesDB {
     
     static func getMalpensaExpressInterchanges(line: String) -> [InterchangeInfo] {
         return malpensaExpressInterchanges.filter { $0.lines.contains(line) }
+    }
+    
+    static func getTILOInterchanges(line: String) -> [InterchangeInfo] {
+        return tiloInterchanges.filter { $0.lines.contains(line) }
     }
 }

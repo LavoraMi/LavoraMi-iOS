@@ -5703,8 +5703,11 @@ func getInterchanges(line: String) -> [InterchangeInfo] {
     else if line.starts(with: "MXP") {
         return InterchangesDB.getMalpensaExpressInterchanges(line: line)
     }
-    else if line.starts(with: "S") && (line != "S10" || line != "S30" || line != "S40" || line != "S50") {
+    else if line.starts(with: "S") && (line != "S10" && line != "S30" && line != "S40" && line != "S50") {
         return InterchangesDB.getSuburbanInterchanges(line: line)
+    }
+    else if (line == "S10" || line == "S30" || line == "S40" || line == "S50" || line == "RE80") {
+        return InterchangesDB.getTILOInterchanges (line: line)
     }
     else if Int(line) != nil {
         if(line.wholeMatch(of: /9[0-3]/) != nil) { return InterchangesDB.interchangesFilobus.filter { $0.lines.contains(line) } }
@@ -6277,7 +6280,8 @@ extension LineDetailView {
     private var interchangesTabContent: some View {
         let isMetro = lineName.starts(with: "M") && !lineName.starts(with: "MXP")
         let isMalpensaExpress = lineName.starts(with: "MXP")
-        let isSuburban = lineName.starts(with: "S") && (lineName != "S10" || lineName != "S30" || lineName != "S40" || lineName != "S50")
+        let isSuburban = lineName.starts(with: "S") && (lineName != "S10" && lineName != "S30" && lineName != "S40" && lineName != "S50")
+        let isTilo = (lineName == "S10" || lineName == "S30" || lineName == "S40" || lineName == "S50" || lineName == "RE80")
         let allInterchanges = getInterchanges(line: lineName)
         let mainItems = allInterchanges.filter { $0.branch == "Main" }
         let branchMap = Dictionary(grouping: allInterchanges.filter { $0.branch != "Main" }, by: \.branch)
@@ -6305,7 +6309,7 @@ extension LineDetailView {
 
             ScrollView {
                 let toShow: [InterchangeInfo] = {
-                    if isMetro || isSuburban || isMalpensaExpress {
+                    if isMetro || isSuburban || isMalpensaExpress || isTilo {
                         let validMain = mainItems.filter { $0.lines.first == lineName }
                         let sortedMain = validMain.sorted { $1.lineOrder > $0.lineOrder }
                         
@@ -6336,7 +6340,7 @@ extension LineDetailView {
                 }()
 
                 if !toShow.isEmpty {
-                    if isMetro || isSuburban || isMalpensaExpress {
+                    if isMetro || isSuburban || isMalpensaExpress || isTilo {
                         VStack(spacing: 0) {
                             ForEach(Array(toShow.enumerated()), id: \.element.id) { idx, interchange in
                                 MetroInterchangeRow(
