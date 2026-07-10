@@ -5705,10 +5705,10 @@ func getInterchanges(line: String) -> [InterchangeInfo] {
     else if line.starts(with: "MXP") {
         return InterchangesDB.getMalpensaExpressInterchanges(line: line)
     }
-    else if line.starts(with: "S") && (line != "S10" && line != "S30" && line != "S40" && line != "S50") {
+    else if line.starts(with: "S") && !isLineTILO(lineName: line) {
         return InterchangesDB.getSuburbanInterchanges(line: line)
     }
-    else if (line == "S10" || line == "S30" || line == "S40" || line == "S50" || line == "RE80") {
+    else if isLineTILO(lineName: line) {
         return InterchangesDB.getTILOInterchanges (line: line)
     }
     else if Int(line) != nil {
@@ -6282,8 +6282,8 @@ extension LineDetailView {
     private var interchangesTabContent: some View {
         let isMetro = lineName.starts(with: "M") && !lineName.starts(with: "MXP")
         let isMalpensaExpress = lineName.starts(with: "MXP")
-        let isSuburban = lineName.starts(with: "S") && (lineName != "S10" && lineName != "S30" && lineName != "S40" && lineName != "S50")
-        let isTilo = (lineName == "S10" || lineName == "S30" || lineName == "S40" || lineName == "S50" || lineName == "RE80")
+        let isSuburban = lineName.starts(with: "S") && !isLineTILO(lineName: lineName)
+        let isTilo = isLineTILO(lineName: lineName)
         let allInterchanges = getInterchanges(line: lineName)
         let mainItems = allInterchanges.filter { $0.branch == "Main" }
         let branchMap = Dictionary(grouping: allInterchanges.filter { $0.branch != "Main" }, by: \.branch)
@@ -7968,6 +7968,10 @@ struct HapticManager {
         generator.prepare()
         generator.impactOccurred()
     }
+}
+
+func isLineTILO(lineName: String) -> Bool {
+    return (lineName == "S10" || lineName == "S20" || lineName == "S30" || lineName == "S40" || lineName == "S50" || lineName == "S9=" || lineName == "RE80")
 }
 
 #Preview{
