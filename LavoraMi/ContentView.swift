@@ -564,6 +564,8 @@ struct MainView: View {
                 categoryFiltered = items.filter{ $0.company.contains("ATM") }
             case .Trenord:
                 categoryFiltered = items.filter{ $0.company.contains("Trenord") }
+            case .Tilo:
+                categoryFiltered = items.filter{ $0.company.contains("TILO") }
             case .Movibus:
                 categoryFiltered = items.filter{ $0.company.contains("Movibus") }
             case .STAV:
@@ -1923,6 +1925,36 @@ struct SettingsView: View{
                         if(feedbacksEnabled){
                             HapticManager.shared.trigger()
                         }
+                    }
+                    HStack{
+                        Label("Linee TILO", systemImage: "train.side.front.car")
+                        Spacer()
+                        Button(action: {
+                            if(feedbacksEnabled){
+                                HapticManager.shared.trigger()
+                            }
+                            
+                            if linesFavorites.contains("Tilo") {
+                                linesFavorites.removeAll { $0 == "Tilo" }
+                            } else {
+                                linesFavorites.append("Tilo")
+                            }
+                            NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                            
+                            Task {
+                                let preferences: UserPreferencesDatas = await authManager.fetchUserPreferences()
+                                
+                                if(preferences.enable_favorites) {
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                    showErrorDBSavePopUp = !res
+                                }
+                            }
+                        }) {
+                            Image(systemName: linesFavorites.contains("Tilo") ? "star.fill" : "star")
+                                .font(.title3)
+                                .foregroundColor(linesFavorites.contains("Tilo") ? .orange : .gray)
+                        }
+                        .buttonStyle(.borderless)
                     }
                     HStack{
                         Label("Linee Movibus", systemImage: "bus.fill")
@@ -7569,6 +7601,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
     case scheduled = "Programmati"
     case ATM = "di ATM"
     case Trenord = "di Trenord"
+    case Tilo = "di Tilo"
     case Movibus = "di Movibus"
     case STAV = "di STAV"
     case STAR = "di STAR"
@@ -7586,6 +7619,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
             case .scheduled: return String(localized: .programmati)
             case .ATM: return String(localized: .diAtm)
             case .Trenord: return String(localized: .diTrenord)
+            case .Tilo: return "di Tilo"
             case .Movibus: return String(localized: .diMovibus)
             case .STAV: return String(localized: .diStav)
             case .STAR: return String(localized: .diStar)
@@ -7885,7 +7919,7 @@ extension WorkItem {
                 }
             }
             
-            if favorites.contains("S") && upperLine.hasPrefix("S") {
+            if favorites.contains("S") && upperLine.hasPrefix("S") && !isLineTILO(lineName: upperLine) {
                 let suffix = upperLine.dropFirst()
                 if !suffix.isEmpty && suffix.allSatisfy({ $0.isNumber }) {
                     return true
@@ -7896,7 +7930,11 @@ extension WorkItem {
                 return true
             }
             
-            if favorites.contains("RE") && upperLine.hasPrefix("RE") {
+            if favorites.contains("RE") && upperLine.hasPrefix("RE") && !isLineTILO(lineName: upperLine) {
+                return true
+            }
+            
+            if(favorites.contains("Tilo") && isLineTILO(lineName: upperLine)) {
                 return true
             }
         }
