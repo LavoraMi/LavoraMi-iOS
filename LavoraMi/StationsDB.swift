@@ -2354,7 +2354,6 @@ struct StationsDB {
         .init(name: "Biasca", coordinate: .init(latitude: 46.35198, longitude: 8.97416), branch: "Main"),
         .init(name: "Castione", coordinate: .init(latitude: 46.22363, longitude: 9.0415), branch: "Main"),
         .init(name: "Bellinzona", coordinate: .init(latitude: 46.19543, longitude: 9.02951), branch: "Main"),
-        .init(name: "Giubiasco", coordinate: .init(latitude: 46.17381, longitude: 9.00359), branch: "Main"),
         .init(name: "Lugano", coordinate: .init(latitude: 46.00501, longitude: 8.94695), branch: "Main"),
         .init(name: "Lugano Paradiso", coordinate: .init(latitude: 45.98917, longitude: 8.94656), branch: "Main"),
         .init(name: "Melide", coordinate: .init(latitude: 45.95576, longitude: 8.94823), branch: "Main"),
