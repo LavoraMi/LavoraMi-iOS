@@ -572,6 +572,32 @@ struct InterchangesDB {
         .init(name: "Provaglio Timoline", lines: ["S31", "R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Iseo", lines: ["S31", "R3", "R9", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
     ]
+    
+    static let malpensaExpressInterchanges: [InterchageInfo] = [
+        // MALPENSA EXPRESS LINES
+        
+        // Malpensa Express 1
+        .init(name: "Gallarate", lines: ["MXP1", "S5", "S30", "S50", "R21", "R23", "RV", "RE4", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Malpensa Aereoporto T2", lines: ["MXP1", "Aereoporto", "S50", "MXP2"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 1),
+        .init(name: "Malpensa Aereoporto T1", lines: ["MXP1", "Aereoporto", "S50", "MXP2"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 2),
+        .init(name: "Ferno - Lonate Pozzolo", lines: ["MXP1", "S50"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Busto Arsizio Nord", lines: ["MXP1", "S50", "R27", "MXP2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Castellanza", lines: ["MXP1", "R27"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Rescaldina", lines: ["MXP1", "R27"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Saronno", lines: ["MXP1", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Milano Bovisa", lines: ["MXP1", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP2", "82", "Filobus 92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Milano Porta Garibaldi", lines: ["MXP1", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
+        .init(name: "Milano Centrale", lines: ["MXP1", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "M3", "NM3", "M2", "NM2", "5", "9", "10", "42", "60", "81", "87", "Filobus 90", "Filobus 91", "Filobus 92", "728", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 10),
+        
+        // Malpensa Express 2
+        .init(name: "Malpensa Aereoporto T2", lines: ["MXP2", "Aereoporto", "S50", "MXP1"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 0),
+        .init(name: "Malpensa Aereoporto T1", lines: ["MXP2", "Aereoporto", "S50", "MXP1"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 1),
+        .init(name: "Busto Arsizio Nord", lines: ["MXP2", "S50", "R27", "MXP1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Saronno", lines: ["MXP2", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Milano Bovisa", lines: ["MXP2", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "82", "Filobus 92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Milano Domodossola", lines: ["MXP2", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 5),
+        .init(name: "Milano Cadorna", lines: ["MXP2", "S3", "S4", "R16", "RE17", "R22", "R27", "RE1", "RE7", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 6),
+    ]
 
     static func getMetroInterchanges(line: String) -> [InterchageInfo] {
         return interchangesMetro.filter { $0.lines.contains(line) }
@@ -579,5 +605,9 @@ struct InterchangesDB {
     
     static func getSuburbanInterchanges(line: String) -> [InterchageInfo] {
         return suburbanInterchanges.filter { $0.lines.contains(line) }
+    }
+    
+    static func getMalpensaExpressInterchanges(line: String) -> [InterchageInfo] {
+        return malpensaExpressInterchanges.filter { $0.lines.contains(line) }
     }
 }

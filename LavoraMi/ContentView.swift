@@ -5700,6 +5700,9 @@ func getInterchanges(line: String) -> [InterchageInfo] {
     if line.starts(with: "M") && !line.starts(with: "MXP") {
         return InterchangesDB.getMetroInterchanges(line: line)
     }
+    else if line.starts(with: "MXP") {
+        return InterchangesDB.getMalpensaExpressInterchanges(line: line)
+    }
     else if line.starts(with: "S") && (line != "S10" || line != "S30" || line != "S40" || line != "S50") {
         return InterchangesDB.getSuburbanInterchanges(line: line)
     }
@@ -6273,6 +6276,7 @@ extension LineDetailView {
     @ViewBuilder
     private var interchangesTabContent: some View {
         let isMetro = lineName.starts(with: "M") && !lineName.starts(with: "MXP")
+        let isMalpensaExpress = lineName.starts(with: "MXP")
         let isSuburban = lineName.starts(with: "S") && (lineName != "S10" || lineName != "S30" || lineName != "S40" || lineName != "S50")
         let allInterchanges = getInterchanges(line: lineName)
         let mainItems = allInterchanges.filter { $0.branch == "Main" }
@@ -6301,7 +6305,7 @@ extension LineDetailView {
 
             ScrollView {
                 let toShow: [InterchageInfo] = {
-                    if isMetro || isSuburban {
+                    if isMetro || isSuburban || isMalpensaExpress {
                         let validMain = mainItems.filter { $0.lines.first == lineName }
                         let sortedMain = validMain.sorted { $1.lineOrder > $0.lineOrder }
                         
@@ -6332,7 +6336,7 @@ extension LineDetailView {
                 }()
 
                 if !toShow.isEmpty {
-                    if isMetro || isSuburban {
+                    if isMetro || isSuburban || isMalpensaExpress {
                         VStack(spacing: 0) {
                             ForEach(Array(toShow.enumerated()), id: \.element.id) { idx, interchange in
                                 MetroInterchangeRow(
