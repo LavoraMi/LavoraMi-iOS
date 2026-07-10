@@ -5250,17 +5250,17 @@ struct LinesView: View {
                 }
                 .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
-                    if(!filteredRegioExpress.isEmpty){
-                        ForEach(filteredRegioExpress, id: \.id) { line in
+                    if(!filteredRegional.isEmpty){
+                        ForEach(filteredRegional, id: \.id) { line in
                             LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
                         }
                     }
                 }
                 header:{
-                    if(!filteredRegioExpress.isEmpty) {
+                    if(!filteredRegional.isEmpty) {
                         HStack{
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee Regio Express")
+                                Text("Linee Regionali")
                                     .font(.title3)
                                     .bold()
                                     .foregroundStyle(.primary)
@@ -5289,17 +5289,17 @@ struct LinesView: View {
                 }
                 .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 Section(){
-                    if(!filteredRegional.isEmpty){
-                        ForEach(filteredRegional, id: \.id) { line in
+                    if(!filteredRegioExpress.isEmpty){
+                        ForEach(filteredRegioExpress, id: \.id) { line in
                             LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
                         }
                     }
                 }
                 header:{
-                    if(!filteredRegional.isEmpty) {
+                    if(!filteredRegioExpress.isEmpty) {
                         HStack{
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee Regionali")
+                                Text("Linee Regio Express")
                                     .font(.title3)
                                     .bold()
                                     .foregroundStyle(.primary)
