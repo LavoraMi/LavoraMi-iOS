@@ -7418,10 +7418,18 @@ struct MetroInterchangeRow: View {
                     .padding(.top, 12)
                 }
                 else {
-                    Label(interchange.name.uppercased(), systemImage: interchange.typeOfInterchange)
-                        .font(.custom("TitilliumWeb-Bold", size: 21))
-                        .foregroundStyle(Color("TextColor"))
-                        .padding(.top, 12)
+                    if(otherLines.isEmpty) {
+                        Label(interchange.name.uppercased(), systemImage: "nosign")
+                            .font(.custom("TitilliumWeb-Bold", size: 21))
+                            .foregroundStyle(Color("TextColor"))
+                            .padding(.top, 12)
+                    }
+                    else {
+                        Label(interchange.name.uppercased(), systemImage: interchange.typeOfInterchange)
+                            .font(.custom("TitilliumWeb-Bold", size: 21))
+                            .foregroundStyle(Color("TextColor"))
+                            .padding(.top, 12)
+                    }
                 }
                 
                 if !otherLines.isEmpty {
