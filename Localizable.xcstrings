@@ -1493,6 +1493,29 @@
         }
       }
     },
+    "diTilo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by TILO"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de TILO"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "di TILO"
+          }
+        }
+      }
+    },
     "Elimina Account" : {
       "localizations" : {
         "en" : {
@@ -3522,7 +3545,20 @@
       }
     },
     "Linee TILO" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TILO Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas TILO"
+          }
+        }
+      }
     },
     "Linee Tram" : {
       "localizations" : {

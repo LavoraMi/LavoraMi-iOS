@@ -7601,7 +7601,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
     case scheduled = "Programmati"
     case ATM = "di ATM"
     case Trenord = "di Trenord"
-    case Tilo = "di Tilo"
+    case Tilo = "di TILO"
     case Movibus = "di Movibus"
     case STAV = "di STAV"
     case STAR = "di STAR"
@@ -7619,7 +7619,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
             case .scheduled: return String(localized: .programmati)
             case .ATM: return String(localized: .diAtm)
             case .Trenord: return String(localized: .diTrenord)
-            case .Tilo: return "di Tilo"
+            case .Tilo: return String(localized: .diTilo)
             case .Movibus: return String(localized: .diMovibus)
             case .STAV: return String(localized: .diStav)
             case .STAR: return String(localized: .diStar)
