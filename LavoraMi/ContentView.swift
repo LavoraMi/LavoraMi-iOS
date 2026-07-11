@@ -7409,6 +7409,114 @@ struct LineDeviationInfoView: View {
     }
 }
 
+private struct BouncingMarqueeTextWidthKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
+    }
+}
+
+private struct BouncingMarqueeText: View {
+    let text: String
+    var font: Font
+    var color: Color = Color("TextColor")
+    var lineHeight: CGFloat
+    var speed: Double = 45
+    var edgePause: Double = 3
+    
+    @State private var offset: CGFloat = 0
+    @State private var textWidth: CGFloat = 0
+    @State private var containerWidth: CGFloat = 0
+    @State private var isReady: Bool = false
+    @State private var isAnimating: Bool = false
+
+    private var scrollDistance: CGFloat { max(0, textWidth - containerWidth) }
+
+    var body: some View {
+        GeometryReader { geo in
+            ZStack(alignment: .leading) {
+                if isReady {
+                    Text(text)
+                        .font(font)
+                        .foregroundStyle(color)
+                        .lineLimit(1)
+                        .fixedSize()
+                        .offset(x: -offset)
+                }
+            }
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .leading)
+            .clipped()
+            .onAppear {
+                containerWidth = geo.size.width
+                tryStart()
+            }
+            .onChange(of: geo.size.width) { _, cw in
+                containerWidth = cw
+                tryStart()
+            }
+        }
+        .frame(height: lineHeight)
+        .background(
+            Text(text)
+                .font(font)
+                .lineLimit(1)
+                .fixedSize()
+                .hidden()
+                .background(
+                    GeometryReader { tg in
+                        Color.clear.preference(
+                            key: BouncingMarqueeTextWidthKey.self,
+                            value: tg.size.width
+                        )
+                    }
+                )
+        )
+        .onPreferenceChange(BouncingMarqueeTextWidthKey.self) { tw in
+            textWidth = tw
+            tryStart()
+        }
+        .onChange(of: text) { _, _ in
+            isAnimating = false
+            isReady = false
+            offset = 0
+            textWidth = 0
+            tryStart()
+        }
+        .onDisappear {
+            isAnimating = false
+        }
+    }
+
+    private func tryStart() {
+        guard textWidth > 0, containerWidth > 0, !isReady else { return }
+        isReady = true
+        guard scrollDistance > 1 else { return }
+        isAnimating = true
+        runCycle()
+    }
+
+    private func runCycle() {
+        guard isAnimating else { return }
+        let goDuration = scrollDistance / speed
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + edgePause) {
+            guard isAnimating else { return }
+            withAnimation(.linear(duration: goDuration)) {
+                offset = scrollDistance
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + goDuration + edgePause) {
+                guard isAnimating else { return }
+                withAnimation(.linear(duration: goDuration)) {
+                    offset = 0
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + goDuration) {
+                    runCycle()
+                }
+            }
+        }
+    }
+}
+
 struct MetroInterchangeRow: View {
     let interchange: InterchangeInfo
     let currentLine: String
@@ -7454,18 +7562,34 @@ struct MetroInterchangeRow: View {
                 }
                 else {
                     if(otherLines.isEmpty) {
-                        Label(interchange.name.uppercased(), systemImage: "nosign")
-                            .font(.custom("TitilliumWeb-Bold", size: 21))
-                            .foregroundStyle(Color("TextColor"))
-                            .padding(.top, 12)
-                            .lineLimit(1)
+                        HStack(spacing: 6) {
+                            Image(systemName: "nosign")
+                                .font(.custom("TitilliumWeb-Bold", size: 21))
+                                .foregroundStyle(Color("TextColor"))
+
+                            BouncingMarqueeText(
+                                text: interchange.name.uppercased(),
+                                font: .custom("TitilliumWeb-Bold", size: 21),
+                                color: Color("TextColor"),
+                                lineHeight: 26
+                            )
+                        }
+                        .padding(.top, 12)
                     }
                     else {
-                        Label(interchange.name.uppercased(), systemImage: interchange.typeOfInterchange)
-                            .font(.custom("TitilliumWeb-Bold", size: 21))
-                            .foregroundStyle(Color("TextColor"))
-                            .padding(.top, 12)
-                            .lineLimit(1)
+                        HStack(spacing: 6) {
+                            Image(systemName: interchange.typeOfInterchange)
+                                .font(.custom("TitilliumWeb-Bold", size: 21))
+                                .foregroundStyle(Color("TextColor"))
+
+                            BouncingMarqueeText(
+                                text: interchange.name.uppercased(),
+                                font: .custom("TitilliumWeb-Bold", size: 21),
+                                color: Color("TextColor"),
+                                lineHeight: 26
+                            )
+                        }
+                        .padding(.top, 12)
                     }
                 }
                 
