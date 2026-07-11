@@ -3509,7 +3509,7 @@ struct AdvancedOptionsView: View {
             }
             Section(footer: Text("Mostra le tue ricerche recenti nella pagina delle Linee.")){
                 Toggle(isOn: $showRecentSearches){
-                    Label("Mostra Ricerche Recenti", systemImage: "sparkles")
+                    Label("Mostra Ricerche Recenti", systemImage: "text.magnifyingglass")
                 }
             }
             .listRowBackground(Color(uiColor: .secondarySystemBackground))
@@ -5179,7 +5179,7 @@ struct LinesView: View {
                                             .textCase(nil)
                                             .padding(.leading, -10)
                                     } icon: {
-                                        Image(systemName: "sparkles")
+                                        Image(systemName: "text.magnifyingglass")
                                     }
                                     
                                     Text("In base alle tue ricerche")
