@@ -459,6 +459,29 @@
         }
       }
     },
+    "aiError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to generate the summary."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido generar el resumen."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile generare il riepilogo."
+          }
+        }
+      }
+    },
     "Aiuto" : {
       "localizations" : {
         "en" : {

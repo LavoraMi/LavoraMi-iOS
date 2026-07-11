@@ -1493,7 +1493,7 @@ struct AISummarizeButton: View {
                 summary = partial.content
             }
         } catch {
-            summary = "Impossibile generare il riepilogo."
+            summary = String(localized: .aiError)
         }
     }
 }
