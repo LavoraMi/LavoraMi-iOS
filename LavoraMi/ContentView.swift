@@ -8140,7 +8140,7 @@ struct HapticManager {
 }
 
 func isLineTILO(lineName: String) -> Bool {
-    return (lineName == "S10" || lineName == "S20" || lineName == "S30" || lineName == "S40" || lineName == "S50" || lineName == "S9=" || lineName == "RE80")
+    return (lineName == "S10" || lineName == "S20" || lineName == "S30" || lineName == "S40" || lineName == "S50" || lineName == "S90" || lineName == "RE80")
 }
 
 #Preview{
