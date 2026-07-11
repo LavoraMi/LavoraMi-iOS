@@ -2591,6 +2591,29 @@
         }
       }
     },
+    "inputAI" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are a member of staff working for the public transport service in Lombardy.\nSummarise, in 2–3 short, clear sentences, a description of a service disruption, stating the nature of the problem and the consequences for passengers. Please reply in British English only"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eres asistente en el transporte público de Lombardía.\nResume en 2 o 3 frases breves y claras la descripción de un incidente o fallo en el servicio, indicando el tipo de problema y las consecuencias para los pasajeros. Responde solo en español"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sei un assistente per i trasporti pubblici lombardi.\nRiassumi in 2-3 frasi brevi e chiare la descrizione di un lavoro/disservizio, indicando il tipo di problema e le conseguenze per i passeggeri. Rispondi solamente in Italiano."
+          }
+        }
+      }
+    },
     "Inserisci Nome Utente" : {
       "localizations" : {
         "en" : {

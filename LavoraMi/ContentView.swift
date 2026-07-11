@@ -1484,12 +1484,7 @@ struct AISummarizeButton: View {
         defer { isLoading = false }
 
         let session = LanguageModelSession {
-            """
-            Sei un assistente per i trasporti pubblici lombardi.
-            Riassumi in 2-3 frasi brevi e chiare la descrizione di un lavoro/disservizio,
-            indicando il tipo di problema e le conseguenze per i passeggeri.
-            Rispondi sempre in italiano, senza elenchi puntati.
-            """
+            String(localized: .inputAI)
         }
 
         do {
