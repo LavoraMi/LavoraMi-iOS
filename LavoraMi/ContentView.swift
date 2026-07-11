@@ -3481,15 +3481,15 @@ struct AdvancedOptionsView: View {
     
     var body: some View {
         List{
-            Section(footer: Text("Mostra messaggi di errore quando fallisce il Download dei dati.")){
-                Toggle(isOn: $showErrorMessages){
-                    Label("Mostra Messaggi Errore", systemImage: "exclamationmark.bubble.fill")
-                }
-            }
-            .listRowBackground(Color(uiColor: .secondarySystemBackground))
             Section(footer: Text("Mostra il banner degli scioperi nella Home quando sono presenti.")){
                 Toggle(isOn: $showStrikeBanner){
                     Label("Mostra banner Scioperi", systemImage: "megaphone.fill")
+                }
+            }
+            .listRowBackground(Color(uiColor: .secondarySystemBackground))
+            Section(footer: Text("Mostra le tue ricerche recenti nella pagina delle Linee.")){
+                Toggle(isOn: $showRecentSearches){
+                    Label("Mostra Ricerche Recenti", systemImage: "text.magnifyingglass")
                 }
             }
             .listRowBackground(Color(uiColor: .secondarySystemBackground))
@@ -3507,12 +3507,6 @@ struct AdvancedOptionsView: View {
                 }
                 .listRowBackground(Color(uiColor: .secondarySystemBackground))
             }
-            Section(footer: Text("Mostra le tue ricerche recenti nella pagina delle Linee.")){
-                Toggle(isOn: $showRecentSearches){
-                    Label("Mostra Ricerche Recenti", systemImage: "text.magnifyingglass")
-                }
-            }
-            .listRowBackground(Color(uiColor: .secondarySystemBackground))
             Section(footer: Text("Richiedi \(getBiometricTypeByEnum()) per bloccare e sbloccare la sezione del tuo Account.")){
                 Toggle(isOn: $requireFaceID){
                     Label("Richiedi \(getBiometricTypeByEnum())", systemImage: (getBiometricTypeByEnum() == "Codice") ? "lock.fill" : getBiometricTypeByEnum().lowercased())
@@ -3549,6 +3543,12 @@ struct AdvancedOptionsView: View {
                 .pickerStyle(.inline)
                 .labelsHidden()
             }
+            Section(footer: Text("Mostra messaggi di errore quando fallisce il Download dei dati.")){
+                Toggle(isOn: $showErrorMessages){
+                    Label("Mostra Messaggi Errore", systemImage: "exclamationmark.bubble.fill")
+                }
+            }
+            .listRowBackground(Color(uiColor: .secondarySystemBackground))
             Section(footer: Text("Elimina la memoria Cache dal dispositivo, liberando spazio su disco.")){
                 Button(role: .destructive) {
                     if(feedbacksEnabled){
