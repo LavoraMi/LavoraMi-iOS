@@ -7896,6 +7896,7 @@ func getColor(for line: String) -> Color {
         case "MXP1": return Color(red: 140/255, green: 0, blue: 118/255)
         case "MXP2": return Color(red: 140/255, green: 0, blue: 118/255)
         case "AV": return .red
+        case "RV": return .red
         case "Aereoporto": return .cyan
         case _ where line.contains("R") && !line.contains("RE"): return Color.blue
         case _ where line.contains("RE"): return Color.red
