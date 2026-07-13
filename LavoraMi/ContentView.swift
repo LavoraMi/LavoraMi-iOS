@@ -6140,7 +6140,7 @@ extension LineDetailView {
                 withAnimation(.snappy) { selectedTab = .map }
             }) {
                 HStack(spacing: 8) {
-                    Image(systemName: "location.square.fill")
+                    Image(systemName: "location.fill")
                         .font(.title3)
                     
                     if selectedTab == .map {
