@@ -4764,7 +4764,7 @@ struct LineRow: View {
     }
 
     var body: some View {
-        NavigationLink(destination: destination) {
+        NavigationLink {destination} label: {
             HStack(spacing: 12) {
                 Text(line)
                     .foregroundStyle(.white)
