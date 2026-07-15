@@ -5048,6 +5048,7 @@
       }
     },
     "Pulisci memoria Cache" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5062,6 +5063,9 @@
           }
         }
       }
+    },
+    "Pulisci Memoria Cache" : {
+
     },
     "Qua puoi gestire il tuo Account e le tue informazioni." : {
       "localizations" : {
@@ -5279,6 +5283,7 @@
       }
     },
     "Richiedi %@ per bloccare e sbloccare la sezione del tuo Account." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5290,6 +5295,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Solicita %@ para bloquear y desbloquear la sección de tu cuenta."
+          }
+        }
+      }
+    },
+    "Richiedi %@ per bloccare e sbloccare la sezione del tuo Account. Per modificare questa opzione dovrai autenticarti con %@." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Richiedi %1$@ per bloccare e sbloccare la sezione del tuo Account. Per modificare questa opzione dovrai autenticarti con %2$@."
           }
         }
       }

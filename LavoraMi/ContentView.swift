@@ -3502,7 +3502,7 @@ struct AdvancedOptionsView: View {
                 }
                 .listRowBackground(Color(uiColor: .secondarySystemBackground))
             }
-            Section(footer: Text("Richiedi \(getBiometricTypeByEnum()) per bloccare e sbloccare la sezione del tuo Account.")){
+            Section(footer: Text("Richiedi \(getBiometricTypeByEnum()) per bloccare e sbloccare la sezione del tuo Account. Per modificare questa opzione dovrai autenticarti con \(getBiometricTypeByEnum()).")){
                 Toggle(isOn: $requireFaceID){
                     Label("Richiedi \(getBiometricTypeByEnum())", systemImage: (getBiometricTypeByEnum() == "Codice") ? "lock.fill" : getBiometricTypeByEnum().lowercased())
                 }
@@ -3551,7 +3551,7 @@ struct AdvancedOptionsView: View {
                     }
                     presentedCacheAlert = true
                 } label: {
-                    Label("Pulisci memoria Cache", systemImage: "trash.fill")
+                    Label("Pulisci Memoria Cache", systemImage: "trash.fill")
                 }
                 .confirmationDialog("Sei sicuro?", isPresented: $presentedCacheAlert) {
                     Button("Annulla", role: .cancel) { }
