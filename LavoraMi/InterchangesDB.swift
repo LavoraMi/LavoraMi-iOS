@@ -252,7 +252,7 @@ struct InterchangesDB {
         .init(name: "San Donato", lines: ["M3", "NM3", "45", "77", "121", "130", "132", "901", "902", "903", "z410", "z411", "z412", "z413", "z415", "z420"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 20),
         
         // M4 - Main
-        .init(name: "Linate Aereoporto", lines: ["M4", "NM4", "183", "901", "903", "923", "973", "z409"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 0),
+        .init(name: "Linate Aereoporto", lines: ["M4", "NM4", String(localized: .aereoporto), "183", "901", "903", "923", "973", "z409"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 0),
         .init(name: "Repetti", lines: ["M4", "NM4", "12", "27", "45", "175", "N27"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 1),
         .init(name: "Stazione Forlanini FS", lines: ["M4", "NM4", "S5", "S6", "S9", "R38", "RE8", "RE13", "12", "27", "45", "175", "973", "N27"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Argonne", lines: ["M4", "NM4", "38", "45", "54", "Filobus 93", "175"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 3),
