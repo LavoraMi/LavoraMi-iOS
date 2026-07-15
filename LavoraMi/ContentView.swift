@@ -4914,9 +4914,9 @@ struct LinesView: View {
             LineInfo(name: "S9", branches: "Saronno - Albairate Vermezzo", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS9, accessibilityStatus: String(localized: .lineaNonAccessibile)),
             LineInfo(name: "S11", branches: "Milano Porta Garibaldi - Como S. Giovanni", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS11, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S12", branches: "Melegnano - Cormano Cusano Milanino", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS12, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "S13", branches: ((viewModel.enablePassanteWork) ? "Milano Rogoredo - Pavia" : "Garbagnate Milanese - Pavia"), type: "Suburbano", waitMinutes: "30 min.", stations: StationsDB.getStationS13(isPassanteClosed: viewModel.enablePassanteWork), accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S13", branches: ((viewModel.enablePassanteWork) ? "Milano Rogoredo - Pavia" : "Garbagnate Milanese - Pavia"), type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.getStationS13(isPassanteClosed: viewModel.enablePassanteWork), accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S19", branches: "Albairate Vermezzo - Milano Rogoredo", type: String(localized: .suburbano), waitMinutes: "30 min.", stations: StationsDB.stationsS19, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
-            LineInfo(name: "S31", branches: "Brescia - Iseo", type: "Suburbano", waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.stationsS31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile))
+            LineInfo(name: "S31", branches: "Brescia - Iseo", type: String(localized: .suburbano), waitMinutes: "1 \(String(localized: .ora)).", stations: StationsDB.stationsS31, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile))
         ]
     }
     
