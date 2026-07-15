@@ -291,7 +291,7 @@ struct InterchangesDB {
         .init(name: "Lotto M1 M5", lines: ["M5", "M1", "NM1", "48", "49", "68", "78", "Filobus 90", "Filobus 91", "98"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 13),
         .init(name: "Portello", lines: ["M5", "48", "78"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
         .init(name: "San Siro Ippodromo", lines: ["M5", "16"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 15),
-        .init(name: "San Siro Stadio", lines: ["M5", "Stadio", "16", "49"], typeOfInterchange: "stadium.fill", branch: "Main", lineOrder: 16),
+        .init(name: "San Siro Stadio", lines: ["M5", String(localized: .stadio), "16", "49"], typeOfInterchange: "stadium.fill", branch: "Main", lineOrder: 16),
     ]
     
     static let suburbanInterchanges: [InterchangeInfo] = [
