@@ -7519,7 +7519,7 @@ struct MetroInterchangeRow: View {
     let isLast: Bool
 
     var lineColor: Color { getColor(for: currentLine) }
-    var otherLines: [String] { interchange.lines.filter { $0 != currentLine && $0 != "N\(currentLine)" } }
+    var otherLines: [String] { interchange.lines.filter { $0 != currentLine } }
 
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
