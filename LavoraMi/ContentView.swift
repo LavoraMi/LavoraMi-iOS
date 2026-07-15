@@ -1337,7 +1337,7 @@ struct WorkInProgressRow: View {
                         HStack {
                             ForEach(item.lines, id: \.self) { line in
                                 if line.contains("Filobus") {
-                                    Label(line, systemImage: "bolt.fill")
+                                    Label(line.replacing("Filobus", with: String(localized: .filobus)), systemImage: "bolt.fill")
                                         .font(.system(size: 12, weight: .bold))
                                         .foregroundStyle(.white)
                                         .padding(.vertical, 4)
@@ -4741,8 +4741,8 @@ struct LineRow: View {
                 typeOfTransport: typeOfTransport,
                 branches: branches,
                 waitMinutes: waitMinutes,
-                workScheduled: getWorkScheduled(line: (typeOfTransport.uppercased().contains("FILOBUS") ? "Filobus \(line)" : line), viewModel: viewModel),
-                workNow: getWorkNow(line: (typeOfTransport.uppercased().contains("FILOBUS") ? "Filobus \(line)" : line), viewModel: viewModel),
+                workScheduled: getWorkScheduled(line: (typeOfTransport.uppercased().contains(String(localized: .filobus).uppercased())) ? "Filobus \(line)" : line, viewModel: viewModel),
+                workNow: getWorkNow(line: (typeOfTransport.uppercased().contains(String(localized: .filobus).uppercased()) ? "Filobus \(line)" : line), viewModel: viewModel),
                 viewModel: viewModel,
                 stations: stations,
                 accessibilityStatus: accessibilityStatus,
@@ -4807,7 +4807,7 @@ struct LinesView: View {
             "Regio express": ["regio", "express", "re"],
             "Regionale": ["regio", "regionale", "r"],
             String(localized: .tram): ["tram", "tranvía", "t"],
-            "Filobus": ["filobus", "9"],
+            String(localized: .filobus): ["filobus", "9"],
             "Movibus": ["bus", "movibus", "z"],
             "STAR Mobility": ["bus", "star", "z"],
             "STAV": ["stav", "bus", "z"],
@@ -6221,8 +6221,8 @@ extension LineDetailView {
                     MKCoordinateRegion(
                         center: centerCoordinate,
                         span: MKCoordinateSpan(
-                            latitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains("Filobus")) ? 0.02 : ((lineName.starts(with: "M")) ? 0.045 : 0.14),
-                            longitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains("Filobus")) ? 0.02 : ((lineName.starts(with: "M")) ? 0.045 : 0.145)
+                            latitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains(String(localized: .filobus))) ? 0.02 : ((lineName.starts(with: "M")) ? 0.045 : 0.14),
+                            longitudeDelta: (tramLinesSupported.contains(lineName) || typeOfTransport.contains(String(localized: .filobus))) ? 0.02 : ((lineName.starts(with: "M")) ? 0.045 : 0.145)
                         )
                     )
                 ),
@@ -6284,7 +6284,7 @@ extension LineDetailView {
     private var worksTabContent: some View {
         VStack {
             ScrollView {
-                let currentWorks = getCurrentWorks(line: (typeOfTransport.contains("Filobus") ? "Filobus \(lineName)" : lineName), viewModel: viewModel)
+                let currentWorks = getCurrentWorks(line: (typeOfTransport.contains(String(localized: .filobus)) ? "Filobus \(lineName)" : lineName), viewModel: viewModel)
                 if currentWorks.count > 0 {
                     LazyVStack(spacing: 12) {
                         ForEach(currentWorks) { work in
@@ -7593,7 +7593,7 @@ struct MetroInterchangeRow: View {
                         HStack(spacing: 6) {
                             ForEach(otherLines, id: \.self) { line in
                                 Group {
-                                    if line.contains("Filobus") || line.wholeMatch(of: /9[0-3]/) != nil {Label(line, systemImage: "bolt.fill")}
+                                    if line.contains(String(localized: .filobus)) || line.wholeMatch(of: /9[0-3]/) != nil {Label(line, systemImage: "bolt.fill")}
                                     else if line.starts(with: "N") {Label(line, systemImage: "moon.fill")}
                                     else {Text(line)}
                                 }
@@ -7652,7 +7652,7 @@ struct InterchangeView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
                     ForEach(item.lines, id: \.self) { line in
-                        if line.contains("Filobus") || line.wholeMatch(of: /9[0-3]/) != nil {
+                        if line.contains(String(localized: .filobus)) || line.wholeMatch(of: /9[0-3]/) != nil {
                             Label(line, systemImage: "bolt.fill")
                                 .font(.system(size: 12, weight: .bold))
                                 .foregroundStyle(.white)
@@ -7888,7 +7888,7 @@ func getColor(for line: String) -> Color {
         
         ///BUS LINES
         case _ where line.contains("z"): return Color(red: 28/255, green: 28/255, blue: 1)
-        case _ where line.contains("Filobus"): return Color(red: 101/255, green: 179/255, blue: 46/255)
+        case _ where line.contains(String(localized: .filobus)): return Color(red: 101/255, green: 179/255, blue: 46/255)
         case _ where line.contains("P") && !(line.contains("MXP")): return Color(red: 69/255, green: 56/255, blue: 0)
         
         ///OTHER LINES
