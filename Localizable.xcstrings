@@ -420,6 +420,29 @@
         }
       }
     },
+    "aereoporto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Airport"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aeropuerto"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aereoporto"
+          }
+        }
+      }
+    },
     "Aggiorna ora" : {
       "localizations" : {
         "en" : {
