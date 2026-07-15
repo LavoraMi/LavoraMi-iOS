@@ -5017,10 +5017,10 @@ struct LinesView: View {
     
     var filobus: [LineInfo] {
         [
-            LineInfo(name: "90", branches: "\(String(localized: .circolareDestra)) (Lotto M1 M5 - Lodi M3)", type: "Filobus", waitMinutes: "4-6 min.", stations: StationsDB.filobus90, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "91", branches: "\(String(localized: .circolareSinistra)) (Lodi M3 - Lotto M1 M5)", type: "Filobus", waitMinutes: "4-6 min.", stations: StationsDB.filobus91, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "92", branches: "Via Varè (Bovisa FN) - Lodi M3", type: "Filobus", waitMinutes: "7-10 min.", stations: StationsDB.filobus92, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "93", branches: "V.Le Omero - Lambrate FS", type: "Filobus", waitMinutes: "10-12 min.", stations: StationsDB.filobus93, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile))
+            LineInfo(name: "90", branches: "\(String(localized: .circolareDestra)) (Lotto M1 M5 - Lodi M3)", type: String(localized: .filobus), waitMinutes: "4-6 min.", stations: StationsDB.filobus90, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "91", branches: "\(String(localized: .circolareSinistra)) (Lodi M3 - Lotto M1 M5)", type: String(localized: .filobus), waitMinutes: "4-6 min.", stations: StationsDB.filobus91, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "92", branches: "Via Varè (Bovisa FN) - Lodi M3", type: String(localized: .filobus), waitMinutes: "7-10 min.", stations: StationsDB.filobus92, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "93", branches: "V.Le Omero - Lambrate FS", type: String(localized: .filobus), waitMinutes: "10-12 min.", stations: StationsDB.filobus93, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile))
         ]
     }
     

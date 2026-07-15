@@ -1784,6 +1784,29 @@
         }
       }
     },
+    "filobus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trolleybus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trolebús"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filobus"
+          }
+        }
+      }
+    },
     "Filtro Predefinito" : {
       "localizations" : {
         "en" : {
