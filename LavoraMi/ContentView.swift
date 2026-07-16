@@ -3157,6 +3157,8 @@ struct ChangeUsernameView: View {
     @AppStorage("enableAnimations") var enableAnimations = true
     @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     @AppStorage("linesSelected") private var linesSelected: [String] = []
+    
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         NavigationStack {
@@ -3196,17 +3198,17 @@ struct ChangeUsernameView: View {
                             .keyboardType(.alphabet)
                             .keyboardShortcut(.end)
                             .disabled(auth.isLoading)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(colorScheme == .dark ? .white : .black)
                     }
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal, 16)
                     .background(
-                        Color(UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1))
+                        colorScheme == .dark ? Color(UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)) : Color(UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1))
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 14)
-                            .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                            .stroke(Color.gray.opacity(colorScheme == .dark ? 0.3 : 0.2), lineWidth: 1)
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 14))
                     
