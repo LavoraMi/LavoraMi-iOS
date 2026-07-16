@@ -4558,7 +4558,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-crypto",
-            version: "4.5.0",
+            version: "4.5.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2019 Apple Inc.",
             licenseText: """
