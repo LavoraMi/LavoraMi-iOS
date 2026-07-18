@@ -3049,6 +3049,8 @@ struct AccountView: View {
                 
                 self.loggedIn = true
             }
+            
+            tabTitle = "Account"
             logginIn = false
         }
     }
