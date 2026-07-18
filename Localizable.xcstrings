@@ -2898,7 +2898,7 @@
         }
       }
     },
-    "LavoraMi mostra l'accessibilità di una linea in base agli impianti nelle stazioni ed alla tipologia di mezzo utilizzato." : {
+    "LavoraMi mostra l'accessibilità di una linea in base agli impianti nelle stazioni e alla tipologia di mezzo utilizzato." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4695,19 +4695,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The route has some limitations. Although the buses are accessible, many stops along the route may not have kerbs that meet accessibility standards or sufficient space for the boarding ramp. In other cases, accessibility is only guaranteed on certain specific services."
+            "value" : "The route has some limitations. Although the vehicles are accessible, many stops along the route may not have kerbs that meet accessibility standards or sufficient space for the boarding ramp. In other cases, accessibility is only guaranteed on certain specific services."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La línea presenta algunas limitaciones. Aunque los autobuses son accesibles, es posible que muchas paradas a lo largo del recorrido no cuenten con aceras que cumplan la normativa o con espacio suficiente para la plataforma. En otros casos, la accesibilidad solo está garantizada en determinados trayectos."
+            "value" : "La línea presenta algunas limitaciones. Aunque los vehículos son accesibles, es posible que muchas paradas a lo largo del recorrido no cuenten con aceras que cumplan la normativa o con espacio suficiente para la plataforma. En otros casos, la accesibilidad solo está garantizada en determinados trayectos."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La linea presenta delle limitazioni. Sebbene i bus siano accessibili, molte fermate lungo il percorso potrebbero non avere marciapiedi a norma o spazio sufficiente per la pedana. In altri casi, l'accessibilità è garantita solo su alcune corse specifiche."
+            "value" : "La linea presenta delle limitazioni. Sebbene i mezzi siano accessibili, molte fermate lungo il percorso potrebbero non avere marciapiedi a norma o spazio sufficiente per la pedana. In altri casi, l'accessibilità è garantita solo su alcune corse specifiche."
           }
         }
       }

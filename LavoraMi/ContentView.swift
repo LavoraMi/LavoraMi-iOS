@@ -7022,7 +7022,7 @@ struct InfoAccessibilityView: View {
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
 
-                    Text("LavoraMi mostra l'accessibilità di una linea in base agli impianti nelle stazioni ed alla tipologia di mezzo utilizzato.")
+                    Text("LavoraMi mostra l'accessibilità di una linea in base agli impianti nelle stazioni e alla tipologia di mezzo utilizzato.")
                         .font(.headline)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
