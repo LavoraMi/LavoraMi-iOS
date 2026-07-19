@@ -7544,57 +7544,29 @@ struct InterchangeRow: View {
             .frame(width: 38)
 
             VStack(alignment: .leading, spacing: 8) {
-                if interchange.typeOfInterchange == "stadium.fill" {
-                    HStack(spacing: 8) {
-                        Image(interchange.typeOfInterchange)
-                            .renderingMode(.template)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 24, height: 24)
-                            .foregroundStyle(Color("TextColor"))
-                        
-                        Text(interchange.name.uppercased())
-                            .font(.custom("TitilliumWeb-Bold", size: 21))
-                            .foregroundStyle(Color("TextColor"))
-                    }
-                    .padding(.top, 12)
-                }
-                else {
-                    if(otherLines.isEmpty) {
-                        HStack(spacing: 6) {
-                            Image(systemName: "nosign")
-                                .font(.custom("TitilliumWeb-Bold", size: 21))
-                                .foregroundStyle(Color("TextColor"))
-
-                            BouncingMarqueeText(
-                                text: interchange.name.uppercased(),
-                                font: .custom("TitilliumWeb-Bold", size: 21),
-                                color: Color("TextColor"),
-                                lineHeight: 26
-                            )
-                        }
-                        .padding(.top, 12)
-                    }
-                    else {
-                        HStack(spacing: 6) {
-                            Image(systemName: interchange.typeOfInterchange)
-                                .font(.custom("TitilliumWeb-Bold", size: 21))
-                                .foregroundStyle(Color("TextColor"))
-
-                            BouncingMarqueeText(
-                                text: interchange.name.uppercased(),
-                                font: .custom("TitilliumWeb-Bold", size: 21),
-                                color: Color("TextColor"),
-                                lineHeight: 26
-                            )
-                        }
-                        .padding(.top, 12)
-                    }
-                }
+                BouncingMarqueeText(
+                    text: interchange.name.uppercased(),
+                    font: .custom("TitilliumWeb-Bold", size: 21),
+                    color: Color("TextColor"),
+                    lineHeight: 26
+                )
                 
                 if !otherLines.isEmpty {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 6) {
+                            if(interchange.typeOfInterchange == "stadium.fill") {
+                                Image(interchange.typeOfInterchange)
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 24, height: 24)
+                                    .foregroundStyle(Color("TextColor"))
+                            }
+                            else {
+                                Image(systemName: interchange.typeOfInterchange)
+                                    .font(.custom("TitilliumWeb-Bold", size: 21))
+                                    .foregroundStyle(Color("TextColor"))
+                            }
                             ForEach(otherLines, id: \.self) { line in
                                 Group {
                                     if line.contains(String(localized: .filobus)) || line.wholeMatch(of: /9[0-3]/) != nil {Label(line, systemImage: "bolt.fill")}
@@ -7611,10 +7583,15 @@ struct InterchangeRow: View {
                     }
                 }
                 else {
-                    Text("Fermata senza interscambi.")
-                        .font(.custom("TitilliumWeb-Bold", size: 15))
-                        .foregroundStyle(Color("TextColor"))
-                        .padding(.top, 12)
+                    HStack(spacing: 8) {
+                        Image(systemName: "nosign")
+                            .font(.custom("TitilliumWeb-Bold", size: 21))
+                            .foregroundStyle(Color("TextColor"))
+                        
+                        Text("Fermata senza interscambi.")
+                            .font(.custom("TitilliumWeb-Bold", size: 15))
+                            .foregroundStyle(Color("TextColor"))
+                    }
                 }
             }
             .padding(.bottom, 16)
