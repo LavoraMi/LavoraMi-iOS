@@ -6319,13 +6319,17 @@ extension LineDetailView {
         let isMalpensaExpress = lineName.starts(with: "MXP")
         let isSuburban = lineName.starts(with: "S") && !isLineTILO(lineName: lineName)
         let isTilo = isLineTILO(lineName: lineName)
+        let isRegional = lineName.starts(with: "R") && !lineName.starts(with: "RE")
+        
+        let isAvailable = (isMetro || isMalpensaExpress || isSuburban || isTilo || isRegional)
+        
         let allInterchanges = getInterchanges(line: lineName)
         let mainItems = allInterchanges.filter { $0.branch == "Main" }
         let branchMap = Dictionary(grouping: allInterchanges.filter { $0.branch != "Main" }, by: \.branch)
         let availableBranches = branchMap.keys.sorted()
 
         VStack(spacing: 0) {
-            if (isMetro || isSuburban) && availableBranches.count > 1 {
+            if isAvailable && availableBranches.count > 1 {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
                         ForEach(availableBranches, id: \.self) { branch in
@@ -6346,7 +6350,7 @@ extension LineDetailView {
 
             ScrollView {
                 let toShow: [InterchangeInfo] = {
-                    if isMetro || isSuburban || isMalpensaExpress || isTilo {
+                    if isAvailable {
                         let validMain = mainItems.filter { $0.lines.first == lineName }
                         let sortedMain = validMain.sorted { $1.lineOrder > $0.lineOrder }
                         
@@ -6377,7 +6381,7 @@ extension LineDetailView {
                 }()
 
                 if !toShow.isEmpty {
-                    if isMetro || isSuburban || isMalpensaExpress || isTilo {
+                    if isAvailable {
                         VStack(spacing: 0) {
                             ForEach(Array(toShow.enumerated()), id: \.element.id) { idx, interchange in
                                 InterchangeRow(
