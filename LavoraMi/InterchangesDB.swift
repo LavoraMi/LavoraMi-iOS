@@ -723,6 +723,93 @@ struct InterchangesDB {
         .init(name: "Minusio", lines: ["RE80", "S20"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 18),
         .init(name: "Locarno", lines: ["RE80", "S20"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
     ]
+    
+    static let regionalInterchanges: [InterchangeInfo] = [
+        // TRAM LINES
+        /// Regionale R1
+        .init(name: "Brescia", lines: ["R1", "S31", "AV", "R3", "R4", "R5", "R7", "R8", "RE3", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Ospitaletto Travagliato", lines: ["R1", "R4", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Rovato", lines: ["R1", "R4", "R5", "R7", "R9", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Coccaglio", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Cologne", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Palazzolo Sull'Oglio", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Grumello Del Monte", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Chiuduno", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Montello Gorlago", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Albano Sant'Alessandro", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Seriate", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Bergamo", lines: ["R1", "R2", "R5", "RE2", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+
+        /// Regionale R2
+        .init(name: "Treviglio", lines: ["R2", "S5", "S6", "R2", "R4", "R6", "R7", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Treviglio Ovest", lines: ["R2", "RE2", "RV", "z405"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Verdello Dalmine", lines: ["R2", "RE2", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Levate", lines: ["R2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Stezzano", lines: ["R2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Stezzano", lines: ["R2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5), // duplicato presente nel codice originale
+        .init(name: "Bergamo", lines: ["R2", "R1", "R5", "RE2", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+
+        /// Regionale R3
+        .init(name: "Brescia", lines: ["R3", "S31", "R1", "R4", "R5", "R7", "R8", "RE3", "RE6", "AV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Brescia Borgo San Giovanni", lines: ["R3", "S31"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Brescia Violino", lines: ["R3", "S31"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Castegnato", lines: ["R3", "S31"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Paderno Franciacorta", lines: ["R3", "S31"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Passirano", lines: ["R3", "S31"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Bornato Calino", lines: ["R3", "S31", "R9"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Borgonato Adro", lines: ["R3", "S31"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Provaglio Timoline", lines: ["R3", "S31"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Iseo", lines: ["R3", "S31", "R9", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Pilzone", lines: ["R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Sulzano", lines: ["R3", "R9", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Sale Marasino", lines: ["R3", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
+        .init(name: "Marone Zone", lines: ["R3", "R9", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
+        .init(name: "Vello", lines: ["R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
+        .init(name: "Toline", lines: ["R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 15),
+        .init(name: "Pisogne", lines: ["R3", "R9", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
+        .init(name: "Pian Camuno-Gratacasolo", lines: ["R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 17),
+        .init(name: "Darfo - Corna", lines: ["R3", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 18),
+        .init(name: "Boario Terme", lines: ["R3", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
+        .init(name: "Pian Di Borno", lines: ["R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 20),
+        .init(name: "Cogno - Esine", lines: ["R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 21),
+        .init(name: "Cividate - Malegno", lines: ["R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 22),
+        .init(name: "Breno", lines: ["R3", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 23),
+        .init(name: "Ceto - Cerveno", lines: ["R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 24),
+        .init(name: "Capo Di Ponte", lines: ["R3", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 25),
+        .init(name: "Cedegolo", lines: ["R3", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 26),
+        .init(name: "Malonno", lines: ["R3", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 27),
+        .init(name: "Sonico", lines: ["R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 28),
+        .init(name: "Edolo", lines: ["R3", "RE3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 29),
+
+        /// Regionale R4
+        .init(name: "Brescia", lines: ["R4", "S31", "AV", "R1", "R3", "R5", "R7", "R8", "RE3", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Ospitaletto Travagliato", lines: ["R4", "R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Rovato", lines: ["R4", "R1", "R5", "R7", "R9", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Chiari", lines: ["R4", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Calcio", lines: ["R4"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Romano", lines: ["R4", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Morengo Bariano", lines: ["R4"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Vidalengo", lines: ["R4"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Treviglio", lines: ["R4", "S5", "S6", "R2", "R6", "R7", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Cassano D'Adda", lines: ["R4", "S5", "S6", "z405", "z407"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Trecella", lines: ["R4", "S5", "S6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Pozzuolo Martesana", lines: ["R4", "S5", "S6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Melzo", lines: ["R4", "S5", "S6", "z401", "z404", "z407", "z411"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 12),
+        .init(name: "Vignate", lines: ["R4", "S5", "S6", "z401"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
+        .init(name: "Pioltello Limito", lines: ["R4", "S5", "S6", "RE2", "RE6", "z402"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
+        .init(name: "Milano Lambrate", lines: ["R4", "S9", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 15),
+        .init(name: "Milano Greco Pirelli", lines: ["R4", "S7", "S8", "S9", "S11", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
+
+        /// Regionale R5
+        .init(name: "Brescia", lines: ["R5", "S31", "AV", "R1", "R3", "R4", "R7", "R8", "RE3", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Folzano", lines: ["R5", "R8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Bagnolo Mella", lines: ["R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Manerbio", lines: ["R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Verolanuova", lines: ["R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Robecco Pontevico", lines: ["R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Olmeneta", lines: ["R5", "R6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Cremona", lines: ["R5", "R6", "R37", "R39", "R40", "RE11"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+    ]
 
     static func getMetroInterchanges(line: String) -> [InterchangeInfo] {
         return interchangesMetro.filter { $0.lines.contains(line) }
@@ -738,5 +825,9 @@ struct InterchangesDB {
     
     static func getTILOInterchanges(line: String) -> [InterchangeInfo] {
         return tiloInterchanges.filter { $0.lines.contains(line) }
+    }
+    
+    static func getRLinesInterchanges(line: String) -> [InterchangeInfo] {
+        return regionalInterchanges.filter { $0.lines.contains(line) }
     }
 }

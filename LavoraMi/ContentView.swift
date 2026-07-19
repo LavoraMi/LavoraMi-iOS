@@ -5739,6 +5739,9 @@ func getInterchanges(line: String) -> [InterchangeInfo] {
     else if line.starts(with: "S") && !isLineTILO(lineName: line) {
         return InterchangesDB.getSuburbanInterchanges(line: line)
     }
+    else if line.starts(with: "R") && !isLineTILO(lineName: line) {
+        return InterchangesDB.getRLinesInterchanges(line: line)
+    }
     else if isLineTILO(lineName: line) {
         return InterchangesDB.getTILOInterchanges (line: line)
     }
