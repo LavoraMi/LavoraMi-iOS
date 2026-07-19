@@ -6377,7 +6377,7 @@ extension LineDetailView {
                     if isMetro || isSuburban || isMalpensaExpress || isTilo {
                         VStack(spacing: 0) {
                             ForEach(Array(toShow.enumerated()), id: \.element.id) { idx, interchange in
-                                MetroInterchangeRow(
+                                InterchangeRow(
                                     interchange: interchange,
                                     currentLine: lineName,
                                     isFirst: idx == 0,
@@ -7516,7 +7516,7 @@ private struct BouncingMarqueeText: View {
     }
 }
 
-struct MetroInterchangeRow: View {
+struct InterchangeRow: View {
     let interchange: InterchangeInfo
     let currentLine: String
     let isFirst: Bool
