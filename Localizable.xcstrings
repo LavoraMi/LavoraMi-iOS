@@ -3508,40 +3508,6 @@
         }
       }
     },
-    "Linee R" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regional Lines"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Líneas R"
-          }
-        }
-      }
-    },
-    "Linee RE" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regio Express Lines"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Líneas RE"
-          }
-        }
-      }
-    },
     "Linee Regio Express" : {
       "localizations" : {
         "en" : {
@@ -3570,23 +3536,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Líneas Regional"
-          }
-        }
-      }
-    },
-    "Linee S" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Suburban Lines"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Líneas S"
           }
         }
       }
