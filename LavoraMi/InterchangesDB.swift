@@ -871,6 +871,17 @@ struct InterchangesDB {
         .init(name: "San Cassiano Valchiavenna", lines: ["R11"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Prata Camportaccio", lines: ["R11"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Chiavenna", lines: ["R11", "R13"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        
+        /// Regionale R12
+        .init(name: "Tirano", lines: ["R12", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Villa di Tirano", lines: ["R12", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Bianzone", lines: ["R12", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Tresenda Aprica Teglio", lines: ["R12", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "San Giacomo di Teglio", lines: ["R12", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Chiuro", lines: ["R12", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Ponte In Valtellina", lines: ["R12", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Poggiridenti Trevisio Piateda", lines: ["R12", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Sondrio", lines: ["R12", "R13", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
     ]
 
     static func getMetroInterchanges(line: String) -> [InterchangeInfo] {
