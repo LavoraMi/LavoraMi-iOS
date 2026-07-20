@@ -3509,6 +3509,7 @@
       }
     },
     "Linee R" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3525,6 +3526,7 @@
       }
     },
     "Linee RE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3573,6 +3575,7 @@
       }
     },
     "Linee S" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

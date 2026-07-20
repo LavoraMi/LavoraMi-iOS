@@ -1689,7 +1689,7 @@ struct SettingsView: View{
                     DisclosureGroup(isExpanded: $expandedTrenord){
                         HStack{
                             Label {
-                                Text("Linee S")
+                                Text("Linee Suburbane")
                             } icon: {
                                 Image("sLinesIcon")
                                     .renderingMode(.template)
@@ -1730,7 +1730,7 @@ struct SettingsView: View{
                         }
                         HStack{
                             Label {
-                                Text("Linee R")
+                                Text("Linee Regionali")
                             } icon: {
                                 Image("rLinesIcon")
                                     .renderingMode(.template)
@@ -1770,7 +1770,7 @@ struct SettingsView: View{
                         }
                         HStack{
                             Label {
-                                Text("Linee RE")
+                                Text("Linee Regio Express")
                             } icon: {
                                 Image("reLinesIcon")
                                     .renderingMode(.template)
