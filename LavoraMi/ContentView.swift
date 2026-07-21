@@ -5787,6 +5787,7 @@ struct LineDetailView: View {
     @State private var openPopUpWidget: Bool = false
     @State private var openPopUpLines: Bool = false
     @State private var openInfoAccessibility: Bool = false
+    @State private var openInfoBusOperation: Bool = false
     @State private var selectedBranch: String? = nil
     @State private var tramLinesSupported: [String] = ["1", "3", "5", "7", "9", "10", "15", "16", "19", "24", "27", "31", "33"]
     @State private var linesWithBlackText: [String] = ["M3", "M5", "S5", "S6", "S8", "S11", "S12"]
@@ -6080,6 +6081,20 @@ extension LineDetailView {
                         }
                     }
                 }
+                if(lineName == "R15") {
+                    HStack {
+                        Text("LINEA SOSTITUITA INTERAMENTE DA BUS.")
+                            .font(.system(size: 12))
+                            .foregroundStyle(.secondary)
+                            .bold()
+                        Button(action: {
+                            openInfoBusOperation = true
+                        }) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
                 if(viewModel.linesDeviated.contains(lineName)){
                     HStack {
                         Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
@@ -6137,6 +6152,11 @@ extension LineDetailView {
         .frame(maxHeight: .infinity)
         .padding(.top, 20)
         .background(Color(uiColor: .systemBackground))
+        .alert("Linea sostituita da Bus", isPresented: $openInfoBusOperation) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("Questa linea è attualmente sostituita interamente da Bus e non c'è alcun treno a servire questa tratta. É prevista una riapertura da Settembre 2026 per via dei lavori collegati alla linea Suburbana S7 (Pedemontana). Consulta maggiori info andando su Linee > S7 > Lavori.")
+        }
     }
     
     @ViewBuilder

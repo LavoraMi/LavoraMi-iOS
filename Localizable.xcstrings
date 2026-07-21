@@ -3279,6 +3279,12 @@
         }
       }
     },
+    "Linea sostituita da Bus" : {
+
+    },
+    "LINEA SOSTITUITA INTERAMENTE DA BUS." : {
+
+    },
     "lineaAccessibile" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5062,6 +5068,9 @@
           }
         }
       }
+    },
+    "Questa linea è attualmente sostituita interamente da Bus e non c'è alcun treno a servire questa tratta. É prevista una riapertura da Settembre 2026 per via dei lavori collegati alla linea Suburbana S7 (Pedemontana). Consulta maggiori info andando su Linee > S7 > Lavori." : {
+
     },
     "Recupera qui la Password del tuo Account." : {
       "localizations" : {
