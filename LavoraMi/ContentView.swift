@@ -4992,7 +4992,7 @@ struct LinesView: View {
     
     var malpensaExpress: [LineInfo] {
         [
-            LineInfo(name: "MXP1", branches: "Malpensa T2 - Milano Centrale", type: "Malpensa Express 1", waitMinutes: "30 min.", stations: StationsDB.mxp1, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "MXP1", branches: "Gallarate - Malpensa T2 - Milano Centrale", type: "Malpensa Express 1", waitMinutes: "30 min.", stations: StationsDB.mxp1, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "MXP2", branches: "Malpensa T2 - Milano Cadorna", type: "Malpensa Express 2", waitMinutes: "30 min.", stations: StationsDB.mxp2, accessibilityStatus: String(localized: .lineaAccessibile)),
         ]
     }
