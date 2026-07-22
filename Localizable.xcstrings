@@ -730,6 +730,7 @@
       }
     },
     "ATTUALMENTE LA LINEA ATTESTA A: MILANO BOVISA." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2755,6 +2756,7 @@
       }
     },
     "INTERRUZIONI SULLA LINEA PER LAVORI." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2961,6 +2963,9 @@
           }
         }
       }
+    },
+    "Lavori" : {
+
     },
     "Lavori della settimana..." : {
       "extractionState" : "manual",
@@ -3296,6 +3301,7 @@
       }
     },
     "LINEA SOSTITUITA INTERAMENTE DA BUS." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6150,6 +6156,9 @@
           }
         }
       }
+    },
+    "STATO DELLA LINEA:" : {
+
     },
     "Stato Linea" : {
       "localizations" : {

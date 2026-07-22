@@ -6082,18 +6082,12 @@ extension LineDetailView {
                     }
                 }
                 if(lineName == "R15") {
-                    HStack {
-                        Text("LINEA SOSTITUITA INTERAMENTE DA BUS.")
-                            .font(.system(size: 12))
-                            .foregroundStyle(.secondary)
-                            .bold()
-                        Button(action: {
+                    WarningBanner(
+                        text: "LINEA SOSTITUITA DA BUS.",
+                        action: {
                             openInfoBusOperation = true
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
                         }
-                    }
+                    )
                 }
                 if(viewModel.linesDeviated.contains(lineName)){
                     HStack {
@@ -6440,6 +6434,40 @@ extension LineDetailView {
         .padding(.top, 6)
     }
 }
+
+struct WarningBanner: View {
+    let text: String
+    let action: () -> Void
+    
+    private let amberColor = Color.init(red: 1.0, green: 0.6, blue: 0.0)
+    private let backgroundColor = Color.init(red: 1.0, green: 0.8, blue: 0.4).opacity(0.2)
+    
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .font(.system(size: 16))
+                .foregroundColor(amberColor)
+            
+            Text(text)
+                .font(.system(size: 13, weight: .bold))
+                .foregroundColor(amberColor)
+                .lineLimit(2)
+            
+            Spacer()
+            
+            Button(action: action) {
+                Image(systemName: "info.circle.fill")
+                    .font(.system(size: 16))
+                    .foregroundColor(amberColor)
+            }
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .background(backgroundColor)
+        .cornerRadius(8)
+    }
+}
+ 
 
 struct LineSmallDetailedView: View {
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
