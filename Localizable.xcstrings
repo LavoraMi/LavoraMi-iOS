@@ -158,6 +158,9 @@
         }
       }
     },
+    "%lld attuali," : {
+
+    },
     "%lld attuali, %lld programmati." : {
       "localizations" : {
         "en" : {
@@ -195,6 +198,9 @@
           }
         }
       }
+    },
+    "%lld programmati." : {
+
     },
     "🇪🇸 Spagnolo" : {
       "localizations" : {
@@ -730,7 +736,6 @@
       }
     },
     "ATTUALMENTE LA LINEA ATTESTA A: MILANO BOVISA." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2756,7 +2761,6 @@
       }
     },
     "INTERRUZIONI SULLA LINEA PER LAVORI." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2963,9 +2967,6 @@
           }
         }
       }
-    },
-    "Lavori" : {
-
     },
     "Lavori della settimana..." : {
       "extractionState" : "manual",
@@ -3322,20 +3323,20 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Fully accessible."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Completamente accesible."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Completamente accessibile."
+            "value" : "Accessibile."
           }
         }
       }
@@ -6156,9 +6157,6 @@
           }
         }
       }
-    },
-    "STATO DELLA LINEA:" : {
-
     },
     "Stato Linea" : {
       "localizations" : {

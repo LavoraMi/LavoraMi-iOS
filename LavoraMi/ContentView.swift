@@ -6021,30 +6021,6 @@ extension LineDetailView {
                 }
             }
             VStack(alignment: .leading, spacing: 5) {
-                if(!accessibilityStatus.isEmpty){
-                    HStack{
-                        Image(systemName: "figure.roll")
-                            .foregroundStyle(.gray)
-                            .scaleEffect(1.5)
-                        Image(systemName: (accessibilityStatus == String(localized: .lineaAccessibile) ? "checkmark.circle.fill" : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? "exclamationmark.circle.fill" : "xmark.circle.fill")))
-                            .foregroundStyle(accessibilityStatus == String(localized: .lineaAccessibile) ? .green : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? .yellow : .red))
-                            .scaleEffect(1.5)
-                            .padding(.leading, 5)
-                        Text(accessibilityStatus)
-                            .foregroundColor(.secondary)
-                            .padding(.leading, 5)
-                        Spacer()
-                        Button(action: {
-                            openInfoAccessibility = true;
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-            }
-            Divider()
-            VStack(alignment: .leading, spacing: 5) {
                 Text("DIREZIONI:")
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -6130,21 +6106,52 @@ extension LineDetailView {
                 }
             }
             
-            VStack(alignment: .leading, spacing: 5) {
-                Text("LAVORI SULLA LINEA:")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .bold()
-                
-                Text("\(workNow) attuali, \(workScheduled) programmati.")
-                    .font(.title3)
-                    .multilineTextAlignment(.leading)
+            HStack(alignment: .center, spacing: 12) {
+                HStack(spacing: 8) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.system(size: 22))
+                        .foregroundColor(.gray)
+                    
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("\(workNow) attuali,")
+                            .font(.system(size: 14))
+                            .foregroundColor(.secondary)
+                        
+                        Text("\(workScheduled) programmati.")
+                            .font(.system(size: 14))
+                            .foregroundColor(.secondary)
+                    }
+                }
+                Divider()
+                    .frame(height: 36)
+                HStack(spacing: 6) {
+                    Image(systemName: "figure.roll")
+                        .font(.system(size: 18))
+                        .foregroundColor(.gray)
+                    Image(systemName: accessibilityStatus == String(localized: .lineaAccessibile) ? "checkmark.circle.fill" : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? "exclamationmark.circle.fill" : "xmark.circle.fill"))
+                        .font(.system(size: 18))
+                        .foregroundColor(accessibilityStatus == String(localized: .lineaAccessibile) ? .green : (accessibilityStatus == String(localized: .lineaParzialmenteAccessibile) ? .yellow : .red))
+                    Text(accessibilityStatus)
+                        .font(.system(size: 14))
+                        .foregroundColor(.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                    
+                    Button(action: {
+                        openInfoAccessibility = true
+                    }) {
+                        Image(systemName: "info.circle.fill")
+                            .font(.system(size: 16))
+                            .foregroundColor(.gray)
+                    }
+                }
             }
+            .padding(.vertical, 3)
         }
         .padding()
         .frame(maxWidth: .infinity)
         .frame(maxHeight: .infinity)
-        .padding(.top, 20)
+        .padding(.top, 10)
         .background(Color(uiColor: .systemBackground))
         .alert("Linea sostituita da Bus", isPresented: $openInfoBusOperation) {
             Button("OK", role: .cancel) {}
@@ -6231,6 +6238,7 @@ extension LineDetailView {
         }
         .padding(.horizontal)
         .padding(.bottom, 8)
+        .padding(.top, -10)
     }
     
     @ViewBuilder
