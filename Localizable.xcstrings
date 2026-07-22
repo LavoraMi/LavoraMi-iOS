@@ -2787,6 +2787,7 @@
       }
     },
     "INTERRUZIONI SULLA LINEA PER LAVORI." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2798,6 +2799,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "INTERRUPCIONES EN LA LÍNEA POR OBRAS."
+          }
+        }
+      }
+    },
+    "interruzioniGeneraleLavori" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SERVICE DISRUPTIONS DUE TO WORKS ON THE LINE."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INTERRUPCIONES EN LA LÍNEA POR OBRAS."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INTERRUZIONI SULLA LINEA PER LAVORI."
           }
         }
       }
@@ -6884,6 +6908,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tram"
+          }
+        }
+      }
+    },
+    "tramDeviations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TRAM ROUTE WITH DETOURS."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LÍNEA DE TRANVÍA CON DESVÍOS."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LINEA DI TRAM CON DEVIAZIONI."
           }
         }
       }

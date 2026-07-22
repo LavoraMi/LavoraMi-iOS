@@ -6037,12 +6037,9 @@ extension LineDetailView {
                         .bold()
                 }
                 if(viewModel.suburbanWithInterruptions.contains(lineName)){
-                    HStack {
-                        Text("INTERRUZIONI SULLA LINEA PER LAVORI.")
-                            .font(.system(size: 12))
-                            .foregroundStyle(.secondary)
-                            .bold()
-                        Button(action: {
+                    WarningBanner(
+                        text: String(localized: .interruzioniGeneraleLavori),
+                        action: {
                             let url = getSuburbanDeviationLink(line: lineName, viewModel: viewModel)
                             
                             if(howToOpenLinks == .inApp) {
@@ -6051,11 +6048,8 @@ extension LineDetailView {
                             else {
                                 openURLAction(url)
                             }
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
                         }
-                    }
+                    )
                 }
                 if(lineName == "R15") {
                     WarningBanner(
@@ -6066,12 +6060,9 @@ extension LineDetailView {
                     )
                 }
                 if(viewModel.linesDeviated.contains(lineName)){
-                    HStack {
-                        Text("QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.")
-                            .font(.system(size: 12))
-                            .foregroundStyle(.secondary)
-                            .bold()
-                        Button(action: {
+                    WarningBanner(
+                        text: String(localized: .tramDeviations),
+                        action: {
                             let url = getLineDeviationLink(line: lineName, viewModel: viewModel)
                             
                             if(howToOpenLinks == .inApp) {
@@ -6080,11 +6071,8 @@ extension LineDetailView {
                             else {
                                 openURLAction(url)
                             }
-                        }) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.gray)
                         }
-                    }
+                    )
                 }
             }
             
@@ -6451,7 +6439,7 @@ struct WarningBanner: View {
     private let backgroundColor = Color.init(red: 1.0, green: 0.8, blue: 0.4).opacity(0.2)
     
     var body: some View {
-        HStack(spacing: 8) {
+        HStack(spacing: 7) {
             Image(systemName: "exclamationmark.triangle.fill")
                 .font(.system(size: 16))
                 .foregroundColor(amberColor)
@@ -6475,7 +6463,6 @@ struct WarningBanner: View {
         .cornerRadius(8)
     }
 }
- 
 
 struct LineSmallDetailedView: View {
     @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
