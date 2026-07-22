@@ -2786,23 +2786,6 @@
         }
       }
     },
-    "INTERRUZIONI SULLA LINEA PER LAVORI." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SERVICE DISRUPTIONS DUE TO WORKS ON THE LINE."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "INTERRUPCIONES EN LA LÍNEA POR OBRAS."
-          }
-        }
-      }
-    },
     "interruzioniGeneraleLavori" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5110,22 +5093,6 @@
         }
       }
     },
-    "Qua puoi gestire il tuo Account e le tue informazioni." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Here you can manage your Account and your information."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aquí puedes gestionar tu Cuenta y tus datos."
-          }
-        }
-      }
-    },
     "Questa applicazione aggrega dati pubblici, accessibili a tutti, per facilitarne la consultazione." : {
       "localizations" : {
         "en" : {
@@ -5170,6 +5137,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Actualmente, esta línea ha sido sustituida íntegramente por autobuses y no hay ningún tren que preste servicio en este tramo. Está prevista una reapertura a partir de septiembre de 2026 debido a las obras relacionadas con la línea S7 (Pedemontana). Consulta más información en: Líneas > S7 > Obras."
+          }
+        }
+      }
+    },
+    "Qui puoi gestire il tuo Account e le tue informazioni." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Here you can manage your Account and your information."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aquí puedes gestionar tu Cuenta y tus datos."
           }
         }
       }

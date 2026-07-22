@@ -2559,7 +2559,7 @@ struct AccountView: View {
                 Text("👋 Ciao \(fullName)")
                     .font(.system(size: 32, weight: .bold))
                     .foregroundStyle(.primary)
-                Text("Qua puoi gestire il tuo Account e le tue informazioni.")
+                Text("Qui puoi gestire il tuo Account e le tue informazioni.")
                     .font(.system(size: 12))
                     .foregroundStyle(.gray)
                     .padding(.top, -8)
