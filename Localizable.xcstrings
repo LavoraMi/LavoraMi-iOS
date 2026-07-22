@@ -159,7 +159,20 @@
       }
     },
     "%lld attuali," : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld current,"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld actuales,"
+          }
+        }
+      }
     },
     "%lld attuali, %lld programmati." : {
       "localizations" : {
@@ -200,7 +213,20 @@
       }
     },
     "%lld programmati." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld scheduled."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld programadas."
+          }
+        }
+      }
     },
     "🇪🇸 Spagnolo" : {
       "localizations" : {
@@ -3301,36 +3327,19 @@
         }
       }
     },
-    "LINEA SOSTITUITA INTERAMENTE DA BUS." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ROUTE FULLY REPLACED BY BUSES."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "LÍNEA SUSTITUIDA ÍNTEGRAMENTE POR AUTOBÚS."
-          }
-        }
-      }
-    },
     "lineaAccessibile" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Fully accessible."
+            "state" : "translated",
+            "value" : "Accessible."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Completamente accesible."
+            "state" : "translated",
+            "value" : "Accesible."
           }
         },
         "it" : {
@@ -3703,6 +3712,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Líneas Trenord"
+          }
+        }
+      }
+    },
+    "lineSubWithBus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROUTE REPLACED BY BUSES."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LÍNEA SUSTITUIDA POR AUTOBÚS."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LINEA SOSTITUITA DA BUS."
           }
         }
       }

@@ -6059,7 +6059,7 @@ extension LineDetailView {
                 }
                 if(lineName == "R15") {
                     WarningBanner(
-                        text: "LINEA SOSTITUITA DA BUS.",
+                        text: String(localized: .lineSubWithBus),
                         action: {
                             openInfoBusOperation = true
                         }
