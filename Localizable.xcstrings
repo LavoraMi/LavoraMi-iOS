@@ -5562,10 +5562,36 @@
       }
     },
     "Scegli i tuoi interessi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your interests"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige tus intereses"
+          }
+        }
+      }
     },
     "Scegli i tuoi operatori di trasporti più usati e, mettendoli nei preferiti, riceverai subito le notifiche con nuovi lavori." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the transport providers you use most often and, by adding them to your favourites, you’ll receive instant notifications of new jobs."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige las empresas de transporte que más utilizas y, al añadirlas a tus favoritos, recibirás inmediatamente notificaciones con nuevos trabajos."
+          }
+        }
+      }
     },
     "Scegli qualsiasi linea." : {
       "localizations" : {
