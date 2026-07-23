@@ -7604,75 +7604,78 @@ struct InterchangeRow: View {
                 Rectangle()
                     .fill(isFirst ? Color.clear : lineColor)
                     .frame(width: 3)
-                    .frame(height: 20)
+                    .frame(height: 14)
                 Circle()
                     .strokeBorder(lineColor, lineWidth: 3)
-                    .background(Circle().fill(Color(.systemBackground)))
-                    .frame(width: 18, height: 18)
+                    .background(Circle().fill(Color.white))
+                    .frame(width: 16, height: 16)
                 Rectangle()
                     .fill(isLast ? Color.clear : lineColor)
                     .frame(width: 3)
                     .frame(maxHeight: .infinity)
             }
-            .frame(width: 38)
+            .frame(width: 30)
 
             VStack(alignment: .leading, spacing: 8) {
-                BouncingMarqueeText(
-                    text: interchange.name.uppercased(),
-                    font: .custom("TitilliumWeb-Bold", size: 21),
-                    color: Color("TextColor"),
-                    lineHeight: 26
-                )
-                
+                Text(interchange.name.uppercased())
+                    .font(.custom("TitilliumWeb-Bold", size: 20))
+                    .foregroundStyle(Color("TextColor"))
+
                 if !otherLines.isEmpty {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 6) {
-                            if(interchange.typeOfInterchange == "stadium.fill") {
-                                Image(interchange.typeOfInterchange)
-                                    .renderingMode(.template)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 24, height: 24)
-                                    .foregroundStyle(Color("TextColor"))
-                            }
-                            else {
-                                Image(systemName: interchange.typeOfInterchange)
-                                    .font(.custom("TitilliumWeb-Bold", size: 21))
-                                    .foregroundStyle(Color("TextColor"))
-                            }
-                            ForEach(otherLines, id: \.self) { line in
-                                Group {
-                                    if line.contains(String(localized: .filobus)) || line.wholeMatch(of: /9[0-3]/) != nil {Label(line, systemImage: "bolt.fill")}
-                                    else if line.starts(with: "N") {Label(line, systemImage: "moon.fill")}
-                                    else {Text(line)}
+                    HStack(spacing: 6) {
+                        if interchange.typeOfInterchange == "stadium.fill" {
+                            Image(interchange.typeOfInterchange)
+                                .renderingMode(.template)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 22, height: 22)
+                                .foregroundStyle(Color("TextColor"))
+                        } else {
+                            Image(systemName: interchange.typeOfInterchange)
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundStyle(Color("TextColor"))
+                        }
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 6) {
+                                ForEach(otherLines, id: \.self) { line in
+                                    Group {
+                                        if line.contains(String(localized: .filobus)) || line.wholeMatch(of: /9[0-3]/) != nil {
+                                            Label(line, systemImage: "bolt.fill")
+                                        } else if line.starts(with: "N") {
+                                            Label(line, systemImage: "moon.fill")
+                                        } else {
+                                            Text(line)
+                                        }
+                                    }
+                                    .font(.system(size: 13, weight: .bold))
+                                    .foregroundStyle(.white)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                                    .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
                                 }
-                                .font(.system(size: 11, weight: .bold))
-                                .foregroundStyle(.white)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 8)
-                                .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
                             }
                         }
                     }
-                }
-                else {
+                } else {
                     HStack(spacing: 8) {
                         Image(systemName: "nosign")
-                            .font(.custom("TitilliumWeb-Bold", size: 21))
+                            .font(.system(size: 18, weight: .bold))
                             .foregroundStyle(Color("TextColor"))
-                        
+
                         Text("Fermata senza interscambi.")
                             .font(.custom("TitilliumWeb-Bold", size: 15))
                             .foregroundStyle(Color("TextColor"))
                     }
                 }
             }
-            .padding(.bottom, 16)
-            .padding(.trailing, 16)
+            .padding(.top, 6)
+            .padding(.bottom, 24)
 
             Spacer(minLength: 0)
         }
         .padding(.leading, 16)
+        .padding(.trailing, 16)
     }
 }
 
