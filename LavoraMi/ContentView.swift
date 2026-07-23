@@ -1685,7 +1685,7 @@ struct SettingsView: View{
                         .padding(.vertical, 4)
                     }
                 }
-                Section("Preferiti"){
+                Section(content: {
                     DisclosureGroup(isExpanded: $expandedTrenord){
                         HStack{
                             Label {
@@ -2070,7 +2070,9 @@ struct SettingsView: View{
                         }
                         .buttonStyle(.borderless)
                     }
-                }
+                }, header: {
+                    FavoritesHeader()
+                })
                 Section("Generali"){
                     NavigationLink(destination: NotificationsView(viewModel: viewModel)){
                         Label("Notifiche", systemImage: "bell.fill")
@@ -2234,6 +2236,27 @@ struct SettingsView: View{
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
                     .ignoresSafeArea(.all)
+            }
+        }
+    }
+}
+
+struct FavoritesHeader: View {
+    @State private var showInfo = false
+    
+    var body: some View {
+        HStack {
+            Text("Preferiti")
+            Button(action: { showInfo.toggle() }) {
+                Image(systemName: "info.circle")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+            }
+            .buttonStyle(.borderless)
+            .alert("Scegli i tuoi interessi", isPresented: $showInfo) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text("Scegli i tuoi operatori di trasporti più usati e, mettendoli nei preferiti, riceverai subito le notifiche con nuovi lavori.")
             }
         }
     }
