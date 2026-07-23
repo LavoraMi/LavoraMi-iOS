@@ -5729,6 +5729,14 @@ func getSuburbanDeviationLink(line: String, viewModel: WorkViewModel) -> URL {
     return URL(string: "www.lavorami.it/404")!
 }
 
+func getRegionalDeviationLink(line: String, viewModel: WorkViewModel) -> URL {
+    if let i = viewModel.regionalWithInterruptions.firstIndex(of: line) {
+        return URL(string: viewModel.regionalInterruptionLinks[i])!
+    }
+    
+    return URL(string: "www.lavorami.it/404")!
+}
+
 func getInterchanges(line: String) -> [InterchangeInfo] {
     if line.starts(with: "M") && !line.starts(with: "MXP") {
         return InterchangesDB.getMetroInterchanges(line: line)
@@ -6041,6 +6049,21 @@ extension LineDetailView {
                         text: String(localized: .interruzioniGeneraleLavori),
                         action: {
                             let url = getSuburbanDeviationLink(line: lineName, viewModel: viewModel)
+                            
+                            if(howToOpenLinks == .inApp) {
+                                selectedURL = url
+                            }
+                            else {
+                                openURLAction(url)
+                            }
+                        }
+                    )
+                }
+                if(viewModel.regionalWithInterruptions.contains(lineName)) {
+                    WarningBanner(
+                        text: String(localized: .interruzioniGeneraleLavori),
+                        action: {
+                            let url = getRegionalDeviationLink(line: lineName, viewModel: viewModel)
                             
                             if(howToOpenLinks == .inApp) {
                                 selectedURL = url

@@ -31,6 +31,8 @@ class WorkViewModel: ObservableObject {
     @Published var linesSupportedGTFS: [String] = [""]
     @Published var suburbanWithInterruptions: [String] = [""]
     @Published var suburbanInterruptionLinks: [String] = [""]
+    @Published var regionalWithInterruptions: [String] = [""]
+    @Published var regionalInterruptionLinks: [String] = [""]
     
     private let urlString = "https://cdn.lavorami.it/lavoriAttuali.json"
     private let urlVariables = "https://cdn.lavorami.it/_vars.json"
@@ -130,8 +132,15 @@ class WorkViewModel: ObservableObject {
                     self?.linesDeviated = result.linesAffectedbyDeviation
                     self?.linesDeviatedLink = result.linesDeviationLinks
                     self?.linesSupportedGTFS = result.linesSupportedGTFS
+                    
+                    ///Linee Suburbane
                     self?.suburbanWithInterruptions = result.suburbanWithInterruptions
                     self?.suburbanInterruptionLinks = result.suburbanInterruptionLinks
+                    
+                    ///Linee Regionali
+                    self?.regionalWithInterruptions = result.regionalLinesWithDeviations
+                    self?.regionalInterruptionLinks = result.regionalLinesDeviationLinks
+                    
                     self?.enablePassanteWork = (result.enablePassanteWork == "true")
                     self?.strikeUpdateLive = result.strikeUpdateLive
                     
@@ -208,6 +217,8 @@ struct RemoteConfigData: Codable {
     let linesSupportedGTFS: [String]
     let suburbanWithInterruptions: [String]
     let suburbanInterruptionLinks: [String]
+    let regionalLinesWithDeviations: [String]
+    let regionalLinesDeviationLinks: [String]
 }
 
 struct RequirementsData: Codable {
