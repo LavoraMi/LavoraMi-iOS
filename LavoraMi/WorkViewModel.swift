@@ -33,10 +33,22 @@ class WorkViewModel: ObservableObject {
     @Published var suburbanInterruptionLinks: [String] = [""]
     @Published var regionalWithInterruptions: [String] = [""]
     @Published var regionalInterruptionLinks: [String] = [""]
+    @Published var isStrikeToday: Bool = false
     
     private let urlString = "https://cdn.lavorami.it/lavoriAttuali.json"
     private let urlVariables = "https://cdn.lavorami.it/_vars.json"
     private let requirements = "https://cdn.lavorami.it/requirements.json"
+    
+    private func updateStrikeTodayStatus() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        
+        if let strikeDate = formatter.date(from: dateStrike) {
+            let today = Calendar.current.startOfDay(for: Date())
+            isStrikeToday = Calendar.current.isDate(strikeDate, inSameDayAs: today)
+        }
+        else {isStrikeToday = false}
+    }
     
     func fetchWorks() {
         guard let url = URL(string: urlString) else {
@@ -143,6 +155,7 @@ class WorkViewModel: ObservableObject {
                     
                     self?.enablePassanteWork = (result.enablePassanteWork == "true")
                     self?.strikeUpdateLive = result.strikeUpdateLive
+                    self?.updateStrikeTodayStatus()
                     
                     if self?.strikeEnabled == true {
                             NotificationManager.shared.scheduleStrikeNotifications(

@@ -724,37 +724,39 @@ struct MainView: View {
                         Divider()
                             .padding(.vertical, 2)
 
-                        HStack(spacing: 8) {
-                            ZStack {
-                                Circle()
-                                    .fill(Color.red.opacity(0.35))
-                                    .frame(width: 8, height: 8)
-                                    .scaleEffect(livePulse ? 2.8 : 1.0)
-                                    .opacity(livePulse ? 0.0 : 1.0)
-                                Circle()
-                                    .fill(Color.red)
-                                    .frame(width: 8, height: 8)
-                            }
-                            .frame(width: 16, height: 16)
-                            .onAppear {
-                                livePulse = false
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                                    withAnimation(.easeOut(duration: 1.4).repeatForever(autoreverses: false)) {
-                                        livePulse = true
+                        if(viewModel.isStrikeToday) {
+                            HStack(spacing: 8) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.red.opacity(0.35))
+                                        .frame(width: 8, height: 8)
+                                        .scaleEffect(livePulse ? 2.8 : 1.0)
+                                        .opacity(livePulse ? 0.0 : 1.0)
+                                    Circle()
+                                        .fill(Color.red)
+                                        .frame(width: 8, height: 8)
+                                }
+                                .frame(width: 16, height: 16)
+                                .onAppear {
+                                    livePulse = false
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                        withAnimation(.easeOut(duration: 1.4).repeatForever(autoreverses: false)) {
+                                            livePulse = true
+                                        }
                                     }
                                 }
+
+                                Text("LIVE: ")
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundStyle(.primary)
+
+                                MarqueeText(text: viewModel.strikeUpdateLive)
+                                    .id(marqueeId)
                             }
-
-                            Text("LIVE: ")
-                                .font(.system(size: 13, weight: .semibold))
-                                .foregroundStyle(.primary)
-
-                            MarqueeText(text: viewModel.strikeUpdateLive)
-                                .id(marqueeId)
+                            
+                            Divider()
+                                .padding(.vertical, 2)
                         }
-
-                        Divider()
-                            .padding(.vertical, 2)
 
                         HStack(spacing: 6) {
                             Image(systemName: "building.2.fill")
