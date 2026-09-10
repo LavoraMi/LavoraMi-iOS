@@ -6278,7 +6278,15 @@ struct LineDetailView: View {
     
     var onAppear: (() -> Void)? = nil
 
-    private var mainStations: [MetroStation] {stationsForCurrentDirection}
+    private var mainStations: [MetroStation] {
+        if hasRitornoBranch {
+            return stationsForCurrentDirection
+        }
+        
+        let filtered = stationsForCurrentDirection
+        let main = filtered.filter { $0.branch == "Main" }
+        return main.isEmpty ? filtered : main
+    }
     private var isBusLineForRoute: Bool {typeOfTransport == "Movibus"}
     private var hasRitornoBranch: Bool {stations.contains { $0.branch.localizedCaseInsensitiveContains("Ritorno") }}
 
@@ -6374,40 +6382,62 @@ struct LineDetailView: View {
     }
 
     private func computeBranchData() -> [(coords: [CLLocationCoordinate2D], isPlanned: Bool)] {
-        let realMainStations = stations.filter { $0.branch == "Main" }
-        let branchGroups = Dictionary(grouping: stations.filter {
-            $0.branch != "Main"
-            && !$0.branch.localizedCaseInsensitiveContains("Ritorno")
-            && !$0.branch.localizedCaseInsensitiveContains("Main - Ritorno")
-        }, by: \.branch)
-        
-        return branchGroups.compactMap { branchName, branchStations -> (coords: [CLLocationCoordinate2D], isPlanned: Bool)? in
-            guard !branchStations.isEmpty else { return nil }
+        guard let mainStart = stations.firstIndex(where: { $0.branch == "Main" }),
+              let mainEnd = stations.lastIndex(where: { $0.branch == "Main" })
+        else { return [] }
 
-            let isPlanned = branchName.lowercased().contains("new") || branchName.lowercased().contains("nuova")
-            let searchPool = isPlanned ? stations.filter { $0.branch != branchName } : realMainStations
-            guard !searchPool.isEmpty else { return nil }
+        struct Block {
+            let branch: String
+            let startIndex: Int
+            let endIndex: Int
+        }
 
-            func minDist(_ s: MetroStation) -> CLLocationDistance {
-                let loc = CLLocation(latitude: s.coordinate.latitude, longitude: s.coordinate.longitude)
-                return searchPool.map {
-                    CLLocation(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude).distance(from: loc)
-                }.min() ?? .infinity
+        var blocks: [Block] = []
+        var i = 0
+        while i < stations.count {
+            let branch = stations[i].branch
+            let isEligible = branch != "Main" && !branch.localizedCaseInsensitiveContains("Ritorno")
+            if isEligible {
+                let start = i
+                var j = i
+                while j < stations.count && stations[j].branch == branch { j += 1 }
+                blocks.append(Block(branch: branch, startIndex: start, endIndex: j - 1))
+                i = j
+            }
+            else {i += 1}
+        }
+
+        var branchEndIndex: [String: Int] = [:]
+        for block in blocks {
+            branchEndIndex[block.branch] = block.endIndex
+        }
+
+        return blocks.compactMap { block -> (coords: [CLLocationCoordinate2D], isPlanned: Bool)? in
+            let blockStations = Array(stations[block.startIndex...block.endIndex])
+            let isPlanned = block.branch.lowercased().contains("new")
+                         || block.branch.lowercased().contains("nuova")
+
+            let junctionIdx: Int
+
+            let baseBranch = block.branch
+                .replacingOccurrences(of: " - New", with: "")
+                .replacingOccurrences(of: " - Nuova", with: "")
+                .trimmingCharacters(in: .whitespaces)
+
+            if baseBranch != block.branch, let parentEnd = branchEndIndex[baseBranch] {
+                junctionIdx = parentEnd
+            }
+            else if block.endIndex < mainStart {
+                junctionIdx = mainStart
+            }
+            else {
+                junctionIdx = mainEnd
             }
 
-            let firstDist = minDist(branchStations.first!)
-            let lastDist = minDist(branchStations.last!)
-            let oriented = firstDist <= lastDist ? branchStations : branchStations.reversed()
-
-            let junctionLoc = CLLocation(latitude: oriented.first!.coordinate.latitude, longitude: oriented.first!.coordinate.longitude)
-            guard let junction = searchPool.min(by: { a, b in
-                CLLocation(latitude: a.coordinate.latitude, longitude: a.coordinate.longitude).distance(from: junctionLoc)
-                < CLLocation(latitude: b.coordinate.latitude, longitude: b.coordinate.longitude).distance(from: junctionLoc)
-            }) else {
-                return nil
-            }
-
-            return ([junction.coordinate] + oriented.map(\.coordinate), isPlanned)
+            let junction = stations[junctionIdx].coordinate
+            
+            if junctionIdx < block.startIndex {return ([junction] + blockStations.map(\.coordinate), isPlanned)}
+            else {return (blockStations.map(\.coordinate) + [junction], isPlanned)}
         }
     }
     
