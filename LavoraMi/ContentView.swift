@@ -1763,6 +1763,7 @@ struct SettingsView: View{
     
     ///APP DATAS
     @AppStorage("enableNotifications") private var enableNotifications: Bool = true
+    @AppStorage("selectedWidgetLine") private var selectedWidgetLine: String = ""
     @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     @AppStorage("preferredFilter") private var preferredFilter: FilterBy = .all
     @AppStorage("appearanceSelection") private var appearanceSelection: AppearanceType = .system
@@ -2392,6 +2393,7 @@ struct SettingsView: View{
                     showTranslateButton = false
                     showRecentSearches = true
                     recentlySearchedLinesData = Data()
+                    selectedWidgetLine = ""
                 }
             } message: {
                 Text("Sei sicuro di voler ripristinare le impostazioni?")
