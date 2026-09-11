@@ -6599,25 +6599,25 @@ extension LineDetailView {
                         .lineLimit(1)
                 }
                 else {
-                    if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80" || lineName.contains("RE")){
+                    if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80" || lineName.contains("RE")) {
                         Text("\(typeOfTransport) \(lineName)")
                             .font(.custom("TitilliumWeb-Bold", size: 40))
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)
                     }
-                    else if(lineName.contains("M") && (lineName != "MXP1" || lineName != "MXP2")){
+                    else if(lineName.contains("M") && (lineName != "MXP1" || lineName != "MXP2")) {
                         Text("\(typeOfTransport) \(lineName)")
                             .font(.custom("HelveticaNeue-Bold", size: 30))
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)
                     }
-                    else if (!isDetailed) {
+                    else if (!isDetailed || typeOfTransport == "Movibus") {
                         Text("\(typeOfTransport)")
                             .font(.system(size: 30))
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)
                     }
-                    else{
+                    else {
                         Text("\(typeOfTransport) \(lineName)")
                             .font(.system(size: 30))
                             .minimumScaleFactor(0.5)
