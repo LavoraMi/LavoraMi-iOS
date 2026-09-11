@@ -68,6 +68,39 @@ struct StructedMovibusView: View {
                 )
             }
 
+            Text("Puoi rivedere questa pagina premendo sulla tab \"Mappa\" quando è selezionata.")
+                .font(.system(size: 14))
+                .foregroundStyle(.secondary)
+                .padding(.top, 30)
+                .padding(.horizontal)
+                .multilineTextAlignment(.center)
+            
+            HStack {
+                Spacer()
+                Button(action: {})
+                {
+                    HStack(spacing: 8) {
+                        Image(systemName: "location.fill")
+                            .font(.title3)
+                        
+                        Text("Mappa")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .lineLimit(1)
+                            .fixedSize(horizontal: true, vertical: false)
+                    }
+                    .frame(maxWidth: 200)
+                    .frame(height: 38)
+                    .background(
+                        Capsule()
+                            .fill(Color(red: 28/255, green: 28/255, blue: 1))
+                    )
+                    .foregroundStyle(.white)
+                }
+                Spacer()
+            }
+            .padding(.top, 20)
+            
             Spacer()
 
             if #available(iOS 26.0, *) {

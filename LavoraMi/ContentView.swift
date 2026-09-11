@@ -6888,7 +6888,9 @@ extension LineDetailView {
             if isDetailed {
                 Button(action: {
                     if feedbacksEnabled { HapticManager.shared.trigger() }
-                    withAnimation(.snappy) { selectedTab = .map }
+                    
+                    if(selectedTab != .map) {withAnimation(.snappy) { selectedTab = .map }}
+                    else {openPopUpMovibus = true}
                 }) {
                     HStack(spacing: 8) {
                         Image(systemName: "location.fill")
