@@ -4063,7 +4063,20 @@
       }
     },
     "Mappe per i Bus" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bus Maps"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mapas de Autobuses"
+          }
+        }
+      }
     },
     "messaggioEmailDati" : {
       "extractionState" : "manual",
