@@ -6890,7 +6890,9 @@ extension LineDetailView {
                     if feedbacksEnabled { HapticManager.shared.trigger() }
                     
                     if(selectedTab != .map) {withAnimation(.snappy) { selectedTab = .map }}
-                    else {openPopUpMovibus = true}
+                    else {
+                        if(typeOfTransport == "Movibus"){openPopUpMovibus = true}
+                    }
                 }) {
                     HStack(spacing: 8) {
                         Image(systemName: "location.fill")
