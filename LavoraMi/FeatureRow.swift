@@ -35,7 +35,7 @@ struct FeatureRow: View {
 }
 
 struct StructedMovibusView: View {
-    var onDone: () -> Void = {}
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -70,16 +70,30 @@ struct StructedMovibusView: View {
 
             Spacer()
 
-            Button(action: onDone) {
-                Text("Chiudi")
-                    .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 18)
-                    .background(Color.blue)
-                    .clipShape(Capsule())
+            if #available(iOS 26.0, *) {
+                Button(action: { dismiss() }) {
+                    Text("Chiudi")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 18)
+                }
+                .padding(.bottom, 24)
+                .buttonStyle(.glass)
+                .tint(Color(red: 28/255, green: 28/255, blue: 1))
             }
-            .padding(.bottom, 24)
+            else {
+                Button(action: { dismiss() }) {
+                    Text("Chiudi")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 18)
+                        .background(Color.blue)
+                        .clipShape(Capsule())
+                }
+                .padding(.bottom, 24)
+            }
         }
         .padding(.horizontal, 24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

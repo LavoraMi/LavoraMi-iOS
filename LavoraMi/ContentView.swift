@@ -6486,10 +6486,7 @@ struct LineDetailView: View {
                     .ignoresSafeArea(.all)
             }
             .sheet(isPresented: $openPopUpMovibus) {
-                StructedMovibusView(onDone: {
-                    //openPopUpMovibus = false
-                    //seenPopUpInfoMovibus = false
-                })
+                StructedMovibusView()
             }
             .alert("Errore di connessione", isPresented: $showErrorDBSavePopUp) {
                 Button("Chiudi", role: .cancel) { }
