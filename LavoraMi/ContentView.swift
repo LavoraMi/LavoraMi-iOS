@@ -4352,7 +4352,7 @@ struct LibraryDetailView: View {
 }
 
 struct HowAppWorksView: View {
-    let interchangeInfo: InterchangeInfo = .init(name: "Romolo", lines: ["M2", "R31", "S9", "S19"], typeOfInterchange: "lightrail.fill")
+    let interchangeInfo: InterchangeInfo = .init(name: "Rho Fiera-Milano", lines: ["M1", "S5", "S6", "S11", "R21", "561"], typeOfInterchange: "lightrail.fill")
     let workItem: WorkItem = .init(title: "Rallentamenti", titleIcon: "clock.badge.fill", typeOfTransport: "train.side.front.car", roads: "Palazzolo, Camnago Lentate, Seveso", lines: ["S2", "S4", "R16"], startDate: ISO8601DateFormatter().date(from: "2026-02-23T00:00:00+01:00") ?? Date(), endDate: Calendar.current.date(byAdding: .day, value: 20, to: Date()) ?? Date(), details: "Nei giorni feriali (escluso il sabato), per lavori di potenziamento infrastrutturale nella tratta Palazzolo – Camnago/L. – Seveso, i seguenti treni circoleranno tra Milano Cadorna e Palazzolo M. a eccezione del treno “R” 11689 che sarà soppresso per l’intero percorso. Si segnala che le corse autobus d’orario 1689A, 691A e 693A saranno sostituite rispettivamente dalle corse 3689A, 2691A e 2693A.", company: "Trenord")
     let stations: [MetroStation] = MetroStationsDB.stationsM1;
     
@@ -4447,7 +4447,7 @@ struct HowAppWorksView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 10)
                 
-                InterchangeRow(interchange: interchangeInfo, currentLine: "M1", isFirst: false, isLast: false)
+                InterchangeRow(interchange: interchangeInfo, currentLine: "RE4", isFirst: false, isLast: false)
                     .padding(.top, 20)
                 SectionDivider()
                 SectionHeader(icon: "hand.raised.fill", title: String(localized: .fermataCantiere))
