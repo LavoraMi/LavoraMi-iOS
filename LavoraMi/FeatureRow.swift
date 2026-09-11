@@ -49,22 +49,22 @@ struct StructedMovibusView: View {
                 FeatureRow(
                     icon: "location.fill.viewfinder",
                     iconColor: Color(red: 28/255, green: 28/255, blue: 1),
-                    title: "Visualizza le Mappe",
-                    description: "Guarda le Mappe dei bus che usi ogni giorno! Dettagliate e create appositamente per te! [Funzione disponibile per linee MOVIBUS]."
+                    title: String(localized: .featureRow1Title),
+                    description: String(localized: .featureRow1Desc)
                 )
 
                 FeatureRow(
                     icon: "mappin.and.ellipse",
                     iconColor: Color(red: 28/255, green: 28/255, blue: 1),
-                    title: "Seleziona una fermata",
-                    description: "Seleziona una fermata e visualizza gli orari del bus! Basta cliccarci sopra e vedrai le prossime partenze."
+                    title: String(localized: .featureRow2Title),
+                    description: String(localized: .featureRow2Desc)
                 )
 
                 FeatureRow(
                     icon: "arrow.left.arrow.right",
                     iconColor: Color(red: 28/255, green: 28/255, blue: 1),
-                    title: "Cambia Direzione",
-                    description: "Cambia la direzione del tuo bus, selezionando il pulsante con questa icona. Potrai vedere le fermate nel senso opposto!"
+                    title: String(localized: .featureRow3Title),
+                    description: String(localized: .featureRow3Desc)
                 )
             }
 

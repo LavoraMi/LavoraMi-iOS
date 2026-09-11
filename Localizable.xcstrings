@@ -1887,6 +1887,144 @@
         }
       }
     },
+    "featureRow1Desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a look at the bus maps for the routes you use every day! They’re detailed and designed especially for you! [Feature available for MOVIBUS routes]."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Echa un vistazo a los mapas de las líneas de autobús que utilizas a diario! ¡Son detallados y están diseñados especialmente para ti! [Función disponible para las líneas de MOVIBUS]."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda le Mappe dei bus che usi ogni giorno! Dettagliate e create appositamente per te! [Funzione disponibile per linee MOVIBUS]."
+          }
+        }
+      }
+    },
+    "featureRow1Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Maps"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Mapas"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizza le Mappe"
+          }
+        }
+      }
+    },
+    "featureRow2Desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a bus stop and view the bus timetables! Just click on it and you’ll see the next departures."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Selecciona una parada y consulta los horarios del autobús! Solo tienes que hacer clic en ella y verás las próximas salidas."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona una fermata e visualizza gli orari del bus! Basta cliccarci sopra e vedrai le prossime partenze."
+          }
+        }
+      }
+    },
+    "featureRow2Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a stop"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona una parada"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona una fermata"
+          }
+        }
+      }
+    },
+    "featureRow3Desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change the direction of your bus by selecting the button with this icon. You’ll be able to see the stops in the opposite direction!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia la dirección de tu autobús seleccionando el botón con este icono. ¡Podrás ver las paradas en sentido contrario!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia la direzione del tuo bus, selezionando il pulsante con questa icona. Potrai vedere le fermate nel senso opposto!"
+          }
+        }
+      }
+    },
+    "featureRow3Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Direction"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar de dirección"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia Direzione"
+          }
+        }
+      }
+    },
     "FERMATA DI INTERSCAMBIO:" : {
       "localizations" : {
         "en" : {
