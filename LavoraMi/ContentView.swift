@@ -6224,7 +6224,7 @@ struct LineDetailView: View {
     @State private var openPopUpInfoStatus: Bool = false
     @State private var selectedBranch: String? = nil
     @State private var modalitaRitorno: Bool = false
-    @State private var linesWithBlackText: [String] = ["M3", "M5", "S5", "S6", "S8", "S11", "S12"]
+    @State private var linesWithBlackText: [String] = ["M3", "M5", "S5", "S6", "S8", "S11", "S12", "S31"]
     @State private var showPopUpAccount: Bool = false
     
     @State private var routeData: GTFSRoute? = nil
@@ -8423,7 +8423,7 @@ func getColor(for line: String) -> Color {
         })
         case "S13": return Color(red: 167/255, green: 109/255, blue: 17/255)
         case "S19": return Color(red: 102/255, green: 13/255, blue: 54/255)
-        case "S31": return .gray
+        case "S31": return Color(red: 191/255, green: 212/255, blue: 100/255)
         
         ///TILO LINES
         case "S10": return Color(red: 228/255, green: 35/255, blue: 19/255)
