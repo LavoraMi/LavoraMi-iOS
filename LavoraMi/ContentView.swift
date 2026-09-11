@@ -4518,7 +4518,7 @@ struct HowAppWorksView: View {
 
                 SectionHeader(icon: "bell.fill", title: String(localized: .aggiornatoSempre))
 
-                Text("Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un Venerdì no.")
+                Text("Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un venerdì no.")
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 20)
                     .padding(.top, 10)

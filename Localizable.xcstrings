@@ -7095,12 +7095,12 @@
         }
       }
     },
-    "Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un Venerdì no." : {
+    "Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un venerdì no." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We’ll notify you the day before work is due to end, when new construction sites appear on your favorite line, and even when it’s a bad Friday."
+            "value" : "We’ll notify you the day before work is due to end, when new construction sites appear on your favorite line, and even when it’s a bad friday."
           }
         },
         "es" : {
