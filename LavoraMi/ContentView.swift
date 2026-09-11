@@ -6201,6 +6201,7 @@ struct LineDetailView: View {
     @AppStorage("alreadySeenPopUp") var alreadySeenPopUp: Bool = false
     @AppStorage("alreadySeenPopUpLines") var alreadySeenPopUpLines: Bool = false
     @AppStorage("seenPopUpCreateAccount") var seenPopUpCreateAccount: Bool = false
+    @AppStorage("seenPopUpInfoMovibus") var seenPopUpInfoMovibus: Bool = false
     @AppStorage("linesSelected") private var linesSelected: [String] = []
     @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     @StateObject private var networkManager = NetworkMonitor()
@@ -6216,6 +6217,7 @@ struct LineDetailView: View {
     @State private var selectedTab: LineDetailTab = .map
     @State private var openPopUpWidget: Bool = false
     @State private var openPopUpLines: Bool = false
+    @State private var openPopUpMovibus: Bool = false
     @State private var openInfoAccessibility: Bool = false
     @State private var openInfoBusOperation: Bool = false
     @State private var openInfoLineSuspended: Bool = false
@@ -6470,6 +6472,11 @@ struct LineDetailView: View {
                 if !isDetailed && selectedTab == .map {
                     selectedTab = .works
                 }
+                
+                if(typeOfTransport == "Movibus" && !seenPopUpInfoMovibus) {
+                    seenPopUpInfoMovibus = true
+                    openPopUpMovibus = true
+                }
             }
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)
@@ -6477,6 +6484,12 @@ struct LineDetailView: View {
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
                     .ignoresSafeArea(.all)
+            }
+            .sheet(isPresented: $openPopUpMovibus) {
+                StructedMovibusView(onDone: {
+                    //openPopUpMovibus = false
+                    //seenPopUpInfoMovibus = false
+                })
             }
             .alert("Errore di connessione", isPresented: $showErrorDBSavePopUp) {
                 Button("Chiudi", role: .cancel) { }

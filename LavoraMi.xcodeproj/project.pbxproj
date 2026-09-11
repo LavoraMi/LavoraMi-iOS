@@ -140,6 +140,7 @@
 				BiometricAuth.swift,
 				ConsentManager.swift,
 				ContentView.swift,
+				FeatureRow.swift,
 				"GoogleService-Info.plist",
 				GTFSHelper.swift,
 				InterchangesDB.swift,
