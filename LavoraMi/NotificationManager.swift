@@ -242,7 +242,7 @@ class NotificationManager {
         if let fireDate = calendar.date(from: dayOfComponents), fireDate > Date() {
             let content = UNMutableNotificationContent()
             content.title = String(localized: .scioperoNotificaTitle)
-            content.body = String(localized: .scioperoNotificaDeps(companies, guaranteed))
+            content.body = String(localized: .scioperoNotificaDeps(companies))
             content.sound = .default
             
             let req = UNNotificationRequest(identifier: "STRIKE_DAY", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: dayOfComponents, repeats: false))
@@ -258,7 +258,7 @@ class NotificationManager {
             if let firePreDate = calendar.date(from: dayBeforeComponents), firePreDate > Date() {
                 let contentPre = UNMutableNotificationContent()
                 contentPre.title = String(localized: .scioperoTomorrowNotificaTitle)
-                contentPre.body = String(localized: .scioperoTomorrowNotificaDeps(companies, guaranteed))
+                contentPre.body = String(localized: .scioperoTomorrowNotificaDeps(companies))
                 contentPre.sound = .default
                 
                 let reqPre = UNNotificationRequest(identifier: "STRIKE_PRE", content: contentPre, trigger: UNCalendarNotificationTrigger(dateMatching: dayBeforeComponents, repeats: false))

@@ -6048,19 +6048,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "There is a strike today affecting %1$@ lines, guaranteed service times %2$@"
+            "value" : "A strike is planned today on the %1$@ lines. Check the guaranteed services in the app."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hoy está prevista una huelga de %1$@, con servicios garantizados %2$@."
+            "value" : "Hoy está prevista una huelga en las líneas de %1$@. Consulta los horarios garantizados en la aplicación."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oggi è previsto uno sciopero di %1$@, le fasce garantite %2$@."
+            "value" : "Oggi è previsto uno sciopero per le linee di %1$@. Consulta le fasce garantite in app."
           }
         }
       }
@@ -6094,19 +6094,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "There will be a strike tomorrow affecting %1$@ lines, guaranteed service times %2$@"
+            "value" : "There’s a strike tomorrow on the %1$@ lines. Check the disruption and guaranteed services in the app."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mañana hay huelga por %1$@, los horarios garantizados %2$@"
+            "value" : "Mañana hay huelga en las líneas de %1$@. Consulta en la aplicación las repercusiones y los horarios garantizados."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Domani c'è sciopero per %1$@, le fasce garantite %2$@"
+            "value" : "Domani c'è sciopero per le linee di %1$@. Controlla ripercussioni e fasce garantite in app."
           }
         }
       }
