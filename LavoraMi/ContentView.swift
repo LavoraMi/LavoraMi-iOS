@@ -8423,7 +8423,7 @@ func getColor(for line: String) -> Color {
         })
         case "S13": return Color(red: 167/255, green: 109/255, blue: 17/255)
         case "S19": return Color(red: 102/255, green: 13/255, blue: 54/255)
-        case "S31": return Color(red: 191/255, green: 212/255, blue: 100/255)
+        case "S31": return Color(red: 180/255, green: 205/255, blue: 75/255)
         
         ///TILO LINES
         case "S10": return Color(red: 228/255, green: 35/255, blue: 19/255)
