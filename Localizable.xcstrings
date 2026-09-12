@@ -5594,7 +5594,20 @@
       }
     },
     "Puoi rivedere questa pagina premendo sulla tab \"Mappa\" quando è selezionata." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can view this page again by clicking on the \"Map\" tab when it is selected."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puedes volver a consultar esta página pulsando en la pestaña \"Mapa\" cuando esté seleccionada."
+          }
+        }
+      }
     },
     "Questa applicazione aggrega dati pubblici, accessibili a tutti, per facilitarne la consultazione." : {
       "localizations" : {
