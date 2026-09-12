@@ -122,7 +122,7 @@ struct StructedMovibusView: View {
                         .foregroundColor(Color("TextColor"))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 18)
-                        .background(Color.blue)
+                        .background(Color(red: 4/255, green: 15/255, blue: 17/255))
                         .clipShape(Capsule())
                 }
                 .padding(.bottom, 24)
