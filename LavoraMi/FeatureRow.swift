@@ -23,7 +23,7 @@ struct FeatureRow: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("TextColor"))
                 Text(description)
                     .font(.system(size: 16))
                     .foregroundColor(.gray)
@@ -41,7 +41,7 @@ struct StructedMovibusView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Mappe per i Bus")
                 .font(.system(size: 36, weight: .heavy))
-                .foregroundColor(.white)
+                .foregroundColor(Color("TextColor"))
                 .padding(.top, 40)
                 .padding(.bottom, 32)
 
@@ -107,7 +107,7 @@ struct StructedMovibusView: View {
                 Button(action: { dismiss() }) {
                     Text("Chiudi")
                         .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("TextColor"))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 18)
                 }
@@ -119,7 +119,7 @@ struct StructedMovibusView: View {
                 Button(action: { dismiss() }) {
                     Text("Chiudi")
                         .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("TextColor"))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 18)
                         .background(Color.blue)
@@ -130,7 +130,7 @@ struct StructedMovibusView: View {
         }
         .padding(.horizontal, 24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(red: 4/255, green: 15/255, blue: 17/255))
+        .background(Color("BackgroundFeatureRow"))
     }
 }
 
