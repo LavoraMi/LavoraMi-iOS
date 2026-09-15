@@ -67,6 +67,7 @@ extension WrappedStory {
 }
 
 extension WrappedStory {
+    ///This extension define the story video names.
     static let augustStories: [WrappedStory] = (1...5).map {
         WrappedStory(id: $0 - 1, videoResourceName: "august_story\($0)")
     }
