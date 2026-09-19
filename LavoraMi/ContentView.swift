@@ -6238,7 +6238,9 @@ struct LineDetailView: View {
     @State private var selectedBranch: String? = nil
     @State private var modalitaRitorno: Bool = false
     @State private var linesWithBlackText: [String] = ["M3", "M5", "S5", "S6", "S8", "S11", "S12", "S31"]
+    @State private var busWithMultipleDirections: [String] = ["z301", "z555", "z619", "z647"]
     @State private var showPopUpAccount: Bool = false
+    @State private var showPopUpMultipleRoutes: Bool = false
     
     @State private var routeData: GTFSRoute? = nil
     @State private var isLoadingArrivals = false
@@ -6511,6 +6513,11 @@ struct LineDetailView: View {
             } message: {
                 Text("Lo sapevi che, creando un Account LavoraMi, puoi salvare le tue linee preferite per ritrovarle su tutti i tuoi dispositivi? Che aspetti! Crea un Account!")
             }
+            .alert("Bus con più direzioni", isPresented: $showPopUpMultipleRoutes) {
+                Button("Chiudi", role: .cancel) { showPopUpMultipleRoutes = false }
+            } message: {
+                Text("Questa linea è soggetta a rotte diverse in base alla fascia oraria. Consulta gli schermi informativi prima di salire sul pullman.")
+            }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -6718,9 +6725,20 @@ extension LineDetailView {
                     .font(.title3)
                     .multilineTextAlignment(.leading)
                 
+                if(busWithMultipleDirections.contains(lineName)) {
+                    WarningBanner(
+                        text: String(localized: .busConRotteDiverse),
+                        icon: "arrow",
+                        action: {
+                            showPopUpMultipleRoutes = true
+                        }
+                    )
+                }
+                
                 if(viewModel.suburbanWithInterruptions.contains(lineName)){
                     WarningBanner(
                         text: String(localized: .interruzioniGeneraleLavori),
+                        icon: "",
                         action: {
                             let url = getSuburbanDeviationLink(line: lineName, viewModel: viewModel)
                             
@@ -6736,6 +6754,7 @@ extension LineDetailView {
                 if(viewModel.regionalWithInterruptions.contains(lineName)) {
                     WarningBanner(
                         text: String(localized: .interruzioniGeneraleLavori),
+                        icon: "",
                         action: {
                             let url = getRegionalDeviationLink(line: lineName, viewModel: viewModel)
                             
@@ -6751,6 +6770,7 @@ extension LineDetailView {
                 if(viewModel.lineeSostituiteBus.contains(lineName)) {
                     WarningBanner(
                         text: String(localized: .lineSubWithBus),
+                        icon: "",
                         action: {
                             openInfoBusOperation = true
                         }
@@ -6759,6 +6779,7 @@ extension LineDetailView {
                 if(viewModel.lineeSospeseInteramente.contains(lineName)) {
                     WarningBanner(
                         text: String(localized: .lineSuspendedUppercased),
+                        icon: "",
                         action: {
                             openInfoLineSuspended = true
                         }
@@ -6767,6 +6788,7 @@ extension LineDetailView {
                 if(viewModel.linesDeviated.contains(lineName)){
                     WarningBanner(
                         text: String(localized: .tramDeviations),
+                        icon: "",
                         action: {
                             let url = getLineDeviationLink(line: lineName, viewModel: viewModel)
                             
@@ -7527,6 +7549,7 @@ extension LineDetailView {
 
 struct WarningBanner: View {
     let text: String
+    let icon: String
     let action: () -> Void
     
     private let amberColor = Color.init(red: 1.0, green: 0.6, blue: 0.0)
@@ -7534,7 +7557,7 @@ struct WarningBanner: View {
     
     var body: some View {
         HStack(spacing: 7) {
-            Image(systemName: "exclamationmark.triangle.fill")
+            Image(systemName: (icon == "") ? "exclamationmark.triangle.fill" : "arrow.branch")
                 .font(.system(size: 16))
                 .foregroundColor(amberColor)
             

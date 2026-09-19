@@ -961,6 +961,45 @@
         }
       }
     },
+    "Bus con più direzioni" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bus with multiple routes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autobús con múltiples rutas"
+          }
+        }
+      }
+    },
+    "busConRotteDiverse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BUS WITH MULTIPLE ROUTES"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AUTOBÚS CON MÚLTIPLES RUTAS"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BUS CON PIÙ DIREZIONI"
+          }
+        }
+      }
+    },
     "Caricamento orari..." : {
       "localizations" : {
         "en" : {
@@ -5637,6 +5676,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Actualmente, esta línea ha sido sustituida íntegramente por autobuses y no hay ningún tren que preste servicio en este tramo. No obstante, el servicio está garantizado entre todas las estaciones de la línea."
+          }
+        }
+      }
+    },
+    "Questa linea è soggetta a rotte diverse in base alla fascia oraria. Consulta gli schermi informativi prima di salire sul pullman." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This line operates different routes depending on the time of day. Check the information screens before boarding the bus."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta línea opera con rutas diferentes según la hora del día. Consulta las pantallas informativas antes de subir al autobús."
           }
         }
       }
