@@ -7308,26 +7308,17 @@ extension LineDetailView {
                 }()
 
                 if !toShow.isEmpty {
-                    if isAvailable {
-                        VStack(spacing: 0) {
-                            ForEach(Array(toShow.enumerated()), id: \.element.id) { idx, interchange in
-                                InterchangeRow(
-                                    interchange: interchange,
-                                    currentLine: lineName,
-                                    isFirst: idx == 0,
-                                    isLast: idx == toShow.count - 1
-                                )
-                            }
+                    VStack(spacing: 0) {
+                        ForEach(Array(toShow.enumerated()), id: \.element.id) { idx, interchange in
+                            InterchangeRow(
+                                interchange: interchange,
+                                currentLine: lineName,
+                                isFirst: idx == 0,
+                                isLast: idx == toShow.count - 1
+                            )
                         }
-                        .padding(.vertical, 8)
-                    } else {
-                        LazyVStack(spacing: 12) {
-                            ForEach(toShow) { interchange in
-                                InterchangeView(item: interchange, currentLine: lineName)
-                            }
-                        }
-                        .padding(.vertical, 8)
                     }
+                    .padding(.vertical, 8)
                 } else {
                     Text("Nessun interscambio con questa linea.")
                         .padding()
@@ -8213,72 +8204,6 @@ struct InterchangeRow: View {
         }
         .padding(.leading, 16)
         .padding(.trailing, 16)
-    }
-}
-
-struct InterchangeView: View {
-    let item: InterchangeInfo
-    let currentLine: String
-    @State private var isExpanded = false
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            if(item.name == "Lodi TIBB"){
-                Label("Milano Scalo Romana FS", systemImage: "arrow.left.and.right")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundStyle(Color("TextColor"))
-            }
-            else{
-                Label(item.name, systemImage: "arrow.left.and.right")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundStyle(Color("TextColor"))
-            }
-            
-            HStack {
-                Text(currentLine)
-                    .font(.headline)
-                Image(systemName: item.typeOfInterchange)
-                Text(item.name)
-            }
-
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8) {
-                    ForEach(item.lines, id: \.self) { line in
-                        if line.contains(String(localized: .filobus)) || line.wholeMatch(of: /9[0-3]/) != nil {
-                            Label(line, systemImage: "bolt.fill")
-                                .font(.system(size: 12, weight: .bold))
-                                .foregroundStyle(.white)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 8)
-                                .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
-                        } else if line.starts(with: "N") {
-                            Label(line, systemImage: "moon.fill")
-                                .font(.system(size: 12, weight: .bold))
-                                .foregroundStyle(.white)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 8)
-                                .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
-                        } else {
-                            Text(line)
-                                .font(.system(size: 12, weight: .bold))
-                                .foregroundStyle(.white)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 8)
-                                .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
-                        }
-                    }
-                }
-            }
-        }
-        .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .fill(Color(.secondarySystemBackground))
-        )
-        .shadow(color: .black.opacity(0.06), radius: 6, x: 0, y: 3)
-        .padding(.horizontal)
     }
 }
 
