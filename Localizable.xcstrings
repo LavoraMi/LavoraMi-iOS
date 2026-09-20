@@ -4311,23 +4311,6 @@
         }
       }
     },
-    "Milano Scalo Romana FS" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Milano Scalo Romana FS"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Milano Scalo Romana FS"
-          }
-        }
-      }
-    },
     "Modifica l'orario di arrivo delle notifiche." : {
       "localizations" : {
         "en" : {
