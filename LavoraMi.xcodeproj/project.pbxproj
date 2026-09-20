@@ -156,6 +156,7 @@
 				StationFiles/MovibusStationsDB.swift,
 				StationFiles/RegioExpressStationsDB.swift,
 				StationFiles/RegionalStationsDB.swift,
+				StationFiles/STAVStationsDB.swift,
 				StationFiles/SuburbanStationsDB.swift,
 				StationFiles/TiloStationsDB.swift,
 				StationFiles/TramStationsDB.swift,

@@ -5031,8 +5031,7 @@ struct LineRow: View {
     var onTap: (() -> Void)? = nil
 
     private var isDetailView: Bool {
-        typeOfTransport != "STAV"
-        && typeOfTransport != "NET"
+        typeOfTransport != "NET"
         && typeOfTransport != "Autoguidovie"
         && typeOfTransport != "STAR Mobility"
     }
@@ -5410,15 +5409,15 @@ struct LinesView: View {
     
     var stav: [LineInfo] {
         [
-            LineInfo(name: "z551", branches: "Abbiategrasso Vittorio Veneto - Bisceglie M1", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z552", branches: "Abbiategrasso Vittorio Veneto - S. Stefano Ticino", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z553", branches: "Abbiategrasso - Rosate - Milano Romolo", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z554", branches: "Albairate - Albairate Vermezzo FS - Bubbiano", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z555", branches: "Abbiategrasso Vittorio Veneto - Binasco/Rosate", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z556", branches: "Abbiategrasso FS - Motta Visconti", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z557", branches: "Gaggiano De Gasperi - Gaggiano FS - San Vito", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z559", branches: "Abbiategrasso FS - Magenta FS", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z560", branches: "Abbiategrasso FS - Corsico - Bisceglie M1", type: "STAV", waitMinutes: "", stations: [], accessibilityStatus: "")
+            LineInfo(name: "z551", branches: "Abbiategrasso Vittorio Veneto - Bisceglie M1", type: "STAV", waitMinutes: "", stations: STAVStationsDB.stavZ551, accessibilityStatus: ""),
+            LineInfo(name: "z552", branches: "Abbiategrasso Vittorio Veneto - S. Stefano Ticino", type: "STAV", waitMinutes: "", stations: STAVStationsDB.stavZ552, accessibilityStatus: ""),
+            LineInfo(name: "z553", branches: "Abbiategrasso - Rosate - Milano Romolo", type: "STAV", waitMinutes: "", stations: STAVStationsDB.stavZ553, accessibilityStatus: ""),
+            LineInfo(name: "z554", branches: "Albairate - Albairate Vermezzo FS - Bubbiano", type: "STAV", waitMinutes: "", stations: STAVStationsDB.stavZ554, accessibilityStatus: ""),
+            LineInfo(name: "z555", branches: "Abbiategrasso Vittorio Veneto - Binasco/Rosate", type: "STAV", waitMinutes: "", stations: STAVStationsDB.stavZ555, accessibilityStatus: ""),
+            LineInfo(name: "z556", branches: "Abbiategrasso FS - Motta Visconti", type: "STAV", waitMinutes: "", stations: STAVStationsDB.stavZ556, accessibilityStatus: ""),
+            LineInfo(name: "z557", branches: "Gaggiano De Gasperi - Gaggiano FS - San Vito", type: "STAV", waitMinutes: "", stations: STAVStationsDB.stavZ557, accessibilityStatus: ""),
+            LineInfo(name: "z559", branches: "Abbiategrasso FS - Magenta FS", type: "STAV", waitMinutes: "", stations: STAVStationsDB.stavZ559, accessibilityStatus: ""),
+            LineInfo(name: "z560", branches: "Abbiategrasso FS - Corsico - Bisceglie M1", type: "STAV", waitMinutes: "", stations: STAVStationsDB.stavZ560, accessibilityStatus: "")
         ]
     }
 
@@ -6306,7 +6305,7 @@ struct LineDetailView: View {
         let main = filtered.filter { $0.branch == "Main" }
         return main.isEmpty ? filtered : main
     }
-    private var isBusLineForRoute: Bool {typeOfTransport == "Movibus"}
+    private var isBusLineForRoute: Bool {typeOfTransport == "Movibus" || typeOfTransport == "STAV"}
     private var hasRitornoBranch: Bool {stations.contains { $0.branch.localizedCaseInsensitiveContains("Ritorno") }}
 
     private var stationsForCurrentDirection: [MetroStation] {
@@ -6488,7 +6487,7 @@ struct LineDetailView: View {
                     selectedTab = .works
                 }
                 
-                if(typeOfTransport == "Movibus" && !seenPopUpInfoMovibus) {
+                if(isBusLineForRoute && !seenPopUpInfoMovibus) {
                     seenPopUpInfoMovibus = true
                     openPopUpMovibus = true
                 }
@@ -6631,7 +6630,7 @@ extension LineDetailView {
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)
                     }
-                    else if (!isDetailed || typeOfTransport == "Movibus") {
+                    else if (!isDetailed || isBusLineForRoute) {
                         Text("\(typeOfTransport)")
                             .font(.system(size: 30))
                             .minimumScaleFactor(0.5)
@@ -6926,7 +6925,7 @@ extension LineDetailView {
                     
                     if(selectedTab != .map) {withAnimation(.snappy) { selectedTab = .map }}
                     else {
-                        if(typeOfTransport == "Movibus"){openPopUpMovibus = true}
+                        if(isBusLineForRoute){openPopUpMovibus = true}
                     }
                 }) {
                     HStack(spacing: 8) {
@@ -6974,7 +6973,7 @@ extension LineDetailView {
                 )
                 .foregroundStyle(selectedTab == .works ? ((!linesWithBlackText.contains(lineName)) ? .white : Color(.systemBackground)) : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
             }
-            if isDetailed && typeOfTransport != "Movibus" {
+            if isDetailed && !isBusLineForRoute {
                 Button(action: {
                     if feedbacksEnabled { HapticManager.shared.trigger() }
                     withAnimation(.snappy) { selectedTab = .interchanges }
