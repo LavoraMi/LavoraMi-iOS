@@ -4000,7 +4000,7 @@ struct InfoView: View {
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
-    @State private var mailData: ComposeMailData = ComposeMailData(subject: String(localized: .titoloBugReport), recipients: ["info@lavorami.it"], message: "", attachments: nil)
+    @State private var mailData: ComposeMailData = ComposeMailData(subject: String(localized: .titoloBugReport), recipients: ["support@lavorami.it"], message: "", attachments: nil)
     @State private var mailDataInfoReport: ComposeMailData = ComposeMailData(subject: String(localized: .mailInformazioni), recipients: ["report-incorrettezze@lavorami.it"], message: "", attachments: nil)
     @State private var showMailView: Bool = false
     @State private var showMailViewReport: Bool = false
@@ -4948,7 +4948,7 @@ struct LibrariesView: View {
 struct RequestDataDownload: View {
     @AppStorage("emailSaved") var emailSaved: String = ""
     
-    @State private var mailData: ComposeMailData = ComposeMailData(subject: "Richiesta di Dati", recipients: ["info@lavorami.it"], message: "Buongiorno,\nVorrei richiedere l'invio dei miei dati in formato JSON dell'Account con mail: mail@mail.com", attachments: nil)
+    @State private var mailData: ComposeMailData = ComposeMailData(subject: "Richiesta di Dati", recipients: ["support@lavorami.it"], message: "Buongiorno,\nVorrei richiedere l'invio dei miei dati in formato JSON dell'Account con mail: mail@mail.com", attachments: nil)
     @State private var showMailView: Bool = false
     @State private var selectedFileType: fileFormatType = .json
     
@@ -4993,7 +4993,7 @@ struct RequestDataDownload: View {
             Button(action: {
                 let localizedString = String(localized: .messaggioEmailDati(selectedFileType.rawValue, emailSaved))
                 let formattedBody = localizedString.replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\", with: "")
-                mailData = ComposeMailData(subject: String(localized: .richiestaDeiDati), recipients: ["info@lavorami.it"], message: formattedBody, attachments: nil)
+                mailData = ComposeMailData(subject: String(localized: .richiestaDeiDati), recipients: ["support@lavorami.it"], message: formattedBody, attachments: nil)
                 showMailView = true
             }) {
                 Label("Richiedi Dati", systemImage: "paperplane.fill")
