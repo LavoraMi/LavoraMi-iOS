@@ -6835,7 +6835,15 @@ extension LineDetailView {
                             }
                         }
                     } else {
-                        Text("Nessuna fermata di interscambio.").foregroundColor(.secondary)
+                        HStack {
+                            Image(systemName: "nosign")
+                                .font(.title3)
+                                .foregroundColor(.white)
+                            Text("Nessuna fermata di interscambio.")
+                                .font(.title3)
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
             }
