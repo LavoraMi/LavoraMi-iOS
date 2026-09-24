@@ -9754,7 +9754,6 @@ struct MovibusStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50763, longitude: 8.83086), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50772, longitude: 8.8314), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50777, longitude: 8.8322), branch: "Main"),
-        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.5085, longitude: 8.83254), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50815, longitude: 8.83461), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50849, longitude: 8.83455), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50887, longitude: 8.83477), branch: "Main"),
