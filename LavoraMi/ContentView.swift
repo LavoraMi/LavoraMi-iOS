@@ -4815,7 +4815,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-issue-reporting",
-            version: "2.1.0",
+            version: "2.1.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2022 Apple Inc.",
             licenseText: """
