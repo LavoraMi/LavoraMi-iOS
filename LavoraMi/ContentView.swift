@@ -6737,7 +6737,7 @@ extension LineDetailView {
                 
                 if(viewModel.linesWithSlowdowns.contains(lineName)) {
                     WarningBanner(
-                        text: "LINEA CON RALLENTAMENTI",
+                        text: String(localized: .lineaConRallentamenti),
                         icon: "clock.badge.exclamationmark.fill",
                         action: {
                             openInfoSlowdowns = true

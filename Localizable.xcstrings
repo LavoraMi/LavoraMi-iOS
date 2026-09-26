@@ -3622,7 +3622,20 @@
       }
     },
     "Linea Rallentata" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line with Delays"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Línea Ralentizada"
+          }
+        }
+      }
     },
     "Linea salvata" : {
       "localizations" : {
@@ -3675,6 +3688,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accessibile"
+          }
+        }
+      }
+    },
+    "lineaConRallentamenti" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LINE WITH SLOWDOWNS"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LÍNEA CON REDUCCIONES DE VELOCIDAD"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LINEA CON RALLENTAMENTI"
           }
         }
       }
@@ -7093,7 +7129,20 @@
       }
     },
     "Su questa linea ci sono lavori attualmente in corso che potrebbero comportare anticipi o ritardi nell'arrivo a destinazione. Controlla la sezione \"Lavori\"." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work is currently underway on this line, which may result in early or delayed arrivals at your destination. Please check the \"Works\" section."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En esta línea hay obras en curso que podrían provocar adelantos o retrasos en la llegada a destino. Consulta la sección \"Obras\"."
+          }
+        }
+      }
     },
     "suburbano" : {
       "extractionState" : "manual",
