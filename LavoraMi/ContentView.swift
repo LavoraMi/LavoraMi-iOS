@@ -6237,7 +6237,7 @@ struct LineDetailView: View {
     @State private var openPopUpInfoStatus: Bool = false
     @State private var selectedBranch: String? = nil
     @State private var modalitaRitorno: Bool = false
-    @State private var linesWithBlackText: [String] = ["M3", "M5", "S5", "S6", "S8", "S11", "S12", "S31"]
+    @State private var linesWithBlackText: [String] = ["M3", "M5", "S5", "S6", "S8", "S11", "S12", "S31", "S90"]
     @State private var busWithMultipleDirections: [String] = ["z301", "z555", "z619", "z647"]
     @State private var showPopUpAccount: Bool = false
     @State private var showPopUpMultipleRoutes: Bool = false
