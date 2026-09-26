@@ -6727,7 +6727,7 @@ extension LineDetailView {
                 if(busWithMultipleDirections.contains(lineName)) {
                     WarningBanner(
                         text: String(localized: .busConRotteDiverse),
-                        icon: "arrow",
+                        icon: "arrow.branch",
                         action: {
                             showPopUpMultipleRoutes = true
                         }
@@ -7555,7 +7555,7 @@ struct WarningBanner: View {
     
     var body: some View {
         HStack(spacing: 7) {
-            Image(systemName: (icon == "") ? "exclamationmark.triangle.fill" : "arrow.branch")
+            Image(systemName: (icon == "") ? "exclamationmark.triangle.fill" : icon)
                 .font(.system(size: 16))
                 .foregroundColor(amberColor)
             
