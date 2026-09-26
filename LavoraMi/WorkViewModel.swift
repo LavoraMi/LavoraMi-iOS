@@ -14,7 +14,6 @@ class WorkViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     @Published var strikeEnabled: Bool = false
-    @Published var enablePassanteWork: Bool = false
     @Published var strikeEnabledDebug: Bool = false
     @Published var companiesStrikes: String = ""
     @Published var strikeUpdateLive: String = ""
@@ -44,10 +43,12 @@ class WorkViewModel: ObservableObject {
     @Published var messageCurrentStatus: String = ""
     @Published var isStrikeToday: Bool = false
     
+    //@Published var enablePassanteWork: Bool = false
+    
     private let urlString = "https://cdn.lavorami.it/lavoriAttuali.json"
     private let urlGTFS = "https://cdn.lavorami.it/_gtfsStatus.json"
     private let urlVariables = "https://cdn.lavorami.it/_vars.json"
-    private let requirements = "https://cdn.lavorami.it/requirements.json"
+    private let urlRequirements = "https://cdn.lavorami.it/requirements.json"
     
     private func updateStrikeTodayStatus() {
         let formatter = DateFormatter()
@@ -144,7 +145,7 @@ class WorkViewModel: ObservableObject {
             
             do {
                 let decoder = JSONDecoder()
-                let result = try decoder.decode(RemoteConfigData.self, from: data)
+                let result = try decoder.decode(VariablesData.self, from: data)
                 DispatchQueue.main.async {
                     self?.strikeEnabled = (result.enableStrike == "true")
                     self?.strikeEnabledDebug = (result.enableStrikeDebug == "true")
@@ -164,7 +165,6 @@ class WorkViewModel: ObservableObject {
                     self?.regionalInterruptionLinks = result.regionalLinesDeviationLinks
                     
                     self?.wrappedEnabled = (result.enableWrapped == "true")
-                    self?.enablePassanteWork = (result.enablePassanteWork == "true")
                     self?.strikeUpdateLive = result.strikeUpdateLive
                     self?.updateStrikeTodayStatus()
                     self?.lineeSospeseInteramente = result.lineeSospeseInteramente
@@ -177,9 +177,11 @@ class WorkViewModel: ObservableObject {
                                 companies: result.companies,
                                 guaranteed: result.guaranteed
                             )
-                        } else {
-                            NotificationManager.shared.removeStrikeNotifications()
-                        }
+                    } else {
+                        NotificationManager.shared.removeStrikeNotifications()
+                    }
+                    
+                    //self?.enablePassanteWork = (result.enablePassanteWork == "true")
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -190,7 +192,7 @@ class WorkViewModel: ObservableObject {
     }
     
     func fetchRequirements(completion: (() -> Void)? = nil) {
-        guard let url = URL(string: requirements) else {
+        guard let url = URL(string: urlRequirements) else {
             self.errorMessage = "URL non valido"
             completion?()
             return
@@ -271,12 +273,11 @@ class WorkViewModel: ObservableObject {
     }
 }
 
-struct RemoteConfigData: Codable {
+struct VariablesData: Codable {
     let enableStrike: String
     let enableStrikeDebug: String
     let enableWrapped: String?
     let strikeUpdateLive: String
-    let enablePassanteWork: String
     let date: String
     let companies: String
     let guaranteed: String
@@ -290,6 +291,8 @@ struct RemoteConfigData: Codable {
     let lineeSospeseInteramente: [String]
     let lineeSostituiteBus: [String]
     let stazioniChiuse: [String]
+    
+    //let enablePassanteWork: String
 }
 
 struct RequirementsData: Codable {
