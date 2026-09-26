@@ -8411,12 +8411,12 @@ func getColor(for line: String) -> Color {
         
         ///TILO LINES
         case "S10": return Color(red: 228/255, green: 35/255, blue: 19/255)
-        case "S20": return Color(red: 25/255, green: 57/255, blue: 105/255)
-        case "S30": return Color(red: 0, green: 166/255, blue: 81/255)
-        case "S40": return Color(red: 117/255, green: 188/255, blue: 118/255)
-        case "S50": return Color(red: 131/255, green: 76/255, blue: 22/255)
-        case "S90": return Color(red: 231/255, green: 197/255, blue: 61/255)
-        case "RE80": return .blue
+        case "S20": return Color(red: 0/255, green: 158/255, blue: 224/255)
+        case "S30": return Color(red: 1, green: 144/255, blue: 54/255)
+        case "S40": return Color(red: 120/255, green: 187/255, blue: 114/255)
+        case "S50": return Color(red: 128/255, green: 79/255, blue: 16/255)
+        case "S90": return Color(red: 254/255, green: 206/255, blue: 0/255)
+        case "RE80": return Color(red: 1/255, green: 80/255, blue: 158/255)
         
         ///METRO LINES
         case "M1": return Color(red: 228/255, green: 5/255, blue: 32/255)
