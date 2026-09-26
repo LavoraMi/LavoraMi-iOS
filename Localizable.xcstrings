@@ -3621,6 +3621,9 @@
         }
       }
     },
+    "Linea Rallentata" : {
+
+    },
     "Linea salvata" : {
       "localizations" : {
         "en" : {
@@ -7088,6 +7091,9 @@
           }
         }
       }
+    },
+    "Su questa linea ci sono lavori attualmente in corso che potrebbero comportare anticipi o ritardi nell'arrivo a destinazione. Controlla la sezione \"Lavori\"." : {
+
     },
     "suburbano" : {
       "extractionState" : "manual",

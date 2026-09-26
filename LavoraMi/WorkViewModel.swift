@@ -40,6 +40,7 @@ class WorkViewModel: ObservableObject {
     @Published var lineeSospeseInteramente: [String] = [""]
     @Published var lineeSostituiteBus: [String] = [""]
     @Published var stazioniChiuse: [String] = [""]
+    @Published var linesWithSlowdowns: [String] = [""]
     @Published var messageCurrentStatus: String = ""
     @Published var isStrikeToday: Bool = false
     
@@ -170,6 +171,7 @@ class WorkViewModel: ObservableObject {
                     self?.lineeSospeseInteramente = result.lineeSospeseInteramente
                     self?.lineeSostituiteBus = result.lineeSostituiteBus
                     self?.stazioniChiuse = result.stazioniChiuse
+                    self?.linesWithSlowdowns = result.linesWithSlowdowns
                     
                     if self?.strikeEnabled == true {
                             NotificationManager.shared.scheduleStrikeNotifications(
@@ -291,6 +293,7 @@ struct VariablesData: Codable {
     let lineeSospeseInteramente: [String]
     let lineeSostituiteBus: [String]
     let stazioniChiuse: [String]
+    let linesWithSlowdowns: [String]
     
     //let enablePassanteWork: String
 }

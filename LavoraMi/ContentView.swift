@@ -6233,6 +6233,7 @@ struct LineDetailView: View {
     @State private var openInfoAccessibility: Bool = false
     @State private var openInfoBusOperation: Bool = false
     @State private var openInfoLineSuspended: Bool = false
+    @State private var openInfoSlowdowns: Bool = false
     @State private var openPopUpInfoStatus: Bool = false
     @State private var selectedBranch: String? = nil
     @State private var modalitaRitorno: Bool = false
@@ -6734,6 +6735,16 @@ extension LineDetailView {
                     )
                 }
                 
+                if(viewModel.linesWithSlowdowns.contains(lineName)) {
+                    WarningBanner(
+                        text: "LINEA CON RALLENTAMENTI",
+                        icon: "clock.badge.exclamationmark.fill",
+                        action: {
+                            openInfoSlowdowns = true
+                        }
+                    )
+                }
+                
                 if(viewModel.suburbanWithInterruptions.contains(lineName)){
                     WarningBanner(
                         text: String(localized: .interruzioniGeneraleLavori),
@@ -6921,6 +6932,11 @@ extension LineDetailView {
             Button("OK", role: .cancel) {}
         } message: {
             Text("Questa linea è stata interrotta per tutto il suo tragitto per via di lavori sulla tratta o rimodulazioni di orario. Per saperne di più, vai nella sezione \"Lavori\" della linea.")
+        }
+        .alert("Linea Rallentata", isPresented: $openInfoSlowdowns) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("Su questa linea ci sono lavori attualmente in corso che potrebbero comportare anticipi o ritardi nell'arrivo a destinazione. Controlla la sezione \"Lavori\".")
         }
     }
     
