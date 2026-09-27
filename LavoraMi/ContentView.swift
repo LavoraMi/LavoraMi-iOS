@@ -5300,7 +5300,7 @@ struct LinesView: View {
         [
             LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "TILO", waitMinutes: "1 \(String(localized: .ora)) - 45 min", stations: TiloStationsDB.tiloS10, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S20", branches: "Castione Arbedo - Locarno", type: "TILO", waitMinutes: "30 min", stations: TiloStationsDB.tiloS20, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "S30", branches: "Cadenazzo - Gallarate", type: "TILO", waitMinutes: "2 \(String(localized: .ore))", stations: TiloStationsDB.tiloS30, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S30", branches: "Bellinzona / Cadenazzo - Gallarate", type: "TILO", waitMinutes: "2 \(String(localized: .ore))", stations: TiloStationsDB.tiloS30, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "TILO", waitMinutes: "1 \(String(localized: .ora))", stations: TiloStationsDB.tiloS40, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S50", branches: "Biasca - Malpensa Aereoporto T2", type: "TILO", waitMinutes: "1 \(String(localized: .ora))", stations: TiloStationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S90", branches: "Bellinzona - Mendrisio", type: "TILO", waitMinutes: "30 min", stations: TiloStationsDB.tiloS90, accessibilityStatus: String(localized: .lineaAccessibile)),
