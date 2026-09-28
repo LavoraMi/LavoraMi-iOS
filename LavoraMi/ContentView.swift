@@ -8441,6 +8441,7 @@ func getColor(for line: String) -> Color {
         case _ where line.contains("P") && !(line.contains("MXP")): return Color(red: 69/255, green: 56/255, blue: 0)
         
         ///OTHER LINES
+        case let s where s.hasPrefix("B") && (1...33).contains(Int(s.dropFirst()) ?? 0): return .orange
         case "MXP": return Color(red: 140/255, green: 0, blue: 118/255)
         case "MXP1": return Color(red: 140/255, green: 0, blue: 118/255)
         case "MXP2": return Color(red: 140/255, green: 0, blue: 118/255)
