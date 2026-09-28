@@ -5298,11 +5298,11 @@ struct LinesView: View {
     
     var crossBorderLines: [LineInfo] {
         [
-            LineInfo(name: "S10", branches: "Biasca - Como S. Giovanni", type: "TILO", waitMinutes: "1 \(String(localized: .ora)) - 45 min", stations: TiloStationsDB.tiloS10, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
+            LineInfo(name: "S10", branches: "Airolo / Biasca - Como S. Giovanni", type: "TILO", waitMinutes: "1 \(String(localized: .ora)) - 45 min", stations: TiloStationsDB.tiloS10, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S20", branches: "Castione Arbedo - Locarno", type: "TILO", waitMinutes: "30 min", stations: TiloStationsDB.tiloS20, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S30", branches: "Bellinzona / Cadenazzo - Gallarate", type: "TILO", waitMinutes: "2 \(String(localized: .ore))", stations: TiloStationsDB.tiloS30, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "TILO", waitMinutes: "1 \(String(localized: .ora))", stations: TiloStationsDB.tiloS40, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "S50", branches: "Biasca - Malpensa Aereoporto T2", type: "TILO", waitMinutes: "1 \(String(localized: .ora))", stations: TiloStationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S50", branches: "Airolo / Biasca - Malpensa Aereoporto T2", type: "TILO", waitMinutes: "1 \(String(localized: .ora))", stations: TiloStationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S90", branches: "Bellinzona - Mendrisio", type: "TILO", waitMinutes: "30 min", stations: TiloStationsDB.tiloS90, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "RE80", branches: "Locarno - Milano Centrale", type: "TILO", waitMinutes: "30 min - 1 \(String(localized: .ora))", stations: TiloStationsDB.tiloRE80, accessibilityStatus: String(localized: .lineaAccessibile))
         ]
@@ -6272,7 +6272,7 @@ struct LineDetailView: View {
         MapCameraBounds(
             centerCoordinateBounds: MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: 45.46443, longitude: 9.18927),
-                span: MKCoordinateSpan(latitudeDelta: 1.9, longitudeDelta: 3.2)
+                span: MKCoordinateSpan(latitudeDelta: 2.1, longitudeDelta: 3.2)
             ),
             minimumDistance: 1000,
             maximumDistance: 175000
