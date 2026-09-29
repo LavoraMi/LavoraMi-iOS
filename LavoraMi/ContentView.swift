@@ -6780,7 +6780,7 @@ extension LineDetailView {
                 if(viewModel.lineeSostituiteBus.contains(lineName)) {
                     WarningBanner(
                         text: String(localized: .lineSubWithBus),
-                        icon: "",
+                        icon: "bus.fill",
                         action: {
                             openInfoBusOperation = true
                         }
