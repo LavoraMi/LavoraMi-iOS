@@ -520,6 +520,10 @@ struct InterchangesDB {
         .init(name: "Magradino - Vira", lines: ["S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 17),
         .init(name: "Quartino", lines: ["S30"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 18),
         .init(name: "Cadenazzo", lines: ["S30", "S20", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
+        .init(name: "San Antonino", lines: ["S30", "S20", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 20),
+        .init(name: "Giubiasco", lines: ["S30", "S10", "S20", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 21),
+        .init(name: "Bellinzona", lines: ["S30", "S10", "S20", "S50", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 22),
+
 
         /// TILO S40
         .init(name: "Varese", lines: ["S40", "S5", "S50", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
