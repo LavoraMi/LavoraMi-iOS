@@ -1895,7 +1895,20 @@
       }
     },
     "EVENTO" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EVENT"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EVENTO"
+          }
+        }
+      }
     },
     "Facebook" : {
       "localizations" : {
