@@ -557,6 +557,11 @@ struct InterchangesDB {
         .init(name: "Bellinzona", lines: ["S50", "S10", "S20", "S30", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 17),
         .init(name: "Castione Arbedo", lines: ["S50", "S10", "S20", "S90"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 18),
         .init(name: "Biasca", lines: ["S50", "S10"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
+        .init(name: "Bodio", lines: ["S50", "S10"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 20),
+        .init(name: "Lavorgo", lines: ["S50", "S10"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 21),
+        .init(name: "Faido", lines: ["S50", "S10"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 22),
+        .init(name: "Ambrì - Piotta", lines: ["S50", "S10"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 23),
+        .init(name: "Airolo", lines: ["S50", "S10"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 24),
 
         /// TILO S90
         .init(name: "Bellinzona", lines: ["S90", "S10", "S20", "S30", "S50"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
