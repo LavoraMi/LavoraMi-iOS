@@ -1352,9 +1352,11 @@ struct WorkInProgressRow: View {
     
     private let italianLoc = Date.FormatStyle(date: .abbreviated, time: .omitted).locale(Locale(identifier: "it_IT"))
     private var isImportant: Bool {item.details.contains("[LAVORO IMPORTANTE]")}
+    private var isEvent: Bool {item.details.contains("[EVENTO]")}
     private var cleanedDetails: String {
         item.details
             .replacingOccurrences(of: "[LAVORO IMPORTANTE]", with: "")
+            .replacingOccurrences(of: "[EVENTO]", with: "")
             .trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
@@ -1370,6 +1372,24 @@ struct WorkInProgressRow: View {
                         .foregroundStyle(.white)
 
                     Text("LAVORO IMPORTANTE")
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(.white)
+                        .tracking(0.5)
+
+                    Spacer()
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 9)
+                .background(Color.red)
+            }
+            
+            if isEvent {
+                HStack(spacing: 8) {
+                    Image(systemName: "party.popper.fill")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundStyle(.white)
+
+                    Text("EVENTO")
                         .font(.system(size: 13, weight: .bold))
                         .foregroundStyle(.white)
                         .tracking(0.5)
@@ -1525,15 +1545,15 @@ struct WorkInProgressRow: View {
         .overlay(
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .stroke(
-                    isImportant ? Color.red.opacity(0.5) : Color.clear,
+                    (isImportant || isEvent) ? Color.red.opacity(0.5) : Color.clear,
                     lineWidth: 1.5
                 )
         )
         .shadow(
-            color: isImportant ? .red.opacity(0.30) : .black.opacity(0.06),
-            radius: isImportant ? 14 : 6,
+            color: (isImportant || isEvent) ? .red.opacity(0.30) : .black.opacity(0.06),
+            radius: (isImportant || isEvent) ? 14 : 6,
             x: 0,
-            y: isImportant ? 4 : 3
+            y: (isImportant || isEvent) ? 4 : 3
         )
         .translationPresentation(isPresented: $showTranslation, text: textToTranslate)
     }
