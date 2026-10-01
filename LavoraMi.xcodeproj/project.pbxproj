@@ -160,6 +160,7 @@
 				StationFiles/SuburbanStationsDB.swift,
 				StationFiles/TiloStationsDB.swift,
 				StationFiles/TramStationsDB.swift,
+				StopDetailView.swift,
 				StoryPageView.swift,
 				StoryVideoPlayer.swift,
 				SupabaseAuth/AuthManager.swift,

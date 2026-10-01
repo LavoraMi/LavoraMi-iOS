@@ -6270,6 +6270,11 @@ struct LineDetailView: View {
     @State private var currentTime = Date()
     private let arrivalsTimer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
     
+    @State private var tramStopSelection: TramStopSelection? = nil
+    private var isTram: Bool {
+        typeOfTransport.contains(String(localized: .tram))
+    }
+    
     private var cdnURL: URL? {
         URL(string: "https://cdn.lavorami.it/gtfs/\(lineName.uppercased()).json")
     }
@@ -6500,7 +6505,7 @@ struct LineDetailView: View {
             .padding(.top, -20)
             .onAppear {
                 onAppear?()
-                if viewModel.linesSupportedGTFS.contains(lineName) && routeData == nil {
+                if (viewModel.linesSupportedGTFS.contains(lineName) || isTram) && routeData == nil {
                     loadArrivalsData()
                 }
                 
@@ -6538,6 +6543,16 @@ struct LineDetailView: View {
             } message: {
                 Text("Questa linea è soggetta a rotte diverse in base alla fascia oraria. Consulta gli schermi informativi prima di salire sul pullman.")
             }
+            .fullScreenCover(item: $tramStopSelection) { selection in
+                StopDetailView(
+                    lineName: lineName,
+                    stopName: selection.name,
+                    stations: stations,
+                    interchanges: getInterchanges(line: lineName),
+                    initialRoute: routeData,
+                    lineColor: getColor(for: lineName)
+                )
+            }
             .navigationTitle("Dettagli Linea")
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -6548,18 +6563,26 @@ struct LineDetailView: View {
     }
 
     private func selezionaFermataDaMappa(_ stationName: String) {
-        guard let route = routeData,
-              let match = route.stops.first(where: { $0.value.n.caseInsensitiveCompare(stationName) == .orderedSame })
-        else { return }
+        if isTram {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            tramStopSelection = TramStopSelection(name: stationName)
+            
+            return
+        }
+        else {
+            guard let route = routeData,
+                  let match = route.stops.first(where: { $0.value.n.caseInsensitiveCompare(stationName) == .orderedSame })
+            else { return }
 
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
 
-        selectedStopId = match.key
-        selectedStopName = match.value.n
+            selectedStopId = match.key
+            selectedStopName = match.value.n
 
-        withAnimation {
-            selectedTab = .arrivi
+            withAnimation {
+                selectedTab = .arrivi
+            }
         }
     }
 
@@ -7043,7 +7066,7 @@ extension LineDetailView {
                     .foregroundStyle(selectedTab == .interchanges ? ((!linesWithBlackText.contains(lineName)) ? .white : Color(.systemBackground)) : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
                 }
             }
-            if viewModel.linesSupportedGTFS.contains(lineName) {
+            if viewModel.linesSupportedGTFS.contains(lineName) && !isTram {
                 Button(action: {
                     if feedbacksEnabled { HapticManager.shared.trigger() }
                     withAnimation(.snappy) { selectedTab = .arrivi }

@@ -1626,6 +1626,12 @@
         }
       }
     },
+    "Direzione" : {
+
+    },
+    "Direzione: %@" : {
+
+    },
     "DIREZIONE: %@" : {
       "localizations" : {
         "en" : {
@@ -4763,6 +4769,9 @@
         }
       }
     },
+    "Nessuna partenza prevista per oggi." : {
+
+    },
     "Nome utente" : {
       "localizations" : {
         "en" : {
@@ -5169,6 +5178,9 @@
           }
         }
       }
+    },
+    "Orari non disponibili per questa fermata." : {
+
     },
     "Orario Notifiche" : {
       "localizations" : {
@@ -5606,6 +5618,9 @@
           }
         }
       }
+    },
+    "Prossimo arrivo:" : {
+
     },
     "Prova a cercare qualcos'altro." : {
       "localizations" : {
