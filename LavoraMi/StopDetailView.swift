@@ -72,7 +72,6 @@ struct StopDetailView: View {
             }
             .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
             .mapControls {
-                MapUserLocationButton()
                 MapCompass()
             }
             .tint(lineColor)
@@ -227,7 +226,7 @@ struct StopDetailView: View {
     @ViewBuilder
     private var interchangeSection: some View {
         if let info = interchange {
-            InterchangeRow(interchange: info, currentLine: lineName, isFirst: true, isLast: true)
+            StopInterchangeCard(interchange: info, currentLine: lineName)
         }
     }
 
@@ -316,21 +315,103 @@ struct StopDetailView: View {
     }
 
     private func fitCamera() {
-        let points = visibleStations.shown.map(\.coordinate)
-        guard let first = points.first else { return }
-
-        var rect = MKMapRect.null
-        for p in points {
-            let mp = MKMapPoint(p)
-            rect = rect.union(MKMapRect(x: mp.x, y: mp.y, width: 0, height: 0))
+        let target = stations.first {
+            !isHidden($0) && $0.name.caseInsensitiveCompare(stopName) == .orderedSame
         }
-        let pad = 350 * MKMapPointsPerMeterAtLatitude(first.latitude)
-        var padded = rect.insetBy(dx: -pad, dy: -pad)
-        padded.origin.y += padded.size.height * 0.2
+        
+        guard let coord = target?.coordinate else {
+            let points = visibleStations.shown.map(\.coordinate)
+            guard let first = points.first else { return }
+            withAnimation(.easeInOut(duration: 0.4)) {
+                camera = .camera(MapCamera(centerCoordinate: first, distance: 900, heading: 0, pitch: 0))
+            }
+            return
+        }
+
+        let distance: CLLocationDistance = 650
+        let metersSouth = distance * 0.22
+        let degreesSouth = metersSouth / 111_000
+        let center = CLLocationCoordinate2D(latitude: coord.latitude - degreesSouth, longitude: coord.longitude)
 
         withAnimation(.easeInOut(duration: 0.4)) {
-            camera = .rect(padded)
+            camera = .camera(MapCamera(centerCoordinate: center, distance: distance, heading: 0, pitch: 0))
         }
+    }
+}
+
+private struct StopInterchangeCard: View {
+    let interchange: InterchangeInfo
+    let currentLine: String
+
+    private var otherLines: [String] { interchange.lines.filter { $0 != currentLine } }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Interscambi")
+                .font(.headline)
+
+            if otherLines.isEmpty {
+                Label("Fermata senza interscambi.", systemImage: "nosign")
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundStyle(.secondary)
+            }
+            else {
+                HStack(spacing: 10) {
+                    typeIcon
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 6) {
+                            ForEach(otherLines, id: \.self) { line in
+                                badge(for: line)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    @ViewBuilder
+    private var typeIcon: some View {
+        if interchange.typeOfInterchange == "stadium.fill" || interchange.typeOfInterchange == "hospital" {
+            Image(interchange.typeOfInterchange)
+                .renderingMode(.template)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 20, height: 20)
+                .foregroundStyle(Color.primary)
+        }
+        else {
+            Image(systemName: interchange.typeOfInterchange)
+                .font(.system(size: 18, weight: .bold))
+                .foregroundStyle(Color.primary)
+        }
+    }
+
+    @ViewBuilder
+    private func badge(for line: String) -> some View {
+        Group {
+            if line.contains(String(localized: .filobus)) || line.wholeMatch(of: /9[0-3]/) != nil {
+                Label(line, systemImage: "bolt.fill")
+            }
+            else if line.starts(with: "N") {
+                Label(line, systemImage: "moon.fill")
+            }
+            else if line == "Monumento" {
+                Text(String(localized: .monumento)).foregroundStyle(.black)
+            }
+            else if line == "Ospedale" {
+                Text(String(localized: .ospedale))
+            }
+            else {
+                Text(line)
+            }
+        }
+        .font(.system(size: 13, weight: .bold))
+        .foregroundStyle(.white)
+        .padding(.vertical, 4)
+        .padding(.horizontal, 8)
+        .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
     }
 }
 
@@ -370,8 +451,57 @@ extension GTFSHelper {
             .joined(separator: " ")
     }
 
+    private static let numeriParole: [String: String] = [
+        "uno": "1", "due": "2", "tre": "3", "quattro": "4", "cinque": "5", "sei": "6", "sette": "7",
+        "otto": "8", "nove": "9", "dieci": "10", "undici": "11", "dodici": "12", "tredici": "13",
+        "quattordici": "14", "quindici": "15", "sedici": "16", "diciassette": "17", "diciotto": "18",
+        "diciannove": "19", "venti": "20", "ventuno": "21", "ventidue": "22", "ventitre": "23",
+        "ventiquattro": "24", "venticinque": "25", "ventisei": "26", "ventisette": "27",
+        "ventotto": "28", "ventinove": "29", "trenta": "30", "trentuno": "31"
+    ]
+
+    private static func romanValue(_ token: String) -> Int? {
+        guard token.range(of: "^[ivx]+$", options: .regularExpression) != nil else { return nil }
+        let map: [Character: Int] = ["i": 1, "v": 5, "x": 10]
+        var total = 0, prev = 0
+        for ch in token.reversed() {
+            let v = map[ch] ?? 0
+            total += v < prev ? -v : v
+            prev = max(prev, v)
+        }
+        return total > 1 ? total : nil
+    }
+
+    private static func matchTokens(_ name: String) -> [String] {
+        normalizedName(name)
+            .replacingOccurrences(of: "[.,'’()\\-]", with: " ", options: .regularExpression)
+            .split(separator: " ")
+            .map(String.init)
+            .filter { $0.range(of: "^m[1-5]$", options: .regularExpression) == nil && $0 != "fn" }
+            .map { numeriParole[$0] ?? romanValue($0).map(String.init) ?? $0 }
+    }
+
     static func stopId(named name: String, in route: GTFSRoute) -> String? {
         let target = normalizedName(name)
-        return route.stops.first { normalizedName($0.value.n) == target }?.key
+        if let exact = route.stops.first(where: { normalizedName($0.value.n) == target })?.key { return exact }
+
+        let t = matchTokens(name)
+        guard !t.isEmpty else { return nil }
+        let tSet = Set(t)
+
+        if let same = route.stops.first(where: { Set(matchTokens($0.value.n)) == tSet })?.key { return same }
+
+        var bestKey: String?
+        var bestScore = 0.0
+        for (key, stop) in route.stops {
+            let s = Set(matchTokens(stop.n))
+            let union = s.union(tSet).count
+            guard union > 0 else { continue }
+            let score = Double(s.intersection(tSet).count) / Double(union)
+            if score > bestScore { bestScore = score; bestKey = key }
+        }
+        if bestScore >= 0.6 { return bestKey } 
+        
+        return nil
     }
 }
