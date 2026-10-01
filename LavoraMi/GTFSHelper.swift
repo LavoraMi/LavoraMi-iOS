@@ -240,6 +240,6 @@ struct GTFSHelper {
     private static func minutes(of date: Date) -> Int {
         let calendar = romeCalendar.dateComponents([.hour, .minute], from: date)
         
-        return (calendar.hour ?? 0) * 60 + (c.minute ?? 0)
+        return (calendar.hour ?? 0) * 60 + (calendar.minute ?? 0)
     }
 }
