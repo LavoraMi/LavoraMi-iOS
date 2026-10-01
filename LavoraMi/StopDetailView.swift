@@ -26,11 +26,13 @@ struct StopDetailView: View {
     let lineColor: Color
 
     @State private var stopName: String
+    @State private var stopId: String?
     @State private var routeData: GTFSRoute?
     @State private var loadFailed = false
     @State private var directions: [DirectionDepartures] = []
     @State private var directionIndex = 0
-    @State private var camera: MapCameraPosition = .automatic
+    @State private var camera: MapCameraPosition
+    @State private var mapSize: CGSize = CGSize(width: 393, height: 852)
     @State private var showSheet = false
     @State private var detent: PresentationDetent = .medium
 
@@ -38,6 +40,8 @@ struct StopDetailView: View {
     @AppStorage("feedbacksEnabled") private var feedbacksEnabled: Bool = true
 
     private let refreshTimer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
+    private static let visibleMapMeters: Double = 420
+    private static let collapsedSheetHeight: CGFloat = 96
 
     init(lineName: String, stopName: String, stations: [MetroStation], interchanges: [InterchangeInfo], initialRoute: GTFSRoute?, lineColor: Color) {
         self.lineName = lineName
@@ -46,6 +50,16 @@ struct StopDetailView: View {
         self.lineColor = lineColor
         _stopName = State(initialValue: stopName)
         _routeData = State(initialValue: initialRoute)
+        _stopId = State(initialValue: initialRoute.flatMap { GTFSHelper.stopId(named: stopName, in: $0) })
+
+        let start = stations.first { $0.name != "NO_DRAW" && $0.name.caseInsensitiveCompare(stopName) == .orderedSame }
+        if let coord = start?.coordinate {
+            let size = CGSize(width: 393, height: 852)
+            _camera = State(initialValue: .region(Self.region(center: coord, size: size, sheetHeight: size.height / 2)))
+        }
+        else {
+            _camera = State(initialValue: .automatic)
+        }
     }
 
     private var cdnURL: URL? {
@@ -55,42 +69,47 @@ struct StopDetailView: View {
     var body: some View {
         let visible = visibleStations
 
-        ZStack(alignment: .topLeading) {
-            Map(position: $camera) {
-                UserAnnotation()
+        GeometryReader { geo in
+            ZStack(alignment: .topLeading) {
+                Map(position: $camera) {
+                    UserAnnotation()
 
-                if visible.path.count >= 2 {
-                    MapPolyline(coordinates: visible.path.map(\.coordinate))
-                        .stroke(lineColor, lineWidth: 5)
-                }
+                    if visible.path.count >= 2 {
+                        MapPolyline(coordinates: visible.path.map(\.coordinate))
+                            .stroke(lineColor, lineWidth: 5)
+                    }
 
-                ForEach(visible.shown) { station in
-                    Annotation(station.name, coordinate: station.coordinate) {
-                        marker(for: station)
+                    ForEach(visible.shown) { station in
+                        Annotation(station.name, coordinate: station.coordinate) {
+                            marker(for: station)
+                        }
                     }
                 }
-            }
-            .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
-            .mapControls {
-                MapCompass()
-            }
-            .tint(lineColor)
-            .ignoresSafeArea()
+                .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
+                .mapControls {
+                    MapCompass()
+                }
+                .tint(lineColor)
+                .ignoresSafeArea()
 
-            backButton
+                backButton
+            }
+            .onAppear { updateMapSize(from: geo) }
+            .onChange(of: geo.size) { _, _ in updateMapSize(from: geo) }
         }
         .sheet(isPresented: $showSheet) {
             sheetContent
-                .presentationDetents([.height(96), .medium], selection: $detent)
+                .presentationDetents([.height(Self.collapsedSheetHeight), .medium], selection: $detent)
                 .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+                .presentationBackground(Color(.systemBackground))
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(24)
                 .interactiveDismissDisabled()
         }
         .onAppear {
-            fitCamera()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { showSheet = true }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { showSheet = true }
         }
+        .onChange(of: detent) { _, _ in fitCamera() }
         .task {
             await loadRouteIfNeeded()
         }
@@ -98,7 +117,7 @@ struct StopDetailView: View {
             refreshDepartures()
         }
     }
-
+    
     @ViewBuilder
     private func marker(for station: MetroStation) -> some View {
         if station.name.caseInsensitiveCompare(stopName) == .orderedSame {
@@ -130,12 +149,57 @@ struct StopDetailView: View {
         .padding(.top, 8)
     }
 
+    private func updateMapSize(from geo: GeometryProxy) {
+        let insets = geo.safeAreaInsets
+        let full = CGSize(width: geo.size.width + insets.leading + insets.trailing,
+                          height: geo.size.height + insets.top + insets.bottom)
+        guard full.width > 0, full.height > 0, full != mapSize else { return }
+        mapSize = full
+        fitCamera(animated: false)
+    }
+
+    private static func region(center coord: CLLocationCoordinate2D, size: CGSize, sheetHeight: CGFloat) -> MKCoordinateRegion {
+        let height = Double(max(size.height, 1))
+        let width = Double(max(size.width, 1))
+        let metersPerPoint = visibleMapMeters / height
+        let metersPerDegree = 111_320.0
+
+        let shiftMeters = Double(sheetHeight) / 2 * metersPerPoint
+        let center = CLLocationCoordinate2D(latitude: coord.latitude - shiftMeters / metersPerDegree,
+                                            longitude: coord.longitude)
+        let span = MKCoordinateSpan(
+            latitudeDelta: visibleMapMeters / metersPerDegree,
+            longitudeDelta: width * metersPerPoint / (metersPerDegree * max(cos(coord.latitude * .pi / 180), 0.01))
+        )
+        return MKCoordinateRegion(center: center, span: span)
+    }
+
+    private func fitCamera(animated: Bool = true) {
+        let current = stations.first { !isHidden($0) && $0.name.caseInsensitiveCompare(stopName) == .orderedSame }
+        guard let coord = current?.coordinate else { return }
+
+        let sheetHeight = detent == .medium ? mapSize.height / 2 : Self.collapsedSheetHeight
+        let target = MapCameraPosition.region(Self.region(center: coord, size: mapSize, sheetHeight: sheetHeight))
+
+        if animated {
+            withAnimation(.easeInOut(duration: 0.4)) { camera = target }
+        }
+        else {
+            camera = target
+        }
+    }
+    
     private var sheetContent: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 22) {
+            VStack(alignment: .leading, spacing: 20) {
                 header
                 nextArrivalSection
-                interchangeSection
+                StopInterchangeTimeline(
+                    name: interchange?.name ?? stopName,
+                    otherLines: (interchange?.lines ?? []).filter { $0 != lineName },
+                    typeOfInterchange: interchange?.typeOfInterchange ?? "tram.fill",
+                    lineColor: lineColor
+                )
             }
             .padding(.horizontal, 20)
             .padding(.top, 18)
@@ -197,14 +261,12 @@ struct StopDetailView: View {
                     .padding(.horizontal, 8)
                     .background(lineColor, in: RoundedRectangle(cornerRadius: 8))
 
-                Text("Direzione: \(next.headsign.uppercased())")
-                    .font(.system(size: 16))
-                    .lineLimit(1)
-
-                Spacer(minLength: 8)
+                StopMarqueeText(text: "Direzione: \(next.headsign.uppercased())", font: .system(size: 16))
+                    .id(next.headsign)
 
                 Text(next.formattedWait)
                     .font(.system(size: 18, weight: .bold))
+                    .fixedSize()
             }
         }
         else if loadFailed {
@@ -223,13 +285,6 @@ struct StopDetailView: View {
         }
     }
 
-    @ViewBuilder
-    private var interchangeSection: some View {
-        if let info = interchange {
-            StopInterchangeCard(interchange: info, currentLine: lineName)
-        }
-    }
-
     private var currentDirection: DirectionDepartures? {
         directions.indices.contains(directionIndex) ? directions[directionIndex] : nil
     }
@@ -239,6 +294,7 @@ struct StopDetailView: View {
         if feedbacksEnabled { HapticManager.shared.trigger() }
         stopName = name
         directionIndex = 0
+        resolveStopId()
         refreshDepartures()
         fitCamera()
     }
@@ -254,12 +310,16 @@ struct StopDetailView: View {
             do { routeData = try await GTFSHelper.load(from: url) }
             catch { loadFailed = true }
         }
+        resolveStopId()
         refreshDepartures()
     }
 
+    private func resolveStopId() {
+        stopId = routeData.flatMap { GTFSHelper.stopId(named: stopName, in: $0) }
+    }
+
     private func refreshDepartures() {
-        guard let route = routeData,
-              let id = GTFSHelper.stopId(named: stopName, in: route) else {
+        guard let route = routeData, let id = stopId else {
             directions = []
             return
         }
@@ -274,7 +334,7 @@ struct StopDetailView: View {
            let special = interchanges.first(where: { $0.name.caseInsensitiveCompare("Milano Scalo Romana") == .orderedSame }) {
             return special
         }
-        
+
         if let exact = interchanges.first(where: { GTFSHelper.normalizedName($0.name) == target }) { return exact }
         return interchanges.first { GTFSHelper.normalizedName($0.name).contains(target) }
     }
@@ -289,7 +349,7 @@ struct StopDetailView: View {
             if !isHidden(list[i]) { return i }
             i += step
         }
-        
+
         return nil
     }
 
@@ -313,78 +373,71 @@ struct StopDetailView: View {
         let shown = [prev, idx, next].compactMap { $0 }.map { branchStations[$0] }
         return (path, shown)
     }
-
-    private func fitCamera() {
-        let target = stations.first {
-            !isHidden($0) && $0.name.caseInsensitiveCompare(stopName) == .orderedSame
-        }
-        
-        guard let coord = target?.coordinate else {
-            let points = visibleStations.shown.map(\.coordinate)
-            guard let first = points.first else { return }
-            withAnimation(.easeInOut(duration: 0.4)) {
-                camera = .camera(MapCamera(centerCoordinate: first, distance: 900, heading: 0, pitch: 0))
-            }
-            return
-        }
-
-        let distance: CLLocationDistance = 650
-        let metersSouth = distance * 0.22
-        let degreesSouth = metersSouth / 111_000
-        let center = CLLocationCoordinate2D(latitude: coord.latitude - degreesSouth, longitude: coord.longitude)
-
-        withAnimation(.easeInOut(duration: 0.4)) {
-            camera = .camera(MapCamera(centerCoordinate: center, distance: distance, heading: 0, pitch: 0))
-        }
-    }
 }
 
-private struct StopInterchangeCard: View {
-    let interchange: InterchangeInfo
-    let currentLine: String
-
-    private var otherLines: [String] { interchange.lines.filter { $0 != currentLine } }
+private struct StopInterchangeTimeline: View {
+    let name: String
+    let otherLines: [String]
+    let typeOfInterchange: String
+    let lineColor: Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Interscambi")
-                .font(.headline)
-
-            if otherLines.isEmpty {
-                Label("Fermata senza interscambi.", systemImage: "nosign")
-                    .font(.system(size: 15, weight: .semibold))
-                    .foregroundStyle(.secondary)
+        HStack(alignment: .top, spacing: 14) {
+            VStack(spacing: 0) {
+                Rectangle().fill(lineColor).frame(width: 3, height: 10)
+                Circle()
+                    .strokeBorder(lineColor, lineWidth: 3)
+                    .background(Circle().fill(Color.white))
+                    .frame(width: 20, height: 20)
+                Rectangle().fill(lineColor).frame(width: 3).frame(maxHeight: .infinity)
             }
-            else {
-                HStack(spacing: 10) {
-                    typeIcon
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 6) {
-                            ForEach(otherLines, id: \.self) { line in
-                                badge(for: line)
+            .frame(width: 24)
+
+            VStack(alignment: .leading, spacing: 10) {
+                StopMarqueeText(text: name.uppercased(), font: .custom("TitilliumWeb-Bold", size: 20))
+                    .id(name)
+                    .padding(.top, 6)
+
+                if otherLines.isEmpty {
+                    HStack(spacing: 8) {
+                        Image(systemName: "nosign")
+                            .font(.system(size: 18, weight: .bold))
+                        Text("Fermata senza interscambi.")
+                            .font(.custom("TitilliumWeb-Bold", size: 15))
+                    }
+                    .foregroundStyle(Color("TextColor"))
+                }
+                else {
+                    HStack(spacing: 8) {
+                        typeIcon
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 6) {
+                                ForEach(otherLines, id: \.self) { badge(for: $0) }
                             }
                         }
                     }
                 }
             }
+            .padding(.bottom, 20)
         }
+        .fixedSize(horizontal: false, vertical: true)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     @ViewBuilder
     private var typeIcon: some View {
-        if interchange.typeOfInterchange == "stadium.fill" || interchange.typeOfInterchange == "hospital" {
-            Image(interchange.typeOfInterchange)
+        if typeOfInterchange == "stadium.fill" || typeOfInterchange == "hospital" {
+            Image(typeOfInterchange)
                 .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 20, height: 20)
-                .foregroundStyle(Color.primary)
+                .frame(width: 22, height: 22)
+                .foregroundStyle(Color("TextColor"))
         }
         else {
-            Image(systemName: interchange.typeOfInterchange)
-                .font(.system(size: 18, weight: .bold))
-                .foregroundStyle(Color.primary)
+            Image(systemName: typeOfInterchange)
+                .font(.system(size: 20, weight: .bold))
+                .foregroundStyle(Color("TextColor"))
         }
     }
 
@@ -412,6 +465,35 @@ private struct StopInterchangeCard: View {
         .padding(.vertical, 4)
         .padding(.horizontal, 8)
         .background(RoundedRectangle(cornerRadius: 6).fill(getColor(for: line)))
+    }
+}
+
+private struct StopMarqueeText: View {
+    let text: String
+    let font: Font
+    @State private var textWidth: CGFloat = 0
+    @State private var boxWidth: CGFloat = 0
+    @State private var shifted = false
+
+    private var overflow: CGFloat { max(0, textWidth - boxWidth) }
+
+    var body: some View {
+        Text(text)
+            .font(font)
+            .foregroundStyle(Color("TextColor"))
+            .lineLimit(1)
+            .fixedSize()
+            .background(GeometryReader { g in Color.clear.onAppear { textWidth = g.size.width } })
+            .offset(x: shifted ? -overflow : 0)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(GeometryReader { g in Color.clear.onAppear { boxWidth = g.size.width } })
+            .clipped()
+            .onChange(of: overflow) { _, value in
+                guard value > 1 else { return }
+                withAnimation(.linear(duration: Double(value) / 35).delay(2).repeatForever(autoreverses: true)) {
+                    shifted = true
+                }
+            }
     }
 }
 
@@ -500,7 +582,8 @@ extension GTFSHelper {
             let score = Double(s.intersection(tSet).count) / Double(union)
             if score > bestScore { bestScore = score; bestKey = key }
         }
-        if bestScore >= 0.6 { return bestKey } 
+        
+        if bestScore >= 0.6 { return bestKey }
         
         return nil
     }

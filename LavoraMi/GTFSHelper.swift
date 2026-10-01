@@ -7,35 +7,60 @@
 
 import Foundation
 
-struct GTFSRoute: Codable {
+struct GTFSRoute: Codable, Sendable {
     let route: String
     let headsigns: [String]
     let services: [String: GTFSService]
     let stops: [String: GTFSStop]
 }
 
-struct GTFSService: Codable {
+struct GTFSService: Codable, Sendable {
     let id: String
     let dates: [String]
     let daytype: String?
 }
 
-struct GTFSStop: Codable {
+struct GTFSStop: Codable, Sendable {
     let n: String
-    let d: [String: [[AnyDecodable]]]
+    let d: [String: [GTFSEntry]]
 }
 
-struct AnyDecodable: Codable {
-    let value: Any
-    
+struct GTFSEntry: Codable, Sendable {
+    let minutes: Int
+    let headsign: Int
+    let service: Int
+
     init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let s = try? container.decode(String.self) { value = s }
-        else if let i = try? container.decode(Int.self) { value = i }
-        else { value = "" }
+        var c = try decoder.unkeyedContainer()
+        let time = try c.decode(String.self)
+        headsign = try c.decode(Int.self)
+        service = try c.decode(Int.self)
+        minutes = GTFSEntry.parse(time)
     }
-    
-    func encode(to encoder: Encoder) throws {}
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.unkeyedContainer()
+        try c.encode(String(format: "%02d:%02d", max(minutes, 0) / 60, max(minutes, 0) % 60))
+        try c.encode(headsign)
+        try c.encode(service)
+    }
+
+    private static func parse(_ time: String) -> Int {
+        var parts: [Int] = []
+        var current = 0
+        var hasDigits = false
+        for u in time.utf8 {
+            if u == 58 {                       // ":"
+                parts.append(current); current = 0; hasDigits = false
+            }
+            else if u >= 48 && u <= 57 {       // "0"..."9"
+                current = current * 10 + Int(u - 48); hasDigits = true
+            }
+            else { return -1 }
+        }
+        if hasDigits { parts.append(current) }
+        return parts.count >= 2 ? parts[0] * 60 + parts[1] : -1
+    }
 }
 
 struct Departure: Identifiable {
@@ -52,10 +77,72 @@ struct Departure: Identifiable {
     }
 }
 
+actor GTFSStore {
+    static let shared = GTFSStore()
+
+    private var memory: [URL: (route: GTFSRoute, date: Date)] = [:]
+    private var inflight: [URL: Task<GTFSRoute, Error>] = [:]
+    private static let ttl: TimeInterval = 6 * 3600
+
+    func route(from url: URL) async throws -> GTFSRoute {
+        if let cached = memory[url], Date().timeIntervalSince(cached.date) < Self.ttl {
+            return cached.route
+        }
+        if let running = inflight[url] {
+            return try await running.value
+        }
+
+        let task = Task.detached(priority: .userInitiated) {
+            try await GTFSStore.fetch(url)
+        }
+        inflight[url] = task
+        defer { inflight[url] = nil }
+
+        let route = try await task.value
+        memory[url] = (route, Date())
+        return route
+    }
+
+    private static func cacheFile(for url: URL) -> URL {
+        let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        return dir.appendingPathComponent("gtfs_" + url.lastPathComponent)
+    }
+
+    private static func fetch(_ url: URL) async throws -> GTFSRoute {
+        let file = cacheFile(for: url)
+        let fm = FileManager.default
+
+        if let modified = (try? fm.attributesOfItem(atPath: file.path))?[.modificationDate] as? Date,
+           Date().timeIntervalSince(modified) < ttl,
+           let data = try? Data(contentsOf: file),
+           let route = try? JSONDecoder().decode(GTFSRoute.self, from: data) {
+            return route
+        }
+
+        do {
+            var request = URLRequest(url: url)
+            request.timeoutInterval = 15
+            let (data, response) = try await URLSession.shared.data(for: request)
+            if let http = response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
+                throw URLError(.badServerResponse)
+            }
+            let route = try JSONDecoder().decode(GTFSRoute.self, from: data)
+            try? data.write(to: file, options: .atomic)
+            return route
+        }
+        catch {
+            if let data = try? Data(contentsOf: file),
+               let route = try? JSONDecoder().decode(GTFSRoute.self, from: data) {
+                return route
+            }
+            throw error
+        }
+    }
+}
+
 struct GTFSHelper {
     static func load(from url: URL) async throws -> GTFSRoute {
-        let (data, _) = try await URLSession.shared.data(from: url)
-        return try JSONDecoder().decode(GTFSRoute.self, from: data)
+        try await GTFSStore.shared.route(from: url)
     }
     
     static func getDepartures(for stopId: String, in route: GTFSRoute, limit: Int = 10, now: Date = Date()) -> [String: [Departure]]? {
@@ -68,25 +155,19 @@ struct GTFSHelper {
         var result: [String: [Departure]] = [:]
 
         for (directionId, entries) in stop.d {
-            var seen = Set<String>()
+            var seen = Set<Int>()
             var list: [Departure] = []
 
-            for entry in entries {
-                guard entry.count >= 3,
-                      let timeStr = entry[0].value as? String,
-                      let headsignIdx = entry[1].value as? Int,
-                      let serviceIdx = entry[2].value as? Int,
-                      active.contains(serviceIdx) else { continue }
+            for e in entries {
+                guard e.minutes >= nowMins, active.contains(e.service) else { continue }
+                guard seen.insert(e.minutes << 8 | e.headsign).inserted else { continue }
 
-                let parts = timeStr.split(separator: ":").compactMap { Int($0) }
-                guard parts.count == 2 else { continue }
-                let diff = parts[0] * 60 + parts[1] - nowMins
-                guard diff >= 0 else { continue }
-                
-                guard seen.insert("\(timeStr)|\(headsignIdx)").inserted else { continue }
-
-                let headsign = route.headsigns.indices.contains(headsignIdx) ? route.headsigns[headsignIdx] : "Direzione ignota"
-                list.append(Departure(time: timeStr, headsign: headsign, minutesFromNow: diff))
+                let headsign = route.headsigns.indices.contains(e.headsign) ? route.headsigns[e.headsign] : "Direzione ignota"
+                list.append(Departure(
+                    time: String(format: "%02d:%02d", e.minutes / 60, e.minutes % 60),
+                    headsign: headsign,
+                    minutesFromNow: e.minutes - nowMins
+                ))
             }
 
             list.sort { $0.minutesFromNow < $1.minutesFromNow }
@@ -103,20 +184,17 @@ struct GTFSHelper {
             let type = dayType(of: date)
             active = Set(route.services.compactMap { $0.value.daytype?.lowercased() == type ? Int($0.key) : nil })
         }
-        
         return active
     }
 
     private static var romeCalendar: Calendar {
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = TimeZone(identifier: "Europe/Rome")!
-        
         return cal
     }
 
     private static func dayType(of date: Date) -> String {
-        let cal = romeCalendar
-        let c = cal.dateComponents([.year, .month, .day, .weekday], from: date)
+        let c = romeCalendar.dateComponents([.year, .month, .day, .weekday], from: date)
         guard let y = c.year, let m = c.month, let d = c.day, let wd = c.weekday else { return "feriale" }
 
         if wd == 1 || isHoliday(year: y, month: m, day: d) { return "festivo" }
