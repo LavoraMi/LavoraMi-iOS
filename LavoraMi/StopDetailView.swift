@@ -34,7 +34,9 @@ struct StopDetailView: View {
     @State private var camera: MapCameraPosition
     @State private var mapSize: CGSize = CGSize(width: 393, height: 852)
     @State private var showSheet = false
-    @State private var detent: PresentationDetent = .medium
+    @State private var isExpanded = true
+    @State private var expandedHeight: CGFloat = 340
+    @State private var bottomInset: CGFloat = 34
 
     @Environment(\.dismiss) private var dismiss
     @AppStorage("feedbacksEnabled") private var feedbacksEnabled: Bool = true
@@ -55,7 +57,7 @@ struct StopDetailView: View {
         let start = stations.first { $0.name != "NO_DRAW" && $0.name.caseInsensitiveCompare(stopName) == .orderedSame }
         if let coord = start?.coordinate {
             let size = CGSize(width: 393, height: 852)
-            _camera = State(initialValue: .region(Self.region(center: coord, size: size, sheetHeight: size.height / 2)))
+            _camera = State(initialValue: .region(Self.region(center: coord, size: size, sheetHeight: 340)))
         }
         else {
             _camera = State(initialValue: .automatic)
@@ -99,8 +101,8 @@ struct StopDetailView: View {
         }
         .sheet(isPresented: $showSheet) {
             sheetContent
-                .presentationDetents([.height(Self.collapsedSheetHeight), .medium], selection: $detent)
-                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+                .presentationDetents([collapsedDetent, expandedDetent], selection: detentBinding)
+                .presentationBackgroundInteraction(.enabled(upThrough: expandedDetent))
                 .presentationBackground(Color(.systemBackground))
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(24)
@@ -109,7 +111,8 @@ struct StopDetailView: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { showSheet = true }
         }
-        .onChange(of: detent) { _, _ in fitCamera() }
+        .onChange(of: isExpanded) { _, _ in fitCamera() }
+        .onChange(of: expandedHeight) { _, _ in fitCamera() }
         .task {
             await loadRouteIfNeeded()
         }
@@ -154,6 +157,7 @@ struct StopDetailView: View {
         let full = CGSize(width: geo.size.width + insets.leading + insets.trailing,
                           height: geo.size.height + insets.top + insets.bottom)
         guard full.width > 0, full.height > 0, full != mapSize else { return }
+        bottomInset = insets.bottom
         mapSize = full
         fitCamera(animated: false)
     }
@@ -165,8 +169,7 @@ struct StopDetailView: View {
         let metersPerDegree = 111_320.0
 
         let shiftMeters = Double(sheetHeight) / 2 * metersPerPoint
-        let center = CLLocationCoordinate2D(latitude: coord.latitude - shiftMeters / metersPerDegree,
-                                            longitude: coord.longitude)
+        let center = CLLocationCoordinate2D(latitude: coord.latitude - shiftMeters / metersPerDegree, longitude: coord.longitude)
         let span = MKCoordinateSpan(
             latitudeDelta: visibleMapMeters / metersPerDegree,
             longitudeDelta: width * metersPerPoint / (metersPerDegree * max(cos(coord.latitude * .pi / 180), 0.01))
@@ -178,7 +181,7 @@ struct StopDetailView: View {
         let current = stations.first { !isHidden($0) && $0.name.caseInsensitiveCompare(stopName) == .orderedSame }
         guard let coord = current?.coordinate else { return }
 
-        let sheetHeight = detent == .medium ? mapSize.height / 2 : Self.collapsedSheetHeight
+        let sheetHeight = isExpanded ? expandedHeight : Self.collapsedSheetHeight
         let target = MapCameraPosition.region(Self.region(center: coord, size: mapSize, sheetHeight: sheetHeight))
 
         if animated {
@@ -189,6 +192,16 @@ struct StopDetailView: View {
         }
     }
     
+    private var collapsedDetent: PresentationDetent { .height(Self.collapsedSheetHeight) }
+    private var expandedDetent: PresentationDetent { .height(expandedHeight) }
+
+    private var detentBinding: Binding<PresentationDetent> {
+        Binding(
+            get: { isExpanded ? expandedDetent : collapsedDetent },
+            set: { isExpanded = ($0 != collapsedDetent) }
+        )
+    }
+
     private var sheetContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -203,9 +216,17 @@ struct StopDetailView: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 18)
-            .padding(.bottom, 16)
+            .padding(.bottom, 4)
+            .background(GeometryReader { g in
+                Color.clear.preference(key: StopSheetHeightKey.self, value: g.size.height)
+            })
         }
         .scrollBounceBehavior(.basedOnSize)
+        .onPreferenceChange(StopSheetHeightKey.self) { height in
+            guard height > 0 else { return }
+            let fitted = min(height + bottomInset, mapSize.height * 0.65)
+            if abs(fitted - expandedHeight) > 1 { expandedHeight = fitted }
+        }
     }
 
     private var header: some View {
@@ -418,7 +439,6 @@ private struct StopInterchangeTimeline: View {
                     }
                 }
             }
-            .padding(.bottom, 20)
         }
         .fixedSize(horizontal: false, vertical: true)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -468,6 +488,21 @@ private struct StopInterchangeTimeline: View {
     }
 }
 
+private struct StopSheetHeightKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = max(value, nextValue()) }
+}
+
+private struct StopMarqueeBoxKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = max(value, nextValue()) }
+}
+
+private struct StopMarqueeTextKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = max(value, nextValue()) }
+}
+
 private struct StopMarqueeText: View {
     let text: String
     let font: Font
@@ -480,18 +515,39 @@ private struct StopMarqueeText: View {
     var body: some View {
         Text(text)
             .font(font)
-            .foregroundStyle(Color("TextColor"))
             .lineLimit(1)
-            .fixedSize()
-            .background(GeometryReader { g in Color.clear.onAppear { textWidth = g.size.width } })
-            .offset(x: shifted ? -overflow : 0)
+            .hidden()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(GeometryReader { g in Color.clear.onAppear { boxWidth = g.size.width } })
+            .background(GeometryReader { g in
+                Color.clear.preference(key: StopMarqueeBoxKey.self, value: g.size.width)
+            })
+            .overlay(alignment: .leading) {
+                Text(text)
+                    .font(font)
+                    .foregroundStyle(Color("TextColor"))
+                    .lineLimit(1)
+                    .fixedSize()
+                    .background(GeometryReader { g in
+                        Color.clear.preference(key: StopMarqueeTextKey.self, value: g.size.width)
+                    })
+                    .offset(x: shifted ? -overflow : 0)
+            }
             .clipped()
-            .onChange(of: overflow) { _, value in
-                guard value > 1 else { return }
-                withAnimation(.linear(duration: Double(value) / 35).delay(2).repeatForever(autoreverses: true)) {
-                    shifted = true
+            .onPreferenceChange(StopMarqueeBoxKey.self) { boxWidth = $0 }
+            .onPreferenceChange(StopMarqueeTextKey.self) { textWidth = $0 }
+            .task(id: overflow) {
+                shifted = false
+                guard overflow > 1 else { return }
+
+                let duration = max(Double(overflow) / 35, 0.8)
+                let pause: Double = 2
+                try? await Task.sleep(for: .seconds(pause))
+                while !Task.isCancelled {
+                    withAnimation(.linear(duration: duration)) { shifted = true }
+                    try? await Task.sleep(for: .seconds(duration + pause))
+                    guard !Task.isCancelled else { break }
+                    withAnimation(.linear(duration: duration)) { shifted = false }
+                    try? await Task.sleep(for: .seconds(duration + pause))
                 }
             }
     }
