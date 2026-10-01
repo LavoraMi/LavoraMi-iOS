@@ -31,34 +31,34 @@ struct GTFSEntry: Codable, Sendable {
     let service: Int
 
     init(from decoder: Decoder) throws {
-        var c = try decoder.unkeyedContainer()
-        let time = try c.decode(String.self)
-        headsign = try c.decode(Int.self)
-        service = try c.decode(Int.self)
+        var container = try decoder.unkeyedContainer()
+        let time = try container.decode(String.self)
+        
+        headsign = try container.decode(Int.self)
+        service = try container.decode(Int.self)
         minutes = GTFSEntry.parse(time)
     }
 
     func encode(to encoder: Encoder) throws {
-        var c = encoder.unkeyedContainer()
-        try c.encode(String(format: "%02d:%02d", max(minutes, 0) / 60, max(minutes, 0) % 60))
-        try c.encode(headsign)
-        try c.encode(service)
+        var containerEncoder = encoder.unkeyedContainer()
+        try containerEncoder.encode(String(format: "%02d:%02d", max(minutes, 0) / 60, max(minutes, 0) % 60))
+        try containerEncoder.encode(headsign)
+        try containerEncoder.encode(service)
     }
 
     private static func parse(_ time: String) -> Int {
         var parts: [Int] = []
         var current = 0
         var hasDigits = false
+        
         for u in time.utf8 {
-            if u == 58 {                       // ":"
-                parts.append(current); current = 0; hasDigits = false
-            }
-            else if u >= 48 && u <= 57 {       // "0"..."9"
-                current = current * 10 + Int(u - 48); hasDigits = true
-            }
+            if u == 58 {parts.append(current); current = 0; hasDigits = false}
+            else if u >= 48 && u <= 57 {current = current * 10 + Int(u - 48); hasDigits = true}
             else { return -1 }
         }
+        
         if hasDigits { parts.append(current) }
+        
         return parts.count >= 2 ? parts[0] * 60 + parts[1] : -1
     }
 }
@@ -85,12 +85,8 @@ actor GTFSStore {
     private static let ttl: TimeInterval = 6 * 3600
 
     func route(from url: URL) async throws -> GTFSRoute {
-        if let cached = memory[url], Date().timeIntervalSince(cached.date) < Self.ttl {
-            return cached.route
-        }
-        if let running = inflight[url] {
-            return try await running.value
-        }
+        if let cached = memory[url], Date().timeIntervalSince(cached.date) < Self.ttl {return cached.route}
+        if let running = inflight[url] {return try await running.value}
 
         let task = Task.detached(priority: .userInitiated) {
             try await GTFSStore.fetch(url)
@@ -123,9 +119,11 @@ actor GTFSStore {
             var request = URLRequest(url: url)
             request.timeoutInterval = 15
             let (data, response) = try await URLSession.shared.data(for: request)
+            
             if let http = response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
                 throw URLError(.badServerResponse)
             }
+            
             let route = try JSONDecoder().decode(GTFSRoute.self, from: data)
             try? data.write(to: file, options: .atomic)
             return route
@@ -180,39 +178,42 @@ struct GTFSHelper {
     private static func activeServiceIndices(in route: GTFSRoute, on date: Date) -> Set<Int> {
         let today = dateString(date)
         var active = Set(route.services.compactMap { $0.value.dates.contains(today) ? Int($0.key) : nil })
+        
         if active.isEmpty {
             let type = dayType(of: date)
             active = Set(route.services.compactMap { $0.value.daytype?.lowercased() == type ? Int($0.key) : nil })
         }
+        
         return active
     }
 
     private static var romeCalendar: Calendar {
-        var cal = Calendar(identifier: .gregorian)
-        cal.timeZone = TimeZone(identifier: "Europe/Rome")!
-        return cal
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "Europe/Rome")!
+        
+        return calendar
     }
 
     private static func dayType(of date: Date) -> String {
-        let c = romeCalendar.dateComponents([.year, .month, .day, .weekday], from: date)
-        guard let y = c.year, let m = c.month, let d = c.day, let wd = c.weekday else { return "feriale" }
+        let calendar = romeCalendar.dateComponents([.year, .month, .day, .weekday], from: date)
+        guard let y = calendar.year, let m = calendar.month, let d = calendar.day, let weekend = calendar.weekday else { return "feriale" }
 
-        if wd == 1 || isHoliday(year: y, month: m, day: d) { return "festivo" }
-        return wd == 7 ? "sabato" : "feriale"
+        if weekend == 1 || isHoliday(year: y, month: m, day: d) { return "festivo" }
+        return weekend == 7 ? "sabato" : "feriale"
     }
 
     private static func isHoliday(year: Int, month: Int, day: Int) -> Bool {
         let fixed: Set<[Int]> = [[1,1],[6,1],[25,4],[1,5],[2,6],[15,8],[1,11],[7,12],[8,12],[25,12],[26,12]]
         if fixed.contains([month, day]) { return true }
 
-        let a = year % 19, b = year / 100, c = year % 100
-        let d = b / 4, e = b % 4, f = (b + 8) / 25, g = (b - f + 1) / 3
-        let h = (19 * a + b - d - g + 15) % 30
-        let i = c / 4, k = c % 4
-        let l = (32 + 2 * e + 2 * i - h - k) % 7
-        let mm = (a + 11 * h + 22 * l) / 451
-        let easterMonth = (h + l - 7 * mm + 114) / 31
-        let easterDay = (h + l - 7 * mm + 114) % 31 + 1
+        let varA = year % 19, b = year / 100, c = year % 100
+        let varD = b / 4, e = b % 4, f = (b + 8) / 25, g = (b - f + 1) / 3
+        let varH = (19 * varA + b - varD - g + 15) % 30
+        let varI = c / 4, k = c % 4
+        let varL = (32 + 2 * e + 2 * varI - varH - k) % 7
+        let varMm = (varA + 11 * varH + 22 * varL) / 451
+        let easterMonth = (varH + varL - 7 * varMm + 114) / 31
+        let easterDay = (varH + varL - 7 * varMm + 114) % 31 + 1
         if month == easterMonth && day == easterDay { return true }
 
         var comps = DateComponents(year: year, month: easterMonth, day: easterDay)
@@ -226,18 +227,19 @@ struct GTFSHelper {
     }
 
     private static func dateString(_ date: Date) -> String {
-        let f = DateFormatter()
+        let formatter = DateFormatter()
         
-        f.locale = Locale(identifier: "en_US_POSIX")
-        f.calendar = Calendar(identifier: .gregorian)
-        f.dateFormat = "yyyyMMdd"
-        f.timeZone = TimeZone(identifier: "Europe/Rome")
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.dateFormat = "yyyyMMdd"
+        formatter.timeZone = TimeZone(identifier: "Europe/Rome")
         
-        return f.string(from: date)
+        return formatter.string(from: date)
     }
 
     private static func minutes(of date: Date) -> Int {
-        let c = romeCalendar.dateComponents([.hour, .minute], from: date)
-        return (c.hour ?? 0) * 60 + (c.minute ?? 0)
+        let calendar = romeCalendar.dateComponents([.hour, .minute], from: date)
+        
+        return (calendar.hour ?? 0) * 60 + (c.minute ?? 0)
     }
 }

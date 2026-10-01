@@ -50,23 +50,21 @@ struct StopDetailView: View {
         self.stations = stations
         self.interchanges = interchanges
         self.lineColor = lineColor
+        
         _stopName = State(initialValue: stopName)
         _routeData = State(initialValue: initialRoute)
         _stopId = State(initialValue: initialRoute.flatMap { GTFSHelper.stopId(named: stopName, in: $0) })
 
         let start = stations.first { $0.name != "NO_DRAW" && $0.name.caseInsensitiveCompare(stopName) == .orderedSame }
+        
         if let coord = start?.coordinate {
             let size = CGSize(width: 393, height: 852)
             _camera = State(initialValue: .region(Self.region(center: coord, size: size, sheetHeight: 340)))
         }
-        else {
-            _camera = State(initialValue: .automatic)
-        }
+        else {_camera = State(initialValue: .automatic)}
     }
 
-    private var cdnURL: URL? {
-        URL(string: "https://cdn.lavorami.it/gtfs/\(lineName.uppercased()).json")
-    }
+    private var cdnURL: URL? {URL(string: "https://cdn.lavorami.it/gtfs/\(lineName.uppercased()).json")}
 
     var body: some View {
         let visible = visibleStations
@@ -123,9 +121,7 @@ struct StopDetailView: View {
     
     @ViewBuilder
     private func marker(for station: MetroStation) -> some View {
-        if station.name.caseInsensitiveCompare(stopName) == .orderedSame {
-            StopPulsingDot(color: lineColor)
-        }
+        if station.name.caseInsensitiveCompare(stopName) == .orderedSame {StopPulsingDot(color: lineColor)}
         else {
             ZStack {
                 Circle().fill(.white).frame(width: 12, height: 12)
@@ -154,9 +150,9 @@ struct StopDetailView: View {
 
     private func updateMapSize(from geo: GeometryProxy) {
         let insets = geo.safeAreaInsets
-        let full = CGSize(width: geo.size.width + insets.leading + insets.trailing,
-                          height: geo.size.height + insets.top + insets.bottom)
+        let full = CGSize(width: geo.size.width + insets.leading + insets.trailing, height: geo.size.height + insets.top + insets.bottom)
         guard full.width > 0, full.height > 0, full != mapSize else { return }
+        
         bottomInset = insets.bottom
         mapSize = full
         fitCamera(animated: false)
@@ -184,12 +180,8 @@ struct StopDetailView: View {
         let sheetHeight = isExpanded ? expandedHeight : Self.collapsedSheetHeight
         let target = MapCameraPosition.region(Self.region(center: coord, size: mapSize, sheetHeight: sheetHeight))
 
-        if animated {
-            withAnimation(.easeInOut(duration: 0.4)) { camera = target }
-        }
-        else {
-            camera = target
-        }
+        if animated {withAnimation(.easeInOut(duration: 0.4)) { camera = target }}
+        else {camera = target}
     }
     
     private var collapsedDetent: PresentationDetent { .height(Self.collapsedSheetHeight) }
@@ -224,6 +216,7 @@ struct StopDetailView: View {
         .scrollBounceBehavior(.basedOnSize)
         .onPreferenceChange(StopSheetHeightKey.self) { height in
             guard height > 0 else { return }
+            
             let fitted = min(height + bottomInset, mapSize.height * 0.65)
             if abs(fitted - expandedHeight) > 1 { expandedHeight = fitted }
         }
@@ -313,6 +306,7 @@ struct StopDetailView: View {
     private func select(_ name: String) {
         guard name.caseInsensitiveCompare(stopName) != .orderedSame else { return }
         if feedbacksEnabled { HapticManager.shared.trigger() }
+        
         stopName = name
         directionIndex = 0
         resolveStopId()
@@ -323,6 +317,7 @@ struct StopDetailView: View {
     private func changeDirection() {
         guard directions.count > 1 else { return }
         directionIndex = (directionIndex + 1) % directions.count
+        
         if feedbacksEnabled { HapticManager.shared.trigger() }
     }
 
@@ -331,6 +326,7 @@ struct StopDetailView: View {
             do { routeData = try await GTFSHelper.load(from: url) }
             catch { loadFailed = true }
         }
+        
         resolveStopId()
         refreshDepartures()
     }
@@ -345,6 +341,7 @@ struct StopDetailView: View {
             return
         }
         let byDir = GTFSHelper.getDepartures(for: id, in: route, limit: 1) ?? [:]
+        
         directions = byDir.keys.sorted().map { DirectionDepartures(id: $0, departures: byDir[$0] ?? []) }
         if directionIndex >= directions.count { directionIndex = 0 }
     }
@@ -360,8 +357,8 @@ struct StopDetailView: View {
         return interchanges.first { GTFSHelper.normalizedName($0.name).contains(target) }
     }
 
-    private func isHidden(_ s: MetroStation) -> Bool {
-        s.name.caseInsensitiveCompare("NO_DRAW") == .orderedSame
+    private func isHidden(_ station: MetroStation) -> Bool {
+        station.name.caseInsensitiveCompare("NO_DRAW") == .orderedSame
     }
 
     private func nearestReal(in list: [MetroStation], from index: Int, step: Int) -> Int? {
@@ -464,21 +461,11 @@ private struct StopInterchangeTimeline: View {
     @ViewBuilder
     private func badge(for line: String) -> some View {
         Group {
-            if line.contains(String(localized: .filobus)) || line.wholeMatch(of: /9[0-3]/) != nil {
-                Label(line, systemImage: "bolt.fill")
-            }
-            else if line.starts(with: "N") {
-                Label(line, systemImage: "moon.fill")
-            }
-            else if line == "Monumento" {
-                Text(String(localized: .monumento)).foregroundStyle(.black)
-            }
-            else if line == "Ospedale" {
-                Text(String(localized: .ospedale))
-            }
-            else {
-                Text(line)
-            }
+            if line.contains(String(localized: .filobus)) || line.wholeMatch(of: /9[0-3]/) != nil {Label(line, systemImage: "bolt.fill")}
+            else if line.starts(with: "N") {Label(line, systemImage: "moon.fill")}
+            else if line == "Monumento" {Text(String(localized: .monumento)).foregroundStyle(.black)}
+            else if line == "Ospedale" {Text(String(localized: .ospedale))}
+            else {Text(line)}
         }
         .font(.system(size: 13, weight: .bold))
         .foregroundStyle(.white)
@@ -506,6 +493,7 @@ private struct StopMarqueeTextKey: PreferenceKey {
 private struct StopMarqueeText: View {
     let text: String
     let font: Font
+    
     @State private var textWidth: CGFloat = 0
     @State private var boxWidth: CGFloat = 0
     @State private var shifted = false
@@ -541,12 +529,15 @@ private struct StopMarqueeText: View {
 
                 let duration = max(Double(overflow) / 35, 0.8)
                 let pause: Double = 2
+                
                 try? await Task.sleep(for: .seconds(pause))
                 while !Task.isCancelled {
                     withAnimation(.linear(duration: duration)) { shifted = true }
+                    
                     try? await Task.sleep(for: .seconds(duration + pause))
                     guard !Task.isCancelled else { break }
                     withAnimation(.linear(duration: duration)) { shifted = false }
+                    
                     try? await Task.sleep(for: .seconds(duration + pause))
                 }
             }
@@ -589,24 +580,17 @@ extension GTFSHelper {
             .joined(separator: " ")
     }
 
-    private static let numeriParole: [String: String] = [
-        "uno": "1", "due": "2", "tre": "3", "quattro": "4", "cinque": "5", "sei": "6", "sette": "7",
-        "otto": "8", "nove": "9", "dieci": "10", "undici": "11", "dodici": "12", "tredici": "13",
-        "quattordici": "14", "quindici": "15", "sedici": "16", "diciassette": "17", "diciotto": "18",
-        "diciannove": "19", "venti": "20", "ventuno": "21", "ventidue": "22", "ventitre": "23",
-        "ventiquattro": "24", "venticinque": "25", "ventisei": "26", "ventisette": "27",
-        "ventotto": "28", "ventinove": "29", "trenta": "30", "trentuno": "31"
-    ]
-
     private static func romanValue(_ token: String) -> Int? {
         guard token.range(of: "^[ivx]+$", options: .regularExpression) != nil else { return nil }
         let map: [Character: Int] = ["i": 1, "v": 5, "x": 10]
         var total = 0, prev = 0
+        
         for ch in token.reversed() {
             let v = map[ch] ?? 0
             total += v < prev ? -v : v
             prev = max(prev, v)
         }
+        
         return total > 1 ? total : nil
     }
 
@@ -616,7 +600,6 @@ extension GTFSHelper {
             .split(separator: " ")
             .map(String.init)
             .filter { $0.range(of: "^m[1-5]$", options: .regularExpression) == nil && $0 != "fn" }
-            .map { numeriParole[$0] ?? romanValue($0).map(String.init) ?? $0 }
     }
 
     static func stopId(named name: String, in route: GTFSRoute) -> String? {
