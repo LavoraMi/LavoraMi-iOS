@@ -278,7 +278,7 @@ struct StopDetailView: View {
                 StopMarqueeText(text: "Direzione: \(next.headsign.uppercased())", font: .system(size: 16))
                     .id(next.headsign)
 
-                Text(next.formattedWait)
+                Text((next.minutesFromNow == 0) ? "In Partenza" : next.formattedWait)
                     .font(.system(size: 18, weight: .bold))
                     .fixedSize()
             }
@@ -580,20 +580,6 @@ extension GTFSHelper {
             .joined(separator: " ")
     }
 
-    private static func romanValue(_ token: String) -> Int? {
-        guard token.range(of: "^[ivx]+$", options: .regularExpression) != nil else { return nil }
-        let map: [Character: Int] = ["i": 1, "v": 5, "x": 10]
-        var total = 0, prev = 0
-        
-        for ch in token.reversed() {
-            let v = map[ch] ?? 0
-            total += v < prev ? -v : v
-            prev = max(prev, v)
-        }
-        
-        return total > 1 ? total : nil
-    }
-
     private static func matchTokens(_ name: String) -> [String] {
         normalizedName(name)
             .replacingOccurrences(of: "[.,'’()\\-]", with: " ", options: .regularExpression)
@@ -614,6 +600,7 @@ extension GTFSHelper {
 
         var bestKey: String?
         var bestScore = 0.0
+        
         for (key, stop) in route.stops {
             let s = Set(matchTokens(stop.n))
             let union = s.union(tSet).count

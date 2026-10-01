@@ -71,8 +71,10 @@ struct Departure: Identifiable {
 
     var formattedWait: String {
         guard minutesFromNow >= 60 else { return "\(minutesFromNow) min" }
+        
         let hours = minutesFromNow / 60
         let mins = minutesFromNow % 60
+        
         return mins == 0 ? "\(hours) h" : "\(hours) h \(mins) min"
     }
 }
