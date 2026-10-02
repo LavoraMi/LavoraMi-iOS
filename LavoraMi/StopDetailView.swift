@@ -311,13 +311,42 @@ struct StopDetailView: View {
         }
         else if routeData == nil {
             HStack(spacing: 8) {
-                ProgressView()
+                ClockLoader()
                 Text("Caricamento orari...").foregroundStyle(.secondary)
             }
         }
         else {
             Text("Nessuna partenza prevista per oggi.")
                 .foregroundStyle(.secondary)
+        }
+    }
+    
+    struct ClockLoader: View {
+        @State private var isAnimating = false
+
+        var body: some View {
+            ZStack {
+                Circle()
+                    .stroke(Color.secondary.opacity(0.4), lineWidth: 1.5)
+
+                Rectangle()
+                    .fill(Color.primary)
+                    .frame(width: 1.5, height: 4)
+                    .offset(y: -2)
+                    .rotationEffect(.degrees(isAnimating ? 360 : 0))
+
+                Rectangle()
+                    .fill(Color.accentColor)
+                    .frame(width: 1, height: 5.5)
+                    .offset(y: -2.75)
+                    .rotationEffect(.degrees(isAnimating ? 360 * 4 : 0))
+            }
+            .frame(width: 14, height: 14)
+            .onAppear {
+                withAnimation(.linear(duration: 2.0).repeatForever(autoreverses: false)) {
+                    isAnimating = true
+                }
+            }
         }
     }
 
