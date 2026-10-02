@@ -14,15 +14,12 @@ class AdMobManager: NSObject, ObservableObject {
     @Published var nativeAds: [NativeAd] = []
     @Published var isLoading = false
     
-    private var adLoader: AdLoader?
-    private var loadedCount = 0
+    private var adLoaders: [AdLoader] = []
+    private var pendingRequests = 0
     private let totalDesired: Int
-    private let batchSize: Int
-    private var adUnitIDInUse: String = ""
     
-    init(totalDesired: Int = 15, batchSize: Int = 5) {
+    init(totalDesired: Int = AdPlacement.maxAds) {
         self.totalDesired = totalDesired
-        self.batchSize = batchSize
         super.init()
         initializeMobileAds()
     }
@@ -38,42 +35,37 @@ class AdMobManager: NSObject, ObservableObject {
         }
         
         isLoading = true
-        loadedCount = 0
-        adUnitIDInUse = adUnitID
         nativeAds.removeAll()
-        loadNextBatch()
+        adLoaders.removeAll()
+        pendingRequests = totalDesired
+        
+        for _ in 0..<totalDesired {
+            let loader = makeLoader(adUnitID: adUnitID)
+            adLoaders.append(loader)
+            loader.load(Request())
+        }
     }
     
-    private func loadNextBatch() {
-        if loadedCount >= totalDesired {
-            isLoading = false
-            return
-        }
-        
-        let remaining = totalDesired - loadedCount
-        let toLoad = min(batchSize, remaining)
-        
+    private func makeLoader(adUnitID: String) -> AdLoader {
         let imageOptions = NativeAdImageAdLoaderOptions()
         imageOptions.shouldRequestMultipleImages = false
         
-        var loaderOptions: [GADAdLoaderOptions] = [imageOptions]
+        let viewOptions = NativeAdViewAdOptions()
+        viewOptions.preferredAdChoicesPosition = .topRightCorner
         
-        if toLoad > 1 {
-            let multipleAdsOptions = MultipleAdsAdLoaderOptions()
-            multipleAdsOptions.numberOfAds = toLoad
-            loaderOptions.append(multipleAdsOptions)
-        }
-        
-        adLoader = AdLoader(
-            adUnitID: adUnitIDInUse,
+        let loader = AdLoader(
+            adUnitID: adUnitID,
             rootViewController: nil,
             adTypes: [.native],
-            options: loaderOptions
+            options: [imageOptions, viewOptions]
         )
-        
-        adLoader?.delegate = self
-        let request = Request()
-        adLoader?.load(request)
+        loader.delegate = self
+        return loader
+    }
+    
+    private func requestFinished() {
+        pendingRequests = max(0, pendingRequests - 1)
+        if pendingRequests == 0 {isLoading = false}
     }
     
     deinit {
@@ -82,13 +74,15 @@ class AdMobManager: NSObject, ObservableObject {
 }
 
 extension AdMobManager: AdLoaderDelegate {
-    func adLoader(_ adLoader: AdLoader, didFailToReceiveAdWithError error: Error) {}
+    func adLoader(_ adLoader: AdLoader, didFailToReceiveAdWithError error: Error) {
+        DispatchQueue.main.async {
+            print("ADMOB: errore caricamento ad: \(error.localizedDescription)")
+            self.requestFinished()
+        }
+    }
     
     func adLoaderDidFinishLoading(_ adLoader: AdLoader) {
-        DispatchQueue.main.async {
-            if self.loadedCount < self.totalDesired {self.loadNextBatch()}
-            else {self.isLoading = false}
-        }
+        DispatchQueue.main.async {self.requestFinished()}
     }
 }
 
@@ -96,7 +90,6 @@ extension AdMobManager: NativeAdLoaderDelegate {
     func adLoader(_ adLoader: AdLoader, didReceive nativeAd: NativeAd) {
         DispatchQueue.main.async {
             self.nativeAds.append(nativeAd)
-            self.loadedCount += 1
         }
     }
 }

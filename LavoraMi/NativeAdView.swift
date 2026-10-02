@@ -119,19 +119,30 @@ struct NativeAdView: UIViewControllerRepresentable {
         ctaButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         ctaButton.isUserInteractionEnabled = false
         
-        let buttonContainer = UIView()
-        buttonContainer.addSubview(ctaButton)
-        ctaButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            ctaButton.trailingAnchor.constraint(equalTo: buttonContainer.trailingAnchor),
-            ctaButton.topAnchor.constraint(equalTo: buttonContainer.topAnchor),
-            ctaButton.bottomAnchor.constraint(equalTo: buttonContainer.bottomAnchor),
-            ctaButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 80),
-            ctaButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 36)
-        ])
-        buttonContainer.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        let mediaView = MediaView()
+        mediaView.mediaContent = nativeAd.mediaContent
+        mediaView.contentMode = .scaleAspectFit
+        mediaView.layer.cornerRadius = 8
+        mediaView.clipsToBounds = true
+        mediaView.translatesAutoresizingMaskIntoConstraints = false
+        mediaView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        mediaView.widthAnchor.constraint(greaterThanOrEqualToConstant: 120).isActive = true
+        mediaView.setContentHuggingPriority(.defaultLow, for: .horizontal)
         
-        contentStack.addArrangedSubview(buttonContainer)
+        ctaButton.translatesAutoresizingMaskIntoConstraints = false
+        ctaButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 80).isActive = true
+        ctaButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 36).isActive = true
+        ctaButton.setContentHuggingPriority(.required, for: .horizontal)
+        ctaButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+        
+        let mediaRow = UIStackView(arrangedSubviews: [mediaView, ctaButton])
+        mediaRow.axis = .horizontal
+        mediaRow.spacing = 12
+        mediaRow.alignment = .bottom
+        contentStack.addArrangedSubview(mediaRow)
+        
+        iconView.isHidden = (nativeAd.icon == nil)
+        bodyLabel.isHidden = (nativeAd.body == nil)
         
         adView.heightAnchor.constraint(greaterThanOrEqualToConstant: 140).isActive = true
         
@@ -139,6 +150,7 @@ struct NativeAdView: UIViewControllerRepresentable {
         adView.headlineView = headlineLabel
         adView.bodyView = bodyLabel
         adView.callToActionView = ctaButton
+        adView.mediaView = mediaView
         
         adView.nativeAd = nativeAd
         
@@ -251,7 +263,7 @@ struct NativeAdPreviewView: View {
     var body: some View {
         if !adManager.nativeAds.isEmpty {
             NativeAdView(nativeAd: adManager.nativeAds[0])
-                .frame(height: 160)
+                .frame(height: 290)
         }
     }
 }

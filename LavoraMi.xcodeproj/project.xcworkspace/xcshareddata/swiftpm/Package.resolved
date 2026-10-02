@@ -1,5 +1,5 @@
 {
-  "originHash" : "0d0e53a47c45230aff583acf1b7a268b01aa8683dc1de77710f5621031cf0dcf",
+  "originHash" : "2e2bb8a988bff473cdda93f8c461326e8cad340582c5c38ae53a20aacff2aa94",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -20,6 +20,15 @@
       }
     },
     {
+      "identity" : "fbaudiencenetwork",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/facebook/FBAudienceNetwork.git",
+      "state" : {
+        "revision" : "26100d29de1cdb6753d7c602391f6fc6d29f6507",
+        "version" : "6.22.0"
+      }
+    },
+    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
@@ -35,6 +44,15 @@
       "state" : {
         "revision" : "0208e2681ec81f8a9c81084696f60fcce26cb7ee",
         "version" : "3.7.0"
+      }
+    },
+    {
+      "identity" : "googleads-mobile-ios-mediation-meta",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/googleads/googleads-mobile-ios-mediation-meta.git",
+      "state" : {
+        "revision" : "0a3d0597402162334fb5e11816ca612478180095",
+        "version" : "6.22.0"
       }
     },
     {

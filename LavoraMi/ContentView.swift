@@ -1058,18 +1058,16 @@ struct MainView: View {
                                         }
                                         let itemsToShow = currentFilteredItems.filter { !$0.isFinishedMoreThanOneDayAgo }
                                         let itemsWithAds = itemsToShow.withAdsInserted(adCount: adMobManager.nativeAds.count)
-                                        
+
                                         ForEach(itemsWithAds, id: \.index) { entry in
                                             if entry.type == .item, let item = entry.item {
                                                 WorkInProgressRow(item: item)
                                                     .padding(.horizontal)
-                                            } else if entry.type == .ad {
-                                                if let adIndex = AdPositionCalculator(itemCount: itemsToShow.count, adCount: adMobManager.nativeAds.count).getAdIndexForPosition(entry.index),
-                                                   adIndex < adMobManager.nativeAds.count {
-                                                    NativeAdView(nativeAd: adMobManager.nativeAds[adIndex])
-                                                        .frame(height: 160)
-                                                        .padding(.horizontal)
-                                                }
+                                            }
+                                            else if entry.type == .ad, let adIndex = entry.adIndex, adIndex < adMobManager.nativeAds.count {
+                                                NativeAdView(nativeAd: adMobManager.nativeAds[adIndex])
+                                                    .frame(height: 290)
+                                                    .padding(.horizontal)
                                             }
                                         }
                                         .transaction { $0.animation = nil }

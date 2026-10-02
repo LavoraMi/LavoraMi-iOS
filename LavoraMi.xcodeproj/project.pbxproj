@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651F52423070136700EFA110 /* MetaAdapterTarget in Frameworks */ = {isa = PBXBuildFile; productRef = 651F52413070136700EFA110 /* MetaAdapterTarget */; };
+		651F52443070137A00EFA110 /* MetaAdapterTarget in Frameworks */ = {isa = PBXBuildFile; productRef = 651F52433070137A00EFA110 /* MetaAdapterTarget */; };
 		652D9B702F65A41C00A4CAAD /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = 652D9B6F2F65A41C00A4CAAD /* FirebaseAI */; };
 		652D9B722F65A41C00A4CAAD /* FirebaseAILogic in Frameworks */ = {isa = PBXBuildFile; productRef = 652D9B712F65A41C00A4CAAD /* FirebaseAILogic */; };
 		652D9B742F65A41C00A4CAAD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 652D9B732F65A41C00A4CAAD /* FirebaseAnalytics */; };
@@ -207,6 +209,7 @@
 				6531E9B32F3125BF001B03BB /* PostgREST in Frameworks */,
 				6531E9B12F3125BF001B03BB /* Functions in Frameworks */,
 				652D9B8E2F65A41D00A4CAAD /* FirebaseFunctionsCombine-Community in Frameworks */,
+				651F52423070136700EFA110 /* MetaAdapterTarget in Frameworks */,
 				652D9B8A2F65A41D00A4CAAD /* FirebaseFirestoreCombine-Community in Frameworks */,
 				652D9B942F65A41D00A4CAAD /* FirebaseMessaging in Frameworks */,
 				65632D892F4B6FA3007AD01D /* SwiftUIMailView in Frameworks */,
@@ -245,6 +248,7 @@
 				652D9BAC2F65A42600A4CAAD /* FirebaseAppDistribution-Beta in Frameworks */,
 				652D9BCC2F65A42700A4CAAD /* FirebaseStorage in Frameworks */,
 				652D9BC82F65A42700A4CAAD /* FirebasePerformance in Frameworks */,
+				651F52443070137A00EFA110 /* MetaAdapterTarget in Frameworks */,
 				652D9BB02F65A42600A4CAAD /* FirebaseAuthCombine-Community in Frameworks */,
 				652D9BC02F65A42600A4CAAD /* FirebaseInAppMessaging-Beta in Frameworks */,
 				6582F3102F1BD9F100F7ADAF /* SwiftUI.framework in Frameworks */,
@@ -362,6 +366,7 @@
 				652D9B9B2F65A41D00A4CAAD /* FirebaseStorage */,
 				652D9B9D2F65A41D00A4CAAD /* FirebaseStorageCombine-Community */,
 				65C4C6012FF2E7B6006DB907 /* GoogleMobileAds */,
+				651F52413070136700EFA110 /* MetaAdapterTarget */,
 			);
 			productName = LavoraMi;
 			productReference = 65101F5A2F0BF3EF0078A19C /* LavoraMi.app */;
@@ -415,6 +420,7 @@
 				652D9BCB2F65A42700A4CAAD /* FirebaseStorage */,
 				652D9BCD2F65A42700A4CAAD /* FirebaseStorageCombine-Community */,
 				65C4C6032FF2E7C2006DB907 /* GoogleMobileAds */,
+				651F52433070137A00EFA110 /* MetaAdapterTarget */,
 			);
 			productName = LavoraMiWidgetExtension;
 			productReference = 6582F30B2F1BD9F000F7ADAF /* LavoraMiWidgetExtension.appex */;
@@ -454,6 +460,7 @@
 				65632D872F4B6F64007AD01D /* XCRemoteSwiftPackageReference "swiftui-mail-view" */,
 				652D9B6E2F65A3FA00A4CAAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				65C4C6002FF2E7B6006DB907 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				651F52403070136700EFA110 /* XCRemoteSwiftPackageReference "googleads-mobile-ios-mediation-meta" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 65101F5B2F0BF3EF0078A19C /* Products */;
@@ -839,6 +846,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		651F52403070136700EFA110 /* XCRemoteSwiftPackageReference "googleads-mobile-ios-mediation-meta" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/googleads-mobile-ios-mediation-meta.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.22.0;
+			};
+		};
 		652D9B6E2F65A3FA00A4CAAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -874,6 +889,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		651F52413070136700EFA110 /* MetaAdapterTarget */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 651F52403070136700EFA110 /* XCRemoteSwiftPackageReference "googleads-mobile-ios-mediation-meta" */;
+			productName = MetaAdapterTarget;
+		};
+		651F52433070137A00EFA110 /* MetaAdapterTarget */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 651F52403070136700EFA110 /* XCRemoteSwiftPackageReference "googleads-mobile-ios-mediation-meta" */;
+			productName = MetaAdapterTarget;
+		};
 		652D9B6F2F65A41C00A4CAAD /* FirebaseAI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 652D9B6E2F65A3FA00A4CAAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
