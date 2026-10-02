@@ -86,6 +86,7 @@ struct StopDetailView: View {
                         }
                     }
                 }
+                .allowsHitTesting(false)
                 .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
                 .mapControls {
                     MapCompass()
