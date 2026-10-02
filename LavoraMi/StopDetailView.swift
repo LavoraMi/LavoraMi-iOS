@@ -37,6 +37,7 @@ struct StopDetailView: View {
     @State private var isExpanded = true
     @State private var expandedHeight: CGFloat = 340
     @State private var bottomInset: CGFloat = 34
+    @State private var sheetBottomInset: CGFloat = 0
 
     @Environment(\.dismiss) private var dismiss
     @AppStorage("feedbacksEnabled") private var feedbacksEnabled: Bool = true
@@ -208,16 +209,19 @@ struct StopDetailView: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 18)
-            .padding(.bottom, 4)
+            .padding(.bottom, 12)
             .background(GeometryReader { g in
                 Color.clear.preference(key: StopSheetHeightKey.self, value: g.size.height)
             })
         }
         .scrollBounceBehavior(.basedOnSize)
+        .onGeometryChange(for: CGFloat.self) { $0.safeAreaInsets.bottom } action: { newValue in
+            sheetBottomInset = newValue
+        }
         .onPreferenceChange(StopSheetHeightKey.self) { height in
             guard height > 0 else { return }
-            
-            let fitted = min(height + bottomInset, mapSize.height * 0.65)
+
+            let fitted = min(height + sheetBottomInset, mapSize.height * 0.65)
             if abs(fitted - expandedHeight) > 1 { expandedHeight = fitted }
         }
     }
