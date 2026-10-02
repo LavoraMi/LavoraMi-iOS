@@ -297,7 +297,7 @@ struct StopDetailView: View {
                     .padding(.horizontal, 8)
                     .background(lineColor, in: RoundedRectangle(cornerRadius: 8))
 
-                StopMarqueeText(text: "Direzione: \(next.headsign.uppercased())", font: .system(size: 16))
+                StopMarqueeText(text: Text("DIREZIONE: ") + Text(next.headsign.uppercased()).bold(), font: .system(size: 16))
                     .id(next.headsign)
 
                 Text((next.minutesFromNow == 0) ? "In Partenza" : next.formattedWait)
@@ -434,7 +434,7 @@ private struct StopInterchangeTimeline: View {
             .frame(width: 24)
 
             VStack(alignment: .leading, spacing: 10) {
-                StopMarqueeText(text: name.uppercased(), font: .custom("TitilliumWeb-Bold", size: 20))
+                StopMarqueeText(text: Text(name.uppercased()), font: .custom("TitilliumWeb-Bold", size: 20))
                     .id(name)
                     .padding(.top, 6)
 
@@ -513,7 +513,7 @@ private struct StopMarqueeTextKey: PreferenceKey {
 }
 
 private struct StopMarqueeText: View {
-    let text: String
+    let text: Text
     let font: Font
     
     @State private var textWidth: CGFloat = 0
@@ -523,7 +523,7 @@ private struct StopMarqueeText: View {
     private var overflow: CGFloat { max(0, textWidth - boxWidth) }
 
     var body: some View {
-        Text(text)
+        text
             .font(font)
             .lineLimit(1)
             .hidden()
@@ -532,7 +532,7 @@ private struct StopMarqueeText: View {
                 Color.clear.preference(key: StopMarqueeBoxKey.self, value: g.size.width)
             })
             .overlay(alignment: .leading) {
-                Text(text)
+                text
                     .font(font)
                     .foregroundStyle(Color("TextColor"))
                     .lineLimit(1)
@@ -548,7 +548,7 @@ private struct StopMarqueeText: View {
             .task(id: overflow) {
                 shifted = false
                 guard overflow > 1 else { return }
-
+                
                 let duration = max(Double(overflow) / 35, 0.8)
                 let pause: Double = 2
                 
