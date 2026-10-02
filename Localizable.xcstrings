@@ -1627,10 +1627,36 @@
       }
     },
     "Direzione" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dirección"
+          }
+        }
+      }
     },
     "DIREZIONE: " : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DIRECTION: "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DIRECCIÓN: "
+          }
+        }
+      }
     },
     "DIREZIONE: %@" : {
       "localizations" : {
@@ -4770,7 +4796,20 @@
       }
     },
     "Nessuna partenza prevista per oggi." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No departures scheduled for today."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay salidas previstas para hoy."
+          }
+        }
+      }
     },
     "Nome utente" : {
       "localizations" : {
@@ -5180,7 +5219,20 @@
       }
     },
     "Orari non disponibili per questa fermata." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timetables are not available for this stop."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay horarios disponibles para esta parada."
+          }
+        }
+      }
     },
     "Orario Notifiche" : {
       "localizations" : {
@@ -5620,7 +5672,20 @@
       }
     },
     "Prossimo arrivo:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrival:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próxima llegada:"
+          }
+        }
+      }
     },
     "Prova a cercare qualcos'altro." : {
       "localizations" : {
