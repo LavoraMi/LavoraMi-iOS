@@ -133,20 +133,37 @@ struct StopDetailView: View {
         }
     }
 
+    @ViewBuilder
     private var backButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            Image(systemName: "chevron.left")
-                .font(.system(size: 17, weight: .semibold))
-                .foregroundStyle(Color.primary)
-                .frame(width: 45, height: 45)
-                .background(.ultraThinMaterial, in: Circle())
-                .overlay(Circle().stroke(Color.white.opacity(0.25), lineWidth: 1))
-                .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
+        if #available(iOS 26, *) {
+            Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 17, weight: .semibold))
+                        .foregroundStyle(Color.primary)
+                        .frame(width: 45, height: 45)
+                        .glassEffect(.regular.interactive(), in: .circle)
+                }
+                .buttonStyle(.plain)
+                .padding(.leading, 12)
+                .padding(.top, 8)
         }
-        .padding(.leading, 12)
-        .padding(.top, 8)
+        else {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.left")
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundStyle(Color.primary)
+                    .frame(width: 45, height: 45)
+                    .background(.ultraThinMaterial, in: Circle())
+                    .overlay(Circle().stroke(Color.white.opacity(0.25), lineWidth: 1))
+                    .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
+            }
+            .padding(.leading, 12)
+            .padding(.top, 8)
+        }
     }
 
     private func updateMapSize(from geo: GeometryProxy) {
