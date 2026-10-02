@@ -300,7 +300,7 @@ struct StopDetailView: View {
                 StopMarqueeText(text: Text("DIREZIONE: ") + Text(next.headsign.uppercased()).bold(), font: .system(size: 16))
                     .id(next.headsign)
 
-                Text((next.minutesFromNow == 0) ? "In Partenza" : next.formattedWait)
+                Text((next.minutesFromNow == 0) ? String(localized: .inPartenza) : next.formattedWait)
                     .font(.system(size: 18, weight: .bold))
                     .fixedSize()
             }
