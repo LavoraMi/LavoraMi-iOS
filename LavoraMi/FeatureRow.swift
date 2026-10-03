@@ -134,6 +134,106 @@ struct StructedMovibusView: View {
     }
 }
 
+struct StructedTramView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Orari per i Tram")
+                .font(.system(size: 36, weight: .heavy))
+                .foregroundColor(Color("TextColor"))
+                .padding(.top, 40)
+                .padding(.bottom, 32)
+
+            VStack(alignment: .leading, spacing: 32) {
+                FeatureRow(
+                    icon: "clock.fill",
+                    iconColor: Color.orange,
+                    title: "Guarda gli Orari",
+                    description: "Clicca su una fermata nella Mappa e visualizza i prossimi arrivi! Mai più attese inutili alle fermate."
+                )
+
+                FeatureRow(
+                    icon: "arrow.left.arrow.right",
+                    iconColor: .orange,
+                    title: "Interscambia con altre linee",
+                    description: "Guarda gli interscambi di quella fermata, direttamente sotto gli orari. Da ora saprai con che linea puoi cambiare."
+                )
+
+                FeatureRow(
+                    icon: "location.fill",
+                    iconColor: .orange,
+                    title: "Mappe e dettagli",
+                    description: "Non perderti tra tutte le fermate, la mappa evidenzia chiaramente quale fermata hai selezionato e le prossime!"
+                )
+            }
+
+            Text("Puoi rivedere questa pagina premendo sulla tab \"Mappa\" quando è selezionata.")
+                .font(.system(size: 14))
+                .foregroundStyle(.secondary)
+                .padding(.top, 30)
+                .padding(.horizontal)
+                .multilineTextAlignment(.center)
+            
+            HStack {
+                Spacer()
+                Button(action: {})
+                {
+                    HStack(spacing: 8) {
+                        Image(systemName: "location.fill")
+                            .font(.title3)
+                        
+                        Text("Mappa")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .lineLimit(1)
+                            .fixedSize(horizontal: true, vertical: false)
+                    }
+                    .frame(maxWidth: 200)
+                    .frame(height: 38)
+                    .background(
+                        Capsule()
+                            .fill(Color(red: 28/255, green: 28/255, blue: 1))
+                    )
+                    .foregroundStyle(.white)
+                }
+                Spacer()
+            }
+            .padding(.top, 20)
+            
+            Spacer()
+
+            if #available(iOS 26.0, *) {
+                Button(action: { dismiss() }) {
+                    Text("Chiudi")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(Color("TextColor"))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 18)
+                }
+                .padding(.bottom, 24)
+                .buttonStyle(.glass)
+                .tint(Color(red: 28/255, green: 28/255, blue: 1))
+            }
+            else {
+                Button(action: { dismiss() }) {
+                    Text("Chiudi")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(Color("TextColor"))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 18)
+                        .background(Color(red: 4/255, green: 15/255, blue: 17/255))
+                        .clipShape(Capsule())
+                }
+                .padding(.bottom, 24)
+            }
+        }
+        .padding(.horizontal, 24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color("BackgroundFeatureRow"))
+    }
+}
+
 #Preview {
     StructedMovibusView()
 }

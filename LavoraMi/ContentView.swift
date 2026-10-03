@@ -6232,6 +6232,7 @@ struct LineDetailView: View {
     @AppStorage("alreadySeenPopUpLines") var alreadySeenPopUpLines: Bool = false
     @AppStorage("seenPopUpCreateAccount") var seenPopUpCreateAccount: Bool = false
     @AppStorage("seenPopUpInfoMovibus") var seenPopUpInfoMovibus: Bool = false
+    @AppStorage("seenPopUpInfoTram") var seenPopUpInfoTram: Bool = false
     @AppStorage("linesSelected") private var linesSelected: [String] = []
     @AppStorage("linesFavorites") private var linesFavorites: [String] = []
     @StateObject private var networkManager = NetworkMonitor()
@@ -6248,6 +6249,7 @@ struct LineDetailView: View {
     @State private var openPopUpWidget: Bool = false
     @State private var openPopUpLines: Bool = false
     @State private var openPopUpMovibus: Bool = false
+    @State private var openPopUpTram: Bool = false
     @State private var openInfoAccessibility: Bool = false
     @State private var openInfoBusOperation: Bool = false
     @State private var openInfoLineSuspended: Bool = false
@@ -6515,6 +6517,11 @@ struct LineDetailView: View {
                     seenPopUpInfoMovibus = true
                     openPopUpMovibus = true
                 }
+                
+                if(isTram && !seenPopUpInfoTram) {
+                    seenPopUpInfoTram = true
+                    openPopUpTram = true
+                }
             }
             .sheet(isPresented: $openInfoAccessibility) {
                 InfoAccessibilityView(showInfoView: $openInfoAccessibility)
@@ -6525,6 +6532,9 @@ struct LineDetailView: View {
             }
             .sheet(isPresented: $openPopUpMovibus) {
                 StructedMovibusView()
+            }
+            .sheet(isPresented: $openPopUpTram) {
+                StructedTramView()
             }
             .alert("Errore di connessione", isPresented: $showErrorDBSavePopUp) {
                 Button("Chiudi", role: .cancel) { }
@@ -6991,6 +7001,7 @@ extension LineDetailView {
                     if(selectedTab != .map) {withAnimation(.snappy) { selectedTab = .map }}
                     else {
                         if(isBusLineForRoute){openPopUpMovibus = true}
+                        if(isTram){openPopUpTram = true}
                     }
                 }) {
                     HStack(spacing: 8) {
