@@ -193,7 +193,7 @@ struct StructedTramView: View {
                     .frame(height: 38)
                     .background(
                         Capsule()
-                            .fill(Color(red: 28/255, green: 28/255, blue: 1))
+                            .fill(.orange)
                     )
                     .foregroundStyle(.white)
                 }
