@@ -4708,7 +4708,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleUtilities",
-            version: "8.1.3",
+            version: "8.1.4",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2017 Google LLC",
             licenseText: """
