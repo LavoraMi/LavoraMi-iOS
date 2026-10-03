@@ -5235,7 +5235,20 @@
       }
     },
     "Orari per i Tram" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tram Timetables"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horarios de los Tranvías"
+          }
+        }
+      }
     },
     "Orario Notifiche" : {
       "localizations" : {
@@ -7944,6 +7957,144 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LINEA DI TRAM CON DEVIAZIONI"
+          }
+        }
+      }
+    },
+    "tramInfoDeps1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click on a stop on the map to see the next arrivals! No more pointless waiting at bus stops."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Haz clic en una parada del mapa y consulta las próximas llegadas! Se acabaron las esperas innecesarias en las paradas."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clicca su una fermata nella Mappa e visualizza i prossimi arrivi! Mai più attese inutili alle fermate."
+          }
+        }
+      }
+    },
+    "tramInfoDeps2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a look at the connections for that stop, just below the timetables. You’ll now know which line to change to."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Echa un vistazo a las conexiones de esa parada, justo debajo de los horarios. A partir de ahora sabrás con qué línea puedes hacer transbordo."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda gli interscambi di quella fermata, direttamente sotto gli orari. Da ora saprai con che linea puoi cambiare."
+          }
+        }
+      }
+    },
+    "tramInfoDeps3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don’t get lost amongst all the stops, the map clearly highlights which stop you’ve selected and the next ones!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡No te pierdas entre todas las paradas! El mapa te muestra claramente cuál es la parada que has seleccionado y las siguientes."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non perderti tra tutte le fermate, la mappa evidenzia chiaramente quale fermata hai selezionato e le prossime!"
+          }
+        }
+      }
+    },
+    "tramInfoTitle1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See Timetables"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta los Horarios"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda gli Orari"
+          }
+        }
+      }
+    },
+    "tramInfoTitle2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change with other lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conecta con otras líneas"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interscambia con altre linee"
+          }
+        }
+      }
+    },
+    "tramInfoTitle3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map and details"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mapas y detalles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mappe e dettagli"
           }
         }
       }

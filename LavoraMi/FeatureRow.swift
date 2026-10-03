@@ -149,22 +149,22 @@ struct StructedTramView: View {
                 FeatureRow(
                     icon: "clock.fill",
                     iconColor: Color.orange,
-                    title: "Guarda gli Orari",
-                    description: "Clicca su una fermata nella Mappa e visualizza i prossimi arrivi! Mai più attese inutili alle fermate."
+                    title: String(localized: .tramInfoTitle1),
+                    description: String(localized: .tramInfoDeps1),
                 )
 
                 FeatureRow(
                     icon: "arrow.left.arrow.right",
                     iconColor: .orange,
-                    title: "Interscambia con altre linee",
-                    description: "Guarda gli interscambi di quella fermata, direttamente sotto gli orari. Da ora saprai con che linea puoi cambiare."
+                    title: String(localized: .tramInfoTitle2),
+                    description: String(localized: .tramInfoDeps2),
                 )
 
                 FeatureRow(
                     icon: "location.fill",
                     iconColor: .orange,
-                    title: "Mappe e dettagli",
-                    description: "Non perderti tra tutte le fermate, la mappa evidenzia chiaramente quale fermata hai selezionato e le prossime!"
+                    title: String(localized: .tramInfoTitle3),
+                    description: String(localized: .tramInfoDeps3),
                 )
             }
 
