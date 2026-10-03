@@ -44,7 +44,7 @@ struct StopDetailView: View {
 
     private let refreshTimer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     private static let visibleMapMeters: Double = 420
-    private static let collapsedSheetHeight: CGFloat = 96
+    private static let collapsedSheetHeight: CGFloat = 88
 
     init(lineName: String, stopName: String, stations: [MetroStation], interchanges: [InterchangeInfo], initialRoute: GTFSRoute?, lineColor: Color) {
         self.lineName = lineName
