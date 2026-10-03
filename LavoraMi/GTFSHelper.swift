@@ -179,11 +179,12 @@ struct GTFSHelper {
     
     private static func activeServiceIndices(in route: GTFSRoute, on date: Date) -> Set<Int> {
         let today = dateString(date)
-        var active = Set(route.services.compactMap { $0.value.dates.contains(today) ? Int($0.key) : nil })
+        let valid = route.services.filter { $0.value.daytype?.lowercased() != "sconosciuto" }
+        var active = Set(valid.compactMap { $0.value.dates.contains(today) ? Int($0.key) : nil })
         
         if active.isEmpty {
             let type = dayType(of: date)
-            active = Set(route.services.compactMap { $0.value.daytype?.lowercased() == type ? Int($0.key) : nil })
+            active = Set(valid.compactMap { $0.value.daytype?.lowercased() == type ? Int($0.key) : nil })
         }
         
         return active
