@@ -6558,7 +6558,8 @@ struct LineDetailView: View {
                     stations: stations,
                     interchanges: getInterchanges(line: lineName),
                     initialRoute: routeData,
-                    lineColor: getColor(for: lineName)
+                    lineColor: getColor(for: lineName),
+                    stationsClosed: viewModel.stazioniChiuse
                 )
             }
             .navigationTitle("Dettagli Linea")

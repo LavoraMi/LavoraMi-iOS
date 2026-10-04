@@ -23,6 +23,7 @@ struct StopDetailView: View {
     let lineName: String
     let stations: [MetroStation]
     let interchanges: [InterchangeInfo]
+    let stazioniChiuse: [String]
     let lineColor: Color
 
     @State private var stopName: String
@@ -46,11 +47,12 @@ struct StopDetailView: View {
     private static let visibleMapMeters: Double = 420
     private static let collapsedSheetHeight: CGFloat = 88
 
-    init(lineName: String, stopName: String, stations: [MetroStation], interchanges: [InterchangeInfo], initialRoute: GTFSRoute?, lineColor: Color) {
+    init(lineName: String, stopName: String, stations: [MetroStation], interchanges: [InterchangeInfo], initialRoute: GTFSRoute?, lineColor: Color, stationsClosed: [String]) {
         self.lineName = lineName
         self.stations = stations
         self.interchanges = interchanges
         self.lineColor = lineColor
+        self.stazioniChiuse = stationsClosed
         
         _stopName = State(initialValue: stopName)
         _routeData = State(initialValue: initialRoute)
@@ -65,6 +67,7 @@ struct StopDetailView: View {
         else {_camera = State(initialValue: .automatic)}
     }
 
+    private var isStationClosed: Bool {stazioniChiuse.contains("\(stopName): \(lineName)")}
     private var cdnURL: URL? {URL(string: "https://cdn.lavorami.it/gtfs/\(lineName.uppercased()).json")}
 
     var body: some View {
@@ -305,7 +308,7 @@ struct StopDetailView: View {
                     .fixedSize()
             }
         }
-        else if loadFailed {
+        else if loadFailed && !isStationClosed {
             Text("Orari non disponibili per questa fermata.")
                 .foregroundStyle(.secondary)
         }
@@ -315,8 +318,12 @@ struct StopDetailView: View {
                 Text("Caricamento orari...").foregroundStyle(.secondary)
             }
         }
-        else {
+        else if !isStationClosed {
             Text("Nessuna partenza prevista per oggi.")
+                .foregroundStyle(.secondary)
+        }
+        else {
+            Text("Fermata Sospesa")
                 .foregroundStyle(.secondary)
         }
     }
