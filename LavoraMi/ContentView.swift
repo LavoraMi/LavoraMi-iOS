@@ -6800,7 +6800,7 @@ extension LineDetailView {
                 
                 if(viewModel.linesWithInaccurateTimetables.contains(lineName)) {
                     WarningBanner(
-                        text: "ORARI NON PRECISI O MANCANTI",
+                        text: String(localized: .orariImprecisiBannerTitle),
                         icon: "person.badge.clock.fill",
                         action: {
                             openInfoTimetables = true
