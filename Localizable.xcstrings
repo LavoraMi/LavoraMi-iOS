@@ -5234,6 +5234,9 @@
         }
       }
     },
+    "Orari Imprecisi o Mancanti" : {
+
+    },
     "Orari non disponibili per questa fermata." : {
       "localizations" : {
         "en" : {
@@ -7294,6 +7297,9 @@
           }
         }
       }
+    },
+    "Sul tragitto di questa linea ultimamente si sono conclusi lavori che limitavano corse o interrompevano il servizio. Tra pochi giorni potremmo ricevere gli orari aggiornati e rimuovere questa informazione." : {
+
     },
     "Supporta LavoraMi" : {
       "localizations" : {

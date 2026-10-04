@@ -6254,6 +6254,7 @@ struct LineDetailView: View {
     @State private var openInfoBusOperation: Bool = false
     @State private var openInfoLineSuspended: Bool = false
     @State private var openInfoSlowdowns: Bool = false
+    @State private var openInfoTimetables: Bool = false
     @State private var openPopUpInfoStatus: Bool = false
     @State private var selectedBranch: String? = nil
     @State private var modalitaRitorno: Bool = false
@@ -6797,6 +6798,16 @@ extension LineDetailView {
                     )
                 }
                 
+                if(viewModel.linesWithInaccurateTimetables.contains(lineName)) {
+                    WarningBanner(
+                        text: "ORARI NON PRECISI O MANCANTI",
+                        icon: "person.badge.clock.fill",
+                        action: {
+                            openInfoTimetables = true
+                        }
+                    )
+                }
+                
                 if(viewModel.suburbanWithInterruptions.contains(lineName)){
                     WarningBanner(
                         text: String(localized: .interruzioniGeneraleLavori),
@@ -6989,6 +7000,11 @@ extension LineDetailView {
             Button("OK", role: .cancel) {}
         } message: {
             Text("Su questa linea ci sono lavori attualmente in corso che potrebbero comportare anticipi o ritardi nell'arrivo a destinazione. Controlla la sezione \"Lavori\".")
+        }
+        .alert("Orari Imprecisi o Mancanti", isPresented: $openInfoTimetables) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("Sul tragitto di questa linea ultimamente si sono conclusi lavori che limitavano corse o interrompevano il servizio. Tra pochi giorni potremmo ricevere gli orari aggiornati e rimuovere questa informazione.")
         }
     }
     
