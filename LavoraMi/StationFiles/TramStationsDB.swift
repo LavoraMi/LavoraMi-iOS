@@ -3565,7 +3565,7 @@ struct TramStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48581, longitude: 9.15867), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48567, longitude: 9.15875), branch: "Main"),
         .init(name: "C.So Sempione Via Arona", coordinate: .init(latitude: 45.48418, longitude: 9.16065), branch: "Main"),
-        .init(name: "Domodossola M5", coordinate: .init(latitude: 45.48244, longitude: 9.16299), branch: "Main"),
+        .init(name: "Domodossola FN M5", coordinate: .init(latitude: 45.48244, longitude: 9.16299), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48241, longitude: 9.16304), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48234, longitude: 9.16308), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48227, longitude: 9.1631), branch: "Main"),
@@ -3662,14 +3662,14 @@ struct TramStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48423, longitude: 9.2371), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48438, longitude: 9.23691), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48458, longitude: 9.23671), branch: "Main"),
-        .init(name: "Lambrate FS M2", coordinate: .init(latitude: 45.48485, longitude: 9.23659), branch: "Main"),
+        .init(name: "Stazione Lambrate M2", coordinate: .init(latitude: 45.48485, longitude: 9.23659), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48507, longitude: 9.23631), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4851, longitude: 9.2362), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48509, longitude: 9.23609), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48501, longitude: 9.23591), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48489, longitude: 9.23583), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48475, longitude: 9.23584), branch: "Main"),
-        .init(name: "Lambrate M2", coordinate: .init(latitude: 45.48459, longitude: 9.23596), branch: "Main")
+        .init(name: "Stazione Lambrate M2", coordinate: .init(latitude: 45.48459, longitude: 9.23596), branch: "Main")
     ]
     
     static let tram24: [MetroStation] = [
