@@ -2746,7 +2746,7 @@ struct TramStationsDB {
     ]
     
     static let tram14: [MetroStation] = [
-        .init(name: "Cimitero Maggiore", coordinate: .init(latitude: 45.50312, longitude: 9.12139), branch: "Main"),
+        .init(name: "P.Le Cimitero Maggiore", coordinate: .init(latitude: 45.50312, longitude: 9.12139), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50323, longitude: 9.12147), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.5033, longitude: 9.12157), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50334, longitude: 9.12167), branch: "Main"),
@@ -3071,8 +3071,8 @@ struct TramStationsDB {
         .init(name: "Via Giambellino Via Curio Dentato", coordinate: .init(latitude: 45.4487, longitude: 9.14253), branch: "Main"),
         .init(name: "L.Go Gelsomini L.Go Giambellino", coordinate: .init(latitude: 45.44763, longitude: 9.13923), branch: "Main"),
         .init(name: "Via Giambellino Via Odazio", coordinate: .init(latitude: 45.44634, longitude: 9.13523), branch: "Main"),
-        .init(name: "Via Giambellino Via Sanniti", coordinate: .init(latitude: 45.44537, longitude: 9.13224), branch: "Main"),
-        .init(name: "San Cristoforo", coordinate: .init(latitude: 45.44472, longitude: 9.13023), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44537, longitude: 9.13224), branch: "Main"),
+        .init(name: "S. Cristoforo M4", coordinate: .init(latitude: 45.44472, longitude: 9.13023), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44425, longitude: 9.12875), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44402, longitude: 9.12804), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44383, longitude: 9.12746), branch: "Main"),

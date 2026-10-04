@@ -1525,7 +1525,7 @@ struct InterchangesDB {
         .init(name: "Viale Molise", lines: ["12", "66", "90", "91", "93"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 39),
 
         /// Tram 14
-        .init(name: "Cimitero Maggiore", lines: ["14", "40", "171", "528"], typeOfInterchange: "building.columns.fill", branch: "Main", lineOrder: 0),
+        .init(name: "Piazzale Cimitero Maggiore", lines: ["14", "40", "171", "528"], typeOfInterchange: "building.columns.fill", branch: "Main", lineOrder: 0),
         .init(name: "Viale Certosa Via Giorgini", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 1),
         .init(name: "Viale Certosa Via Cormons", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 2),
         .init(name: "Viale Certosa Via Gradisca", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 3),
@@ -1553,7 +1553,7 @@ struct InterchangesDB {
         .init(name: "Carrobbio", lines: ["14", "3", "12"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 25),
         .init(name: "De Amicis M4", lines: ["14", "M4", "NM4", "12", "NM2", "96", "97"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 26),
         .init(name: "Piazzale Cantore", lines: ["14", "9", "10", "12", "NM2", "NM4", "74", "164", "N25", "N26"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 27),
-        .init(name: "Viale Cogni Zugna Via Solari", lines: ["14", "10", "N25", "N26"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 28),
+        .init(name: "Viale Coni Zugna Via Solari", lines: ["14", "10", "N25", "N26"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 28),
         .init(name: "Via Montevideo", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 29),
         .init(name: "Piazza Del Rosario", lines: ["14", "68"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 30),
         .init(name: "Via Solari Via Stendhal", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 31),
@@ -1564,11 +1564,10 @@ struct InterchangesDB {
         .init(name: "Via Giambellino Via Curio Dentato", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 36),
         .init(name: "Largo Gelsomini Largo Giambellino", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 37),
         .init(name: "Via Giambellino Via Odazio", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 38),
-        .init(name: "Via Giambellino Via Sanniti", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 39),
-        .init(name: "San Cristoforo FS M4", lines: ["14", "M4", "NM4", "S9", "S19", "R31", "47", "49", "95", "324", "325", "326", "351", "z553"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 40),
-        .init(name: "Via Gonin Via Giordani", lines: ["14", "NM4", "47"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 41),
-        .init(name: "Via Gonin Via M Di Lorenteggio", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 42),
-        .init(name: "Lorenteggio", lines: ["14", "NM4", "50", "64", "326", "327"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 43),
+        .init(name: "San Cristoforo M4", lines: ["14", "M4", "NM4", "S9", "S19", "R31", "47", "49", "95", "324", "325", "326", "351", "z553"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 39),
+        .init(name: "Via Gonin Via Giordani", lines: ["14", "NM4", "47"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 40),
+        .init(name: "Via Gonin Via M Di Lorenteggio", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 41),
+        .init(name: "Lorenteggio", lines: ["14", "NM4", "50", "64", "326", "327"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 42),
 
         /// Tram 15
         .init(name: "Rozzano Via Guido Rossa", lines: ["15", "220"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 0),
