@@ -4081,7 +4081,7 @@ struct TramStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48348, longitude: 9.1872), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48348, longitude: 9.18715), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48352, longitude: 9.18705), branch: "Main"),
-        .init(name: "Garibaldi FS M2 M5", coordinate: .init(latitude: 45.48374, longitude: 9.1867), branch: "Main"),
+        .init(name: "Stazione Garibaldi M2 M5", coordinate: .init(latitude: 45.48374, longitude: 9.1867), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48378, longitude: 9.1864), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48385, longitude: 9.18629), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48396, longitude: 9.18612), branch: "Main"),
