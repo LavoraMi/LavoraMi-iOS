@@ -1766,7 +1766,7 @@ struct TramStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.47448, longitude: 9.20545), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4744, longitude: 9.20558), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.47434, longitude: 9.20568), branch: "Main"),
-        .init(name: "Porta Venezia M1", coordinate: .init(latitude: 45.47418, longitude: 9.20594), branch: "Main"),
+        .init(name: "P.Ta Venezia M1", coordinate: .init(latitude: 45.47418, longitude: 9.20594), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4741, longitude: 9.20621), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.47403, longitude: 9.2063), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.47396, longitude: 9.20636), branch: "Main"),
@@ -1811,7 +1811,7 @@ struct TramStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4521, longitude: 9.20263), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45195, longitude: 9.2026), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45176, longitude: 9.20256), branch: "Main"),
-        .init(name: "Porta Romana M3", coordinate: .init(latitude: 45.45139, longitude: 9.20241), branch: "Main"),
+        .init(name: "P.Ta Romana M3", coordinate: .init(latitude: 45.45139, longitude: 9.20241), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45124, longitude: 9.20243), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45117, longitude: 9.20235), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45112, longitude: 9.20228), branch: "Main"),
@@ -1914,7 +1914,7 @@ struct TramStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45362, longitude: 9.16994), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45359, longitude: 9.16991), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45357, longitude: 9.1699), branch: "Main"),
-        .init(name: "Porta Genova M2", coordinate: .init(latitude: 45.45352, longitude: 9.16988), branch: "Main")
+        .init(name: "P.Ta Genova M2", coordinate: .init(latitude: 45.45352, longitude: 9.16988), branch: "Main")
     ]
     
     static let tram10: [MetroStation] = [
