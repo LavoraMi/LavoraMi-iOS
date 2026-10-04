@@ -1372,7 +1372,7 @@ struct TramStationsDB {
     ]
     
     static let tram5: [MetroStation] = [
-        .init(name: "Niguarda Ospedale", coordinate: .init(latitude: 45.50855, longitude: 9.18961), branch: "Main"),
+        .init(name: "Niguarda (Ospedale)", coordinate: .init(latitude: 45.50855, longitude: 9.18961), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50873, longitude: 9.18967), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50879, longitude: 9.1897), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50883, longitude: 9.18978), branch: "Main"),
@@ -1523,7 +1523,7 @@ struct TramStationsDB {
         .init(name: "Via B. Angelico Via Aselli", coordinate: .init(latitude: 45.47092, longitude: 9.23003), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.47092, longitude: 9.23004), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.47093, longitude: 9.231), branch: "Main"),
-        .init(name: "Via B. Angelico Via Paladini", coordinate: .init(latitude: 45.47086, longitude: 9.23322), branch: "Main"),
+        .init(name: "Via Amadeo Via Paladini", coordinate: .init(latitude: 45.47086, longitude: 9.23322), branch: "Main"),
         .init(name: "Via Amadeo Via S. Benigno", coordinate: .init(latitude: 45.47091, longitude: 9.23624), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.47098, longitude: 9.23718), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.47098, longitude: 9.23746), branch: "Main"),
