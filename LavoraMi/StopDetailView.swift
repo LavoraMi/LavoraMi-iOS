@@ -626,7 +626,7 @@ extension GTFSHelper {
     private static let abbreviazioni: [String: String] = [
         "p.le": "piazzale", "p.za": "piazza", "p.ta": "porta", "v.le": "viale",
         "c.so": "corso", "l.go": "largo", "m.te": "monte",
-        "s.": "san", "c.": "console", "p.": "principe"
+        "s.": "san", "c.": "console", "p.": "principe", "cim." : "cimitero"
     ]
 
     static func normalizedName(_ name: String) -> String {
