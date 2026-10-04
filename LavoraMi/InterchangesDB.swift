@@ -1551,7 +1551,7 @@ struct InterchangesDB {
         .init(name: "Via Torino Via Palla", lines: ["14", "3", "12"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 23),
         .init(name: "Via Torino Via San Maria Valle", lines: ["14", "3", "12"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 24),
         .init(name: "Carrobbio", lines: ["14", "3", "12"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 25),
-        .init(name: "De Amicis M4", lines: ["14", "M4", "NM4", "12", "NM2", "96", "97"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 26),
+        .init(name: "De Amicis M4", lines: ["14", "M4", "NM4", "2", "NM2", "96", "97"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 26),
         .init(name: "Piazzale Cantore", lines: ["14", "9", "10", "12", "NM2", "NM4", "74", "164", "N25", "N26"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 27),
         .init(name: "Viale Coni Zugna Via Solari", lines: ["14", "10", "N25", "N26"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 28),
         .init(name: "Via Montevideo", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 29),
