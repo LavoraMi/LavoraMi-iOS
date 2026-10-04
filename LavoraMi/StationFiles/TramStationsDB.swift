@@ -3673,7 +3673,7 @@ struct TramStationsDB {
     ]
     
     static let tram24: [MetroStation] = [
-        .init(name: "Piazza Fontana", coordinate: .init(latitude: 45.46337, longitude: 9.19405), branch: "Main"),
+        .init(name: "P.Za Fontana", coordinate: .init(latitude: 45.46337, longitude: 9.19405), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46332, longitude: 9.1938), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4633, longitude: 9.19373), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46327, longitude: 9.19368), branch: "Main"),
@@ -3695,7 +3695,7 @@ struct TramStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46075, longitude: 9.19088), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46076, longitude: 9.19074), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46079, longitude: 9.19059), branch: "Main"),
-        .init(name: "Piazza Missori", coordinate: .init(latitude: 45.46092, longitude: 9.18993), branch: "Main"),
+        .init(name: "Missori M3", coordinate: .init(latitude: 45.46092, longitude: 9.18993), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46097, longitude: 9.18965), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46101, longitude: 9.18949), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.46104, longitude: 9.18938), branch: "Main"),
@@ -3725,7 +3725,7 @@ struct TramStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4562, longitude: 9.19546), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45615, longitude: 9.19547), branch: "Main"),
         .init(name: "Crocetta M3", coordinate: .init(latitude: 45.45537, longitude: 9.19561), branch: "Main"),
-        .init(name: "C.So Porta Vigentina", coordinate: .init(latitude: 45.45364, longitude: 9.19607), branch: "Main"),
+        .init(name: "C.So P.Ta Vigentina", coordinate: .init(latitude: 45.45364, longitude: 9.19607), branch: "Main"),
         .init(name: "Via Ripamonti V.Le Sabotino", coordinate: .init(latitude: 45.45116, longitude: 9.19675), branch: "Main"),
         .init(name: "Via Ripamonti Via Bellezza", coordinate: .init(latitude: 45.44888, longitude: 9.19735), branch: "Main"),
         .init(name: "V.Le Isonzo Via Ripamonti", coordinate: .init(latitude: 45.44676, longitude: 9.19794), branch: "Main"),

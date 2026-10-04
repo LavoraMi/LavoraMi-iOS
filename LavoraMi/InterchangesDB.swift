@@ -1688,7 +1688,7 @@ struct InterchangesDB {
         .init(name: "Piazza Fontana", lines: ["24", "27"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 0),
         .init(name: "Piazza Missori", lines: ["24", "M3", "NM3", "12", "15", "16", "19", "N15", "N24"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 1),
         .init(name: "Missori M3", lines: ["24", "M3", "NM3", "12", "15", "16", "19", "N15", "N24"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 2),
-        .init(name: "Sforza Policlinico M4", lines: ["24", "M4", "NM4", "16", "NM3", "65", "96", "N24"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 3),
+        .init(name: "Sforza - Policlinico M4", lines: ["24", "M4", "NM4", "16", "NM3", "65", "96", "N24"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 3),
         .init(name: "Crocetta M3", lines: ["24", "M3", "NM3", "16", "NM4", "65", "96", "N24"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 4),
         .init(name: "Corso Porta Vigentina", lines: ["24", "N24"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 5),
         .init(name: "Via Ripamonti Viale Sabotino", lines: ["24", "9", "NM4", "N24", "N26"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 6),
