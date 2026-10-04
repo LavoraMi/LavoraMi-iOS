@@ -861,7 +861,7 @@ struct TramStationsDB {
         .init(name: "Via Dei Missaglia Via Boifava", coordinate: .init(latitude: 45.42655, longitude: 9.17724), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.42726, longitude: 9.17732), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4287, longitude: 9.17748), branch: "Main"),
-        .init(name: "p.Za Abbiategrasso M2", coordinate: .init(latitude: 45.42936, longitude: 9.17759), branch: "Main"),
+        .init(name: "P.Za Abbiategrasso M2", coordinate: .init(latitude: 45.42936, longitude: 9.17759), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.42936, longitude: 9.17759), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.42986, longitude: 9.17763), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.43002, longitude: 9.17763), branch: "Main"),
