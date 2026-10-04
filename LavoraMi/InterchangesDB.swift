@@ -1310,10 +1310,10 @@ struct InterchangesDB {
         .init(name: "Ripa di Porta Ticinese Via Lombardini", lines: ["2", "74", "164"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 23),
         .init(name: "Ripa di Porta Ticinese Via D'Adda", lines: ["2", "74", "164"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 24),
         .init(name: "Ponte Guido Crepax", lines: ["2", "90", "91", "164", "324", "325"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 25),
-        .init(name: "Via Ludovico Il Moro Via Pestalozzi", lines: ["2", "164", "324", "325", "z553"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 26),
-        .init(name: "Via Ludovico Il Moro, 25", lines: ["2", "164", "324", "325"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 27),
-        .init(name: "Via Ludovico Il Moro Cavalcavia Don Milani", lines: ["2", "98", "164", "324", "325", "z553"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 28),
-        .init(name: "Via Ludovico Il Moro Via Guintellino", lines: ["2", "164"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 29),
+        .init(name: "Via L. Il Moro Via Pestalozzi", lines: ["2", "164", "324", "325", "z553"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 26),
+        .init(name: "Via L. Il Moro, 25", lines: ["2", "164", "324", "325"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 27),
+        .init(name: "Via L. Il Moro Cavalcavia Don Milani", lines: ["2", "98", "164", "324", "325", "z553"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 28),
+        .init(name: "Via L. Il Moro Via Guintellino", lines: ["2", "164"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 29),
         .init(name: "Piazzale Negrelli", lines: ["2", "47", "164", "324", "325", "351", "z553"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 30),
 
         /// Tram 3
