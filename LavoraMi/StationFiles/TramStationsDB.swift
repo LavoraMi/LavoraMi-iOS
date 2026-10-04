@@ -3772,7 +3772,7 @@ struct TramStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44575, longitude: 9.24553), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44578, longitude: 9.24563), branch: "Main"),
         .init(name: "V.Le Ungheria, 20", coordinate: .init(latitude: 45.4458, longitude: 9.24628), branch: "Main"),
-        .init(name: "V.Le Ungheria L.Go Gonzaga", coordinate: .init(latitude: 45.44594, longitude: 9.2518), branch: "Main"),
+        .init(name: "V.Le Ungheria L.Go Gonzaga Ice Hockey Arena", coordinate: .init(latitude: 45.44594, longitude: 9.2518), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44611, longitude: 9.25363), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44615, longitude: 9.25378), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.44623, longitude: 9.25396), branch: "Main"),

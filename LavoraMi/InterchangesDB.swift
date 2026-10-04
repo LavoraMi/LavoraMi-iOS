@@ -1724,7 +1724,7 @@ struct InterchangesDB {
         .init(name: "Via Mecenate Via Fantoli", lines: ["27", "88", "N27"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 17),
         .init(name: "Via Mecenate Via Quintiliano", lines: ["27", "88", "N27"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 18),
         .init(name: "Viale Ungheria Via Mecenate", lines: ["27", "45", "66", "88", "175", "N27"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 19),
-        .init(name: "Viale Ungheria Largo Gonzaga", lines: ["27", "45", "66", "88", "175", "N27"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 20),
+        .init(name: "Viale Ungheria Largo Gonzaga Ice Hockey Arena", lines: ["27", "45", "66", "88", "175", "N27"], typeOfInterchange: "stadium.fill", branch: "Main", lineOrder: 20),
         .init(name: "Viale Ungheria, 20", lines: ["27", "45", "175", "N27"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 21),
         .init(name: "Viale Ungheria", lines: ["27", "45", "66", "88", "175", "N27"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 22),
 
