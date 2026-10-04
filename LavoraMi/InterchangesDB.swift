@@ -1283,7 +1283,7 @@ struct InterchangesDB {
         .init(name: "Greco Rovereto", lines: ["1", "87", "174"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 47),
 
         /// Tram 2
-        .init(name: "Piazza Bausan", lines: ["2", "82", "92"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 0),
+        .init(name: "Bausan", lines: ["2", "82", "92"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 0),
         .init(name: "Via Imbriani Via Scalvini", lines: ["2", "92"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 1),
         .init(name: "Piazzale Nigra", lines: ["2", "91", "92"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 2),
         .init(name: "Lancetti FS", lines: ["2", "S1", "S2", "S5", "S6", "S12", "S13", "92"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 3),
