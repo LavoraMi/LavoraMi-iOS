@@ -6386,9 +6386,11 @@ struct LineDetailView: View {
             case "Fermate Sospese":
                 return (String(localized: .statoMetroFermateSospese), Color(red: 237/255, green: 156/255, blue: 26/255), "exclamationmark.triangle.fill")
             case "Rallentata":
-            return (String(localized: .statoMetroRallentata), Color(red: 237/255, green: 156/255, blue: 26/255), "clock.badge.exclamationmark.fill")
+                return (String(localized: .statoMetroRallentata), Color(red: 237/255, green: 156/255, blue: 26/255), "clock.badge.exclamationmark.fill")
             case "Interrotta":
                 return (String(localized: .statoMetroInterrotta), .red, "xmark.circle.fill")
+            case "Info":
+                return (String(localized: .statoMetroInfo), getColor(for: "RE80"), "info")
             case "Chiusa":
                 return (String(localized: .statoMetroChiusa), getColor(for: "S12"), "moon.fill")
             default:
