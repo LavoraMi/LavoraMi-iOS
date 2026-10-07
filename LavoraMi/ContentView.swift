@@ -5745,7 +5745,7 @@ func getRegionalDeviationLink(line: String, viewModel: WorkViewModel) -> URL {
 }
 
 func getInterchanges(line: String) -> [InterchangeInfo] {
-    if line.starts(with: "M") && !line.starts(with: "MXP") {
+    if (line.starts(with: "M") && !line.starts(with: "MXP")) || line == "H" {
         return InterchangesDB.getMetroInterchanges(line: line)
     }
     else if line.starts(with: "MXP") {
@@ -6898,8 +6898,9 @@ extension LineDetailView {
         let isRegioExpress = lineName.starts(with: "RE")
         let isFilobus = lineName == "90" || lineName == "91" || lineName == "92" || lineName == "93"
         let isTram = typeOfTransport.contains(String(localized: .tram))
+        let isMinimetro = lineName == "H"
         
-        let isAvailable = (isMetro || isMalpensaExpress || isSuburban || isTilo || isRegional || isFilobus || isTram || isRegioExpress)
+        let isAvailable = (isMetro || isMinimetro || isMalpensaExpress || isSuburban || isTilo || isRegional || isFilobus || isTram || isRegioExpress)
         
         let allInterchanges = getInterchanges(line: lineName)
         let mainItems = allInterchanges.filter { $0.branch == "Main" }

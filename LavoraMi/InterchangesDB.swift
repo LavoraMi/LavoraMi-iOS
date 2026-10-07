@@ -69,7 +69,7 @@ struct InterchangesDB {
         .init(name: "Cologno Centro", lines: ["M2", "702", "707"], typeOfInterchange: "tram.fill.tunnel", branch: "Cologno Nord", lineOrder: 1),
         .init(name: "Cologno Sud", lines: ["M2", "701", "707", "709"], typeOfInterchange: "tram.fill.tunnel", branch: "Cologno Nord", lineOrder: 2),
 
-        .init(name: "Cascina Gobba", lines: ["M2", "NM2", "44", "54", "86", "925", "z310", "z323"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 0),
+        .init(name: "Cascina Gobba", lines: ["M2", "NM2", "H", "44", "54", "86", "925", "z310", "z323"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 0),
         .init(name: "Crescenzago", lines: ["M2", "NM2", "44", "54", "56", "86"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 1),
         .init(name: "Cimiano", lines: ["M2", "NM2", "53", "54"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 2),
         .init(name: "Udine", lines: ["M2", "NM2", "53", "54", "55", "175", "925"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 3),
@@ -158,6 +158,10 @@ struct InterchangesDB {
         .init(name: "Portello", lines: ["M5", "48", "78"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
         .init(name: "San Siro Ippodromo", lines: ["M5", "16"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 15),
         .init(name: "San Siro Stadio", lines: ["M5", String(localized: .stadio), "16", "49"], typeOfInterchange: "stadium.fill", branch: "Main", lineOrder: 16),
+        
+        /// Minimetro
+        .init(name: "Cascina Gobba", lines: ["H", "M2", "NM2", "44", "54", "86", "925", "z310", "z323"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 0),
+        .init(name: "Ospedale San Raffaele", lines: ["H", "Ospedale", "923", "925", "928"], typeOfInterchange: "hospital", branch: "Main", lineOrder: 1),
     ]
 
     static let suburbanInterchanges: [InterchangeInfo] = [
