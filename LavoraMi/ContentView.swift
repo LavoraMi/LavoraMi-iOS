@@ -5072,7 +5072,7 @@ struct LineRow: View {
                             .fill((typeOfTransport == String(localized: .tram)) ? .orange : getColor(for: line))
                     )
 
-                if line == "MXP1" || line == "MXP2" {Text(typeOfTransport)}
+                if line == "MXP1" || line == "MXP2" || line == "H" {Text(typeOfTransport)}
                 else {Text("\(typeOfTransport) \(line)")}
             }
             .padding(.vertical, 4)
@@ -5241,7 +5241,7 @@ struct LinesView: View {
         ]
     }
     
-    var minimetro: LineInfo = LineInfo(name: "H", branches: "Cascina Gobba - Osp. S. Raffaele", type: "Minimetro", waitMinutes: "10 min", stations: MetroStationsDB.hStations, accessibilityStatus: String(localized: .lineaAccessibile))
+    var minimetro: LineInfo = LineInfo(name: "H", branches: "Cascina Gobba - Osp. S. Raffaele", type: "Minimetro San Raffaele", waitMinutes: "10 min", stations: MetroStationsDB.hStations, accessibilityStatus: String(localized: .lineaAccessibile))
     
     var suburban: [LineInfo] {
         [
