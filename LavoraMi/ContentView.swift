@@ -5241,6 +5241,8 @@ struct LinesView: View {
         ]
     }
     
+    var minimetro: LineInfo = LineInfo(name: "H", branches: "Cascina Gobba - Osp. S. Raffaele", type: "Minimetro", waitMinutes: "10 min", stations: MetroStationsDB.hStations, accessibilityStatus: String(localized: .lineaAccessibile))
+    
     var suburban: [LineInfo] {
         [
             LineInfo(name: "S1", branches: "Saronno - Lodi", type: String(localized: .suburbano), waitMinutes: "30 min", stations: SuburbanStationsDB.stationsS1, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
@@ -5613,6 +5615,8 @@ struct LinesView: View {
                 }
                 .listRowBackground(Color(uiColor: .secondarySystemBackground))
 
+                LineRow(line: minimetro.name, typeOfTransport: minimetro.type, branches: minimetro.branches, waitMinutes: minimetro.waitMinutes, accessibilityStatus: minimetro.accessibilityStatus, stations: minimetro.stations, viewModel: viewModel, onTap: { addToRecent(minimetro) })
+                
                 if searchInput.isEmpty && !shouldShowAdsAfterRecent {
                     supportLavoraMiSection
                 }

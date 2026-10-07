@@ -377,4 +377,39 @@ struct MetroStationsDB {
         .init(name: "San Siro Ippodromo", coordinate: .init(latitude: 45.47909, longitude: 9.12858), branch: "Main"),
         .init(name: "San Siro Stadio", coordinate: .init(latitude: 45.47909, longitude: 9.11857), branch: "Main")
     ]
+    
+    static let hStations: [MetroStation] = [
+        .init(name: "Cascina Gobba M2", coordinate: .init(latitude: 45.51084, longitude: 9.26242), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.51049, longitude: 9.26251), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50977, longitude: 9.26272), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50901, longitude: 9.26294), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50881, longitude: 9.263), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50872, longitude: 9.26303), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50863, longitude: 9.26304), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50851, longitude: 9.26307), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50837, longitude: 9.26309), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50826, longitude: 9.26309), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.5081, longitude: 9.2631), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50793, longitude: 9.26308), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50774, longitude: 9.26306), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50755, longitude: 9.26301), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50739, longitude: 9.26296), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50718, longitude: 9.26289), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50708, longitude: 9.26286), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50697, longitude: 9.26285), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50689, longitude: 9.26284), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50679, longitude: 9.26285), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50667, longitude: 9.26289), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50648, longitude: 9.26297), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50632, longitude: 9.26306), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50615, longitude: 9.26322), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50595, longitude: 9.26342), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50581, longitude: 9.26362), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50574, longitude: 9.26378), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50568, longitude: 9.26401), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50564, longitude: 9.26424), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50566, longitude: 9.2649), branch: "Main"),
+        .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50584, longitude: 9.26599), branch: "Main"),
+        .init(name: "Ospedale San Raffaele", coordinate: .init(latitude: 45.50598, longitude: 9.2668), branch: "Main")
+    ]
 }
