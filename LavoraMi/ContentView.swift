@@ -5241,7 +5241,7 @@ struct LinesView: View {
         ]
     }
     
-    var minimetro: LineInfo = LineInfo(name: "H", branches: "Cascina Gobba - Osp. S. Raffaele", type: "Minimetro San Raffaele", waitMinutes: "10 min", stations: MetroStationsDB.hStations, accessibilityStatus: String(localized: .lineaAccessibile))
+    var minimetro: LineInfo = LineInfo(name: "H", branches: "Cascina Gobba - Osp. San Raffaele", type: "Minimetro San Raffaele", waitMinutes: "10 min", stations: MetroStationsDB.hStations, accessibilityStatus: String(localized: .lineaAccessibile))
     
     var suburban: [LineInfo] {
         [
@@ -6690,7 +6690,7 @@ extension LineDetailView {
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)
                     }
-                    else if (!isDetailed || isBusLineForRoute) {
+                    else if (!isDetailed || isBusLineForRoute || lineName == "H") {
                         Text("\(typeOfTransport)")
                             .font(.system(size: 30))
                             .minimumScaleFactor(0.5)
