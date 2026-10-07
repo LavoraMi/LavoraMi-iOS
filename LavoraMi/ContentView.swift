@@ -5141,6 +5141,7 @@ struct LinesView: View {
         
         let typeKeywords: [String: [String]] = [
             "Metro": ["metro", "metropolitana", "m"],
+            "Minimetro": ["minimetro", "ospedale", "h", "san raffaele"],
             "Suburbano": ["suburbano", "s"],
             "Regio express": ["regio", "express", "re"],
             "Regionale": ["regio", "regionale", "r"],
@@ -5219,8 +5220,13 @@ struct LinesView: View {
     }
     
     func fullLineInfo(for name: String) -> LineInfo? {
-        let all = metros + suburban + regioExpress + regionalLines + crossBorderLines + malpensaExpress + trams + filobus + bus + net + stav + star + autoguidovie
-        return all.first { $0.name == name }
+        let groups: [[LineInfo]] = [
+            metros, [minimetro], suburban, regioExpress, regionalLines,
+            crossBorderLines, malpensaExpress, trams, filobus, bus,
+            net, stav, star, autoguidovie
+        ]
+        
+        return groups.joined().first { $0.name == name }
     }
 
     func addToRecent(_ line: LineInfo) {
@@ -5575,45 +5581,7 @@ struct LinesView: View {
                         supportLavoraMiSection
                     }
                 }
-                Section(){
-                    if(!filteredMetros.isEmpty){
-                        ForEach(filteredMetros, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
-                        }
-                    }
-                }
-                header:{
-                    if(!filteredMetros.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee Metropolitane")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("ATM")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
+                lineSection(lines: filteredMetros, title: "Linee Metropolitane", subtitle: "ATM", infoURL: "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg")
 
                 LineRow(line: minimetro.name, typeOfTransport: minimetro.type, branches: minimetro.branches, waitMinutes: minimetro.waitMinutes, accessibilityStatus: minimetro.accessibilityStatus, stations: minimetro.stations, viewModel: viewModel, onTap: { addToRecent(minimetro) })
                 
@@ -5621,474 +5589,18 @@ struct LinesView: View {
                     supportLavoraMiSection
                 }
 
-                Section(){
-                    if(!filteredSuburban.isEmpty){
-                        ForEach(filteredSuburban, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
-                        }
-                    }
-                }
-                header:{
-                    if(!filteredSuburban.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee Suburbane")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("Trenord")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredRegional.isEmpty){
-                        ForEach(filteredRegional, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
-                        }
-                    }
-                }
-                header:{
-                    if(!filteredRegional.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee Regionali")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("Trenord")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredRegioExpress.isEmpty){
-                        ForEach(filteredRegioExpress, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
-                        }
-                    }
-                }
-                header:{
-                    if(!filteredRegioExpress.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee Regio Express")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("Trenord")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredCrossBorders.isEmpty){
-                        ForEach(filteredCrossBorders, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
-                        }
-                    }
-                }
-                header:{
-                    if(!filteredCrossBorders.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee Transfrontaliere")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("TILO")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://www.tilo.ch")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredMalpensaExpress.isEmpty){
-                        ForEach(filteredMalpensaExpress, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
-                        }
-                    }
-                }
-                header:{
-                    if(!filteredMalpensaExpress.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee Malpensa Express")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("Trenord")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://www.malpensaexpress.it")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredTrams.isEmpty){
-                        ForEach(filteredTrams, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
-                        }
-                    }
-                }
-                header: {
-                    if(!filteredTrams.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee Tranviarie")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("ATM")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredFilobus.isEmpty){
-                        ForEach(filteredFilobus, id: \.id) { line in
-                            LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
-                        }
-                    }
-                }
-                header: {
-                    if(!filteredFilobus.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee Filoviarie")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("ATM")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredMovibus.isEmpty){
-                        ForEach(filteredMovibus, id: \.id){bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel, onTap: { addToRecent(bus) })
-                        }
-                    }
-                }
-                header: {
-                    if(!filteredMovibus.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee di Bus")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("Movibus")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://movibus.it/news/")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredNET.isEmpty){
-                        ForEach(filteredNET, id: \.id){bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel, onTap: { addToRecent(bus) })
-                        }
-                    }
-                }
-                header: {
-                    if(!filteredNET.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee di Bus")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("Nordest Trasporti (NET)")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://www.nordesttrasporti.it/percorsi-e-orari/")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredSTAR.isEmpty){
-                        ForEach(filteredSTAR, id: \.id){bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel, onTap: { addToRecent(bus) })
-                        }
-                    }
-                }
-                header: {
-                    if(!filteredSTAR.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee di Bus")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("STAR Mobility")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://starmobility.it/orari-autobus/")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredSTAV.isEmpty){
-                        ForEach(filteredSTAV, id: \.id){bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel, onTap: { addToRecent(bus) })
-                        }
-                    }
-                }
-                header: {
-                    if(!filteredSTAV.isEmpty) {
-                        HStack{
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee di Bus")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("STAV")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://stavautolinee.it/reti-servite/")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
-                Section(){
-                    if(!filteredAutoguidovie.isEmpty){
-                        ForEach(filteredAutoguidovie, id: \.id){ bus in
-                            LineRow(line: bus.name, typeOfTransport: bus.type, branches: bus.branches, waitMinutes: bus.waitMinutes, accessibilityStatus: bus.accessibilityStatus, stations: bus.stations, viewModel: viewModel, onTap: { addToRecent(bus) })
-                        }
-                    }
-                }
-                header: {
-                    if(!filteredAutoguidovie.isEmpty) {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Linee di Bus")
-                                    .font(.title3)
-                                    .bold()
-                                    .foregroundStyle(.primary)
-                                    .textCase(nil)
-                                
-                                Text("Autoguidovie")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .textCase(nil)
-                            }
-                            .padding(.bottom, 4)
-                            Spacer()
-                            Button(action: {
-                                let url = URL(string: "https://autoguidovie.it/it/avvisi")!
-                                if howToOpenLinks == .inApp {
-                                    selectedURL = url
-                                } else {
-                                    openURLAction(url)
-                                }
-                            }) {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Color(uiColor: .secondarySystemBackground))
+                lineSection(lines: filteredSuburban, title: "Linee Suburbane", subtitle: "Trenord", infoURL: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")
+                lineSection(lines: filteredRegional, title: "Linee Regionali", subtitle: "Trenord", infoURL: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")
+                lineSection(lines: filteredRegioExpress, title: "Linee Regio Express", subtitle: "Trenord", infoURL: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")
+                lineSection(lines: filteredCrossBorders, title: "Linee Transfrontaliere", subtitle: "TILO", infoURL: "https://www.tilo.ch")
+                lineSection(lines: filteredMalpensaExpress, title: "Linee Malpensa Express", subtitle: "Trenord", infoURL: "https://www.malpensaexpress.it")
+                lineSection(lines: filteredTrams, title: "Linee Tranviarie", subtitle: "ATM", infoURL: "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf")
+                lineSection(lines: filteredFilobus, title: "Linee Filoviarie", subtitle: "ATM", infoURL: "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf")
+                lineSection(lines: filteredMovibus, title: "Linee di Bus", subtitle: "Movibus", infoURL: "https://movibus.it/news/")
+                lineSection(lines: filteredNET, title: "Linee di Bus", subtitle: "Nordest Trasporti (NET)", infoURL: "https://www.nordesttrasporti.it/percorsi-e-orari/")
+                lineSection(lines: filteredSTAR, title: "Linee di Bus", subtitle: "STAR Mobility", infoURL: "https://starmobility.it/orari-autobus/")
+                lineSection(lines: filteredSTAV, title: "Linee di Bus", subtitle: "STAV", infoURL: "https://stavautolinee.it/reti-servite/")
+                lineSection(lines: filteredAutoguidovie, title: "Linee di Bus", subtitle: "Autoguidovie", infoURL: "https://autoguidovie.it/it/avvisi")
             }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
@@ -6097,7 +5609,12 @@ struct LinesView: View {
             .navigationTitle("Linee")
             .scrollContentBackground(.hidden)
             .overlay {
-                let allFiltered = [filteredMetros, filteredSuburban, filteredRegioExpress, filteredRegional, filteredCrossBorders, filteredMalpensaExpress, filteredTrams, filteredFilobus, filteredMovibus, filteredNET, filteredSTAV, filteredSTAR, filteredAutoguidovie]
+                let allFiltered: [[LineInfo]] = [
+                    filteredMetros, [minimetro], filteredSuburban, filteredRegioExpress,
+                    filteredRegional, filteredCrossBorders, filteredMalpensaExpress,
+                    filteredTrams, filteredFilobus, filteredMovibus, filteredNET,
+                    filteredSTAV, filteredSTAR, filteredAutoguidovie
+                ]
                 if allFiltered.allSatisfy({ $0.isEmpty }) {
                     VStack(spacing: 20) {
                         Image(systemName: "exclamationmark.magnifyingglass")
@@ -6135,6 +5652,43 @@ struct LinesView: View {
                 }
             }
         }
+    }
+    
+    @ViewBuilder
+    private func lineSection(lines: [LineInfo], title: LocalizedStringKey, subtitle: LocalizedStringKey, infoURL: String) -> some View {
+        Section {
+            ForEach(lines, id: \.id) { line in
+                LineRow(line: line.name, typeOfTransport: line.type, branches: line.branches, waitMinutes: line.waitMinutes, accessibilityStatus: line.accessibilityStatus, stations: line.stations, viewModel: viewModel, onTap: { addToRecent(line) })
+            }
+        } header: {
+            if !lines.isEmpty {
+                HStack {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(title)
+                            .font(.title3)
+                            .bold()
+                            .foregroundStyle(.primary)
+                            .textCase(nil)
+                        Text(subtitle)
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .textCase(nil)
+                    }
+                    .padding(.bottom, 4)
+                    Spacer()
+                    Button(action: { openInfo(infoURL) }) {
+                        Image(systemName: "info.circle.fill")
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+        }
+        .listRowBackground(Color(uiColor: .secondarySystemBackground))
+    }
+
+    private func openInfo(_ urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        if howToOpenLinks == .inApp { selectedURL = url } else { openURLAction(url) }
     }
 }
 
@@ -6632,7 +6186,7 @@ extension LineDetailView {
             HStack(spacing: 12) {
                 if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80" || lineName.contains("RE")) {
                     Text((lineName.contains("MXP")) ? "MXP" : lineName)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.white)
                         .font(.custom("TitilliumWeb-Bold", size: 40))
                         .padding(.vertical, 2)
                         .padding(.horizontal, 15)
@@ -6643,7 +6197,7 @@ extension LineDetailView {
                 }
                 else if (lineName.contains("M") && (lineName != "MXP1" || lineName != "MXP2")){
                     Text(lineName)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.white)
                         .font(.custom("HelveticaNeue-Bold", size: 40))
                         .padding(.vertical, 4)
                         .padding(.horizontal, 15)
@@ -6654,7 +6208,7 @@ extension LineDetailView {
                 }
                 else {
                     Text(lineName)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.white)
                         .font(.system(size: 40, weight: .bold))
                         .padding(.vertical, 4)
                         .padding(.horizontal, 15)
@@ -6918,7 +6472,7 @@ extension LineDetailView {
                         HStack {
                             Image(systemName: "nosign")
                                 .font(.title3)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color.white)
                             Text("Nessuna fermata di interscambio.")
                                 .font(.title3)
                                 .multilineTextAlignment(.leading)
@@ -7014,6 +6568,20 @@ extension LineDetailView {
         }
     }
     
+    private var isS12Dark: Bool { lineName == "S12" && colorScheme == .dark }
+
+    private func tabBackground(isSelected: Bool) -> Color {
+        let base: Color = isS12Dark ? Color.white : getColor(for: lineName)
+        return isSelected ? base : base.opacity(0.15)
+    }
+
+    private func tabForeground(isSelected: Bool) -> Color {
+        if isSelected {
+            return linesWithBlackText.contains(lineName) ? Color(.systemBackground) : Color.white
+        }
+        return isS12Dark ? Color.white : getColor(for: lineName)
+    }
+    
     @ViewBuilder
     private var tabBarSection: some View {
         HStack(spacing: 12) {
@@ -7041,11 +6609,8 @@ extension LineDetailView {
                     }
                     .frame(maxWidth: selectedTab == .map ? .infinity : 70)
                     .frame(height: 38)
-                    .background(
-                        Capsule()
-                            .fill(selectedTab == .map ? ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)) : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
-                    )
-                    .foregroundStyle(selectedTab == .map ? ((!linesWithBlackText.contains(lineName)) ? .white : Color(.systemBackground)) : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
+                    .background(Capsule().fill(tabBackground(isSelected: selectedTab == .map)))
+                    .foregroundStyle(tabForeground(isSelected: selectedTab == .map))
                 }
             }
             Button(action: {
@@ -7066,11 +6631,8 @@ extension LineDetailView {
                 }
                 .frame(maxWidth: selectedTab == .works ? .infinity : 70)
                 .frame(height: 38)
-                .background(
-                    Capsule()
-                        .fill(selectedTab == .works ? ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)) : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
-                )
-                .foregroundStyle(selectedTab == .works ? ((!linesWithBlackText.contains(lineName)) ? .white : Color(.systemBackground)) : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
+                .background(Capsule().fill(tabBackground(isSelected: selectedTab == .works)))
+                .foregroundStyle(tabForeground(isSelected: selectedTab == .works))
             }
             if isDetailed && !isBusLineForRoute {
                 Button(action: {
@@ -7091,11 +6653,8 @@ extension LineDetailView {
                     }
                     .frame(maxWidth: selectedTab == .interchanges ? .infinity : 70)
                     .frame(height: 38)
-                    .background(
-                        Capsule()
-                            .fill(selectedTab == .interchanges ? ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)) : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
-                    )
-                    .foregroundStyle(selectedTab == .interchanges ? ((!linesWithBlackText.contains(lineName)) ? .white : Color(.systemBackground)) : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
+                    .background(Capsule().fill(tabBackground(isSelected: selectedTab == .interchanges)))
+                    .foregroundStyle(tabForeground(isSelected: selectedTab == .interchanges))
                 }
             }
             if viewModel.linesSupportedGTFS.contains(lineName) && !isTram {
@@ -7117,11 +6676,8 @@ extension LineDetailView {
                     }
                     .frame(maxWidth: selectedTab == .arrivi ? .infinity : 70)
                     .frame(height: 38)
-                    .background(
-                        Capsule()
-                            .fill(selectedTab == .arrivi ? ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)) : ((lineName == "S12" && colorScheme == .dark) ? Color.white.opacity(0.15) : getColor(for: lineName).opacity(0.15)))
-                    )
-                    .foregroundStyle(selectedTab == .arrivi ? ((!linesWithBlackText.contains(lineName)) ? .white : Color(.systemBackground)) : ((lineName == "S12" && colorScheme == .dark) ? .white : getColor(for: lineName)))
+                    .background(Capsule().fill(tabBackground(isSelected: selectedTab == .arrivi)))
+                    .foregroundStyle(tabForeground(isSelected: selectedTab == .arrivi))
                 }
             }
         }
@@ -7559,12 +7115,12 @@ extension LineDetailView {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .center, spacing: 10) {
                 Image(systemName: "clock.fill")
-                    .foregroundStyle((first.minutesFromNow < 10) ? ((first.minutesFromNow < 5) ? ((first.minutesFromNow == 0) ? .yellow : .red) : .orange) : .green)
+                    .foregroundStyle(waitColor(first.minutesFromNow))
                     .font(.system(size: 18))
 
                 Text(first.minutesFromNow == 0 ? String(localized: .inPartenza) : first.formattedWait)
                     .font(.system(size: 32, weight: .bold, design: .rounded))
-                    .foregroundStyle((first.minutesFromNow < 10) ? ((first.minutesFromNow < 5) ? ((first.minutesFromNow == 0) ? .yellow : .red) : .orange) : .green)
+                    .foregroundStyle(waitColor(first.minutesFromNow))
                 Spacer()
                 Text(first.time)
                     .font(.system(size: 15, weight: .medium))
@@ -7599,6 +7155,15 @@ extension LineDetailView {
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .padding(.horizontal, 16)
+    }
+    
+    private func waitColor(_ minutes: Int) -> Color {
+        switch minutes {
+            case 0: return .yellow
+            case 1..<5: return .red
+            case 5..<10: return .orange
+            default: return .green
+        }
     }
 
     @ViewBuilder
