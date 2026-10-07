@@ -7139,8 +7139,8 @@ extension LineDetailView {
                     MKCoordinateRegion(
                         center: centerCoordinate,
                         span: MKCoordinateSpan(
-                            latitudeDelta: (typeOfTransport.contains(String(localized: .tram)) || typeOfTransport.contains(String(localized: .filobus))) ? 0.02 : ((lineName.starts(with: "M")) ? 0.045 : 0.14),
-                            longitudeDelta: (typeOfTransport.contains(String(localized: .tram)) || typeOfTransport.contains(String(localized: .filobus))) ? 0.02 : ((lineName.starts(with: "M")) ? 0.045 : 0.145)
+                            latitudeDelta: (typeOfTransport.contains(String(localized: .tram)) || typeOfTransport.contains(String(localized: .filobus))) ? 0.02 : ((lineName.starts(with: "M")) ? 0.045 : lineName == "H" ? 0.009 : 0.14),
+                            longitudeDelta: (typeOfTransport.contains(String(localized: .tram)) || typeOfTransport.contains(String(localized: .filobus))) ? 0.02 : ((lineName.starts(with: "M")) ? 0.045 : lineName == "H" ? 0.009 : 0.145)
                         )
                     )
                 ),
@@ -8522,6 +8522,7 @@ func getColor(for line: String) -> Color {
         case "MXP2": return Color(red: 140/255, green: 0, blue: 118/255)
         case "SFM 6": return Color(red: 139/255, green: 35/255, blue: 29/255)
         case "REG": return Color(red: 226/255, green: 62/255, blue: 62/255)
+        case "H": return Color(red: 226/255, green: 62/255, blue: 62/255)
         case "AV": return .red
         case "RV": return .red
         case String(localized: .aereoporto): return .cyan
