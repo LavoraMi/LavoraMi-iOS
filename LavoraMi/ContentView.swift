@@ -4604,7 +4604,7 @@ struct LibrariesView: View {
     let libraries: [LibraryDetailView] = [
         LibraryDetailView(
             name: "abseil",
-            version: "1.2024072200.0",
+            version: "1.2025051202.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2017 The Abseil Authors",
             licenseText: """
@@ -4630,7 +4630,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Firebase",
-            version: "12.19.2",
+            version: "13.0.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -4656,7 +4656,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAppMeasurement",
-            version: "12.19.2",
+            version: "13.0.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -4721,7 +4721,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "gRPC",
-            version: "1.69.1",
+            version: "1.83.1",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2015 gRPC authors",
             licenseText: """
