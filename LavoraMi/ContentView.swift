@@ -5181,6 +5181,7 @@ struct LinesView: View {
     }
 
     var filteredMetros: [LineInfo] { filtered(metros) }
+    var filteredMinimetro: [LineInfo] { filtered([minimetro]) }
     var filteredSuburban: [LineInfo] { filtered(suburban) }
     var filteredRegioExpress: [LineInfo] { filtered(regioExpress) }
     var filteredRegional: [LineInfo] { filtered(regionalLines) }
@@ -5583,7 +5584,9 @@ struct LinesView: View {
                 }
                 lineSection(lines: filteredMetros, title: "Linee Metropolitane", subtitle: "ATM", infoURL: "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg")
 
-                LineRow(line: minimetro.name, typeOfTransport: minimetro.type, branches: minimetro.branches, waitMinutes: minimetro.waitMinutes, accessibilityStatus: minimetro.accessibilityStatus, stations: minimetro.stations, viewModel: viewModel, onTap: { addToRecent(minimetro) })
+                if let h = filteredMinimetro.first {
+                    LineRow(line: h.name, typeOfTransport: h.type, branches: h.branches, waitMinutes: h.waitMinutes, accessibilityStatus: h.accessibilityStatus, stations: h.stations, viewModel: viewModel, onTap: { addToRecent(h) })
+                }
                 
                 if searchInput.isEmpty && !shouldShowAdsAfterRecent {
                     supportLavoraMiSection
@@ -5610,7 +5613,7 @@ struct LinesView: View {
             .scrollContentBackground(.hidden)
             .overlay {
                 let allFiltered: [[LineInfo]] = [
-                    filteredMetros, [minimetro], filteredSuburban, filteredRegioExpress,
+                    filteredMetros, filteredMinimetro, filteredSuburban, filteredRegioExpress,
                     filteredRegional, filteredCrossBorders, filteredMalpensaExpress,
                     filteredTrams, filteredFilobus, filteredMovibus, filteredNET,
                     filteredSTAV, filteredSTAR, filteredAutoguidovie
