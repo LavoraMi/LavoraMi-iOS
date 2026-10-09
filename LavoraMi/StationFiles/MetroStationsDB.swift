@@ -260,7 +260,7 @@ struct MetroStationsDB {
         .init(name: "Dateo", coordinate: .init(latitude: 45.46799, longitude: 9.21845), branch: "Main"),
         .init(name: "Tricolore", coordinate: .init(latitude: 45.46793, longitude: 9.20868), branch: "Main"),
         .init(name: "San Babila", coordinate: .init(latitude: 45.46642, longitude: 9.19757), branch: "Main"),
-        .init(name: "Sforza-Policlinico", coordinate: .init(latitude: 45.45874, longitude: 9.19433), branch: "Main"),
+        .init(name: "Sforza - Policlinico", coordinate: .init(latitude: 45.45874, longitude: 9.19433), branch: "Main"),
         .init(name: "Santa Sofia", coordinate: .init(latitude: 45.45633, longitude: 9.18863), branch: "Main"),
         .init(name: "Vetra", coordinate: .init(latitude: 45.4571, longitude: 9.18262), branch: "Main"),
         .init(name: "De Amicis", coordinate: .init(latitude: 45.45909, longitude: 9.17721), branch: "Main"),
