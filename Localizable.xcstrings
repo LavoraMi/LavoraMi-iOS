@@ -3970,7 +3970,20 @@
       }
     },
     "Linee NET" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NET Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas NET"
+          }
+        }
+      }
     },
     "Linee Preferite" : {
       "localizations" : {
