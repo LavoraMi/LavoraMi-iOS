@@ -5127,7 +5127,7 @@ struct LinesView: View {
     @State private var adsRequested: Bool = false
 
     private var shouldShowAdsAfterRecent: Bool {
-        showRecentSearches && recentlySearchedLines.count >= 3
+        showRecentSearches && recentlySearchedLines.count >= 2
     }
 
     @ViewBuilder
