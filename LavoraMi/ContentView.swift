@@ -8420,12 +8420,19 @@ struct DeepLinkLineDetailWrapper: View {
                     && info.type != "STAR Mobility"
                 )
             } else {
-                VStack(spacing: 12) {
-                    Image(systemName: "exclamationmark.triangle")
-                        .font(.largeTitle)
-                        .foregroundColor(.secondary)
-                    Text("Linea non trovata")
-                        .font(.headline)
+                VStack(spacing: 10) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.system(size: 44))
+                        .foregroundStyle(.secondary)
+
+                    Text("Linea non trovata.")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundStyle(.primary)
+                    Text("Questa linea non esiste oppure non è ancora su LavoraMi. Segnala a support@lavorami.it se ritieni sia un errore.")
+                        .font(.system(size: 12))
+                        .padding(.horizontal, 20)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }

@@ -3670,6 +3670,7 @@
       }
     },
     "Linea non trovata" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3684,6 +3685,9 @@
           }
         }
       }
+    },
+    "Linea non trovata." : {
+
     },
     "Linea Rallentata" : {
       "localizations" : {
@@ -5917,6 +5921,9 @@
           }
         }
       }
+    },
+    "Questa linea non esiste oppure non è ancora su LavoraMi. Segnala a support@lavorami.it se ritieni sia un errore." : {
+
     },
     "Qui puoi gestire il tuo Account e le tue informazioni." : {
       "localizations" : {
