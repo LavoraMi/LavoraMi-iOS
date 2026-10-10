@@ -8415,9 +8415,7 @@ struct DeepLinkLineDetailWrapper: View {
                     viewModel: viewModel,
                     stations: info.stations,
                     accessibilityStatus: info.accessibilityStatus,
-                    isDetailed: info.type != "Movibus"
-                    && info.type != "STAV"
-                    && info.type != "NET"
+                    isDetailed: info.type != "NET"
                     && info.type != "Autoguidovie"
                     && info.type != "STAR Mobility"
                 )
