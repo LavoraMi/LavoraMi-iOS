@@ -59,7 +59,7 @@ struct MetroStationsDB {
     ]
     
     static let stationsM2: [MetroStation] = [
-        .init(name: "Assago Forum", coordinate: .init(latitude: 45.40183, longitude: 9.14562), branch: "Assago"),
+        .init(name: "Assago Milanofiori Forum", coordinate: .init(latitude: 45.40183, longitude: 9.14562), branch: "Assago"),
         .init(name: "Assago Milanofiori Nord", coordinate: .init(latitude: 45.40945, longitude: 9.15004), branch: "Assago"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.41521, longitude: 9.15352), branch: "Assago"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.41559, longitude: 9.15391), branch: "Assago"),
@@ -97,7 +97,7 @@ struct MetroStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.43458, longitude: 9.16778), branch: "Abbiategrasso"),
         .init(name: "Famagosta", coordinate: .init(latitude: 45.43719, longitude: 9.16795), branch: "Main"),
         .init(name: "Romolo", coordinate: .init(latitude: 45.44373, longitude: 9.16767), branch: "Main"),
-        .init(name: "Porta Genova FS", coordinate: .init(latitude: 45.45273, longitude: 9.16972), branch: "Main"),
+        .init(name: "Porta Genova", coordinate: .init(latitude: 45.45273, longitude: 9.16972), branch: "Main"),
         .init(name: "S. Agostino", coordinate: .init(latitude: 45.45834, longitude: 9.16977), branch: "Main"),
         .init(name: "S. Ambrogio", coordinate: .init(latitude: 45.46185, longitude: 9.17325), branch: "Main"),
         .init(name: "Cadorna FN", coordinate: .init(latitude: 45.4682, longitude: 9.17588), branch: "Main"),

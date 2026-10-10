@@ -83,13 +83,13 @@ struct InterchangesDB {
         .init(name: "Moscova", lines: ["M2", "43", "84"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
         .init(name: "Lanza", lines: ["M2", "NM2", "2", "4", "12", "14", "57", "97"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 12),
         .init(name: "Cadorna FN", lines: ["M2", "NM2", "M1", "NM1", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
-        .init(name: "S. Ambrogio", lines: ["M2", "NM2", "M4", "NM4", "50", "96", "97"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
-        .init(name: "S. Agostino", lines: ["M2", "NM2", "NM4"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 15),
+        .init(name: "San Ambrogio", lines: ["M2", "NM2", "M4", "NM4", "50", "96", "97"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
+        .init(name: "San Agostino", lines: ["M2", "NM2", "NM4"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 15),
         .init(name: "Porta Genova", lines: ["M2", "NM2", "2", "3", "9", "10", "74", "N25", "N26"], typeOfInterchange: "building.columns.fill", branch: "Main", lineOrder: 16),
         .init(name: "Romolo FS", lines: ["M2", "NM2", "S9", "S19", "R31", "47", "90", "91", "71", "324", "325", "z553"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 17),
         .init(name: "Famagosta", lines: ["M2", "NM2", "46", "59", "71", "74", "95", "98", "z501", "z509", "z510", "z515", "z516"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 18),
 
-        .init(name: "P.Za Abbiategrasso", lines: ["M2", "NM2", "3", "15", "65", "79", "230", "N15"], typeOfInterchange: "tram.fill.tunnel", branch: "P.Za Abbiategrasso", lineOrder: 0),
+        .init(name: "Piazza Abbiategrasso", lines: ["M2", "NM2", "3", "15", "65", "79", "230", "N15"], typeOfInterchange: "tram.fill.tunnel", branch: "P.Za Abbiategrasso", lineOrder: 0),
 
         .init(name: "Assago Milanofiori Nord", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel", branch: "Assago Milanofiori Forum", lineOrder: 0),
         .init(name: "Assago Milanofiori Forum", lines: ["M2", "321", "328", "352", "z501", "z510", "z515"], typeOfInterchange: "tram.fill.tunnel", branch: "Assago Milanofiori Forum", lineOrder: 1),
