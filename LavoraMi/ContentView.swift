@@ -5583,6 +5583,7 @@ struct LinesView: View {
                     }
                 }
                 lineSection(lines: filteredMetros, title: "Linee Metropolitane", subtitle: "ATM", infoURL: "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg")
+                    .listSectionSpacing(10)
 
                 if let h = filteredMinimetro.first {
                     LineRow(line: h.name, typeOfTransport: h.type, branches: h.branches, waitMinutes: h.waitMinutes, accessibilityStatus: h.accessibilityStatus, stations: h.stations, viewModel: viewModel, onTap: { addToRecent(h) })
