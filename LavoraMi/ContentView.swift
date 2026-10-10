@@ -2172,6 +2172,36 @@ struct SettingsView: View{
                         .buttonStyle(.borderless)
                     }
                     HStack{
+                        Label("Linee NET", systemImage: "bus.fill")
+                        Spacer()
+                        Button(action: {
+                            if(feedbacksEnabled){
+                                HapticManager.shared.trigger()
+                            }
+                            
+                            if linesFavorites.contains("z3") {
+                                linesFavorites.removeAll { $0 == "z3" }
+                            } else {
+                                linesFavorites.append("z3")
+                            }
+                            NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                            
+                            Task {
+                                let preferences: UserPreferencesDatas = await authManager.fetchUserPreferences()
+                                
+                                if(preferences.enable_favorites) {
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                    showErrorDBSavePopUp = !res
+                                }
+                            }
+                        }) {
+                            Image(systemName: linesFavorites.contains("z3") ? "star.fill" : "star")
+                                .font(.title3)
+                                .foregroundColor(linesFavorites.contains("z3") ? .orange : .gray)
+                        }
+                        .buttonStyle(.borderless)
+                    }
+                    HStack{
                         Label("Linee STAV", systemImage: "bus.fill")
                         Spacer()
                         Button(action: {
@@ -8202,12 +8232,13 @@ extension WorkItem {
         if favorites.contains("Bus") {
             let isRubberTire = transport.contains("bus") || transport.contains("autobus")
             let isMovibus = transport.contains("movibus") || linesLower.contains { $0.hasPrefix("z6") }
+            let isNET = transport.contains("net") || linesLower.contains{ $0.hasPrefix("z3") }
             let isStav = transport.contains("stav") || linesLower.contains { $0.hasPrefix("z5") }
             let isAutoguidovie = transport.contains("autoguidovie") || linesLower.contains {
                 $0.hasPrefix("z4") || $0.hasPrefix("z2")
             }
             
-            if isRubberTire && !isMovibus && !isStav && !isAutoguidovie {
+            if isRubberTire && !isMovibus && !isStav && !isAutoguidovie && !isNET {
                 return true
             }
         }
@@ -8215,6 +8246,11 @@ extension WorkItem {
         if favorites.contains("z6") {
             if transport.contains("movibus") { return true }
             if linesLower.contains(where: { $0.hasPrefix("z6") }) { return true }
+        }
+        
+        if favorites.contains("z3") {
+            if transport.contains("net") { return true }
+            if linesLower.contains(where: { $0.hasPrefix("z3") }) { return true }
         }
         
         if favorites.contains("z55"){
