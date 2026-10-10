@@ -8273,10 +8273,13 @@ extension WorkItem {
         }
         
         if favorites.contains("Tram") {
-            let isTram = transport.contains("tram") &&
-                        !transport.contains("tram.fill.tunnel") &&
-                        !transport.contains("metro")
+            let isTram = transport.contains("tram") && !transport.contains("tram.fill.tunnel") && !transport.contains("metro")
             if isTram { return true }
+        }
+        
+        if favorites.contains("Metro") {
+            let isMetro = transport.contains("tram.fill.tunnel") || transport.contains("metro")
+            if isMetro { return true }
         }
         
         for workLine in self.lines {
