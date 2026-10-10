@@ -23,7 +23,7 @@ struct InterchangesDB {
         .init(name: "Pasteur", lines: ["M1", "NM1"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
         .init(name: "Loreto", lines: ["M1", "NM1", "M2", "NM2", "39", "55", "56", "90", "91"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 10),
         .init(name: "Lima", lines: ["M1", "NM1", "60", "81", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
-        .init(name: "Porta Venezia FS", lines: ["M1", "NM1", "S1", "S2", "S5", "S6", "S12", "S13", "5", "9", "33"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 8),
+        .init(name: "Porta Venezia", lines: ["M1", "NM1", "S1", "S2", "S5", "S6", "S12", "S13", "5", "9", "33"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 8),
         .init(name: "Palestro", lines: ["M1", "NM1"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 7),
         .init(name: "San Babila", lines: ["M1", "NM1", "M4", "NM4", "NM3", "61", "84"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 6),
         .init(name: "Duomo", lines: ["M1", "NM1", "M3", "NM3", "2", "3", "12", "14", "15", "16", "19", "60", "61", "N15", "N24", "N27"], typeOfInterchange: "building.columns.fill", branch: "Main", lineOrder: 5),
