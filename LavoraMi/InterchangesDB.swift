@@ -91,8 +91,8 @@ struct InterchangesDB {
 
         .init(name: "P.Za Abbiategrasso", lines: ["M2", "NM2", "3", "15", "65", "79", "230", "N15"], typeOfInterchange: "tram.fill.tunnel", branch: "P.Za Abbiategrasso", lineOrder: 0),
 
-        .init(name: "Assago Milanofiori Forum", lines: ["M2", "321", "328", "352", "z501", "z510", "z515"], typeOfInterchange: "tram.fill.tunnel", branch: "Assago Milanofiori Forum", lineOrder: 0),
-        .init(name: "Assago Milanofiori Nord", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel", branch: "Assago Milanofiori Forum", lineOrder: 1),
+        .init(name: "Assago Milanofiori Nord", lines: ["M2"], typeOfInterchange: "tram.fill.tunnel", branch: "Assago Milanofiori Forum", lineOrder: 0),
+        .init(name: "Assago Milanofiori Forum", lines: ["M2", "321", "328", "352", "z501", "z510", "z515"], typeOfInterchange: "tram.fill.tunnel", branch: "Assago Milanofiori Forum", lineOrder: 1),
 
         /// Metro M3
         .init(name: "Comasina", lines: ["M3", "NM3", "35", "41", "52", "83", "89", "165", "705", "729"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 0),
