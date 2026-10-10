@@ -130,7 +130,7 @@ struct InterchangesDB {
         .init(name: "Santa Sofia", lines: ["M4", "NM4", "15", "96", "97", "N15"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
         .init(name: "Vetra", lines: ["M4", "NM4", "3", "96", "97"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 10),
         .init(name: "De Amicis", lines: ["M4", "NM4", "NM2", "2", "14", "96", "97"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
-        .init(name: "S. Ambrogio", lines: ["M4", "NM4", "M2", "NM2", "50", "96", "97"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 12),
+        .init(name: "San Ambrogio", lines: ["M4", "NM4", "M2", "NM2", "50", "96", "97"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 12),
         .init(name: "Coni Zugna", lines: ["M4", "NM4", "2", "10", "58"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 13),
         .init(name: "California", lines: ["M4", "NM4", "58", "68"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
         .init(name: "Bolivar", lines: ["M4", "NM4", "58", "85", "90", "91"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 15),
