@@ -3669,25 +3669,21 @@
         }
       }
     },
-    "Linea non trovata" : {
-      "extractionState" : "stale",
+    "Linea non trovata." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Line Not Found"
+            "value" : "Line Not Found."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No se ha encontrado la línea"
+            "value" : "No se ha encontrado la línea."
           }
         }
       }
-    },
-    "Linea non trovata." : {
-
     },
     "Linea Rallentata" : {
       "localizations" : {
@@ -5923,7 +5919,20 @@
       }
     },
     "Questa linea non esiste oppure non è ancora su LavoraMi. Segnala a support@lavorami.it se ritieni sia un errore." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This line does not exist or is not yet listed on LavoraMi. Please report it to support@lavorami.it if you think this is an error."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta línea no existe o aún no aparece en LavoraMi. Si crees que se trata de un error, avísanos a support@lavorami.it."
+          }
+        }
+      }
     },
     "Qui puoi gestire il tuo Account e le tue informazioni." : {
       "localizations" : {
