@@ -141,10 +141,10 @@ struct InterchangesDB {
         .init(name: "San Cristoforo", lines: ["M4", "NM4", "S9", "S19", "R31", "14", "47", "49", "95", "324", "325", "326", "351", "z553"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 20),
 
         /// Metro M5
-        .init(name: "Bignami", lines: ["M5", "4", "31", "713", "728"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
-        .init(name: "Ponale", lines: ["M5", "4", "31", "51", "172"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 1),
-        .init(name: "Bicocca", lines: ["M5", "4", "7", "31", "52", "172", "783"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 2),
-        .init(name: "Ca' Granda", lines: ["M5", "4", "5", "7", "31", "86", "172"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 3),
+        .init(name: "Bignami", lines: ["M5", "31", "713", "728"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
+        .init(name: "Ponale", lines: ["M5", "31", "51", "172"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 1),
+        .init(name: "Bicocca", lines: ["M5", "7", "31", "52", "172", "783"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 2),
+        .init(name: "Ca' Granda", lines: ["M5", "5", "7", "31", "86", "172"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 3),
         .init(name: "Istria", lines: ["M5", "5", "7", "31", "42"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 4),
         .init(name: "Marche", lines: ["M5", "5", "7", "31"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 5),
         .init(name: "Zara", lines: ["M5", "M3", "NM3", "7", "31", "51", "60", "82", "90", "91", "92", "166"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 6),
