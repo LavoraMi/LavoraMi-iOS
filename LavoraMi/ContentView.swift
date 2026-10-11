@@ -6253,21 +6253,15 @@ extension LineDetailView {
                         )
                 }
                 
-                if(lineName.contains("RE")){
-                    Text("\(typeOfTransport)")
-                        .font(.custom("TitilliumWeb-Bold", size: 30))
-                        .minimumScaleFactor(0.5)
-                        .lineLimit(1)
-                }
-                else if(lineName == "MXP1" || lineName == "MXP2"){
+                if(lineName == "MXP1" || lineName == "MXP2"){
                     Text("Malpensa Express")
                         .font(.custom("TitilliumWeb-Bold", size: 30))
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
                 }
                 else {
-                    if(lineName.contains("S") || (lineName == "MXP1" || lineName == "MXP2") || lineName == "RE80" || lineName.contains("RE")) {
-                        Text("\(typeOfTransport) \(lineName)")
+                    if(lineName.contains("S")) {
+                        Text("\(typeOfTransport)")
                             .font(.custom("TitilliumWeb-Bold", size: 40))
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)
@@ -6279,6 +6273,12 @@ extension LineDetailView {
                             .lineLimit(1)
                     }
                     else if (!isDetailed || isBusLineForRoute || lineName == "H") {
+                        Text("\(typeOfTransport)")
+                            .font(.system(size: 30))
+                            .minimumScaleFactor(0.5)
+                            .lineLimit(1)
+                    }
+                    else if(lineName.starts(with: "R")) {
                         Text("\(typeOfTransport)")
                             .font(.system(size: 30))
                             .minimumScaleFactor(0.5)
