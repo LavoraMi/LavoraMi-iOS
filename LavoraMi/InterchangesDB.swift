@@ -880,7 +880,7 @@ struct InterchangesDB {
         .init(name: "Legnano", lines: ["R21", "S5", "R23", "RV", "RE5", "z601", "z602", "z611", "z627", "z636", "z642"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
         .init(name: "Canegrate", lines: ["R21", "S5", "z611"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
         .init(name: "Parabiago", lines: ["R21", "S5", "R23", "RE5", "z644"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
-        .init(name: "Rho Fiera Milano", lines: ["R21", "S5", "S6", "S11", "R23", "RE4", "RE5", "AV", "M1", "542", "561"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 17),
+        .init(name: "Rho Fiera Milano", lines: ["R21", "S5", "S6", "S11", "R23", "RE4", "RE5", "AV", "M1", "542", "561"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 15),
         .init(name: "Milano Porta Garibaldi", lines: ["R21", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 16),
 
         /// Regionale R22
