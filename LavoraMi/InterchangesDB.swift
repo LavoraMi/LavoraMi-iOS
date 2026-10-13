@@ -899,7 +899,7 @@ struct InterchangesDB {
         .init(name: "Venegono Inferiore", lines: ["R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
         .init(name: "Tradate", lines: ["R22", "RE1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
         .init(name: "Abbiate Guazzone", lines: ["R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
-        .init(name: "Locate Varesino Carbonate", lines: ["R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 15),
+        .init(name: "Locate Varesino - Carbonate", lines: ["R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 15),
         .init(name: "Mozzate", lines: ["R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
         .init(name: "Cislago", lines: ["R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 17),
         .init(name: "Gerenzano Turate", lines: ["R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 18),
