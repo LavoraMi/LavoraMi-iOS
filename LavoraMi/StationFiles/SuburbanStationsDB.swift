@@ -2205,7 +2205,7 @@ struct SuburbanStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.40675, longitude: 9.02097), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.406, longitude: 9.01795), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4045, longitude: 8.96032), branch: "Main"),
-        .init(name: "Albairate - Vermezzo", coordinate: .init(latitude: 45.40435, longitude: 8.95822), branch: "Main")
+        .init(name: "Albairate Vermezzo", coordinate: .init(latitude: 45.40435, longitude: 8.95822), branch: "Main")
     ]
     
     static let stationsS31: [MetroStation] = [

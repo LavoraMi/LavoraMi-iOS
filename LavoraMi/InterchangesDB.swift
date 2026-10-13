@@ -422,7 +422,7 @@ struct InterchangesDB {
         /// Suburbano S19
         .init(name: "Milano Rogoredo", lines: ["S19", "S1", "S2", "S9", "S12", "S13", "R31", "R34", "R38", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
         .init(name: "Milano Scalo Romana", lines: ["S19", "S9", "R31", "M3", "NM3", "65", "90", "91", "92"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 1),
-        .init(name: "Milano Tibaldi", lines: ["S19", "S9", "R31", "15", "59", "90", "91"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 2),
+        .init(name: "Milano Tibaldi - Bocconi", lines: ["S19", "S9", "R31", "15", "59", "90", "91"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 2),
         .init(name: "Milano Romolo", lines: ["S19", "S9", "R31", "M2", "NM2", "47", "90", "91", "71", "324", "325", "z553"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 3),
         .init(name: "Milano San Cristoforo", lines: ["S19", "S9", "R31", "M4", "NM4", "14", "47", "49", "95", "324", "325", "326", "351", "z553"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 4),
         .init(name: "Corsico", lines: ["S19", "S9", "R31", "326"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
