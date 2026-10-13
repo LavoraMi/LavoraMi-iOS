@@ -448,8 +448,8 @@ struct InterchangesDB {
         // MALPENSA EXPRESS LINES
         /// Malpensa Express 1
         .init(name: "Gallarate", lines: ["MXP1", "S5", "S30", "S50", "R21", "R23", "RV", "RE4", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
-        .init(name: "Malpensa Aereoporto T2", lines: ["MXP1", String(localized: .aereoporto), "S50", "MXP2"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 1),
-        .init(name: "Malpensa Aereoporto T1", lines: ["MXP1", String(localized: .aereoporto), "S50", "MXP2"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 2),
+        .init(name: "Malpensa Aereoporto Terminal 2", lines: ["MXP1", String(localized: .aereoporto), "S50", "MXP2"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 1),
+        .init(name: "Malpensa Aereoporto Terminal 1", lines: ["MXP1", String(localized: .aereoporto), "S50", "MXP2"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 2),
         .init(name: "Ferno - Lonate Pozzolo", lines: ["MXP1", "S50"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
         .init(name: "Busto Arsizio Nord", lines: ["MXP1", "S50", "R27", "MXP2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Castellanza", lines: ["MXP1", "R27"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
@@ -460,8 +460,8 @@ struct InterchangesDB {
         .init(name: "Milano Centrale", lines: ["MXP1", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "M3", "NM3", "M2", "NM2", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 10),
 
         /// Malpensa Express 2
-        .init(name: "Malpensa Aereoporto T2", lines: ["MXP2", String(localized: .aereoporto), "S50", "MXP1"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 0),
-        .init(name: "Malpensa Aereoporto T1", lines: ["MXP2", String(localized: .aereoporto), "S50", "MXP1"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 1),
+        .init(name: "Malpensa Aereoporto Terminal 2", lines: ["MXP2", String(localized: .aereoporto), "S50", "MXP1"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 0),
+        .init(name: "Malpensa Aereoporto Terminal 1", lines: ["MXP2", String(localized: .aereoporto), "S50", "MXP1"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 1),
         .init(name: "Busto Arsizio Nord", lines: ["MXP2", "S50", "R27", "MXP1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Saronno", lines: ["MXP2", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
         .init(name: "Milano Bovisa", lines: ["MXP2", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
