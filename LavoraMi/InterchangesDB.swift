@@ -834,7 +834,7 @@ struct InterchangesDB {
         .init(name: "Como Lago", lines: ["R17", "RE7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
         .init(name: "Como Borghi", lines: ["R17", "RE7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Como Camerlata", lines: ["R17", "S10", "S11", "S40", "R18", "RE7", "RE13", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
-        .init(name: "Grandate Breccia", lines: ["R17", "RE7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Grandate - Breccia", lines: ["R17", "RE7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
         .init(name: "Portichetto - Luisago", lines: ["R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Fino Mornasco", lines: ["R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Cadorago", lines: ["R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
