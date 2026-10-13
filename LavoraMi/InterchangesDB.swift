@@ -1130,7 +1130,7 @@ struct InterchangesDB {
 
         /// RegioExpress RE3
         .init(name: "Brescia", lines: ["RE3", "S31", "R1", "R3", "R4", "R5", "R7", "R8", "RE6", "AV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
-        .init(name: "Bornato Calino", lines: ["RE3", "S31", "R3", "R9"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Bornato - Calino", lines: ["RE3", "S31", "R3", "R9"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Iseo", lines: ["RE3", "S31", "R3", "R9"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Sulzano", lines: ["RE3", "R3", "R9"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
         .init(name: "Sale Marasino", lines: ["RE3", "R3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
