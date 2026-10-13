@@ -6893,7 +6893,7 @@ struct RegionalStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.16001, longitude: 9.38349), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.16028, longitude: 9.38997), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.16034, longitude: 9.39409), branch: "Main"),
-        .init(name: "San Cristina e Bissone", coordinate: .init(latitude: 45.1604, longitude: 9.40104), branch: "Main"),
+        .init(name: "Santa Cristina e Bissone", coordinate: .init(latitude: 45.1604, longitude: 9.40104), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.16075, longitude: 9.40658), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.16083, longitude: 9.40982), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.16105, longitude: 9.41566), branch: "Main"),
