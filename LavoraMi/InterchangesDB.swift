@@ -1093,9 +1093,8 @@ struct InterchangesDB {
         .init(name: "Castel San Giovanni", lines: ["R41", "R34", "REG", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Sarmato", lines: ["R41", "R34"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
         .init(name: "Rottofreno", lines: ["R41", "R34"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
-        .init(name: "San Nicolo'", lines: ["R41", "R34", "REG", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
-        .init(name: "San Nicolo'", lines: ["R41", "R34"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
-        .init(name: "Piacenza", lines: ["R41", "R38", "R34", "REG", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "San Nicolò", lines: ["R41", "R34"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Piacenza", lines: ["R41", "R38", "R34", "REG", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
     ]
     
     static let regioExpressInterchanges: [InterchangeInfo] = [
