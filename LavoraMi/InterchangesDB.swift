@@ -940,7 +940,7 @@ struct InterchangesDB {
         .init(name: "Sesto Calende", lines: ["R24", "R23", "RE4"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
 
         /// Regionale R25
-        .init(name: "Novara", lines: ["S6", "R25", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Novara", lines: ["R25", "S6", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
         .init(name: "Garbagna", lines: ["R25", "REG"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Vespolate", lines: ["R25", "REG"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Borgo Lavezzaro", lines: ["R25", "REG"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
