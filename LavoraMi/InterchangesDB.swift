@@ -619,7 +619,7 @@ struct InterchangesDB {
         .init(name: "Grumello Del Monte", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Chiuduno", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
         .init(name: "Montello Gorlago", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
-        .init(name: "Albano Sant'Alessandro", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Albano San Alessandro", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
         .init(name: "Seriate", lines: ["R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
         .init(name: "Bergamo", lines: ["R1", "R2", "R5", "R7", "R14", "RE2", "RV", "z301"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
 
