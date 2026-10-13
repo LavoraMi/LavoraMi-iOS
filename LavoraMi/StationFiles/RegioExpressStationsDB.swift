@@ -4644,6 +4644,6 @@ struct RegioExpressStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 44.69747, longitude: 8.87606), branch: "Novi Ligure"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 44.69415, longitude: 8.88194), branch: "Novi Ligure"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 44.69276, longitude: 8.88438), branch: "Novi Ligure"),
-        .init(name: "Arquata", coordinate: .init(latitude: 44.69223, longitude: 8.885), branch: "Novi Ligure")
+        .init(name: "Arquata Scrivia", coordinate: .init(latitude: 44.69223, longitude: 8.885), branch: "Novi Ligure")
     ]
 }
