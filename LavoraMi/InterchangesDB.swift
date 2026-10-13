@@ -1000,7 +1000,7 @@ struct InterchangesDB {
         .init(name: "Bressana Bottarone", lines: ["R34", "R33"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Bressana Argine", lines: ["R34"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Pinarolo Po", lines: ["R34"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
-        .init(name: "Barbaniello", lines: ["R34"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Barbianello", lines: ["R34"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Broni", lines: ["R34", "R41"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
         .init(name: "Stradella", lines: ["R34", "R41", "REG", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
 
@@ -1026,7 +1026,7 @@ struct InterchangesDB {
         .init(name: "Gropello Cairoli", lines: ["R36"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
         .init(name: "Garlasco", lines: ["R36"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Tromello", lines: ["R36"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
-        .init(name: "Gambolo' Remondo'", lines: ["R36"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Gambolò Remondò", lines: ["R36"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Mortara", lines: ["R36", "R25", "R31", "R32", "REG", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
         .init(name: "Nicorvo", lines: ["R36"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Robbio", lines: ["R36"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),

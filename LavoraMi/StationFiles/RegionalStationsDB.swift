@@ -6511,7 +6511,7 @@ struct RegionalStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.07426, longitude: 9.19812), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.07393, longitude: 9.20012), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.07324, longitude: 9.20207), branch: "Main"),
-        .init(name: "Barbinello", coordinate: .init(latitude: 45.0723, longitude: 9.20552), branch: "Main"),
+        .init(name: "Barbianello", coordinate: .init(latitude: 45.0723, longitude: 9.20552), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.07067, longitude: 9.21065), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.06738, longitude: 9.22095), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.0632, longitude: 9.23479), branch: "Main"),
