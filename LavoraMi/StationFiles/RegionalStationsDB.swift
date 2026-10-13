@@ -1308,7 +1308,7 @@ struct RegionalStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50741, longitude: 9.45002), branch: "Main"),
         .init(name: "Melzo", coordinate: .init(latitude: 45.50208, longitude: 9.4192), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.49995, longitude: 9.40689), branch: "Main"),
-        .init(name: "Vigate", coordinate: .init(latitude: 45.49441, longitude: 9.37649), branch: "Main"),
+        .init(name: "Vignate", coordinate: .init(latitude: 45.49441, longitude: 9.37649), branch: "Main"),
         .init(name: "Pioltello Limito", coordinate: .init(latitude: 45.48611, longitude: 9.32949), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.48075, longitude: 9.29859), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.47352, longitude: 9.25856), branch: "Main"),

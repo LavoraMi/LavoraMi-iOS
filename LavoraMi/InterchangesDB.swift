@@ -669,7 +669,7 @@ struct InterchangesDB {
         .init(name: "Ospitaletto Travagliato", lines: ["R4", "R1", "R5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Rovato", lines: ["R4", "R1", "R5", "R7", "R9", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Chiari", lines: ["R4", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
-        .init(name: "Calcio", lines: ["R4"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Cividate - Calcio", lines: ["R4"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Romano", lines: ["R4", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Morengo Bariano", lines: ["R4"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Vidalengo", lines: ["R4"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
