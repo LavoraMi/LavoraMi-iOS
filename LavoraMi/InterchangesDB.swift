@@ -626,10 +626,10 @@ struct InterchangesDB {
         /// Regionale R2
         .init(name: "Treviglio", lines: ["R2", "S5", "S6", "R4", "R6", "R7", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
         .init(name: "Treviglio Ovest", lines: ["R2", "RE2", "RV", "z405"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
-        .init(name: "Verdello Dalmine", lines: ["R2", "RE2", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
-        .init(name: "Levate", lines: ["R2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
-        .init(name: "Stezzano", lines: ["R2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
-        .init(name: "Stezzano", lines: ["R2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Arcene", lines: ["R2", "RE2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Verdello Dalmine", lines: ["R2", "RE2", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Levate", lines: ["R2", "RE2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Stezzano", lines: ["R2", "RE2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Bergamo", lines: ["R2", "R1", "R5", "R7", "R14", "RE2", "RV", "z301"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
 
         /// Regionale R3
