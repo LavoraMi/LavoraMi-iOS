@@ -799,14 +799,14 @@ struct InterchangesDB {
         .init(name: "Carnate Usmate", lines: ["R14", "S8", "R13", "R15", "RE8", "z318", "z319"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Arcore", lines: ["R14", "S8", "R13", "z208", "z317", "z319"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
         .init(name: "Monza", lines: ["R14", "S7", "S8", "S9", "S11", "R7", "R13", "RE8", "RE13", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
-        .init(name: "Sesto S. Giovanni", lines: ["R14", "S7", "S8", "S9", "S11", "R13", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
+        .init(name: "Sesto San Giovanni", lines: ["R14", "S7", "S8", "S9", "S11", "R13", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
         .init(name: "Milano Greco Pirelli", lines: ["R14", "S7", "S8", "S9", "S11", "R4", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
         .init(name: "Milano Porta Garibaldi", lines: ["R14", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
 
         /// Regionale R15
         .init(name: "Carnate Usmate", lines: ["R15", "S8", "R13", "R14", "RE8", "z318", "z319"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
-        .init(name: "Macherio Sovico", lines: ["R15"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 1),
-        .init(name: "Lesmo", lines: ["R15"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 2),
+        .init(name: "Lesmo", lines: ["R15"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 1),
+        .init(name: "Macherio Sovico", lines: ["R15"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 2),
         .init(name: "Seregno", lines: ["R15", "S9", "S11", "RE13", "RE80", "z228", "z231", "z232", "z233", "z242"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
 
         /// Regionale R16
