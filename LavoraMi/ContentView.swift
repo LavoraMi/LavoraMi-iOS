@@ -4738,7 +4738,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleUtilities",
-            version: "8.1.4",
+            version: "8.1.5",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2017 Google LLC",
             licenseText: """
@@ -4863,7 +4863,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-issue-reporting",
-            version: "2.1.1",
+            version: "2.1.2",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2022 Apple Inc.",
             licenseText: """
@@ -4893,7 +4893,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "swift-concurrency-extras",
-            version: "1.4.1",
+            version: "1.4.3",
             license: "MIT License",
             copyright: "Copyright (c) 2023 Point-Free, Inc.",
             licenseText: """
