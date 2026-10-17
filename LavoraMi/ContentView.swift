@@ -5081,7 +5081,6 @@ struct LineRow: View {
     private var isDetailView: Bool {
         typeOfTransport != "NET"
         && typeOfTransport != "Autoguidovie"
-        && typeOfTransport != "STAR Mobility"
     }
 
     @ViewBuilder
@@ -5456,11 +5455,11 @@ struct LinesView: View {
     
     var star: [LineInfo] {
         [
-            LineInfo(name: "z501", branches: "Milano Famagosta - Binasco", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z509", branches: "Motta Visconti - Milano Famagosta", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z510", branches: "Milano Famagosta - Lacchiarella - Giussago", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z515", branches: "Milano Famagosta - Zibido", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z516", branches: "Milano Famagosta - Rosate - Besate", type: "STAR Mobility", waitMinutes: "", stations: [], accessibilityStatus: "")
+            LineInfo(name: "z501", branches: "Milano Famagosta - Binasco", type: "STAR Mobility", waitMinutes: "", stations: STARMobilityStationsDB.starZ501, accessibilityStatus: ""),
+            LineInfo(name: "z509", branches: "Motta Visconti - Milano Famagosta", type: "STAR Mobility", waitMinutes: "", stations: STARMobilityStationsDB.starZ509, accessibilityStatus: ""),
+            LineInfo(name: "z510", branches: "Milano Famagosta - Lacchiarella - Giussago", type: "STAR Mobility", waitMinutes: "", stations: STARMobilityStationsDB.starZ510, accessibilityStatus: ""),
+            LineInfo(name: "z515", branches: "Milano Famagosta - Zibido", type: "STAR Mobility", waitMinutes: "", stations: STARMobilityStationsDB.starZ515, accessibilityStatus: ""),
+            LineInfo(name: "z516", branches: "Milano Famagosta - Rosate - Besate", type: "STAR Mobility", waitMinutes: "", stations: STARMobilityStationsDB.starZ516, accessibilityStatus: "")
         ]
     }
     
@@ -5925,7 +5924,7 @@ struct LineDetailView: View {
         let main = filtered.filter { $0.branch == "Main" }
         return main.isEmpty ? filtered : main
     }
-    private var isBusLineForRoute: Bool {typeOfTransport == "Movibus" || typeOfTransport == "STAV"}
+    private var isBusLineForRoute: Bool {typeOfTransport == "Movibus" || typeOfTransport == "STAV" || typeOfTransport == "STAR Mobility"}
     private var hasRitornoBranch: Bool {stations.contains { $0.branch.localizedCaseInsensitiveContains("Ritorno") }}
 
     private var stationsForCurrentDirection: [MetroStation] {
@@ -8246,12 +8245,12 @@ extension WorkItem {
             let isRubberTire = transport.contains("bus") || transport.contains("autobus")
             let isMovibus = transport.contains("movibus") || linesLower.contains { $0.hasPrefix("z6") }
             let isNET = transport.contains("net") || linesLower.contains{ $0.hasPrefix("z3") }
-            let isStav = transport.contains("stav") || linesLower.contains { $0.hasPrefix("z5") }
+            let isStavOrStar = transport.contains("stav") || linesLower.contains { $0.hasPrefix("z5") }
             let isAutoguidovie = transport.contains("autoguidovie") || linesLower.contains {
                 $0.hasPrefix("z4") || $0.hasPrefix("z2")
             }
             
-            if isRubberTire && !isMovibus && !isStav && !isAutoguidovie && !isNET {
+            if isRubberTire && !isMovibus && !isStavOrStar && !isAutoguidovie && !isNET {
                 return true
             }
         }
@@ -8430,7 +8429,6 @@ struct DeepLinkLineDetailWrapper: View {
                     accessibilityStatus: info.accessibilityStatus,
                     isDetailed: info.type != "NET"
                     && info.type != "Autoguidovie"
-                    && info.type != "STAR Mobility"
                 )
             } else {
                 VStack(spacing: 10) {
