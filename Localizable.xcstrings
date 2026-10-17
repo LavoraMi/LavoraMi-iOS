@@ -1888,7 +1888,20 @@
       }
     },
     "Errore durante il caricamento." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error while loading."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error durante la carga."
+          }
+        }
+      }
     },
     "erroreSincronizzato" : {
       "extractionState" : "manual",
