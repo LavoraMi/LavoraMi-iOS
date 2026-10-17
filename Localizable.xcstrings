@@ -1887,6 +1887,9 @@
         }
       }
     },
+    "Errore durante il caricamento." : {
+
+    },
     "erroreSincronizzato" : {
       "extractionState" : "manual",
       "localizations" : {

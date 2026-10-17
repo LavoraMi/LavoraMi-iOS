@@ -273,7 +273,7 @@ struct StopDetailView: View {
                 Text("Prossimo arrivo:")
                     .font(.headline)
                 Spacer()
-                if directions.count > 1 {
+                if directions.count > 1 && !isStationClosed{
                     Button(action: changeDirection) {
                         Label("Direzione", systemImage: "arrow.left.arrow.right")
                             .font(.system(size: 14, weight: .bold))
@@ -290,7 +290,7 @@ struct StopDetailView: View {
 
     @ViewBuilder
     private var arrivalRow: some View {
-        if let next = currentDirection?.departures.first {
+        if !isStationClosed, let next = currentDirection?.departures.first {
             HStack(spacing: 10) {
                 Text(lineName)
                     .font(.system(size: 18, weight: .bold))
@@ -322,8 +322,12 @@ struct StopDetailView: View {
             Text("Nessuna partenza prevista per oggi.")
                 .foregroundStyle(.secondary)
         }
-        else {
+        else if isStationClosed{
             Text("Fermata Sospesa")
+                .foregroundStyle(.secondary)
+        }
+        else {
+            Text("Errore durante il caricamento.")
                 .foregroundStyle(.secondary)
         }
     }
