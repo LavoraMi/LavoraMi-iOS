@@ -5861,6 +5861,7 @@ struct LineDetailView: View {
     @State private var selectedStopId: String? = nil
     @State private var selectedStopName: String = ""
     @State private var currentTime = Date()
+    @State private var selectedStationIndex: Int?
     private let arrivalsTimer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
     
     @State private var tramStopSelection: TramStopSelection? = nil
@@ -6735,6 +6736,7 @@ extension LineDetailView {
                     )
                 ),
                 bounds: lombardyBounds,
+                selection: $selectedStationIndex,
                 content: {
                     UserAnnotation()
 
@@ -6754,36 +6756,8 @@ extension LineDetailView {
                         }
                     }
 
-                    ForEach(stationsForCurrentDirection) { station in
-                        if station.name == "NO_DRAW" {
-                            Annotation("", coordinate: station.coordinate) {
-                                EmptyView()
-                            }
-                        }
-                        else {
-                            let closed = isStationClosed(station.name)
-                            
-                            Annotation(station.name, coordinate: station.coordinate) {
-                                ZStack {
-                                    Circle()
-                                        .fill(closed ? .red : .white)
-                                        .frame(width: closed ? 16 : 12, height: closed ? 16 : 12)
-                                    Circle()
-                                        .stroke(closed ? Color.red : lineColor, lineWidth: 3)
-                                        .frame(width: closed ? 16 : 12, height: closed ? 16 : 12)
-                                                                            
-                                    if closed {
-                                        Image(systemName: "xmark")
-                                            .font(.system(size: 9, weight: .bold))
-                                            .foregroundStyle(.white)
-                                    }
-                                }
-                                .contentShape(Circle().inset(by: -8))
-                                .onTapGesture {
-                                    selezionaFermataDaMappa(station.name)
-                                }
-                            }
-                        }
+                    ForEach(Array(stationsForCurrentDirection.enumerated()), id: \.offset) { index, station in
+                        stationAnnotation(station: station, index: index, lineColor: lineColor)
                     }
                 }
             )
@@ -6796,6 +6770,16 @@ extension LineDetailView {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .onChange(of: modalitaRitorno) {
                 branchData = computeBranchData()
+            }
+            .onChange(of: selectedStationIndex) { _, newIndex in
+                guard let newIndex else { return }
+                let stations = stationsForCurrentDirection
+
+                if stations.indices.contains(newIndex) {
+                    selezionaFermataDaMappa(stations[newIndex].name)
+                }
+                
+                selectedStationIndex = nil
             }
             .overlay(alignment: .topLeading) {
                 if let status = metroStatusInfo {
@@ -6886,6 +6870,35 @@ extension LineDetailView {
             
             if branchData.isEmpty {branchData = computeBranchData()}
             if metroLineIndex != nil {viewModel.fetchMetroStatus()}
+        }
+    }
+    
+    @MapContentBuilder
+    private func stationAnnotation(station: MetroStation, index: Int, lineColor: Color) -> some MapContent {
+        if station.name != "NO_DRAW" {
+            let closed: Bool = isStationClosed(station.name)
+            let size: CGFloat = closed ? 16 : 12
+            let ringColor: Color = closed ? Color.red : lineColor
+            let fillColor: Color = closed ? Color.red : Color.white
+
+            Annotation(station.name, coordinate: station.coordinate) {
+                ZStack {
+                    Circle()
+                        .fill(fillColor)
+                        .frame(width: size, height: size)
+                    Circle()
+                        .stroke(ringColor, lineWidth: 3)
+                        .frame(width: size, height: size)
+                    if closed {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 9, weight: .bold))
+                            .foregroundStyle(.white)
+                    }
+                }
+                .frame(width: 40, height: 40)
+                .contentShape(Circle())
+            }
+            .tag(index)
         }
     }
     
