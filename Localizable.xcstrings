@@ -632,7 +632,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Clicking on the selected line opens it in the Widget. If this option is disabled, it opens the app on the Home screen."
+            "value" : "Opens the line selected for the widget when you tap it. If disabled, the app opens on the Home screen."
           }
         },
         "es" : {
@@ -2949,7 +2949,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Info about deviations"
+            "value" : "Info about maps"
           }
         },
         "es" : {
@@ -4768,7 +4768,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No routes scheduled for today"
+            "value" : "No services scheduled for today"
           }
         },
         "es" : {
@@ -4946,7 +4946,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Don’t be the last to know it..."
+            "value" : "Don’t be the last to know..."
           }
         },
         "es" : {
@@ -5010,7 +5010,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Don't get lost."
+            "value" : "Never get lost."
           }
         },
         "es" : {
@@ -5596,7 +5596,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please rely on the cabin crew"
+            "value" : "Please rely on the on-board staff"
           }
         },
         "es" : {
@@ -5779,7 +5779,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Arrival:"
+            "value" : "Next arrival:"
           }
         },
         "es" : {
@@ -6122,7 +6122,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Request %@"
+            "value" : "Require %@"
           }
         },
         "es" : {
@@ -6138,7 +6138,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Request %1$@ to unlock your Account section. To change this settings you have to authenticate with %2$@."
+            "value" : "Require %1$@ to unlock your Account section. To change this settings you have to authenticate with %2$@."
           }
         },
         "es" : {
@@ -6295,7 +6295,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Refresh"
+            "value" : "Try Again"
           }
         },
         "es" : {
@@ -6455,7 +6455,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose every line."
+            "value" : "Choose any line."
           }
         },
         "es" : {
@@ -6957,7 +6957,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "There was a problem whilst uploading the video. Please try again later."
+            "value" : "There was a problem whilst loading the video. Please try again later."
           }
         },
         "es" : {
@@ -7554,7 +7554,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "WAITING TIME:"
+            "value" : "AVERAGE WAITING TIME:"
           }
         },
         "es" : {
@@ -8109,7 +8109,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Click on a stop on the map to see the next arrivals! No more pointless waiting at bus stops."
+            "value" : "Click on a stop on the map to see the next arrivals! No more pointless waiting at tram stops."
           }
         },
         "es" : {
