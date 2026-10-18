@@ -8376,8 +8376,11 @@ extension Date: @retroactive RawRepresentable {
 
 extension Date {
     var hasTime: Bool {
-        let calendar = Calendar.current.dateComponents([.hour, .minute], from: self)
-        return (calendar.hour ?? 0) != 0 || (calendar.minute ?? 0) != 0
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 3600)!
+        
+        let cal = calendar.dateComponents([.hour, .minute], from: self)
+        return (cal.hour ?? 0) != 0 || (cal.minute ?? 0) != 0
     }
 }
 
