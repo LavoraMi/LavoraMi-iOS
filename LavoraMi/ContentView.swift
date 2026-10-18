@@ -5621,6 +5621,7 @@ struct LinesView: View {
 
                 if let h = filteredMinimetro.first {
                     LineRow(line: h.name, typeOfTransport: h.type, branches: h.branches, waitMinutes: h.waitMinutes, accessibilityStatus: h.accessibilityStatus, stations: h.stations, viewModel: viewModel, onTap: { addToRecent(h) })
+                        .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 }
                 
                 if searchInput.isEmpty && !shouldShowAdsAfterRecent {
