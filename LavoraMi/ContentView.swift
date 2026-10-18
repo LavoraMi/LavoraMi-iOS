@@ -1349,6 +1349,11 @@ struct WorkInProgressRow: View {
     @AppStorage("showTranslateButton") var showTranslateButton: Bool = false
     
     private let italianLoc = Date.FormatStyle(date: .abbreviated, time: .omitted).locale(Locale(identifier: "it_IT"))
+    private let italianLocTime = Date.FormatStyle(date: .abbreviated, time: .shortened).locale(Locale(identifier: "it_IT"))
+    private func formatWorkDate(_ date: Date) -> String {
+        date.hasTime ? date.formatted(italianLocTime) : date.formatted(italianLoc)
+    }
+    
     private var isImportant: Bool {item.details.contains("[LAVORO IMPORTANTE]")}
     private var isEvent: Bool {item.details.contains("[EVENTO]")}
     private var cleanedDetails: String {
@@ -1520,12 +1525,12 @@ struct WorkInProgressRow: View {
                             .tint(item.progress == 1.0 ? .green : .red)
 
                         HStack {
-                            Text(item.startDate.formatted(self.italianLoc))
+                            Text(formatWorkDate(item.startDate))
                                 .font(.caption)
                                 .foregroundStyle(Color("TextColor"))
                             Spacer()
                                 .frame(height: 8)
-                            Text(item.endDate.formatted(self.italianLoc))
+                            Text(formatWorkDate(item.endDate))
                                 .font(.caption)
                                 .foregroundStyle(Color("TextColor"))
                         }
@@ -8366,6 +8371,13 @@ extension Date: @retroactive RawRepresentable {
         } else {
             self = Date()
         }
+    }
+}
+
+extension Date {
+    var hasTime: Bool {
+        let calendar = Calendar.current.dateComponents([.hour, .minute], from: self)
+        return (calendar.hour ?? 0) != 0 || (calendar.minute ?? 0) != 0
     }
 }
 
