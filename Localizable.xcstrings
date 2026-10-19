@@ -4266,7 +4266,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Sabías que, al crear una Cuenta en LavoraMi, puedes guardar tus anuncios favoritos para encontrarlos en todos tus dispositivos? ¡A qué esperas! ¡Crea una Cuenta!"
+            "value" : "¿Sabías que, al crear una Cuenta en LavoraMi, puedes guardar tus líneas favoritas para encontrarlos en todos tus dispositivos? ¡A qué esperas! ¡Crea una Cuenta!"
           }
         }
       }
@@ -6096,7 +6096,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En resumen..."
+            "value" : "Resumiendo…"
           }
         }
       }
