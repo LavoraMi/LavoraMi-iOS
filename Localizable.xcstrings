@@ -750,7 +750,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Activar Vibración Táctil "
+            "value" : "Activar Vibración Táctil"
           }
         }
       }
@@ -923,6 +923,7 @@
       }
     },
     "Bottom %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1491,7 +1492,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Data not Synched"
+            "value" : "Data not Synced"
           }
         },
         "es" : {
@@ -1795,7 +1796,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Email enviada a %@!"
+            "value" : "¡Email enviada a %@!"
           }
         }
       }
@@ -2289,7 +2290,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las obras en %1$@ de las líneas %2$@ deberían terminar hoy. Consulta la página web de%3$@ para conocer las últimas novedades."
+            "value" : "Las obras en %1$@ de las líneas %2$@ deberían terminar hoy. Consulta la página web de %3$@ para conocer las últimas novedades."
           }
         },
         "it" : {
@@ -2507,6 +2508,7 @@
       }
     },
     "Hello %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2543,7 +2545,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The LavoraMi servers are currently unavailable. We apologize for the inconvenience."
+            "value" : "The LavoraMi servers are currently unavailable. We apologise for the inconvenience."
           }
         },
         "es" : {
@@ -3241,6 +3243,7 @@
       }
     },
     "L" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3261,7 +3264,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The line %@ has been added to the section “Your Lines”"
+            "value" : "The line %@ has been added to the section “Your Lines”!"
           }
         },
         "es" : {
@@ -3315,7 +3318,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LavoraMi es una aplicación independiente desarrollada por terceros y NO está afiliada, respaldada, autorizada ni patrocinada en modo alguno por ATM S.p.A., Trenord S.r.l., Gruppo FNM, RFI ni otras entidades de transporte mencionadas.\n\nTodos los datos que se muestran en esta aplicación (horarios, estado del servicio, avisos) se recopilan de fuentes públicas con el único fin de facilitar su comprensión y con fines meramente informativos.\n\nNo se ofrece garantía alguna, ni explícita ni implícita, respecto a la exactitud, integridad, fiabilidad o puntualidad de la información proporcionada. Es posible que la información no refleje cambios de última hora.\n\nEl uso de la aplicación es bajo su propia responsabilidad. El desarrollador declina toda responsabilidad por posibles inexactitudes, retrasos, falta de servicio, daños directos o indirectos derivados de la confianza depositada en la información proporcionada por esta aplicación.\n\nPara decisiones de viaje críticas, se recomienda consultar siempre los canales oficiales, los anuncios de voz y la señalización presente en la estación.\n\nTodas las marcas, logotipos y nombres comerciales mencionados pertenecen a sus legítimos propietarios."
+            "value" : "LavoraMi es una aplicación independiente desarrollada por terceros y NO está afiliada, respaldada, autorizada ni patrocinada en modo alguno por ATM S.p.A., Trenord S.r.l., Grupo FNM, RFI ni otras entidades de transporte mencionadas.\n\nTodos los datos que se muestran en esta aplicación (horarios, estado del servicio, avisos) se recopilan de fuentes públicas con el único fin de facilitar su comprensión y con fines meramente informativos.\n\nNo se ofrece garantía alguna, ni explícita ni implícita, respecto a la exactitud, integridad, fiabilidad o puntualidad de la información proporcionada. Es posible que la información no refleje cambios de última hora.\n\nEl uso de la aplicación es bajo su propia responsabilidad. El desarrollador declina toda responsabilidad por posibles inexactitudes, retrasos, falta de servicio, daños directos o indirectos derivados de la confianza depositada en la información proporcionada por esta aplicación.\n\nPara decisiones de viaje críticas, se recomienda consultar siempre los canales oficiales, los anuncios de voz y la señalización presente en la estación.\n\nTodas las marcas, logotipos y nombres comerciales mencionados pertenecen a sus legítimos propietarios."
           }
         }
       }
@@ -3373,13 +3376,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LavoraMi obtains this information from authoritative and reliable sources; any route deviations are indicated in the journeys shown below, and you can find alternative travel options in the relevant section."
+            "value" : "LavoraMi obtains this information from authoritative and reliable sources; any route deviations are indicated in the works shown below, and you can find alternative travel options in the relevant section."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LavoraMi obtiene esta información de fuentes fidedignas y fiables; las posibles desviaciones en el recorrido se indican en los itinerarios que se muestran a continuación; puede consultar las posibles alternativas de viaje en la sección correspondiente."
+            "value" : "LavoraMi obtiene esta información de fuentes fidedignas y fiables; las posibles desviaciones en el recorrido se indican en los obras que se muestran a continuación; puede consultar las posibles alternativas de viaje en la sección correspondiente."
           }
         }
       }
@@ -3574,6 +3577,7 @@
       }
     },
     "Leading" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4006,7 +4010,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Favorite Lines"
+            "value" : "Favourite Lines"
           }
         },
         "es" : {
@@ -4592,7 +4596,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show the status of the selected line"
+            "value" : "Show the status of the selected line."
           }
         },
         "es" : {
@@ -5032,7 +5036,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No solo «obras en la calle»: te explicamos qué tipo de obras se están llevando a cabo y también las consecuencias que puede acarrear esa obra (desvíos, paradas suspendidas...)"
+            "value" : "No solo \"obras en la calle\": te explicamos qué tipo de obras se están llevando a cabo y también las consecuencias que puede acarrear esa obra (desvíos, paradas suspendidas...)"
           }
         }
       }
@@ -5066,7 +5070,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Not Synched"
+            "value" : "Not Synced"
           }
         },
         "es" : {
@@ -5546,7 +5550,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Para añadir TU línea a los favoritos, solo tienes que ir a la sección «Líneas», que tiene este símbolo: "
+            "value" : "Para añadir TU línea a los favoritos, solo tienes que ir a la sección \"Líneas\", que tiene este símbolo: "
           }
         }
       }
@@ -5682,7 +5686,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Favorites"
+            "value" : "Favourite"
           }
         },
         "es" : {
@@ -5704,7 +5708,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Privacy Policy"
+            "value" : "Política de Privacidad"
           }
         }
       }
@@ -5720,7 +5724,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Privacy Policy."
+            "value" : "Política de Privacidad."
           }
         }
       }
@@ -5929,7 +5933,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Esta línea ha quedado interrumpida en todo su recorrido debido a obras en el tramo o a modificaciones en los horarios. Para obtener más información, consulta la sección «Obras» de la línea."
+            "value" : "Esta línea ha quedado interrumpida en todo su recorrido debido a obras en el tramo o a modificaciones en los horarios. Para obtener más información, consulta la sección \"Obras\" de la línea."
           }
         }
       }
@@ -6359,7 +6363,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Save the line you use every day as a favorite and when there’s work on it, you will be updated."
+            "value" : "Save the line you use every day as a favourite and when there’s work on it, you will be updated."
           }
         },
         "es" : {
@@ -6990,7 +6994,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Synched Data"
+            "value" : "Synced Data"
           }
         },
         "es" : {
@@ -7052,7 +7056,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Web Site"
+            "value" : "Website"
           }
         },
         "es" : {
@@ -7310,7 +7314,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regular"
+            "value" : "Normal"
           }
         },
         "es" : {
@@ -7333,13 +7337,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suspended Route"
+            "value" : "Suspended Section"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trayecto Suspendido"
+            "value" : "Tramo Suspendido"
           }
         },
         "it" : {
@@ -7502,6 +7506,7 @@
       }
     },
     "T %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7618,13 +7623,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We’ll notify you the day before work is due to end, when new construction sites appear on your favorite line, and even when it’s a bad friday."
+            "value" : "We’ll notify you the day before work is due to end, when new construction sites appear on your favourite line, and even when it’s a bad Friday."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Te avisaremos el día antes de que terminen las obras, cuando haya nuevas obras en tu línea favorita y también cuando sea viernes."
+            "value" : "Te avisaremos el día antes de que terminen las obras, cuando haya nuevas obras en tu línea favorita y también cuando sea viernes no."
           }
         }
       }
@@ -7737,7 +7742,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notificación de errores en la aplicación para iOS"
+            "value" : "Informe de errores de la app para iOS"
           }
         },
         "it" : {
@@ -8042,6 +8047,7 @@
       }
     },
     "Trailing" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8448,7 +8454,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "View the routes of your favorite lines on the map, so you don’t get lost and always know where you are going."
+            "value" : "View the routes of your favourite lines on the map, so you don’t get lost and always know where you are going."
           }
         },
         "es" : {

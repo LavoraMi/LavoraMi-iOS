@@ -12,6 +12,5 @@ import SwiftUI
 struct LavoraMiWidgetBundle: WidgetBundle {
     var body: some Widget {
         LavoraMiWidget()
-        LavoraMiWidgetLiveActivity()
     }
 }
