@@ -1985,7 +1985,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bandas garantizadas %@"
+            "value" : "Franjas horarias garantizadas %@"
           }
         }
       }
@@ -2188,7 +2188,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Parada Cantiere"
+            "value" : "Parada en Obras"
           }
         },
         "it" : {
@@ -6931,7 +6931,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Se ha producido un error de conexión al guardar las rutas favoritas. Inténtalo de nuevo más tarde."
+            "value" : "Se ha producido un error de conexión al guardar las líneas favoritas. Inténtalo de nuevo más tarde."
           }
         }
       }
