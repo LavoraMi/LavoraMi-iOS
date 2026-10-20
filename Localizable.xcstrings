@@ -1823,7 +1823,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Works ended!"
+            "value" : "Works completed!"
           }
         },
         "es" : {
@@ -2400,7 +2400,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App’s Functions"
+            "value" : "App Features"
           }
         },
         "es" : {
@@ -2480,7 +2480,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Do you already have an account?"
+            "value" : "Already have an account?"
           }
         },
         "es" : {
@@ -3060,7 +3060,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Leaving"
+            "value" : "Departing"
           }
         },
         "es" : {
@@ -3280,7 +3280,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "THE LINE IS AVAILABLE ONLY ON WORKING DAYS"
+            "value" : "THIS LINE OPERATES ONLY ON WEEKDAYS"
           }
         },
         "es" : {
@@ -3646,7 +3646,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Line Selected"
+            "value" : "Line activated"
           }
         },
         "es" : {
@@ -5030,7 +5030,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Not just “work in progress” we explain what type of work is being done and the consequences that construction site may have (detours, suspended stops, etc)."
+            "value" : "Not just “work in progress” we explain what type of work is being done and the consequences that construction site may have (detours, suspended stops and more)"
           }
         },
         "es" : {
@@ -5638,7 +5638,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Plan your trip with an awareness of any potential delays along the way well before you leave."
+            "value" : "Plan your journey knowing about any disruption along the way, well before you leave."
           }
         },
         "es" : {
@@ -5847,7 +5847,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Clean Cache Memory"
+            "value" : "Clear Cache Memory"
           }
         },
         "es" : {
@@ -7143,7 +7143,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Current Status Metro"
+            "value" : "Current Metro Status"
           }
         },
         "es" : {
