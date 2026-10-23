@@ -72,7 +72,7 @@ struct TramStationsDB {
       .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50806, longitude: 9.13679), branch: "Main"),
       .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50799, longitude: 9.1369), branch: "Main"),
       .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50793, longitude: 9.13703), branch: "Main"),
-      .init(name: "Certosa FS", coordinate: .init(latitude: 45.50778, longitude: 9.13729), branch: "Main"),
+      .init(name: "Certosa", coordinate: .init(latitude: 45.50778, longitude: 9.13729), branch: "Main"),
       .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50778, longitude: 9.13729), branch: "Main"),
       .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50764, longitude: 9.1378), branch: "Main"),
       .init(name: "NO_DRAW", coordinate: .init(latitude: 45.50757, longitude: 9.13799), branch: "Main"),
