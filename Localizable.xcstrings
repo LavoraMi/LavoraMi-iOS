@@ -217,7 +217,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld programado."
+            "value" : "%lld programada."
           }
         }
       }
@@ -766,7 +766,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Activa la vibración táctil en determinadas pantallas o botones."
+            "value" : "Activa la vibración táctil en determinadas pantallas."
           }
         }
       }
@@ -3318,7 +3318,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LavoraMi es una aplicación independiente desarrollada por terceros y NO está afiliada, respaldada, autorizada ni patrocinada en modo alguno por ATM S.p.A., Trenord S.r.l., Grupo FNM, RFI ni otras entidades de transporte mencionadas.\n\nTodos los datos que se muestran en esta aplicación (horarios, estado del servicio, avisos) se recopilan de fuentes públicas con el único fin de facilitar su comprensión y con fines meramente informativos.\n\nNo se ofrece garantía alguna, ni explícita ni implícita, respecto a la exactitud, integridad, fiabilidad o puntualidad de la información proporcionada. Es posible que la información no refleje cambios de última hora.\n\nEl uso de la aplicación es bajo su propia responsabilidad. El desarrollador declina toda responsabilidad por posibles inexactitudes, retrasos, falta de servicio, daños directos o indirectos derivados de la confianza depositada en la información proporcionada por esta aplicación.\n\nPara decisiones de viaje críticas, se recomienda consultar siempre los canales oficiales, los anuncios de voz y la señalización presente en la estación.\n\nTodas las marcas, logotipos y nombres comerciales mencionados pertenecen a sus legítimos propietarios."
+            "value" : "LavoraMi es una aplicación independiente desarrollada por terceros y NO está afiliada, respaldada, autorizada ni patrocinada en modo alguno por ATM S.p.A., Trenord S.r.l., Grupo FNM, RFI ni otras entidades de transporte mencionadas.\n\nTodos los datos que se muestran en esta aplicación (horarios, estado del servicio, avisos) se recopilan de fuentes públicas con el único fin de facilitar su comprensión y con fines meramente informativos.\n\nNo se ofrece garantía alguna, ni explícita ni implícita, respecto a la exactitud, integridad, fiabilidad o puntualidad de la información proporcionada. Es posible que la información no refleje cambios de última hora.\n\nEl uso de la aplicación es bajo responsabilidad exclusiva del usuario. El desarrollador declina toda responsabilidad por posibles inexactitudes, retrasos, falta de servicio, daños directos o indirectos derivados de la confianza depositada en la información proporcionada por esta aplicación.\n\nPara decisiones de viaje críticas, se recomienda consultar siempre los canales oficiales, los anuncios de voz y la señalización presente en la estación.\n\nTodas las marcas, logotipos y nombres comerciales mencionados pertenecen a sus legítimos propietarios."
           }
         }
       }
@@ -3382,7 +3382,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LavoraMi obtiene esta información de fuentes fidedignas y fiables; las posibles desviaciones en el recorrido se indican en los obras que se muestran a continuación; puede consultar las posibles alternativas de viaje en la sección correspondiente."
+            "value" : "LavoraMi obtiene esta información de fuentes fidedignas y fiables; las posibles desviaciones en el recorrido se indican en los obras que se muestran a continuación; puedes consultar las posibles alternativas de viaje en la sección correspondiente."
           }
         }
       }
@@ -4586,7 +4586,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Muestra tus búsquedas recientes en la parte superior de la página de Líneas."
+            "value" : "Muestra tus búsquedas recientes de la página de Líneas."
           }
         }
       }
@@ -4666,7 +4666,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostrar Recientes"
+            "value" : "Mostrar Búsquedas Recientes"
           }
         }
       }
@@ -5741,7 +5741,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Programados"
+            "value" : "Programadas"
           }
         }
       }
@@ -5757,7 +5757,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PROGRAMADOS"
+            "value" : "PROGRAMADAS"
           }
         }
       }
@@ -6052,7 +6052,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Registrándose..."
+            "value" : "Registrándote..."
           }
         }
       }
