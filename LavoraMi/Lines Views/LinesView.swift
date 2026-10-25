@@ -187,7 +187,7 @@ struct LinesView: View {
             LineInfo(name: "M1", branches: "Sesto F.S. - Rho Fiera / Bisceglie", type: "Metro", waitMinutes: "Sesto FS: 3 min | Rho/Bisceglie: 7-8 min", stations: MetroStationsDB.stationsM1, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "M2", branches: "Gessate / Cologno - Assago / Abbiategrasso", type: "Metro", waitMinutes: "Gessate: 12-15 min | Assago: 9-10 min", stations: MetroStationsDB.stationsM2, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "M3", branches: "Comasina - San Donato", type: "Metro", waitMinutes: "4-5 min", stations: MetroStationsDB.stationsM3, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "M4", branches: "Linate Aereoporto - San Cristoforo", type: "Metro", waitMinutes: "2-3 min",stations: MetroStationsDB.stationsM4, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "M4", branches: "Linate Aeroporto - San Cristoforo", type: "Metro", waitMinutes: "2-3 min",stations: MetroStationsDB.stationsM4, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "M5", branches: "Bignami - San Siro Stadio", type: "Metro", waitMinutes: "4 min", stations: MetroStationsDB.stationsM5, accessibilityStatus: String(localized: .lineaAccessibile))
         ]
     }
@@ -273,7 +273,7 @@ struct LinesView: View {
             LineInfo(name: "S20", branches: "Castione Arbedo - Locarno", type: "TILO", waitMinutes: "30 min", stations: TiloStationsDB.tiloS20, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S30", branches: "Bellinzona / Cadenazzo - Gallarate", type: "TILO", waitMinutes: "2 \(String(localized: .ore))", stations: TiloStationsDB.tiloS30, accessibilityStatus: String(localized: .lineaParzialmenteAccessibile)),
             LineInfo(name: "S40", branches: "Como S. Giovanni - Varese", type: "TILO", waitMinutes: "1 \(String(localized: .ora))", stations: TiloStationsDB.tiloS40, accessibilityStatus: String(localized: .lineaAccessibile)),
-            LineInfo(name: "S50", branches: "Airolo / Biasca - Malpensa Aereoporto T2", type: "TILO", waitMinutes: "1 \(String(localized: .ora))", stations: TiloStationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
+            LineInfo(name: "S50", branches: "Airolo / Biasca - Malpensa Aeroporto T2", type: "TILO", waitMinutes: "1 \(String(localized: .ora))", stations: TiloStationsDB.tiloS50, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "S90", branches: "Bellinzona - Mendrisio", type: "TILO", waitMinutes: "30 min", stations: TiloStationsDB.tiloS90, accessibilityStatus: String(localized: .lineaAccessibile)),
             LineInfo(name: "RE80", branches: "Locarno - Milano Centrale", type: "TILO", waitMinutes: "30 min - 1 \(String(localized: .ora))", stations: TiloStationsDB.tiloRE80, accessibilityStatus: String(localized: .lineaAccessibile))
         ]
@@ -400,7 +400,7 @@ struct LinesView: View {
             LineInfo(name: "z404", branches: "Melzo FS - Inzago - Gessate M2", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z405", branches: "Gessate M2 - Cassano d'Adda - Treviglio", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z407", branches: "Gorgonzola M2 - Truccazzano - Cassano", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z409", branches: "Rodano - S. Felice - Linate Aereoporto", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z409", branches: "Rodano - S. Felice - Linate Aeroporto", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z410", branches: "Pantigliate - Peschiera - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z411", branches: "Melzo FS - Settala - Pantigliate - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z412", branches: "Paullo - Peschiera - S.Donato M3", type: "Autoguidovie", waitMinutes: "", stations: [], accessibilityStatus: ""),

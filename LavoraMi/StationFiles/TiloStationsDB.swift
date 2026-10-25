@@ -2458,14 +2458,14 @@ struct TiloStationsDB {
     ]
     
     static let tiloS50: [MetroStation] = [
-        .init(name: "Malpensa Aereoporto Terminal 2", coordinate: .init(latitude: 45.65013, longitude: 8.72133), branch: "Main"),
+        .init(name: "Malpensa Aeroporto Terminal 2", coordinate: .init(latitude: 45.65013, longitude: 8.72133), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.64847, longitude: 8.7129), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.64736, longitude: 8.71028), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.6458, longitude: 8.70848), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.64373, longitude: 8.70771), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.64127, longitude: 8.70758), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.638, longitude: 8.7084), branch: "Main"),
-        .init(name: "Malpensa Aereoporto Terminal 1", coordinate: .init(latitude: 45.62714, longitude: 8.71129), branch: "Main"),
+        .init(name: "Malpensa Aeroporto Terminal 1", coordinate: .init(latitude: 45.62714, longitude: 8.71129), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.62098, longitude: 8.71307), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.61858, longitude: 8.71389), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.61627, longitude: 8.71496), branch: "Main"),

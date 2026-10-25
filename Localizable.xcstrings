@@ -446,7 +446,7 @@
         }
       }
     },
-    "aereoporto" : {
+    "aeroporto" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -464,7 +464,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aereoporto"
+            "value" : "Aeroporto"
           }
         }
       }
@@ -918,23 +918,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿No puedes seguir adelante? Comprueba tu conexión."
-          }
-        }
-      }
-    },
-    "Bottom %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bottom %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bottom %@"
           }
         }
       }
@@ -2507,23 +2490,6 @@
         }
       }
     },
-    "Hello %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hello %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hello %@"
-          }
-        }
-      }
-    },
     "Home" : {
       "localizations" : {
         "en" : {
@@ -3242,23 +3208,6 @@
         }
       }
     },
-    "L" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L"
-          }
-        }
-      }
-    },
     "La linea %@ è stata aggiunta nella sezione \"Le tue linee\"!" : {
       "localizations" : {
         "en" : {
@@ -3572,23 +3521,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tus Líneas"
-          }
-        }
-      }
-    },
-    "Leading" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Leading"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Leading"
           }
         }
       }
@@ -7505,23 +7437,6 @@
         }
       }
     },
-    "T %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "T %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "T %@"
-          }
-        }
-      }
-    },
     "Team di Sviluppo" : {
       "localizations" : {
         "en" : {
@@ -8042,23 +7957,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduce los trabajos al idioma que quieras."
-          }
-        }
-      }
-    },
-    "Trailing" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trailing"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trailing"
           }
         }
       }

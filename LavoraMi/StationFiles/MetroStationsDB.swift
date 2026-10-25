@@ -252,7 +252,7 @@ struct MetroStationsDB {
     ]
 
     static let stationsM4: [MetroStation] = [
-        .init(name: "Linate Aereoporto", coordinate: .init(latitude: 45.46284, longitude: 9.27791), branch: "Main"),
+        .init(name: "Linate Aeroporto", coordinate: .init(latitude: 45.46284, longitude: 9.27791), branch: "Main"),
         .init(name: "Repetti", coordinate: .init(latitude: 45.46201, longitude: 9.2404), branch: "Main"),
         .init(name: "Stazione Forlanini", coordinate: .init(latitude: 45.46465, longitude: 9.2363), branch: "Main"),
         .init(name: "Argonne", coordinate: .init(latitude: 45.46815, longitude: 9.23119), branch: "Main"),
