@@ -2570,7 +2570,7 @@
         }
       }
     },
-    "Il bus può fare un ritardo dai 3 ai 5 minuti, questo è l'orario programmato." : {
+    "Il bus può essere in ritardo di 3-5 minuti, questo è l'orario programmato." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5455,7 +5455,7 @@
         }
       }
     },
-    "Per oggi non c'è nessuna corsa programmata per questa fermata, prova a sceglierne un' altra." : {
+    "Per oggi non c'è nessuna corsa programmata per questa fermata, prova a sceglierne un'altra." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5471,12 +5471,12 @@
         }
       }
     },
-    "Per poter mettere la TUA linea tra i preferiti, basta che vai nella sezione \"Linee\" con questo simbolo: " : {
+    "Per poter mettere la TUA linea tra i preferiti, basta che apri la sezione \"Linee\" con questo simbolo: " : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To add YOUR line to your favourites, simply go to the ‘Lines’ section marked with this symbol: "
+            "value" : "To add YOUR line to your favourites, simply go to the \"Lines” section marked with this symbol: "
           }
         },
         "es" : {
@@ -5742,7 +5742,7 @@
         }
       }
     },
-    "Prova a cercarne un' altra, come: %@." : {
+    "Prova a cercarne un'altra, come: %@." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -1395,7 +1395,7 @@ extension LineDetailView {
                     .foregroundStyle(.secondary)
             }
 
-            Text("Il bus può fare un ritardo dai 3 ai 5 minuti, questo è l'orario programmato.")
+            Text("Il bus può essere in ritardo di 3-5 minuti, questo è l'orario programmato.")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
 
@@ -1445,7 +1445,7 @@ extension LineDetailView {
             Text("Nessuna corsa prevista per oggi.")
                 .font(.system(size: 16, weight: .bold))
                 .foregroundStyle(.primary)
-            Text("Per oggi non c'è nessuna corsa programmata per questa fermata, prova a sceglierne un' altra.")
+            Text("Per oggi non c'è nessuna corsa programmata per questa fermata, prova a sceglierne un'altra.")
                 .font(.system(size: 12))
                 .padding(.horizontal, 20)
                 .foregroundStyle(.secondary)

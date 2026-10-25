@@ -574,7 +574,7 @@ struct LinesView: View {
                                 .font(.system(size: 18, weight: .bold))
                                 .foregroundStyle(.primary)
                                 .multilineTextAlignment(.center)
-                            Text("Prova a cercarne un' altra, come: \(generateRandomLine()).")
+                            Text("Prova a cercarne un'altra, come: \(generateRandomLine()).")
                                 .font(.system(size: 14))
                                 .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.center)

@@ -68,7 +68,7 @@ struct DetailSetYourLineView: View {
                                 .fontWeight(.bold)
                                 .multilineTextAlignment(.center)
 
-                            (Text("Per poter mettere la TUA linea tra i preferiti, basta che vai nella sezione \"Linee\" con questo simbolo: ")
+                            (Text("Per poter mettere la TUA linea tra i preferiti, basta che apri la sezione \"Linee\" con questo simbolo: ")
                              + Text(Image(systemName: "arrow.branch")))
                                 .font(.headline)
                                 .foregroundColor(.secondary)
