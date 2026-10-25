@@ -24,7 +24,6 @@ import FoundationModels
 
 internal import Auth
 
-//MARK: SETTINGS VIEW
 struct SettingsView: View{
     @State private var expandedTrenord = false
     @State private var expandedATM = false

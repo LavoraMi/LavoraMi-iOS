@@ -24,7 +24,6 @@ import FoundationModels
 
 internal import Auth
 
-//MARK: LINES VIEW
 struct LineRow: View {
     let line: String
     let typeOfTransport: String

@@ -24,7 +24,6 @@ import FoundationModels
 
 internal import Auth
 
-//MARK: MAIN VIEW
 struct ContentView: View {
     @StateObject private var viewModel = WorkViewModel()
     @Binding var showSetupScreen: Bool
