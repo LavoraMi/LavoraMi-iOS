@@ -409,16 +409,21 @@ struct StopDetailView: View {
     }
 
     private var interchange: InterchangeInfo? {
+        let candidates = interchanges.filter {
+            $0.lines.first?.caseInsensitiveCompare(lineName) == .orderedSame
+        }
+
         let target = GTFSHelper.normalizedName(stopName)
+
         if target == "lodi tibb",
-           let special = interchanges.first(where: { $0.name.caseInsensitiveCompare("Milano Scalo Romana") == .orderedSame }) {
+           let special = candidates.first(where: { $0.name.caseInsensitiveCompare("Milano Scalo Romana") == .orderedSame }) {
             return special
         }
 
-        if let exact = interchanges.first(where: { GTFSHelper.normalizedName($0.name) == target }) { return exact }
-        return interchanges.first { GTFSHelper.normalizedName($0.name).contains(target) }
+        if let exact = candidates.first(where: { GTFSHelper.normalizedName($0.name) == target }) { return exact }
+        return candidates.first { GTFSHelper.normalizedName($0.name).contains(target) }
     }
-
+    
     private func isHidden(_ station: MetroStation) -> Bool {
         station.name.caseInsensitiveCompare("NO_DRAW") == .orderedSame
     }
