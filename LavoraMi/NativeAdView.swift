@@ -116,8 +116,11 @@ struct NativeAdView: UIViewControllerRepresentable {
         ctaButton.setTitleColor(.white, for: .normal)
         ctaButton.layer.cornerRadius = 6
         ctaButton.clipsToBounds = true
-        ctaButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         ctaButton.isUserInteractionEnabled = false
+        
+        var config = UIButton.Configuration.plain()
+        config.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
+        ctaButton.configuration = config
         
         let mediaView = MediaView()
         mediaView.mediaContent = nativeAd.mediaContent
