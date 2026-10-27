@@ -373,9 +373,9 @@ struct MetroStationsDB {
         .init(name: "Tre Torri", coordinate: .init(latitude: 45.47807, longitude: 9.15664), branch: "Main"),
         .init(name: "Portello", coordinate: .init(latitude: 45.4814, longitude: 9.15045), branch: "Main"),
         .init(name: "Lotto", coordinate: .init(latitude: 45.47909, longitude: 9.14454), branch: "Main"),
-        .init(name: "Segesta", coordinate: .init(latitude: 45.47909, longitude: 9.13734), branch: "Main"),
-        .init(name: "San Siro Ippodromo", coordinate: .init(latitude: 45.47909, longitude: 9.12858), branch: "Main"),
-        .init(name: "San Siro Stadio", coordinate: .init(latitude: 45.47909, longitude: 9.11857), branch: "Main")
+        .init(name: "Segesta", coordinate: .init(latitude: 45.47621, longitude: 9.13734), branch: "Main"),
+        .init(name: "San Siro Ippodromo", coordinate: .init(latitude: 45.47608, longitude: 9.12858), branch: "Main"),
+        .init(name: "San Siro Stadio", coordinate: .init(latitude: 45.4765, longitude: 9.11857), branch: "Main")
     ]
     
     static let hStations: [MetroStation] = [
