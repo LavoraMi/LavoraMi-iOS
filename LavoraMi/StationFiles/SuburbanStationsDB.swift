@@ -631,7 +631,7 @@ struct SuburbanStationsDB {
         .init(name: "Magenta", coordinate: .init(latitude: 45.4681, longitude: 8.88073), branch: "Main"),
         .init(name: "Corbetta Santo Stefano", coordinate: .init(latitude: 45.48107, longitude: 8.91821), branch: "Main"),
         .init(name: "Vittuone Arluno", coordinate: .init(latitude: 45.49093, longitude: 8.94733), branch: "Main"),
-        .init(name: "Pregana Milanese", coordinate: .init(latitude: 45.51011, longitude: 9.00279), branch: "Main"),
+        .init(name: "Pregnana Milanese", coordinate: .init(latitude: 45.51011, longitude: 9.00279), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.51851, longitude: 9.02764), branch: "Main"),
         .init(name: "Rho", coordinate: .init(latitude: 45.52411, longitude: 9.04355), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.52714, longitude: 9.05292), branch: "Main"),
