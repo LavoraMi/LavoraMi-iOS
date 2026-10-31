@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/facebook/FBAudienceNetwork.git",
       "state" : {
-        "revision" : "26100d29de1cdb6753d7c602391f6fc6d29f6507",
-        "version" : "6.22.0"
+        "revision" : "4a7051592f50bb276c7346d5751967cdbbd64ac6",
+        "version" : "6.22.1"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/googleads/googleads-mobile-ios-mediation-meta.git",
       "state" : {
-        "revision" : "0a3d0597402162334fb5e11816ca612478180095",
-        "version" : "6.22.0"
+        "revision" : "1b27e078d5bbce9ee28ab102af6a113b2e95942d",
+        "version" : "6.22.100"
       }
     },
     {
