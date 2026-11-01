@@ -194,6 +194,7 @@
 				StationFiles/MalpensaExpressStationsDB.swift,
 				StationFiles/MetroStationsDB.swift,
 				StationFiles/MovibusStationsDB.swift,
+				StationFiles/NETStationsDB.swift,
 				StationFiles/RegioExpressStationsDB.swift,
 				StationFiles/RegionalStationsDB.swift,
 				StationFiles/STARMobilityStationsDB.swift,

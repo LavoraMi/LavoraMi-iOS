@@ -53,8 +53,7 @@ struct DeepLinkLineDetailWrapper: View {
                     viewModel: viewModel,
                     stations: info.stations,
                     accessibilityStatus: info.accessibilityStatus,
-                    isDetailed: info.type != "NET"
-                    && info.type != "Autoguidovie"
+                    isDetailed: info.type != "Autoguidovie"
                 )
             } else {
                 VStack(spacing: 10) {

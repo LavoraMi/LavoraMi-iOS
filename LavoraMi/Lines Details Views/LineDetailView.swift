@@ -145,7 +145,7 @@ struct LineDetailView: View {
         let main = filtered.filter { $0.branch == "Main" }
         return main.isEmpty ? filtered : main
     }
-    private var isBusLineForRoute: Bool {typeOfTransport == "Movibus" || typeOfTransport == "STAV" || typeOfTransport == "STAR Mobility"}
+    private var isBusLineForRoute: Bool {typeOfTransport == "Movibus" || typeOfTransport == "STAV" || typeOfTransport == "STAR Mobility" || typeOfTransport == "NET"}
     private var hasRitornoBranch: Bool {stations.contains { $0.branch.localizedCaseInsensitiveContains("Ritorno") }}
 
     private var stationsForCurrentDirection: [MetroStation] {

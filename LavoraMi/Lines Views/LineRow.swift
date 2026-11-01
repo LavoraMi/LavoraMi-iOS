@@ -34,10 +34,7 @@ struct LineRow: View {
     @ObservedObject var viewModel: WorkViewModel
     var onTap: (() -> Void)? = nil
 
-    private var isDetailView: Bool {
-        typeOfTransport != "NET"
-        && typeOfTransport != "Autoguidovie"
-    }
+    private var isDetailView: Bool {typeOfTransport != "Autoguidovie"}
 
     @ViewBuilder
     private var destination: some View {
