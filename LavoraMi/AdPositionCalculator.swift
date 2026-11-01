@@ -8,7 +8,7 @@
 import Foundation
 
 enum AdPlacement {
-    static let positions: [Int] = [1, 4]
+    static let positions: [Int] = [10, 40]
     static var maxAds: Int {positions.count}
 }
 
