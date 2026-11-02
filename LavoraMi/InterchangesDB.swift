@@ -1538,7 +1538,7 @@ struct InterchangesDB {
         .init(name: "Viale Certosa Via Tibullo", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 4),
         .init(name: "Viale Certosa Via Giannini", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 5),
         .init(name: "Viale Certosa Via Casella", lines: ["14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 6),
-        .init(name: "Piazzale Accursio", lines: ["14", "1", "z602", "z603", "z6C3"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 7),
+        .init(name: "Piazzale Accursio", lines: ["14", "1", "69", "z602", "z603", "z6C3"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 7),
         .init(name: "Viale Certosa Via Grosotto", lines: ["14", "1", "48", "69"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 8),
         .init(name: "Viale Certosa Viale Serra", lines: ["14", "1", "69", "90", "z602", "z603", "z6C3"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 9),
         .init(name: "Piazza Firenze", lines: ["14", "1", "19", "43", "48", "57", "69"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 10),
