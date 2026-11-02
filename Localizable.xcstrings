@@ -2554,6 +2554,22 @@
         }
       }
     },
+    "Ice Hockey Arena" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ice Hockey Arena"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ice Hockey Arena"
+          }
+        }
+      }
+    },
     "ID: %@" : {
       "localizations" : {
         "en" : {

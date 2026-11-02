@@ -195,14 +195,22 @@ struct InterchangeRow: View {
                                     Group {
                                         if line.contains(String(localized: .filobus)) || line.wholeMatch(of: /9[0-3]/) != nil {
                                             Label(line, systemImage: "bolt.fill")
-                                        } else if line.starts(with: "N") {
+                                        }
+                                        else if line.starts(with: "N") {
                                             Label(line, systemImage: "moon.fill")
-                                        } else if line == "Monumento" {
+                                        }
+                                        else if line == "Monumento" {
                                             Text(String(localized: .monumento))
                                                 .foregroundStyle(.black)
-                                        } else if line == "Ospedale" {
+                                        }
+                                        else if line == "Ice Hockey Arena" {
+                                            Text("Ice Hockey Arena")
+                                                .foregroundStyle(.white)
+                                        }
+                                        else if line == "Ospedale" {
                                             Text(String(localized: .ospedale))
-                                        } else {
+                                        }
+                                        else {
                                             Text(line)
                                         }
                                     }

@@ -88,6 +88,7 @@ func getColor(for line: String) -> Color {
         case String(localized: .aeroporto): return Color(red: 39/255, green: 115/255, blue: 245/255)
         case "Monumento": return Color(red: 234/255, green: 223/255, blue: 201/255)
         case "Ospedale": return Color(red: 224/255, green: 88/255, blue: 79/255)
+        case "Ice Hockey Arena": return Color(red: 3/255, green: 169/255, blue: 244/255)
         case _ where line.contains("R") && !line.contains("RE"): return Color.blue
         case _ where line.contains("RE") && !line.contains("REG"): return Color.red
         case let s where (1...33).contains(Int(s) ?? 0): return .orange
