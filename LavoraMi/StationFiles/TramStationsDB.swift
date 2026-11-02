@@ -1865,7 +1865,7 @@ struct TramStationsDB {
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45228, longitude: 9.18092), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45231, longitude: 9.18062), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45235, longitude: 9.18011), branch: "Main"),
-        .init(name: "Piazza XXIV Maggio", coordinate: .init(latitude: 45.4524, longitude: 9.17969), branch: "Main"),
+        .init(name: "P.Za XXIV Maggio", coordinate: .init(latitude: 45.4524, longitude: 9.17969), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45239, longitude: 9.17952), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.4524, longitude: 9.17943), branch: "Main"),
         .init(name: "NO_DRAW", coordinate: .init(latitude: 45.45241, longitude: 9.1793), branch: "Main"),
