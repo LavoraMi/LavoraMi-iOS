@@ -27,6 +27,13 @@ struct AllArrivalsSelection: Identifiable {
 }
  
 struct AllArrivalsSheet: View {
+    /// This is a View struct for render values from AllArrivalsSelection struct
+    /// - let route: GTFSRoute is the route of the bus selected from the user
+    /// - let id: UUID is the identifier of the departure
+    /// - let directionId: String is the identifier that identifies the direction of the departure
+    /// - let headsign: String is the text to show into the render process
+    /// - let lineColor: Color is the color of the line itself (most of the time blue)
+    
     let route: GTFSRoute
     let stopId: String
     let directionId: String
@@ -37,10 +44,7 @@ struct AllArrivalsSheet: View {
     @State private var now = Date()
  
     private let refreshTimer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
- 
-    private var departures: [Departure] {
-        GTFSHelper.getAllDepartures(for: stopId, directionId: directionId, in: route, now: now)
-    }
+    private var departures: [Departure] {GTFSHelper.getAllDepartures(for: stopId, directionId: directionId, in: route, now: now)}
  
     var body: some View {
         VStack(spacing: 0) {
