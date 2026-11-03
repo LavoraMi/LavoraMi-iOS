@@ -407,15 +407,14 @@ struct LineDetailView: View {
             return
         }
         else {
-            guard let route = routeData,
-                  let match = route.stops.first(where: { $0.value.n.caseInsensitiveCompare(stationName) == .orderedSame })
+            guard let route = routeData, let match = route.stops.first(where: { $0.value.n.caseInsensitiveCompare(stationName) == .orderedSame })
             else { return }
 
             let generator = UIImpactFeedbackGenerator(style: .light)
             generator.impactOccurred()
 
-            selectedStopId = match.key
             selectedStopName = match.value.n
+            selectedStopId = match.key
 
             withAnimation {
                 selectedTab = .arrivi

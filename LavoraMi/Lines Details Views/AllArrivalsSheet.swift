@@ -29,7 +29,7 @@ struct AllArrivalsSelection: Identifiable {
 struct AllArrivalsSheet: View {
     /// This is a View struct for render values from AllArrivalsSelection struct
     /// - let route: GTFSRoute is the route of the bus selected from the user
-    /// - let id: UUID is the identifier of the departure
+    /// - let stopId: String is the identifier of the stop selected from the user
     /// - let directionId: String is the identifier that identifies the direction of the departure
     /// - let headsign: String is the text to show into the render process
     /// - let lineColor: Color is the color of the line itself (most of the time blue)
@@ -45,6 +45,7 @@ struct AllArrivalsSheet: View {
  
     private let refreshTimer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     private var departures: [Departure] {GTFSHelper.getAllDepartures(for: stopId, directionId: directionId, in: route, now: now)}
+    private var stopName: String {route.stops[stopId]?.n ?? ""}
  
     var body: some View {
         VStack(spacing: 0) {
@@ -63,6 +64,7 @@ struct AllArrivalsSheet: View {
                 ScrollView {
                     LazyVStack(spacing: 0) {
                         let list = departures
+                        
                         ForEach(Array(list.enumerated()), id: \.offset) { index, dep in
                             row(for: dep, isFirst: index == 0, isLast: index == list.count - 1)
                         }
@@ -82,7 +84,7 @@ struct AllArrivalsSheet: View {
     private var topBar: some View {
         ZStack {
             VStack(spacing: 2) {
-                Text("DIREZIONE: \(headsign.uppercased())")
+                Text((stopName.uppercased()))
                     .font(.system(size: 11))
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
@@ -129,7 +131,7 @@ struct AllArrivalsSheet: View {
                         .foregroundStyle(.secondary)
                 }
  
-                Text("DIREZIONE: \(dep.headsign.uppercased())")
+                Text("→ \(dep.headsign.uppercased())")
                     .font(.system(size: 12))
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
@@ -161,6 +163,6 @@ struct AllArrivalsSheet: View {
     }
  
     private func waitText(for dep: Departure) -> String {
-        dep.minutesFromNow == 0 ? String(localized: .inPartenza) : "in \(dep.formattedWait)"
+        dep.minutesFromNow == 0 ? String(localized: .inPartenza) : "• \(dep.formattedWait)"
     }
 }
