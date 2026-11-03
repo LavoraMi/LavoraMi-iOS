@@ -54,9 +54,9 @@ struct AllArrivalsSheet: View {
             if departures.isEmpty {
                 Spacer()
                 ContentUnavailableView(
-                    "Nessun'altra corsa",
+                    "Non ci sono altre corse",
                     systemImage: "clock.badge.questionmark.fill",
-                    description: Text("Per oggi non ci sono altre corse programmate per questa direzione.")
+                    description: Text("Per oggi non ci sono altre corse programmate per questa direzione. Cambia fermata o attendi domani.")
                 )
                 Spacer()
             }

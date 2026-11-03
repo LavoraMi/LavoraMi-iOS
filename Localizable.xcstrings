@@ -223,7 +223,7 @@
       }
     },
     "→ %@" : {
-
+      "shouldTranslate" : false
     },
     "🇪🇸 Spagnolo" : {
       "localizations" : {
@@ -1962,7 +1962,20 @@
       }
     },
     "FAQ" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        }
+      }
     },
     "Fasce garantite %@" : {
       "localizations" : {
@@ -4705,9 +4718,6 @@
         }
       }
     },
-    "Nessun'altra corsa" : {
-
-    },
     "Nessuna connessione ad Internet." : {
       "localizations" : {
         "en" : {
@@ -4881,6 +4891,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Accesible"
+          }
+        }
+      }
+    },
+    "Non ci sono altre corse" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No more service scheduled"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay otras razas"
           }
         }
       }
@@ -5496,8 +5522,21 @@
         }
       }
     },
-    "Per oggi non ci sono altre corse programmate per questa direzione." : {
-
+    "Per oggi non ci sono altre corse programmate per questa direzione. Cambia fermata o attendi domani." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are no other scheduled services in this direction today. Change your stop or wait until tomorrow."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy no hay otros servicios programados en esta dirección. Cambie su parada o espere hasta mañana."
+          }
+        }
+      }
     },
     "Per poter mettere la TUA linea tra i preferiti, basta che apri la sezione \"Linee\" con questo simbolo: " : {
       "localizations" : {
@@ -8246,7 +8285,20 @@
       }
     },
     "Tutti gli arrivi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All arrivals"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas las llegadas"
+          }
+        }
+      }
     },
     "Tutti gli esempi riportati sono a scopo esemplificativo, possono essere eventi attualmente in corso o passati." : {
       "localizations" : {
@@ -8411,7 +8463,20 @@
       }
     },
     "Visualizza tutti gli arrivi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View all arrivals"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver todas las llegadas"
+          }
+        }
+      }
     },
     "visualizzaGliInterscambi" : {
       "extractionState" : "manual",
