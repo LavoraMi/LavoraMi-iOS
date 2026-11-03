@@ -4702,6 +4702,9 @@
         }
       }
     },
+    "Nessun'altra corsa" : {
+
+    },
     "Nessuna connessione ad Internet." : {
       "localizations" : {
         "en" : {
@@ -5489,6 +5492,9 @@
           }
         }
       }
+    },
+    "Per oggi non ci sono altre corse programmate per questa direzione." : {
+
     },
     "Per poter mettere la TUA linea tra i preferiti, basta che apri la sezione \"Linee\" con questo simbolo: " : {
       "localizations" : {
@@ -8236,6 +8242,9 @@
         }
       }
     },
+    "Tutti gli arrivi" : {
+
+    },
     "Tutti gli esempi riportati sono a scopo esemplificativo, possono essere eventi attualmente in corso o passati." : {
       "localizations" : {
         "en" : {
@@ -8397,6 +8406,9 @@
           }
         }
       }
+    },
+    "Visualizza tutti gli arrivi" : {
+
     },
     "visualizzaGliInterscambi" : {
       "extractionState" : "manual",

@@ -82,6 +82,7 @@ struct LineDetailView: View {
     @State private var selectedStopName: String = ""
     @State private var currentTime = Date()
     @State private var selectedStationIndex: Int?
+    @State private var allArrivalsSelection: AllArrivalsSelection? = nil
     private let arrivalsTimer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
     
     @State private var tramStopSelection: TramStopSelection? = nil
@@ -337,6 +338,17 @@ struct LineDetailView: View {
                 if(isTram && !seenPopUpInfoTram) {
                     seenPopUpInfoTram = true
                     openPopUpTram = true
+                }
+            }
+            .sheet(item: $allArrivalsSelection) { selection in
+                if let route = routeData, let stopId = selectedStopId {
+                    AllArrivalsSheet(
+                        route: route,
+                        stopId: stopId,
+                        directionId: selection.directionId,
+                        headsign: selection.headsign,
+                        lineColor: getColor(for: lineName)
+                    )
                 }
             }
             .sheet(isPresented: $openInfoAccessibility) {
@@ -1370,13 +1382,13 @@ extension LineDetailView {
                     .padding(.horizontal, 16)
                     .padding(.bottom, 12)
             } else {
-                departureDetailCard(departures: departures)
+                departureDetailCard(dirId: dirId, departures: departures)
             }
         }
     }
 
     @ViewBuilder
-    private func departureDetailCard(departures: [Departure]) -> some View {
+    private func departureDetailCard(dirId: String, departures: [Departure]) -> some View {
         let first = departures[0]
         let rest = Array(departures.dropFirst().prefix(3))
 
@@ -1418,6 +1430,19 @@ extension LineDetailView {
                     }
                 }
             }
+            
+            Button {
+                allArrivalsSelection = AllArrivalsSelection(directionId: dirId, headsign: first.headsign)
+            }
+            label: {
+                Text("Visualizza tutti gli arrivi")
+                    .font(.system(size: 15, weight: .semibold))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+                    .overlay(Capsule().stroke(Color.secondary.opacity(0.5), lineWidth: 1))
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(.primary)
         }
         .padding(16)
         .background(Color(.secondarySystemBackground))
