@@ -1434,7 +1434,7 @@ extension LineDetailView {
                 allArrivalsSelection = AllArrivalsSelection(directionId: dirId, headsign: first.headsign)
             }
             label: {
-                Text("Visualizza tutti gli arrivi")
+                Label("Visualizza tutti gli arrivi", systemImage: "arrow.up.forward.app.fill")
                     .font(.system(size: 15, weight: .semibold))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
