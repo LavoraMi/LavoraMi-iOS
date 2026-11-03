@@ -25,7 +25,7 @@ import FoundationModels
 internal import Auth
 
 struct ContentView: View {
-    @StateObject private var viewModel = WorkViewModel()
+    @ObservedObject var viewModel: WorkViewModel
     @Binding var showSetupScreen: Bool
     @State private var showUpdatePopUp: Bool = false
     @State private var selectedTab: Int = 0
@@ -68,7 +68,7 @@ struct ContentView: View {
     }
 }
 
-#Preview{
+#Preview {
     @Previewable @State var showSetupScreen: Bool = false
-    ContentView(showSetupScreen: $showSetupScreen)
+    ContentView(viewModel: WorkViewModel(), showSetupScreen: $showSetupScreen)
 }

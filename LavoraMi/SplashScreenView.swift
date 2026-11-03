@@ -31,7 +31,7 @@ struct SplashScreenView: View {
                     .opacity(contentOpacity)
                 }
                 else if (!obsoleteVersion){
-                    ContentView(showSetupScreen: $showSetupScreen)
+                    ContentView(viewModel: viewModel, showSetupScreen: $showSetupScreen)
                         .opacity(contentOpacity)
                 }
                 
@@ -45,6 +45,7 @@ struct SplashScreenView: View {
                     .resizable()
                     .frame(width: 150, height: 150)
                     .clipShape(RoundedRectangle(cornerRadius: 6))
+                    .drawingGroup()
                     .scaleEffect(scaleEffect)
                 
                 if(showNoConnection){
@@ -85,7 +86,7 @@ struct SplashScreenView: View {
                     obsoleteVersion = true
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                     startAnimation()
                 }
             }
@@ -104,7 +105,7 @@ struct SplashScreenView: View {
             scaleEffect = 0.5
         }
         withAnimation(.easeIn(duration: 0.4).delay(0.8)) {
-            scaleEffect = 1000
+            scaleEffect = 800
         }
         withAnimation(.easeIn(duration: 0.2).delay(0.95)) {
             contentOpacity = 1.0
