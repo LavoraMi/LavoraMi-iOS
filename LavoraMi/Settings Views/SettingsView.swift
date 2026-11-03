@@ -588,6 +588,28 @@ struct SettingsView: View{
                     }
                     HStack{
                         Button(action: {
+                            let url = URL(string: "https://www.lavorami.it#help")!
+                            
+                            if(howToOpenLinks == .inApp) {
+                                selectedURL = url
+                            }
+                            else {
+                                openURLAction(url)
+                            }
+                        }){
+                            Label {
+                                Text("FAQ")
+                                    .foregroundColor(Color("TextColor"))
+                            } icon: {
+                                Image(systemName: "bubble.left.and.text.bubble.right.fill")
+                            }
+                        }
+                        Spacer()
+                        Image(systemName: "arrow.up.forward")
+                            .foregroundStyle(Color(red: 90/255, green: 89/255, blue: 94/255))
+                    }
+                    HStack{
+                        Button(action: {
                             showBuildNumber = !showBuildNumber
                             if(feedbacksEnabled){
                                 HapticManager.shared.trigger()
