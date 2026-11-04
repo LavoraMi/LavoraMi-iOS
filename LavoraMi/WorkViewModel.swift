@@ -63,9 +63,10 @@ class WorkViewModel: ObservableObject {
         else {isStrikeToday = false}
     }
     
-    func fetchWorks() {
+    func fetchWorks(completion: (() -> Void)? = nil) {
         guard let url = URL(string: urlString) else {
             self.errorMessage = "URL non valido"
+            completion?()
             return
         }
         
@@ -75,6 +76,7 @@ class WorkViewModel: ObservableObject {
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             DispatchQueue.main.async {
                 self?.isLoading = false
+                defer { completion?() }
                 
                 if let error = error {
                     self?.errorMessage = error.localizedDescription
@@ -99,7 +101,8 @@ class WorkViewModel: ObservableObject {
                     if let savedFavoritesData = defaults.data(forKey: "linesFavorites"),
                        let decoded = try? JSONDecoder().decode([String].self, from: savedFavoritesData) {
                         savedFavorites = decoded
-                    } else if let favoritesString = defaults.string(forKey: "linesFavorites"),
+                    }
+                    else if let favoritesString = defaults.string(forKey: "linesFavorites"),
                               let data = favoritesString.data(using: .utf8),
                               let decoded = try? JSONDecoder().decode([String].self, from: data) {
                         savedFavorites = decoded
@@ -117,9 +120,10 @@ class WorkViewModel: ObservableObject {
         }.resume()
     }
     
-    func fetchVariables() {
+    func fetchVariables(completion: (() -> Void)? = nil) {
         guard let url = URL(string: urlVariables) else {
             self.errorMessage = "URL non valido"
+            completion?()
             return
         }
         
@@ -129,26 +133,22 @@ class WorkViewModel: ObservableObject {
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             DispatchQueue.main.async {
                 self?.isLoading = false
-            }
-            
-            if let error = error {
-                DispatchQueue.main.async {
+                defer { completion?() }
+                
+                if let error = error {
                     self?.errorMessage = error.localizedDescription
+                    return
                 }
-                return
-            }
-            
-            guard let data = data else {
-                DispatchQueue.main.async {
+                
+                guard let data = data else {
                     self?.errorMessage = "Nessun dato trovato."
+                    return
                 }
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let result = try decoder.decode(VariablesData.self, from: data)
-                DispatchQueue.main.async {
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(VariablesData.self, from: data)
+                    
                     self?.strikeEnabled = (result.enableStrike == "true")
                     self?.strikeEnabledDebug = (result.enableStrikeDebug == "true")
                     self?.companiesStrikes = result.companies
@@ -176,19 +176,15 @@ class WorkViewModel: ObservableObject {
                     self?.linesWithInaccurateTimetables = result.orariTramImprecisi
                     
                     if self?.strikeEnabled == true {
-                            NotificationManager.shared.scheduleStrikeNotifications(
-                                dateString: result.date,
-                                companies: result.companies,
-                                guaranteed: result.guaranteed
-                            )
+                        NotificationManager.shared.scheduleStrikeNotifications(
+                            dateString: result.date,
+                            companies: result.companies,
+                            guaranteed: result.guaranteed
+                        )
                     } else {
                         NotificationManager.shared.removeStrikeNotifications()
                     }
-                    
-                    //self?.enablePassanteWork = (result.enablePassanteWork == "true")
-                }
-            } catch {
-                DispatchQueue.main.async {
+                } catch {
                     self?.errorMessage = "\(error.localizedDescription)"
                 }
             }

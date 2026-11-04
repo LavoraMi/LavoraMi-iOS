@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SplashScreenView: View {
     @State private var opacity = 1.0
@@ -47,6 +48,7 @@ struct SplashScreenView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 6))
                     .drawingGroup()
                     .scaleEffect(scaleEffect)
+                    .compositingGroup()
                 
                 if(showNoConnection){
                     ProgressView(value: status, total: 1.0)
@@ -71,22 +73,38 @@ struct SplashScreenView: View {
                     }
                 }
             }
+            
+            let group = DispatchGroup()
+            
+            group.enter()
             viewModel.fetchRequirements {
                 showMaintenance = viewModel.maintenanceModeEnabled
-                status = 1
-                contentLoaded = true
-                showNoConnection = false
                 
                 let current = Bundle.main.shortVersion
                 let minimum = viewModel.minimumVersion
-                
-                let comparisonResult = current.compare(minimum, options: .numeric)
-                
-                if comparisonResult == .orderedAscending {
+                if current.compare(minimum, options: .numeric) == .orderedAscending {
                     obsoleteVersion = true
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                group.leave()
+            }
+            
+            group.enter()
+            viewModel.fetchWorks { group.leave() }
+            
+            group.enter()
+            viewModel.fetchVariables { group.leave() }
+            
+            group.enter()
+            viewModel.fetchMetroStatus { group.leave() }
+            
+            // 2. TUTTI I DATI SONO PRONTI
+            group.notify(queue: .main) {
+                status = 1
+                showNoConnection = false
+                contentLoaded = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     startAnimation()
                 }
             }
@@ -114,6 +132,8 @@ struct SplashScreenView: View {
             opacity = 0
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            LaunchCoordinator.shared.completeSplash()
+            
             if hasNotCompletedSetup && pendingDeepLink == nil {
                 showSetupScreen = true
             }
@@ -141,6 +161,18 @@ struct SplashScreenView: View {
         if url.host == "train" {
             NotificationCenter.default.post(name: .openTrainFilter, object: nil)
         }
+    }
+}
+
+final class LaunchCoordinator: ObservableObject {
+    static let shared = LaunchCoordinator()
+    @Published private(set) var splashCompleted = false
+    
+    private init(){}
+    
+    func completeSplash() {
+        guard !splashCompleted else { return }
+        splashCompleted = true
     }
 }
 

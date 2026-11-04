@@ -32,6 +32,7 @@ struct MainView: View {
     @AppStorage("linesSelected") private var linesSelected: [String] = []
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
+    @AppStorage("hasOpenedWrapped") private var hasOpenedWrapped: Bool = false
     
     @State private var closedStrike: Bool = false
     @State private var selectedFilter: FilterBy = .all
@@ -41,7 +42,6 @@ struct MainView: View {
     @State private var showInfoFavoriteLines: Bool = false
     @State private var showMaintenanceMode: Bool = false
     @State private var strikeExpanded: Bool = true
-    @AppStorage("hasOpenedWrapped") private var hasOpenedWrapped: Bool = false
     @State private var showWrapped: Bool = false
     @State private var showWrappedOpenedInfo: Bool = false
     @State private var livePulse = true
@@ -49,13 +49,14 @@ struct MainView: View {
     @State private var marqueeOffset: CGFloat = 0
     @State private var marqueeContainerWidth: CGFloat = 0
     @State private var marqueeId = UUID()
-    
+    @State private var currentHintIndex: Int = 0
+
     @ObservedObject var viewModel: WorkViewModel
+    @ObservedObject var consentManager = ConsentManager.shared
+    @ObservedObject private var launchCoordinator = LaunchCoordinator.shared
     @StateObject var authManager = AuthManager()
     @StateObject var adMobManager = AdMobManager()
-    @ObservedObject var consentManager = ConsentManager.shared
     @FocusState private var isSearchFocused: Bool
-    @State private var currentHintIndex: Int = 0
     
     private let searchHints = [
         String(localized: .cercaNeiLavori),
@@ -117,7 +118,8 @@ struct MainView: View {
         
         if searchInput.isEmpty {
             return categoryFiltered
-        } else {
+        }
+        else {
             return categoryFiltered.filter { item in
                 let matchLines = item.lines.contains { $0.localizedCaseInsensitiveContains(searchInput) }
                 let matchRoads = item.roads.localizedCaseInsensitiveContains(searchInput)
@@ -614,28 +616,22 @@ struct MainView: View {
             }
             .onAppear(){
                 if(!alreadyRefreshed) {
-                    viewModel.fetchWorks()
-                    viewModel.fetchVariables()
-                    viewModel.fetchMetroStatus()
-                    viewModel.fetchRequirements {
-                        showMaintenanceMode = viewModel.maintenanceModeEnabled
-                    }
                     alreadyRefreshed = true
+                    
+                    if !hasNotCompletedSetup {
+                        consentManager.requestConsentInfoUpdate()
+                    }
+                    
+                    Task {
+                        try? await Task.sleep(nanoseconds: 3_000_000_000)
+                        await MainActor.run {
+                            scheduleAdLoadIfReady()
+                        }
+                    }
                 }
                 
                 if viewModel.strikeEnabled && showStrikeBanner && !closedStrike {
                     marqueeId = UUID()
-                }
-                
-                if !hasNotCompletedSetup {
-                    consentManager.requestConsentInfoUpdate()
-                }
-                
-                if consentManager.isReady && !adsRequested {
-                    if let adUnitID = Bundle.main.infoDictionary?["AdUnitID"] as? String {
-                        adsRequested = true
-                        adMobManager.loadNativeAds(adUnitID: adUnitID)
-                    }
                 }
             }
             .onChange(of: hasNotCompletedSetup) { _, completed in
@@ -643,10 +639,12 @@ struct MainView: View {
                     consentManager.requestConsentInfoUpdate()
                 }
             }
-            .onChange(of: consentManager.isReady) { _, ready in
-                if ready && !adsRequested, let adUnitID = Bundle.main.infoDictionary?["AdUnitID"] as? String {
-                    adsRequested = true
-                    adMobManager.loadNativeAds(adUnitID: adUnitID)
+            .onChange(of: consentManager.isReady) { _, _ in
+                Task {
+                    try? await Task.sleep(nanoseconds: 2_000_000_000)
+                    await MainActor.run {
+                        scheduleAdLoadIfReady()
+                    }
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: .openTrainFilter)) { notification in
@@ -712,6 +710,14 @@ struct MainView: View {
                 generator.impactOccurred(intensity: pulse.intensity)
             }
         }
+    }
+    
+    private func scheduleAdLoadIfReady() {
+        guard !adsRequested, consentManager.isReady, let adUnitID = Bundle.main.infoDictionary?["AdUnitID"] as? String
+        else { return }
+
+        adsRequested = true
+        adMobManager.loadNativeAds(adUnitID: adUnitID)
     }
 }
 

@@ -534,9 +534,9 @@ struct LinesView: View {
                         .listRowBackground(Color(uiColor: .secondarySystemBackground))
                 }
                 
-                /*if searchInput.isEmpty && !shouldShowAdsAfterRecent {
+                if searchInput.isEmpty && !shouldShowAdsAfterRecent {
                     supportLavoraMiSection
-                }*/
+                }
 
                 lineSection(lines: filteredSuburban, title: "Linee Suburbane", subtitle: "Trenord", infoURL: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")
                 lineSection(lines: filteredRegional, title: "Linee Regionali", subtitle: "Trenord", infoURL: "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/")
