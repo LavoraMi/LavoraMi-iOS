@@ -1153,7 +1153,7 @@ extension LineDetailView {
                             .foregroundStyle(.secondary)
                     } icon: {
                         Image(systemName: (networkManager.isConnected) ? "info.circle.fill" : "wifi.slash")
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                             .font(.system(size: 15))
                     }
                     .padding()
