@@ -27,12 +27,13 @@ internal import Auth
 struct ContentView: View {
     @ObservedObject var viewModel: WorkViewModel
     @Binding var showSetupScreen: Bool
-    @State private var showUpdatePopUp: Bool = false
-    @State private var selectedTab: Int = 0
-    @State private var deepLinkedLine: DeepLinkLine? = nil
     @AppStorage("hasNotCompletedSetup") private var hasNotCompletedSetup = true
     @AppStorage("feedbacksEnabled") var feedbacksEnabled: Bool = true
     @AppStorage("showWhatsNewScreen") var showWhatsNewScreenToggle: Bool = true
+    
+    @State private var showUpdatePopUp: Bool = false
+    @State private var selectedTab: Int = 0
+    @State private var deepLinkedLine: DeepLinkLine? = nil
 
     @Environment(\.openURL) private var openURLAction
 
