@@ -1416,9 +1416,16 @@ extension LineDetailView {
                 HStack(spacing: 16) {
                     ForEach(rest) { dep in
                         HStack(spacing: 5) {
-                            Image(systemName: "clock.arrow.trianglehead.clockwise.rotate.90.path.dotted")
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
+                            if #available (iOS 26, *) {
+                                Image(systemName: "clock.arrow.trianglehead.clockwise.rotate.90.path.dotted")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
+                            else {
+                                Image(systemName: "clock.arrow.circlepath")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
                             Text(dep.formattedWait)
                                 .font(.system(size: 14, weight: .semibold, design: .rounded))
                                 .foregroundStyle(.primary)
