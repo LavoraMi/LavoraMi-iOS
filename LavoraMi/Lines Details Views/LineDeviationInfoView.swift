@@ -33,29 +33,13 @@ struct LineDeviationInfoView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 30) {
-                    if #available(iOS 18.0, *), enableAnimations {
-                        Image(systemName: startImageTransition ? "arrow.trianglehead.pull" : "arrow.trianglehead.branch")
-                            .font(.system(size: 80))
-                            .foregroundColor(.red)
-                            .padding(.top, 50)
-                            .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.wholeSymbol), options: .nonRepeating))
-                            .onAppear {
-                                Task {
-                                    try? await Task.sleep(for: .seconds(1))
-                                    withAnimation {
-                                        startImageTransition = true
-                                    }
-                                }
-                            }
-                            .onDisappear {
-                                startImageTransition = false
-                            }
-                    } else {
-                        Image(systemName: "arrow.branch")
-                            .font(.system(size: 80))
-                            .foregroundColor(.red)
-                            .padding(.top, 40)
-                    }
+                    Image("iconMapInfo")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 120, height: 120)
+                        .foregroundStyle(.red)
+                        .padding(.top, 40)
 
                     Text("Informazioni sulle mappe")
                         .font(.title)
