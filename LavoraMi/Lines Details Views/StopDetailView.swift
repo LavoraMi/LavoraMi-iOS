@@ -222,7 +222,7 @@ struct StopDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains("ATM")) {
-                    WarningBannerExtended(text: "SCIOPERO IN CORSO", deps: "Gli orari di questa linea potrebbero non essere accurati. Maggiori informazioni sullo sciopero nella Home.")
+                    WarningBannerExtended(text: String(localized: .strikeInProgress), deps: String(localized: .strikeBannerArrivalDeps))
                 }
                 
                 header

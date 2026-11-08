@@ -7369,6 +7369,52 @@
         }
       }
     },
+    "strikeBannerArrivalDeps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The timetables for this route may not be accurate. Further information on the strike can be found on the Home page."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es posible que los horarios de esta línea no sean exactos. Más información sobre la huelga en la página de inicio."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gli orari di questa linea potrebbero non essere accurati. Maggiori informazioni sullo sciopero nella Home."
+          }
+        }
+      }
+    },
+    "strikeInProgress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STRIKE UNDERWAY"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HUELGA EN CURSO"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SCIOPERO IN CORSO"
+          }
+        }
+      }
+    },
     "Su questa linea ci sono lavori attualmente in corso che potrebbero comportare anticipi o ritardi nell'arrivo a destinazione. Controlla la sezione \"Lavori\"." : {
       "localizations" : {
         "en" : {

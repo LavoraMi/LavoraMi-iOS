@@ -1412,7 +1412,7 @@ extension LineDetailView {
                 .foregroundStyle(.secondary)
 
             if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains(typeOfTransport)) {
-                WarningBannerExtended(text: "SCIOPERO IN CORSO", deps: "Gli orari di questa linea potrebbero non essere accurati. Maggiori informazioni sullo sciopero nella Home.")
+                WarningBannerExtended(text: String(localized: .strikeInProgress), deps: String(localized: .strikeBannerArrivalDeps))
             }
             
             if !rest.isEmpty {
