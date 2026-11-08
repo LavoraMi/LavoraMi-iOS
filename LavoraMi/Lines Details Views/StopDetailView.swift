@@ -25,6 +25,7 @@ struct StopDetailView: View {
     let interchanges: [InterchangeInfo]
     let stazioniChiuse: [String]
     let lineColor: Color
+    let viewModel: WorkViewModel
 
     @State private var stopName: String
     @State private var stopId: String?
@@ -47,12 +48,13 @@ struct StopDetailView: View {
     private static let visibleMapMeters: Double = 420
     private static let collapsedSheetHeight: CGFloat = 88
 
-    init(lineName: String, stopName: String, stations: [MetroStation], interchanges: [InterchangeInfo], initialRoute: GTFSRoute?, lineColor: Color, stationsClosed: [String]) {
+    init(lineName: String, stopName: String, stations: [MetroStation], interchanges: [InterchangeInfo], initialRoute: GTFSRoute?, lineColor: Color, stationsClosed: [String], viewModel: WorkViewModel) {
         self.lineName = lineName
         self.stations = stations
         self.interchanges = interchanges
         self.lineColor = lineColor
         self.stazioniChiuse = stationsClosed
+        self.viewModel = viewModel
         
         _stopName = State(initialValue: stopName)
         _routeData = State(initialValue: initialRoute)
@@ -219,6 +221,10 @@ struct StopDetailView: View {
     private var sheetContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
+                if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains("ATM")) {
+                    WarningBannerExtended(text: "SCIOPERO IN CORSO", deps: "Gli orari di questa linea potrebbero non essere accurati. Maggiori informazioni sullo sciopero nella Home.")
+                }
+                
                 header
                 nextArrivalSection
                 StopInterchangeTimeline(

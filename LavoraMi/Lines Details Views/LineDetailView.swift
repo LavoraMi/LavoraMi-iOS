@@ -387,7 +387,8 @@ struct LineDetailView: View {
                     interchanges: getInterchanges(line: lineName),
                     initialRoute: routeData,
                     lineColor: getColor(for: lineName),
-                    stationsClosed: viewModel.stazioniChiuse
+                    stationsClosed: viewModel.stazioniChiuse,
+                    viewModel: viewModel
                 )
             }
             .navigationTitle("Dettagli Linea")
@@ -1410,6 +1411,10 @@ extension LineDetailView {
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
 
+            if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains(typeOfTransport)) {
+                WarningBannerExtended(text: "SCIOPERO IN CORSO", deps: "Gli orari di questa linea potrebbero non essere accurati. Maggiori informazioni sullo sciopero nella Home.")
+            }
+            
             if !rest.isEmpty {
                 Divider()
 

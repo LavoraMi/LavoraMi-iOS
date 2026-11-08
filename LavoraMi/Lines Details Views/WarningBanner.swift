@@ -57,3 +57,37 @@ struct WarningBanner: View {
         .cornerRadius(8)
     }
 }
+
+struct WarningBannerExtended: View {
+    let text: String
+    let deps: String
+    
+    private let amberColor = Color.init(red: 1.0, green: 0.6, blue: 0.0)
+    private let backgroundColor = Color.init(red: 1.0, green: 0.8, blue: 0.4).opacity(0.2)
+    
+    var body: some View {
+        HStack(spacing: 7) {
+            Image(systemName: "clock.badge.exclamationmark.fill")
+                .font(.system(size: 16))
+                .foregroundColor(amberColor)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(text)
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundColor(amberColor)
+                    .lineLimit(2)
+                Text(deps)
+                    .font(.system(size: 13))
+                    .foregroundColor(amberColor)
+            }
+            
+            Spacer()
+            
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .background(backgroundColor)
+        .cornerRadius(8)
+    }
+}
+
