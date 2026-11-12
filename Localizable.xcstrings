@@ -354,7 +354,20 @@
       }
     },
     "Accedi con Passkey" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in with Passkey"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicia sesión con Passkey"
+          }
+        }
+      }
     },
     "Accedo..." : {
       "localizations" : {
@@ -515,7 +528,20 @@
       }
     },
     "Aggiungi Passkey" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Passkey"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir Passkey"
+          }
+        }
+      }
     },
     "aiError" : {
       "extractionState" : "manual",
@@ -1448,7 +1474,20 @@
       }
     },
     "Creata il %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created on %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creada el: %@"
+          }
+        }
+      }
     },
     "D'ora in poi, troverai il Wrapped sotto la sezione \"Account\" nelle impostazioni." : {
       "localizations" : {
@@ -2471,10 +2510,36 @@
       }
     },
     "Gestisci le Passkey collegate al tuo Account." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage the Passkeys linked to your Account."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestiona las Passkey vinculadas a tu Cuenta."
+          }
+        }
+      }
     },
     "Gestisci Passkey" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Passkey"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestionar Passkey"
+          }
+        }
+      }
     },
     "Guarda se una linea è completamente, parzialmente o per nulla accessibile. Tutto a colpo d'occhio." : {
       "localizations" : {
@@ -4846,7 +4911,20 @@
       }
     },
     "Nessuna Passkey per questo Account." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Passkeys for this Account."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta Cuenta no tiene ninguna Passkey."
+          }
+        }
+      }
     },
     "Nome utente" : {
       "localizations" : {
@@ -5445,7 +5523,20 @@
       }
     },
     "Passkey" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passkey"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passkey"
+          }
+        }
+      }
     },
     "Password" : {
       "localizations" : {
@@ -6769,7 +6860,20 @@
       }
     },
     "Sei sicuro di voler eliminare questa Passkey collegata al tuo Account?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete this Passkey linked to your Account?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro de que quieres eliminar esta Passkey vinculada a tu Cuenta?"
+          }
+        }
+      }
     },
     "Sei sicuro di voler pulire la memoria Cache?" : {
       "localizations" : {
