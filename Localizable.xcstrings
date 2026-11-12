@@ -449,6 +449,29 @@
         }
       }
     },
+    "accountWithNoPasskeys" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Passkey found for this Account."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha encontrado ninguna Passkey para esta Cuenta."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna Passkey trovata per questo Account."
+          }
+        }
+      }
+    },
     "Aderenti:" : {
       "localizations" : {
         "en" : {
@@ -2457,6 +2480,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Funciones de la App"
+          }
+        }
+      }
+    },
+    "generalError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An unexpected error has occurred. Please try again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ha producido un error inesperado, vuelve a intentarlo."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si è verificato un errore imprevisto. Riprova più tardi."
           }
         }
       }
@@ -5538,6 +5584,52 @@
         }
       }
     },
+    "passkeyAlreadyRegistered" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Passkey already exists for this device."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya hay una Passkey para este dispositivo."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passkey già presente per questo dispositivo."
+          }
+        }
+      }
+    },
+    "passkeyVerificationFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passkey verification failed."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido verificar la Passkey."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifica della Passkey non riuscita."
+          }
+        }
+      }
+    },
     "Password" : {
       "localizations" : {
         "en" : {
@@ -8128,6 +8220,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Domani iniziano i lavori a %1$@ per le linee %2$@. Consulta il sito di %3$@ per maggiori info."
+          }
+        }
+      }
+    },
+    "tooPasskeys" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too many Passkeys have been registered."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hay demasiadas Passkey registradas."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Troppe Passkeys registrate."
           }
         }
       }

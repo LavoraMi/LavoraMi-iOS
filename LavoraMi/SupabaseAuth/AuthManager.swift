@@ -223,15 +223,12 @@ class AuthManager: ObservableObject {
     nonisolated static func passkeyMessage(for error: Error) -> String {
         let text = "\(error)"
         
-        if text.contains("too_many_passkeys") { return "Troppe Passkeys registrate." }
-        if text.contains("webauthn_credential_exists") { return "Passkey già presente per questo Dispositivo." }
-        if text.contains("webauthn_credential_not_found") { return "Nessuna Passkey trovata per questo Account." }
-        if text.contains("email_not_confirmed") { return "Conferma prima il tuo indirizzo email." }
-        if text.contains("user_banned") { return "Questo Account non può accedere." }
-        if text.contains("passkey_disabled") { return "L'accesso con Passkey non è attivo." }
-        if text.contains("webauthn_verification_failed") { return "Verifica della Passkey non riuscita." }
+        if text.contains("too_many_passkeys") { return String(localized: .tooPasskeys) }
+        if text.contains("webauthn_credential_exists") { return String(localized: .passkeyAlreadyRegistered) }
+        if text.contains("webauthn_credential_not_found") { return String(localized: .accountWithNoPasskeys) }
+        if text.contains("webauthn_verification_failed") { return String(localized: .passkeyVerificationFailed) }
         
-        return "Si è verificato un problema. Riprova più tardi."
+        return String(localized: .generalError)
     }
     
     nonisolated private static func passkeyDate(_ value: Any?) -> Date? {
