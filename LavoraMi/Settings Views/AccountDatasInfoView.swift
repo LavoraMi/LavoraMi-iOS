@@ -185,7 +185,7 @@ struct AccountDatasInfoView: View {
                         dismiss()
                     } label: {
                         Image(systemName: "xmark")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(Color("TextColor"))
                             .padding(4)
                             .clipShape(Circle())
                     }

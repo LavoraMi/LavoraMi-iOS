@@ -92,9 +92,9 @@ struct LineDeviationInfoView: View {
                         dismiss()
                     } label: {
                         Image(systemName: "xmark")
-                            .foregroundColor(.secondary)
                             .padding(4)
                             .clipShape(Circle())
+                            .foregroundColor(Color("TextColor"))
                     }
                 }
             }

@@ -101,6 +101,7 @@ struct AllArrivalsSheet: View {
                     Image(systemName: "xmark")
                         .font(.system(size: 16, weight: .bold))
                         .foregroundStyle(.primary)
+                        .foregroundColor(Color("TextColor"))
                         .frame(width: 40, height: 40)
                         .background(Circle().fill(Color(.tertiarySystemFill)))
                 }
