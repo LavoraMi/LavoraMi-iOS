@@ -1411,7 +1411,7 @@ extension LineDetailView {
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
 
-            if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains(typeOfTransport)) {
+            if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains(typeOfTransport) && viewModel.isStrikeToday) {
                 WarningBannerExtended(text: String(localized: .strikeInProgress), deps: String(localized: .strikeBannerArrivalDeps))
             }
             

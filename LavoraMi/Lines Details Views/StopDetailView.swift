@@ -221,7 +221,7 @@ struct StopDetailView: View {
     private var sheetContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains("ATM")) {
+                if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains("ATM") && viewModel.isStrikeToday) {
                     WarningBannerExtended(text: String(localized: .strikeInProgress), deps: String(localized: .strikeBannerArrivalDeps))
                 }
                 
