@@ -179,6 +179,7 @@
 				"Settings Views/LibraryDetailView.swift",
 				"Settings Views/LibraryRowView.swift",
 				"Settings Views/NotificationsView.swift",
+				"Settings Views/PasskeysView.swift",
 				"Settings Views/RequestDataDownload.swift",
 				"Settings Views/SettingsView.swift",
 				"Shared Helpers/Enums.swift",
@@ -756,7 +757,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lavorami.lavoramiapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "App Store LavoraMi";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "LavoraMi App";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

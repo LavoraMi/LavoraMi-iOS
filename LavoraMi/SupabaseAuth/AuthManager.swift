@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-import Supabase
+@_spi(Experimental) import Supabase
+import AuthenticationServices
 import Combine
 
 @MainActor
@@ -161,6 +162,93 @@ class AuthManager: ObservableObject {
         }
     }
     
+    private var passkeyCache: [String: PasskeyListItem] = [:]
+    
+    func signInWithPasskey(anchor: ASPresentationAnchor) async {
+        isLoading = true
+        errorMessage = nil
+        defer { isLoading = false }
+        
+        do {
+            _ = try await supabase.auth.signInWithPasskey(presentationAnchor: anchor)
+            self.session = try await supabase.auth.session
+            print("Login con passkey effettuato!")
+        }
+        catch {
+            if AuthManager.isPasskeyCancellation(error) { return }
+            print("Errore login con passkey: \(error)")
+            errorMessage = AuthManager.passkeyMessage(for: error)
+        }
+    }
+    
+    func registerPasskey(anchor: ASPresentationAnchor) async throws {
+        _ = try await supabase.auth.registerPasskey(presentationAnchor: anchor)
+    }
+    
+    func listPasskeys() async throws -> [PasskeyInfo] {
+        let items: [PasskeyListItem] = try await supabase.auth.listPasskeys()
+        
+        passkeyCache = [:]
+        for item in items { passkeyCache["\(item.id)"] = item }
+        
+        return items
+            .map { item in
+                PasskeyInfo(
+                    id: "\(item.id)",
+                    name: (item.friendlyName as String?) ?? "",
+                    createdAt: AuthManager.passkeyDate(item.createdAt),
+                    lastUsedAt: AuthManager.passkeyDate(item.lastUsedAt)
+                )
+            }
+            .sorted { ($0.createdAt ?? .distantPast) > ($1.createdAt ?? .distantPast) }
+    }
+    
+    func renamePasskey(_ info: PasskeyInfo, to newName: String) async throws {
+        guard let item = passkeyCache[info.id] else { return }
+        _ = try await supabase.auth.renamePasskey(id: item.id, friendlyName: newName)
+    }
+    
+    func deletePasskey(_ info: PasskeyInfo) async throws {
+        guard let item = passkeyCache[info.id] else { return }
+        try await supabase.auth.deletePasskey(id: item.id)
+        passkeyCache[info.id] = nil
+    }
+    
+    nonisolated static func isPasskeyCancellation(_ error: Error) -> Bool {
+        if let authError = error as? ASAuthorizationError, authError.code == .canceled { return true }
+        let nsError = error as NSError
+        return nsError.domain == ASAuthorizationError.errorDomain && nsError.code == ASAuthorizationError.canceled.rawValue
+    }
+    
+    nonisolated static func passkeyMessage(for error: Error) -> String {
+        let text = "\(error)"
+        
+        if text.contains("too_many_passkeys") { return "Troppe Passkeys registrate." }
+        if text.contains("webauthn_credential_exists") { return "Passkey già presente per questo Dispositivo." }
+        if text.contains("webauthn_credential_not_found") { return "Nessuna Passkey trovata per questo Account." }
+        if text.contains("email_not_confirmed") { return "Conferma prima il tuo indirizzo email." }
+        if text.contains("user_banned") { return "Questo Account non può accedere." }
+        if text.contains("passkey_disabled") { return "L'accesso con Passkey non è attivo." }
+        if text.contains("webauthn_verification_failed") { return "Verifica della Passkey non riuscita." }
+        
+        return "Si è verificato un problema. Riprova più tardi."
+    }
+    
+    nonisolated private static func passkeyDate(_ value: Any?) -> Date? {
+        if let date = value as? Date { return date }
+        
+        if let string = value as? String {
+            let formatter = ISO8601DateFormatter()
+            formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            if let date = formatter.date(from: string) { return date }
+            
+            formatter.formatOptions = [.withInternetDateTime]
+            return formatter.date(from: string)
+        }
+        
+        return nil
+    }
+    
     func isLoggedInWithApple() -> Bool {return session?.user.appMetadata["provider"]?.stringValue == "apple"}
     
     func saveDatasToDb(favorites: [String], yourLines: [String]) async -> Bool {
@@ -289,4 +377,11 @@ struct UserPreferencesDatas: Encodable, Decodable {
     let user_email: String
     let enable_favorites: Bool
     let enable_your_lines: Bool
+}
+
+struct PasskeyInfo: Identifiable, Equatable {
+    let id: String
+    let name: String
+    let createdAt: Date?
+    let lastUsedAt: Date?
 }

@@ -58,6 +58,8 @@ struct AccountView: View {
     @State private var newUsername: String = ""
     @State private var showChangeUsernamePopUp: Bool = false
     @State private var showAddUsernamePopUp: Bool = false
+    @State private var showPasskeysPopUp: Bool = false
+    @State private var passkeyWindow: UIWindow?
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
@@ -100,6 +102,10 @@ struct AccountView: View {
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
                     .ignoresSafeArea(.all)
+            }
+            .background(PasskeyWindowReader(window: $passkeyWindow))
+            .sheet(isPresented: $showPasskeysPopUp) {
+                PasskeysView(authManager: auth)
             }
             .sheet(isPresented: $showDataManagementPopUp) {
                 AccountDatasInfoView(authManager: auth, saveFavoritesData: saveFavoritesData, saveYourLinesData: saveYourLinesData, currentSyncStatus: $currentSyncStatus, currentSyncStatusIcon: $currentSyncStatusIcon)
@@ -173,6 +179,7 @@ struct AccountView: View {
             
             termsAndPrivacyView
             appleSignInLoginButton
+            passkeySignInButton
             loginButton
         }
     }
@@ -467,6 +474,18 @@ struct AccountView: View {
                     .shadow(radius: 5, y: 3)
                 }
                 
+                Button(action: { showPasskeysPopUp = true }) {
+                    Label("Gestisci Passkey", systemImage: "person.badge.key.fill")
+                        .font(.system(size: 15))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .shadow(radius: 5, y: 3)
+                }
+                
                 NavigationLink(destination: RequestDataDownload(isRequiringData: $isRequiringData)) {
                     Label("Richiedi i tuoi dati", systemImage: "person.and.background.dotted")
                         .font(.system(size: 15))
@@ -597,6 +616,20 @@ struct AccountView: View {
         .signInWithAppleButtonStyle((colorScheme == .dark) ? .whiteOutline : .black)
         .frame(height: 50)
         .cornerRadius(16)
+    }
+    
+    private var passkeySignInButton: some View {
+        Button(action: performPasskeyLogin) {
+            Label("Accedi con Passkey", systemImage: "person.badge.key.fill")
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .frame(height: 50)
+                .background(Color.red)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+        }
+        .disabled(auth.isLoading || logginIn)
     }
     
     private var appleSignInSignUpButton: some View {
@@ -744,6 +777,36 @@ struct AccountView: View {
         logginIn = true
         Task {
             await auth.signIn(email: email, password: password)
+            
+            if auth.isLoggedIn() {
+                if fullName.isEmpty { fullName = auth.getFullName() }
+                if email.isEmpty, let sess = auth.session { email = sess.user.email ?? email }
+                
+                do {
+                    linesFavorites = try await auth.fetchUserFavorites()
+                    linesSelected = try await auth.fetchUserLines()
+                    currentSyncStatus = String(localized: .sincronizzato)
+                    currentSyncStatusIcon = "cloudSynced"
+                }
+                catch {
+                    currentSyncStatus = String(localized: .erroreSincronizzato)
+                    currentSyncStatusIcon = "cloudFailSync"
+                }
+                
+                self.loggedIn = true
+            }
+            
+            tabTitle = "Account"
+            logginIn = false
+        }
+    }
+    
+    private func performPasskeyLogin() {
+        guard let anchor = passkeyWindow else { return }
+        
+        logginIn = true
+        Task {
+            await auth.signInWithPasskey(anchor: anchor)
             
             if auth.isLoggedIn() {
                 if fullName.isEmpty { fullName = auth.getFullName() }
