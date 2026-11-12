@@ -180,6 +180,7 @@ struct AccountView: View {
             termsAndPrivacyView
             appleSignInLoginButton
             passkeySignInButton
+                .padding(.top, -20)
             loginButton
         }
     }
