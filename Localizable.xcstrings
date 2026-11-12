@@ -356,9 +356,6 @@
     "Accedi con Passkey" : {
 
     },
-    "Accedi senza password con Face ID, Touch ID o il PIN del dispositivo. Tocca una passkey per rinominarla: se la elimini potrai comunque accedere con email e password." : {
-
-    },
     "Accedo..." : {
       "localizations" : {
         "en" : {
@@ -517,7 +514,7 @@
         }
       }
     },
-    "Aggiungi passkey" : {
+    "Aggiungi Passkey" : {
 
     },
     "aiError" : {
@@ -1735,9 +1732,6 @@
         }
       }
     },
-    "Elimina" : {
-
-    },
     "Elimina Account" : {
       "localizations" : {
         "en" : {
@@ -1927,9 +1921,6 @@
           }
         }
       }
-    },
-    "Es. iPhone di Andrea" : {
-
     },
     "Esci" : {
       "localizations" : {
@@ -2479,7 +2470,10 @@
         }
       }
     },
-    "Gestisci passkey" : {
+    "Gestisci le Passkey collegate al tuo Account." : {
+
+    },
+    "Gestisci Passkey" : {
 
     },
     "Guarda se una linea è completamente, parzialmente o per nulla accessibile. Tutto a colpo d'occhio." : {
@@ -4851,6 +4845,9 @@
         }
       }
     },
+    "Nessuna Passkey per questo Account." : {
+
+    },
     "Nome utente" : {
       "localizations" : {
         "en" : {
@@ -4964,9 +4961,6 @@
           }
         }
       }
-    },
-    "Non hai ancora nessuna passkey.\nAggiungine una per accedere più velocemente." : {
-
     },
     "Non hai dato il permesso per ricevere notifiche. Vai su Impostazioni > App > LavoraMi ed attiva le notifiche." : {
       "localizations" : {
@@ -6304,9 +6298,6 @@
         }
       }
     },
-    "Rinomina passkey" : {
-
-    },
     "Ripristina Impostazioni" : {
       "localizations" : {
         "en" : {
@@ -6386,9 +6377,6 @@
           }
         }
       }
-    },
-    "Salva" : {
-
     },
     "Salva fra i preferiti la linea che usi ogni giorno e quando ci sarà un lavoro su di essa, sarai già aggiornato." : {
       "localizations" : {
@@ -6779,6 +6767,9 @@
           }
         }
       }
+    },
+    "Sei sicuro di voler eliminare questa Passkey collegata al tuo Account?" : {
+
     },
     "Sei sicuro di voler pulire la memoria Cache?" : {
       "localizations" : {
@@ -8602,9 +8593,6 @@
           }
         }
       }
-    },
-    "Vuoi eliminare questa passkey? Potrai comunque accedere con email e password." : {
-
     },
     "yourLinesChip" : {
       "extractionState" : "manual",
