@@ -54,7 +54,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "Firebase",
-            version: "13.1.1",
+            version: "13.2.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
@@ -67,7 +67,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAdsOnDeviceConversion",
-            version: "3.7.0",
+            version: "3.8.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2023 Google LLC",
             licenseText: """
@@ -80,7 +80,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleAppMeasurement",
-            version: "13.0.1",
+            version: "13.2.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2016 Google LLC",
             licenseText: """
