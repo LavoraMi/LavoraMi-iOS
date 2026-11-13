@@ -106,7 +106,7 @@ struct LibrariesView: View {
         ),
         LibraryDetailView(
             name: "GoogleMobileAds",
-            version: "13.11.0",
+            version: "13.12.0",
             license: "Apache License 2.0",
             copyright: "Copyright (c) 2023 Google LLC",
             licenseText: """
