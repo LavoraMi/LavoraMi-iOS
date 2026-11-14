@@ -473,10 +473,36 @@
       }
     },
     "Aderenti a questo sciopero: %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Members in this strike: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Participantes en esta huelga: %@"
+          }
+        }
+      }
     },
     "Aderenti Sciopero" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strike Members"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Participantes en la Huelga"
+          }
+        }
+      }
     },
     "Aderenti:" : {
       "localizations" : {
