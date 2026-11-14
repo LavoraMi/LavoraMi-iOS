@@ -45,6 +45,7 @@ struct MainView: View {
     @State private var showWrapped: Bool = false
     @State private var showWrappedOpenedInfo: Bool = false
     @State private var livePulse = true
+    @State private var showMemberDialog: Bool = false
     @State private var suggestedTrigger = 0
     @State private var marqueeOffset: CGFloat = 0
     @State private var marqueeContainerWidth: CGFloat = 0
@@ -318,11 +319,18 @@ struct MainView: View {
                                     .foregroundStyle(.primary)
                             }
                         }
+                        .onTapGesture {
+                            showMemberDialog = true
+                        }
                         if viewModel.companiesStrikes.split(separator: ", ").count >= 4 {
                             Text(viewModel.companiesStrikes)
                                 .font(.system(size: 13, weight: .semibold))
                                 .foregroundStyle(.primary)
+                                .onTapGesture {
+                                    showMemberDialog = true
+                                }
                         }
+                        
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 14)
@@ -345,6 +353,11 @@ struct MainView: View {
                 .shadow(color: .red.opacity(0.12), radius: 8, x: 0, y: 3)
                 .padding(.horizontal)
                 .padding(.bottom, 10)
+                .alert("Aderenti Sciopero", isPresented: $showMemberDialog) {
+                    Button("Chiudi", role: .cancel) {}
+                } message: {
+                    Text("Aderenti a questo sciopero: \(viewModel.companiesStrikes)")
+                }
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 ScrollViewReader { proxy in
@@ -673,6 +686,11 @@ struct MainView: View {
                 Button("OK", role: .cancel) {}
             } message: {
                 Text("D'ora in poi, troverai il Wrapped sotto la sezione \"Account\" nelle impostazioni.")
+            }
+            .alert("Aderenti Sciopero", isPresented: $showMemberDialog) {
+                Button("Chiudi", role: .cancel) {}
+            } message: {
+                Text("Aderenti a questo sciopero: \(viewModel.companiesStrikes)")
             }
             .onChange(of: selectedFilter) { oldValue, newValue in
                 if newValue == .suggested && feedbacksEnabled {
