@@ -119,10 +119,10 @@ struct StructedMovibusView: View {
                 Button(action: { dismiss() }) {
                     Text("Chiudi")
                         .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(Color("TextColor"))
+                        .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 18)
-                        .background(Color(red: 4/255, green: 15/255, blue: 17/255))
+                        .background(Color(red: 28/255, green: 28/255, blue: 1))
                         .clipShape(Capsule())
                 }
                 .padding(.bottom, 24)
@@ -219,10 +219,10 @@ struct StructedTramView: View {
                 Button(action: { dismiss() }) {
                     Text("Chiudi")
                         .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(Color("TextColor"))
+                        .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 18)
-                        .background(Color(red: 4/255, green: 15/255, blue: 17/255))
+                        .background(.orange)
                         .clipShape(Capsule())
                 }
                 .padding(.bottom, 24)
