@@ -522,9 +522,9 @@ struct LinesView: View {
                     }
                     .listRowBackground(Color(uiColor: .secondarySystemBackground))
 
-                    /*if searchInput.isEmpty && shouldShowAdsAfterRecent {
+                    if searchInput.isEmpty && shouldShowAdsAfterRecent {
                         supportLavoraMiSection
-                    }*/
+                    }
                 }
                 lineSection(lines: filteredMetros, title: "Linee Metropolitane", subtitle: "ATM", infoURL: "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg")
                     .listSectionSpacing(10)
