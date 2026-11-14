@@ -222,7 +222,7 @@ struct MainView: View {
                         if feedbacksEnabled { HapticManager.shared.trigger() }
                     }) {
                         HStack(spacing: 8) {
-                            Image(systemName: "exclamationmark.triangle.fill")
+                            Image(systemName: "calendar.badge.exclamationmark")
                                 .font(.system(size: 16, weight: .bold))
                                 .foregroundStyle(.white)
 

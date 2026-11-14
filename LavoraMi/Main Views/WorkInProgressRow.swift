@@ -56,7 +56,7 @@ struct WorkInProgressRow: View {
         VStack(spacing: 0) {
             if isImportant {
                 HStack(spacing: 8) {
-                    Image(systemName: "exclamationmark.octagon.fill")
+                    Image(systemName: "exclamationmark.triangle.fill")
                         .font(.system(size: 14, weight: .bold))
                         .foregroundStyle(.white)
 
