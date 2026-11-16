@@ -2763,6 +2763,36 @@
         }
       }
     },
+    "Il bus è in anticipo di %@. Orario programmato: %@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Il bus è in anticipo di %1$@. Orario programmato: %2$@"
+          }
+        }
+      }
+    },
+    "Il bus è in orario. %@. Orario programmato: %@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Il bus è in orario. %1$@. Orario programmato: %2$@"
+          }
+        }
+      }
+    },
+    "Il bus è in ritardo di %@. Orario programmato: %@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Il bus è in ritardo di %1$@. Orario programmato: %2$@"
+          }
+        }
+      }
+    },
     "Il bus può essere in ritardo di 3-5 minuti, questo è l'orario programmato." : {
       "localizations" : {
         "en" : {

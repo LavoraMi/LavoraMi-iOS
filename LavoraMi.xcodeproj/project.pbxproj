@@ -141,6 +141,7 @@
 				FeatureRow.swift,
 				"GoogleService-Info.plist",
 				GTFSHelper.swift,
+				GTFSRealtime.swift,
 				InterchangesDB.swift,
 				"Lines Details Views/AllArrivalsSheet.swift",
 				"Lines Details Views/DeepLinkLineDetailWrapper.swift",

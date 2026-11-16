@@ -55,6 +55,7 @@ struct LineDetailView: View {
     @AppStorage("linkOpenURL") var howToOpenLinks: linkOpenTypes = .inApp
     @State private var selectedURL: URL?
     @State private var showErrorDBSavePopUp: Bool = false
+    @State private var rtSnapshot: RTSnapshot? = nil
     
     private enum LineDetailTab { case map, works, interchanges, arrivi }
     @State private var selectedTab: LineDetailTab = .map
@@ -117,6 +118,19 @@ struct LineDetailView: View {
             minimumDistance: 1000,
             maximumDistance: 175000
         )
+    }
+    
+    private var realtimeURL: URL? {
+        typeOfTransport == "Autoguidovie" ? URL(string: "https://proxy.busone.app/autoguidovie/gtfs-rt/trip-updates.json") : nil
+    }
+
+    private func refreshRealtime() {
+        guard let url = realtimeURL else { return }
+        Task {
+            if let snap = try? await GTFSRealtimeStore.shared.snapshot(from: url) {
+                await MainActor.run { rtSnapshot = snap }
+            }
+        }
     }
     
     private func isStationClosed(_ stationName: String) -> Bool {
@@ -1284,7 +1298,7 @@ extension LineDetailView {
             else if let route = routeData {
                 stopPickerSection(route: route)
 
-                if let stopId = selectedStopId, let departuresByDir = GTFSHelper.getDepartures(for: stopId, in: route, limit: 3) {
+                if let stopId = selectedStopId, let departuresByDir = GTFSHelper.getDepartures(for: stopId, in: route, limit: 3, realtime: rtSnapshot?.isFresh == true ? rtSnapshot : nil) {
                     departuresListSection(departuresByDir: departuresByDir)
                 }
                 else if selectedStopId != nil {noDeparturesTodayView}
@@ -1302,7 +1316,9 @@ extension LineDetailView {
         .id(currentTime)
         .onReceive(arrivalsTimer) { newTime in
             currentTime = newTime
+            refreshRealtime()
         }
+        .task {refreshRealtime()}
     }
     
     @ViewBuilder
@@ -1407,9 +1423,28 @@ extension LineDetailView {
                     .foregroundStyle(.secondary)
             }
 
-            Text("Il bus può essere in ritardo di 3-5 minuti, questo è l'orario programmato.")
-                .font(.system(size: 10, weight: .medium))
-                .foregroundStyle(.secondary)
+            if(first.isRealtime) {
+                if(first.delayLabel.contains("+")) {
+                    Label("Il bus è in ritardo di \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundStyle(.red)
+                }
+                else if(first.delayLabel.contains("-")){
+                    Label("Il bus è in anticipo di \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundStyle(.green)
+                }
+                else {
+                    Label("Il bus è in orario. \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundStyle(.secondary)
+                }
+            }
+            else {
+                Text("Il bus può essere in ritardo di 3-5 minuti, questo è l'orario programmato.")
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundStyle(.secondary)
+            }
 
             if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains(typeOfTransport) && viewModel.isStrikeToday) {
                 WarningBannerExtended(text: String(localized: .strikeInProgress), deps: String(localized: .strikeBannerArrivalDeps))

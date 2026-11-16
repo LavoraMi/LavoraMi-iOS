@@ -29,6 +29,7 @@ struct GTFSEntry: Codable, Sendable {
     let minutes: Int
     let headsign: Int
     let service: Int
+    let tripId: String?
 
     init(from decoder: Decoder) throws {
         var container = try decoder.unkeyedContainer()
@@ -36,6 +37,7 @@ struct GTFSEntry: Codable, Sendable {
         
         headsign = try container.decode(Int.self)
         service = try container.decode(Int.self)
+        tripId = try container.isAtEnd ? nil : container.decode(String.self)
         minutes = GTFSEntry.parse(time)
     }
 
@@ -44,6 +46,8 @@ struct GTFSEntry: Codable, Sendable {
         try containerEncoder.encode(String(format: "%02d:%02d", max(minutes, 0) / 60, max(minutes, 0) % 60))
         try containerEncoder.encode(headsign)
         try containerEncoder.encode(service)
+        
+        if let tripId {try containerEncoder.encode(tripId)}
     }
 
     private static func parse(_ time: String) -> Int {
@@ -66,9 +70,19 @@ struct GTFSEntry: Codable, Sendable {
 struct Departure: Identifiable {
     let id = UUID()
     let time: String
+    let scheduledTime: String
     let headsign: String
     let minutesFromNow: Int
+    let tripId: String?
+    let delayMinutes: Int?
 
+    var isRealtime: Bool { delayMinutes != nil }
+    
+    var delayLabel: String {
+        guard let delay = delayMinutes else { return "" }
+        return delay == 0 ? "In orario" : (delay > 0 ? "+\(delay) min" : "\(delay) min")
+    }
+    
     var formattedWait: String {
         guard minutesFromNow >= 60 else { return "\(minutesFromNow) min" }
         
@@ -145,7 +159,7 @@ struct GTFSHelper {
         try await GTFSStore.shared.route(from: url)
     }
     
-    static func getDepartures(for stopId: String, in route: GTFSRoute, limit: Int = 10, now: Date = Date()) -> [String: [Departure]]? {
+    static func getDepartures(for stopId: String, in route: GTFSRoute, limit: Int = 10, now: Date = Date(), realtime: RTSnapshot? = nil) -> [String: [Departure]]? {
         guard let stop = route.stops[stopId] else { return nil }
 
         let nowMins = minutes(of: now)
@@ -159,14 +173,34 @@ struct GTFSHelper {
             var list: [Departure] = []
 
             for e in entries {
-                guard e.minutes >= nowMins, active.contains(e.service) else { continue }
+                guard active.contains(e.service) else { continue }
+
+                var delayMin: Int? = nil
+                if let tid = e.tripId, let rt = realtime {
+                    if rt.isCanceled(tid) { continue }
+                    if let p = rt.prediction(trip: tid, stop: stopId) {
+                        if p.skipped { continue }
+                        if let sec = p.delay {
+                            delayMin = Int((Double(sec) / 60).rounded())
+                        } else if let t = p.time {
+                            let d = minutes(of: Date(timeIntervalSince1970: TimeInterval(t))) - e.minutes
+                            delayMin = abs(d) < 720 ? d : nil
+                        }
+                    }
+                }
+
+                let effective = e.minutes + (delayMin ?? 0)
+                guard effective >= nowMins else { continue }
                 guard seen.insert(e.minutes << 8 | e.headsign).inserted else { continue }
 
                 let headsign = route.headsigns.indices.contains(e.headsign) ? route.headsigns[e.headsign] : "Direzione ignota"
                 list.append(Departure(
-                    time: String(format: "%02d:%02d", e.minutes / 60, e.minutes % 60),
+                    time: String(format: "%02d:%02d", effective / 60, effective % 60),
+                    scheduledTime: String(format: "%02d:%02d", e.minutes / 60, e.minutes % 60),
                     headsign: headsign,
-                    minutesFromNow: e.minutes - nowMins
+                    minutesFromNow: effective - nowMins,
+                    tripId: e.tripId,
+                    delayMinutes: delayMin
                 ))
             }
 
