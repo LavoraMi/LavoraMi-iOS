@@ -1425,19 +1425,40 @@ extension LineDetailView {
 
             if(first.isRealtime) {
                 if(first.delayLabel.contains("+")) {
-                    Label("Il bus è in ritardo di \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
-                        .font(.system(size: 10, weight: .medium))
-                        .foregroundStyle(.red)
+                    if #available(iOS 18.0, *) {
+                        Label("Il bus è in ritardo di \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundStyle(.red)
+                            .symbolEffect(.bounce, options: .repeat(.periodic(delay: 15.0)))
+                    } else {
+                        Label("Il bus è in ritardo di \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundStyle(.red)
+                    }
                 }
                 else if(first.delayLabel.contains("-")){
-                    Label("Il bus è in anticipo di \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
-                        .font(.system(size: 10, weight: .medium))
-                        .foregroundStyle(.green)
+                    if #available(iOS 18.0, *) {
+                        Label("Il bus è in anticipo di \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundStyle(.green)
+                            .symbolEffect(.bounce, options: .repeat(.periodic(delay: 15.0)))
+                    } else {
+                        Label("Il bus è in anticipo di \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundStyle(.green)
+                    }
                 }
                 else {
-                    Label("Il bus è in orario. \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
-                        .font(.system(size: 10, weight: .medium))
-                        .foregroundStyle(.secondary)
+                    if #available(iOS 18.0, *) {
+                        Label("Il bus è in orario. \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundStyle(.secondary)
+                            .symbolEffect(.bounce, options: .repeat(.periodic(delay: 15.0)))
+                    } else {
+                        Label("Il bus è in orario. \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
             else {
