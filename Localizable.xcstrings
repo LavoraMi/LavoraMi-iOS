@@ -2765,6 +2765,18 @@
     },
     "Il bus è in anticipo di %@. Orario programmato: %@" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The bus is %1$@ early. Scheduled departure time: %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El autobús lleva un adelanto de %1$@. Horario previsto: %2$@"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "new",
@@ -2775,6 +2787,18 @@
     },
     "Il bus è in orario. %@. Orario programmato: %@" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The bus is on time. %1$@. Scheduled departure time: %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El autobús va según el horario previsto. %1$@. Horario previsto: %2$@"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "new",
@@ -2785,6 +2809,18 @@
     },
     "Il bus è in ritardo di %@. Orario programmato: %@" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The bus is %1$@ late. Scheduled departure time: %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El autobús lleva un retraso de %1$@. Horario previsto: %2$@"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "new",
