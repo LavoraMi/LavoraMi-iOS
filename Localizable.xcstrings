@@ -2785,24 +2785,18 @@
         }
       }
     },
-    "Il bus è in orario. %@. Orario programmato: %@" : {
+    "Il bus è in orario. Orario programmato: %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The bus is on time. %1$@. Scheduled departure time: %2$@"
+            "value" : "The bus is on time. Scheduled departure time: %2$@"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El autobús va según el horario previsto. %1$@. Horario previsto: %2$@"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Il bus è in orario. %1$@. Orario programmato: %2$@"
+            "value" : "El autobús va según el horario previsto. Horario previsto: %2$@"
           }
         }
       }

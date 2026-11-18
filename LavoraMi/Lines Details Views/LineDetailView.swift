@@ -1450,12 +1450,12 @@ extension LineDetailView {
                 }
                 else {
                     if #available(iOS 18.0, *) {
-                        Label("Il bus è in orario. \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                        Label("Il bus è in orario. Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
                             .font(.system(size: 10, weight: .medium))
                             .foregroundStyle(.secondary)
                             .symbolEffect(.bounce, options: .repeat(.periodic(delay: 15.0)))
                     } else {
-                        Label("Il bus è in orario. \(first.delayLabel). Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
+                        Label("Il bus è in orario. Orario programmato: \(first.scheduledTime)", systemImage: "wave.3.forward")
                             .font(.system(size: 10, weight: .medium))
                             .foregroundStyle(.secondary)
                     }
