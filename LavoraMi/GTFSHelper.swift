@@ -37,7 +37,7 @@ struct GTFSEntry: Codable, Sendable {
         
         headsign = try container.decode(Int.self)
         service = try container.decode(Int.self)
-        tripId = try container.isAtEnd ? nil : container.decode(String.self)
+        tripId = try container.decodeIfPresent(String.self)
         minutes = GTFSEntry.parse(time)
     }
 
@@ -180,9 +180,11 @@ struct GTFSHelper {
                     if rt.isCanceled(tid) { continue }
                     if let p = rt.prediction(trip: tid, stop: stopId) {
                         if p.skipped { continue }
+                        
                         if let sec = p.delay {
                             delayMin = Int((Double(sec) / 60).rounded())
-                        } else if let t = p.time {
+                        }
+                        else if let t = p.time {
                             let d = minutes(of: Date(timeIntervalSince1970: TimeInterval(t))) - e.minutes
                             delayMin = abs(d) < 720 ? d : nil
                         }
