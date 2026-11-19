@@ -4783,6 +4783,9 @@
         }
       }
     },
+    "Mostra le linee" : {
+
+    },
     "Mostra le tue ricerche recenti nella pagina delle Linee." : {
       "localizations" : {
         "en" : {
@@ -5039,6 +5042,9 @@
         }
       }
     },
+    "Nessuna linea selezionata" : {
+
+    },
     "Nessuna linea trovata per: \"%@\"" : {
       "localizations" : {
         "en" : {
@@ -5216,6 +5222,9 @@
           }
         }
       }
+    },
+    "Non hai inserito nessuna linea tra \"Le tue linee\". Per aggiungerne una, clicca sull'icona del cuore in alto a destra!" : {
+
     },
     "Non hai un account?" : {
       "localizations" : {

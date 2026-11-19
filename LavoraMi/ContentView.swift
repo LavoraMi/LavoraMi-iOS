@@ -39,7 +39,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab){
-            MainView(viewModel: viewModel)
+            MainView(viewModel: viewModel, selectedTab: $selectedTab)
                 .tabItem {Label("Home", image: "homeIcon")}
                 .tag(0)
             LinesView(viewModel: viewModel)
