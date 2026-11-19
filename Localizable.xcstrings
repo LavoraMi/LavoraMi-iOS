@@ -4784,7 +4784,20 @@
       }
     },
     "Mostra le linee" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar las líneas"
+          }
+        }
+      }
     },
     "Mostra le tue ricerche recenti nella pagina delle Linee." : {
       "localizations" : {
@@ -5043,7 +5056,20 @@
       }
     },
     "Nessuna linea selezionata" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No line selected"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay ninguna línea seleccionada"
+          }
+        }
+      }
     },
     "Nessuna linea trovata per: \"%@\"" : {
       "localizations" : {
@@ -5224,7 +5250,20 @@
       }
     },
     "Non hai inserito nessuna linea tra \"Le tue linee\". Per aggiungerne una, clicca sull'icona del cuore in alto a destra!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You haven’t added any lines under “Your lines”. To add one, click on the heart icon in the top right-hand corner!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No has introducido ninguna línea en “Tus líneas”. Para añadir una, ¡haz clic en el icono del corazón de la esquina superior derecha!"
+          }
+        }
+      }
     },
     "Non hai un account?" : {
       "localizations" : {
