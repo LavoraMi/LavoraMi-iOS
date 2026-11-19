@@ -80,7 +80,7 @@ struct Departure: Identifiable {
     
     var delayLabel: String {
         guard let delay = delayMinutes else { return "" }
-        return delay == 0 ? "In orario" : (delay > 0 ? "+\(delay) min" : "\(delay) min")
+        return delay == 0 ? String(localized: .inOrarioString) : (delay > 0 ? "+\(delay) min" : "\(delay) min")
     }
     
     var formattedWait: String {
