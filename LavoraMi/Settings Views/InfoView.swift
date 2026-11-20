@@ -95,6 +95,7 @@ struct InfoView: View {
                         
                         Text("Sviluppatore iOS:")
                             .font(.system(size: 20))
+                            .padding(.top, 20)
                         Text("Andrea Filice")
                             .bold()
                             .font(.system(size: 25))
@@ -126,7 +127,7 @@ struct InfoView: View {
                 }
                 Divider().padding(.top, 10)
                 Section(){
-                    Text("Seguici su")
+                    Text("Seguici")
                         .font(.system(size: 30))
                         .bold()
                         .padding(.top, 20)
@@ -195,7 +196,7 @@ struct InfoView: View {
                     Button {
                         showMailViewReport = true
                     } label: {
-                        Label("Segnala Incorrettezze", systemImage: "exclamationmark.triangle.fill")
+                        Label("Segnala incorrettezze", systemImage: "exclamationmark.triangle.fill")
                             .font(.system(size: 20))
                     }
                     .padding(.top, 5)

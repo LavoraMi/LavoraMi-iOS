@@ -7034,18 +7034,18 @@
         }
       }
     },
-    "Segnala Incorrettezze" : {
+    "Segnala incorrettezze" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Report Inaccuracies"
+            "value" : "Report inaccuracies"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Informar de Errores"
+            "value" : "Informar de errores"
           }
         }
       }
@@ -7066,18 +7066,18 @@
         }
       }
     },
-    "Seguici su" : {
+    "Seguici" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Follow us on"
+            "value" : "Follow us"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Síguenos en"
+            "value" : "Síguenos"
           }
         }
       }
