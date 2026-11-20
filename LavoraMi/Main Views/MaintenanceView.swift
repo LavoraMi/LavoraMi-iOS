@@ -40,17 +40,27 @@ struct MaintenanceView: View {
         VStack(spacing: 0) {
             Spacer()
             
-            Image(systemName: "wifi.exclamationmark")
-                .font(.system(size: 64))
-                .foregroundColor(Color("TextColor"))
+            Image("icon")
+                .resizable()
+                .frame(width: 100, height: 100)
+                .clipShape(RoundedRectangle(cornerRadius: 22))
+                .overlay(alignment: .bottomTrailing) {
+                    Image(systemName: "wrench.adjustable.fill")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundColor(.white)
+                        .padding(6)
+                        .background(Circle().fill(Color.red))
+                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                        .offset(x: 6, y: 6)
+                }
             
-            Text("Manutenzione in corso.")
+            Text("Manutenzione in corso")
                 .font(.system(size: 28, weight: .bold))
                 .foregroundColor(Color("TextColor"))
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)
             
-            Text("I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio.")
+            Text("I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio")
                 .font(.system(size: 16))
                 .foregroundColor(Color("TextColor"))
                 .multilineTextAlignment(.center)

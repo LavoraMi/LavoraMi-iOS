@@ -2683,7 +2683,11 @@
         }
       }
     },
+    "I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio" : {
+
+    },
     "I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4554,7 +4558,11 @@
         }
       }
     },
+    "Manutenzione in corso" : {
+
+    },
     "Manutenzione in corso." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
