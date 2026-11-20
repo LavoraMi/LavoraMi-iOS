@@ -2684,21 +2684,17 @@
       }
     },
     "I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio" : {
-
-    },
-    "I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The LavoraMi servers are currently unavailable. We apologise for the inconvenience."
+            "value" : "The LavoraMi servers are currently unavailable. We apologise for the inconvenience"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los servidores de LavoraMi no están disponibles en este momento. Lamentamos las molestias."
+            "value" : "Los servidores de LavoraMi no están disponibles en este momento. Lamentamos las molestias"
           }
         }
       }
@@ -4559,21 +4555,17 @@
       }
     },
     "Manutenzione in corso" : {
-
-    },
-    "Manutenzione in corso." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maintenance in progress."
+            "value" : "Maintenance in progress"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mantenimiento en curso."
+            "value" : "Mantenimiento en curso"
           }
         }
       }
