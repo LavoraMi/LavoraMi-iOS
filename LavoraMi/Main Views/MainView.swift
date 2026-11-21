@@ -522,42 +522,82 @@ struct MainView: View {
                                                     .clipShape(Capsule())
                                             }
                                             
-                                            VStack(spacing: 20) {
-                                                Image(systemName: "figure.fall")
-                                                    .font(.system(size: 60))
-                                                    .foregroundStyle(.primary)
-                                                VStack(spacing: 8) {
-                                                    Text("Nessuna linea selezionata")
-                                                        .font(.system(size: 18, weight: .bold))
+                                            if(linesSelected.isEmpty) {
+                                                VStack(spacing: 20) {
+                                                    Image(systemName: "figure.fall")
+                                                        .font(.system(size: 60))
                                                         .foregroundStyle(.primary)
-                                                        .multilineTextAlignment(.center)
-                                                    Text("Non hai inserito nessuna linea tra \"Le tue linee\". Per aggiungerne una, clicca sull'icona del cuore in alto a destra!")
-                                                        .font(.system(size: 14))
-                                                        .foregroundStyle(.secondary)
-                                                        .multilineTextAlignment(.center)
-                                                }
-                                                Button(action: {
-                                                    withAnimation(.snappy) {
-                                                        if(feedbacksEnabled){
-                                                            HapticManager.shared.trigger()
-                                                        }
-                                                        selectedTab = 1
+                                                    VStack(spacing: 8) {
+                                                        Text("Nessuna linea selezionata")
+                                                            .font(.system(size: 18, weight: .bold))
+                                                            .foregroundStyle(.primary)
+                                                            .multilineTextAlignment(.center)
+                                                        Text("Non hai inserito nessuna linea tra \"Le tue linee\". Per aggiungerne una, clicca sull'icona del cuore in alto a destra!")
+                                                            .font(.system(size: 14))
+                                                            .foregroundStyle(.secondary)
+                                                            .multilineTextAlignment(.center)
                                                     }
-                                                }) {
-                                                    Text("Mostra le linee")
-                                                        .font(.subheadline)
-                                                        .fontWeight(.semibold)
-                                                        .foregroundStyle(.white)
-                                                        .padding(.horizontal, 20)
-                                                        .padding(.vertical, 10)
-                                                        .background(Color.red)
-                                                        .clipShape(Capsule())
+                                                    Button(action: {
+                                                        withAnimation(.snappy) {
+                                                            if(feedbacksEnabled){
+                                                                HapticManager.shared.trigger()
+                                                            }
+                                                            selectedTab = 1
+                                                        }
+                                                    }) {
+                                                        Text("Mostra le linee")
+                                                            .font(.subheadline)
+                                                            .fontWeight(.semibold)
+                                                            .foregroundStyle(.white)
+                                                            .padding(.horizontal, 20)
+                                                            .padding(.vertical, 10)
+                                                            .background(Color.red)
+                                                            .clipShape(Capsule())
+                                                    }
                                                 }
+                                                .padding(.horizontal, 32)
+                                                .padding(.bottom, 50)
+                                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                                .containerRelativeFrame(.vertical)
                                             }
-                                            .padding(.horizontal, 32)
-                                            .padding(.bottom, 50)
-                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                            .containerRelativeFrame(.vertical)
+                                            else {
+                                                VStack(spacing: 20) {
+                                                    Image(systemName: "rectangle.and.text.magnifyingglass")
+                                                        .font(.system(size: 60))
+                                                        .foregroundStyle(.primary)
+                                                    VStack(spacing: 8) {
+                                                        Text("Nessun lavoro trovato per questo filtro")
+                                                            .font(.system(size: 18, weight: .bold))
+                                                            .foregroundStyle(.primary)
+                                                            .multilineTextAlignment(.center)
+                                                        Text("Prova a modificare i filtri selezionati per trovare altri lavori.")
+                                                            .font(.system(size: 14))
+                                                            .foregroundStyle(.secondary)
+                                                            .multilineTextAlignment(.center)
+                                                    }
+                                                    Button(action: {
+                                                        withAnimation(.snappy) {
+                                                            if(feedbacksEnabled){
+                                                                HapticManager.shared.trigger()
+                                                            }
+                                                            selectedFilter = .all
+                                                        }
+                                                    }) {
+                                                        Text("Mostra tutti i lavori")
+                                                            .font(.subheadline)
+                                                            .fontWeight(.semibold)
+                                                            .foregroundStyle(.white)
+                                                            .padding(.horizontal, 20)
+                                                            .padding(.vertical, 10)
+                                                            .background(Color.red)
+                                                            .clipShape(Capsule())
+                                                    }
+                                                }
+                                                .padding(.horizontal, 32)
+                                                .padding(.bottom, 50)
+                                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                                .containerRelativeFrame(.vertical)
+                                            }
                                         }
                                         else {
                                             VStack(spacing: 20) {
