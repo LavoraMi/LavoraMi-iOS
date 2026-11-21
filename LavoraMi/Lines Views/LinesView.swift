@@ -101,17 +101,19 @@ struct LinesView: View {
         
         let name = line.name.lowercased()
         let type = line.type.lowercased()
+        let branches = line.branches.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: .current)
         let tokens = q.split(whereSeparator: { $0.isWhitespace }).map { String($0) }
         
         for token in tokens {
             if name.contains(token) { continue }
             if type.contains(token) { continue }
+            
             let hasNumbers = token.rangeOfCharacter(from: .decimalDigits) != nil
-            if !hasNumbers,
-               let synonyms = typeKeywords[line.type]?.map({ $0.lowercased() }),
-               synonyms.contains(where: { token.hasPrefix($0) || $0.hasPrefix(token) }) {
-                continue
+            if !hasNumbers, token.count >= 3 {
+                let foldedToken = token.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: .current)
+                if branches.contains(foldedToken) { continue }
             }
+            
             if token.allSatisfy({ $0.isNumber }) && name.contains(token) { continue }
             
             return false
