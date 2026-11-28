@@ -1611,6 +1611,29 @@
         }
       }
     },
+    "di Airpullman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by Airpullman"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de Airpullman"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "di Airpullman"
+          }
+        }
+      }
+    },
     "di ATM" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3900,7 +3923,11 @@
         }
       }
     },
+    "Linea non trovata" : {
+
+    },
     "Linea non trovata." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4071,6 +4098,9 @@
           }
         }
       }
+    },
+    "Linee Airpullman" : {
+
     },
     "Linee ATM" : {
       "localizations" : {

@@ -31,6 +31,7 @@ struct LineRow: View {
     let waitMinutes: String
     let accessibilityStatus: String
     let stations: [MetroStation]
+    
     @ObservedObject var viewModel: WorkViewModel
     var onTap: (() -> Void)? = nil
 

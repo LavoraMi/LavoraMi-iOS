@@ -53,15 +53,16 @@ struct DeepLinkLineDetailWrapper: View {
                     viewModel: viewModel,
                     stations: info.stations,
                     accessibilityStatus: info.accessibilityStatus,
-                    isDetailed: info.type != "Autoguidovie" || info.type != "Airpullman"
+                    isDetailed: info.type != "Autoguidovie" && info.type != "Airpullman"
                 )
-            } else {
+            }
+            else {
                 VStack(spacing: 10) {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .font(.system(size: 44))
                         .foregroundStyle(.secondary)
 
-                    Text("Linea non trovata.")
+                    Text("Linea non trovata")
                         .font(.system(size: 16, weight: .bold))
                         .foregroundStyle(.primary)
                     Text("Questa linea non esiste oppure non è ancora su LavoraMi. Segnala a support@lavorami.it se ritieni sia un errore.")

@@ -64,11 +64,13 @@ extension WorkItem {
             let isMovibus = transport.contains("movibus") || linesLower.contains { $0.hasPrefix("z6") }
             let isNET = transport.contains("net") || linesLower.contains{ $0.hasPrefix("z3") }
             let isStavOrStar = transport.contains("stav") || linesLower.contains { $0.hasPrefix("z5") }
+            let isAirpullman = transport.contains("airpullman") || linesLower.contains { $0.hasPrefix("z1") }
+            
             let isAutoguidovie = transport.contains("autoguidovie") || linesLower.contains {
                 $0.hasPrefix("z4") || $0.hasPrefix("z2")
             }
             
-            if isRubberTire && !isMovibus && !isStavOrStar && !isAutoguidovie && !isNET {
+            if isRubberTire && !isMovibus && !isStavOrStar && !isAutoguidovie && !isNET && !isAirpullman {
                 return true
             }
         }
@@ -81,6 +83,11 @@ extension WorkItem {
         if favorites.contains("z3") {
             if transport.contains("net") { return true }
             if linesLower.contains(where: { $0.hasPrefix("z3") }) { return true }
+        }
+        
+        if favorites.contains("z1") {
+            if transport.contains("airpullman") { return true }
+            if linesLower.contains(where: { $0.hasPrefix("z1") }) { return true }
         }
         
         if favorites.contains("z55"){
@@ -148,7 +155,9 @@ extension WorkItem {
     
     var isFinishedMoreThanOneDayAgo: Bool {
         let calendar = Calendar.current
-        guard let dayDifference = calendar.dateComponents([.day], from: endDate, to: Date()).day else {
+        
+        guard let dayDifference = calendar.dateComponents([.day], from: endDate, to: Date()).day
+        else {
             return false
         }
         

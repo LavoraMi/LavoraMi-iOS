@@ -43,6 +43,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
     case STAV = "di STAV"
     case STAR = "di STAR"
     case Autoguidovie = "di Autoguidovie"
+    case Airpullman = "di Airpullman"
     
     var localizedTitle: String {
         switch self {
@@ -62,6 +63,7 @@ enum FilterBy: String, CaseIterable, Identifiable {
             case .STAV: return String(localized: .diStav)
             case .STAR: return String(localized: .diStar)
             case .Autoguidovie: return String(localized: .diAutoguidovie)
+            case .Airpullman: return String(localized: .diAirpullman)
         }
     }
     

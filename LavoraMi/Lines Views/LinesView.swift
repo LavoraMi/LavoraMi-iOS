@@ -155,7 +155,7 @@ struct LinesView: View {
         let groups: [[LineInfo]] = [
             metros, [minimetro], suburban, regioExpress, regionalLines,
             crossBorderLines, malpensaExpress, trams, filobus, bus,
-            net, stav, star, autoguidovie
+            net, stav, star, autoguidovie, airpullman
         ]
         
         return groups.joined().first { $0.name == name }
@@ -573,7 +573,7 @@ struct LinesView: View {
                     filteredMetros, filteredMinimetro, filteredSuburban, filteredRegioExpress,
                     filteredRegional, filteredCrossBorders, filteredMalpensaExpress,
                     filteredTrams, filteredFilobus, filteredMovibus, filteredNET,
-                    filteredSTAV, filteredSTAR, filteredAutoguidovie
+                    filteredSTAV, filteredSTAR, filteredAutoguidovie, filteredAirpullman
                 ]
                 if allFiltered.allSatisfy({ $0.isEmpty }) {
                     VStack(spacing: 20) {

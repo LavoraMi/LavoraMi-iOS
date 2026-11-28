@@ -137,10 +137,11 @@ struct LineDetailView: View {
         viewModel.stazioniChiuse.contains { entry in
             let parts = entry.split(separator: ":", maxSplits: 1)
             guard parts.count == 2 else { return false }
+            
             let entryName = parts[0].trimmingCharacters(in: .whitespaces)
             let entryLine = parts[1].trimmingCharacters(in: .whitespaces)
-            return entryName.caseInsensitiveCompare(stationName) == .orderedSame
-                && entryLine.caseInsensitiveCompare(lineName) == .orderedSame
+            
+            return entryName.caseInsensitiveCompare(stationName) == .orderedSame && entryLine.caseInsensitiveCompare(lineName) == .orderedSame
         }
     }
     

@@ -549,6 +549,37 @@ struct SettingsView: View{
                         }
                         .buttonStyle(.borderless)
                     }
+                    HStack{
+                        Label("Linee Airpullman", systemImage: "bus.fill")
+                        Spacer()
+                        Button(action: {
+                            if(feedbacksEnabled){
+                                HapticManager.shared.trigger()
+                            }
+                            
+                            if linesFavorites.contains("z1") {
+                                linesFavorites.removeAll { $0 == "z1" }
+                            }
+                            else {
+                                linesFavorites.append("z1")
+                            }
+                            NotificationManager.shared.syncNotifications(for: viewModel.items, favorites: linesFavorites)
+                            
+                            Task {
+                                let preferences: UserPreferencesDatas = await authManager.fetchUserPreferences()
+                                
+                                if(preferences.enable_favorites) {
+                                    let res = await authManager.saveDatasToDb(favorites: linesFavorites, yourLines: linesSelected)
+                                    showErrorDBSavePopUp = !res
+                                }
+                            }
+                        }) {
+                            Image(systemName: linesFavorites.contains("z1") ? "star.fill" : "star")
+                                .font(.title3)
+                                .foregroundColor(linesFavorites.contains("z1") ? .orange : .gray)
+                        }
+                        .buttonStyle(.borderless)
+                    }
                 }, header: {
                     FavoritesHeader()
                 })
