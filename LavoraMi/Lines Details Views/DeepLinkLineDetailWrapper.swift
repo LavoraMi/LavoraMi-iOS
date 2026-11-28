@@ -53,7 +53,7 @@ struct DeepLinkLineDetailWrapper: View {
                     viewModel: viewModel,
                     stations: info.stations,
                     accessibilityStatus: info.accessibilityStatus,
-                    isDetailed: info.type != "Autoguidovie" && info.type != "Airpullman"
+                    isDetailed: info.type != "Autoguidovie" && info.type != "AirPullman"
                 )
             }
             else {

@@ -422,24 +422,24 @@ struct LinesView: View {
     
     var airpullman : [LineInfo] {
         [
-            LineInfo(name: "z110", branches: "Saronno FN - Rho Fiera Milano M1", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z111", branches: "Saronno FN - Bovisio Masciago/Desio", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z112", branches: "Saronno FN - Legnano (Ospedale Nuovo)", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z113", branches: "Saronno FN - Rho FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z114", branches: "Saronno FN - Palazzolo M.se FN", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z115", branches: "Saronno FN - Seregno FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z116", branches: "Cesano Maderno FN - Seregno FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z117", branches: "Saronno FN - Cesano Maderno FN", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z119", branches: "Saronno FN - Limbiate (Mombello)", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z120", branches: "Garbagnate M.se (Ospedale) - Rho FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z121", branches: "Bollate Centro FN - Rho FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z122", branches: "Rho FS - Garbagnate M.se FN", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z130", branches: "Limbiate - Bollate Centro FN", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z150", branches: "Cantù - Comasina M3", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z160", branches: "Saronno FN - Camnago - Lentate FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z161", branches: "Saronno FN (Circolare)", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z163", branches: "Lazzate - Limbiate (Mombello)", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z166", branches: "Seregno FS - Lentate S. Seveso (Copreno)", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z110", branches: "Saronno FN - Rho Fiera Milano M1", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z111", branches: "Saronno FN - Bovisio Masciago/Desio", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z112", branches: "Saronno FN - Legnano (Ospedale Nuovo)", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z113", branches: "Saronno FN - Rho FS", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z114", branches: "Saronno FN - Palazzolo M.se FN", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z115", branches: "Saronno FN - Seregno FS", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z116", branches: "Cesano Maderno FN - Seregno FS", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z117", branches: "Saronno FN - Cesano Maderno FN", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z119", branches: "Saronno FN - Limbiate (Mombello)", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z120", branches: "Garbagnate M.se (Ospedale) - Rho FS", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z121", branches: "Bollate Centro FN - Rho FS", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z122", branches: "Rho FS - Garbagnate M.se FN", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z130", branches: "Limbiate - Bollate Centro FN", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z150", branches: "Cantù - Comasina M3", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z160", branches: "Saronno FN - Camnago - Lentate FS", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z161", branches: "Saronno FN (Circolare)", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z163", branches: "Lazzate - Limbiate (Mombello)", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z166", branches: "Seregno FS - Lentate S. Seveso (Copreno)", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
         ]
     }
     
@@ -560,7 +560,7 @@ struct LinesView: View {
                 lineSection(lines: filteredSTAR, title: "Linee di Bus", subtitle: "STAR Mobility", infoURL: "https://starmobility.it/orari-autobus/")
                 lineSection(lines: filteredSTAV, title: "Linee di Bus", subtitle: "STAV", infoURL: "https://stavautolinee.it/reti-servite/")
                 lineSection(lines: filteredAutoguidovie, title: "Linee di Bus", subtitle: "Autoguidovie", infoURL: "https://autoguidovie.it/it/avvisi")
-                lineSection(lines: filteredAirpullman, title: "Linee di Bus", subtitle: "Airpullman", infoURL: "https://www.airpullmanspa.com/percorsi-ed-orari.html")
+                lineSection(lines: filteredAirpullman, title: "Linee di Bus", subtitle: "AirPullman", infoURL: "https://www.airpullmanspa.com/percorsi-ed-orari.html")
             }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)

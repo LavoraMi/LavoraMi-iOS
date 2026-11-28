@@ -550,7 +550,7 @@ struct SettingsView: View{
                         .buttonStyle(.borderless)
                     }
                     HStack{
-                        Label("Linee Airpullman", systemImage: "bus.fill")
+                        Label("Linee AirPullman", systemImage: "bus.fill")
                         Spacer()
                         Button(action: {
                             if(feedbacksEnabled){

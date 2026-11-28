@@ -121,7 +121,7 @@ func getCurrentTransportIcon(for lineLongName: String) -> String{
             return "bus.fill"
         case "Movibus":
             return "bus.fill"
-        case "Airpullman":
+        case "AirPullman":
             return "bus.fill"
             
         case String(localized: .filobus):

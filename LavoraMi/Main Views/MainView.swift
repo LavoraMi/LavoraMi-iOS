@@ -113,8 +113,8 @@ struct MainView: View {
                 categoryFiltered = items.filter { $0.company.contains("STAR") }
             case .Autoguidovie:
                 categoryFiltered = items.filter{ $0.company.contains("Autoguidovie") }
-            case .Airpullman:
-                categoryFiltered = items.filter{ $0.company.contains("Airpullman") }
+            case .AirPullman:
+                categoryFiltered = items.filter{ $0.company.contains("AirPullman") }
             case .scheduled:
                 categoryFiltered = items.filter { $0.startDate > now }
             case .working:

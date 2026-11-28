@@ -621,7 +621,7 @@
         }
       }
     },
-    "Airpullman" : {
+    "AirPullman" : {
 
     },
     "Aiutaci a sostenere LavoraMi!" : {
@@ -1611,25 +1611,25 @@
         }
       }
     },
-    "di Airpullman" : {
+    "di AirPullman" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "by Airpullman"
+            "value" : "by AirPullman"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "de Airpullman"
+            "value" : "de AirPullman"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "di Airpullman"
+            "value" : "di AirPullman"
           }
         }
       }
