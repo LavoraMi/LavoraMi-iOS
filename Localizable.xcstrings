@@ -5707,6 +5707,28 @@
         }
       }
     },
+    "orariModificatiDeps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, che gestisce questa linea, ha dichiarato un periodo dove, per festività o cantieri sul tragitto, le corse subiscono variazioni di orario oppure sono soppresse."
+          }
+        }
+      }
+    },
+    "orariModificatiTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ORARI MODIFICATI"
+          }
+        }
+      }
+    },
     "Orario Notifiche" : {
       "localizations" : {
         "en" : {

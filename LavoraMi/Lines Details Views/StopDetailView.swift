@@ -224,6 +224,10 @@ struct StopDetailView: View {
                 if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains("ATM") && viewModel.isStrikeToday) {
                     WarningBannerExtended(text: String(localized: .strikeInProgress), deps: String(localized: .strikeBannerArrivalDeps))
                 }
+                else if (viewModel.items.contains(where: { $0.company == "ATM" && $0.title == "Modifica Oraria" && $0.isActiveToday }))
+                {
+                    WarningBannerExtended(text: String(localized: .orariModificatiTitle), deps: String(localized: .orariModificatiDeps("ATM")))
+                }
                 
                 header
                 nextArrivalSection

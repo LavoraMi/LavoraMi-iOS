@@ -1471,6 +1471,10 @@ extension LineDetailView {
             if(viewModel.strikeEnabled && viewModel.companiesStrikes.contains(typeOfTransport) && viewModel.isStrikeToday) {
                 WarningBannerExtended(text: String(localized: .strikeInProgress), deps: String(localized: .strikeBannerArrivalDeps))
             }
+            else if (viewModel.items.contains(where: { $0.company == typeOfTransport && $0.title == "Modifica Oraria" && $0.isActiveToday }))
+            {
+                WarningBannerExtended(text: String(localized: .orariModificatiTitle), deps: String(localized: .orariModificatiDeps(typeOfTransport)))
+            }
             
             if !rest.isEmpty {
                 Divider()
@@ -1559,5 +1563,16 @@ extension LineDetailView {
                 .foregroundStyle(.secondary)
         }
         Spacer()
+    }
+}
+
+extension WorkItem {
+    var isActiveToday: Bool {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let start = calendar.startOfDay(for: startDate)
+        let end = calendar.startOfDay(for: endDate)
+        
+        return today >= start && today <= end
     }
 }
