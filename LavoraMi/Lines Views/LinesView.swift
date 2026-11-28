@@ -83,22 +83,6 @@ struct LinesView: View {
         let q = query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         if q.isEmpty { return true }
         
-        let typeKeywords: [String: [String]] = [
-            "Metro": ["metro", "metropolitana", "m"],
-            "Minimetro": ["minimetro", "ospedale", "h", "san raffaele"],
-            "Suburbano": ["suburbano", "s"],
-            "Regio express": ["regio", "express", "re"],
-            "Regionale": ["regio", "regionale", "r"],
-            String(localized: .tram): ["tram", "tranvía", "t"],
-            String(localized: .filobus): ["filobus", "9"],
-            "Movibus": ["bus", "movibus", "z"],
-            "Nordest Trasporti": ["z", "bus", "net"],
-            "STAR Mobility": ["bus", "star", "z"],
-            "STAV": ["stav", "bus", "z"],
-            "Autoguidovie": ["autoguidovie", "bus", "z"],
-            "Malpensa Express": ["malpensa", "malpensa express", "express", "mxp"]
-        ]
-        
         let name = line.name.lowercased()
         let type = line.type.lowercased()
         let branches = line.branches.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: .current)
@@ -138,6 +122,7 @@ struct LinesView: View {
     var filteredSTAR: [LineInfo] { filtered(star) }
     var filteredSTAV: [LineInfo] { filtered(stav) }
     var filteredAutoguidovie: [LineInfo] { filtered(autoguidovie) }
+    var filteredAirpullman: [LineInfo] { filtered(airpullman) }
     var filteredCrossBorders: [LineInfo] { filtered(crossBorderLines) }
     var filteredMalpensaExpress: [LineInfo] { filtered(malpensaExpress) }
     
@@ -435,6 +420,29 @@ struct LinesView: View {
         ]
     }
     
+    var airpullman : [LineInfo] {
+        [
+            LineInfo(name: "z110", branches: "Saronno FN - Rho Fiera Milano M1", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z111", branches: "Saronno FN - Bovisio Masciago/Desio", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z112", branches: "Saronno FN - Legnano (Ospedale Nuovo)", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z113", branches: "Saronno FN - Rho FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z114", branches: "Saronno FN - Palazzolo M.se FN", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z115", branches: "Saronno FN - Seregno FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z116", branches: "Cesano Maderno FN - Seregno FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z117", branches: "Saronno FN - Cesano Maderno FN", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z119", branches: "Saronno FN - Limbiate (Mombello)", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z120", branches: "Garbagnate M.se (Ospedale) - Rho FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z121", branches: "Bollate Centro FN - Rho FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z122", branches: "Rho FS - Garbagnate M.se FN", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z130", branches: "Limbiate - Bollate Centro FN", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z150", branches: "Cantù - Comasina M3", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z160", branches: "Saronno FN - Camnago - Lentate FS", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z161", branches: "Saronno FN (Circolare)", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z163", branches: "Lazzate - Limbiate (Mombello)", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z166", branches: "Seregno FS - Lentate S. Seveso (Copreno)", type: "Airpullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+        ]
+    }
+    
     var body: some View {
         NavigationStack{
             HStack {
@@ -552,6 +560,7 @@ struct LinesView: View {
                 lineSection(lines: filteredSTAR, title: "Linee di Bus", subtitle: "STAR Mobility", infoURL: "https://starmobility.it/orari-autobus/")
                 lineSection(lines: filteredSTAV, title: "Linee di Bus", subtitle: "STAV", infoURL: "https://stavautolinee.it/reti-servite/")
                 lineSection(lines: filteredAutoguidovie, title: "Linee di Bus", subtitle: "Autoguidovie", infoURL: "https://autoguidovie.it/it/avvisi")
+                lineSection(lines: filteredAirpullman, title: "Linee di Bus", subtitle: "Airpullman", infoURL: "https://www.airpullmanspa.com/percorsi-ed-orari.html")
             }
             .sheet(item: $selectedURL) { url in
                 SafariView(url: url)
