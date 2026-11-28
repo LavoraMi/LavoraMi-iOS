@@ -79,7 +79,7 @@ struct InterchangesDB {
         .init(name: "Caiazzo", lines: ["M2", "NM2", "1", "90", "91", "92"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 7),
         .init(name: "Centrale FS", lines: ["M2", "NM2", "M3", "NM3", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "MXP1", "RE80", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Gioia", lines: ["M2", "NM2", "43", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
-        .init(name: "Garibaldi FS M2 M5", lines: ["M2", "NM2", "M5", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "10", "33", "N25", "N26"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Garibaldi FS M2 M5", lines: ["M2", "NM2", "M5", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "10", "33", "N25", "N26"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
         .init(name: "Moscova", lines: ["M2", "43", "84"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
         .init(name: "Lanza", lines: ["M2", "NM2", "2", "4", "12", "14", "57", "97"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 12),
         .init(name: "Cadorna FN", lines: ["M2", "NM2", "M1", "NM1", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
@@ -149,7 +149,7 @@ struct InterchangesDB {
         .init(name: "Marche", lines: ["M5", "5", "7", "31"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 5),
         .init(name: "Zara", lines: ["M5", "M3", "NM3", "7", "31", "51", "60", "82", "90", "91", "92", "166"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 6),
         .init(name: "Isola", lines: ["M5"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 7),
-        .init(name: "Garibaldi FS M2 M5", lines: ["M5", "M2", "NM2", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "10", "33", "N25", "N26"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Garibaldi FS M2 M5", lines: ["M5", "M2", "NM2", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "10", "33", "N25", "N26"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Monumentale", lines: ["M5", "10", "12", "14", "70"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
         .init(name: "Cenisio", lines: ["M5", "12", "14"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 10),
         .init(name: "Gerusalemme", lines: ["M5"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
@@ -169,19 +169,19 @@ struct InterchangesDB {
     static let suburbanInterchanges: [InterchangeInfo] = [
         // SUBURBAN LINES
         /// Suburbano S1
-        .init(name: "Saronno", lines: ["S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Saronno", lines: ["S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
         .init(name: "Saronno Sud", lines: ["S1", "S3", "S9"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Caronno Pertusella", lines: ["S1", "S3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Cesate", lines: ["S1", "S3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
-        .init(name: "Garbagnate Milanese", lines: ["S1", "S3", "S13", "RE13", "z114", "z120", "z122"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Garbagnate Milanese", lines: ["S1", "S3", "S13", "z114", "z120", "z122"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Garbagnate Parco Delle Groane", lines: ["S1", "S3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Bollate Nord", lines: ["S1", "S3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
-        .init(name: "Bollate Centro", lines: ["S1", "S3", "S13", "RE13", "z121"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Bollate Centro", lines: ["S1", "S3", "S13", "z121"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
         .init(name: "Novate Milanese", lines: ["S1", "S3", "z121"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Milano Quarto Oggiaro", lines: ["S1", "S3", "40"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
-        .init(name: "Milano Bovisa", lines: ["S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Milano Bovisa", lines: ["S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
         .init(name: "Milano Lancetti", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "2", "92"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 11),
-        .init(name: "Milano Porta Garibaldi", lines: ["S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 12),
+        .init(name: "Milano Porta Garibaldi", lines: ["S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 12),
         .init(name: "Milano Repubblica", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "M3", "NM3", "1", "9", "33", "43"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 13),
         .init(name: "Milano Porta Venezia", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "M1", "NM1", "5", "9", "33"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
         .init(name: "Milano Dateo", lines: ["S1", "S2", "S5", "S6", "S12", "S13", "M4", "NM4", "54", "61", "92"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 15),
@@ -208,9 +208,9 @@ struct InterchangesDB {
         .init(name: "Cormano Cusano Milanino", lines: ["S2", "S4", "R16", "727"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
         .init(name: "Milano Bruzzano Parco Nord", lines: ["S2", "S4", "R16"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
         .init(name: "Milano Affori", lines: ["S2", "S4", "R16", "M3", "NM3", "35", "40", "41", "52", "70"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
-        .init(name: "Milano Bovisa", lines: ["S2", "S1", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
+        .init(name: "Milano Bovisa", lines: ["S2", "S1", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
         .init(name: "Milano Lancetti", lines: ["S2", "S1", "S5", "S6", "S12", "S13", "2", "92"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 13),
-        .init(name: "Milano Porta Garibaldi", lines: ["S2", "S1", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
+        .init(name: "Milano Porta Garibaldi", lines: ["S2", "S1", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
         .init(name: "Milano Repubblica", lines: ["S2", "S1", "S5", "S6", "S12", "S13", "M3", "NM3", "1", "9", "33", "43"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 15),
         .init(name: "Milano Porta Venezia", lines: ["S2", "S1", "S5", "S6", "S12", "S13", "M1", "NM1", "5", "9", "33"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 16),
         .init(name: "Milano Dateo", lines: ["S2", "S1", "S5", "S6", "S12", "S13", "M4", "NM4", "54", "61", "92"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 17),
@@ -218,17 +218,17 @@ struct InterchangesDB {
         .init(name: "Milano Rogoredo", lines: ["S2", "S1", "S9", "S12", "S13", "S19", "R31", "R34", "R38", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
 
         /// Suburbano S3
-        .init(name: "Saronno", lines: ["S3", "S1", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Saronno", lines: ["S3", "S1", "S9", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
         .init(name: "Saronno Sud", lines: ["S3", "S1", "S9"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Caronno Pertusella", lines: ["S3", "S1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Cesate", lines: ["S3", "S1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
-        .init(name: "Garbagnate Milanese", lines: ["S3", "S1", "S13", "RE13", "z114", "z120", "z122"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Garbagnate Milanese", lines: ["S3", "S1", "S13", "z114", "z120", "z122"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Garbagnate Parco Delle Groane", lines: ["S3", "S1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Bollate Nord", lines: ["S3", "S1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
-        .init(name: "Bollate Centro", lines: ["S3", "S1", "S13", "RE13", "z121"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Bollate Centro", lines: ["S3", "S1", "S13", "z121"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
         .init(name: "Novate Milanese", lines: ["S3", "S1", "z121"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Milano Quarto Oggiaro", lines: ["S3", "S1", "40"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
-        .init(name: "Milano Bovisa", lines: ["S3", "S1", "S2", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Milano Bovisa", lines: ["S3", "S1", "S2", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
         .init(name: "Milano Domodossola", lines: ["S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
         .init(name: "Milano Cadorna", lines: ["S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 12),
 
@@ -243,7 +243,7 @@ struct InterchangesDB {
         .init(name: "Cormano Cusano Milanino", lines: ["S4", "S2", "R16", "727"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Milano Bruzzano Parco Nord", lines: ["S4", "S2", "R16"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
         .init(name: "Milano Affori", lines: ["S4", "S2", "R16", "M3", "NM3", "35", "40", "41", "52", "70"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 10),
-        .init(name: "Milano Bovisa", lines: ["S4", "S1", "S2", "S3", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Milano Bovisa", lines: ["S4", "S1", "S2", "S3", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
         .init(name: "Milano Domodossola", lines: ["S4", "S3", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 12),
         .init(name: "Milano Cadorna", lines: ["S4", "S3", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 13),
 
@@ -264,7 +264,7 @@ struct InterchangesDB {
         .init(name: "Milano Certosa", lines: ["S5", "S6", "S11", "1", "12", "35", "40", "57"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
         .init(name: "Milano Villapizzone", lines: ["S5", "S6", "S11", "R6", "RE2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
         .init(name: "Milano Lancetti", lines: ["S5", "S1", "S2", "S6", "S12", "S13", "2", "92"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 15),
-        .init(name: "Milano Porta Garibaldi", lines: ["S5", "S1", "S2", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 16),
+        .init(name: "Milano Porta Garibaldi", lines: ["S5", "S1", "S2", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 16),
         .init(name: "Milano Repubblica", lines: ["S5", "S1", "S2", "S6", "S12", "S13", "M3", "NM3", "1", "9", "33", "43"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 17),
         .init(name: "Milano Porta Venezia", lines: ["S5", "S1", "S2", "S6", "S12", "S13", "M1", "NM1", "5", "9", "33"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 18),
         .init(name: "Milano Dateo", lines: ["S5", "S1", "S2", "S6", "S12", "S13", "M4", "NM4", "54", "61", "92"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 19),
@@ -291,7 +291,7 @@ struct InterchangesDB {
         .init(name: "Milano Certosa", lines: ["S6", "S5", "S11", "1", "12", "35", "40", "57"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Milano Villapizzone", lines: ["S6", "S5", "S11", "R6", "RE2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
         .init(name: "Milano Lancetti", lines: ["S6", "S1", "S2", "S5", "S12", "S13", "2", "92"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 10),
-        .init(name: "Milano Porta Garibaldi", lines: ["S6", "S1", "S2", "S5", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
+        .init(name: "Milano Porta Garibaldi", lines: ["S6", "S1", "S2", "S5", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
         .init(name: "Milano Repubblica", lines: ["S6", "S1", "S2", "S5", "S12", "S13", "M3", "NM3", "1", "9", "33", "43"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 12),
         .init(name: "Milano Porta Venezia", lines: ["S6", "S1", "S2", "S5", "S12", "S13", "M1", "NM1", "5", "9", "33"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 13),
         .init(name: "Milano Dateo", lines: ["S6", "S1", "S2", "S5", "S12", "S13", "M4", "NM4", "54", "61", "92"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
@@ -307,10 +307,10 @@ struct InterchangesDB {
         .init(name: "Treviglio", lines: ["S6", "S5", "R2", "R4", "R6", "R7", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 24),
 
         /// Suburbano S7
-        .init(name: "Milano Porta Garibaldi", lines: ["S7", "S1", "S2", "S5", "S6", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
-        .init(name: "Milano Greco Pirelli", lines: ["S7", "S8", "S9", "S11", "R4", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Milano Porta Garibaldi", lines: ["S7", "S1", "S2", "S5", "S6", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
+        .init(name: "Milano Greco Pirelli", lines: ["S7", "S8", "S9", "S11", "R4", "R13", "R14", "R38", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Sesto San Giovanni", lines: ["S7", "S8", "S9", "S11", "R13", "R14", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 2),
-        .init(name: "Monza", lines: ["S7", "S8", "S9", "S11", "R7", "R13", "R14", "RE8", "RE13", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Monza", lines: ["S7", "S8", "S9", "S11", "R7", "R13", "R14", "RE8", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
         .init(name: "Monza Sobborghi", lines: ["S7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Villasanta", lines: ["S7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Buttafava", lines: ["S7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
@@ -331,10 +331,10 @@ struct InterchangesDB {
         .init(name: "Lecco", lines: ["S7", "S8", "R7", "R13", "R18", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 21),
 
         /// Suburbano S8
-        .init(name: "Milano Porta Garibaldi", lines: ["S8", "S1", "S2", "S5", "S6", "S7", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
-        .init(name: "Milano Greco Pirelli", lines: ["S8", "S7", "S9", "S11", "R4", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Milano Porta Garibaldi", lines: ["S8", "S1", "S2", "S5", "S6", "S7", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
+        .init(name: "Milano Greco Pirelli", lines: ["S8", "S7", "S9", "S11", "R4", "R13", "R14", "R38", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Sesto San Giovanni", lines: ["S8", "S7", "S9", "S11", "R13", "R14", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 2),
-        .init(name: "Monza", lines: ["S8", "S7", "S9", "S11", "R7", "R13", "R14", "RE8", "RE13", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Monza", lines: ["S8", "S7", "S9", "S11", "R7", "R13", "R14", "RE8", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
         .init(name: "Arcore", lines: ["S8", "R13", "R14", "z208", "z317", "z319"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Carnate Usmate", lines: ["S8", "R13", "R14", "R15", "RE8", "z318", "z319"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Osnago", lines: ["S8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
@@ -346,7 +346,7 @@ struct InterchangesDB {
         .init(name: "Lecco", lines: ["S8", "S7", "R7", "R13", "R18", "RE8"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
 
         /// Suburbano S9
-        .init(name: "Saronno", lines: ["S9", "S1", "S3", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Saronno", lines: ["S9", "S1", "S3", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
         .init(name: "Saronno Sud", lines: ["S9", "S1", "S3"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Ceriano Laghetto - Solaro", lines: ["S9"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Cesano Maderno", lines: ["S9", "S2", "S4", "R16", "z115", "z116", "z117", "z150", "z163", "z209", "z250", "z251"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
@@ -354,9 +354,9 @@ struct InterchangesDB {
         .init(name: "Seregno", lines: ["S9", "S11", "R15", "RE80", "z115", "z116", "z166", "z228", "z231", "z232", "z233", "z242"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Desio", lines: ["S9", "S11", "RE80", "z250", "z251"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Lissone - Muggiò", lines: ["S9", "S11", "z227", "z234", "z250"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
-        .init(name: "Monza", lines: ["S9", "S7", "S8", "S11", "R7", "R13", "R14", "RE8", "RE13", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Monza", lines: ["S9", "S7", "S8", "S11", "R7", "R13", "R14", "RE8", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Sesto San Giovanni", lines: ["S9", "S7", "S8", "S11", "R13", "R14", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
-        .init(name: "Milano Greco Pirelli", lines: ["S9", "S7", "S8", "S11", "R4", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Milano Greco Pirelli", lines: ["S9", "S7", "S8", "S11", "R4", "R13", "R14", "R38", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
         .init(name: "Milano Lambrate", lines: ["S9", "R4", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
         .init(name: "Milano Forlanini", lines: ["S9", "S5", "S6", "R38", "RE8", "RE13", "M4", "NM4", "12", "27", "45", "175", "973", "N27"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 12),
         .init(name: "Milano Scalo Romana", lines: ["S9", "S19", "R31", "M3", "NM3", "65", "90", "91", "92"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 13),
@@ -374,10 +374,10 @@ struct InterchangesDB {
         .init(name: "Rho Fiera Milano", lines: ["S11", "S5", "S6", "R21", "R23", "RE4", "RE5", "AV", "M1", "542", "561", "z110"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Milano Certosa", lines: ["S11", "S5", "S6", "1", "12", "35", "40", "57"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Milano Villapizzone", lines: ["S11", "S5", "S6", "R6", "RE2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
-        .init(name: "Milano Porta Garibaldi", lines: ["S11", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
-        .init(name: "Milano Greco Pirelli", lines: ["S11", "S7", "S8", "S9", "R4", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Milano Porta Garibaldi", lines: ["S11", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Milano Greco Pirelli", lines: ["S11", "S7", "S8", "S9", "R4", "R13", "R14", "R38", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Sesto San Giovanni", lines: ["S11", "S7", "S8", "S9", "R13", "R14", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 6),
-        .init(name: "Monza", lines: ["S11", "S7", "S8", "S9", "R7", "R13", "R14", "RE8", "RE13", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Monza", lines: ["S11", "S7", "S8", "S9", "R7", "R13", "R14", "RE8", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
         .init(name: "Lissone - Muggiò", lines: ["S11", "S9", "z227", "z234", "z250"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Desio", lines: ["S11", "S9", "RE80", "z250", "z251"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
         .init(name: "Seregno", lines: ["S11", "S9", "R15", "RE80", "z115", "z116", "z166", "z228", "z231", "z232", "z233", "z242"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
@@ -389,9 +389,9 @@ struct InterchangesDB {
         .init(name: "Como San Giovanni", lines: ["S11", "S10", "S40", "R18", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
 
         /// Suburbano S12
-        .init(name: "Milano Bovisa", lines: ["S12", "S1", "S2", "S3", "S4", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Milano Bovisa", lines: ["S12", "S1", "S2", "S3", "S4", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
         .init(name: "Milano Lancetti", lines: ["S12", "S1", "S2", "S5", "S6", "S13", "2", "92"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 1),
-        .init(name: "Milano Porta Garibaldi", lines: ["S12", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 2),
+        .init(name: "Milano Porta Garibaldi", lines: ["S12", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 2),
         .init(name: "Milano Repubblica", lines: ["S12", "S1", "S2", "S5", "S6", "S13", "M3", "NM3", "1", "9", "33", "43"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 3),
         .init(name: "Milano Porta Venezia", lines: ["S12", "S1", "S2", "S5", "S6", "S13", "M1", "NM1", "5", "9", "33"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 4),
         .init(name: "Milano Dateo", lines: ["S12", "S1", "S2", "S5", "S6", "S13", "M4", "NM4", "54", "61", "92"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 5),
@@ -403,11 +403,11 @@ struct InterchangesDB {
         .init(name: "Melegnano", lines: ["S12", "S1", "REG", "z431"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
 
         /// Suburbano S13
-        .init(name: "Garbagnate Milanese", lines: ["S13", "S1", "S3", "RE13", "z114", "z120", "z122"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
-        .init(name: "Bollate Centro", lines: ["S13", "S1", "S3", "RE13", "z121"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
-        .init(name: "Milano Bovisa", lines: ["S13", "S1", "S2", "S3", "S4", "S12", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Garbagnate Milanese", lines: ["S13", "S1", "S3", "z114", "z120", "z122"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
+        .init(name: "Bollate Centro", lines: ["S13", "S1", "S3", "z121"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Milano Bovisa", lines: ["S13", "S1", "S2", "S3", "S4", "S12", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Milano Lancetti", lines: ["S13", "S1", "S2", "S5", "S6", "S12", "2", "92"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 3),
-        .init(name: "Milano Porta Garibaldi", lines: ["S13", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 4),
+        .init(name: "Milano Porta Garibaldi", lines: ["S13", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 4),
         .init(name: "Milano Repubblica", lines: ["S13", "S1", "S2", "S5", "S6", "S12", "M3", "NM3", "1", "9", "33", "43"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 5),
         .init(name: "Milano Porta Venezia", lines: ["S13", "S1", "S2", "S5", "S6", "S12", "M1", "NM1", "5", "9", "33"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 6),
         .init(name: "Milano Dateo", lines: ["S13", "S1", "S2", "S5", "S6", "S12", "M4", "NM4", "54", "61", "92"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 7),
@@ -454,17 +454,17 @@ struct InterchangesDB {
         .init(name: "Busto Arsizio Nord", lines: ["MXP1", "S50", "R27", "MXP2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Castellanza", lines: ["MXP1", "R27"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Rescaldina", lines: ["MXP1", "R27", "z121"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
-        .init(name: "Saronno", lines: ["MXP1", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
-        .init(name: "Milano Bovisa", lines: ["MXP1", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
-        .init(name: "Milano Porta Garibaldi", lines: ["MXP1", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
+        .init(name: "Saronno", lines: ["MXP1", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
+        .init(name: "Milano Bovisa", lines: ["MXP1", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Milano Porta Garibaldi", lines: ["MXP1", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
         .init(name: "Milano Centrale", lines: ["MXP1", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "M3", "NM3", "M2", "NM2", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 10),
 
         /// Malpensa Express 2
         .init(name: "Malpensa Aeroporto Terminal 2", lines: ["MXP2", String(localized: .aeroporto), "S50", "MXP1"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 0),
         .init(name: "Malpensa Aeroporto Terminal 1", lines: ["MXP2", String(localized: .aeroporto), "S50", "MXP1"], typeOfInterchange: "airplane.departure", branch: "Main", lineOrder: 1),
         .init(name: "Busto Arsizio Nord", lines: ["MXP2", "S50", "R27", "MXP1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
-        .init(name: "Saronno", lines: ["MXP2", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
-        .init(name: "Milano Bovisa", lines: ["MXP2", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
+        .init(name: "Saronno", lines: ["MXP2", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
+        .init(name: "Milano Bovisa", lines: ["MXP2", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Milano Domodossola", lines: ["MXP2", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 5),
         .init(name: "Milano Cadorna", lines: ["MXP2", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 6),
     ]
@@ -587,7 +587,7 @@ struct InterchangesDB {
 
         /// TILO RE80
         .init(name: "Milano Centrale", lines: ["RE80", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "MXP1", "M2", "NM2", "M3", "NM3", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
-        .init(name: "Monza", lines: ["RE80", "S7", "S8", "S9", "S11", "R7", "R13", "R14", "RE8", "RE13", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
+        .init(name: "Monza", lines: ["RE80", "S7", "S8", "S9", "S11", "R7", "R13", "R14", "RE8", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
         .init(name: "Seregno", lines: ["RE80", "S9", "S11", "R15", "z115", "z116", "z166", "z228", "z231", "z232", "z233", "z242"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Como San Giovanni", lines: ["RE80", "S10", "S11", "S40", "R18"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
         .init(name: "Chiasso", lines: ["RE80", "S10", "S40"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
@@ -682,7 +682,7 @@ struct InterchangesDB {
         .init(name: "Vignate", lines: ["R4", "S5", "S6", "z401"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
         .init(name: "Pioltello Limito", lines: ["R4", "S5", "S6", "RE2", "RE6", "z402"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
         .init(name: "Milano Lambrate", lines: ["R4", "S9", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 15),
-        .init(name: "Milano Greco Pirelli", lines: ["R4", "S7", "S8", "S9", "S11", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
+        .init(name: "Milano Greco Pirelli", lines: ["R4", "S7", "S8", "S9", "S11", "R13", "R14", "R38", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
 
         /// Regionale R5
         .init(name: "Brescia", lines: ["R5", "S31", "AV", "R1", "R3", "R4", "R7", "R8", "RE3", "RE6"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
@@ -799,10 +799,10 @@ struct InterchangesDB {
         .init(name: "Paderno Robbiate", lines: ["R14", "z313"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
         .init(name: "Carnate Usmate", lines: ["R14", "S8", "R13", "R15", "RE8", "z318", "z319"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Arcore", lines: ["R14", "S8", "R13", "z208", "z317", "z319"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
-        .init(name: "Monza", lines: ["R14", "S7", "S8", "S9", "S11", "R7", "R13", "RE8", "RE13", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
+        .init(name: "Monza", lines: ["R14", "S7", "S8", "S9", "S11", "R7", "R13", "RE8", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Sesto San Giovanni", lines: ["R14", "S7", "S8", "S9", "S11", "R13", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
-        .init(name: "Milano Greco Pirelli", lines: ["R14", "S7", "S8", "S9", "S11", "R4", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
-        .init(name: "Milano Porta Garibaldi", lines: ["R14", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
+        .init(name: "Milano Greco Pirelli", lines: ["R14", "S7", "S8", "S9", "S11", "R4", "R13", "R14", "R38", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Milano Porta Garibaldi", lines: ["R14", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
 
         /// Regionale R15
         .init(name: "Carnate Usmate", lines: ["R15", "S8", "R13", "R14", "RE8", "z318", "z319"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
@@ -827,14 +827,14 @@ struct InterchangesDB {
         .init(name: "Seveso", lines: ["R16", "S2", "S4", "z115", "z116"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
         .init(name: "Cesano Maderno", lines: ["R16", "S2", "S4", "S9", "z115", "z116", "z117", "z150", "z163", "z209", "z250", "z251"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
         .init(name: "Milano Affori", lines: ["R16", "S2", "S4", "M3", "NM3", "35", "40", "41", "52", "70"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 15),
-        .init(name: "Milano Bovisa", lines: ["R16", "S2", "S1", "S3", "S4", "S12", "S13", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
+        .init(name: "Milano Bovisa", lines: ["R16", "S2", "S1", "S3", "S4", "S12", "S13", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
         .init(name: "Milano Domodossola", lines: ["R16", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 17),
         .init(name: "Milano Cadorna", lines: ["R16", "S3", "S4", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 18),
 
         /// Regionale R17
         .init(name: "Como Lago", lines: ["R17", "RE7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
         .init(name: "Como Borghi", lines: ["R17", "RE7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
-        .init(name: "Como Camerlata", lines: ["R17", "S10", "S11", "S40", "R18", "RE7", "RE13", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Como Camerlata", lines: ["R17", "S10", "S11", "S40", "R18", "RE7", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Grandate - Breccia", lines: ["R17", "RE7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
         .init(name: "Portichetto - Luisago", lines: ["R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
         .init(name: "Fino Mornasco", lines: ["R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
@@ -843,8 +843,8 @@ struct InterchangesDB {
         .init(name: "Lomazzo", lines: ["R17", "RE7"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Rovellasca - Manera", lines: ["R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
         .init(name: "Rovello Porro", lines: ["R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
-        .init(name: "Saronno", lines: ["R17", "S1", "S3", "S9", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
-        .init(name: "Milano Bovisa", lines: ["R17", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
+        .init(name: "Saronno", lines: ["R17", "S1", "S3", "S9", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Milano Bovisa", lines: ["R17", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
         .init(name: "Milano Domodossola", lines: ["R17", "S3", "S4", "R16", "R22", "R27", "RE1", "RE7", "MXP2", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 13),
         .init(name: "Milano Cadorna", lines: ["R17", "S3", "S4", "R16", "R22", "R27", "RE1", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
 
@@ -882,7 +882,7 @@ struct InterchangesDB {
         .init(name: "Canegrate", lines: ["R21", "S5", "z611"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 13),
         .init(name: "Parabiago", lines: ["R21", "S5", "R23", "RE5", "z644"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 14),
         .init(name: "Rho Fiera Milano", lines: ["R21", "S5", "S6", "S11", "R23", "RE4", "RE5", "AV", "M1", "542", "561", "z110"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 15),
-        .init(name: "Milano Porta Garibaldi", lines: ["R21", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 16),
+        .init(name: "Milano Porta Garibaldi", lines: ["R21", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 16),
 
         /// Regionale R22
         .init(name: "Laveno Mombello Lago", lines: ["R22", "RE1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
@@ -904,8 +904,8 @@ struct InterchangesDB {
         .init(name: "Mozzate", lines: ["R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 16),
         .init(name: "Cislago", lines: ["R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 17),
         .init(name: "Gerenzano Turate", lines: ["R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 18),
-        .init(name: "Saronno", lines: ["R22", "S1", "S3", "S9", "R17", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
-        .init(name: "Milano Bovisa", lines: ["R22", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 20),
+        .init(name: "Saronno", lines: ["R22", "S1", "S3", "S9", "R17", "R27", "RE1", "RE7", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
+        .init(name: "Milano Bovisa", lines: ["R22", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R27", "RE1", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 20),
         .init(name: "Milano Domodossola", lines: ["R22", "S3", "S4", "R16", "R17", "R27", "RE1", "RE7", "MXP2", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 21),
         .init(name: "Milano Cadorna", lines: ["R22", "S3", "S4", "R16", "R17", "R27", "RE1", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 22),
 
@@ -931,7 +931,7 @@ struct InterchangesDB {
         .init(name: "Busto Arsizio", lines: ["R23", "S5", "S50", "R21", "RV", "RE4", "RE5"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 18),
         .init(name: "Legnano", lines: ["R23", "S5", "R21", "RV", "RE5", "z112", "z601", "z602", "z611", "z627", "z636", "z642"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 19),
         .init(name: "Rho Fiera Milano", lines: ["R23", "S5", "S6", "S11", "R21", "RE4", "RE5", "AV", "M1", "542", "561", "z110"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 20),
-        .init(name: "Milano Porta Garibaldi", lines: ["R23", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 21),
+        .init(name: "Milano Porta Garibaldi", lines: ["R23", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R34", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 21),
 
         /// Regionale R24
         .init(name: "Laveno Mombello", lines: ["R24", "S30", "R21"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
@@ -958,8 +958,8 @@ struct InterchangesDB {
         .init(name: "Busto Arsizio Nord", lines: ["R27", "S50", "MXP1", "MXP2"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Castellanza", lines: ["R27", "MXP1"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
         .init(name: "Rescaldina", lines: ["R27", "MXP1", "z121"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
-        .init(name: "Saronno", lines: ["R27", "S1", "S3", "S9", "R17", "R22", "RE1", "RE7", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
-        .init(name: "Milano Bovisa", lines: ["R27", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
+        .init(name: "Saronno", lines: ["R27", "S1", "S3", "S9", "R17", "R22", "RE1", "RE7", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Milano Bovisa", lines: ["R27", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "RE1", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
         .init(name: "Milano Domodossola", lines: ["R27", "S3", "S4", "R16", "R17", "R22", "RE1", "RE7", "MXP2", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 11),
         .init(name: "Milano Cadorna", lines: ["R27", "S3", "S4", "R16", "R17", "R22", "RE1", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 12),
 
@@ -993,7 +993,7 @@ struct InterchangesDB {
         .init(name: "Voghera", lines: ["R33", "R34", "R41", "RE13", "REG", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
 
         /// Regionale R34
-        .init(name: "Milano Porta Garibaldi", lines: ["R34", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
+        .init(name: "Milano Porta Garibaldi", lines: ["R34", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "RE2", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
         .init(name: "Milano Lambrate", lines: ["R34", "S9", "R4", "R6", "R7", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 1),
         .init(name: "Milano Rogoredo", lines: ["R34", "S1", "S2", "S9", "S12", "S13", "S19", "R31", "R38", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Pavia", lines: ["R34", "S13", "R33", "R35", "R36", "R37", "RE13", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
@@ -1060,7 +1060,7 @@ struct InterchangesDB {
         .init(name: "Milano Rogoredo", lines: ["R38", "S1", "S2", "S9", "S12", "S13", "S19", "R31", "R34", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Milano Forlanini", lines: ["R38", "S5", "S6", "S9", "RE8", "RE13", "M4", "NM4", "12", "27", "45", "175", "973", "N27"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 7),
         .init(name: "Milano Lambrate", lines: ["R38", "S9", "R4", "R6", "R7", "R34", "RE2", "RE6", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 8),
-        .init(name: "Milano Greco Pirelli", lines: ["R38", "S7", "S8", "S9", "S11", "R4", "R13", "R14", "RE13", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Milano Greco Pirelli", lines: ["R38", "S7", "S8", "S9", "S11", "R4", "R13", "R14", "RE80", "7", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
 
         /// Regionale R39
         .init(name: "Codogno", lines: ["R39", "R37", "R38", "RE11", "REG", "RV"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
@@ -1112,15 +1112,15 @@ struct InterchangesDB {
         .init(name: "Varese Nord", lines: ["RE1", "R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
         .init(name: "Malnate", lines: ["RE1", "R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
         .init(name: "Tradate", lines: ["RE1", "R22"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 10),
-        .init(name: "Saronno", lines: ["RE1", "S1", "S3", "S9", "R17", "R22", "R27", "RE7", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
-        .init(name: "Milano Bovisa", lines: ["RE1", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE7", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
+        .init(name: "Saronno", lines: ["RE1", "S1", "S3", "S9", "R17", "R22", "R27", "RE7", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Milano Bovisa", lines: ["RE1", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE7", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 12),
         .init(name: "Milano Domodossola", lines: ["RE1", "S3", "S4", "R16", "R17", "R22", "R27", "RE7", "MXP2", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 13),
         .init(name: "Milano Cadorna", lines: ["RE1", "S3", "S4", "R16", "R17", "R22", "R27", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
 
         /// RegioExpress RE2
         .init(name: "Milano Centrale", lines: ["RE2", "AV", "R4", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "MXP1", "M3", "NM3", "M2", "NM2", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Milano Centrale", lineOrder: 0),
 
-        .init(name: "Milano Porta Garibaldi", lines: ["RE2", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Milano Porta Garibaldi", lineOrder: 0),
+        .init(name: "Milano Porta Garibaldi", lines: ["RE2", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE5", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Milano Porta Garibaldi", lineOrder: 0),
         .init(name: "Milano Villapizzone", lines: ["RE2", "S5", "S6", "S11", "R6"], typeOfInterchange: "lightrail", branch: "Milano Porta Garibaldi", lineOrder: 1),
 
         .init(name: "Milano Lambrate", lines: ["RE2", "S9", "R4", "R6", "R7", "R34", "R38", "RE6", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
@@ -1166,7 +1166,7 @@ struct InterchangesDB {
         .init(name: "Busto Arsizio", lines: ["RE5", "S5", "S50", "R21", "R23", "RV", "RE4"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Legnano", lines: ["RE5", "S5", "R21", "R23", "RV", "z112", "z601", "z602", "z611", "z627", "z636", "z642"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
         .init(name: "Rho Fiera Milano", lines: ["RE5", "S5", "S6", "S11", "R21", "R23", "RE4", "AV", "M1", "542", "561", "z110"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
-        .init(name: "Milano Porta Garibaldi", lines: ["RE5", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
+        .init(name: "Milano Porta Garibaldi", lines: ["RE5", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE6", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
 
         /// RegioExpress RE6
         .init(name: "Verona Porta Nuova", lines: ["RE6", "R7", "REG"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
@@ -1184,11 +1184,11 @@ struct InterchangesDB {
         /// RegioExpress RE7
         .init(name: "Como Lago", lines: ["RE7", "R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 0),
         .init(name: "Como Borghi", lines: ["RE7", "R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 1),
-        .init(name: "Como Camerlata", lines: ["RE7", "S10", "S11", "S40", "R17", "R18", "RE13", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
+        .init(name: "Como Camerlata", lines: ["RE7", "S10", "S11", "S40", "R17", "R18", "RE80"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 2),
         .init(name: "Grandate Breccia", lines: ["RE7", "R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 3),
         .init(name: "Lomazzo", lines: ["RE7", "R17"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 4),
-        .init(name: "Saronno", lines: ["RE7", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
-        .init(name: "Milano Bovisa", lines: ["RE7", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE13", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
+        .init(name: "Saronno", lines: ["RE7", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 5),
+        .init(name: "Milano Bovisa", lines: ["RE7", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "MXP1", "MXP2", "82", "92"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Milano Domodossola", lines: ["RE7", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "MXP2", "M5", "1", "19"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 7),
         .init(name: "Milano Cadorna", lines: ["RE7", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 8),
 
@@ -1202,7 +1202,7 @@ struct InterchangesDB {
         .init(name: "Varenna Esino", lines: ["RE8", "R13"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 6),
         .init(name: "Mandello del Lario", lines: ["RE8", "R13"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 7),
         .init(name: "Lecco", lines: ["RE8", "S7", "S8", "R7", "R13", "R18"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 8),
-        .init(name: "Monza", lines: ["RE8", "S7", "S8", "S9", "S11", "R7", "R13", "R14", "RE13", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
+        .init(name: "Monza", lines: ["RE8", "S7", "S8", "S9", "S11", "R7", "R13", "R14", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 9),
         .init(name: "Milano Centrale", lines: ["RE8", "AV", "R4", "RE2", "RE4", "RE6", "RE11", "RE13", "RE80", "MXP1", "M2", "NM2", "M3", "NM3", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 10),
 
         /// RegioExpress RE11
@@ -1412,7 +1412,7 @@ struct InterchangesDB {
         .init(name: "Viale Testi Via San Marcellina", lines: ["7", "31"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 8),
         .init(name: "Via Pulci Viale Sarca", lines: ["7", "M5", "31", "52", "172", "783"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 9),
         .init(name: "Università Bicocca Scienza", lines: ["7", "52", "87"], typeOfInterchange: "building.columns.fill", branch: "Main", lineOrder: 10),
-        .init(name: "Stazione Greco Pirelli", lines: ["7", "S11", "S7", "S8", "S9", "R4", "R13", "R14", "R38", "RE13", "RE80", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
+        .init(name: "Stazione Greco Pirelli", lines: ["7", "S11", "S7", "S8", "S9", "R4", "R13", "R14", "R38", "RE80", "52", "81", "86", "174"], typeOfInterchange: "lightrail", branch: "Main", lineOrder: 11),
         .init(name: "Arcimboldi Ateneo Nuovo", lines: ["7", "87"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 12),
         .init(name: "Largo Mattei", lines: ["7", "86", "174"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 13),
         .init(name: "Precotto M1", lines: ["7", "M1", "NM1", "51", "86", "174"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 14),
@@ -1476,7 +1476,7 @@ struct InterchangesDB {
         .init(name: "Piazzale Cimitero Monumentale Via Bramante", lines: ["10", "12", "14"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 21),
         .init(name: "Monumentale M5", lines: ["10", "M5", "12", "14", "70"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 22),
         .init(name: "Via Farini Via Ferrari", lines: ["10", "2", "4", "33", "NM2", "70", "N25", "N26"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 23),
-        .init(name: "Stazione Garibaldi M2 M5", lines: ["10", "M2", "NM2", "M5", "33", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 24),
+        .init(name: "Stazione Garibaldi M2 M5", lines: ["10", "M2", "NM2", "M5", "33", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 24),
         .init(name: "Viale Monte Grappa Via Gioia", lines: ["10", "33"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 25),
         .init(name: "Piazzale Principessa Clotilde (Osp. Fatebenefratelli)", lines: ["10", "Ospedale", "33", "43"], typeOfInterchange: "hospital", branch: "Main", lineOrder: 26),
         .init(name: "Viale Monte Santo", lines: ["10", "9", "33"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 27),
@@ -1756,7 +1756,7 @@ struct InterchangesDB {
         .init(name: "Via Porro Lambertenghi", lines: ["33"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 1),
         .init(name: "Via Ugo Bassi", lines: ["33"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 2),
         .init(name: "Via Farini Via Ferrari", lines: ["33", "2", "4", "10", "NM2", "70", "N25", "N26"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 3),
-        .init(name: "Stazione Garibaldi M2 M5", lines: ["33", "M2", "NM2", "M5", "10", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 4),
+        .init(name: "Stazione Garibaldi M2 M5", lines: ["33", "M2", "NM2", "M5", "10", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "N25", "N26"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 4),
         .init(name: "Viale Monte Grappa Via Gioia", lines: ["33", "10"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 5),
         .init(name: "Piazzale Principessa Clotilde (Osp. Fatebenefratelli)", lines: ["33", "Ospedale", "10", "43"], typeOfInterchange: "hospital", branch: "Main", lineOrder: 6),
         .init(name: "Viale Monte Santo", lines: ["33", "9", "10"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 7),
@@ -1848,7 +1848,7 @@ struct InterchangesDB {
         .init(name: "Lotto M1 M5", lines: ["91", "M1", "NM1", "M5", "48", "49", "68", "78", "90", "98"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 39),
 
         /// Filobus 92
-        .init(name: "Via Varè (Bovisa FN)", lines: ["92", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
+        .init(name: "Via Varè (Bovisa FN)", lines: ["92", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "82"], typeOfInterchange: "tram.fill.tunnel", branch: "Main", lineOrder: 0),
         .init(name: "Via Broglio Via Varè", lines: ["92", "82"], typeOfInterchange: "bus.fill", branch: "Main", lineOrder: 1),
         .init(name: "Bausan", lines: ["92", "2", "82"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 2),
         .init(name: "Via Imbriani Via Scalvini", lines: ["92", "2"], typeOfInterchange: "tram.fill", branch: "Main", lineOrder: 3),
@@ -1940,9 +1940,9 @@ struct InterchangesDB {
         .init(displayName: "Lissone - Muggiò FS", lines: ["S9", "S11", "z227", "z234", "z238", "z250"], typeOfInterchange: "train.side.front.car", linesToShow: ["z227", "z234", "z238"]),
         .init(displayName: "Cologno Nord M2", lines: ["M2", "701", "702", "707", "z203", "z304", "z305", "z307", "z322", "z323"], typeOfInterchange: "tram.fill.tunnel", linesToShow: ["z304", "z305", "z307", "z322", "z323"]),
         .init(displayName: "Cassano D'Adda FS", lines: ["S5", "S6", "R4", "z309", "z405", "z407"], typeOfInterchange: "train.side.front.car", linesToShow: ["z309"]),
-        .init(displayName: "Saronno FN", lines: ["S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "train.side.front.car", linesToShow: ["z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"]),
+        .init(displayName: "Saronno FN", lines: ["S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"], typeOfInterchange: "train.side.front.car", linesToShow: ["z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"]),
         .init(displayName: "Arcore FS", lines: ["S8", "R13", "R14", "RE8", "z208", "z317", "z319"], typeOfInterchange: "train.side.front.car", linesToShow: ["z317", "z319"]),
-        .init(displayName: "Bollate Centro FN", lines: ["S1", "S3", "S13", "RE13", "z121", "z130"], typeOfInterchange: "train.side.front.car", linesToShow: ["z121", "z130"]),
+        .init(displayName: "Bollate Centro FN", lines: ["S1", "S3", "S13", "z121", "z130"], typeOfInterchange: "train.side.front.car", linesToShow: ["z121", "z130"]),
         .init(displayName: "Carnate Usmate FS", lines: ["S8", "R13", "R14", "R15", "RE8", "z318", "z319"], typeOfInterchange: "train.side.front.car", linesToShow: ["z318"])
     ]
 
