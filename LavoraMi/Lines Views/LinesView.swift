@@ -437,7 +437,7 @@ struct LinesView: View {
             LineInfo(name: "z130", branches: "Limbiate - Bollate Centro FN", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z150", branches: "Cantù - Comasina M3", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z160", branches: "Saronno FN - Camnago - Lentate FS", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
-            LineInfo(name: "z161", branches: "Saronno FN (Circolare)", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
+            LineInfo(name: "z161", branches: "Saronno FN (\(String(localized: .lineaCircolare)))", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z163", branches: "Lazzate - Limbiate (Mombello)", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
             LineInfo(name: "z166", branches: "Seregno FS - Lentate S. Seveso (Copreno)", type: "AirPullman", waitMinutes: "", stations: [], accessibilityStatus: ""),
         ]

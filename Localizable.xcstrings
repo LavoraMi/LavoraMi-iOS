@@ -4023,6 +4023,29 @@
         }
       }
     },
+    "lineaCircolare" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circular"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circular"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circolare"
+          }
+        }
+      }
+    },
     "lineaConRallentamenti" : {
       "extractionState" : "manual",
       "localizations" : {
