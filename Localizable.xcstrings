@@ -622,7 +622,20 @@
       }
     },
     "AirPullman" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AirPullman"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AirPullman"
+          }
+        }
+      }
     },
     "Aiutaci a sostenere LavoraMi!" : {
       "localizations" : {
@@ -3924,21 +3937,17 @@
       }
     },
     "Linea non trovata" : {
-
-    },
-    "Linea non trovata." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Line Not Found."
+            "value" : "Line Not Found"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No se ha encontrado la línea."
+            "value" : "No se ha encontrado la línea"
           }
         }
       }
@@ -4100,7 +4109,20 @@
       }
     },
     "Linee AirPullman" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AirPullman Lines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas AirPullman"
+          }
+        }
+      }
     },
     "Linee ATM" : {
       "localizations" : {
