@@ -5710,6 +5710,18 @@
     "orariModificatiDeps" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, which operates this route, has announced a period during which, due to public holidays or roadworks along the route, services may be subject to timetable changes or may be cancelled."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, la empresa que gestiona esta línea, ha informado de un periodo en el que, debido a días festivos o obras en el trayecto, los horarios de los servicios pueden sufrir variaciones o estos pueden ser suspendidos."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5721,6 +5733,18 @@
     "orariModificatiTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MODIFIED TIMETABLES"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HORARIOS MODIFICADOS"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
